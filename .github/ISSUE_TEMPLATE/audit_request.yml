@@ -1,0 +1,69 @@
+name: MCPScan audit request
+description: Request a paid MCP security audit or scope confirmation.
+title: "MCPScan audit request: "
+labels:
+  - audit-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest in an MCPScan audit. Do not paste secrets, tokens, production credentials, or private customer data into this issue.
+  - type: dropdown
+    id: package
+    attributes:
+      label: Audit package
+      options:
+        - MCP Quick Audit - $750
+        - MCP Launch Audit - $1,500
+        - MCP Enterprise Readiness Audit - $3,500
+        - Not sure yet
+    validations:
+      required: true
+  - type: input
+    id: company
+    attributes:
+      label: Company or project
+      placeholder: Example AI Co
+    validations:
+      required: true
+  - type: input
+    id: contact
+    attributes:
+      label: Best contact
+      placeholder: email@example.com
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: MCP scope
+      description: Describe the MCP servers/configs you want reviewed. Keep this high-level and sanitized.
+      placeholder: "3 MCP servers connected to GitHub, Postgres, and filesystem tools in staging."
+    validations:
+      required: true
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Local/dev
+        - Staging
+        - Production
+        - Multiple environments
+    validations:
+      required: true
+  - type: checkboxes
+    id: permissions
+    attributes:
+      label: Testing permission
+      options:
+        - label: I can provide sanitized MCP configs or a safe test target.
+        - label: I understand live exploit attempts require explicit written authorization.
+        - label: I will not include secrets or credentials in this public issue.
+    validations:
+      required: true
+  - type: textarea
+    id: timing
+    attributes:
+      label: Timeline and notes
+      placeholder: "Need a report by Friday for an enterprise pilot review."
