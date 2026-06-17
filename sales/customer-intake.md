@@ -2,6 +2,18 @@
 
 Use this when a buyer purchases an audit or asks for a quote.
 
+## Pre-Intake Handoff
+
+- Lead source:
+- Original trigger:
+- Package recommended:
+- Buyer goal: internal rollout / customer pilot / enterprise review / agency client handoff / other
+- Promised turnaround:
+- Payment link sent:
+- Payment confirmed:
+- Discovery notes:
+- Main concern or objection:
+
 ## Required
 
 - Company:
