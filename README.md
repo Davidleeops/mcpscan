@@ -53,6 +53,12 @@ jobs:
       - run: npx mcpscan scan ./mcp-config.json --ci --min-grade B
 ```
 
+## Landing Page
+
+A minimal static commercial landing page is available in `landing/`. See
+`landing/README.md` for local preview and deployment options, and
+`docs/LANDING_PAGE.md` for the pre-publish checklist.
+
 ## Why Now
 
 MCP adoption is accelerating, but many servers expose powerful tools through weak auth, broad filesystem/network access, and unsafe prompt-facing tool metadata. MCPScan is built to become the independent, developer-friendly scanner for MCP server security audits, OWASP MCP Top 10 coverage, NSA advisory alignment, and EU AI Act documentation workflows.

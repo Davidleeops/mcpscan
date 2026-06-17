@@ -4,14 +4,14 @@
   "description": "A security scanner for Model Context Protocol servers.",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://github.com/mcpscan/mcpscan#readme",
+  "homepage": "https://github.com/Davidleeops/mcpscan#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mcpscan/mcpscan.git",
+    "url": "git+https://github.com/Davidleeops/mcpscan.git",
     "directory": "packages/cli"
   },
   "bugs": {
-    "url": "https://github.com/mcpscan/mcpscan/issues"
+    "url": "https://github.com/Davidleeops/mcpscan/issues"
   },
   "engines": {
     "node": ">=20"

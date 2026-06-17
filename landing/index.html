@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan | Security scans for Model Context Protocol servers</title>
+    <meta
+      name="description"
+      content="MCPScan helps teams find risky MCP server permissions, weak auth signals, prompt-injection exposure, and sensitive data paths before agents reach production."
+    >
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f3eb;
+        --panel: #ffffff;
+        --ink: #10201b;
+        --muted: #52615b;
+        --line: #d9ddd5;
+        --accent: #0f766e;
+        --accent-dark: #115e59;
+        --warning: #b45309;
+        --code-bg: #101816;
+        --code-ink: #d8f4ec;
+        --shadow: 0 24px 70px rgba(16, 32, 27, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page-shell {
+        min-height: 100vh;
+      }
+
+      .nav {
+        align-items: center;
+        display: flex;
+        gap: 24px;
+        justify-content: space-between;
+        margin: 0 auto;
+        max-width: 1160px;
+        padding: 24px;
+      }
+
+      .brand {
+        align-items: center;
+        display: inline-flex;
+        font-size: 18px;
+        font-weight: 750;
+        gap: 10px;
+        letter-spacing: 0;
+        text-decoration: none;
+      }
+
+      .mark {
+        align-items: center;
+        background: var(--ink);
+        border-radius: 7px;
+        color: #e8fff8;
+        display: inline-flex;
+        font-size: 13px;
+        font-weight: 800;
+        height: 32px;
+        justify-content: center;
+        width: 32px;
+      }
+
+      .nav-links {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        justify-content: flex-end;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 650;
+        text-decoration: none;
+      }
+
+      .nav-links a:hover {
+        color: var(--ink);
+      }
+
+      .hero {
+        margin: 0 auto;
+        max-width: 1160px;
+        padding: 64px 24px 44px;
+      }
+
+      .hero-grid {
+        align-items: center;
+        display: grid;
+        gap: 44px;
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      }
+
+      .eyebrow {
+        color: var(--accent-dark);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        margin: 0 0 16px;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-size: clamp(42px, 7vw, 72px);
+        letter-spacing: 0;
+        line-height: 0.96;
+        margin: 0;
+        max-width: 850px;
+      }
+
+      .lede {
+        color: var(--muted);
+        font-size: 20px;
+        margin: 24px 0 0;
+        max-width: 690px;
+      }
+
+      .hero-actions,
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .button {
+        align-items: center;
+        border: 1px solid transparent;
+        border-radius: 7px;
+        display: inline-flex;
+        font-size: 15px;
+        font-weight: 750;
+        justify-content: center;
+        min-height: 46px;
+        padding: 12px 18px;
+        text-decoration: none;
+      }
+
+      .button.primary {
+        background: var(--accent);
+        color: #ffffff;
+      }
+
+      .button.primary:hover {
+        background: var(--accent-dark);
+      }
+
+      .button.secondary {
+        background: #ffffff;
+        border-color: var(--line);
+        color: var(--ink);
+      }
+
+      .button.secondary:hover {
+        border-color: var(--accent);
+      }
+
+      .proof-strip {
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 34px;
+        padding-top: 20px;
+      }
+
+      .proof-strip span {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 650;
+      }
+
+      .terminal {
+        background: var(--code-bg);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        color: var(--code-ink);
+        overflow: hidden;
+      }
+
+      .terminal-header {
+        align-items: center;
+        background: #17211f;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        color: #a7b8b2;
+        display: flex;
+        font-size: 13px;
+        justify-content: space-between;
+        padding: 12px 16px;
+      }
+
+      .dots {
+        display: flex;
+        gap: 7px;
+      }
+
+      .dots span {
+        background: #6f7f79;
+        border-radius: 50%;
+        display: block;
+        height: 9px;
+        width: 9px;
+      }
+
+      pre {
+        margin: 0;
+        overflow-x: auto;
+        padding: 20px;
+        white-space: pre-wrap;
+      }
+
+      code {
+        font-family:
+          "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        font-size: 14px;
+      }
+
+      .terminal-meta {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        display: grid;
+        gap: 1px;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .metric {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 16px;
+      }
+
+      .metric strong {
+        color: #ffffff;
+        display: block;
+        font-size: 20px;
+      }
+
+      .metric span {
+        color: #a7b8b2;
+        font-size: 12px;
+      }
+
+      section {
+        margin: 0 auto;
+        max-width: 1160px;
+        padding: 54px 24px;
+      }
+
+      .section-heading {
+        max-width: 760px;
+      }
+
+      h2 {
+        font-size: clamp(30px, 4vw, 44px);
+        letter-spacing: 0;
+        line-height: 1.05;
+        margin: 0;
+      }
+
+      .section-heading p {
+        color: var(--muted);
+        font-size: 18px;
+        margin: 16px 0 0;
+      }
+
+      .feature-grid,
+      .pricing-grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-top: 28px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 24px;
+      }
+
+      .card h3 {
+        font-size: 20px;
+        line-height: 1.2;
+        margin: 0 0 10px;
+      }
+
+      .card p,
+      .card li {
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .card p {
+        margin: 0;
+      }
+
+      .card ul {
+        margin: 18px 0 0;
+        padding-left: 20px;
+      }
+
+      .report-band {
+        align-items: start;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        display: grid;
+        gap: 24px;
+        grid-template-columns: minmax(0, 0.82fr) minmax(280px, 0.48fr);
+        margin-top: 28px;
+        padding: 26px;
+      }
+
+      .report-list {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .report-list li {
+        align-items: center;
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+        display: flex;
+        font-size: 15px;
+        justify-content: space-between;
+        list-style: none;
+        padding: 0 0 12px;
+      }
+
+      .tag {
+        border-radius: 999px;
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 800;
+        padding: 4px 8px;
+      }
+
+      .tag.high {
+        background: #b91c1c;
+      }
+
+      .tag.medium {
+        background: var(--warning);
+      }
+
+      .tag.low {
+        background: var(--accent);
+      }
+
+      .price {
+        align-items: baseline;
+        display: flex;
+        gap: 8px;
+        margin: 18px 0;
+      }
+
+      .price strong {
+        font-size: 38px;
+        line-height: 1;
+      }
+
+      .price span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .price-card.featured {
+        border-color: var(--accent);
+        box-shadow: var(--shadow);
+      }
+
+      .price-card .button {
+        margin-top: 22px;
+        width: 100%;
+      }
+
+      .note {
+        color: var(--muted);
+        font-size: 14px;
+        margin-top: 18px;
+      }
+
+      .final-cta {
+        background: var(--ink);
+        color: #ffffff;
+        margin: 54px auto 70px;
+        max-width: 1112px;
+        padding: 38px;
+      }
+
+      .final-cta p {
+        color: #c8d6d0;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 14px;
+        margin: 0 auto;
+        max-width: 1160px;
+        padding: 24px;
+      }
+
+      @media (max-width: 840px) {
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .nav-links {
+          justify-content: flex-start;
+        }
+
+        .hero {
+          padding-top: 32px;
+        }
+
+        .hero-grid,
+        .report-band {
+          grid-template-columns: 1fr;
+        }
+
+        .feature-grid,
+        .pricing-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .terminal-meta {
+          grid-template-columns: 1fr;
+        }
+
+        .final-cta {
+          margin-left: 24px;
+          margin-right: 24px;
+          padding: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="MCPScan home">
+          <span class="mark">MS</span>
+          <span>MCPScan</span>
+        </a>
+        <nav class="nav-links" aria-label="Page sections">
+          <a href="#checks">Checks</a>
+          <a href="#report">Report</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#audit">Audit</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-grid">
+            <div>
+              <p class="eyebrow">Security scans for MCP servers</p>
+              <h1 id="hero-title">Find risky agent access before it reaches production.</h1>
+              <p class="lede">
+                MCPScan is a local-first CLI and fixed-scope audit service for
+                teams connecting AI agents to internal tools, credentials, code,
+                customer data, and third-party APIs.
+              </p>
+              <div class="hero-actions">
+                <a class="button primary" href="#audit">Book an MCP audit</a>
+                <a class="button secondary" href="PLACEHOLDER_SAMPLE_REPORT_URL">View sample report</a>
+              </div>
+              <div class="proof-strip" aria-label="Product highlights">
+                <span>A-F security grade</span>
+                <span>JSON and HTML reports</span>
+                <span>CI threshold support</span>
+                <span>No automatic uploads</span>
+              </div>
+            </div>
+
+            <aside class="terminal" aria-label="MCPScan command example">
+              <div class="terminal-header">
+                <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                <span>local scan</span>
+              </div>
+              <pre><code>npx mcpscan scan ./claude_desktop_config.json --ci --min-grade B
+
+Grade: C
+Findings: 2 high, 3 medium, 1 low
+
+HIGH AUTH-001
+No authentication hints detected for filesystem-server
+
+HIGH TOOL-001
+Tool description contains prompt-injection language</code></pre>
+              <div class="terminal-meta">
+                <div class="metric">
+                  <strong>30s</strong>
+                  <span>typical local scan</span>
+                </div>
+                <div class="metric">
+                  <strong>A-F</strong>
+                  <span>risk grade</span>
+                </div>
+                <div class="metric">
+                  <strong>0</strong>
+                  <span>default uploads</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="checks" aria-labelledby="checks-title">
+          <div class="section-heading">
+            <h2 id="checks-title">Purpose-built checks for MCP risk.</h2>
+            <p>
+              MCPScan focuses on the access patterns that matter when agents can
+              call real tools: authentication, sensitive outputs, network reach,
+              dangerous tool descriptions, and unsafe defaults.
+            </p>
+          </div>
+          <div class="feature-grid">
+            <article class="card">
+              <h3>Access and auth</h3>
+              <p>
+                Flag missing authentication signals, default credentials, broad
+                CORS settings, and transport issues that make MCP endpoints too
+                easy to reach.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Tooling exposure</h3>
+              <p>
+                Review tool names, descriptions, permission breadth, prompt-facing
+                language, and shadow-tool patterns that can confuse agents or users.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Input and output risk</h3>
+              <p>
+                Detect SSRF, command-injection, path traversal, SQL-injection,
+                sensitive data, excessive data, and error-disclosure patterns.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="report" aria-labelledby="report-title">
+          <div class="section-heading">
+            <h2 id="report-title">A report security and engineering can both use.</h2>
+            <p>
+              Every scan result is designed to move from finding to owner to fix,
+              with evidence, business impact, remediation guidance, and a clear
+              grade for release decisions.
+            </p>
+          </div>
+          <div class="report-band">
+            <div>
+              <h3>Sample report package</h3>
+              <p>
+                Publish a sanitized HTML or PDF sample that shows the executive
+                summary, MCP server inventory, findings table, detailed evidence,
+                remediation checklist, and out-of-scope notes.
+              </p>
+              <div class="cta-row">
+                <a class="button primary" href="PLACEHOLDER_SAMPLE_REPORT_URL">Open sample report</a>
+                <a class="button secondary" href="#pricing">Compare audit options</a>
+              </div>
+            </div>
+            <ul class="report-list" aria-label="Example findings">
+              <li><span>No authentication hints</span><span class="tag high">High</span></li>
+              <li><span>URL-fetching tool SSRF risk</span><span class="tag high">High</span></li>
+              <li><span>Prompt-injection tool copy</span><span class="tag medium">Medium</span></li>
+              <li><span>Sensitive data pattern in output</span><span class="tag medium">Medium</span></li>
+              <li><span>TLS probe warning</span><span class="tag low">Low</span></li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="pricing" aria-labelledby="pricing-title">
+          <div class="section-heading">
+            <h2 id="pricing-title">Fixed-scope MCP audits.</h2>
+            <p>
+              Start with the CLI, then buy a focused manual review when MCP
+              servers are connected to sensitive systems or enterprise-facing
+              demos.
+            </p>
+          </div>
+          <div class="pricing-grid">
+            <article class="card price-card">
+              <h3>MCP Quick Audit</h3>
+              <p>For one MCP setup that needs a fast security readout.</p>
+              <div class="price"><strong>$750</strong><span>fixed scope</span></div>
+              <ul>
+                <li>Up to 3 MCP servers</li>
+                <li>1 environment</li>
+                <li>Written report</li>
+                <li>3 business day turnaround</li>
+              </ul>
+              <a class="button secondary" href="PLACEHOLDER_STRIPE_QUICK_AUDIT_URL">Purchase Quick Audit</a>
+            </article>
+            <article class="card price-card featured">
+              <h3>MCP Launch Audit</h3>
+              <p>For startups preparing pilots, demos, or early customer review.</p>
+              <div class="price"><strong>$1,500</strong><span>fixed scope</span></div>
+              <ul>
+                <li>Up to 8 MCP servers</li>
+                <li>2 environments</li>
+                <li>Report and findings call</li>
+                <li>1 re-scan after fixes</li>
+              </ul>
+              <a class="button primary" href="PLACEHOLDER_STRIPE_LAUNCH_AUDIT_URL">Purchase Launch Audit</a>
+            </article>
+            <article class="card price-card">
+              <h3>Enterprise Readiness</h3>
+              <p>For teams preparing a deeper security or buyer review.</p>
+              <div class="price"><strong>$3,500</strong><span>fixed scope</span></div>
+              <ul>
+                <li>Up to 15 MCP servers</li>
+                <li>3 environments</li>
+                <li>Executive summary</li>
+                <li>Findings call and 1 re-scan</li>
+              </ul>
+              <a class="button secondary" href="PLACEHOLDER_STRIPE_ENTERPRISE_AUDIT_URL">Purchase Enterprise Audit</a>
+            </article>
+          </div>
+          <p class="note">
+            MCPScan audits are not penetration tests, compliance certifications,
+            or guarantees of complete security. They are focused reviews of MCP
+            configuration, exposed tools, risky permissions, and scan findings.
+          </p>
+        </section>
+
+        <section id="audit" class="final-cta" aria-labelledby="audit-title">
+          <div class="section-heading">
+            <h2 id="audit-title">Know what your MCP setup can access and what to fix first.</h2>
+            <p>
+              Use the local scanner for a quick baseline, or purchase a fixed-scope
+              audit when the MCP setup touches credentials, customer data, source
+              code, databases, ticketing, or production-like systems.
+            </p>
+          </div>
+          <div class="cta-row">
+            <a class="button primary" href="PLACEHOLDER_STRIPE_LAUNCH_AUDIT_URL">Buy an audit</a>
+            <a class="button secondary" href="PLACEHOLDER_CONTACT_URL">Ask about scope</a>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        MCPScan runs locally by default and does not upload scan results unless an
+        explicit upload/API workflow is added and requested.
+      </footer>
+    </div>
+  </body>
+</html>

@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://github.com/mcpscan/mcpscan#readme",
+  "homepage": "https://github.com/Davidleeops/mcpscan#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mcpscan/mcpscan.git",
+    "url": "git+https://github.com/Davidleeops/mcpscan.git",
     "directory": "packages/shared"
   },
   "bugs": {
-    "url": "https://github.com/mcpscan/mcpscan/issues"
+    "url": "https://github.com/Davidleeops/mcpscan/issues"
   },
   "engines": {
     "node": ">=20"
