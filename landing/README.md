@@ -23,11 +23,11 @@ Any static host can deploy this directory:
 
 - Netlify: create a site from `landing/` with no build command.
 - Vercel: deploy `landing/` as a static project with no framework preset.
-- GitHub Pages: publish the `landing/` directory or copy `index.html` into the
-  configured Pages root.
+- GitHub Pages: the repository includes `.github/workflows/pages.yml`, which
+  deploys this directory automatically on pushes to `main`.
 - Object storage/CDN: upload `index.html` as the landing page entrypoint.
 
 ## Before Publishing
 
-Replace every `PLACEHOLDER_*` URL in `index.html` before sending traffic to the
-page. See `docs/LANDING_PAGE.md` for the publishing checklist.
+Replace temporary GitHub issue CTAs with Stripe Payment Links before sending
+paid traffic. See `docs/LANDING_PAGE.md` for the publishing checklist.

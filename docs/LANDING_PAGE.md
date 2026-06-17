@@ -3,31 +3,40 @@
 The static landing page lives in `landing/index.html`. It is intended for a fast
 commercial launch without waiting for a SaaS dashboard.
 
-## Required Updates
+## Current Status
 
-Before publishing, replace these placeholders in `landing/index.html`:
+The landing page is publishable now with temporary intake links:
 
-- `PLACEHOLDER_SAMPLE_REPORT_URL`: link to a sanitized sample report.
-- `PLACEHOLDER_STRIPE_QUICK_AUDIT_URL`: Stripe Payment Link for the $750 MCP
-  Quick Audit.
-- `PLACEHOLDER_STRIPE_LAUNCH_AUDIT_URL`: Stripe Payment Link for the $1,500 MCP
-  Launch Audit.
-- `PLACEHOLDER_STRIPE_ENTERPRISE_AUDIT_URL`: Stripe Payment Link for the $3,500
-  Enterprise Readiness Audit.
-- `PLACEHOLDER_CONTACT_URL`: contact form, email link, or scheduling page for
-  buyers who need scope confirmation.
+- `landing/sample-report.html` contains a sanitized sample paid-audit report.
+- Pricing CTAs currently open GitHub issue request URLs.
+- GitHub Pages deploys the `landing/` directory.
+
+## Required Updates Before Paid Traffic
+
+Replace temporary GitHub issue links in `landing/index.html` once account assets
+exist:
+
+- Stripe Payment Link for the $750 MCP Quick Audit.
+- Stripe Payment Link for the $1,500 MCP Launch Audit.
+- Stripe Payment Link for the $3,500 MCP Enterprise Readiness Audit.
+- Contact form, email link, or scheduling page for buyers who need scope
+  confirmation.
 
 ## Domain And Hosting
 
-Choose the production URL before launch, then update any external references to
-the landing page. Good first options:
+The fastest free production URL is GitHub Pages:
 
-- `https://mcpscan.dev`
+- `https://davidleeops.github.io/mcpscan/`
+
+Good custom-domain options once purchased:
+
 - `https://getmcpscan.com`
-- A subpath on an existing domain, such as `/mcpscan`
+- `https://trymcpscan.com`
+- `https://mcpguard.dev`
+- `https://shieldmcp.com`
 
-The page is static HTML/CSS only, so it can be hosted on Netlify, Vercel, GitHub
-Pages, Cloudflare Pages, S3, or any equivalent static host.
+The page is static HTML/CSS only, so it can also be hosted on Netlify, Vercel,
+Cloudflare Pages, S3, or any equivalent static host.
 
 ## Sample Report
 
@@ -58,10 +67,12 @@ instructions for:
 
 ## Launch Notes
 
-Before sending outbound traffic, verify:
+Before sending paid outbound traffic, verify:
 
-- All placeholder links are replaced.
+- GitHub Pages deploy is green.
 - Pricing matches `docs/GO_TO_MARKET.md`.
+- Stripe links replace temporary GitHub issue intake links.
+- Contact URL routes to a real inbox or form.
 - The disclaimer remains visible near pricing.
 - The sample CLI command still matches current CLI behavior.
 - The page renders on mobile and desktop.
