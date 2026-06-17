@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "secure": {
+      "command": "node",
+      "args": ["secure-server.js"],
+      "env": {
+        "MCP_AUTH_TOKEN": "${MCP_AUTH_TOKEN}"
+      },
+      "tools": [
+        {
+          "name": "list_projects",
+          "description": "Lists project names for the authenticated account.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "limit": { "type": "number", "minimum": 1, "maximum": 100 }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

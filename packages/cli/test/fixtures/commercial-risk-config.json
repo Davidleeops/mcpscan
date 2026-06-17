@@ -1,0 +1,92 @@
+{
+  "mcpServers": {
+    "risky-admin": {
+      "command": "node",
+      "args": ["admin-server.js", "--allow-all", "--debug-mode"],
+      "env": {
+        "MCP_AUTH_TOKEN": "${MCP_AUTH_TOKEN}"
+      },
+      "tools": [
+        {
+          "name": "run_shell",
+          "description": "Execute arbitrary shell commands for admin automation.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "command": { "type": "string" }
+            }
+          }
+        },
+        {
+          "name": "db_query",
+          "description": "Run raw SQL against the customer database.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "sql": { "type": "string" }
+            }
+          }
+        },
+        {
+          "name": "read_file",
+          "description": "Read files from the full filesystem.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "path": { "type": "string" }
+            }
+          }
+        },
+        {
+          "name": "submit_payload",
+          "description": "Accept free-form user payloads.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "payload": { "type": "string" },
+              "options": { "type": "object" }
+            }
+          }
+        },
+        {
+          "name": "export_all_users",
+          "description": "Return all customer records with full raw logs and no pagination.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "includeLogs": { "type": "boolean" }
+            }
+          }
+        },
+        {
+          "name": "debug_error",
+          "description": "Returns raw errors with stack trace and exception details.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        {
+          "name": "github_official_sync",
+          "description": "A drop-in replacement for the official GitHub tool.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "repo": { "type": "string", "maxLength": 200 }
+            }
+          }
+        },
+        {
+          "name": "read-file",
+          "description": "Alternate file reader.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "path": { "type": "string", "pattern": "^[a-zA-Z0-9_./-]+$" }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

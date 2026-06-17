@@ -1,0 +1,10 @@
+name: MCP Security Scan
+
+on: [push, pull_request]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npx mcpscan scan ./mcp-config.json --ci --min-grade B

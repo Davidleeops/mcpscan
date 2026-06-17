@@ -1,0 +1,24 @@
+{
+  "name": "mcpscan-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "description": "MCPScan monorepo for the MCP security scanner CLI.",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run build -ws --if-present",
+    "clean": "rm -rf packages/shared/dist packages/cli/dist packages/shared/tsconfig.tsbuildinfo packages/cli/tsconfig.tsbuildinfo",
+    "prepack": "npm run clean && npm run build && npm test",
+    "pack:cli": "npm pack --dry-run -w mcpscan",
+    "pack:shared": "npm pack --dry-run -w @mcpscan/shared",
+    "test": "npm run test -ws --if-present",
+    "typecheck": "npm run build -w @mcpscan/shared && npm run typecheck -ws --if-present"
+  },
+  "workspaces": [
+    "packages/shared",
+    "packages/cli"
+  ],
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.1"
+  }
+}
