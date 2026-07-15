@@ -11,7 +11,7 @@ It points to every founder click gate:
 1. Domain and email DNS console
 2. Stripe Payment Link console
 3. Approved-link command builder: `approved-links-command-builder.html`
-4. Outbound approval console
+4. Prospect sourcing console and outbound approval console
 5. npm publish console
 6. Paid-audit delivery console
 7. Verification console: `verification-console.html`
