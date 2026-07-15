@@ -14,6 +14,12 @@ Stripe setup console:
 /Users/lemueldavidleejr/Desktop/05_OPS 2/Scripts_and_Code/Codex folder/mcpscan/ops/stripe-click-setup.html
 ```
 
+Outbound approval console:
+
+```text
+/Users/lemueldavidleejr/Desktop/05_OPS 2/Scripts_and_Code/Codex folder/mcpscan/ops/outbound-approval-console.html
+```
+
 ## Launch Positioning
 
 Sell MCPScan as a pre-enablement MCP readiness audit for teams turning on Copilot, Claude Code, Cursor, VS Code agent mode, Slack MCP, or Atlassian Rovo.
@@ -49,7 +55,7 @@ Avoid using `.online` as the primary brand domain unless minimizing first-year c
 2. Create `hello@mcpscanhq.com` in Spacemail Pro.
 3. Create the three Stripe Payment Links using `ops/stripe-click-setup.html`.
 4. Approve the generated command that applies those links to the landing page.
-5. Approve exact first outbound messages before anything is sent.
+5. Approve exact first outbound messages in `ops/outbound-approval-console.html` before anything is sent.
 6. Publish npm only after npm login/package ownership is confirmed.
 
 ## Expected Initial Spend

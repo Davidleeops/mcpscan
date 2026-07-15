@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Outbound Approval Console</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #14171a;
+        --muted: #5c6570;
+        --line: #d8dee5;
+        --panel: #ffffff;
+        --soft: #f6f8fa;
+        --accent: #0b6bcb;
+        --warn: #9a5a00;
+        --danger: #aa2b2b;
+        --good: #0f7b4f;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: var(--soft);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+
+      h1 {
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 1;
+        margin-bottom: 12px;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+
+      h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      p, li {
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        align-items: end;
+        margin-bottom: 18px;
+      }
+
+      section, article {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .stack {
+        display: grid;
+        gap: 16px;
+      }
+
+      .guardrail {
+        border-left: 4px solid var(--danger);
+        background: #fff6f6;
+      }
+
+      .approved {
+        border-left: 4px solid var(--good);
+        background: #f3fbf6;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .prospect {
+        display: grid;
+        gap: 12px;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tag {
+        display: inline-flex;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1;
+        padding: 5px 8px;
+      }
+
+      .tag.warn {
+        border-color: #e4c98e;
+        color: var(--warn);
+      }
+
+      .tag.good {
+        border-color: #a8d8c0;
+        color: var(--good);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      button.copy, a.button {
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--accent);
+        border-radius: 7px;
+        padding: 9px 12px;
+        color: var(--accent);
+        background: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      a.button.primary {
+        color: #ffffff;
+        background: var(--accent);
+      }
+
+      pre {
+        margin: 0;
+        overflow: auto;
+        white-space: pre-wrap;
+        background: #101820;
+        color: #eef6ff;
+        border-radius: 8px;
+        padding: 12px;
+        line-height: 1.45;
+        font-size: 12px;
+      }
+
+      @media (max-width: 900px) {
+        header, .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <div>
+          <h1>Outbound Approval Console</h1>
+          <p>Review first-buyer outreach copy for MCPScan. This page only copies drafts. It does not send email, LinkedIn, Slack, or any external message.</p>
+        </div>
+        <a class="button primary" href="../sales/seed-prospect-list-2026-07-15.csv" target="_blank" rel="noreferrer">Open seed list</a>
+      </header>
+
+      <section class="guardrail">
+        <h2>Approval Rule</h2>
+        <p>No external message can be sent until the exact recipient and exact final content are approved in the same turn. Use this console to prepare and review drafts only.</p>
+      </section>
+
+      <section class="approved">
+        <h2>Core Offer</h2>
+        <p><strong>Pre-enablement MCP readiness audit:</strong> before a team turns on MCP broadly for Copilot, Claude Code, Cursor, VS Code, Slack, or Atlassian Rovo, MCPScan inventories servers, classifies read/write/destructive tools, checks auth/secrets exposure, reviews allowlist drift, and produces an AppSec-ready approval report.</p>
+      </section>
+
+      <section>
+        <h2>First Six Approval Drafts</h2>
+        <div class="grid">
+          <article class="prospect">
+            <div>
+              <h3>GitHub Copilot Enterprise admins</h3>
+              <div class="meta"><span class="tag good">P1</span><span class="tag">AppSec / VP Engineering</span><span class="tag">MCP Enterprise Readiness Audit</span></div>
+            </div>
+            <p>Likely pain: autonomous agent tools with repo/org access and questions around MCP allowlists, registry URLs, and approved servers.</p>
+            <pre id="email-github-enterprise">Subject: Quick MCP readiness check before Copilot rollout?
+
+Hi {{first_name}},
+
+I saw GitHub's MCP rollout guidance around Copilot server access, allowlists, and managed settings. A pattern I am seeing: teams want the productivity lift, but AppSec wants evidence on which MCP servers are approved, which tools can write/delete/execute, and where credentials may leak before access expands.
+
+MCPScan is a fixed-scope readiness audit for that exact pre-enablement moment. We inventory MCP servers/configs, classify risky tools, check auth/secrets exposure, and produce an AppSec-ready approval report.
+
+Worth a quick look if your team is enabling MCP for Copilot or adjacent coding agents?</pre>
+            <div class="actions">
+              <button class="copy" data-copy-target="email-github-enterprise">Copy email</button>
+            </div>
+          </article>
+
+          <article class="prospect">
+            <div>
+              <h3>GitHub MCP Server users</h3>
+              <div class="meta"><span class="tag good">P1</span><span class="tag">DevSecOps / platform</span><span class="tag">MCP Launch Audit</span></div>
+            </div>
+            <p>Likely pain: repository access, PAT scopes, issue/PR workflows, and unmanaged MCP usage through local clients.</p>
+            <pre id="email-github-mcp">Subject: GitHub MCP server risk review
+
+Hi {{first_name}},
+
+I am reaching out because teams adopting the GitHub MCP server often discover the security question after developers already have local configs: which repos can agents touch, what scopes are exposed, and which actions are read-only versus write-capable?
+
+MCPScan runs a short readiness audit across MCP configs and server/tool exposure. The output is a practical approval report: approved, blocked, or needs-guardrails, with the top auth/secrets and permission risks called out.
+
+Open to a 15-minute review of what this would look like for your GitHub MCP setup?</pre>
+            <div class="actions">
+              <button class="copy" data-copy-target="email-github-mcp">Copy email</button>
+            </div>
+          </article>
+
+          <article class="prospect">
+            <div>
+              <h3>Slack Enterprise Grid MCP users</h3>
+              <div class="meta"><span class="tag good">P1</span><span class="tag">IT security / collaboration admin</span><span class="tag">MCP Enterprise Readiness Audit</span></div>
+            </div>
+            <p>Likely pain: internal message/search exposure, write actions, canvases, OAuth scopes, and workspace data governance.</p>
+            <pre id="email-slack">Subject: Slack MCP permission review before broad rollout
+
+Hi {{first_name}},
+
+With Slack MCP, the hard part is not just whether the connection works. It is whether the team can prove which workspace data agents can read, which actions can write, and how OAuth scopes and admin controls map to real risk.
+
+MCPScan is a fixed-scope readiness audit for MCP-enabled tools. For Slack-heavy environments, we focus on tool permissions, read/write boundaries, approval evidence, and the places where internal data can be exposed through agent workflows.
+
+Would a short pre-rollout MCP readiness report be useful for your Slack/admin or AppSec team?</pre>
+            <div class="actions">
+              <button class="copy" data-copy-target="email-slack">Copy email</button>
+            </div>
+          </article>
+
+          <article class="prospect">
+            <div>
+              <h3>Atlassian Cloud / Rovo users</h3>
+              <div class="meta"><span class="tag good">P1</span><span class="tag">Atlassian admin / EngOps</span><span class="tag">MCP Enterprise Readiness Audit</span></div>
+            </div>
+            <p>Likely pain: Jira, Confluence, Bitbucket, JSM, and Compass access through agents with mixed read/write permissions.</p>
+            <pre id="email-atlassian">Subject: MCP readiness for Jira/Confluence/Rovo access
+
+Hi {{first_name}},
+
+For Atlassian MCP/Rovo rollouts, the security review usually comes down to a practical question: which Jira, Confluence, Bitbucket, and service-management actions can agents actually perform, and what needs approval before wider use?
+
+MCPScan is a focused readiness audit for MCP server exposure. We map servers and tools, classify read/write/destructive actions, check auth/secrets handling, and produce an approval report your AppSec or EngOps team can use.
+
+Is MCP access for Atlassian tools on your roadmap this quarter?</pre>
+            <div class="actions">
+              <button class="copy" data-copy-target="email-atlassian">Copy email</button>
+            </div>
+          </article>
+
+          <article class="prospect">
+            <div>
+              <h3>Claude Code enterprise users</h3>
+              <div class="meta"><span class="tag good">P1</span><span class="tag">Engineering leadership / AppSec</span><span class="tag">MCP Launch Audit</span></div>
+            </div>
+            <p>Likely pain: developer machine credentials, local/global configs, internal tools, databases, and enterprise-managed settings.</p>
+            <pre id="email-claude">Subject: Claude Code MCP readiness audit
+
+Hi {{first_name}},
+
+Claude Code plus MCP is powerful, but it also moves sensitive tool access closer to developer machines: local configs, internal APIs, databases, and credentials that may not be visible to central security teams.
+
+MCPScan is a 48-hour readiness audit for teams enabling MCP in coding-agent workflows. We inventory the MCP surface, classify risky tools, review auth/secrets exposure, and give AppSec a clear approve/block/guardrails report.
+
+Would this be useful before expanding Claude Code MCP access?</pre>
+            <div class="actions">
+              <button class="copy" data-copy-target="email-claude">Copy email</button>
+            </div>
+          </article>
+
+          <article class="prospect">
+            <div>
+              <h3>Cursor Teams / Enterprise users</h3>
+              <div class="meta"><span class="tag good">P1</span><span class="tag">AI devtools owner / AppSec</span><span class="tag">MCP Launch Audit</span></div>
+            </div>
+            <p>Likely pain: shadow MCP configs on developer machines, secrets in local files, database/tool access, and unclear approval paths.</p>
+            <pre id="email-cursor">Subject: Shadow MCP config check for Cursor teams
+
+Hi {{first_name}},
+
+One MCP risk I keep seeing with Cursor and similar coding tools is shadow configuration: developers connect useful tools locally, but AppSec cannot easily see which servers exist, which tools can write, or where credentials are stored.
+
+MCPScan is a fixed-scope MCP readiness audit. It reviews local/team MCP configs, classifies tools by risk, checks auth/secrets exposure, and produces an approval report before access becomes hard to unwind.
+
+Would a lightweight MCP exposure scan be useful for your Cursor rollout?</pre>
+            <div class="actions">
+              <button class="copy" data-copy-target="email-cursor">Copy email</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>LinkedIn Short Form</h2>
+        <pre id="linkedin-short">Hi {{first_name}} — quick note because teams turning on MCP for Copilot, Claude Code, Cursor, Slack, or Atlassian are starting to hit the same AppSec question: which MCP servers/tools are safe enough to approve?
+
+I am building MCPScan as a fixed-scope pre-enablement readiness audit: inventory servers, classify read/write/destructive tools, check auth/secrets exposure, and produce an approval report. Worth comparing notes?</pre>
+        <div class="actions">
+          <button class="copy" data-copy-target="linkedin-short">Copy LinkedIn draft</button>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      for (const button of document.querySelectorAll("[data-copy-target]")) {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          await navigator.clipboard.writeText(target.textContent.trim());
+          const label = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = label; }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>
