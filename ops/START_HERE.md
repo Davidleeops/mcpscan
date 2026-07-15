@@ -16,6 +16,12 @@ It points to every founder click gate:
 6. Paid-audit delivery console
 7. Verification console: `verification-console.html`
 
+GitHub issue action board:
+
+```text
+ops/GITHUB_ISSUE_ACTION_BOARD.md
+```
+
 Hard rules:
 
 - Do not send external messages without same-turn approval of exact recipient and exact final content.
