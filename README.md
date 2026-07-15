@@ -1,8 +1,10 @@
 # MCPScan
 
-Scan your MCP servers in 30 seconds.
+[![MCP readiness: sample](https://img.shields.io/endpoint?url=https%3A%2F%2Fdavidleeops.github.io%2Fmcpscan%2Fbadge.json)](docs/BADGE.md)
 
-MCPScan is a free CLI security scanner for Model Context Protocol servers. Point it at a Claude Desktop style MCP config, a local server command, or a remote HTTPS/SSE endpoint and get an A-F grade with actionable findings.
+Scan your MCP servers in 30 seconds and collect production-readiness evidence.
+
+MCPScan is a free CLI security scanner and audit-readiness toolkit for Model Context Protocol servers. Point it at a Claude Desktop style MCP config, a local server command, or a remote HTTPS/SSE endpoint and get an A-F grade with actionable findings, remediation notes, and CI-friendly evidence.
 
 ```bash
 npx mcpscan scan ./claude_desktop_config.json
@@ -32,7 +34,7 @@ Each finding includes evidence, remediation, and MCP security references.
 mcpscan scan <config-or-server>
   --checks auth,input,output
   --severity critical,high
-  --format json|table|html
+  --format json|table|html|markdown|sarif
   --output ./report.json
   --ci
   --min-grade B
@@ -67,13 +69,13 @@ A minimal static commercial landing page is available in `landing/`. See
 
 ## Why Now
 
-MCP adoption is accelerating, but many servers expose powerful tools through weak auth, broad filesystem/network access, and unsafe prompt-facing tool metadata. MCPScan is built to become the independent, developer-friendly scanner for MCP server security audits, OWASP MCP Top 10 coverage, NSA advisory alignment, and EU AI Act documentation workflows.
+MCP adoption is accelerating, but many servers expose powerful tools through weak auth, broad filesystem/network access, and unsafe prompt-facing tool metadata. MCPScan is built to become the independent, developer-friendly path from local MCP scans to production-readiness audits, OWASP MCP Top 10 coverage, NSA advisory alignment, and buyer-facing governance evidence.
 
 ## Comparison
 
 | Tool | A-F grade | Free local CLI | Dashboard-ready reports | CI threshold |
 | --- | --- | --- | --- | --- |
-| MCPScan | Yes | Yes | JSON/HTML now, SaaS later | Yes |
+| MCPScan | Yes | Yes | JSON/HTML/Markdown/SARIF now, SaaS later | Yes |
 | Snyk Agent Scan | Enterprise-focused | Limited | Yes | Yes |
 | Cisco mcp-scanner | No | Yes | No | Basic |
 | Promptfoo | Eval-focused | Yes | Eval reports | Partial |

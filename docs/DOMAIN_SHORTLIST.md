@@ -2,28 +2,33 @@
 
 ## Recommendation
 
-If the goal is a cheap but legitimate first domain, buy:
+If the goal is the fastest credible launch domain, buy:
 
-1. `mcpverify.pro`
-2. `mcpassure.pro`
-3. `contextaudit.pro`
+1. `mcpscanhq.com`
+2. `mcpscanhq.dev`
+3. `mcpscanlab.dev`
 
-These are better than `$0.98` `.online`/`.site` names because `.pro` looks more credible for a paid audit service while still landing near the requested budget.
+`mcpscanhq.com` is the best trust/cost balance if the registrar cart confirms
+standard pricing. It keeps the MCPScan brand, uses the highest-trust TLD for
+buyers, and avoids the renewal jump that comes with many ultra-cheap TLDs.
 
-If buyer trust matters more than first-year cost, buy:
+Use `mcpscanhq.dev` if you want the clearest developer-tool signal and are fine
+with a non-`.com` primary domain. `.dev` requires HTTPS, which is fine for GitHub
+Pages but should be enabled before public launch.
 
-1. `mcpauditpro.com`
-2. `getmcpscan.com`
-3. `trymcpscan.com`
+Only buy a `$0.98` `.online` or `.site` domain as a temporary redirect or test.
+For a paid security audit offer, the low first-year price is not worth the lower
+trust signal.
 
 ## Avoid As Primary Brand
 
 Avoid building the main business around these exact-match names unless you are comfortable with crowded naming:
 
-- `mcpscan.*`
+- `mcpscan.com`, `mcpscan.dev`, or `mcpscan.app`
 - `mcpguard.*`
 - `mcpaudit.*`
 - `mcpwatch.*`
+- `mcpsecure.*`
 
 There are already visible MCP scanner/security projects or domains around these names. That does not automatically block use, but it makes differentiation harder.
 
@@ -31,12 +36,13 @@ There are already visible MCP scanner/security projects or domains around these 
 
 Current public Spaceship pricing observations:
 
-- `.pro`: about $2.59 first year, renews around $21.74.
-- `.online`: about $0.98 first year, renews around $19.98.
-- `.site`: about $0.98 first year, renews around $19.98.
-- `.space`: about $0.96 first year in current domain price indexes, but renewal can be much higher.
 - `.com`: about $8.88 first year, renews around $9.98.
-- `.dev`: about $10.35 first year, renews around $12.42.
+- `.dev`: about $8.28 first year, renews around $12.42.
+- `.app`: about $8.28 first year, renews around $14.49.
+- `.tools`: about $7.25 first year, renews around $28.98.
+- `.online`: about $0.98 first year, renews around $21.38.
+- `.pro`: can be cheap first year, but renewal can be materially higher than `.com`.
+- `.security`: not budget-friendly; current public pricing is far above the launch budget.
 - Spacemail Pro: about $14.16 for two years after trial, renews around $18.88 for two years.
 
 Always confirm in the Spaceship cart before purchase because promo pricing and ICANN fees can change.

@@ -8,18 +8,23 @@ Avoid choosing a domain only because it costs about $1. A cheap first-year TLD c
 
 Better first choices:
 
-- `trymcpscan.com`
-- `getmcpscan.com`
-- `mcpscansecurity.com`
-- `mcpguard.dev`
-- `shieldmcp.com`
+- `mcpscanhq.com`
+- `mcpscanhq.dev`
+- `mcpscanlab.dev`
+- `mcpsecure.app`
+- `mcpscan.tools`
+
+Recommended buy: `mcpscanhq.com`, if the checkout confirms it is a standard
+registration. It is not the cheapest first-year option, but it is the cleanest
+brand/trust choice for a security audit offer and the renewal is low.
 
 Current pricing notes from Spaceship research:
 
-- `.online` can be around $0.98 for the first year, but renewal is much higher.
 - `.com` is closer to $8.88/year first year and renews around $9.98/year.
-- `.dev` is around $10.35/year first year and renews around $12.42/year.
-- Spacemail starts around $0.59/month, billed as a multi-year purchase.
+- `.dev` is around $8.28/year first year and renews around $12.42/year.
+- `.app` is around $8.28/year first year and renews around $14.49/year.
+- `.online` can be around $0.98 for the first year, but renewal is much higher and the trust signal is weaker.
+- Spacemail Pro is around $14.16 for 2 years after trial for 1 mailbox, with aliases.
 
 ## Recommended Email
 
@@ -28,10 +33,13 @@ Once the domain is purchased, create:
 - `hello@<domain>` for sales and support.
 - `audits@<domain>` for delivery and report handoff.
 
-If only one mailbox is purchased, use aliases:
+Start with one mailbox and aliases:
 
 - mailbox: `hello@<domain>`
 - aliases: `audits@<domain>`, `support@<domain>`, `security@<domain>`
+
+This is enough for first revenue. Add separate mailboxes only after inbound
+volume or delivery operations justify it.
 
 ## GitHub Pages DNS
 
