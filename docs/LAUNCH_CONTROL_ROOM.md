@@ -21,6 +21,7 @@ Nothing here requires external sending or purchasing without owner approval.
 - Latest GTM research: `docs/GTM_RESEARCH_UPDATE_2026-07-15.md`
 - Prospect pools: `sales/prospect-pools-2026-07-15.md`
 - Seed prospect CSV: `sales/seed-prospect-list-2026-07-15.csv`
+- Outreach approval queue: `sales/outreach-approval-queue.md`
 - One-page buyer scope: `sales/one-page-scope.md`
 - First audit delivery packet: `docs/FIRST_AUDIT_DELIVERY_PACKET.md`
 - Approved links template: `docs/APPROVED_LINKS_TEMPLATE.md`
@@ -100,6 +101,12 @@ npm publish -w @mcpscan/shared --access public
 npm publish -w mcpscan --access public
 ```
 
+To regenerate the first outbound approval queue:
+
+```bash
+npm run outbound:queue
+```
+
 ## First 10 Revenue Actions
 
 1. Buy `mcpscanhq.com`.
@@ -110,7 +117,7 @@ npm publish -w mcpscan --access public
 6. Tag v0.1.0 and make the GitHub Action usable by release tag.
 7. Source 20 high-signal prospects from `sales/first-100-prospect-sourcing.md`.
 8. Prioritize GitHub/Copilot Enterprise, Slack/Atlassian admin/security, and AI coding-tool communities.
-9. Approve and send 10 tightly personalized outbound messages.
+9. Review `sales/outreach-approval-queue.md`, then approve exact recipients and messages.
 10. Post one launch/community draft after same-turn approval.
 
 ## First Delivery Promise

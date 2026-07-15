@@ -8,6 +8,14 @@ Start from `sales/seed-prospect-list-2026-07-15.csv`, then replace pools with
 specific qualified accounts before outreach. Do not send to personal contacts
 until the exact recipient and message are approved in the same turn.
 
+Generate the first draft-only approval queue with:
+
+```bash
+npm run outbound:queue
+```
+
+The generated queue lives at `sales/outreach-approval-queue.md`.
+
 ## Qualification Rule
 
 Add an account when at least 3 are true:

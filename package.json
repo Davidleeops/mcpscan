@@ -11,6 +11,7 @@
     "pack:cli": "npm pack --dry-run -w mcpscan",
     "pack:shared": "npm pack --dry-run -w @mcpscan/shared",
     "launch:apply-links": "node scripts/apply-approved-launch-links.mjs",
+    "outbound:queue": "node scripts/generate-outbound-approval-queue.mjs",
     "release:preflight": "node scripts/prepare-npm-release.mjs",
     "test": "npm run test -ws --if-present",
     "typecheck": "npm run build -w @mcpscan/shared && npm run typecheck -ws --if-present"
