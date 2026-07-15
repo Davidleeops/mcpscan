@@ -5,6 +5,15 @@ on: [push, pull_request]
 jobs:
   scan:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     steps:
       - uses: actions/checkout@v4
-      - run: npx mcpscan scan ./mcp-config.json --ci --min-grade B
+      - uses: Davidleeops/mcpscan@main
+        with:
+          target: ./mcp-config.json
+          min-grade: B
+          format: markdown
+          output: mcpscan-report.md
+          upload-sarif: "true"

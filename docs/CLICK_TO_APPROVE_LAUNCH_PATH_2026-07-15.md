@@ -145,9 +145,9 @@ Click path:
 
 P0:
 
-- SARIF output.
-- Markdown output.
-- GitHub Action marketplace-ready action wrapper.
+- SARIF output. Added in CLI; publish npm before external use.
+- Markdown output. Added in CLI for PR comments/issues/artifacts.
+- GitHub Action marketplace-ready action wrapper. Added as `action.yml`; tag a release after npm publish.
 - Public demo repo/report.
 - Better report confidence/evidence fields.
 

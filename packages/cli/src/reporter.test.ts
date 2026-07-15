@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { ScanReport } from "@mcpscan/shared";
-import { renderHtml, renderJson, renderTable } from "./reporter.js";
+import { renderHtml, renderJson, renderMarkdown, renderSarif, renderTable } from "./reporter.js";
 
 const report: ScanReport = {
   target: "https://buyer.example/mcp",
@@ -85,5 +85,24 @@ describe("reporter", () => {
     expect(table).toContain("MCPScan Security Report");
     expect(table).toContain("AUTH-001");
     expect(table).not.toContain("TRANSPORT-001");
+  });
+
+  it("renders Markdown suitable for PR comments and issue bodies", () => {
+    const markdown = renderMarkdown(report, { customer: "BuyerCo" });
+    expect(markdown).toContain("# MCPScan Security Report");
+    expect(markdown).toContain("**Customer:** BuyerCo");
+    expect(markdown).toContain("## Remediation Priority");
+    expect(markdown).toContain("### 1. Authentication required");
+    expect(markdown).toContain("- **Severity:** CRITICAL");
+  });
+
+  it("renders SARIF 2.1.0 for GitHub code scanning upload", () => {
+    const sarif = JSON.parse(renderSarif(report));
+    expect(sarif.version).toBe("2.1.0");
+    expect(sarif.runs[0].tool.driver.name).toBe("MCPScan");
+    expect(sarif.runs[0].tool.driver.rules).toHaveLength(4);
+    expect(sarif.runs[0].results).toHaveLength(3);
+    expect(sarif.runs[0].results[0].ruleId).toBe("AUTH-001");
+    expect(sarif.runs[0].results[0].level).toBe("error");
   });
 });

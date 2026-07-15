@@ -4,7 +4,7 @@ import path from "node:path";
 import { Command } from "commander";
 import ora from "ora";
 import { runScan } from "./scanner.js";
-import { renderHtml, renderJson, renderTable, shouldFailCi } from "./reporter.js";
+import { renderHtml, renderJson, renderMarkdown, renderSarif, renderTable, shouldFailCi } from "./reporter.js";
 import type { ReportMetadata } from "./reporter.js";
 import type { Grade, SecurityCategory, Severity } from "@mcpscan/shared";
 
@@ -22,7 +22,7 @@ program
   .option("--url <url>", "Scan a remote MCP HTTP/SSE endpoint")
   .option("--checks <list>", "Comma-separated categories: auth,input,output,transport,config,tooling")
   .option("--severity <list>", "Comma-separated severities: critical,high,medium,low,info")
-  .option("--format <format>", "Output format: table,json,html", "table")
+  .option("--format <format>", "Output format: table,json,html,markdown,sarif", "table")
   .option("--output <file>", "Save report to file")
   .option("--ci", "Exit code 1 if grade is below --min-grade")
   .option("--min-grade <grade>", "Minimum passing grade for --ci mode", "B")
@@ -49,7 +49,7 @@ program
       const rendered = renderReport(report, options.format, Boolean(options.verbose), options.color, metadata);
       if (options.output) {
         await fs.mkdir(path.dirname(path.resolve(options.output)), { recursive: true });
-        await fs.writeFile(options.output, options.format === "html" ? renderHtml(report, metadata) : renderJson(report));
+        await fs.writeFile(options.output, rendered);
       }
       process.stdout.write(`${rendered}\n`);
       if (options.output) process.stdout.write(`Full report: ${options.output}\n`);
@@ -67,7 +67,7 @@ program
 program
   .command("report")
   .argument("<report-json>", "Scan report JSON file")
-  .option("--format <format>", "Output format: table,json,html", "html")
+  .option("--format <format>", "Output format: table,json,html,markdown,sarif", "html")
   .option("--output <file>", "Save formatted report to file")
   .option("--auditor <name>", "Auditor or firm name for HTML reports")
   .option("--customer <name>", "Customer name for HTML reports")
@@ -88,6 +88,8 @@ program.parseAsync();
 function renderReport(report: Parameters<typeof renderJson>[0], format: string, verbose: boolean, color: boolean, metadata: ReportMetadata = {}): string {
   if (format === "json") return renderJson(report);
   if (format === "html") return renderHtml(report, metadata);
+  if (format === "markdown" || format === "md") return renderMarkdown(report, metadata);
+  if (format === "sarif") return renderSarif(report);
   return renderTable(report, verbose, color);
 }
 

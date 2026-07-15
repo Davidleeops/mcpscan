@@ -49,10 +49,135 @@ export function renderJson(report: ScanReport): string {
   return JSON.stringify(report, null, 2);
 }
 
-export function renderHtml(report: ScanReport, metadata: ReportMetadata = {}): string {
-  const failedResults = report.results
+export function renderMarkdown(report: ScanReport, metadata: ReportMetadata = {}): string {
+  const failedResults = sortedFailedResults(report);
+  const severityCounts = countSeverities(report.results);
+  const lines = [
+    "# MCPScan Security Report",
+    "",
+    `**Target:** ${report.target}`,
+    `**Grade:** ${report.summary.grade}`,
+    `**Score:** ${report.summary.score}/100`,
+    `**Scanned:** ${formatDate(report.scannedAt)}`,
+    `**Checks:** ${report.summary.totalChecks}`,
+    `**Passed:** ${report.summary.passed}`,
+    `**Warnings:** ${report.summary.warnings}`,
+    `**Failures:** ${report.summary.failures}`,
+    metadata.customer ? `**Customer:** ${metadata.customer}` : undefined,
+    metadata.auditor ? `**Auditor:** ${metadata.auditor}` : undefined,
+    metadata.engagement ? `**Engagement:** ${metadata.engagement}` : undefined,
+    "",
+    "## Executive Summary",
+    "",
+    buildExecutiveSummary(report, severityCounts),
+    "",
+    "## Severity Counts",
+    "",
+    "| Severity | Open Findings |",
+    "| --- | ---: |",
+    ...severities.map((severity) => `| ${severity.toUpperCase()} | ${severityCounts[severity]} |`),
+    "",
+    "## Remediation Priority",
+    "",
+    ...renderMarkdownRemediationQueue(failedResults.slice(0, 5)),
+    "",
+    "## Findings",
+    "",
+    ...renderMarkdownFindings(failedResults),
+    metadata.notes ? `\n## Auditor Notes\n\n${metadata.notes}\n` : undefined
+  ].filter((line): line is string => line !== undefined);
+
+  return `${lines.join("\n")}\n`;
+}
+
+export function renderSarif(report: ScanReport): string {
+  const rules = report.results.map((result) => ({
+    id: result.id,
+    name: result.name,
+    shortDescription: {
+      text: result.name
+    },
+    fullDescription: {
+      text: result.finding
+    },
+    help: {
+      text: [
+        result.finding,
+        result.remediation ? `Remediation: ${result.remediation}` : undefined,
+        result.references?.length ? `References: ${result.references.join("; ")}` : undefined
+      ].filter(Boolean).join("\n\n")
+    },
+    properties: {
+      category: result.category,
+      securitySeverity: sarifSecuritySeverity(result.severity),
+      tags: ["mcp", "security", result.category.toLowerCase(), result.severity]
+    }
+  }));
+
+  const results = report.results
     .filter((result) => !result.passed)
-    .sort((a, b) => severityRank[b.severity] - severityRank[a.severity]);
+    .map((result) => ({
+      ruleId: result.id,
+      ruleIndex: report.results.findIndex((item) => item.id === result.id),
+      level: sarifLevel(result.severity),
+      message: {
+        text: [
+          `${result.name}: ${result.finding}`,
+          result.evidence ? `Evidence: ${result.evidence}` : undefined,
+          result.remediation ? `Remediation: ${result.remediation}` : undefined
+        ].filter(Boolean).join("\n")
+      },
+      locations: [
+        {
+          physicalLocation: {
+            artifactLocation: {
+              uri: normalizeSarifUri(report.target)
+            },
+            region: {
+              startLine: 1
+            }
+          }
+        }
+      ],
+      properties: {
+        category: result.category,
+        severity: result.severity,
+        evidence: result.evidence
+      }
+    }));
+
+  return JSON.stringify({
+    $schema: "https://json.schemastore.org/sarif-2.1.0.json",
+    version: "2.1.0",
+    runs: [
+      {
+        tool: {
+          driver: {
+            name: "MCPScan",
+            informationUri: "https://github.com/Davidleeops/mcpscan",
+            rules
+          }
+        },
+        invocations: [
+          {
+            executionSuccessful: true,
+            startTimeUtc: report.scannedAt,
+            endTimeUtc: new Date(new Date(report.scannedAt).getTime() + report.durationMs).toISOString(),
+            properties: {
+              grade: report.summary.grade,
+              score: report.summary.score,
+              totalChecks: report.summary.totalChecks
+            }
+          }
+        ],
+        results
+      }
+    ]
+  }, null, 2);
+}
+
+export function renderHtml(report: ScanReport, metadata: ReportMetadata = {}): string {
+  const failedResults = sortedFailedResults(report);
   const severityCounts = countSeverities(report.results);
   const remediationQueue = failedResults.slice(0, 5);
   const generatedAt = formatDate(report.scannedAt);
@@ -253,6 +378,39 @@ function renderFinding(result: CheckResult, index: number): string {
   </div>`;
 }
 
+function sortedFailedResults(report: ScanReport): CheckResult[] {
+  return report.results
+    .filter((result) => !result.passed)
+    .sort((a, b) => severityRank[b.severity] - severityRank[a.severity]);
+}
+
+function renderMarkdownRemediationQueue(results: CheckResult[]): string[] {
+  if (!results.length) {
+    return ["No immediate remediation items were identified by the selected checks."];
+  }
+
+  return results.map((result, index) => `${index + 1}. **${result.severity.toUpperCase()}: ${result.name}**  \n   ${result.remediation || result.finding}`);
+}
+
+function renderMarkdownFindings(results: CheckResult[]): string[] {
+  if (!results.length) {
+    return ["No failed checks. Maintain existing controls and rescan after material configuration changes."];
+  }
+
+  return results.flatMap((result, index) => [
+    `### ${index + 1}. ${result.name}`,
+    "",
+    `- **ID:** ${result.id}`,
+    `- **Category:** ${result.category}`,
+    `- **Severity:** ${result.severity.toUpperCase()}`,
+    `- **Finding:** ${result.finding}`,
+    result.evidence ? `- **Evidence:** ${result.evidence}` : undefined,
+    result.remediation ? `- **Remediation:** ${result.remediation}` : undefined,
+    result.references?.length ? `- **References:** ${result.references.join("; ")}` : undefined,
+    ""
+  ].filter((line): line is string => line !== undefined));
+}
+
 function renderEngagementDetails(report: ScanReport, metadata: ReportMetadata, generatedAt: string, duration: string): string {
   const rows = [
     ["Target", report.target],
@@ -311,6 +469,28 @@ function formatDate(value: string): string {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return value;
   return date.toISOString().replace("T", " ").replace(/\.\d{3}Z$/, " UTC");
+}
+
+function sarifLevel(severity: Severity): "error" | "warning" | "note" {
+  if (severity === "critical" || severity === "high") return "error";
+  if (severity === "medium" || severity === "low") return "warning";
+  return "note";
+}
+
+function sarifSecuritySeverity(severity: Severity): string {
+  const values: Record<Severity, string> = {
+    critical: "9.0",
+    high: "7.0",
+    medium: "5.0",
+    low: "3.0",
+    info: "0.0"
+  };
+  return values[severity];
+}
+
+function normalizeSarifUri(target: string): string {
+  if (/^https?:\/\//i.test(target)) return target;
+  return target.replace(/\\/g, "/");
 }
 
 function boxLine(value: string): string {

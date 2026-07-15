@@ -9,6 +9,7 @@ npx mcpscan scan ./claude_desktop_config.json
 npx mcpscan scan --server "npx -y @modelcontextprotocol/server-filesystem /tmp"
 npx mcpscan scan --url https://mcp.example.com/sse
 npx mcpscan report ./scan-results.json --format html --output report.html
+npx mcpscan scan ./mcp-config.json --format sarif --output mcpscan.sarif
 ```
 
 ## What It Checks Today
@@ -50,8 +51,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npx mcpscan scan ./mcp-config.json --ci --min-grade B
+      - uses: Davidleeops/mcpscan@main
+        with:
+          target: ./mcp-config.json
+          min-grade: B
 ```
+
+See `docs/GITHUB_ACTION.md` for SARIF/code-scanning upload examples.
 
 ## Landing Page
 
