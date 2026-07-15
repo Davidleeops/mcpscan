@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Domain & Email DNS Console</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #151719;
+        --muted: #5b6470;
+        --line: #d7dde3;
+        --panel: #ffffff;
+        --soft: #f5f7f9;
+        --accent: #0b6bcb;
+        --good: #0f7b4f;
+        --warn: #9a5a00;
+        --danger: #aa2b2b;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--soft);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        align-items: end;
+        margin-bottom: 18px;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+
+      h1 {
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 1;
+        margin-bottom: 12px;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+
+      h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      p, li, td {
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        align-items: start;
+      }
+
+      .stack {
+        display: grid;
+        gap: 16px;
+      }
+
+      section, article {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .wide { grid-column: 1 / -1; }
+      .decision { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .warning { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .danger { border-left: 4px solid var(--danger); background: #fff6f6; }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      a.button, button.copy {
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--accent);
+        border-radius: 7px;
+        padding: 9px 12px;
+        color: var(--accent);
+        background: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      a.button.primary {
+        color: #ffffff;
+        background: var(--accent);
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        border-top: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th { color: var(--ink); }
+
+      code, pre {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      pre {
+        margin: 10px 0 0;
+        overflow: auto;
+        white-space: pre-wrap;
+        background: #101820;
+        color: #eef6ff;
+        border-radius: 8px;
+        padding: 12px;
+        line-height: 1.45;
+        font-size: 12px;
+      }
+
+      .tag {
+        display: inline-flex;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1;
+        padding: 5px 8px;
+      }
+
+      @media (max-width: 900px) {
+        header, .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .wide { grid-column: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <div>
+          <h1>Domain & Email DNS Console</h1>
+          <p>Use this after buying the domain and mailbox. It gives you the exact GitHub Pages and Spacemail records to copy into Spaceship DNS.</p>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="https://www.spaceship.com/domain-search/?query=mcpscanhq.com" target="_blank" rel="noreferrer">Buy/Search Domain</a>
+          <a class="button" href="https://www.spaceship.com/business-email/" target="_blank" rel="noreferrer">Open Spacemail</a>
+        </div>
+      </header>
+
+      <section class="decision">
+        <h2>Launch Choice</h2>
+        <p>Use <strong>mcpscanhq.com</strong> as the primary domain if it is available at standard pricing. Create one mailbox first: <strong>hello@mcpscanhq.com</strong>.</p>
+      </section>
+
+      <div class="grid">
+        <article>
+          <h2>GitHub Pages DNS</h2>
+          <p>For the apex domain <code>mcpscanhq.com</code>, add these A records in Spaceship DNS.</p>
+          <table>
+            <tr><th>Type</th><th>Host</th><th>Value</th></tr>
+            <tr><td>A</td><td>@</td><td><code>185.199.108.153</code></td></tr>
+            <tr><td>A</td><td>@</td><td><code>185.199.109.153</code></td></tr>
+            <tr><td>A</td><td>@</td><td><code>185.199.110.153</code></td></tr>
+            <tr><td>A</td><td>@</td><td><code>185.199.111.153</code></td></tr>
+            <tr><td>CNAME</td><td>www</td><td><code>davidleeops.github.io</code></td></tr>
+          </table>
+          <div class="actions">
+            <button class="copy" data-copy-target="github-records">Copy records</button>
+            <a class="button" href="https://github.com/Davidleeops/mcpscan/settings/pages" target="_blank" rel="noreferrer">GitHub Pages settings</a>
+          </div>
+          <pre id="github-records">A @ 185.199.108.153
+A @ 185.199.109.153
+A @ 185.199.110.153
+A @ 185.199.111.153
+CNAME www davidleeops.github.io</pre>
+        </article>
+
+        <article>
+          <h2>Spacemail DNS</h2>
+          <p>Add the mailbox first, then copy the exact records Spacemail gives you. MX and SPF are predictable; DKIM should come from Spacemail after the mailbox/domain is created.</p>
+          <table>
+            <tr><th>Type</th><th>Host</th><th>Value</th><th>Priority</th></tr>
+            <tr><td>MX</td><td>@</td><td><code>mx1.spacemail.com</code></td><td>0</td></tr>
+            <tr><td>MX</td><td>@</td><td><code>mx2.spacemail.com</code></td><td>0</td></tr>
+            <tr><td>TXT</td><td>@</td><td><code>v=spf1 include:spf.spacemail.com ~all</code></td><td></td></tr>
+            <tr><td>TXT</td><td>Spacemail DKIM host</td><td>Use the exact DKIM value Spacemail displays.</td><td></td></tr>
+          </table>
+          <div class="actions">
+            <button class="copy" data-copy-target="spacemail-records">Copy MX/SPF</button>
+            <a class="button" href="https://www.spacemail.com/login/" target="_blank" rel="noreferrer">Spacemail login</a>
+          </div>
+          <pre id="spacemail-records">MX @ mx1.spacemail.com priority 0
+MX @ mx2.spacemail.com priority 0
+TXT @ "v=spf1 include:spf.spacemail.com ~all"</pre>
+        </article>
+      </div>
+
+      <section class="wide warning">
+        <h2>After DNS Saves</h2>
+        <ol>
+          <li>Run the approved launch-link command after Stripe links exist so <code>landing/CNAME</code> becomes <code>mcpscanhq.com</code>.</li>
+          <li>In GitHub Pages settings, set the custom domain to <code>mcpscanhq.com</code>.</li>
+          <li>Wait for DNS checks, then enable or confirm HTTPS enforcement.</li>
+          <li>Verify <code>https://mcpscanhq.com</code>, <code>https://mcpscanhq.com/secure-intake.html</code>, and <code>hello@mcpscanhq.com</code>.</li>
+        </ol>
+      </section>
+
+      <section class="wide danger">
+        <h2>Do Not Skip</h2>
+        <p>Do not publish outbound emails from <code>hello@mcpscanhq.com</code> until MX, SPF, and DKIM pass. If DKIM is not configured, deliverability will be weaker and security buyers may notice.</p>
+      </section>
+
+      <section class="wide">
+        <h2>Verification Commands</h2>
+        <p>Use these after DNS has had time to propagate.</p>
+        <button class="copy" data-copy-target="verify-commands">Copy verification commands</button>
+        <pre id="verify-commands">dig +short mcpscanhq.com A
+dig +short www.mcpscanhq.com CNAME
+dig +short mcpscanhq.com MX
+dig +short mcpscanhq.com TXT
+curl -L -I https://mcpscanhq.com/
+curl -L -I https://mcpscanhq.com/secure-intake.html</pre>
+      </section>
+    </main>
+
+    <script>
+      for (const button of document.querySelectorAll("[data-copy-target]")) {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          await navigator.clipboard.writeText(target.textContent.trim());
+          const label = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = label; }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>
