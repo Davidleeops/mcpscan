@@ -19,6 +19,9 @@ Nothing here requires external sending or purchasing without owner approval.
 - Report formats: table, JSON, HTML, Markdown, SARIF
 - Latest GTM research: `docs/GTM_RESEARCH_UPDATE_2026-07-15.md`
 - Prospect pools: `sales/prospect-pools-2026-07-15.md`
+- Seed prospect CSV: `sales/seed-prospect-list-2026-07-15.csv`
+- One-page buyer scope: `sales/one-page-scope.md`
+- First audit delivery packet: `docs/FIRST_AUDIT_DELIVERY_PACKET.md`
 
 ## Best Current Offer
 
@@ -87,6 +90,7 @@ For the first paid audit, keep scope tight:
 - Up to the package server/environment limit.
 - Deliver written report, risk-ranked findings, and remediation checklist.
 - Include re-scan only on Launch and Enterprise packages.
+- Use `docs/FIRST_AUDIT_DELIVERY_PACKET.md` for the first paid fulfillment.
 
 ## Do Not Claim Yet
 

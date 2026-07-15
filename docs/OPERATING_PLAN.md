@@ -8,9 +8,9 @@ Ship a credible MCP security scanner and sell the first paid audits as a product
 
 Primary offer:
 
-- MCP Quick Scan: $499, 24-hour turnaround, one MCP server/config, HTML/PDF-style report, CI snippet.
-- MCP Security Audit: $1,500, 3-5 business days, one production MCP server, deeper manual review, remediation plan, 30-minute walkthrough.
-- Team MCP Audit Pack: $3,500, up to five MCP servers, consolidated risk summary, team policy recommendations.
+- MCP Quick Audit: $750, 3 business day turnaround, up to 3 MCP servers in 1 environment, written report, remediation checklist.
+- MCP Launch Audit: $1,500, 5 business day turnaround, up to 8 MCP servers across 2 environments, written report, 30-minute findings call, 1 re-scan.
+- MCP Enterprise Readiness Audit: $3,500, 7 business day turnaround, up to 15 MCP servers across 3 environments, executive summary, buyer-facing security summary, findings call, 1 re-scan.
 
 ## Throughput Model
 

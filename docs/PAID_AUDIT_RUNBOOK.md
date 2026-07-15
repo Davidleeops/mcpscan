@@ -6,6 +6,9 @@ This runbook describes how to deliver a paid MCPScan audit using the CLI and a s
 
 The goal is a practical buyer outcome: a clear list of what is connected, what is risky, and what to fix first.
 
+For the first customer delivery, use `docs/FIRST_AUDIT_DELIVERY_PACKET.md` as
+the operator checklist and `sales/one-page-scope.md` as the buyer-facing scope.
+
 ## Before Starting
 
 Confirm the customer has paid and the scope matches the purchased package.
@@ -244,4 +247,3 @@ After delivery:
 - Ask which finding surprised them most.
 - Ask whether they need monthly monitoring.
 - Add anonymized recurring patterns to the product backlog.
-

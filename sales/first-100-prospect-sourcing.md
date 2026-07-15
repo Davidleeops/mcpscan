@@ -4,6 +4,10 @@ Status: draft-only operating doc. Do not send, post, or message prospects withou
 
 Goal: build the first 100-account list for fixed-scope MCP production-readiness audits. The list should prioritize teams with live MCP or agent access risk, not broad AI interest.
 
+Start from `sales/seed-prospect-list-2026-07-15.csv`, then replace pools with
+specific qualified accounts before outreach. Do not send to personal contacts
+until the exact recipient and message are approved in the same turn.
+
 ## Qualification Rule
 
 Add an account when at least 3 are true:
