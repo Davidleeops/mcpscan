@@ -30,6 +30,9 @@ describe("scanner", () => {
     expect(failedIds).toContain("INPUT-005");
     expect(failedIds).toContain("OUTPUT-002");
     expect(failedIds).toContain("OUTPUT-003");
+    expect(failedIds).toContain("AUTH-004");
+    expect(failedIds).toContain("CONFIG-002");
+    expect(failedIds).toContain("TRANSPORT-002");
     expect(failedIds).toContain("TOOL-002");
     expect(failedIds).toContain("TOOL-003");
     expect(failedIds).toContain("TOOL-004");
@@ -38,5 +41,34 @@ describe("scanner", () => {
       expect(result.remediation).toBeTruthy();
       expect(result.references?.length).toBeGreaterThan(0);
     }
+  });
+
+  it("runs the full prompt-aligned check set", async () => {
+    const report = await runScan(fixture("secure-config.json"), { timeoutMs: 1000 });
+    expect(report.summary.totalChecks).toBe(22);
+    expect(report.results.map((result) => result.id)).toEqual([
+      "AUTH-001",
+      "AUTH-002",
+      "AUTH-003",
+      "AUTH-004",
+      "INPUT-001",
+      "INPUT-002",
+      "INPUT-003",
+      "INPUT-004",
+      "INPUT-005",
+      "OUTPUT-001",
+      "OUTPUT-002",
+      "OUTPUT-003",
+      "TRANSPORT-001",
+      "TRANSPORT-002",
+      "TRANSPORT-003",
+      "TOOL-001",
+      "TOOL-002",
+      "TOOL-003",
+      "TOOL-004",
+      "CONFIG-001",
+      "CONFIG-002",
+      "CONFIG-003"
+    ]);
   });
 });

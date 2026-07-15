@@ -19,11 +19,26 @@ npx mcpscan scan ./mcp-config.json --format sarif --output mcpscan.sarif
 This MVP ships the CLI first:
 
 - `AUTH-001`: no authentication hints detected
+- `AUTH-002`: bearer/API token validation cannot be confirmed
+- `AUTH-003`: API key exposure in URL, command, or static config
+- `AUTH-004`: static session or token reuse indicators
+- `INPUT-001`: command-injection prone tool arguments
+- `INPUT-002`: SQL-injection prone tool arguments
+- `INPUT-003`: path-traversal prone file arguments
 - `INPUT-004`: URL-fetching tool SSRF risk
+- `INPUT-005`: weak argument-shape constraints
 - `OUTPUT-001`: secret and sensitive data patterns
+- `OUTPUT-002`: excessive data exposure
+- `OUTPUT-003`: error disclosure and stack-trace indicators
 - `TRANSPORT-001`: TLS probe for remote HTTPS targets
+- `TRANSPORT-002`: stdio process-isolation heuristics
+- `TRANSPORT-003`: SSE/WebSocket origin validation heuristics
 - `TOOL-001`: tool description prompt-injection language
+- `TOOL-002`: excessive permission language
+- `TOOL-003`: shadow-tool impersonation language
+- `TOOL-004`: tool-name collision detection
 - `CONFIG-001`: overly permissive CORS for URL targets
+- `CONFIG-002`: debug-mode indicators
 - `CONFIG-003`: default or example credentials
 
 Each finding includes evidence, remediation, and MCP security references.

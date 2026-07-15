@@ -17,6 +17,7 @@ Nothing here requires external sending or purchasing without owner approval.
 - CI: passing on `main`
 - GitHub Action wrapper: `action.yml`
 - Report formats: table, JSON, HTML, Markdown, SARIF
+- Scanner coverage: 22 heuristic checks across auth, input, output, transport, tooling, and config
 - Latest GTM research: `docs/GTM_RESEARCH_UPDATE_2026-07-15.md`
 - Prospect pools: `sales/prospect-pools-2026-07-15.md`
 - Seed prospect CSV: `sales/seed-prospect-list-2026-07-15.csv`

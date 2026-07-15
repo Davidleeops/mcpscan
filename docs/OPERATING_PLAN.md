@@ -27,14 +27,17 @@ Everything else should be automated or templated.
 
 ### Track 1: Scanner Credibility
 
-Target: 15-20 checks with clear evidence and remediation.
+Target: 22 checks with clear evidence and remediation.
 
 Required before paid launch:
 
 - authentication/config checks
+- bearer/API token validation heuristics
+- session/token reuse heuristics
 - tool metadata poisoning checks
 - broad filesystem/network permission heuristics
 - URL/SSRF risk checks
+- stdio isolation and browser-origin transport checks
 - secret leakage checks
 - stack trace/error disclosure checks
 - CI threshold support
@@ -148,7 +151,7 @@ Dashboard v1 should only include:
 
 P0:
 
-- expand checks to 15+
+- keep the 22-check set stable and reduce false positives
 - polished HTML report
 - release workflow
 - sample report

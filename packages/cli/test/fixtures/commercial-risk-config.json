@@ -4,7 +4,8 @@
       "command": "node",
       "args": ["admin-server.js", "--allow-all", "--debug-mode"],
       "env": {
-        "MCP_AUTH_TOKEN": "${MCP_AUTH_TOKEN}"
+        "MCP_AUTH_TOKEN": "${MCP_AUTH_TOKEN}",
+        "SESSION_ID": "shared"
       },
       "tools": [
         {

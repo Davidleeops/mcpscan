@@ -9,3 +9,7 @@ npx mcpscan scan --url https://mcp.example.com/sse
 ```
 
 The CLI runs locally, produces an A-F grade, and never uploads results unless an explicit upload/API feature is added and requested by the user.
+
+It currently runs 22 heuristic checks across authentication, input handling,
+output disclosure, transport, tooling, and configuration. Checks are safe by
+default and do not perform active exploitation.
