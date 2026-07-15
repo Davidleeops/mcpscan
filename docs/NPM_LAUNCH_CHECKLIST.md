@@ -194,7 +194,7 @@ npx mcpscan scan ./claude_desktop_config.json
 
 It checks for auth gaps, SSRF-prone tools, sensitive output patterns, TLS issues, risky tool descriptions, permissive CORS, and default credentials, then returns an A-F grade with actionable findings.
 
-GitHub: https://github.com/mcpscan/mcpscan
+GitHub: https://github.com/Davidleeops/mcpscan
 npm: https://www.npmjs.com/package/mcpscan
 Feedback welcome.
 ```
@@ -213,7 +213,7 @@ npx mcpscan scan --url https://mcp.example.com/sse
 
 This first release checks for missing auth signals, SSRF-prone URL tools, sensitive output patterns, TLS issues, prompt-injection language in tool descriptions, permissive CORS, and default credentials.
 
-GitHub: https://github.com/mcpscan/mcpscan
+GitHub: https://github.com/Davidleeops/mcpscan
 npm: https://www.npmjs.com/package/mcpscan
 
 I would love feedback from MCP builders, security reviewers, and teams starting to inventory MCP server risk.

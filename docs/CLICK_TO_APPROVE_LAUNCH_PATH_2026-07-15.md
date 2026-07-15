@@ -28,20 +28,20 @@ Not live yet:
 
 ## Approval Step 1: Domain
 
-Recommended cheap domain:
+Recommended domain:
 
-1. `mcpverify.pro`
-2. backup: `mcpassure.pro`
-3. backup: `contextaudit.pro`
+1. `mcpscanhq.com`
+2. backup: `mcpscanhq.dev`
+3. backup: `mcpscanlab.dev`
 
 Click path:
 
 1. Open Spaceship domain search.
-2. Search `mcpverify.pro`.
-3. If available around $2.59 first year, buy it.
-4. If unavailable, search `mcpassure.pro`.
-5. If unavailable, search `contextaudit.pro`.
-6. Do not buy `.online` unless the only priority is lowest first-year price.
+2. Search `mcpscanhq.com`.
+3. If available around $8.88 first year and not premium-priced, buy it.
+4. If unavailable or premium-priced, search `mcpscanhq.dev`.
+5. If unavailable or premium-priced, search `mcpscanlab.dev`.
+6. Do not buy `.online` or `.site` as the primary brand unless the only priority is lowest first-year price.
 
 After purchase, give Codex the domain name. Then Codex can:
 
@@ -80,9 +80,15 @@ Click path:
 npm adduser
 ```
 
-Then publish:
+Then let Codex run the preflight and publish sequence:
 
 ```bash
+npm whoami
+npm view @mcpscan/shared name version
+npm view mcpscan name version
+npm ci
+npm run build
+npm test
 npm publish -w @mcpscan/shared --access public
 npm publish -w mcpscan --access public
 ```
@@ -99,15 +105,15 @@ After npm publish, Codex can:
 Create three products:
 
 1. MCP Quick Audit
-   - Price: $750 or $1,500
-   - Use if you want lower-friction first customers.
+   - Price: $750
+   - Use for lower-friction first customers.
 
 2. MCP Launch Audit
-   - Price: $2,500-$5,000
+   - Price: $1,500
    - Recommended default.
 
 3. MCP Enterprise Readiness Audit
-   - Price: $7,500-$15,000
+   - Price: $3,500
    - Use for buyer/security review situations.
 
 After Stripe links exist, give Codex the three public Payment Link URLs. Codex can:
@@ -123,10 +129,31 @@ Codex can prepare drafts and target lists, but cannot send without exact same-tu
 
 Click path:
 
-1. Build 100-target list from `docs/OUTBOUND_TARGETING.md`.
+1. Build 100-target list from `sales/first-100-prospect-sourcing.md`.
 2. Pick first 10 targets from `docs/FIRST_10_CUSTOMERS.md`.
-3. Use drafts in `sales/outbound-email.md` and `sales/linkedin-dm.md`.
+3. Use drafts in `sales/outbound-email.md`, `sales/linkedin-dm.md`, and `launch/`.
 4. For each outbound, approve exact recipient and final text before sending.
+
+## Approval Dashboard
+
+| Approval | Current best choice | Expected first cost | Owner click needed | Codex does after approval |
+| --- | --- | ---: | --- | --- |
+| Domain/email | `mcpscanhq.com` + Spacemail Pro | ~$23 total | [Issue #2](https://github.com/Davidleeops/mcpscan/issues/2) | Configure Pages DNS docs, update canonical URLs and contact CTAs |
+| Stripe | 3 one-time Payment Links | Stripe fees only | [Issue #3](https://github.com/Davidleeops/mcpscan/issues/3) | Replace CTAs, verify checkout links |
+| npm | `mcpscan` + `@mcpscan/shared` | $0 | [Issue #5](https://github.com/Davidleeops/mcpscan/issues/5) | Publish, smoke test, tag release |
+| Landing CTAs | Checkout + email | $0 | [Issue #4](https://github.com/Davidleeops/mcpscan/issues/4) | Push updated landing and verify Pages |
+| First outbound | 10 highest-score prospects | $0 | [Issue #6](https://github.com/Davidleeops/mcpscan/issues/6) | Send only after same-turn explicit approval |
+
+Minimum credible first-revenue stack:
+
+- GitHub Pages hosting: $0.
+- GitHub public repo: $0.
+- Domain: about $9 first year.
+- Email: about $14 for 2 years.
+- Stripe Payment Links: $0 monthly; per-payment processing fees.
+- npm publish: $0.
+
+Total new cash needed before first paid audit: roughly $23 plus payment processing fees, assuming no premium domain pricing.
 
 ## What Codex Can Still Do Without Your Click
 
