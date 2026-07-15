@@ -422,6 +422,19 @@
         padding: 24px;
       }
 
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 10px;
+      }
+
+      .footer-links a {
+        color: var(--muted);
+        font-weight: 650;
+        text-decoration: none;
+      }
+
       @media (max-width: 840px) {
         .nav {
           align-items: flex-start;
@@ -670,8 +683,15 @@ Tool description contains prompt-injection language</code></pre>
       </main>
 
       <footer>
-        MCPScan runs locally by default and does not upload scan results unless an
-        explicit upload/API workflow is added and requested.
+        <p>
+          MCPScan runs locally by default and does not upload scan results unless an
+          explicit upload/API workflow is added and requested.
+        </p>
+        <nav class="footer-links" aria-label="Policy links">
+          <a href="terms.html">Terms</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="refund.html">Refund policy</a>
+        </nav>
       </footer>
     </div>
   </body>

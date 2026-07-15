@@ -133,6 +133,9 @@ Recommended settings:
 - Enable automatic receipt.
 - Redirect to `https://davidleeops.github.io/mcpscan/thank-you.html` until a custom domain is live.
 - Include terms that the audit starts after intake materials are complete.
+- Link terms: `https://davidleeops.github.io/mcpscan/terms.html`
+- Link privacy policy: `https://davidleeops.github.io/mcpscan/privacy.html`
+- Link refund policy: `https://davidleeops.github.io/mcpscan/refund.html`
 
 Post-payment intake page:
 

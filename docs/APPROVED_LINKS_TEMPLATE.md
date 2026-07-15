@@ -28,5 +28,5 @@ Expected changes:
 - `landing/index.html` scope/contact button points to `mailto:`.
 - `landing/CNAME` is created for GitHub Pages.
 - public URLs in launch docs point to the custom domain.
+- terms, privacy, and refund policy URLs point to the custom domain.
 - `SECURITY.md` uses the public email contact.
-

@@ -12,6 +12,9 @@ Nothing here requires external sending or purchasing without owner approval.
 - Sample report: <https://davidleeops.github.io/mcpscan/sample-report.html>
 - Thank-you page: <https://davidleeops.github.io/mcpscan/thank-you.html>
 - Intake checklist: <https://davidleeops.github.io/mcpscan/intake.html>
+- Terms: <https://davidleeops.github.io/mcpscan/terms.html>
+- Privacy: <https://davidleeops.github.io/mcpscan/privacy.html>
+- Refund policy: <https://davidleeops.github.io/mcpscan/refund.html>
 - Badge endpoint: <https://davidleeops.github.io/mcpscan/badge.json>
 - Audit request intake: GitHub Issues template
 - CI: passing on `main`

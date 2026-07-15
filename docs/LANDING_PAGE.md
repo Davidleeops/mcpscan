@@ -10,6 +10,7 @@ The landing page is publishable now with temporary intake links:
 - `landing/sample-report.html` contains a sanitized sample paid-audit report.
 - `landing/thank-you.html` is ready as a Stripe post-payment redirect page.
 - `landing/intake.html` is ready as a sanitized intake checklist.
+- `landing/terms.html`, `landing/privacy.html`, and `landing/refund.html` are ready for checkout policy links.
 - Pricing CTAs currently open GitHub issue request URLs.
 - GitHub Pages deploys the `landing/` directory.
 
@@ -24,6 +25,7 @@ exist:
 - Contact form, email link, or scheduling page for buyers who need scope
   confirmation.
 - Stripe post-payment redirect to `/thank-you.html`.
+- Terms, privacy, and refund links in Stripe/checkout surfaces.
 
 ## Domain And Hosting
 
@@ -79,6 +81,14 @@ Recommended intake URL before custom domain:
 https://davidleeops.github.io/mcpscan/intake.html
 ```
 
+Recommended policy URLs before custom domain:
+
+```text
+https://davidleeops.github.io/mcpscan/terms.html
+https://davidleeops.github.io/mcpscan/privacy.html
+https://davidleeops.github.io/mcpscan/refund.html
+```
+
 After domain/email/Stripe approval, update the static site with:
 
 ```bash
@@ -98,6 +108,7 @@ Before sending paid outbound traffic, verify:
 - Pricing matches `docs/GO_TO_MARKET.md`.
 - Stripe links replace temporary GitHub issue intake links.
 - Contact URL routes to a real inbox or form.
+- Terms, privacy, and refund policy pages return 200.
 - The disclaimer remains visible near pricing.
 - The sample CLI command still matches current CLI behavior.
 - The page renders on mobile and desktop.
