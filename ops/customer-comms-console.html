@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Customer Comms Console</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #151719;
+        --muted: #5b6470;
+        --line: #d7dde3;
+        --panel: #ffffff;
+        --soft: #f5f7f9;
+        --accent: #0b6bcb;
+        --danger: #aa2b2b;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--soft);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      h1, h2, p { margin-top: 0; }
+
+      h1 {
+        font-size: clamp(32px, 5vw, 58px);
+        line-height: 1;
+        margin-bottom: 12px;
+        letter-spacing: 0;
+      }
+
+      h2 { font-size: 18px; margin-bottom: 12px; }
+
+      p, li {
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .stack { display: grid; gap: 16px; }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      section, article {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .guardrail {
+        border-left: 4px solid var(--danger);
+        background: #fff6f6;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      a.button, button.copy {
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--accent);
+        border-radius: 7px;
+        padding: 9px 12px;
+        color: var(--accent);
+        background: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      pre {
+        margin: 10px 0 0;
+        overflow: auto;
+        white-space: pre-wrap;
+        background: #101820;
+        color: #eef6ff;
+        border-radius: 8px;
+        padding: 12px;
+        line-height: 1.45;
+        font-size: 12px;
+      }
+
+      @media (max-width: 900px) {
+        .grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>Customer Comms Console</h1>
+        <p>Copy customer-facing drafts for checkout follow-up, intake, private handoff, report delivery, re-scan, and testimonial asks.</p>
+      </header>
+
+      <section class="guardrail">
+        <h2>Approval Rule</h2>
+        <p>Draft only. Do not send external customer messages until the exact recipient and exact final content are approved in the same turn.</p>
+      </section>
+
+      <section>
+        <h2>Template Library</h2>
+        <div class="actions">
+          <a class="button" href="../sales/customer-communications.md" target="_blank" rel="noreferrer">Full template doc</a>
+          <a class="button" href="discovery-console.html">Discovery</a>
+          <a class="button" href="pipeline-console.html">Pipeline</a>
+          <a class="button" href="delivery-console.html">Delivery</a>
+        </div>
+      </section>
+
+      <div class="grid">
+        <article>
+          <h2>Checkout Follow-Up</h2>
+          <button class="copy" data-copy-target="checkout-followup">Copy</button>
+          <pre id="checkout-followup">Subject: MCPScan scope and checkout next step
+
+Hi {{first_name}},
+
+Based on the scope you described, I recommend {{package}}.
+
+The audit will focus on MCP server/tool inventory, read/write/destructive tool classification, auth and secret-handling review, approval recommendation, and prioritized remediation steps.
+
+Checkout/scope link: {{approved_link}}
+
+Please do not send production credentials, active tokens, customer data, or sensitive files through email or public issues.
+
+Thanks,
+MCPScan</pre>
+        </article>
+
+        <article>
+          <h2>Payment Received / Intake</h2>
+          <button class="copy" data-copy-target="payment-intake">Copy</button>
+          <pre id="payment-intake">Subject: MCPScan audit intake
+
+Hi {{first_name}},
+
+Thanks for purchasing {{package}}.
+
+The audit clock starts after intake materials are complete. Please begin with sanitized MCP configs, server/config list, admin policy screenshots or exports, known review deadline, and explicit out-of-scope tools.
+
+Secure intake guidance:
+https://davidleeops.github.io/mcpscan/secure-intake.html
+
+Please do not send production credentials, active tokens, customer data, or sensitive files through email or public issues.
+
+Thanks,
+MCPScan</pre>
+        </article>
+
+        <article>
+          <h2>Private Handoff</h2>
+          <button class="copy" data-copy-target="private-handoff">Copy</button>
+          <pre id="private-handoff">Subject: Private handoff path for MCPScan materials
+
+Hi {{first_name}},
+
+Some of the materials you mentioned may be sensitive. Before we review them, let's use a private handoff path.
+
+Preferred options:
+1. Customer-owned private repository with time-limited read access.
+2. Customer-owned shared folder with time-limited access.
+3. Encrypted archive, with the password sent through a separate channel.
+
+Please do not send active credentials, production secrets, customer data, or private source code through public GitHub issues or ordinary email.
+
+Thanks,
+MCPScan</pre>
+        </article>
+
+        <article>
+          <h2>Report Delivery</h2>
+          <button class="copy" data-copy-target="report-delivery">Copy</button>
+          <pre id="report-delivery">Subject: MCPScan readiness audit report
+
+Hi {{first_name}},
+
+Attached is the MCPScan readiness audit report for {{company}}.
+
+The report includes MCP server/tool inventory, risk-ranked findings, auth and secret-handling review, approval recommendation, remediation priorities, and re-scan or findings-call next steps if included.
+
+Please do not reply with production credentials, active tokens, customer data, or sensitive files over email.
+
+Thanks,
+MCPScan</pre>
+        </article>
+
+        <article>
+          <h2>Re-Scan Request</h2>
+          <button class="copy" data-copy-target="rescan-request">Copy</button>
+          <pre id="rescan-request">Subject: MCPScan re-scan materials
+
+Hi {{first_name}},
+
+For the included re-scan, please send sanitized evidence for the fixes you want reviewed: updated sanitized MCP configs, remediated finding list, updated admin settings, and changed server/tool permissions.
+
+Please do not send production credentials, active tokens, customer data, or sensitive files through email or public issues.
+
+Thanks,
+MCPScan</pre>
+        </article>
+
+        <article>
+          <h2>Testimonial / Referral</h2>
+          <button class="copy" data-copy-target="testimonial">Copy</button>
+          <pre id="testimonial">Subject: Quick MCPScan feedback
+
+Hi {{first_name}},
+
+Glad we could get the MCP readiness review delivered.
+
+If the report was useful, would you be open to either a short private quote I can use with future prospects, or an intro to another AppSec/platform team currently working through MCP approval?
+
+No pressure either way.
+
+Thanks,
+MCPScan</pre>
+        </article>
+      </div>
+    </main>
+
+    <script>
+      for (const button of document.querySelectorAll("[data-copy-target]")) {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          await navigator.clipboard.writeText(target.textContent.trim());
+          const label = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = label; }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>
