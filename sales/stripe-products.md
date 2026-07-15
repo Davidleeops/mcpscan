@@ -136,11 +136,18 @@ Recommended settings:
 - Link terms: `https://davidleeops.github.io/mcpscan/terms.html`
 - Link privacy policy: `https://davidleeops.github.io/mcpscan/privacy.html`
 - Link refund policy: `https://davidleeops.github.io/mcpscan/refund.html`
+- Link secure intake guidance: `https://davidleeops.github.io/mcpscan/secure-intake.html`
 
 Post-payment intake page:
 
 ```text
 https://davidleeops.github.io/mcpscan/intake.html
+```
+
+Secure intake guidance:
+
+```text
+https://davidleeops.github.io/mcpscan/secure-intake.html
 ```
 
 Refund note:

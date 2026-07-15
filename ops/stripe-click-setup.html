@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Stripe Click Setup</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #151719;
+        --muted: #5b6470;
+        --line: #d7dde3;
+        --panel: #ffffff;
+        --soft: #f5f7f9;
+        --accent: #635bff;
+        --good: #0f7b4f;
+        --warn: #9a5a00;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: var(--soft);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1160px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        align-items: end;
+        margin-bottom: 18px;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+
+      h1 {
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 1;
+        margin-bottom: 12px;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+
+      h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      p, li, td {
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      section, aside {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .stack {
+        display: grid;
+        gap: 16px;
+      }
+
+      .wide {
+        grid-column: 1 / -1;
+      }
+
+      .button, button.copy {
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--accent);
+        border-radius: 7px;
+        padding: 9px 12px;
+        color: #ffffff;
+        background: var(--accent);
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      button.copy {
+        color: var(--accent);
+        background: #ffffff;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .price {
+        color: var(--ink);
+        font-size: 34px;
+        font-weight: 800;
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+
+      .tag {
+        display: inline-flex;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1;
+        padding: 5px 8px;
+      }
+
+      .tag.good { border-color: #a8d8c0; color: var(--good); }
+      .tag.warn { border-color: #e4c98e; color: var(--warn); }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        border-top: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--ink);
+      }
+
+      pre {
+        background: #101820;
+        border-radius: 8px;
+        color: #eef6ff;
+        font-size: 12px;
+        line-height: 1.45;
+        margin: 10px 0 0;
+        overflow: auto;
+        padding: 12px;
+        white-space: pre-wrap;
+      }
+
+      .notice {
+        border-left: 4px solid var(--warn);
+        background: #fff9ec;
+      }
+
+      @media (max-width: 900px) {
+        header, .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <h1>Stripe Click Setup</h1>
+          <p>Create the three MCPScan Payment Links, then paste the generated URLs into the launch-link command. This page does not create Stripe products automatically.</p>
+        </div>
+        <a class="button" href="https://dashboard.stripe.com/payment-links/create" target="_blank" rel="noreferrer">Open Stripe Payment Links</a>
+      </header>
+
+      <div class="grid">
+        <section class="stack">
+          <span class="tag">Starter</span>
+          <h2>MCP Quick Audit</h2>
+          <div class="price">$750</div>
+          <p>A fixed-scope review of up to 3 MCP servers in 1 environment. Delivered in 3 business days after intake is complete.</p>
+          <div class="actions">
+            <button class="copy" data-copy="MCP Quick Audit">Copy name</button>
+            <button class="copy" data-copy="A fixed-scope security review of up to 3 MCP servers in 1 environment. Includes MCP server and tool inventory, configuration risk review, secret exposure review, prompt-injection and tool-description risk review, written report, and remediation checklist. Delivered in 3 business days after intake is complete.">Copy description</button>
+          </div>
+        </section>
+
+        <section class="stack">
+          <span class="tag good">Default</span>
+          <h2>MCP Launch Audit</h2>
+          <div class="price">$1,500</div>
+          <p>The main first-revenue offer. Covers up to 8 MCP servers across up to 2 environments, with report, findings call, and one re-scan.</p>
+          <div class="actions">
+            <button class="copy" data-copy="MCP Launch Audit">Copy name</button>
+            <button class="copy" data-copy="A practical MCP security audit for teams preparing customer pilots, internal rollout, or launch. Covers up to 8 MCP servers across up to 2 environments. Includes server and tool inventory, permission review, secret exposure review, prompt-injection and tool-description risk review, written report, remediation checklist, 30-minute findings call, and 1 re-scan after fixes. Delivered in 5 business days after intake is complete.">Copy description</button>
+          </div>
+        </section>
+
+        <section class="stack">
+          <span class="tag">Enterprise</span>
+          <h2>MCP Enterprise Readiness Audit</h2>
+          <div class="price">$3,500</div>
+          <p>For enterprise review and broader rollout. Covers up to 15 MCP servers across up to 3 environments, with executive summary and buyer-facing security summary.</p>
+          <div class="actions">
+            <button class="copy" data-copy="MCP Enterprise Readiness Audit">Copy name</button>
+            <button class="copy" data-copy="A deeper MCP security audit for teams preparing enterprise review. Covers up to 15 MCP servers across up to 3 environments. Includes server and tool inventory, configuration and permission review, secret exposure review, prompt-injection and tool-description risk review, executive summary, detailed written report, remediation checklist, 45-minute findings call, buyer-facing security summary, and 1 re-scan after fixes. Delivered in 7 business days after intake is complete.">Copy description</button>
+          </div>
+        </section>
+
+        <section class="wide">
+          <h2>Checkout Settings</h2>
+          <table>
+            <tr>
+              <th>Setting</th>
+              <th>Value</th>
+            </tr>
+            <tr>
+              <td>Customer fields</td>
+              <td>Collect customer name, email, company, and billing address.</td>
+            </tr>
+            <tr>
+              <td>Required custom field</td>
+              <td>Primary technical contact email</td>
+            </tr>
+            <tr>
+              <td>Optional custom fields</td>
+              <td>How many MCP servers do you want reviewed? Target delivery date.</td>
+            </tr>
+            <tr>
+              <td>Confirmation / redirect</td>
+              <td>Redirect to <code>https://davidleeops.github.io/mcpscan/thank-you.html</code> until the custom domain is live.</td>
+            </tr>
+            <tr>
+              <td>Policy links</td>
+              <td>
+                Terms: <code>https://davidleeops.github.io/mcpscan/terms.html</code><br>
+                Privacy: <code>https://davidleeops.github.io/mcpscan/privacy.html</code><br>
+                Refund: <code>https://davidleeops.github.io/mcpscan/refund.html</code><br>
+                Secure intake: <code>https://davidleeops.github.io/mcpscan/secure-intake.html</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Receipt</td>
+              <td>Enable automatic receipt.</td>
+            </tr>
+          </table>
+        </section>
+
+        <section class="wide notice">
+          <h2>After Stripe Creates The Three Links</h2>
+          <p>Paste the generated Payment Link URLs into this command. Keep the placeholders until the real Stripe links exist.</p>
+          <button class="copy" data-copy="npm run launch:apply-links -- --domain mcpscanhq.com --email hello@mcpscanhq.com --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK">Copy launch-link command</button>
+          <pre>npm run launch:apply-links -- --domain mcpscanhq.com --email hello@mcpscanhq.com --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK</pre>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      for (const button of document.querySelectorAll("[data-copy]")) {
+        button.addEventListener("click", async () => {
+          await navigator.clipboard.writeText(button.dataset.copy);
+          const label = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = label; }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>
