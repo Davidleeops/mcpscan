@@ -38,6 +38,12 @@ npm publish console:
 /Users/lemueldavidleejr/Desktop/05_OPS 2/Scripts_and_Code/Codex folder/mcpscan/ops/npm-publish-console.html
 ```
 
+Approved links command builder:
+
+```text
+/Users/lemueldavidleejr/Desktop/05_OPS 2/Scripts_and_Code/Codex folder/mcpscan/ops/approved-links-command-builder.html
+```
+
 Delivery console:
 
 ```text

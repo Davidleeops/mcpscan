@@ -10,7 +10,7 @@ It points to every founder click gate:
 
 1. Domain and email DNS console
 2. Stripe Payment Link console
-3. Approved-link template
+3. Approved-link command builder: `approved-links-command-builder.html`
 4. Outbound approval console
 5. npm publish console
 6. Paid-audit delivery console
@@ -28,4 +28,3 @@ Positioning:
 MCPScan is a pre-enablement MCP readiness audit for teams turning on Copilot,
 Claude Code, Cursor, VS Code agent mode, Slack MCP, or Atlassian Rovo.
 ```
-
