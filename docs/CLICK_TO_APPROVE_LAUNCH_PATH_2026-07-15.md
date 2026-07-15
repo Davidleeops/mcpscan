@@ -83,12 +83,7 @@ npm adduser
 Then let Codex run the preflight and publish sequence:
 
 ```bash
-npm whoami
-npm view @mcpscan/shared name version
-npm view mcpscan name version
-npm ci
-npm run build
-npm test
+npm run release:preflight
 npm publish -w @mcpscan/shared --access public
 npm publish -w mcpscan --access public
 ```
@@ -122,6 +117,17 @@ After Stripe links exist, give Codex the three public Payment Link URLs. Codex c
 - push updated landing page
 - verify all CTAs
 - update sales docs
+
+Automation command after all approved values exist:
+
+```bash
+npm run launch:apply-links -- \
+  --domain mcpscanhq.com \
+  --email hello@mcpscanhq.com \
+  --quick https://buy.stripe.com/quick-link \
+  --launch https://buy.stripe.com/launch-link \
+  --enterprise https://buy.stripe.com/enterprise-link
+```
 
 ## Approval Step 5: First Outbound
 

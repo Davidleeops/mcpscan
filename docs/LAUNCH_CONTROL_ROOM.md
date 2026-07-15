@@ -23,6 +23,7 @@ Nothing here requires external sending or purchasing without owner approval.
 - Seed prospect CSV: `sales/seed-prospect-list-2026-07-15.csv`
 - One-page buyer scope: `sales/one-page-scope.md`
 - First audit delivery packet: `docs/FIRST_AUDIT_DELIVERY_PACKET.md`
+- Approved links template: `docs/APPROVED_LINKS_TEMPLATE.md`
 
 ## Best Current Offer
 
@@ -69,13 +70,43 @@ for a security audit offer and renews higher than `.com`.
 | npm auth complete | Publish packages, smoke test `npx mcpscan`, tag release |
 | Outreach recipient approved | Send only the exact approved message, then log next action |
 
+## Post-Approval Automation
+
+After domain/email/Stripe links exist, Codex can run:
+
+```bash
+npm run launch:apply-links -- \
+  --domain mcpscanhq.com \
+  --email hello@mcpscanhq.com \
+  --quick https://buy.stripe.com/quick-link \
+  --launch https://buy.stripe.com/launch-link \
+  --enterprise https://buy.stripe.com/enterprise-link
+```
+
+That updates landing pricing CTAs, the final scope/contact CTA, public URLs in
+launch docs, `landing/CNAME` for GitHub Pages, and `SECURITY.md` contact
+language.
+
+After npm auth is complete, Codex can run:
+
+```bash
+npm run release:preflight
+```
+
+Then publish in order:
+
+```bash
+npm publish -w @mcpscan/shared --access public
+npm publish -w mcpscan --access public
+```
+
 ## First 10 Revenue Actions
 
 1. Buy `mcpscanhq.com`.
 2. Create `hello@mcpscanhq.com`.
 3. Create Stripe Payment Links.
-4. Replace landing CTAs with real checkout/contact links.
-5. Publish `mcpscan` to npm.
+4. Run `npm run launch:apply-links -- ...` with approved URLs.
+5. Publish `mcpscan` to npm after `npm run release:preflight`.
 6. Tag v0.1.0 and make the GitHub Action usable by release tag.
 7. Source 20 high-signal prospects from `sales/first-100-prospect-sourcing.md`.
 8. Prioritize GitHub/Copilot Enterprise, Slack/Atlassian admin/security, and AI coding-tool communities.

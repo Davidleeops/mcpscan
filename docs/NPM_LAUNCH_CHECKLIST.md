@@ -92,14 +92,7 @@ If the `@mcpscan` scope itself is unavailable, choose a new project-owned scope 
 From the repository root:
 
 ```bash
-npm ci
-npm run clean
-npm run typecheck
-npm run build
-npm test
-npm audit --omit=dev
-npm pack --dry-run -w @mcpscan/shared
-npm pack --dry-run -w mcpscan
+npm run release:preflight
 ```
 
 Inspect the dry-run output:

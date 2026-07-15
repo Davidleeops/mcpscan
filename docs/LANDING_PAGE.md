@@ -79,6 +79,17 @@ Recommended intake URL before custom domain:
 https://davidleeops.github.io/mcpscan/intake.html
 ```
 
+After domain/email/Stripe approval, update the static site with:
+
+```bash
+npm run launch:apply-links -- \
+  --domain mcpscanhq.com \
+  --email hello@mcpscanhq.com \
+  --quick https://buy.stripe.com/quick-link \
+  --launch https://buy.stripe.com/launch-link \
+  --enterprise https://buy.stripe.com/enterprise-link
+```
+
 ## Launch Notes
 
 Before sending paid outbound traffic, verify:
