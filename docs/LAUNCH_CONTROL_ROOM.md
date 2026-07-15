@@ -10,11 +10,15 @@ Nothing here requires external sending or purchasing without owner approval.
 - GitHub repo: <https://github.com/Davidleeops/mcpscan>
 - Landing page: <https://davidleeops.github.io/mcpscan/>
 - Sample report: <https://davidleeops.github.io/mcpscan/sample-report.html>
+- Thank-you page: <https://davidleeops.github.io/mcpscan/thank-you.html>
+- Intake checklist: <https://davidleeops.github.io/mcpscan/intake.html>
 - Badge endpoint: <https://davidleeops.github.io/mcpscan/badge.json>
 - Audit request intake: GitHub Issues template
 - CI: passing on `main`
 - GitHub Action wrapper: `action.yml`
 - Report formats: table, JSON, HTML, Markdown, SARIF
+- Latest GTM research: `docs/GTM_RESEARCH_UPDATE_2026-07-15.md`
+- Prospect pools: `sales/prospect-pools-2026-07-15.md`
 
 ## Best Current Offer
 
@@ -70,7 +74,7 @@ for a security audit offer and renews higher than `.com`.
 5. Publish `mcpscan` to npm.
 6. Tag v0.1.0 and make the GitHub Action usable by release tag.
 7. Source 20 high-signal prospects from `sales/first-100-prospect-sourcing.md`.
-8. Manually review the first 10 for buyer fit and trigger quality.
+8. Prioritize GitHub/Copilot Enterprise, Slack/Atlassian admin/security, and AI coding-tool communities.
 9. Approve and send 10 tightly personalized outbound messages.
 10. Post one launch/community draft after same-turn approval.
 

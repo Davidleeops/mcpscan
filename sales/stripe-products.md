@@ -131,10 +131,15 @@ Recommended settings:
 - Add an optional custom field: "How many MCP servers do you want reviewed?"
 - Add an optional custom field: "Target delivery date".
 - Enable automatic receipt.
-- Redirect to a thank-you page or intake form after payment.
+- Redirect to `https://davidleeops.github.io/mcpscan/thank-you.html` until a custom domain is live.
 - Include terms that the audit starts after intake materials are complete.
+
+Post-payment intake page:
+
+```text
+https://davidleeops.github.io/mcpscan/intake.html
+```
 
 Refund note:
 
 Offer a full refund before intake begins. After intake begins, refunds are discretionary because delivery work has started.
-
