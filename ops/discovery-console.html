@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MCPScan First Revenue Pipeline</title>
+    <title>MCPScan Discovery Console</title>
     <style>
       :root {
         color-scheme: light;
@@ -130,56 +130,81 @@
   <body>
     <main class="stack">
       <header>
-        <h1>First Revenue Pipeline</h1>
-        <p>Track the path from sourced account to paid audit to delivered report. Keep sensitive customer material outside this public repository.</p>
+        <h1>Discovery Console</h1>
+        <p>Use this after a prospect replies. The goal is to map scope to the right audit package and move the account toward paid intake.</p>
       </header>
 
       <section class="guardrail">
-        <h2>Rules</h2>
-        <ul>
-          <li>No external outreach until exact recipient and exact final content are approved in the same turn.</li>
-          <li>No customer secrets, private configs, customer data, or final private reports in this repo.</li>
-          <li>Move a customer to Paid only after Stripe/payment confirmation.</li>
-        </ul>
+        <h2>Approval Rule</h2>
+        <p>Do not send follow-up notes, checkout links, or scope summaries until the exact recipient and exact final content are approved in the same turn.</p>
       </section>
 
       <section class="ready">
-        <h2>Pipeline Files</h2>
-        <div class="actions">
-          <a class="button" href="../sales/first-revenue-pipeline-template.csv" target="_blank" rel="noreferrer">Pipeline CSV</a>
-          <a class="button" href="../sales/first-revenue-pipeline.md" target="_blank" rel="noreferrer">Pipeline guide</a>
-          <a class="button" href="prospect-sourcing-console.html">Sourcing console</a>
-          <a class="button" href="outbound-approval-console.html">Outbound console</a>
-          <a class="button" href="discovery-console.html">Discovery console</a>
-          <a class="button" href="delivery-console.html">Delivery console</a>
-        </div>
-      </section>
-
-      <section>
-        <h2>Stages</h2>
-        <table>
-          <tr><th>Stage</th><th>Exit Criteria</th></tr>
-          <tr><td>Research</td><td>Trigger source and likely buyer persona captured.</td></tr>
-          <tr><td>Qualified</td><td>Score is 6+ or a strong named trigger exists.</td></tr>
-          <tr><td>Approved to contact</td><td>Exact recipient and exact message approved in the same turn.</td></tr>
-          <tr><td>Interested</td><td>Prospect replied or showed interest.</td></tr>
-          <tr><td>Paid</td><td>Payment confirmed and secure intake started.</td></tr>
-          <tr><td>Delivered</td><td>Report delivered; findings call/re-scan handled if included.</td></tr>
-        </table>
+        <h2>Open With This</h2>
+        <pre>The useful version of this conversation is practical: what MCP access are you trying to enable, what would make AppSec comfortable, and what evidence do you need before rollout?</pre>
       </section>
 
       <div class="grid">
         <article>
-          <h2>Research Row</h2>
-          <button class="copy" data-copy-target="research-row">Copy row</button>
-          <pre id="research-row">"Research","ACCOUNT","CONTACT_NAME","CONTACT_ROLE","CHANNEL","SOURCE_URL","TRIGGER","0","OFFER","DRAFT_ANGLE","Not approved","","Qualify account","","",""</pre>
+          <h2>Core Questions</h2>
+          <ol>
+            <li>Which MCP-enabled tools are in scope?</li>
+            <li>How many MCP servers/configs are involved?</li>
+            <li>Are any tools write-capable, destructive, admin-level, filesystem-level, database-connected, or network-connected?</li>
+            <li>Where do configs live?</li>
+            <li>What credentials/auth patterns are involved?</li>
+            <li>What decision do you need: approve, approve with guardrails, or block?</li>
+            <li>Who needs the final report?</li>
+            <li>Can you provide sanitized configs first?</li>
+          </ol>
         </article>
+
         <article>
-          <h2>Approved Row</h2>
-          <button class="copy" data-copy-target="approved-row">Copy row</button>
-          <pre id="approved-row">"Approved to contact","ACCOUNT","CONTACT_NAME","CONTACT_ROLE","CHANNEL","SOURCE_URL","TRIGGER","8","MCP Launch Audit","ANGLE","Approved","","Send approved message only","","",""</pre>
+          <h2>Package Mapping</h2>
+          <table>
+            <tr><th>Scope</th><th>Offer</th></tr>
+            <tr><td>1-3 servers, one environment</td><td>MCP Quick Audit</td></tr>
+            <tr><td>4-8 servers, launch/pilot/internal rollout</td><td>MCP Launch Audit</td></tr>
+            <tr><td>9-15 servers, multiple environments, executive summary</td><td>MCP Enterprise Readiness Audit</td></tr>
+            <tr><td>Production secrets or customer data required</td><td>Pause for private handoff</td></tr>
+            <tr><td>More than 15 servers or remediation implementation</td><td>Custom scope</td></tr>
+          </table>
         </article>
       </div>
+
+      <section>
+        <h2>Follow-Up Draft</h2>
+        <button class="copy" data-copy-target="follow-up">Copy draft</button>
+        <pre id="follow-up">Subject: MCPScan scope and next step
+
+Hi {{first_name}},
+
+Based on the scope you described, I would recommend {{package}}.
+
+The audit will focus on:
+- MCP server/tool inventory
+- read/write/destructive tool classification
+- auth and secret-handling review
+- approval recommendation: approve, approve with guardrails, or block until remediation
+- prioritized remediation steps
+
+The next step is sanitized intake. Please do not send production credentials, active tokens, customer data, or sensitive files through email or public issues. If sensitive evidence is needed, we will confirm a private handoff path first.
+
+Checkout/scope link: {{approved_link}}
+
+Thanks,
+MCPScan</pre>
+      </section>
+
+      <section>
+        <h2>Useful Links</h2>
+        <div class="actions">
+          <a class="button" href="../sales/discovery-call-script.md" target="_blank" rel="noreferrer">Full script</a>
+          <a class="button" href="stripe-click-setup.html">Stripe setup</a>
+          <a class="button" href="pipeline-console.html">Pipeline</a>
+          <a class="button" href="delivery-console.html">Delivery</a>
+        </div>
+      </section>
     </main>
 
     <script>
