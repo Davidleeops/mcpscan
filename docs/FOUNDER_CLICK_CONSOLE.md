@@ -6,6 +6,12 @@ Open the local console:
 /Users/lemueldavidleejr/Desktop/05_OPS 2/Scripts_and_Code/Codex folder/mcpscan/ops/founder-click-console.html
 ```
 
+Start-here launch cockpit:
+
+```text
+/Users/lemueldavidleejr/Desktop/05_OPS 2/Scripts_and_Code/Codex folder/mcpscan/ops/launch-cockpit.html
+```
+
 Use it as the one-page launch cockpit for the remaining founder-only clicks.
 
 Stripe setup console:

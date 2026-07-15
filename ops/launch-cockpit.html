@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Launch Cockpit</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #14171a;
+        --muted: #5b6470;
+        --line: #d7dde3;
+        --panel: #ffffff;
+        --soft: #f5f7f9;
+        --accent: #0b6bcb;
+        --good: #0f7b4f;
+        --warn: #9a5a00;
+        --danger: #aa2b2b;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--soft);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        align-items: end;
+        margin-bottom: 18px;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+
+      h1 {
+        font-size: clamp(34px, 6vw, 64px);
+        line-height: 1;
+        margin-bottom: 12px;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+
+      h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      p, li, td {
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .stack { display: grid; gap: 16px; }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 16px;
+        align-items: start;
+      }
+
+      section, article {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .decision { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .warning { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .danger { border-left: 4px solid var(--danger); background: #fff6f6; }
+
+      .steps {
+        display: grid;
+        gap: 12px;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 36px 1fr auto;
+        gap: 12px;
+        align-items: start;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 14px;
+      }
+
+      .num {
+        width: 30px;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: var(--soft);
+        color: var(--ink);
+        font-weight: 800;
+      }
+
+      .tag {
+        display: inline-flex;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1;
+        padding: 5px 8px;
+      }
+
+      .tag.good { border-color: #a8d8c0; color: var(--good); }
+      .tag.warn { border-color: #e4c98e; color: var(--warn); }
+      .tag.danger { border-color: #e6aaaa; color: var(--danger); }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+
+      a.button {
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--accent);
+        border-radius: 7px;
+        padding: 9px 12px;
+        color: var(--accent);
+        background: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      a.button.primary {
+        color: #ffffff;
+        background: var(--accent);
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        border-top: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th { color: var(--ink); }
+
+      .linklist {
+        display: grid;
+        gap: 10px;
+      }
+
+      .linklist a {
+        color: var(--accent);
+        overflow-wrap: anywhere;
+        text-decoration: none;
+      }
+
+      @media (max-width: 900px) {
+        header, .grid, .step {
+          grid-template-columns: 1fr;
+        }
+
+        .actions {
+          justify-content: start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <div>
+          <h1>MCPScan Launch Cockpit</h1>
+          <p>Start here. This page points to every click gate, delivery artifact, and live proof link needed to turn MCPScan into first revenue without losing the thread.</p>
+        </div>
+        <a class="button primary" href="founder-click-console.html">Open Founder Console</a>
+      </header>
+
+      <section class="decision">
+        <h2>Current Reality</h2>
+        <p>MCPScan is best sold as a <strong>pre-enablement MCP readiness audit</strong> for teams turning on Copilot, Claude Code, Cursor, VS Code agent mode, Slack MCP, or Atlassian Rovo. The first revenue motion is a fixed-scope paid audit, not a full SaaS platform.</p>
+      </section>
+
+      <div class="grid">
+        <section>
+          <h2>Click Gates In Order</h2>
+          <div class="steps">
+            <article class="step">
+              <div class="num">1</div>
+              <div>
+                <h3>Buy domain and mailbox <span class="tag warn">founder payment</span></h3>
+                <p>Buy <code>mcpscanhq.com</code> if available at standard pricing. Create <code>hello@mcpscanhq.com</code>.</p>
+              </div>
+              <div class="actions">
+                <a class="button" href="domain-email-dns-console.html">DNS console</a>
+              </div>
+            </article>
+
+            <article class="step">
+              <div class="num">2</div>
+              <div>
+                <h3>Create Stripe links <span class="tag warn">founder login</span></h3>
+                <p>Create the three Payment Links and copy them into the launch-link command.</p>
+              </div>
+              <div class="actions">
+                <a class="button" href="stripe-click-setup.html">Stripe console</a>
+              </div>
+            </article>
+
+            <article class="step">
+              <div class="num">3</div>
+              <div>
+                <h3>Apply approved links <span class="tag">operator action</span></h3>
+                <p>After domain, email, and Stripe links exist, run the approved link updater.</p>
+              </div>
+              <div class="actions">
+                <a class="button" href="../docs/APPROVED_LINKS_TEMPLATE.md">Link template</a>
+              </div>
+            </article>
+
+            <article class="step">
+              <div class="num">4</div>
+              <div>
+                <h3>Approve outbound <span class="tag danger">no auto-send</span></h3>
+                <p>Approve exact recipients and exact final content before anything external is sent.</p>
+              </div>
+              <div class="actions">
+                <a class="button" href="outbound-approval-console.html">Outbound console</a>
+              </div>
+            </article>
+
+            <article class="step">
+              <div class="num">5</div>
+              <div>
+                <h3>Publish npm <span class="tag warn">founder login/2FA</span></h3>
+                <p>Run preflight, publish shared first, then CLI. npm may require OTP approval.</p>
+              </div>
+              <div class="actions">
+                <a class="button" href="npm-publish-console.html">npm console</a>
+              </div>
+            </article>
+
+            <article class="step">
+              <div class="num">6</div>
+              <div>
+                <h3>Deliver paid audit <span class="tag good">ready</span></h3>
+                <p>Copy the private workspace template outside the public repo and use the report pipeline.</p>
+              </div>
+              <div class="actions">
+                <a class="button" href="delivery-console.html">Delivery console</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <aside class="stack">
+          <section class="danger">
+            <h2>Hard Rules</h2>
+            <ul>
+              <li>No external messages without same-turn approval of exact recipient and content.</li>
+              <li>No customer secrets or reports in the public repo.</li>
+              <li>No outbound from the new mailbox until MX, SPF, and DKIM pass.</li>
+              <li>No npm publish until login/2FA is confirmed.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Live Proof</h2>
+            <div class="linklist">
+              <a href="https://davidleeops.github.io/mcpscan/" target="_blank" rel="noreferrer">Landing page</a>
+              <a href="https://davidleeops.github.io/mcpscan/sample-report.html" target="_blank" rel="noreferrer">Sample report</a>
+              <a href="https://davidleeops.github.io/mcpscan/secure-intake.html" target="_blank" rel="noreferrer">Secure intake</a>
+              <a href="https://davidleeops.github.io/mcpscan/terms.html" target="_blank" rel="noreferrer">Terms</a>
+              <a href="https://davidleeops.github.io/mcpscan/privacy.html" target="_blank" rel="noreferrer">Privacy</a>
+              <a href="https://davidleeops.github.io/mcpscan/refund.html" target="_blank" rel="noreferrer">Refund policy</a>
+            </div>
+          </section>
+
+          <section>
+            <h2>Research Docs</h2>
+            <div class="linklist">
+              <a href="../docs/MARKET_REALITY_ASSESSMENT_2026-07-15.md">Market reality</a>
+              <a href="../docs/GTM_RESEARCH_UPDATE_2026-07-15.md">GTM research</a>
+              <a href="../docs/FIRST_10_CUSTOMERS.md">First 10 customers</a>
+              <a href="../sales/seed-prospect-list-2026-07-15.csv">Seed prospect list</a>
+            </div>
+          </section>
+        </aside>
+      </div>
+
+      <section>
+        <h2>Cost Snapshot</h2>
+        <table>
+          <tr><th>Item</th><th>Choice</th><th>Expected fixed cost</th></tr>
+          <tr><td>Domain</td><td><code>mcpscanhq.com</code></td><td>About $9 first year if standard-priced</td></tr>
+          <tr><td>Email</td><td>Spacemail Pro, one mailbox</td><td>About $14 for two years after trial</td></tr>
+          <tr><td>Hosting</td><td>GitHub Pages</td><td>$0 currently</td></tr>
+          <tr><td>Payments</td><td>Stripe Payment Links</td><td>No fixed monthly cost; processing fees apply</td></tr>
+          <tr><td>Repo</td><td>Existing GitHub repo</td><td>$0 additional repo cost</td></tr>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>
