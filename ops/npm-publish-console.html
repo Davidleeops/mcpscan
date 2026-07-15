@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan npm Publish Console</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #151719;
+        --muted: #5b6470;
+        --line: #d7dde3;
+        --panel: #ffffff;
+        --soft: #f5f7f9;
+        --accent: #cb3837;
+        --good: #0f7b4f;
+        --warn: #9a5a00;
+        --danger: #aa2b2b;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--soft);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        align-items: end;
+        margin-bottom: 18px;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+
+      h1 {
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 1;
+        margin-bottom: 12px;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+
+      h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      p, li, td {
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .stack { display: grid; gap: 16px; }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      section, article {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .guardrail {
+        border-left: 4px solid var(--danger);
+        background: #fff6f6;
+      }
+
+      .ready {
+        border-left: 4px solid var(--good);
+        background: #f3fbf6;
+      }
+
+      .warn {
+        border-left: 4px solid var(--warn);
+        background: #fff9ec;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      a.button, button.copy {
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--accent);
+        border-radius: 7px;
+        padding: 9px 12px;
+        color: var(--accent);
+        background: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      a.button.primary {
+        color: #ffffff;
+        background: var(--accent);
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        border-top: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th { color: var(--ink); }
+
+      code, pre {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      pre {
+        margin: 10px 0 0;
+        overflow: auto;
+        white-space: pre-wrap;
+        background: #101820;
+        color: #eef6ff;
+        border-radius: 8px;
+        padding: 12px;
+        line-height: 1.45;
+        font-size: 12px;
+      }
+
+      @media (max-width: 860px) {
+        header, .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <div>
+          <h1>npm Publish Console</h1>
+          <p>Use this only after the repo is green and you are logged into npm with publish rights. npm may require browser login or a one-time password.</p>
+        </div>
+        <a class="button primary" href="https://www.npmjs.com/login" target="_blank" rel="noreferrer">Open npm login</a>
+      </header>
+
+      <section class="guardrail">
+        <h2>Publish Gate</h2>
+        <p>Do not publish until <code>npm whoami</code> succeeds for the intended npm account and you are ready to approve 2FA/OTP prompts. Package publishes are public and version numbers cannot be reused.</p>
+      </section>
+
+      <section class="ready">
+        <h2>Packages</h2>
+        <table>
+          <tr><th>Package</th><th>Version</th><th>Purpose</th></tr>
+          <tr><td><code>@mcpscan/shared</code></td><td><code>0.1.0</code></td><td>Shared scan/risk logic.</td></tr>
+          <tr><td><code>mcpscan</code></td><td><code>0.1.0</code></td><td>CLI package with <code>mcpscan</code> binary.</td></tr>
+        </table>
+      </section>
+
+      <div class="grid">
+        <article>
+          <h2>1. Login Check</h2>
+          <p>Run this first. If it fails, complete npm login in the browser or terminal.</p>
+          <div class="actions">
+            <button class="copy" data-copy-target="login-check">Copy</button>
+          </div>
+          <pre id="login-check">npm whoami</pre>
+        </article>
+
+        <article>
+          <h2>2. Full Preflight</h2>
+          <p>This runs auth check, package-name checks, install, build, typecheck, tests, audit, and dry-run packs.</p>
+          <div class="actions">
+            <button class="copy" data-copy-target="preflight">Copy</button>
+          </div>
+          <pre id="preflight">npm run release:preflight</pre>
+        </article>
+
+        <article>
+          <h2>3. Dry-Run Packs</h2>
+          <p>Use these if you want to inspect each package tarball output separately before publishing.</p>
+          <div class="actions">
+            <button class="copy" data-copy-target="dry-runs">Copy</button>
+          </div>
+          <pre id="dry-runs">npm pack --dry-run -w @mcpscan/shared
+npm pack --dry-run -w mcpscan</pre>
+        </article>
+
+        <article>
+          <h2>4. Publish Order</h2>
+          <p>Publish shared first, then the CLI. If npm asks for an OTP, enter the current code from the npm account authenticator.</p>
+          <div class="actions">
+            <button class="copy" data-copy-target="publish-order">Copy</button>
+          </div>
+          <pre id="publish-order">npm publish -w @mcpscan/shared --access public
+npm publish -w mcpscan --access public</pre>
+        </article>
+      </div>
+
+      <section class="warn">
+        <h2>After Publish</h2>
+        <p>Verify the public install path, then add the npm package URL to the launch docs and outbound copy only after the package pages are live.</p>
+        <div class="actions">
+          <button class="copy" data-copy-target="post-publish">Copy verification</button>
+        </div>
+        <pre id="post-publish">npm view @mcpscan/shared name version
+npm view mcpscan name version
+npx mcpscan --help</pre>
+      </section>
+    </main>
+
+    <script>
+      for (const button of document.querySelectorAll("[data-copy-target]")) {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          await navigator.clipboard.writeText(target.textContent.trim());
+          const label = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = label; }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>
