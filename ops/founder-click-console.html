@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Founder Click Console</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #151719;
+        --muted: #5a636e;
+        --line: #d7dde3;
+        --panel: #ffffff;
+        --soft: #f5f7f9;
+        --accent: #0b6bcb;
+        --good: #0f7b4f;
+        --warn: #9a5a00;
+        --danger: #aa2b2b;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: var(--soft);
+      }
+
+      main {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 24px;
+        align-items: end;
+        margin-bottom: 24px;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+
+      h1 {
+        font-size: clamp(30px, 5vw, 56px);
+        line-height: 1;
+        margin-bottom: 12px;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+
+      h3 {
+        font-size: 15px;
+        margin-bottom: 8px;
+      }
+
+      p, li {
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .status {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 10px 12px;
+        border-radius: 8px;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--good);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 18px;
+        align-items: start;
+      }
+
+      section, aside {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .stack { display: grid; gap: 18px; }
+
+      .steps {
+        display: grid;
+        gap: 12px;
+        counter-reset: step;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 40px 1fr auto;
+        gap: 14px;
+        align-items: start;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .num {
+        width: 32px;
+        height: 32px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: var(--soft);
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      .tag {
+        display: inline-flex;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        color: var(--muted);
+        padding: 4px 8px;
+        font-size: 12px;
+        line-height: 1;
+        margin-left: 6px;
+      }
+
+      .tag.good { color: var(--good); border-color: #a8d8c0; }
+      .tag.warn { color: var(--warn); border-color: #e4c98e; }
+      .tag.danger { color: var(--danger); border-color: #e6aaaa; }
+
+      a.button, button.copy {
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--accent);
+        border-radius: 7px;
+        padding: 9px 12px;
+        color: #fff;
+        background: var(--accent);
+        font-weight: 650;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      a.button.secondary, button.copy {
+        color: var(--accent);
+        background: #fff;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+
+      .copybox {
+        display: grid;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      pre {
+        margin: 0;
+        overflow: auto;
+        background: #101820;
+        color: #eef6ff;
+        border-radius: 8px;
+        padding: 12px;
+        line-height: 1.45;
+        font-size: 12px;
+      }
+
+      .mini {
+        display: grid;
+        gap: 10px;
+      }
+
+      .mini a {
+        color: var(--accent);
+        text-decoration: none;
+        overflow-wrap: anywhere;
+      }
+
+      .decision {
+        border-left: 4px solid var(--good);
+        background: #f2fbf6;
+      }
+
+      .warning {
+        border-left: 4px solid var(--warn);
+        background: #fff9ec;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+
+      td, th {
+        border-top: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th { color: var(--ink); }
+      td { color: var(--muted); }
+
+      @media (max-width: 860px) {
+        header, .grid, .step {
+          grid-template-columns: 1fr;
+        }
+
+        .actions {
+          justify-content: start;
+        }
+
+        .status {
+          white-space: normal;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <h1>MCPScan Founder Click Console</h1>
+          <p>Use this page to move from built product to first paid audit with the fewest manual decisions. The launch offer is a pre-enablement MCP readiness audit for teams turning on Copilot, Claude Code, Cursor, VS Code agent mode, Slack MCP, or Atlassian Rovo. Nothing here sends outbound messages or spends money by itself.</p>
+        </div>
+        <div class="status"><span class="dot"></span><span>Build and public landing are live</span></div>
+      </header>
+
+      <div class="grid">
+        <div class="stack">
+          <section>
+            <h2>Approval Path</h2>
+            <div class="steps">
+              <div class="step">
+                <div class="num">1</div>
+                <div>
+                  <h3>Buy the domain <span class="tag good">recommended</span></h3>
+                  <p>Buy <strong>mcpscanhq.com</strong> if it is available at normal pricing. It is more credible for a security audit offer than a cheap promo extension.</p>
+                  <p>Fallback: <strong>mcpscanhq.xyz</strong>. Avoid <strong>.online</strong> as the main domain unless cost is the only priority.</p>
+                </div>
+                <div class="actions">
+                  <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscanhq.com" target="_blank" rel="noreferrer">Search .com</a>
+                  <a class="button secondary" href="https://www.spaceship.com/domain-search/?query=mcpscanhq.xyz" target="_blank" rel="noreferrer">Search .xyz</a>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="num">2</div>
+                <div>
+                  <h3>Add the mailbox <span class="tag good">one seat</span></h3>
+                  <p>Create <strong>hello@mcpscanhq.com</strong> using Spacemail Pro. One mailbox is enough for launch; add aliases later if needed.</p>
+                </div>
+                <div class="actions">
+                  <a class="button" href="https://www.spaceship.com/business-email/" target="_blank" rel="noreferrer">Open Spacemail</a>
+                  <a class="button secondary" href="https://www.spacemail.com/login/" target="_blank" rel="noreferrer">Webmail</a>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="num">3</div>
+                <div>
+                  <h3>Create Stripe Payment Links <span class="tag warn">requires login</span></h3>
+                  <p>Create three payment links: Quick Scan, Launch Readiness Audit, and Enterprise Readiness Sprint. Use the copy blocks below for names and prices.</p>
+                </div>
+                <div class="actions">
+                  <a class="button" href="https://dashboard.stripe.com/payment-links/create" target="_blank" rel="noreferrer">Create links</a>
+                  <a class="button secondary" href="../sales/stripe-products.md" target="_blank" rel="noreferrer">Product copy</a>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="num">4</div>
+                <div>
+                  <h3>Apply approved links <span class="tag">after Stripe</span></h3>
+                  <p>After the domain, email, and Stripe URLs exist, run the launch-link updater once. It updates landing CTAs, email links, the custom-domain file, and policy URLs.</p>
+                  <div class="copybox">
+                    <button class="copy" data-copy="npm run launch:apply-links -- --domain mcpscanhq.com --email hello@mcpscanhq.com --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK">Copy command</button>
+                    <pre>npm run launch:apply-links -- --domain mcpscanhq.com --email hello@mcpscanhq.com --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK</pre>
+                  </div>
+                </div>
+                <div class="actions">
+                  <a class="button secondary" href="../docs/APPROVED_LINKS_TEMPLATE.md" target="_blank" rel="noreferrer">Link template</a>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="num">5</div>
+                <div>
+                  <h3>Approve first outbound messages <span class="tag danger">do not auto-send</span></h3>
+                  <p>Review the outbound approval queue and approve exact recipients plus exact final content in the same turn before anything is sent.</p>
+                </div>
+                <div class="actions">
+                  <a class="button" href="../sales/outreach-approval-queue.md" target="_blank" rel="noreferrer">Review queue</a>
+                  <a class="button secondary" href="../sales/seed-prospect-list-2026-07-15.csv" target="_blank" rel="noreferrer">Prospects</a>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="num">6</div>
+                <div>
+                  <h3>Deliver the first audit <span class="tag good">ready</span></h3>
+                  <p>Use the secure handoff rules, delivery packet, and paid audit runbook. The first paid offer should be a fixed-scope audit, not a SaaS dashboard promise.</p>
+                </div>
+                <div class="actions">
+                  <a class="button" href="../docs/SECURE_CUSTOMER_HANDOFF.md" target="_blank" rel="noreferrer">Secure handoff</a>
+                  <a class="button" href="../docs/FIRST_AUDIT_DELIVERY_PACKET.md" target="_blank" rel="noreferrer">Delivery packet</a>
+                  <a class="button secondary" href="../docs/PAID_AUDIT_RUNBOOK.md" target="_blank" rel="noreferrer">Runbook</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Stripe Product Copy</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Use</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Quick MCP Exposure Scan</td>
+                  <td>$499</td>
+                  <td>Low-friction first audit for one MCP server or config package.</td>
+                </tr>
+                <tr>
+                  <td>MCP Launch Readiness Audit</td>
+                  <td>$1,500</td>
+                  <td>Main first-revenue product: readiness report, risks, and prioritized fixes.</td>
+                </tr>
+                <tr>
+                  <td>Enterprise MCP Readiness Sprint</td>
+                  <td>$3,500</td>
+                  <td>Multi-server/team review with executive summary and remediation workshop.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <h2>Buyer Wedge</h2>
+            <p><strong>Primary promise:</strong> enable MCP safely before it becomes unmanaged developer-agent tool access.</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Buyer</th>
+                  <th>What they are asking</th>
+                  <th>Outbound language</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>GitHub/Copilot Enterprise admin</td>
+                  <td>Which MCP servers should be allowed, restricted, or blocked?</td>
+                  <td>MCP allowlist readiness, registry review, approved server evidence.</td>
+                </tr>
+                <tr>
+                  <td>AppSec / platform engineering</td>
+                  <td>Where are local MCP configs, secrets, and risky tools already running?</td>
+                  <td>Shadow MCP inventory, credential sprawl check, read/write tool classification.</td>
+                </tr>
+                <tr>
+                  <td>Claude Code / Cursor / VS Code teams</td>
+                  <td>Can agents reach Jira, Slack, GitHub, databases, or filesystem tools safely?</td>
+                  <td>Pre-enablement readiness audit before broad developer rollout.</td>
+                </tr>
+                <tr>
+                  <td>Slack / Atlassian admins</td>
+                  <td>How do OAuth, domain allowlists, API token controls, and permissions line up?</td>
+                  <td>Permission-aware MCP approval report and remediation priorities.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+
+        <aside class="stack">
+          <section class="decision">
+            <h2>Decision</h2>
+            <p><strong>Buy the .com if it is standard price.</strong> Security buyers trust boring domains. The cheap extension can be used as a fallback or parked redirect, but it should not be the primary if the .com is available.</p>
+          </section>
+
+          <section class="decision">
+            <h2>Positioning</h2>
+            <p>Sell this as an independent MCP readiness and evidence audit. Do not lead with "AI governance platform" or "MCP gateway." Those categories are crowded and invite enterprise-platform comparisons too early.</p>
+          </section>
+
+          <section class="warning">
+            <h2>Known Costs</h2>
+            <p>Spaceship currently advertises .com at about $8.88 for year one and $9.98 renewal. Spacemail Pro is advertised at $14.16 for two years after a 30-day trial. .online can be $0.98 for year one, but renews much higher and is weaker for trust.</p>
+          </section>
+
+          <section>
+            <h2>Live Proof</h2>
+            <div class="mini">
+              <a href="https://davidleeops.github.io/mcpscan/" target="_blank" rel="noreferrer">Public landing page</a>
+              <a href="https://davidleeops.github.io/mcpscan/sample-report.html" target="_blank" rel="noreferrer">Sample report</a>
+              <a href="https://davidleeops.github.io/mcpscan/secure-intake.html" target="_blank" rel="noreferrer">Secure intake guidance</a>
+              <a href="https://davidleeops.github.io/mcpscan/terms.html" target="_blank" rel="noreferrer">Terms</a>
+              <a href="https://davidleeops.github.io/mcpscan/privacy.html" target="_blank" rel="noreferrer">Privacy</a>
+              <a href="https://davidleeops.github.io/mcpscan/refund.html" target="_blank" rel="noreferrer">Refund policy</a>
+            </div>
+          </section>
+
+          <section>
+            <h2>Control Room</h2>
+            <div class="mini">
+              <a href="../docs/LAUNCH_CONTROL_ROOM.md" target="_blank" rel="noreferrer">Launch control room</a>
+              <a href="../docs/DOMAIN_EMAIL_SETUP.md" target="_blank" rel="noreferrer">Domain and email setup</a>
+              <a href="../docs/GTM_RESEARCH_UPDATE_2026-07-15.md" target="_blank" rel="noreferrer">GTM research update</a>
+              <a href="../docs/MARKET_REALITY_ASSESSMENT_2026-07-15.md" target="_blank" rel="noreferrer">Market reality assessment</a>
+              <a href="https://github.com/Davidleeops/mcpscan/issues/2" target="_blank" rel="noreferrer">Issue #2: domain and mailbox</a>
+              <a href="https://github.com/Davidleeops/mcpscan/issues/3" target="_blank" rel="noreferrer">Issue #3: Stripe links</a>
+              <a href="https://github.com/Davidleeops/mcpscan/issues/6" target="_blank" rel="noreferrer">Issue #6: outbound approvals</a>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <script>
+      for (const button of document.querySelectorAll("[data-copy]")) {
+        button.addEventListener("click", async () => {
+          await navigator.clipboard.writeText(button.dataset.copy);
+          const original = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = original; }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>

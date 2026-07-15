@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan | Secure Audit Intake</title>
+    <meta name="description" content="Secure intake guidance for MCPScan paid audit customers.">
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #11161b;
+        --muted: #5b6470;
+        --line: #dce2e8;
+        --soft: #f6f8fa;
+        --panel: #ffffff;
+        --accent: #0b6bcb;
+        --good: #0d7a4d;
+        --warn: #9a5a00;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: var(--soft);
+      }
+
+      main {
+        width: min(860px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 40px;
+        color: var(--ink);
+        font-weight: 750;
+      }
+
+      .mark {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--ink);
+        color: #fff;
+        font-size: 13px;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(34px, 7vw, 64px);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        margin: 0 0 10px;
+        font-size: 20px;
+      }
+
+      p, li {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .lead {
+        font-size: 19px;
+        max-width: 760px;
+        margin-bottom: 28px;
+      }
+
+      section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 16px;
+      }
+
+      .ok {
+        border-left: 4px solid var(--good);
+      }
+
+      .warn {
+        border-left: 4px solid var(--warn);
+      }
+
+      ul {
+        padding-left: 20px;
+        margin-bottom: 0;
+      }
+
+      .cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 42px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--accent);
+        border-radius: 7px;
+        padding: 10px 14px;
+        color: #fff;
+        background: var(--accent);
+        font-weight: 700;
+      }
+
+      .button.secondary {
+        color: var(--accent);
+        background: transparent;
+      }
+
+      footer {
+        margin-top: 32px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="brand" href="./" aria-label="MCPScan home"><span class="mark">MS</span><span>MCPScan</span></a>
+
+      <h1>Secure Audit Intake</h1>
+      <p class="lead">MCPScan reviews should start with sanitized configuration whenever possible. Do not send production credentials, active API keys, customer data, private source code, or sensitive files through public GitHub issues or ordinary email.</p>
+
+      <section class="ok">
+        <h2>Safe To Send First</h2>
+        <ul>
+          <li>Sanitized MCP configuration files with secrets removed or replaced with placeholders.</li>
+          <li>List of MCP servers, owners, business purpose, and whether each tool can read, write, delete, execute, or access external networks.</li>
+          <li>Screenshots or exports of admin allowlists, registry URLs, OAuth settings, and approval policies.</li>
+          <li>Non-sensitive notes about Copilot, Claude Code, Cursor, VS Code, Slack, Atlassian, or internal MCP rollout plans.</li>
+        </ul>
+      </section>
+
+      <section class="warn">
+        <h2>Do Not Send Publicly</h2>
+        <ul>
+          <li>Production credentials, API keys, bearer tokens, OAuth client secrets, SSH keys, cookies, or session tokens.</li>
+          <li>Customer data, regulated data, private database exports, or proprietary source code that is not required for review.</li>
+          <li>Unredacted incident records, vulnerability details, or exploit paths in public GitHub issues.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Private Handoff Path</h2>
+        <p>After purchase, MCPScan will confirm a private handoff path before reviewing sensitive material. Preferred options are a customer-owned private repository, a customer-owned shared folder, or an encrypted archive with the password sent through a separate channel.</p>
+        <p>If sensitive material is accidentally submitted through a public channel, MCPScan will pause intake, ask for rotation/redaction as needed, and continue only from a sanitized replacement.</p>
+      </section>
+
+      <section>
+        <h2>Minimum Intake Package</h2>
+        <ul>
+          <li>Contact person and security owner.</li>
+          <li>Tools in scope and tools explicitly out of scope.</li>
+          <li>Sanitized MCP configs and admin settings.</li>
+          <li>Desired launch decision: approve, approve with guardrails, or block until remediation.</li>
+          <li>Target delivery date and any internal review deadline.</li>
+        </ul>
+      </section>
+
+      <div class="cta">
+        <a class="button" href="./intake.html">Start intake</a>
+        <a class="button secondary" href="./privacy.html">Privacy notes</a>
+        <a class="button secondary" href="./terms.html">Terms</a>
+      </div>
+
+      <footer>MCPScan secure intake guidance for fixed-scope readiness audits.</footer>
+    </main>
+  </body>
+</html>
