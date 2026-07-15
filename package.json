@@ -10,6 +10,7 @@
     "prepack": "npm run clean && npm run build && npm test",
     "pack:cli": "npm pack --dry-run -w mcpscan",
     "pack:shared": "npm pack --dry-run -w @mcpscan/shared",
+    "landing:sample-report": "node scripts/generate-sample-report.mjs",
     "launch:apply-links": "node scripts/apply-approved-launch-links.mjs",
     "outbound:queue": "node scripts/generate-outbound-approval-queue.mjs",
     "release:preflight": "node scripts/prepare-npm-release.mjs",

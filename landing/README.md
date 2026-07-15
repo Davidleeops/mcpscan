@@ -36,3 +36,13 @@ paid traffic. See `docs/LANDING_PAGE.md` for the publishing checklist.
 
 Use `thank-you.html` as the Stripe redirect page after payment and `intake.html`
 as the sanitized intake checklist until a private customer portal exists.
+
+## Sample Report
+
+GitHub Pages regenerates `sample-report.html` from the intentionally risky
+commercial fixture before deploy. To refresh it locally after building:
+
+```bash
+npm run build
+npm run landing:sample-report
+```
