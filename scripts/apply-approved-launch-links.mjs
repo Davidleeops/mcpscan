@@ -87,6 +87,7 @@ const urlReplacements = [
   ["https://davidleeops.github.io/mcpscan/sample-report.html", `${baseUrl}/sample-report.html`],
   ["https://davidleeops.github.io/mcpscan/thank-you.html", `${baseUrl}/thank-you.html`],
   ["https://davidleeops.github.io/mcpscan/intake.html", `${baseUrl}/intake.html`],
+  ["https://davidleeops.github.io/mcpscan/secure-intake.html", `${baseUrl}/secure-intake.html`],
   ["https://davidleeops.github.io/mcpscan/terms.html", `${baseUrl}/terms.html`],
   ["https://davidleeops.github.io/mcpscan/privacy.html", `${baseUrl}/privacy.html`],
   ["https://davidleeops.github.io/mcpscan/refund.html", `${baseUrl}/refund.html`],
