@@ -12,6 +12,7 @@
     "pack:shared": "npm pack --dry-run -w @mcpscan/shared",
     "landing:sample-report": "node scripts/generate-sample-report.mjs",
     "launch:apply-links": "node scripts/apply-approved-launch-links.mjs",
+    "launch:verify": "node scripts/verify-launch-readiness.mjs",
     "outbound:queue": "node scripts/generate-outbound-approval-queue.mjs",
     "release:preflight": "node scripts/prepare-npm-release.mjs",
     "test": "npm run test -ws --if-present",

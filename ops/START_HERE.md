@@ -14,6 +14,7 @@ It points to every founder click gate:
 4. Outbound approval console
 5. npm publish console
 6. Paid-audit delivery console
+7. Verification console: `verification-console.html`
 
 Hard rules:
 

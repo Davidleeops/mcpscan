@@ -50,6 +50,12 @@ Delivery console:
 /Users/lemueldavidleejr/Desktop/05_OPS 2/Scripts_and_Code/Codex folder/mcpscan/ops/delivery-console.html
 ```
 
+Verification console:
+
+```text
+/Users/lemueldavidleejr/Desktop/05_OPS 2/Scripts_and_Code/Codex folder/mcpscan/ops/verification-console.html
+```
+
 ## Launch Positioning
 
 Sell MCPScan as a pre-enablement MCP readiness audit for teams turning on Copilot, Claude Code, Cursor, VS Code agent mode, Slack MCP, or Atlassian Rovo.
