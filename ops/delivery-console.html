@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Delivery Console</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #151719;
+        --muted: #5b6470;
+        --line: #d7dde3;
+        --panel: #ffffff;
+        --soft: #f5f7f9;
+        --accent: #0b6bcb;
+        --good: #0f7b4f;
+        --warn: #9a5a00;
+        --danger: #aa2b2b;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--soft);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+
+      h1 {
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 1;
+        margin-bottom: 12px;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+
+      h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      p, li {
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .stack { display: grid; gap: 16px; }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      section, article {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .guardrail {
+        border-left: 4px solid var(--danger);
+        background: #fff6f6;
+      }
+
+      .ready {
+        border-left: 4px solid var(--good);
+        background: #f3fbf6;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      a.button, button.copy {
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--accent);
+        border-radius: 7px;
+        padding: 9px 12px;
+        color: var(--accent);
+        background: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      a.button.primary {
+        color: #ffffff;
+        background: var(--accent);
+      }
+
+      code, pre {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      pre {
+        margin: 10px 0 0;
+        overflow: auto;
+        white-space: pre-wrap;
+        background: #101820;
+        color: #eef6ff;
+        border-radius: 8px;
+        padding: 12px;
+        line-height: 1.45;
+        font-size: 12px;
+      }
+
+      @media (max-width: 860px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>Delivery Console</h1>
+        <p>Use this after payment clears and intake is complete. It turns the paid audit into a repeatable workspace, report, and delivery packet.</p>
+      </header>
+
+      <section class="guardrail">
+        <h2>Customer Data Rule</h2>
+        <p>Copy the workspace template outside the public repository before adding customer-specific material. Never store customer secrets, private configs, customer data, or final private reports in the public MCPScan repo.</p>
+      </section>
+
+      <section class="ready">
+        <h2>Workspace Setup</h2>
+        <p>Create a private folder for each paid audit, then copy the template into it.</p>
+        <div class="actions">
+          <button class="copy" data-copy-target="workspace-command">Copy setup command</button>
+          <a class="button" href="../delivery/customer-workspace-template/README.md" target="_blank" rel="noreferrer">Open template</a>
+        </div>
+        <pre id="workspace-command">mkdir -p "$HOME/MCPScan Audits/YYYY-MM-DD_customer-name"
+cp -R delivery/customer-workspace-template "$HOME/MCPScan Audits/YYYY-MM-DD_customer-name/customer-workspace"</pre>
+      </section>
+
+      <div class="grid">
+        <article>
+          <h2>1. Intake</h2>
+          <p>Confirm scope, owners, secure handoff path, and sanitized materials.</p>
+          <div class="actions">
+            <a class="button" href="../delivery/customer-workspace-template/intake-checklist.md" target="_blank" rel="noreferrer">Intake checklist</a>
+            <a class="button" href="../docs/SECURE_CUSTOMER_HANDOFF.md" target="_blank" rel="noreferrer">Secure handoff</a>
+          </div>
+        </article>
+
+        <article>
+          <h2>2. Scan</h2>
+          <p>Run MCPScan against sanitized configs and save output into the private workspace.</p>
+          <div class="actions">
+            <button class="copy" data-copy-target="scan-command">Copy scan command</button>
+          </div>
+          <pre id="scan-command">npm run build
+node packages/cli/dist/index.js scan PATH_TO_SANITIZED_CONFIG --format json</pre>
+        </article>
+
+        <article>
+          <h2>3. Findings</h2>
+          <p>Track every customer-visible issue with severity, evidence, risk, recommendation, owner, and due date.</p>
+          <div class="actions">
+            <a class="button" href="../delivery/customer-workspace-template/findings-tracker.csv" target="_blank" rel="noreferrer">Findings tracker</a>
+          </div>
+        </article>
+
+        <article>
+          <h2>4. Report</h2>
+          <p>Produce a readiness decision: approve, approve with guardrails, or block until remediation.</p>
+          <div class="actions">
+            <a class="button" href="../delivery/customer-workspace-template/report-template.md" target="_blank" rel="noreferrer">Report template</a>
+            <a class="button" href="../delivery/customer-workspace-template/delivery-email-cover.md" target="_blank" rel="noreferrer">Cover note</a>
+          </div>
+        </article>
+      </div>
+
+      <section>
+        <h2>Delivery Quality Check</h2>
+        <ul>
+          <li>Every high or medium finding has evidence and a specific remediation step.</li>
+          <li>The report states a clear readiness decision.</li>
+          <li>The report does not expose secrets or customer data.</li>
+          <li>The customer knows whether a findings call or re-scan is included.</li>
+          <li>The final report is stored outside the public repo.</li>
+        </ul>
+      </section>
+    </main>
+
+    <script>
+      for (const button of document.querySelectorAll("[data-copy-target]")) {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          await navigator.clipboard.writeText(target.textContent.trim());
+          const label = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = label; }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>

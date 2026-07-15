@@ -32,6 +32,12 @@ npm publish console:
 /Users/lemueldavidleejr/Desktop/05_OPS 2/Scripts_and_Code/Codex folder/mcpscan/ops/npm-publish-console.html
 ```
 
+Delivery console:
+
+```text
+/Users/lemueldavidleejr/Desktop/05_OPS 2/Scripts_and_Code/Codex folder/mcpscan/ops/delivery-console.html
+```
+
 ## Launch Positioning
 
 Sell MCPScan as a pre-enablement MCP readiness audit for teams turning on Copilot, Claude Code, Cursor, VS Code agent mode, Slack MCP, or Atlassian Rovo.
@@ -69,6 +75,7 @@ Avoid using `.online` as the primary brand domain unless minimizing first-year c
 4. Approve the generated command that applies those links to the landing page.
 5. Approve exact first outbound messages in `ops/outbound-approval-console.html` before anything is sent.
 6. Publish npm through `ops/npm-publish-console.html` only after npm login/package ownership is confirmed.
+7. Deliver paid audits through `ops/delivery-console.html` and copy the workspace template outside the public repository.
 
 ## Expected Initial Spend
 

@@ -1,0 +1,5 @@
+"id","severity","status","area","finding","evidence","risk","recommendation","owner","due_date","customer_visible"
+"MCP-001","High","Draft","Secrets","","","","","","","Yes"
+"MCP-002","Medium","Draft","Tool permissions","","","","","","","Yes"
+"MCP-003","Medium","Draft","Transport/auth","","","","","","","Yes"
+
