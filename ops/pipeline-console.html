@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan First Revenue Pipeline</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #151719;
+        --muted: #5b6470;
+        --line: #d7dde3;
+        --panel: #ffffff;
+        --soft: #f5f7f9;
+        --accent: #0b6bcb;
+        --good: #0f7b4f;
+        --danger: #aa2b2b;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--soft);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+
+      h1 {
+        font-size: clamp(32px, 5vw, 58px);
+        line-height: 1;
+        margin-bottom: 12px;
+        letter-spacing: 0;
+      }
+
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      h3 { font-size: 16px; margin-bottom: 8px; }
+
+      p, li, td {
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .stack { display: grid; gap: 16px; }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      section, article {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .guardrail {
+        border-left: 4px solid var(--danger);
+        background: #fff6f6;
+      }
+
+      .ready {
+        border-left: 4px solid var(--good);
+        background: #f3fbf6;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      a.button, button.copy {
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--accent);
+        border-radius: 7px;
+        padding: 9px 12px;
+        color: var(--accent);
+        background: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        border-top: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th { color: var(--ink); }
+
+      pre {
+        margin: 10px 0 0;
+        overflow: auto;
+        white-space: pre-wrap;
+        background: #101820;
+        color: #eef6ff;
+        border-radius: 8px;
+        padding: 12px;
+        line-height: 1.45;
+        font-size: 12px;
+      }
+
+      @media (max-width: 900px) {
+        .grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>First Revenue Pipeline</h1>
+        <p>Track the path from sourced account to paid audit to delivered report. Keep sensitive customer material outside this public repository.</p>
+      </header>
+
+      <section class="guardrail">
+        <h2>Rules</h2>
+        <ul>
+          <li>No external outreach until exact recipient and exact final content are approved in the same turn.</li>
+          <li>No customer secrets, private configs, customer data, or final private reports in this repo.</li>
+          <li>Move a customer to Paid only after Stripe/payment confirmation.</li>
+        </ul>
+      </section>
+
+      <section class="ready">
+        <h2>Pipeline Files</h2>
+        <div class="actions">
+          <a class="button" href="../sales/first-revenue-pipeline-template.csv" target="_blank" rel="noreferrer">Pipeline CSV</a>
+          <a class="button" href="../sales/first-revenue-pipeline.md" target="_blank" rel="noreferrer">Pipeline guide</a>
+          <a class="button" href="prospect-sourcing-console.html">Sourcing console</a>
+          <a class="button" href="outbound-approval-console.html">Outbound console</a>
+          <a class="button" href="delivery-console.html">Delivery console</a>
+        </div>
+      </section>
+
+      <section>
+        <h2>Stages</h2>
+        <table>
+          <tr><th>Stage</th><th>Exit Criteria</th></tr>
+          <tr><td>Research</td><td>Trigger source and likely buyer persona captured.</td></tr>
+          <tr><td>Qualified</td><td>Score is 6+ or a strong named trigger exists.</td></tr>
+          <tr><td>Approved to contact</td><td>Exact recipient and exact message approved in the same turn.</td></tr>
+          <tr><td>Interested</td><td>Prospect replied or showed interest.</td></tr>
+          <tr><td>Paid</td><td>Payment confirmed and secure intake started.</td></tr>
+          <tr><td>Delivered</td><td>Report delivered; findings call/re-scan handled if included.</td></tr>
+        </table>
+      </section>
+
+      <div class="grid">
+        <article>
+          <h2>Research Row</h2>
+          <button class="copy" data-copy-target="research-row">Copy row</button>
+          <pre id="research-row">"Research","ACCOUNT","CONTACT_NAME","CONTACT_ROLE","CHANNEL","SOURCE_URL","TRIGGER","0","OFFER","DRAFT_ANGLE","Not approved","","Qualify account","","",""</pre>
+        </article>
+        <article>
+          <h2>Approved Row</h2>
+          <button class="copy" data-copy-target="approved-row">Copy row</button>
+          <pre id="approved-row">"Approved to contact","ACCOUNT","CONTACT_NAME","CONTACT_ROLE","CHANNEL","SOURCE_URL","TRIGGER","8","MCP Launch Audit","ANGLE","Approved","","Send approved message only","","",""</pre>
+        </article>
+      </div>
+    </main>
+
+    <script>
+      for (const button of document.querySelectorAll("[data-copy-target]")) {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          await navigator.clipboard.writeText(target.textContent.trim());
+          const label = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = label; }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>

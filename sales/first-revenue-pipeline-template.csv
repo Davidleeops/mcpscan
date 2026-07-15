@@ -1,0 +1,7 @@
+"stage","account","contact_name","contact_role","contact_channel","source_url","trigger","score","recommended_offer","draft_angle","approval_status","last_touch","next_action","payment_status","delivery_status","notes"
+"Research","","","","","","","0","","","Not approved","","Qualify account","","",""
+"Qualified","","","","","","","0","","","Not approved","","Prepare exact recipient and message","","",""
+"Approved to contact","","","","","","","0","","","Approved","","Send approved message only","","",""
+"Interested","","","","","","","0","","","Approved","","Send checkout/scope link after approval","","",""
+"Paid","","","","","","","0","","","Approved","","Start secure intake","Paid","Not started",""
+"Delivered","","","","","","","0","","","Approved","","Request testimonial/referral","Paid","Delivered",""
