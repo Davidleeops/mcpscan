@@ -122,6 +122,8 @@
         <h2>Template Library</h2>
         <div class="actions">
           <a class="button" href="../sales/customer-communications.md" target="_blank" rel="noreferrer">Full template doc</a>
+          <a class="button" href="../sales/post-payment-handoff.md" target="_blank" rel="noreferrer">Post-payment handoff</a>
+          <a class="button" href="../sales/findings-call-scheduling.md" target="_blank" rel="noreferrer">Findings-call scheduling</a>
           <a class="button" href="discovery-console.html">Discovery</a>
           <a class="button" href="pipeline-console.html">Pipeline</a>
           <a class="button" href="delivery-console.html">Delivery</a>
@@ -215,6 +217,33 @@ Hi {{first_name}},
 For the included re-scan, please send sanitized evidence for the fixes you want reviewed: updated sanitized MCP configs, remediated finding list, updated admin settings, and changed server/tool permissions.
 
 Please do not send production credentials, active tokens, customer data, or sensitive files through email or public issues.
+
+Thanks,
+MCPScan</pre>
+        </article>
+
+        <article>
+          <h2>Findings Call</h2>
+          <button class="copy" data-copy-target="findings-call">Copy</button>
+          <pre id="findings-call">Subject: MCPScan findings call
+
+Hi {{first_name}},
+
+The MCPScan report is ready for review.
+
+For the findings call, please use this link to choose a time:
+{{booking_link}}
+
+Suggested attendees: the technical owner for the MCP setup, anyone responsible for AppSec/platform approval, and whoever owns the remediation work.
+
+Agenda:
+1. scope reviewed
+2. executive summary
+3. Critical/High findings
+4. remediation owners
+5. re-scan evidence and next steps
+
+Please do not send production credentials, active tokens, customer data, or sensitive files in the calendar invite or email thread.
 
 Thanks,
 MCPScan</pre>

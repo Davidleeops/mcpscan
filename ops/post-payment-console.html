@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Post-Payment Console</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #151719;
+        --muted: #5b6470;
+        --line: #d7dde3;
+        --panel: #ffffff;
+        --soft: #f5f7f9;
+        --accent: #0b6bcb;
+        --good: #0f7b4f;
+        --danger: #aa2b2b;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--soft);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      h1, h2, p { margin-top: 0; }
+
+      h1 {
+        font-size: clamp(32px, 5vw, 58px);
+        line-height: 1;
+        margin-bottom: 12px;
+        letter-spacing: 0;
+      }
+
+      h2 { font-size: 18px; margin-bottom: 12px; }
+
+      p, li {
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .stack { display: grid; gap: 16px; }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .ready {
+        border-left: 4px solid var(--good);
+        background: #f3fbf6;
+      }
+
+      .guardrail {
+        border-left: 4px solid var(--danger);
+        background: #fff6f6;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      a.button, button.copy {
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--accent);
+        border-radius: 7px;
+        padding: 9px 12px;
+        color: var(--accent);
+        background: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      pre {
+        margin: 0;
+        overflow: auto;
+        white-space: pre-wrap;
+        background: #101820;
+        color: #eef6ff;
+        border-radius: 8px;
+        padding: 12px;
+        line-height: 1.45;
+        font-size: 12px;
+      }
+
+      @media (max-width: 900px) {
+        .grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>Post-Payment Console</h1>
+        <p>Use this immediately after Stripe confirms payment so the buyer moves into safe intake, private workspace setup, and scheduling without drift.</p>
+      </header>
+
+      <section class="guardrail">
+        <h2>Safety Rule</h2>
+        <p>Do not accept production credentials, active tokens, customer data, private source code, or final customer reports in public GitHub issues or ordinary email.</p>
+      </section>
+
+      <section class="ready">
+        <h2>Operator Files</h2>
+        <div class="actions">
+          <a class="button" href="../sales/post-payment-handoff.md" target="_blank" rel="noreferrer">Post-payment handoff</a>
+          <a class="button" href="../sales/findings-call-scheduling.md" target="_blank" rel="noreferrer">Findings-call scheduling</a>
+          <a class="button" href="../sales/customer-communications.md" target="_blank" rel="noreferrer">Customer messages</a>
+          <a class="button" href="delivery-console.html">Delivery console</a>
+        </div>
+      </section>
+
+      <div class="grid">
+        <section>
+          <h2>Payment Confirmed Checklist</h2>
+          <ol>
+            <li>Confirm package and customer email from Stripe.</li>
+            <li>Create private customer workspace outside the public repo.</li>
+            <li>Copy the customer workspace template into the private workspace.</li>
+            <li>Send Payment Received / Intake Start.</li>
+            <li>Use a private handoff path before accepting sensitive materials.</li>
+            <li>Mark the pipeline row as Paid.</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>Safe Intake Paths</h2>
+          <ol>
+            <li>Customer-owned private repo with time-limited read access.</li>
+            <li>Customer-owned shared folder with time-limited access.</li>
+            <li>Encrypted archive with password through a separate channel.</li>
+            <li>Sanitized screenshots or config excerpts.</li>
+          </ol>
+        </section>
+      </div>
+
+      <section>
+        <h2>Copy Payment Record</h2>
+        <button class="copy" data-copy-target="payment-record">Copy</button>
+        <pre id="payment-record">Payment confirmed:
+Package:
+Customer:
+Technical contact:
+Stripe link/product:
+Private workspace:
+Safe intake path:
+Scope confirmed:
+Delivery target:
+Findings call:
+Re-scan:
+Notes:</pre>
+      </section>
+    </main>
+
+    <script>
+      for (const button of document.querySelectorAll("[data-copy-target]")) {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          await navigator.clipboard.writeText(target.textContent.trim());
+          const label = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = label; }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>

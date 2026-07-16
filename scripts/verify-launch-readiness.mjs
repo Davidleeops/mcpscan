@@ -84,8 +84,13 @@ const requiredFiles = [
   "ops/stripe-click-setup.html",
   "ops/approved-links-command-builder.html",
   "ops/outbound-approval-console.html",
+  "ops/first-revenue-battlecard.html",
+  "ops/post-payment-console.html",
   "ops/npm-publish-console.html",
   "ops/delivery-console.html",
+  "docs/FIRST_REVENUE_BATTLECARD.md",
+  "sales/post-payment-handoff.md",
+  "sales/findings-call-scheduling.md",
   "delivery/customer-workspace-template/report-template.md",
   "delivery/customer-workspace-template/findings-tracker.csv"
 ];
@@ -153,4 +158,3 @@ if (strict && (failures.length > 0 || warnings.length > 0)) {
 if (failures.length > 0) {
   process.exit(1);
 }
-

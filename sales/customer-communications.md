@@ -138,6 +138,33 @@ Thanks,
 MCPScan
 ```
 
+## Findings Call Scheduling
+
+Subject: MCPScan findings call
+
+```text
+Hi {{first_name}},
+
+The MCPScan report is ready for review.
+
+For the findings call, please use this link to choose a time:
+{{booking_link}}
+
+Suggested attendees: the technical owner for the MCP setup, anyone responsible for AppSec/platform approval, and whoever owns the remediation work.
+
+Agenda:
+1. scope reviewed
+2. executive summary
+3. Critical/High findings
+4. remediation owners
+5. re-scan evidence and next steps
+
+Please do not send production credentials, active tokens, customer data, or sensitive files in the calendar invite or email thread.
+
+Thanks,
+MCPScan
+```
+
 ## Testimonial / Referral Ask
 
 Subject: Quick MCPScan feedback
@@ -157,4 +184,3 @@ No pressure either way.
 Thanks,
 MCPScan
 ```
-
