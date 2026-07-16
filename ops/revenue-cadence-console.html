@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MCPScan First Revenue Pipeline</title>
+    <title>MCPScan Revenue Cadence Console</title>
     <style>
       :root {
         color-scheme: light;
@@ -14,6 +14,7 @@
         --soft: #f5f7f9;
         --accent: #0b6bcb;
         --good: #0f7b4f;
+        --warn: #9a5a00;
         --danger: #aa2b2b;
       }
 
@@ -27,7 +28,7 @@
       }
 
       main {
-        width: min(1120px, calc(100% - 32px));
+        width: min(1180px, calc(100% - 32px));
         margin: 0 auto;
         padding: 32px 0 48px;
       }
@@ -64,14 +65,19 @@
         padding: 18px;
       }
 
-      .guardrail {
-        border-left: 4px solid var(--danger);
-        background: #fff6f6;
-      }
-
       .ready {
         border-left: 4px solid var(--good);
         background: #f3fbf6;
+      }
+
+      .warn {
+        border-left: 4px solid var(--warn);
+        background: #fff9ec;
+      }
+
+      .guardrail {
+        border-left: 4px solid var(--danger);
+        background: #fff6f6;
       }
 
       .actions {
@@ -111,7 +117,7 @@
       th { color: var(--ink); }
 
       pre {
-        margin: 10px 0 0;
+        margin: 0;
         overflow: auto;
         white-space: pre-wrap;
         background: #101820;
@@ -130,59 +136,73 @@
   <body>
     <main class="stack">
       <header>
-        <h1>First Revenue Pipeline</h1>
-        <p>Track the path from sourced account to paid audit to delivered report. Keep sensitive customer material outside this public repository.</p>
+        <h1>Revenue Cadence Console</h1>
+        <p>Use this after domain, mailbox, and Stripe links are live. The job is daily sourced accounts, approved messages, replies, paid audits, and delivery.</p>
+        <div class="actions">
+          <a class="button" href="../sales/first-14-days-operating-cadence.md">Open 14-day cadence</a>
+          <a class="button" href="pipeline-console.html">Pipeline</a>
+          <a class="button" href="outbound-approval-console.html">Outbound</a>
+          <a class="button" href="first-revenue-battlecard.html">Battlecard</a>
+        </div>
       </header>
 
-      <section class="guardrail">
-        <h2>Rules</h2>
+      <section class="ready">
+        <h2>Daily Non-Negotiables</h2>
         <ul>
-          <li>No external outreach until exact recipient and exact final content are approved in the same turn.</li>
-          <li>No customer secrets, private configs, customer data, or final private reports in this repo.</li>
-          <li>Move a customer to Paid only after Stripe/payment confirmation.</li>
+          <li>Source 10 new accounts.</li>
+          <li>Qualify 6 accounts to score 6+.</li>
+          <li>Prepare 6 personalized outbound drafts.</li>
+          <li>Get exact-recipient and exact-message approval before sending.</li>
+          <li>Follow up on due conversations.</li>
+          <li>Update the pipeline before stopping.</li>
         </ul>
       </section>
 
-      <section class="ready">
-        <h2>Pipeline Files</h2>
-        <div class="actions">
-          <a class="button" href="../sales/first-revenue-pipeline-template.csv" target="_blank" rel="noreferrer">Pipeline CSV</a>
-          <a class="button" href="../sales/first-revenue-pipeline.md" target="_blank" rel="noreferrer">Pipeline guide</a>
-          <a class="button" href="../sales/first-14-days-operating-cadence.md" target="_blank" rel="noreferrer">14-day cadence</a>
-          <a class="button" href="revenue-cadence-console.html">Cadence console</a>
-          <a class="button" href="prospect-sourcing-console.html">Sourcing console</a>
-          <a class="button" href="outbound-approval-console.html">Outbound console</a>
-          <a class="button" href="discovery-console.html">Discovery console</a>
-          <a class="button" href="customer-comms-console.html">Customer comms</a>
-          <a class="button" href="delivery-console.html">Delivery console</a>
-        </div>
-      </section>
+      <div class="grid">
+        <section>
+          <h2>Weekly Target</h2>
+          <table>
+            <tr><th>Metric</th><th>Target</th></tr>
+            <tr><td>New sourced accounts</td><td>50</td></tr>
+            <tr><td>Qualified accounts</td><td>30</td></tr>
+            <tr><td>Approved/sent messages</td><td>30</td></tr>
+            <tr><td>Replies or conversations</td><td>10</td></tr>
+            <tr><td>Serious sales calls</td><td>3</td></tr>
+            <tr><td>Paid audits or strong checkout-intent conversations</td><td>1</td></tr>
+          </table>
+        </section>
+
+        <section class="warn">
+          <h2>Follow-Up Rhythm</h2>
+          <ul>
+            <li>Follow-up 1: two business days after first approved send.</li>
+            <li>Follow-up 2: six business days after first approved send.</li>
+            <li>Final follow-up: twelve business days after first approved send.</li>
+            <li>Close lost after final follow-up unless a concrete review date exists.</li>
+          </ul>
+        </section>
+      </div>
 
       <section>
-        <h2>Stages</h2>
-        <table>
-          <tr><th>Stage</th><th>Exit Criteria</th></tr>
-          <tr><td>Research</td><td>Trigger source and likely buyer persona captured.</td></tr>
-          <tr><td>Qualified</td><td>Score is 6+ or a strong named trigger exists.</td></tr>
-          <tr><td>Approved to contact</td><td>Exact recipient and exact message approved in the same turn.</td></tr>
-          <tr><td>Interested</td><td>Prospect replied or showed interest.</td></tr>
-          <tr><td>Paid</td><td>Payment confirmed and secure intake started.</td></tr>
-          <tr><td>Delivered</td><td>Report delivered; findings call/re-scan handled if included.</td></tr>
-        </table>
+        <h2>Daily Review Block</h2>
+        <button class="copy" data-copy-target="daily-review">Copy</button>
+        <pre id="daily-review">Date:
+Sourced:
+Qualified:
+Approved/sent:
+Replies:
+Interested:
+Checkout links sent:
+Paid:
+Delivered:
+Biggest objection:
+Tomorrow's top persona:</pre>
       </section>
 
-      <div class="grid">
-        <article>
-          <h2>Research Row</h2>
-          <button class="copy" data-copy-target="research-row">Copy row</button>
-          <pre id="research-row">"Research","ACCOUNT","CONTACT_NAME","CONTACT_ROLE","CHANNEL","SOURCE_URL","TRIGGER","0","OFFER","DRAFT_ANGLE","Not approved","","Qualify account","","",""</pre>
-        </article>
-        <article>
-          <h2>Approved Row</h2>
-          <button class="copy" data-copy-target="approved-row">Copy row</button>
-          <pre id="approved-row">"Approved to contact","ACCOUNT","CONTACT_NAME","CONTACT_ROLE","CHANNEL","SOURCE_URL","TRIGGER","8","MCP Launch Audit","ANGLE","Approved","","Send approved message only","","",""</pre>
-        </article>
-      </div>
+      <section class="guardrail">
+        <h2>Guardrail</h2>
+        <p>No outbound is sent from this console. Every external message still needs exact recipient and exact content approval in the same turn.</p>
+      </section>
     </main>
 
     <script>

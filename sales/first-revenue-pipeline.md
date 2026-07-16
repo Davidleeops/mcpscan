@@ -8,6 +8,12 @@ Template:
 sales/first-revenue-pipeline-template.csv
 ```
 
+Daily operating cadence:
+
+```text
+sales/first-14-days-operating-cadence.md
+```
+
 ## Stages
 
 | Stage | Meaning | Exit Criteria |
@@ -44,3 +50,9 @@ Customer data rule:
 Do not store customer secrets, private configs, customer data, or final private reports in this public repo.
 ```
 
+## Follow-Up Rhythm
+
+- Follow-up 1: two business days after first approved send.
+- Follow-up 2: six business days after first approved send.
+- Final follow-up: twelve business days after first approved send.
+- Close lost after the final follow-up unless the buyer gives a concrete future review date.
