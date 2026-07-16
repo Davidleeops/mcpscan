@@ -22,6 +22,12 @@ GitHub issue action board:
 ops/GITHUB_ISSUE_ACTION_BOARD.md
 ```
 
+Founder approval packet:
+
+```text
+ops/FOUNDER_APPROVAL_PACKET.md
+```
+
 Hard rules:
 
 - Do not send external messages without same-turn approval of exact recipient and exact final content.
