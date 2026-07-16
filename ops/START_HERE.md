@@ -6,6 +6,12 @@ Open this first:
 /Users/lemueldavidleejr/Desktop/05_OPS 2/Scripts_and_Code/Codex folder/mcpscan/ops/launch-cockpit.html
 ```
 
+Or from the repo:
+
+```text
+npm run launch:open
+```
+
 It points to every founder click gate:
 
 1. Domain and email DNS console

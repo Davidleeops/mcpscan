@@ -22,6 +22,7 @@ Start here:
 Current launch verification:
 
 ```bash
+npm run launch:open
 npm run launch:verify
 ```
 

@@ -8,6 +8,12 @@ Start here:
 ops/launch-cockpit.html
 ```
 
+Or open it from the repo:
+
+```text
+npm run launch:open
+```
+
 ## Current Reality
 
 MCPScan is a real opportunity, but the strongest wedge is not "generic AI security platform." The strongest first-revenue offer is:
@@ -94,4 +100,3 @@ Current expected warnings before founder clicks:
 8. Source and approve the first exact outbound messages.
 9. Track interested prospects in the first-revenue pipeline.
 10. Deliver paid audits through the private workspace template.
-
