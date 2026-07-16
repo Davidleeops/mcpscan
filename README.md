@@ -6,6 +6,27 @@ Scan your MCP servers in 30 seconds and collect production-readiness evidence.
 
 MCPScan is a free CLI security scanner and audit-readiness toolkit for Model Context Protocol servers. Point it at a Claude Desktop style MCP config, a local server command, or a remote HTTPS/SSE endpoint and get an A-F grade with actionable findings, remediation notes, and CI-friendly evidence.
 
+## Launch / First Revenue
+
+The first-revenue motion is a fixed-scope MCP readiness audit, supported by the CLI, public sample report, intake pages, and local launch consoles.
+
+Start here:
+
+- [Founder approval packet](ops/FOUNDER_APPROVAL_PACKET.md)
+- [Launch cockpit](ops/launch-cockpit.html)
+- [GitHub issue action board](ops/GITHUB_ISSUE_ACTION_BOARD.md)
+- [Public landing page](https://davidleeops.github.io/mcpscan/)
+- [Sample report](https://davidleeops.github.io/mcpscan/sample-report.html)
+- [Secure intake guidance](https://davidleeops.github.io/mcpscan/secure-intake.html)
+
+Current launch verification:
+
+```bash
+npm run launch:verify
+```
+
+Expected pre-approval warnings are checkout links, custom domain, and custom security email until the founder-only clicks are complete.
+
 ```bash
 npx mcpscan scan ./claude_desktop_config.json
 npx mcpscan scan --server "npx -y @modelcontextprotocol/server-filesystem /tmp"
