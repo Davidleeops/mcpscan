@@ -29,7 +29,7 @@ Do not lead with:
 - "Scanner platform."
 - "Full pentest."
 - "Compliance certification."
-- "Guaranteed secure."
+- "Security guarantee."
 
 Lead with:
 

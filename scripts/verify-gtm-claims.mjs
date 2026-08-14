@@ -29,7 +29,31 @@ const forbiddenClaims = [
   "dashboard is live"
 ];
 const allowedNegativeMarkers = ["not", "do not", "does not", "is not", "not a", "avoid", "do not claim", "no claims"];
-const allowedContextMarkers = ["not included", "bad-fit buyer", "avoid claiming", "limitations", "mcpScan is not".toLowerCase(), "does not include"];
+const allowedContextMarkers = ["not included", "bad-fit buyer", "avoid claiming", "do not lead with", "limitations", "mcpScan is not".toLowerCase(), "does not claim", "does not include"];
+const stateOverclaimPhrases = [
+  "fully live",
+  "already live",
+  "launch is live",
+  "revenue-ready",
+  "ready for first revenue",
+  "ready to send outbound",
+  "ready to accept payment"
+];
+const stateBoundaryMarkers = [
+  "after",
+  "until",
+  "once",
+  "when",
+  "if",
+  "blocked",
+  "placeholder",
+  "founder-click",
+  "founder click",
+  "remaining",
+  "requires",
+  "before",
+  "warning"
+];
 
 function exists(file) {
   return fs.existsSync(path.join(root, file));
@@ -97,6 +121,12 @@ for (const file of files) {
       const negativeContext = allowedContextMarkers.some((marker) => context.includes(marker));
       if (line.includes(claim) && !negativeLine && !negativeContext) {
         results.push(result("fail", `forbidden GTM claim: ${file}:${index + 1}`, claim));
+      }
+    }
+
+    for (const phrase of stateOverclaimPhrases) {
+      if (line.includes(phrase) && !stateBoundaryMarkers.some((marker) => context.includes(marker))) {
+        results.push(result("fail", `unguarded launch-state claim: ${file}:${index + 1}`, phrase));
       }
     }
   }

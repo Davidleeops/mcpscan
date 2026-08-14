@@ -1,6 +1,6 @@
 # GitHub Repository And Separation Plan
 
-MCPScan is already live as its own public repository:
+MCPScan already has its own public repository:
 
 - Repository: <https://github.com/Davidleeops/mcpscan>
 - Default branch: `main`
@@ -92,4 +92,3 @@ Then create a GitHub release:
 - Summary: first public CLI release.
 - Install command: `npm install -g mcpscan`
 - Try-now command: `npx mcpscan scan ./claude_desktop_config.json`
-
