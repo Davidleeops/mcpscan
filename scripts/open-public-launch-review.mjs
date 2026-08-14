@@ -5,6 +5,9 @@ import { pathToFileURL } from "node:url";
 
 const reviewSurfaces = [
   "docs/PUBLIC_LAUNCH_POST_APPROVAL.md",
+  "docs/PUBLIC_CHANNEL_LAUNCH_DRAFTS_2026-08-14.md",
+  "ops/public-channel-drafts-console.html",
+  "ops/gtm-placement-console.html",
   "docs/MARKET_REALITY_BRIEF_2026-08-14.md",
   "docs/PUBLIC_TRUST_CHECKLIST.md",
   "docs/GTM_CLAIM_SAFETY.md",

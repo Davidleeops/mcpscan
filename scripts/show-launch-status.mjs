@@ -209,6 +209,7 @@ const gates = [
   gate("Route approval packet", exists("sales/first-10-route-approval-packet-2026-08-14.md"), "first-10 route approval packet is ready for same-turn review"),
   gate("GTM claim verifier", exists("scripts/verify-gtm-claims.mjs"), "npm run gtm:verify checks overclaim risk"),
   gate("GTM placement console", exists("ops/gtm-placement-console.html"), "current channel placement map is available without posting"),
+  gate("Public channel drafts", exists("ops/public-channel-drafts-console.html") && exists("docs/PUBLIC_CHANNEL_LAUNCH_DRAFTS_2026-08-14.md"), "channel-specific public launch drafts are ready for approval"),
   gate("Public launch post staging", exists("scripts/stage-approved-public-launch-post.mjs") && exists("scripts/open-public-launch-review.mjs") && exists("docs/PUBLIC_LAUNCH_POST_APPROVAL.md"), "public launch review and approved post staging are available without publishing"),
   gate("Reply-to-close packet", exists("sales/reply-to-close-packet.md") && exists("scripts/open-reply-to-close-review.mjs"), "approved reply templates and launcher exist for inbound prospect responses"),
   gate("Reply staging", exists("scripts/stage-approved-reply.mjs") && exists("docs/APPROVED_REPLY_STAGING.md"), "approved replies can be staged outside the public repo"),

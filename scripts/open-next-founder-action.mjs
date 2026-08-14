@@ -10,6 +10,7 @@ const reviewSurfaces = [
   "ops/github-actions-billing-console.html",
   "ops/cheap-launch-packet-console.html",
   "ops/gtm-placement-console.html",
+  "ops/public-channel-drafts-console.html",
   "ops/founder-return-packet.html",
   "ops/verification-console.html",
   "sales/daily-revenue-command.md",

@@ -115,7 +115,7 @@ Message:
 ```text
 Hi {{first_name}},
 
-MCPScan is not positioned as a full penetration test or certification.
+MCPScan is not positioned as a complete security assessment or certification.
 
 It is a practical MCP readiness audit for teams connecting AI agents to real tools, credentials, code, docs, tickets, customer data, internal APIs, or SaaS actions.
 

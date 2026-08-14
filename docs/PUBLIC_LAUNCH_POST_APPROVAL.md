@@ -72,7 +72,7 @@ I built MCPScan as a service-first security audit for teams enabling Model Conte
 
 The scanner helps inventory MCP servers and tools, classify read/write/destructive actions, review auth and secret-handling risks, and produce a buyer-safe remediation report.
 
-I am not positioning this as a compliance certification or full penetration test. The first offer is a fixed-scope MCP Launch Audit for teams turning on agent access to code, tickets, docs, SaaS tools, cloud workflows, or customer data.
+I am not positioning this as a compliance certification or complete security assessment. The first offer is a fixed-scope MCP Launch Audit for teams turning on agent access to code, tickets, docs, SaaS tools, cloud workflows, or customer data.
 
 Sample report and scope:
 {{public_url}}
