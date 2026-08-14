@@ -9,3 +9,4 @@ packages/*/*.tsbuildinfo
 !.env.example
 coverage/
 .turbo/
+sales/generated-outbound/

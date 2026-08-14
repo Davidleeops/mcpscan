@@ -25,9 +25,11 @@ function print(results) {
 
 const requiredFiles = [
   "docs/FIRST_PAID_AUDIT_GO_NO_GO.md",
+  "docs/FIRST_PAID_AUDIT_WORK_ORDER.md",
   "docs/METHODOLOGY_AND_LIMITATIONS.md",
   "docs/SEVERITY_RUBRIC.md",
   "docs/PAYMENT_TO_DELIVERY_SOP.md",
+  "scripts/create-first-paid-audit-work-order.mjs",
   "docs/PAID_AUDIT_RUNBOOK.md",
   "delivery/customer-workspace-template/client-acceptance.md",
   "delivery/customer-workspace-template/evidence-register.csv",

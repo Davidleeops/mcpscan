@@ -57,10 +57,17 @@ After first outbound approval exists:
 npm run outbound:stage-approved -- --file /path/to/approved-outbound.txt
 ```
 
+To generate an exact approval packet before staging:
+
+```text
+npm run outbound:compose-final -- --account Vapi --recipient "{{name}}" --title "{{title}}" --contact "{{contact_or_profile_url}}" --channel Email --sender "{{sender_name}}"
+```
+
 After first payment:
 
 ```text
-npm run delivery:workspace -- --company "{{customer_company}}" --package "{{package_name}}"
+npm run delivery:work-order -- --customer "{{customer_company}}" --package "{{package_name}}" --contact "{{technical_contact}}" --payment "{{stripe_reference}}"
+npm run delivery:workspace -- --customer "{{customer_company}}"
 ```
 
 ## Approval Needed Today

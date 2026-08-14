@@ -5,6 +5,13 @@ import path from "node:path";
 const root = process.cwd();
 const candidateFile = "sales/recipient-candidates-2026-08-14.csv";
 const pipelineFile = "sales/first-account-pipeline-2026-08-14.csv";
+const requiredOutboundFiles = [
+  "docs/FINAL_OUTBOUND_COMPOSER.md",
+  "sales/reply-to-close-packet.md",
+  "sales/daily-revenue-command.md",
+  "scripts/compose-final-outbound.mjs",
+  "scripts/stage-approved-outbound.mjs"
+];
 const strict = process.argv.includes("--strict");
 const allowedChannels = new Set(["Email", "LinkedIn", "Contact form", "Warm intro", "Email or LinkedIn"]);
 const allowedApprovalStates = new Set(["Candidate needed", "Ready for founder approval", "Approved to stage", "Staged", "Rejected"]);
@@ -85,6 +92,10 @@ function validUrl(value) {
 }
 
 const results = [];
+
+for (const file of requiredOutboundFiles) {
+  results.push(exists(file) ? result("pass", `required outbound file: ${file}`) : result("fail", `required outbound file: ${file}`, "missing"));
+}
 
 if (!exists(candidateFile)) {
   results.push(result("fail", candidateFile, "missing"));
