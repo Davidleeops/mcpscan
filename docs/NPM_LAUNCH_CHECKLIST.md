@@ -2,6 +2,8 @@
 
 Use this checklist for the first public npm release of MCPScan.
 
+npm publishing is not required for first revenue. The `$1,500` MCP Launch Audit can be sold and delivered before the package is public.
+
 ## Release Packages
 
 Publish in this order:

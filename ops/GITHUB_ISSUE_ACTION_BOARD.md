@@ -27,7 +27,7 @@ sales/recipient-approval-packet-2026-08-14.md
 | [#2](https://github.com/Davidleeops/mcpscan/issues/2) | Buy domain and create mailbox | `ops/domain-email-dns-console.html`, `docs/DOMAIN_AND_MAILBOX_DECISION.md` | Domain resolves, mailbox exists, MX/SPF/DKIM pass |
 | [#3](https://github.com/Davidleeops/mcpscan/issues/3) | Create Stripe Payment Links | `ops/stripe-click-setup.html`, `ops/stripe-payment-link-qa-console.html` | Three live Stripe Payment Links exist |
 | [#4](https://github.com/Davidleeops/mcpscan/issues/4) | Replace landing CTAs and contact links | `ops/approved-links-command-builder.html` | `npm run launch:verify -- --domain {{chosen_domain}}` has no checkout/custom-domain warnings |
-| [#5](https://github.com/Davidleeops/mcpscan/issues/5) | Authenticate npm and publish v0.1.0 | `ops/npm-publish-console.html` | `npm view @mcpscan/shared name version` and `npm view mcpscan name version` return `0.1.0` |
+| [#5](https://github.com/Davidleeops/mcpscan/issues/5) | Optional package release: authenticate npm and publish v0.1.0 | `ops/npm-publish-console.html` | `npm view @mcpscan/shared name version` and `npm view mcpscan name version` return `0.1.0` |
 | [#6](https://github.com/Davidleeops/mcpscan/issues/6) | Approve first outbound messages | `ops/first-10-outbound-approval-console.html`, `ops/outbound-approval-console.html` | Exact recipients and exact final content approved in the same turn |
 
 ## Verification
@@ -56,4 +56,5 @@ npm run launch:verify -- --domain getmcpscan.com --strict
 - Do not send external messages without same-turn approval of exact recipient and exact content.
 - Do not store customer secrets, private configs, customer data, or final private reports in the public repo.
 - Do not send outbound from `audit@getmcpscan.com` until MX, SPF, DKIM, and DMARC pass.
+- Do not wait on npm publishing before selling the paid audit.
 - Do not publish npm packages until npm login and 2FA/OTP are confirmed.

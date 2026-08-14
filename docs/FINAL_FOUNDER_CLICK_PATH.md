@@ -18,6 +18,8 @@ After that message is approved, Codex can run `npm run launch:apply-return-packe
 
 Do not send external messages, start a live audit, publish packages, or accept sensitive customer materials until the matching approval gate below is complete.
 
+First revenue does not require npm publishing. Sell and deliver the `$1,500` MCP Launch Audit first, then publish npm when the owner is logged in and ready for OTP prompts.
+
 ## Click Order
 
 | Order | Gate | Founder Action | Console | Done When |
@@ -28,7 +30,7 @@ Do not send external messages, start a live audit, publish packages, or accept s
 | 3 | Stripe | Create the three Payment Links and verify their format | `ops/stripe-click-setup.html` | Quick, Launch, and Enterprise checkout links exist and `npm run launch:verify-stripe` passes |
 | 4 | Apply links | Paste real links into the command builder | `ops/approved-links-command-builder.html` | Landing page no longer uses placeholder checkout links |
 | 5 | Verify | Run launch verification | `ops/verification-console.html` | `npm run launch:verify -- --domain {{chosen_domain}}` has no domain or checkout warnings |
-| 6 | npm | Publish packages if desired | `ops/npm-publish-console.html` | npm shows version `0.1.0` for both packages |
+| 6 | npm | Optional: publish packages if desired | `ops/npm-publish-console.html` | npm shows version `0.1.0` for both packages |
 | 7 | Outbound | Refresh market sources, then approve exact recipients and exact final messages | `ops/outbound-recipient-approval-builder.html` | Approved messages are staged outside the public repo before any send |
 | 8 | Paid handoff | Use post-payment handoff after Stripe payment | `ops/post-payment-console.html` | Private workspace exists outside public repo |
 | 9 | Delivery | Deliver report and buyer summary from private workspace | `ops/delivery-console.html` | Report is delivered without customer secrets in public repo |
@@ -89,6 +91,8 @@ npm pack --dry-run -w mcpscan
 Default sale: MCP Launch Audit at `$1,500`.
 
 Best buyer: a team enabling Copilot, Claude Code, Cursor, VS Code agent mode, Slack MCP, Atlassian Rovo, or a custom MCP server that touches code, tickets, docs, data, cloud, CI/CD, or customer records.
+
+Do not wait for npm to sell this. The paid audit deliverable, report template, buyer summary, delivery dry run, outbound packet, and post-payment handoff are already the revenue path.
 
 Spend ceiling before first revenue: about `$19` to `$31` for domain plus one mailbox. Do not add paid dashboard infrastructure before the first paid audit.
 

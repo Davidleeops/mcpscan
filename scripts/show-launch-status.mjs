@@ -83,6 +83,15 @@ function getLiveActionsState() {
   }
 }
 
+function getNpmAuthState() {
+  try {
+    const whoami = execFileSync("npm", ["whoami"], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+    return { state: "READY", detail: whoami ? "logged in as " + whoami : "npm login detected" };
+  } catch {
+    return { state: "INFO", detail: "not logged in, only needed for optional npm publish" };
+  }
+}
+
 function gate(label, ready, detail) {
   return { label, state: ready ? "READY" : "WAIT", detail };
 }
@@ -91,6 +100,7 @@ const checkoutPlaceholders = hasCheckoutPlaceholders();
 const customDomain = hasCustomDomain();
 const securityContact = hasSecurityContact();
 const liveActions = getLiveActionsState();
+const npmAuth = getNpmAuthState();
 
 const gates = [
   gate("Writing rule", !hasBannedPunctuation(), "no em dash in scanned launch artifacts"),
@@ -119,6 +129,7 @@ const gates = [
   gate("Reply-to-close packet", exists("sales/reply-to-close-packet.md"), "approved reply templates exist for inbound prospect responses"),
   gate("Daily revenue command", exists("sales/daily-revenue-command.md"), "one-screen revenue operating surface exists"),
   gate("Payment link manifest", exists("sales/payment-link-manifest.template.json"), "non-secret checkout source template exists"),
+  { label: "npm auth", state: npmAuth.state, detail: npmAuth.detail },
   gate("Recipient candidates", hasRecipientCandidates(), "npm run outbound:verify checks candidate readiness"),
   gate("Contact routes", hasContactRoutes(), "official first-10 contact routes exist for route-based approvals"),
   gate("Buyer summary", exists("delivery/customer-workspace-template/buyer-facing-summary.md"), "customer deliverable exists")
