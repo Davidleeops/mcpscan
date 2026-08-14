@@ -57,6 +57,8 @@ npm run landing:sample-report
 npm run launch:bundle
 ```
 
+The fallback bundle includes `FALLBACK_UPLOAD_PACKET.md` with freshness proof and the upload stop conditions.
+
 Post-domain DNS proof:
 
 ```text
