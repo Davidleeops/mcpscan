@@ -175,6 +175,19 @@ const packet = [
   "",
   "Use one approval block at a time unless the founder explicitly approves all 10 named-recipient packets in the same turn. Route-based packets remain available as a safer fallback when a named recipient is uncertain.",
   "",
+  "To approve all 10 named-recipient messages in one pass, copy this exact block into Codex. This only approves private staging for manual sending review. It does not send anything.",
+  "",
+  "```text",
+  "I approve staging all 10 exact MCPScan named-recipient outbound messages.",
+  "",
+  "Approved recipients:",
+  ...rows.map((row, index) => `${index + 1}. ${row.candidate_name}, ${row.title}, ${row.company} (${row.account})`),
+  "",
+  "Approved action:",
+  "Stage these approved outbound packets outside the public repo for manual sending review.",
+  "Do not send automatically.",
+  "```",
+  "",
   ...blocks
 ].join("\n");
 

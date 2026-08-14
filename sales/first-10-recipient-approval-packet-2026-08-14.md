@@ -12,6 +12,28 @@ No external message can be sent until the exact recipient and exact final conten
 
 Use one approval block at a time unless the founder explicitly approves all 10 named-recipient packets in the same turn. Route-based packets remain available as a safer fallback when a named recipient is uncertain.
 
+To approve all 10 named-recipient messages in one pass, copy this exact block into Codex. This only approves private staging for manual sending review. It does not send anything.
+
+```text
+I approve staging all 10 exact MCPScan named-recipient outbound messages.
+
+Approved recipients:
+1. Nikhil Gupta, Founder and CTO, Vapi (Vapi)
+2. David Hsu, Co-founder and CEO, Retool (Retool)
+3. Tod Sacerdoti, CEO and Founder, Pipedream (Pipedream)
+4. Soham Ganatra, Founder, Composio (Composio)
+5. James Hawkins, Co-founder and Co-CEO, PostHog (PostHog)
+6. Vijaye Raji, Founder and former CEO, Statsig (Statsig)
+7. Ankur Goyal, Founder and CEO, Braintrust (Braintrust)
+8. Christopher Pedregal, Co-founder and CEO, Granola (Granola)
+9. David Cramer, Co-founder and CPO, Sentry (Sentry)
+10. Ertan Dogrultan, Platform Engineering Lead, Replit (Replit)
+
+Approved action:
+Stage these approved outbound packets outside the public repo for manual sending review.
+Do not send automatically.
+```
+
 ## 1. Vapi
 
 Candidate: Nikhil Gupta, Founder and CTO, Vapi

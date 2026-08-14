@@ -5,6 +5,7 @@ const steps = [
   ["founder return packet parser", ["run", "launch:verify-return-packet"]],
   ["founder return apply simulation", ["run", "launch:simulate-return-apply"]],
   ["first-10 route staging simulation", ["run", "outbound:simulate-route-staging"]],
+  ["first-10 named-recipient staging simulation", ["run", "outbound:simulate-named-staging"]],
   ["private revenue follow-up simulation", ["run", "outbound:simulate-revenue-flow"]],
   ["paid audit delivery dry run", ["run", "delivery:dry-run"]]
 ];

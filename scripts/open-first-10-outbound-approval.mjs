@@ -41,13 +41,20 @@ for (const page of pages) {
 
 console.log("");
 console.log("Approval rule:");
-console.log("No external message can be sent until the exact route, exact recipient description, and exact final message are approved in the same turn.");
+console.log("No external message can be sent until the exact named recipient or route, exact recipient description, and exact final message are approved in the same turn.");
 console.log("");
-console.log("All-10 staging phrase:");
+console.log("Named-recipient all-10 staging phrase:");
+console.log("I approve staging all 10 exact MCPScan named-recipient outbound messages.");
+console.log("Do not send automatically.");
+console.log("");
+console.log("Route all-10 staging phrase:");
 console.log("I approve staging all 10 exact MCPScan route outbound messages.");
 console.log("Do not send automatically.");
 console.log("");
-console.log("After approval, stage outside the public repo with:");
+console.log("After named-recipient all-10 approval, stage outside the public repo with:");
+console.log("npm run outbound:stage-first-10 -- --file /path/to/approved-first-10-named-recipient-packet.txt");
+console.log("");
+console.log("After route approval, stage outside the public repo with:");
 console.log("npm run outbound:stage-route-packet -- --file /path/to/approved-first-10-route-packet.txt");
 console.log("");
 console.log("Before any manual send, run:");

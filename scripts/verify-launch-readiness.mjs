@@ -283,6 +283,7 @@ const requiredFiles = [
   "scripts/log-approved-route-batch-sends.mjs",
   "scripts/compose-follow-up-approval.mjs",
   "scripts/simulate-first-10-route-staging.mjs",
+  "scripts/simulate-first-10-named-recipient-staging.mjs",
   "scripts/simulate-revenue-follow-up-flow.mjs",
   "scripts/build-revenue-snapshot.mjs",
   "scripts/stage-approved-route-packet.mjs",

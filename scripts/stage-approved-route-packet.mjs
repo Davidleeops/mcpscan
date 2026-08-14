@@ -4,8 +4,8 @@ import os from "node:os";
 import path from "node:path";
 
 const root = process.cwd();
-const approvalPhrase = "I approve staging all 10 exact MCPScan route outbound messages.";
-const blockPhrase = "I approve staging this exact MCPScan outbound message.";
+const routeApprovalPhrase = "I approve staging all 10 exact MCPScan route outbound messages.";
+const namedApprovalPhrase = "I approve staging all 10 exact MCPScan named-recipient outbound messages.";
 
 function parseArgs(argv) {
   const values = {};
@@ -74,9 +74,10 @@ function parseBlock(block) {
   return { account, channel, recipient, contact, source, message };
 }
 
-function writePacket(packetDir, date, parsed) {
+function writePacket(packetDir, date, parsed, mode) {
+  const modeLabel = mode === "named" ? "Named Recipient" : "Route";
   const packet = [
-    "# Approved MCPScan Route Outbound Packet",
+    `# Approved MCPScan ${modeLabel} Outbound Packet`,
     "",
     `Date: ${date}`,
     `Account: ${parsed.account}`,
@@ -87,7 +88,9 @@ function writePacket(packetDir, date, parsed) {
     "",
     "## Safety Status",
     "",
-    "- Founder approved this exact route and exact final message.",
+    mode === "named"
+      ? "- Founder approved this exact named recipient and exact final message."
+      : "- Founder approved this exact route and exact final message.",
     "- This packet does not send anything automatically.",
     "- Run npm run outbound:send-gates before sending.",
     "",
@@ -106,7 +109,8 @@ function writePacket(packetDir, date, parsed) {
     recipient: parsed.recipient,
     contact: parsed.contact,
     source: parsed.source,
-    routeBased: true,
+    routeBased: mode === "route",
+    namedRecipientBased: mode === "named",
     noAutoSend: true,
     packetPath: packetDir
   };
@@ -133,8 +137,9 @@ function updateApprovalStatus(count) {
 const args = parseArgs(process.argv.slice(2));
 const input = readInput(args.file);
 
-if (!input.includes(approvalPhrase)) {
-  throw new Error(`Missing all-10 route approval phrase: ${approvalPhrase}`);
+const approvalMode = input.includes(namedApprovalPhrase) ? "named" : input.includes(routeApprovalPhrase) ? "route" : "";
+if (!approvalMode) {
+  throw new Error(`Missing all-10 approval phrase. Use either: ${routeApprovalPhrase} OR ${namedApprovalPhrase}`);
 }
 
 if (!input.includes("Do not send automatically")) {
@@ -148,9 +153,9 @@ if (blocks.length !== 10) {
 
 const baseDir = assertOutsideRepo(args.root ?? path.join(os.homedir(), "MCPScan Outbound Approvals"));
 const date = args.date ?? today();
-const batchDir = path.join(baseDir, `${date}_first-10-route-approvals`);
+const batchDir = path.join(baseDir, `${date}_first-10-${approvalMode}-approvals`);
 if (fs.existsSync(batchDir)) {
-  throw new Error(`Approved route batch already exists: ${batchDir}`);
+  throw new Error(`Approved ${approvalMode} batch already exists: ${batchDir}`);
 }
 
 fs.mkdirSync(batchDir, { recursive: true });
@@ -159,13 +164,16 @@ const parsedBlocks = blocks.map(parseBlock);
 for (const parsed of parsedBlocks) {
   const packetDir = path.join(batchDir, slugify(parsed.account));
   fs.mkdirSync(packetDir, { recursive: true });
-  writePacket(packetDir, date, parsed);
+  writePacket(packetDir, date, parsed, approvalMode);
 }
 
 const batchManifest = {
   date,
   approvalCount: parsedBlocks.length,
   accounts: parsedBlocks.map((item) => item.account),
+  approvalMode,
+  routeBased: approvalMode === "route",
+  namedRecipientBased: approvalMode === "named",
   noAutoSend: true,
   batchPath: batchDir
 };
@@ -173,5 +181,5 @@ const batchManifest = {
 fs.writeFileSync(path.join(batchDir, "batch-manifest.json"), `${JSON.stringify(batchManifest, null, 2)}\n`, "utf8");
 updateApprovalStatus(parsedBlocks.length);
 
-console.log("Staged approved first-10 route outbound packets.");
+console.log(`Staged approved first-10 ${approvalMode} outbound packets.`);
 console.log(batchDir);

@@ -29,6 +29,7 @@ const requiredOutboundFiles = [
   "scripts/generate-outbound-approval-queue.mjs",
   "scripts/stage-approved-route-packet.mjs",
   "scripts/simulate-first-10-route-staging.mjs",
+  "scripts/simulate-first-10-named-recipient-staging.mjs",
   "scripts/stage-approved-outbound.mjs",
   "scripts/open-first-10-outbound-approval.mjs",
   "scripts/open-first-send-readiness.mjs",
@@ -208,12 +209,23 @@ if (exists("sales/first-10-recipient-approval-packet-2026-08-14.md")) {
   const packet = fs.readFileSync(path.join(root, "sales/first-10-recipient-approval-packet-2026-08-14.md"), "utf8");
   const approvalCount = (packet.match(/I approve staging this exact MCPScan outbound message/g) ?? []).length;
   const noAutoCount = (packet.match(/Do not send automatically/g) ?? []).length;
+  const hasAllTenApproval = packet.includes("I approve staging all 10 exact MCPScan named-recipient outbound messages.");
+  const hasMissingBatchCommand = packet.includes("outbound:stage-first-10");
   results.push(approvalCount === 10 ? result("pass", "named recipient packet approvals", "10 approval blocks") : result("fail", "named recipient packet approvals", `${approvalCount} approval blocks`));
-  results.push(noAutoCount === 10 ? result("pass", "named recipient packet no-auto-send", "10 block statements") : result("fail", "named recipient packet no-auto-send", `${noAutoCount} no-auto-send statements`));
+  results.push(hasAllTenApproval ? result("pass", "named recipient packet all-10 approval", "all-10 approval phrase present") : result("fail", "named recipient packet all-10 approval", "missing all-10 approval phrase"));
+  results.push(noAutoCount === 11 ? result("pass", "named recipient packet no-auto-send", "10 block statements plus all-10 guard") : result("fail", "named recipient packet no-auto-send", `${noAutoCount} no-auto-send statements`));
+  results.push(!hasMissingBatchCommand ? result("pass", "named recipient packet command honesty", "no missing batch staging command") : result("fail", "named recipient packet command honesty", "references outbound:stage-first-10"));
   for (const row of candidates) {
     results.push(packet.includes(`## ${[...candidateAccounts].indexOf(row.account) + 1}. ${row.account}`) || packet.includes(`. ${row.account}`) ? result("pass", `named packet account: ${row.account}`) : result("fail", `named packet account: ${row.account}`, "missing"));
     results.push(row.candidate_name && packet.includes(row.candidate_name) ? result("pass", `named packet candidate: ${row.account}`) : result("fail", `named packet candidate: ${row.account}`, "missing candidate"));
   }
+}
+
+if (exists("ops/first-10-outbound-approval-console.html")) {
+  const consoleHtml = fs.readFileSync(path.join(root, "ops/first-10-outbound-approval-console.html"), "utf8");
+  results.push(consoleHtml.includes("first-10-recipient-approval-packet-2026-08-14.md") ? result("pass", "approval console named packet link", "named recipient packet is linked") : result("fail", "approval console named packet link", "missing"));
+  results.push(consoleHtml.includes("I approve staging all 10 exact MCPScan named-recipient outbound messages.") ? result("pass", "approval console named all-10 phrase", "copyable phrase present") : result("fail", "approval console named all-10 phrase", "missing"));
+  results.push(consoleHtml.includes("It does not send anything") ? result("pass", "approval console no-auto-send framing", "no-auto-send framing present") : result("fail", "approval console no-auto-send framing", "missing"));
 }
 
 if (exists(approvalQueueFile)) {
