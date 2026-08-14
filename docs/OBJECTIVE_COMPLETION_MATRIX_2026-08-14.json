@@ -1,0 +1,160 @@
+{
+  "name": "MCPScan objective completion matrix",
+  "date": "2026-08-14",
+  "entryPoint": "npm run launch:day",
+  "currentPositioning": "We turn noisy MCP scanner output into a validated MCP risk report, remediation plan, and customer-ready security proof in 3 to 5 days.",
+  "launchReadinessProof": {
+    "command": "npm run launch:verify",
+    "passed": 200,
+    "expectedWarnings": 3,
+    "failures": 0
+  },
+  "requirements": [
+    {
+      "id": "market_reality",
+      "label": "Full market reality assessment",
+      "status": "ready",
+      "evidence": [
+        "docs/MARKET_REALITY_BRIEF_2026-08-14.md",
+        "docs/MARKET_SOURCE_PACK_2026-08-14.md",
+        "docs/MARKET_PULSE_REFRESH_2026-08-14.md",
+        "scripts/verify-market-sources.mjs"
+      ]
+    },
+    {
+      "id": "buyer_locations",
+      "label": "Buyer location and need research",
+      "status": "ready",
+      "evidence": [
+        "docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md",
+        "sales/buyer-intent-map-2026-08-14.md",
+        "sales/first-account-dossier-2026-08-14.md",
+        "sales/recipient-candidates-2026-08-14.csv"
+      ]
+    },
+    {
+      "id": "gtm_plan",
+      "label": "Go-to-market plan",
+      "status": "ready",
+      "evidence": [
+        "docs/GO_TO_MARKET.md",
+        "docs/FIRST_REVENUE_BATTLECARD.md",
+        "ops/gtm-placement-console.html",
+        "ops/public-channel-drafts-console.html"
+      ]
+    },
+    {
+      "id": "clickable_launch_path",
+      "label": "Click and approve launch path",
+      "status": "ready",
+      "evidence": [
+        "ops/launch-day-runbook.html",
+        "scripts/open-launch-day-runbook.mjs",
+        "ops/final-founder-click-console.html",
+        "ops/founder-click-handoff.html",
+        "ops/launch-approval-queue.html"
+      ]
+    },
+    {
+      "id": "domain_mailbox",
+      "label": "Domain and mailbox click packets",
+      "status": "ready",
+      "evidence": [
+        "ops/domain-mailbox-purchase-packet.html",
+        "ops/domain-email-dns-console.html",
+        "docs/CHEAP_DOMAIN_DECISION_2026-08-14.md",
+        "ops/generated-launch-packets/2026-08-14_mcpscan-online_dns-packet.md",
+        "ops/generated-launch-packets/2026-08-14_mcpscan-online_dns-records.csv"
+      ]
+    },
+    {
+      "id": "stripe_setup",
+      "label": "Stripe setup and QA packets",
+      "status": "ready",
+      "evidence": [
+        "ops/stripe-click-setup.html",
+        "ops/stripe-payment-link-qa-console.html",
+        "ops/generated-launch-packets/2026-08-14_mcpscan-online_stripe-setup-packet.md",
+        "ops/generated-launch-packets/2026-08-14_mcpscan-online_stripe-products.csv",
+        "scripts/verify-stripe-checkout-qa.mjs"
+      ]
+    },
+    {
+      "id": "public_value_return",
+      "label": "Public-value return handoff",
+      "status": "ready",
+      "evidence": [
+        "ops/founder-return-packet.html",
+        "ops/founder-status-console.html",
+        "docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md",
+        "scripts/apply-founder-return-packet.mjs",
+        "scripts/run-post-click-verification.mjs"
+      ]
+    },
+    {
+      "id": "first_revenue_runway",
+      "label": "First revenue runway",
+      "status": "ready",
+      "evidence": [
+        "scripts/open-first-revenue-runway.mjs",
+        "ops/first-10-outbound-approval-console.html",
+        "sales/first-10-route-approval-packet-2026-08-14.md",
+        "sales/reply-to-close-packet.md",
+        "sales/daily-revenue-command.md"
+      ]
+    },
+    {
+      "id": "delivery_system",
+      "label": "Paid audit delivery system",
+      "status": "ready",
+      "evidence": [
+        "ops/paid-audit-handoff-builder.html",
+        "ops/delivery-console.html",
+        "scripts/run-delivery-dry-run.mjs",
+        "delivery/customer-workspace-template/report-template.md",
+        "delivery/customer-workspace-template/buyer-facing-summary.md"
+      ]
+    },
+    {
+      "id": "custom_domain_live",
+      "label": "Custom domain live",
+      "status": "founder_click_required",
+      "evidence": [
+        "landing/CNAME",
+        "ops/domain-mailbox-purchase-packet.html"
+      ],
+      "remainingAction": "Buy or connect the custom domain, then add the public domain value through the return flow."
+    },
+    {
+      "id": "mailbox_live",
+      "label": "Mailbox and aliases live",
+      "status": "founder_click_required",
+      "evidence": [
+        "ops/domain-email-dns-console.html",
+        "scripts/verify-domain-email-dns.mjs"
+      ],
+      "remainingAction": "Create the matching mailbox and aliases, then verify MX, SPF, DKIM, and DMARC after propagation."
+    },
+    {
+      "id": "stripe_links_live",
+      "label": "Live Stripe Payment Links",
+      "status": "founder_click_required",
+      "evidence": [
+        "ops/stripe-click-setup.html",
+        "ops/stripe-payment-link-qa-console.html",
+        "scripts/verify-stripe-links.mjs"
+      ],
+      "remainingAction": "Create the three live Stripe Payment Links and return only public buy.stripe.com URLs."
+    },
+    {
+      "id": "security_contact_live",
+      "label": "Security contact updated",
+      "status": "founder_click_required",
+      "evidence": [
+        "SECURITY.md",
+        "ops/founder-return-packet.html"
+      ],
+      "remainingAction": "Replace placeholder contact with the purchased-domain mailbox after the mailbox exists."
+    }
+  ]
+}
