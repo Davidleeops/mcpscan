@@ -108,7 +108,7 @@
 
       .step {
         display: grid;
-        grid-template-columns: 40px 1fr auto;
+        grid-template-columns: 40px minmax(0, 1fr);
         gap: 14px;
         align-items: start;
         padding: 14px;
@@ -167,7 +167,11 @@
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
-        justify-content: flex-end;
+        justify-content: flex-start;
+      }
+
+      .step > .actions {
+        grid-column: 2 / -1;
       }
 
       .copybox {
@@ -233,6 +237,10 @@
           justify-content: start;
         }
 
+        .step > .actions {
+          grid-column: auto;
+        }
+
         .status {
           white-space: normal;
         }
@@ -272,14 +280,13 @@
                 <div class="num">1</div>
                 <div>
                   <h3>Buy the domain <span class="tag good">recommended</span></h3>
-                  <p>Trust lane: buy <strong>trymcpscan.com</strong> if Spaceship confirms normal .com pricing. Use <strong>getmcpscan.com</strong> if the first pick is unavailable or premium-priced.</p>
-                  <p>Cheap validation lane: search <strong>getmcpscan.xyz</strong> first for the better renewal tradeoff. Use <strong>mcpscan.site</strong> only if the lowest first-year cart total matters more than buyer trust.</p>
+                  <p>Cheap validation lane: search <strong>mcpscan.site</strong> first if the cart is near $1 and the higher renewal is accepted. Search <strong>getmcpscan.xyz</strong> if renewal tradeoff matters more.</p>
+                  <p>Trust lane: use <strong>trymcpscan.com</strong> only if the buyer-trust bump is worth the extra spend.</p>
                 </div>
                 <div class="actions">
-                  <a class="button" href="https://www.spaceship.com/domain-search/?query=trymcpscan.com" target="_blank" rel="noreferrer">Search trymcpscan.com</a>
-                  <a class="button secondary" href="https://www.spaceship.com/domain-search/?query=getmcpscan.com" target="_blank" rel="noreferrer">Search getmcpscan.com</a>
+                  <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscan.site" target="_blank" rel="noreferrer">Search near-dollar .site</a>
                   <a class="button secondary" href="https://www.spaceship.com/domain-search/?query=getmcpscan.xyz" target="_blank" rel="noreferrer">Search cheap .xyz</a>
-                  <a class="button secondary" href="https://www.spaceship.com/domain-search/?query=mcpscan.site" target="_blank" rel="noreferrer">Search lowest .site</a>
+                  <a class="button secondary" href="https://www.spaceship.com/domain-search/?query=trymcpscan.com" target="_blank" rel="noreferrer">Search trust .com</a>
                   <a class="button secondary" href="https://www.spaceship.com/domain-search/?query=getmcpscan.online" target="_blank" rel="noreferrer">Search .online</a>
                   <a class="button secondary" href="domain-email-dns-console.html" target="_blank" rel="noreferrer">DNS console</a>
                 </div>
@@ -425,7 +432,7 @@
         <aside class="stack">
           <section class="decision">
             <h2>Decision</h2>
-            <p><strong>Choose the lane before buying.</strong> Use trymcpscan.com for the fastest credible trust path, getmcpscan.xyz for the cheap validation lane, or mcpscan.site only for the lowest first-year cart total.</p>
+            <p><strong>Choose the lane before buying.</strong> Use mcpscan.site for the near-dollar path, getmcpscan.xyz if renewal matters more, or trymcpscan.com only if trust is worth the extra spend.</p>
           </section>
 
           <section class="decision">

@@ -17,6 +17,7 @@
     "launch:bundle": "node scripts/build-static-launch-bundle.mjs",
     "launch:open": "node scripts/open-launch-cockpit.mjs",
     "launch:open-founder": "node scripts/open-founder-clicks.mjs",
+    "launch:prepare-cheap": "node scripts/prepare-cheap-launch-packets.mjs",
     "launch:dns-packet": "node scripts/build-domain-dns-packet.mjs",
     "launch:stripe-packet": "node scripts/build-stripe-setup-packet.mjs",
     "launch:verify-stripe": "node scripts/verify-stripe-links.mjs",

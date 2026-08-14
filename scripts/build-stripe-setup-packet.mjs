@@ -179,7 +179,7 @@ const packet = [
   "Enterprise Readiness: {{enterprise_readiness_stripe_payment_link}}",
   "",
   "Approved action:",
-  "Apply these links to the public landing page, update the public contact email, add the custom domain file, update security/contact references, run verification, commit, and push.",
+  "Apply these links to the public landing page, update the public contact email, add the custom domain file, update security/contact references, and run verification. Commit and push require separate approval after verification.",
   "",
   "I also approve keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval.",
   "```",

@@ -20,6 +20,12 @@ For the founder-only click path:
 npm run launch:open-founder
 ```
 
+To prebuild the default cheap-lane DNS and Stripe packets:
+
+```text
+npm run launch:prepare-cheap
+```
+
 ## Current Reality
 
 MCPScan is a real opportunity, but the strongest wedge is not "generic AI security platform." The strongest first-revenue offer is:

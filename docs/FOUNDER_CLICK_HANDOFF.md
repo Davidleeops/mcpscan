@@ -16,6 +16,12 @@ One-command launcher:
 npm run launch:open-founder
 ```
 
+Prebuild the cheap-lane DNS and Stripe packets:
+
+```text
+npm run launch:prepare-cheap
+```
+
 ## Sequence
 
 1. Clear the GitHub billing lock.

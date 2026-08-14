@@ -18,6 +18,12 @@ For the founder-only click path:
 npm run launch:open-founder
 ```
 
+To prebuild the default cheap-lane DNS and Stripe packets:
+
+```text
+npm run launch:prepare-cheap
+```
+
 It points to every founder click gate:
 
 1. Domain and email DNS console
