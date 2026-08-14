@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan First 10 Outbound Approval</title>
+    <style>
+      :root { color-scheme: light; --ink: #14171a; --muted: #5b6470; --line: #d7dde3; --panel: #ffffff; --soft: #f5f7f9; --accent: #0b6bcb; --good: #0f7b4f; --warn: #9a5a00; --danger: #aa2b2b; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--soft); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 48px; }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { font-size: clamp(32px, 5vw, 58px); line-height: 1; margin-bottom: 12px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      h3 { font-size: 16px; margin-bottom: 8px; }
+      p, li, td { color: var(--muted); line-height: 1.5; }
+      .stack { display: grid; gap: 16px; }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+      section, article { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+      .wide { grid-column: 1 / -1; }
+      .ready { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .warn { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .danger { border-left: 4px solid var(--danger); background: #fff6f6; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+      a.button, button.copy { display: inline-flex; min-height: 38px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 12px; color: var(--accent); background: #ffffff; font-weight: 700; text-decoration: none; cursor: pointer; }
+      a.button.primary { color: #ffffff; background: var(--accent); }
+      table { border-collapse: collapse; width: 100%; }
+      th, td { border-top: 1px solid var(--line); padding: 10px 8px; text-align: left; vertical-align: top; }
+      th { color: var(--ink); }
+      pre { margin: 10px 0 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; }
+      .tag { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 12px; line-height: 1; padding: 5px 8px; }
+      .tag.good { border-color: #a8d8c0; color: var(--good); }
+      @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .wide { grid-column: auto; } .actions { justify-content: start; } }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>First 10 Outbound Approval</h1>
+        <p>Use this to approve the first revenue push. It stages the ten best buyer lanes and exact draft copy. It does not send anything.</p>
+        <div class="actions"><a class="button primary" href="../sales/first-10-outbound-approval-packet.md">Open packet</a><a class="button" href="outbound-approval-console.html">Copy console</a></div>
+      </header>
+      <section class="danger"><h2>Approval Rule</h2><p>No external message can be sent until the exact recipient and exact final content are approved in the same turn. This page is preparation only.</p></section>
+      <section class="ready"><h2>Revenue Target</h2><p>Sell the first MCP Launch Audit at <strong>$1,500</strong>. Promise a fixed 48-hour readiness report after payment and safe intake.</p></section>
+      <section class="wide"><h2>First 10 Lanes</h2><table><tr><th>#</th><th>Lane</th><th>Buyer</th><th>Offer</th></tr><tr><td>1</td><td>GitHub Copilot Enterprise MCP admins</td><td>AppSec or VP Engineering</td><td>MCP Enterprise Readiness Audit</td></tr><tr><td>2</td><td>GitHub MCP Server users</td><td>DevSecOps or platform engineering</td><td>MCP Launch Audit</td></tr><tr><td>3</td><td>Slack Enterprise Grid MCP users</td><td>IT security or collaboration admin</td><td>MCP Enterprise Readiness Audit</td></tr><tr><td>4</td><td>Atlassian Cloud or Rovo users</td><td>Atlassian admin or EngOps</td><td>MCP Enterprise Readiness Audit</td></tr><tr><td>5</td><td>Claude Code enterprise teams</td><td>Engineering leadership or AppSec</td><td>MCP Launch Audit</td></tr><tr><td>6</td><td>Cursor Teams or Enterprise users</td><td>AI devtools owner or AppSec</td><td>MCP Launch Audit</td></tr><tr><td>7</td><td>Cloudflare MCP users</td><td>Platform engineering or cloud security</td><td>MCP Enterprise Readiness Audit</td></tr><tr><td>8</td><td>Stripe MCP users</td><td>Payments engineering or security</td><td>MCP Enterprise Readiness Audit</td></tr><tr><td>9</td><td>Supabase MCP users</td><td>Startup CTO or platform engineering</td><td>MCP Launch Audit</td></tr><tr><td>10</td><td>PagerDuty MCP users</td><td>SRE leadership or security</td><td>MCP Enterprise Readiness Audit</td></tr></table></section>
+      <div class="grid">
+        <article><h2>Email Draft</h2><p><span class="tag good">Default</span></p><pre id="email-draft">Subject: MCP readiness check before agent rollout
+
+Hi {{first_name}},
+
+I am reaching out because teams enabling MCP for {{tool_or_platform}} are starting to hit the same security question: which servers and tools are safe enough to approve before access expands?
+
+MCPScan runs a fixed-scope readiness audit for that moment. We inventory MCP servers and configs, classify read/write/destructive tools, check auth and secrets exposure, review approval drift, and deliver an AppSec-ready report with practical remediation steps.
+
+The usual fit is a 48-hour MCP Launch Audit at $1,500.
+
+Worth sending the one-page scope so you can decide if this is relevant for {{company}}?
+
+{{sender_name}}</pre><div class="actions"><button class="copy" data-copy-target="email-draft">Copy email</button></div></article>
+        <article><h2>Approval Prompt</h2><p>Paste this before any send happens.</p><pre id="approval-prompt">Please approve or revise this outbound message. I will not send anything unless you approve the exact recipient and exact final text in this same turn.
+
+Channel: {{Email or LinkedIn}}
+Recipient: {{name}}, {{title}}, {{company}}, {{contact}}
+Message:
+{{paste exact final message}}</pre><div class="actions"><button class="copy" data-copy-target="approval-prompt">Copy approval prompt</button></div></article>
+      </div>
+      <section class="wide warn"><h2>Seven-Day Throughput</h2><p>Day 1 clears gates and approves the first 10. Day 2 sends and stages 20 more. Day 3 follows up and posts useful proof. Days 4 and 5 close and deliver the first paid audit. Days 6 and 7 convert lessons into better proof and repeat.</p></section>
+    </main>
+    <script>
+      for (const button of document.querySelectorAll("[data-copy-target]")) {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          await navigator.clipboard.writeText(target.textContent.trim());
+          const label = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = label; }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>

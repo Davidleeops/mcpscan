@@ -173,20 +173,22 @@
           <p>Use this after buying the domain and mailbox. It gives you the exact GitHub Pages and Spacemail records to copy into Spaceship DNS.</p>
         </div>
         <div class="actions">
-          <a class="button primary" href="https://www.spaceship.com/domain-search/?query=mcpscanhq.com" target="_blank" rel="noreferrer">Buy/Search Domain</a>
+          <a class="button primary" href="https://www.spaceship.com/domain-search/?query=mcpscan.xyz" target="_blank" rel="noreferrer">Search mcpscan.xyz</a>
+          <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscanhq.com" target="_blank" rel="noreferrer">Search .com backup</a>
           <a class="button" href="https://www.spaceship.com/business-email/" target="_blank" rel="noreferrer">Open Spacemail</a>
         </div>
       </header>
 
       <section class="decision">
         <h2>Launch Choice</h2>
-        <p>Use <strong>mcpscanhq.com</strong> as the primary domain if it is available at standard pricing. Create one mailbox first: <strong>hello@mcpscanhq.com</strong>.</p>
+        <p>Use <strong>mcpscan.xyz</strong> if it is available for $1 to $3 and not premium-priced. Use <strong>mcpscanhq.com</strong> as the credibility backup if the cheap exact brand is unavailable. Create one mailbox first: <strong>hello@the chosen domain</strong>.</p>
+        <div class="actions"><a class="button" href="../docs/DOMAIN_AND_MAILBOX_DECISION.md">Open domain decision</a></div>
       </section>
 
       <div class="grid">
         <article>
           <h2>GitHub Pages DNS</h2>
-          <p>For the apex domain <code>mcpscanhq.com</code>, add these A records in Spaceship DNS.</p>
+          <p>For the apex domain, add these A records in Spaceship DNS. Replace the examples with the domain you bought, such as <code>mcpscan.xyz</code> or <code>mcpscanhq.com</code>.</p>
           <table>
             <tr><th>Type</th><th>Host</th><th>Value</th></tr>
             <tr><td>A</td><td>@</td><td><code>185.199.108.153</code></td></tr>
@@ -229,10 +231,10 @@ TXT @ "v=spf1 include:spf.spacemail.com ~all"</pre>
       <section class="wide warning">
         <h2>After DNS Saves</h2>
         <ol>
-          <li>Run the approved launch-link command after Stripe links exist so <code>landing/CNAME</code> becomes <code>mcpscanhq.com</code>.</li>
-          <li>In GitHub Pages settings, set the custom domain to <code>mcpscanhq.com</code>.</li>
+          <li>Run the approved launch-link command after Stripe links exist so <code>landing/CNAME</code> becomes the domain you bought.</li>
+          <li>In GitHub Pages settings, set the custom domain to the chosen domain.</li>
           <li>Wait for DNS checks, then enable or confirm HTTPS enforcement.</li>
-          <li>Verify <code>https://mcpscanhq.com</code>, <code>https://mcpscanhq.com/secure-intake.html</code>, and <code>hello@mcpscanhq.com</code>.</li>
+          <li>Verify the live homepage, secure intake page, and matching hello mailbox for the chosen domain.</li>
         </ol>
       </section>
 
