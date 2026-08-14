@@ -8,6 +8,7 @@ const root = process.cwd();
 const date = new Date().toISOString().slice(0, 10);
 const dryRunRoot = fs.mkdtempSync(path.join(os.tmpdir(), "mcpscan-delivery-dry-run."));
 const customer = "Sample Buyer Co";
+const packageName = "MCP Launch Audit";
 const fixture = path.join(root, "packages", "cli", "test", "fixtures", "commercial-risk-config.json");
 const cli = path.join(root, "packages", "cli", "dist", "index.js");
 
@@ -46,17 +47,41 @@ if (!fs.existsSync(cli)) {
   run("npm", ["run", "build"]);
 }
 
+const packet = path.join(dryRunRoot, "approved-paid-audit-handoff.txt");
+const privateOutput = path.join(dryRunRoot, "private-output");
+
+fs.writeFileSync(
+  packet,
+  [
+    "I approve creating this MCPScan paid audit handoff.",
+    "",
+    `Customer: ${customer}`,
+    `Package: ${packageName}`,
+    "Technical contact: buyer@example.com",
+    "Payment reference: pi_dry_run_12345",
+    `Date: ${date}`,
+    "",
+    "Approved action:",
+    "Create the private customer workspace and first paid audit work order outside the public MCPScan repo. Do not store customer secrets in the public repo.",
+    ""
+  ].join("\n"),
+  "utf8"
+);
+
 run("node", [
-  "scripts/create-customer-workspace.mjs",
-  "--customer",
-  customer,
-  "--date",
-  date,
+  "scripts/create-paid-audit-handoff.mjs",
+  "--file",
+  packet,
   "--root",
-  dryRunRoot
+  privateOutput
 ]);
 
-const workspace = path.join(dryRunRoot, `${date}_sample-buyer-co`, "customer-workspace");
+const outputStem = `${date}_sample-buyer-co_mcp-launch-audit`;
+const workspace = path.join(privateOutput, "workspaces", `${date}_sample-buyer-co`, "customer-workspace");
+const workOrder = path.join(privateOutput, "work-orders", outputStem, "FIRST_PAID_AUDIT_WORK_ORDER.md");
+const handoffManifest = path.join(privateOutput, `${outputStem}_handoff-manifest.json`);
+const pipelineStatusJson = path.join(privateOutput, "pipeline-status", `${outputStem}_pipeline-status.json`);
+const pipelineStatusCsv = path.join(privateOutput, "pipeline-status", `${outputStem}_pipeline-status.csv`);
 const sanitizedConfig = path.join(workspace, "01-sanitized-configs", "sanitized-mcp-config.json");
 const jsonReport = path.join(workspace, "03-scan-output", "mcpscan-results.json");
 const sarifReport = path.join(workspace, "03-scan-output", "mcpscan-results.sarif");
@@ -101,13 +126,18 @@ run("node", [...baseScanArgs, "--format", "sarif", "--output", sarifReport], { c
 run("node", [...baseScanArgs, "--format", "html", "--output", htmlReport], { capture: true });
 run("node", [...baseScanArgs, "--format", "markdown", "--output", markdownReport], { capture: true });
 
-for (const file of [sanitizedConfig, intake, jsonReport, sarifReport, htmlReport, markdownReport]) {
+for (const file of [workOrder, handoffManifest, pipelineStatusJson, pipelineStatusCsv, sanitizedConfig, intake, jsonReport, sarifReport, htmlReport, markdownReport]) {
   assertFile(file);
 }
 
 const parsed = JSON.parse(fs.readFileSync(jsonReport, "utf8"));
+const status = JSON.parse(fs.readFileSync(pipelineStatusJson, "utf8"));
 if (parsed.summary.totalChecks !== 22) {
   fail(`Expected 22 checks, got ${parsed.summary.totalChecks}`);
+}
+
+if (status.deliveryStatus !== "Workspace created" || status.paymentStatus !== "Paid") {
+  fail("Pipeline status does not confirm paid workspace creation.");
 }
 
 if (!fs.readFileSync(htmlReport, "utf8").includes("Dry-Run Launch Audit")) {
@@ -133,6 +163,10 @@ fs.writeFileSync(
     "- 03-scan-output/mcpscan-results.sarif",
     "- 04-report/report.html",
     "- 04-report/findings.md",
+    "- private handoff manifest",
+    "- private pipeline status JSON",
+    "- private pipeline status CSV",
+    "- first paid audit work order",
     "",
     "## Verification",
     "",

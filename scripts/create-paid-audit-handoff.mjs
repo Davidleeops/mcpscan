@@ -44,7 +44,26 @@ function validPackage(value) {
 }
 
 function validPayment(value) {
-  return /^(pi_|cs_|plink_|ch_|checkout_|receipt_|manual_|\{\{)/i.test(value) || /^https:\/\/\S+$/i.test(value);
+  return /^(pi_|cs_|plink_|ch_|checkout_|receipt_|manual_)/i.test(value) || /^https:\/\/\S*(stripe|receipt|invoice|checkout)\S*$/i.test(value);
+}
+
+function validDate(value) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const parsed = new Date(`${value}T00:00:00.000Z`);
+  return !Number.isNaN(parsed.getTime()) && parsed.toISOString().slice(0, 10) === value;
+}
+
+function hasPlaceholder(value) {
+  return /\{\{[^}]+\}\}/.test(value);
+}
+
+function slugify(value) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80);
 }
 
 function csvCell(value) {
@@ -88,10 +107,20 @@ const baseDir = assertOutsideRepo(args.root ?? path.join(os.homedir(), "MCPScan 
 const workspaceRoot = path.join(baseDir, "workspaces");
 const workOrderRoot = path.join(baseDir, "work-orders");
 const statusRoot = path.join(baseDir, "pipeline-status");
+const customerSlug = slugify(customer);
+const packageSlug = slugify(packageName);
+const outputStem = `${date}_${customerSlug}_${packageSlug}`;
 
 if (!validPackage(packageName)) throw new Error("Package must mention Quick, Launch, or Enterprise.");
 if (!validEmail(contact) && !/^https:\/\/\S+$/i.test(contact)) throw new Error("Technical contact must be an email address or HTTPS URL.");
 if (!validPayment(payment)) throw new Error("Payment reference must look like a Stripe reference, receipt URL, or approved manual reference.");
+if (!validDate(date)) throw new Error("Date must use YYYY-MM-DD.");
+if (!customerSlug) throw new Error("Customer must contain usable letters or numbers.");
+if (!packageSlug) throw new Error("Package must contain usable letters or numbers.");
+
+for (const [label, value] of Object.entries({ customer, packageName, contact, payment, date })) {
+  if (hasPlaceholder(value)) throw new Error(`Replace template placeholder before paid handoff: ${label}.`);
+}
 
 runNode([
   "scripts/create-customer-workspace.mjs",
@@ -178,10 +207,10 @@ const pipelineCsvRow = [
 
 fs.mkdirSync(baseDir, { recursive: true });
 fs.mkdirSync(statusRoot, { recursive: true });
-fs.writeFileSync(path.join(baseDir, `${date}_handoff-manifest.json`), `${JSON.stringify(manifest, null, 2)}\n`);
-fs.writeFileSync(path.join(statusRoot, `${date}_pipeline-status.json`), `${JSON.stringify(pipelineStatus, null, 2)}\n`);
+fs.writeFileSync(path.join(baseDir, `${outputStem}_handoff-manifest.json`), `${JSON.stringify(manifest, null, 2)}\n`);
+fs.writeFileSync(path.join(statusRoot, `${outputStem}_pipeline-status.json`), `${JSON.stringify(pipelineStatus, null, 2)}\n`);
 fs.writeFileSync(
-  path.join(statusRoot, `${date}_pipeline-status.csv`),
+  path.join(statusRoot, `${outputStem}_pipeline-status.csv`),
   `${pipelineCsvHeader.map(csvCell).join(",")}\n${pipelineCsvRow.map(csvCell).join(",")}\n`
 );
 

@@ -30,7 +30,7 @@ The first product to sell is a fixed-scope paid audit. The CLI and public sample
 | Gate | Founder Action | Console | Cost / Risk | Done When |
 | --- | --- | --- | --- | --- |
 | GitHub billing | Clear account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | Account/payment issue | CI and Pages jobs start and pass |
-| Domain | Buy `getmcpscan.com` if standard-priced | `ops/domain-email-dns-console.html` | About $9 first year if available | Domain resolves to GitHub Pages |
+| Domain | Buy `mcpscan.site` for the cheap launch lane or `getmcpscan.com` for trust | `ops/domain-email-dns-console.html` | About $1 to $3 for `.site`, about $9 for `.com` | Domain resolves to GitHub Pages |
 | Email | Create `audit@getmcpscan.com` with `security@` and `hello@` aliases | `ops/domain-email-dns-console.html` | About $18.88 for 2 years | MX, SPF, DKIM, and DMARC pass |
 | Stripe | Create 3 Payment Links | `ops/stripe-click-setup.html` | Stripe processing fees only | Quick, Launch, Enterprise links exist |
 | Link update | Apply real domain/email/Stripe links | `ops/approved-links-command-builder.html` | No spend | `npm run launch:verify -- --domain getmcpscan.com` has no checkout/domain warnings |

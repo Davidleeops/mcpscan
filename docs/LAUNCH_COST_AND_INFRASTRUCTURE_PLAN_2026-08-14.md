@@ -9,9 +9,10 @@ Use one public repo and one cheap domain for the first revenue push. Do not crea
 Best buy path:
 
 1. Buy `getmcpscan.com` if Spaceship shows standard `.com` pricing.
-2. If you want the cheapest credible option, buy `mcpscan.us`, but only after accepting the US nexus and registration privacy tradeoffs.
-3. Use `trymcpscan.com` only if `getmcpscan.com` is unavailable or premium-priced.
-4. Avoid `.online`, `.site`, `.shop`, and similar near-dollar names as the primary security brand.
+2. If the founder wants a `$1` to `$3` validation domain, buy `mcpscan.site` if Spaceship confirms promo pricing and the renewal tradeoff is accepted.
+3. If you want the cheapest credible non-promo fallback, buy `mcpscan.us`, but only after accepting the US nexus and registration privacy tradeoffs.
+4. Use `trymcpscan.com` only if `getmcpscan.com` is unavailable or premium-priced.
+5. Avoid `.shop` and similar commerce-oriented near-dollar names as the primary security brand.
 
 ## Why This Is The Right Cost Posture
 
@@ -33,6 +34,7 @@ That avoids paying for infrastructure before there is proof that buyers want the
 | GitHub repo | Existing public repo | $0 | $0 | Yes |
 | GitHub Pages | Existing Pages site | $0 | $0 | Yes |
 | Domain | `getmcpscan.com` | About $8.88 plus ICANN fee if standard-priced | About $9.98 plus ICANN fee | Yes |
+| Cheap validation domain | `mcpscan.site` | About $0.98 plus ICANN fee at Spaceship if promo-priced | About $21.38 plus ICANN fee | Yes, if cash cap is `$1` to `$3` |
 | Cheap credible fallback | `mcpscan.us` | About $4.14 | About $6.48 | Only if avoiding `.com` |
 | 98-cent promo TLD | `.online` or `.site` | About $0.98 plus ICANN fee | About $21.38 | No |
 | Ultra-cheap promo TLD | `.shop` | About $0.70 plus ICANN fee | About $31.05 | No |
@@ -106,16 +108,17 @@ Using the same GitHub account is fine. Using the same repo is the part to avoid.
 ## Purchase Instructions
 
 1. Open Spaceship domain search.
-2. Search `getmcpscan.com`.
-3. Buy only if it is standard-priced and not premium.
-4. If it is not available, search `trymcpscan.com`.
-5. If the goal is the absolute lowest credible spend, search `mcpscan.us`.
-6. Before buying `.us`, confirm the founder accepts US nexus eligibility and the registration privacy tradeoff.
-7. Buy one domain only.
-8. Buy one mailbox only.
-9. Create `audit@{{chosen_domain}}`.
-10. Add aliases for `hello@{{chosen_domain}}` and `security@{{chosen_domain}}`.
-11. Do not send outbound until MX, SPF, DKIM, and DMARC pass.
+2. If the approved budget cap is `$1` to `$3`, search `mcpscan.site` first.
+3. If the approved budget cap allows a stronger trust signal, search `getmcpscan.com`.
+4. Buy only if it is standard-priced and not premium.
+5. If it is not available, use the backup from `docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md`.
+6. If the goal is the absolute lowest credible non-promo spend, search `mcpscan.us`.
+7. Before buying `.us`, confirm the founder accepts US nexus eligibility and the registration privacy tradeoff.
+8. Buy one domain only.
+9. Buy one mailbox only.
+10. Create `audit@{{chosen_domain}}`.
+11. Add aliases for `hello@{{chosen_domain}}` and `security@{{chosen_domain}}`.
+12. Do not send outbound until MX, SPF, DKIM, and DMARC pass.
 
 ## After Purchase
 

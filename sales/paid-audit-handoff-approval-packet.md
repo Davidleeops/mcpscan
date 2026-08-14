@@ -41,10 +41,12 @@ npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --ro
 - first paid audit work order outside the public repo
 - handoff manifest outside the public repo
 - private pipeline status JSON and CSV outside the public repo
+- customer and package specific output filenames to prevent same-day overwrites
 
 ## Stop Conditions
 
 - Do not use this for unpaid prospects.
+- Do not use this with template placeholders still present.
 - Do not include Stripe secret keys.
 - Do not include production credentials, active tokens, customer data, private source code, or sensitive customer materials.
 - Do not start review work until client acceptance, authorization, and safe intake are complete.
