@@ -10,6 +10,8 @@ const sandbox = fs.mkdtempSync(path.join(os.tmpdir(), "mcpscan-return-apply-"));
 const filesToCopy = [
   "landing/index.html",
   "SECURITY.md",
+  "ops/founder-return-packet.sample.txt",
+  "scripts/apply-approved-launch-links.mjs",
   "docs/LAUNCH_CONTROL_ROOM.md",
   "docs/LANDING_PAGE.md",
   "sales/stripe-products.md",
@@ -44,17 +46,9 @@ function assertNotIncludes(file, marker) {
 for (const file of filesToCopy) copyIntoSandbox(file);
 
 const args = [
-  path.join(root, "scripts/apply-approved-launch-links.mjs"),
-  "--domain",
-  "mcpattest.dev",
-  "--email",
-  "security@mcpattest.dev",
-  "--quick",
-  "https://buy.stripe.com/mcpscanQuickAuditSample",
-  "--launch",
-  "https://buy.stripe.com/mcpscanLaunchAuditSample",
-  "--enterprise",
-  "https://buy.stripe.com/mcpscanEnterpriseReadinessSample"
+  path.join(root, "scripts/apply-founder-return-packet.mjs"),
+  "--file",
+  "ops/founder-return-packet.sample.txt"
 ];
 
 const child = spawnSync(process.execPath, args, { cwd: sandbox, encoding: "utf8" });
@@ -74,6 +68,14 @@ assertIncludes("SECURITY.md", "security@mcpattest.dev");
 assertIncludes("docs/LANDING_PAGE.md", "https://mcpattest.dev/");
 assertIncludes("sales/stripe-products.md", "https://mcpattest.dev/");
 assertIncludes("sales/one-page-scope.md", "https://mcpattest.dev/");
+
+const status = JSON.parse(readSandbox("ops/founder-approval-status.json"));
+if (status.mailProvider !== "zoho") {
+  throw new Error(`approval status mailProvider mismatch: ${status.mailProvider}`);
+}
+if (status.mailbox !== "security@mcpattest.dev") {
+  throw new Error(`approval status mailbox mismatch: ${status.mailbox}`);
+}
 
 fs.rmSync(sandbox, { recursive: true, force: true });
 

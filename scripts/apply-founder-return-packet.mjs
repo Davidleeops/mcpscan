@@ -45,6 +45,10 @@ function validStripeUrl(value) {
   return /^https:\/\/buy\.stripe\.com\/\S+$/i.test(value) && !/test_/i.test(value);
 }
 
+function validMailProvider(value) {
+  return ["zoho", "google", "spacemail"].includes(value);
+}
+
 function assertValid(label, value, test) {
   if (!test(value)) throw new Error(`Invalid ${label}: ${value}`);
 }
@@ -54,6 +58,7 @@ function writeApprovalStatus(values) {
     generatedFor: "MCPScan first revenue launch",
     updatedAt: new Date().toISOString(),
     domain: values.domain,
+    mailProvider: values.mailProvider,
     mailbox: values.email,
     auditAlias: values.audit,
     helloAlias: values.hello,
@@ -101,6 +106,7 @@ if (!input.includes("Apply these links to the public landing page")) {
 }
 
 const domain = requireMatch("domain", input, /^Domain:\s*(.+)$/m).toLowerCase();
+const mailProvider = (input.match(/^Mail provider:\s*(.+)$/m)?.[1]?.trim().toLowerCase()) ?? "zoho";
 const email = requireMatch("primary mailbox", input, /^Primary mailbox:\s*(.+)$/m);
 const audit = requireMatch("audit alias", input, /^Audit alias:\s*(.+)$/m);
 const hello = requireMatch("hello alias", input, /^Hello alias:\s*(.+)$/m);
@@ -109,6 +115,7 @@ const launch = requireMatch("Launch Audit link", input, /^Launch Audit:\s*(.+)$/
 const enterprise = requireMatch("Enterprise Readiness link", input, /^Enterprise Readiness:\s*(.+)$/m);
 
 assertValid("domain", domain, validDomain);
+assertValid("mail provider", mailProvider, validMailProvider);
 assertValid("primary mailbox", email, validEmail);
 assertValid("audit alias", audit, validEmail);
 assertValid("hello alias", hello, validEmail);
@@ -130,6 +137,7 @@ for (const [label, value] of Object.entries({ email, audit, hello })) {
 if (dryRun) {
   console.log("Founder return packet dry run passed.");
   console.log(`Domain: ${domain}`);
+  console.log(`Mail provider: ${mailProvider}`);
   console.log(`Security mailbox: ${email}`);
   console.log(`Audit alias: ${audit}`);
   console.log(`Hello alias: ${hello}`);
@@ -159,9 +167,10 @@ if (child.status !== 0) {
   process.exit(child.status ?? 1);
 }
 
-writeApprovalStatus({ domain, email, audit, hello, quick, launch, enterprise });
+writeApprovalStatus({ domain, mailProvider, email, audit, hello, quick, launch, enterprise });
 
 console.log("Parsed founder return packet.");
+console.log(`Mail provider: ${mailProvider}`);
 console.log(`Security mailbox: ${email}`);
 console.log(`Audit alias: ${audit}`);
 console.log(`Hello alias: ${hello}`);

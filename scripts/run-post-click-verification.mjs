@@ -53,7 +53,7 @@ if (!/^[a-z0-9.-]+\.[a-z]{2,}$/i.test(domain)) {
 
 const strict = args.strict === "true";
 const dkimSelector = args["dkim-selector"];
-const mailProvider = args["mail-provider"] ?? "zoho";
+const mailProvider = args["mail-provider"] ?? valueFromInput("Mail provider", input)?.toLowerCase() ?? "zoho";
 const applyReturnPacket = args.apply === "true";
 const qaFile = args["qa-file"];
 const skipDns = args["skip-dns"] === "true";

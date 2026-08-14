@@ -418,7 +418,9 @@ if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-retu
     "npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider",
     "npm run launch:publish-pages-fallback -- --wait true",
     "npm run launch:verify -- --domain",
-    "npm run launch:status:live"
+    "npm run launch:status:live",
+    "Mail provider:",
+    "mailProvider"
   ];
   const missingReturnReviewCommands = requiredReturnReviewCommands.filter((command) => !returnReview.includes(command));
   results.push(

@@ -2,6 +2,7 @@
   "generatedFor": "MCPScan first revenue launch",
   "updatedAt": "{{iso_timestamp}}",
   "domain": "{{chosen_domain}}",
+  "mailProvider": "{{zoho_or_google_or_spacemail}}",
   "mailbox": "security@{{chosen_domain}}",
   "auditAlias": "audit@{{chosen_domain}}",
   "helloAlias": "hello@{{chosen_domain}}",
