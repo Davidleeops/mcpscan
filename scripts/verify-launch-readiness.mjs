@@ -209,6 +209,26 @@ if (exists("SECURITY.md")) {
   );
 }
 
+const authorizationFiles = [
+  "README.md",
+  "landing/index.html",
+  "landing/secure-intake.html",
+  "docs/FIRST_REVENUE_BATTLECARD.md",
+  "docs/SAMPLE_AUDIT_SCOPE.md"
+];
+
+const missingAuthorizationLanguage = authorizationFiles.filter((file) => {
+  if (!exists(file)) return true;
+  const text = read(file).toLowerCase();
+  return !text.includes("authorized") && !text.includes("authorization");
+});
+
+results.push(
+  missingAuthorizationLanguage.length === 0
+    ? result("pass", "authorization-only promise", "public and operator artifacts mention authorization")
+    : result("fail", "authorization-only promise", missingAuthorizationLanguage.join(", "))
+);
+
 const urls = [
   `${baseUrl}/`,
   `${baseUrl}/sample-report.html`,

@@ -87,6 +87,7 @@ Ask these before proposing a package:
 - Do not accept secrets, production credentials, private configs, or final reports into the public repo.
 - Do not promise compliance certification.
 - Do not run exploit-style testing without explicit written authorization.
+- Do not review third-party systems, customer-owned environments, production assets, or private repositories unless the buyer confirms written authorization for the agreed scope.
 - Do not send external messages without exact recipient and exact content approval in the same turn.
 - Do not start the audit until payment and safe intake path are confirmed.
 

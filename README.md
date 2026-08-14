@@ -127,3 +127,5 @@ node packages/cli/dist/index.js scan packages/cli/test/fixtures/vulnerable-confi
 ```
 
 The CLI does not send scan results anywhere. The future dashboard should only receive reports through an explicit upload/API action.
+
+Use MCPScan only on systems, configurations, repositories, and MCP endpoints you own or are authorized to review.
