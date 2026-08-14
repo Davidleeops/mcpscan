@@ -20,7 +20,7 @@ After that message is approved, Codex can run the full post-click handoff:
 
 ```text
 npm run launch:open-return-review
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider {{zoho_or_google_or_spacemail}}
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 ```
 
 The approved return-packet command writes `ops/founder-approval-status.json` automatically. The filled tracker is ignored by git by default. Do not add passwords, API keys, mailbox credentials, Stripe secret keys, or customer data.
@@ -82,7 +82,7 @@ After founder clicks exist, apply the return packet, verify Stripe QA evidence, 
 
 ```text
 npm run launch:open-return-review
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider {{zoho_or_google_or_spacemail}}
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 npm run launch:status
 ```
 

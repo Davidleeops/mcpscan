@@ -38,13 +38,13 @@ Use this immediately after the founder account clicks. The goal is to give Codex
 5. Build and download the Stripe QA evidence JSON.
 6. Copy the one-paste post-click handoff packet from `ops/founder-return-packet.html`.
 7. Send Codex the approval message, the QA evidence file path, and the handoff packet.
-8. If DNS has propagated, include the chosen mail provider and DKIM selector if the mailbox provider shows one.
+8. Confirm the handoff packet includes the chosen mail provider. If DNS has propagated, also include the DKIM selector if the mailbox provider shows one.
 
 ## Codex Runs After Approval
 
 ```text
 npm run launch:open-return-review
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider {{zoho_or_google_or_spacemail}}
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 npm run launch:publish-pages-fallback -- --wait true
 npm run launch:verify -- --domain {{chosen_domain}}
 npm run launch:status:live
@@ -53,7 +53,7 @@ npm run launch:status:live
 If the mailbox provider provides a DKIM selector:
 
 ```text
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider {{zoho_or_google_or_spacemail}} --dkim-selector {{dkim_selector}}
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --dkim-selector {{dkim_selector}}
 ```
 
 ## Acceptance Proof
@@ -64,6 +64,7 @@ The return packet is usable when:
 - `npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status` passes.
 - `npm run launch:verify-return-qa -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json` passes.
 - `npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status` passes.
+- The post-click command reads `Mail provider` from the approved return packet.
 - `npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status` passes after DNS propagation.
 - `npm run launch:verify` has no checkout, custom-domain, or security-contact warnings after apply and deploy.
 

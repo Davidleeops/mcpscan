@@ -86,7 +86,7 @@ ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-products.csv
 Canonical post-click verification command:
 
 ```text
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider {{zoho_or_google_or_spacemail}}
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 ```
 
 ## Stop Conditions

@@ -415,7 +415,7 @@ if (exists("scripts/open-founder-clicks.mjs")) {
 if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-return-packet.html")) {
   const returnReview = `${read("scripts/open-founder-return-review.mjs")}\n${read("ops/founder-return-packet.html")}`;
   const requiredReturnReviewCommands = [
-    "npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider",
+    "npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true",
     "npm run launch:publish-pages-fallback -- --wait true",
     "npm run launch:verify -- --domain",
     "npm run launch:status:live",
