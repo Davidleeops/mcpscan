@@ -20,11 +20,11 @@ Best current positioning:
 | Deep source-backed market research | `npm run market:verify` checks the current market source files and URLs | Ready |
 | Buyer location research | `docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md`, `sales/buyer-intent-map-2026-08-14.md`, `sales/first-account-dossier-2026-08-14.md` | Ready |
 | Go-to-market plan | `docs/GO_TO_MARKET.md`, `docs/FIRST_REVENUE_BATTLECARD.md`, `sales/first-10-outbound-approval-packet.md` | Ready |
-| Full list of what must happen to get live | `docs/FINAL_FOUNDER_CLICK_PATH.md`, `docs/FOUNDER_CLICK_HANDOFF.md`, `docs/FOUNDER_RETURN_VALUES_CHECKLIST.md` | Ready |
-| Clickable founder path | `npm run launch:next`, `npm run launch:open-founder`, `ops/final-founder-click-console.html`, `ops/founder-click-handoff.html` | Ready |
-| Domain and mailbox packets | `ops/domain-mailbox-purchase-packet.html`, `ops/domain-email-dns-console.html`, `npm run launch:dns-packet` | Ready |
+| Full list of what must happen to get live | `docs/FINAL_FOUNDER_CLICK_PATH.md`, `docs/FOUNDER_CLICK_HANDOFF.md`, `docs/FOUNDER_RETURN_VALUES_CHECKLIST.md`, `ops/launch-day-runbook.html` | Ready |
+| Clickable founder path | `npm run launch:day`, `npm run launch:next`, `npm run launch:open-founder`, `ops/launch-day-runbook.html`, `ops/final-founder-click-console.html`, `ops/founder-click-handoff.html` | Ready |
+| Domain and mailbox packets | `ops/domain-mailbox-purchase-packet.html`, `ops/domain-email-dns-console.html`, `npm run launch:dns-packet`, `ops/generated-launch-packets/2026-08-14_mcpscan-online_dns-packet.md` | Ready |
 | Stripe setup packet | `ops/stripe-click-setup.html`, `npm run launch:stripe-packet`, `ops/stripe-payment-link-qa-console.html` | Ready |
-| Return packet after clicks | `ops/founder-return-packet.html`, `npm run launch:open-return-review`, `npm run launch:post-click-verify` | Ready |
+| Return packet after clicks | `ops/founder-return-packet.html`, `ops/founder-status-console.html`, `docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md`, `npm run launch:open-return-review`, `npm run launch:post-click-verify` | Ready |
 | First-revenue runway after live gates | `npm run launch:open-first-revenue`, `scripts/open-first-revenue-runway.mjs` | Ready |
 | Outbound approval path | `ops/first-10-outbound-approval-console.html`, `sales/first-10-recipient-approval-packet-2026-08-14.md`, `sales/first-10-route-approval-packet-2026-08-14.md` | Ready |
 | Pre-send safety gates | `npm run outbound:send-gates`, `scripts/verify-first-send-gates.mjs` | Ready |
@@ -37,20 +37,40 @@ Best current positioning:
 
 These are the only current launch blockers that require account owner authority or live purchased values:
 
-1. Create live Stripe Payment Links.
-2. Buy or connect the custom domain.
-3. Replace placeholder security contact with the purchased-domain mailbox.
+1. Buy or connect the custom domain.
+2. Create the matching mailbox and aliases.
+3. Create live Stripe Payment Links.
+4. Return only public values through `ops/founder-return-packet.html`, `ops/stripe-payment-link-qa-console.html`, and `ops/founder-status-console.html`.
+5. Replace placeholder security contact with the purchased-domain mailbox.
 
 GitHub Actions is also blocked by the account-side lock. It is not blocking the GitHub Pages fallback site, but it should be cleared so normal CI and Pages jobs resume.
+
+## Current Entry Point
+
+Use this command when the founder is ready to work through the remaining clicks:
+
+```text
+npm run launch:day
+```
+
+This opens the ordered launch-day runbook, domain and mailbox packet, Stripe setup and QA, return packet, public-safe status JSON builder, verification console, and first-revenue runway references. It opens surfaces only. It does not buy, publish, send, charge, or create customer files.
 
 ## Current Verification Command Set
 
 ```text
 npm run market:verify
 npm run writing:check
+npm run launch:day
 npm run launch:verify
 npm run launch:status
 npm run launch:open-first-revenue
+```
+
+Latest local readiness proof:
+
+```text
+npm run launch:verify
+Summary: 200 passed, 3 expected founder-click warnings, 0 failures.
 ```
 
 ## Stop Conditions
