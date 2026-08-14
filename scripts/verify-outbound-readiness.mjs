@@ -12,6 +12,7 @@ const requiredOutboundFiles = [
   "docs/APPROVED_REPLY_STAGING.md",
   "docs/APPROVED_SEND_LOGGING.md",
   "docs/FOLLOW_UP_APPROVAL_COMPOSER.md",
+  "docs/PRIVATE_REVENUE_SNAPSHOT.md",
   "sales/reply-to-close-packet.md",
   "sales/daily-revenue-command.md",
   "sales/first-10-contact-routes-2026-08-14.csv",
@@ -23,7 +24,8 @@ const requiredOutboundFiles = [
   "scripts/stage-approved-outbound.mjs",
   "scripts/stage-approved-reply.mjs",
   "scripts/log-approved-send.mjs",
-  "scripts/compose-follow-up-approval.mjs"
+  "scripts/compose-follow-up-approval.mjs",
+  "scripts/build-revenue-snapshot.mjs"
 ];
 const strict = process.argv.includes("--strict");
 const allowedChannels = new Set(["Email", "LinkedIn", "Contact form", "Warm intro", "Email or LinkedIn"]);

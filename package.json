@@ -34,6 +34,7 @@
     "typecheck": "npm run build -w @mcpscan/shared && npm run typecheck --workspaces --if-present",
     "writing:check": "node scripts/check-writing-rules.mjs",
     "gtm:verify": "node scripts/verify-gtm-claims.mjs",
+    "revenue:snapshot": "node scripts/build-revenue-snapshot.mjs",
     "delivery:workspace": "node scripts/create-customer-workspace.mjs",
     "delivery:work-order": "node scripts/create-first-paid-audit-work-order.mjs",
     "delivery:handoff": "node scripts/create-paid-audit-handoff.mjs",
