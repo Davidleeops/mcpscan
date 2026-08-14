@@ -37,6 +37,7 @@ const requiredFiles = [
   "scripts/open-paid-audit-handoff.mjs",
   "scripts/compose-post-payment-intake.mjs",
   "ops/paid-audit-handoff-builder.html",
+  "ops/findings-call-scheduler.html",
   "sales/paid-audit-handoff-approval-packet.md",
   "sales/payment-confirmation-evidence.template.json",
   "docs/PAID_AUDIT_RUNBOOK.md",
@@ -94,6 +95,18 @@ if (exists("sales/payment-confirmation-evidence.template.json")) {
 if (exists("delivery/customer-workspace-template/retention-and-deletion-log.md")) {
   const text = read("delivery/customer-workspace-template/retention-and-deletion-log.md").toLowerCase();
   results.push(text.includes("deletion confirmation") && text.includes("retention target") ? result("pass", "retention and deletion", "retention and deletion fields present") : result("fail", "retention and deletion", "missing retention fields"));
+}
+
+if (exists("ops/findings-call-scheduler.html")) {
+  const text = read("ops/findings-call-scheduler.html");
+  const requiredMarkers = [
+    "Booking link",
+    "Three time windows",
+    "Please do not send production credentials",
+    "Draft-Only Message"
+  ];
+  const missingMarkers = requiredMarkers.filter((marker) => !text.includes(marker));
+  results.push(missingMarkers.length === 0 ? result("pass", "findings call scheduler", "booking link and manual window paths present") : result("fail", "findings call scheduler", missingMarkers.join(", ")));
 }
 
 const scanRoots = ["docs", "delivery", "scripts", "sales", "ops"];

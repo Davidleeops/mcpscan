@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Findings Call Scheduler</title>
+    <style>
+      :root { color-scheme: light; --ink: #151719; --muted: #5b6470; --line: #d7dde3; --panel: #ffffff; --soft: #f5f7f9; --accent: #0b6bcb; --good: #0f7b4f; --warn: #9a5a00; --danger: #aa2b2b; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--soft); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 48px; }
+      h1, h2, p { margin-top: 0; }
+      h1 { font-size: clamp(32px, 5vw, 58px); line-height: 1; margin-bottom: 12px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      p, label, li { color: var(--muted); line-height: 1.5; }
+      section { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+      .stack { display: grid; gap: 16px; }
+      .grid { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .wide { grid-column: 1 / -1; }
+      .ready { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .warn { border-left: 4px solid var(--warn); background: #fff9ec; }
+      label { display: grid; gap: 6px; font-weight: 700; }
+      input, select, textarea { width: 100%; min-height: 42px; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); font: inherit; padding: 10px 12px; background: #ffffff; }
+      textarea { min-height: 92px; resize: vertical; }
+      input:focus, select:focus, textarea:focus { border-color: var(--accent); outline: 2px solid rgba(11, 107, 203, 0.16); }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+      a.button, button { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 12px; color: var(--accent); background: #ffffff; font-weight: 700; text-decoration: none; cursor: pointer; }
+      a.button.primary, button.primary { color: #ffffff; background: var(--accent); }
+      pre { margin: 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; min-height: 230px; }
+      .status { min-height: 24px; color: var(--muted); }
+      .status.good { color: var(--good); }
+      .status.bad { color: var(--danger); }
+      @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } .wide { grid-column: auto; } }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>Findings Call Scheduler</h1>
+        <p>Build the exact post-report scheduling message. This page does not send email, create calendar invites, or publish links.</p>
+        <div class="actions">
+          <a class="button primary" href="customer-comms-console.html">Customer comms</a>
+          <a class="button" href="delivery-console.html">Delivery console</a>
+          <a class="button" href="../sales/findings-call-scheduling.md">Scheduling policy</a>
+        </div>
+      </header>
+
+      <section class="warn">
+        <h2>Send Boundary</h2>
+        <p>Use this only after the report is ready. Do not send production credentials, active tokens, customer data, private configs, or sensitive evidence in calendar invites or ordinary email threads.</p>
+      </section>
+
+      <section>
+        <h2>Call Details</h2>
+        <div class="grid">
+          <label>Customer first name<input id="firstName" value="there" autocomplete="off"></label>
+          <label>Customer company<input id="company" value="customer" autocomplete="off"></label>
+          <label>Package
+            <select id="package">
+              <option value="launch">MCP Launch Audit, 30 minutes</option>
+              <option value="enterprise">MCP Enterprise Readiness Audit, 45 minutes</option>
+              <option value="addon">Additional remediation call, 45 minutes</option>
+              <option value="manual">Manually approved call</option>
+            </select>
+          </label>
+          <label>Scheduling mode
+            <select id="mode">
+              <option value="link">Booking link</option>
+              <option value="windows">Three time windows</option>
+            </select>
+          </label>
+          <label class="wide">Booking link<input id="bookingLink" placeholder="https://cal.com/... or https://calendly.com/..."></label>
+          <label>Window 1<input id="window1" placeholder="Tuesday 10:00 AM ET"></label>
+          <label>Window 2<input id="window2" placeholder="Wednesday 1:30 PM ET"></label>
+          <label>Window 3<input id="window3" placeholder="Thursday 3:00 PM ET"></label>
+          <label class="wide">Top findings to prepare<textarea id="findings">Critical and High findings from the report, remediation owners, and re-scan evidence needed.</textarea></label>
+        </div>
+        <div class="actions">
+          <button id="build" class="primary" type="button">Build message</button>
+          <button id="copy" type="button">Copy message</button>
+        </div>
+        <p id="status" class="status"></p>
+      </section>
+
+      <section class="ready">
+        <h2>Draft-Only Message</h2>
+        <pre id="output">Fill the fields, then build the message.</pre>
+      </section>
+
+      <section>
+        <h2>Call Agenda</h2>
+        <ol>
+          <li>Confirm scope reviewed.</li>
+          <li>Walk through the executive summary.</li>
+          <li>Review Critical and High findings first.</li>
+          <li>Identify remediation owners.</li>
+          <li>Confirm evidence needed for re-scan.</li>
+          <li>Agree on next step: re-scan, add-on, or closeout.</li>
+        </ol>
+      </section>
+    </main>
+
+    <script>
+      const fields = {
+        firstName: document.getElementById("firstName"),
+        company: document.getElementById("company"),
+        package: document.getElementById("package"),
+        mode: document.getElementById("mode"),
+        bookingLink: document.getElementById("bookingLink"),
+        window1: document.getElementById("window1"),
+        window2: document.getElementById("window2"),
+        window3: document.getElementById("window3"),
+        findings: document.getElementById("findings")
+      };
+      const output = document.getElementById("output");
+      const status = document.getElementById("status");
+
+      function callLength() {
+        if (fields.package.value === "enterprise" || fields.package.value === "addon") return "45 minutes";
+        if (fields.package.value === "manual") return "the approved duration";
+        return "30 minutes";
+      }
+
+      function validBookingLink(value) {
+        return /^https:\/\/\S+$/i.test(value);
+      }
+
+      function build() {
+        const values = Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input.value.trim()]));
+        const errors = [];
+        if (!values.firstName) errors.push("Customer first name is required");
+        if (!values.company) errors.push("Customer company is required");
+        if (values.mode === "link" && !validBookingLink(values.bookingLink)) errors.push("Booking link must be an HTTPS URL");
+        if (values.mode === "windows") {
+          for (const key of ["window1", "window2", "window3"]) {
+            if (!values[key]) errors.push(key + " is required for manual windows");
+          }
+        }
+        if (errors.length > 0) {
+          status.textContent = errors.join(". ");
+          status.className = "status bad";
+          output.textContent = "Fix the fields above, then build again.";
+          return;
+        }
+
+        const agenda = [
+          "1. scope reviewed",
+          "2. executive summary",
+          "3. Critical/High findings",
+          "4. remediation owners",
+          "5. re-scan evidence and next steps"
+        ].join("\n");
+
+        const invite = values.mode === "link"
+          ? `For the findings call, please use this link to choose a time:\n${values.bookingLink}`
+          : `I do not want to slow this down with scheduling friction. Do any of these windows work for the findings call?\n\n1. ${values.window1}\n2. ${values.window2}\n3. ${values.window3}`;
+
+        output.textContent = `Subject: MCPScan findings call for ${values.company}
+
+Hi ${values.firstName},
+
+The MCPScan report is ready for review.
+
+${invite}
+
+Planned call length: ${callLength()}.
+
+Suggested attendees: the technical owner for the MCP setup, anyone responsible for AppSec/platform approval, and whoever owns the remediation work.
+
+Agenda:
+${agenda}
+
+I will come prepared to discuss:
+${values.findings}
+
+Please do not send production credentials, active tokens, customer data, private configs, or sensitive files in the calendar invite or email thread.
+
+Thanks,
+MCPScan`;
+        status.textContent = "Draft message built. Review before sending.";
+        status.className = "status good";
+      }
+
+      document.getElementById("build").addEventListener("click", build);
+      document.getElementById("copy").addEventListener("click", async () => {
+        await navigator.clipboard.writeText(output.textContent.trim());
+        status.textContent = "Copied.";
+        status.className = "status good";
+      });
+    </script>
+  </body>
+</html>

@@ -188,6 +188,7 @@ const requiredFiles = [
   "ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-products.csv",
   "ops/delivery-console.html",
   "ops/customer-comms-console.html",
+  "ops/findings-call-scheduler.html",
   "ops/discovery-console.html",
   "ops/pipeline-console.html",
   "ops/prospect-sourcing-console.html",
