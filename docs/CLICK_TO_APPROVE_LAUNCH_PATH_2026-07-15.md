@@ -30,16 +30,16 @@ Not live yet:
 
 Recommended domain:
 
-1. `mcpscanhq.com`
-2. backup: `mcpscanhq.dev`
+1. `getmcpscan.com`
+2. backup: `trymcpscan.com`
 3. backup: `mcpscanlab.dev`
 
 Click path:
 
 1. Open Spaceship domain search.
-2. Search `mcpscanhq.com`.
+2. Search `getmcpscan.com`.
 3. If available around $8.88 first year and not premium-priced, buy it.
-4. If unavailable or premium-priced, search `mcpscanhq.dev`.
+4. If unavailable or premium-priced, search `trymcpscan.com`.
 5. If unavailable or premium-priced, search `mcpscanlab.dev`.
 6. Do not buy `.online` or `.site` as the primary brand unless the only priority is lowest first-year price.
 
@@ -122,8 +122,8 @@ Automation command after all approved values exist:
 
 ```bash
 npm run launch:apply-links -- \
-  --domain mcpscanhq.com \
-  --email hello@mcpscanhq.com \
+  --domain getmcpscan.com \
+  --email hello@getmcpscan.com \
   --quick https://buy.stripe.com/quick-link \
   --launch https://buy.stripe.com/launch-link \
   --enterprise https://buy.stripe.com/enterprise-link
@@ -144,7 +144,7 @@ Click path:
 
 | Approval | Current best choice | Expected first cost | Owner click needed | Codex does after approval |
 | --- | --- | ---: | --- | --- |
-| Domain/email | `mcpscanhq.com` + Spacemail Pro | ~$23 total | [Issue #2](https://github.com/Davidleeops/mcpscan/issues/2) | Configure Pages DNS docs, update canonical URLs and contact CTAs |
+| Domain/email | `getmcpscan.com` + Spacemail Pro | ~$23 total | [Issue #2](https://github.com/Davidleeops/mcpscan/issues/2) | Configure Pages DNS docs, update canonical URLs and contact CTAs |
 | Stripe | 3 one-time Payment Links | Stripe fees only | [Issue #3](https://github.com/Davidleeops/mcpscan/issues/3) | Replace CTAs, verify checkout links |
 | npm | `mcpscan` + `@mcpscan/shared` | $0 | [Issue #5](https://github.com/Davidleeops/mcpscan/issues/5) | Publish, smoke test, tag release |
 | Landing CTAs | Checkout + email | $0 | [Issue #4](https://github.com/Davidleeops/mcpscan/issues/4) | Push updated landing and verify Pages |

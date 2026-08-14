@@ -31,19 +31,19 @@ npm run launch:verify
 Custom-domain launch state, after domain/DNS:
 
 ```text
-npm run launch:verify -- --domain mcpscanhq.com
+npm run launch:verify -- --domain getmcpscan.com
 ```
 
 Strict final launch check:
 
 ```text
-npm run launch:verify -- --domain mcpscanhq.com --strict
+npm run launch:verify -- --domain getmcpscan.com --strict
 ```
 
 ## Hard Rules
 
 - Do not send external messages without same-turn approval of exact recipient and exact content.
 - Do not store customer secrets, private configs, customer data, or final private reports in the public repo.
-- Do not send outbound from `hello@mcpscanhq.com` until MX, SPF, and DKIM pass.
+- Do not send outbound from `hello@getmcpscan.com` until MX, SPF, and DKIM pass.
 - Do not publish npm packages until npm login and 2FA/OTP are confirmed.
 

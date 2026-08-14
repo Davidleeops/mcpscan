@@ -240,19 +240,19 @@ TXT @ "v=spf1 include:spf.spacemail.com ~all"</pre>
 
       <section class="wide danger">
         <h2>Do Not Skip</h2>
-        <p>Do not publish outbound emails from <code>hello@mcpscanhq.com</code> until MX, SPF, and DKIM pass. If DKIM is not configured, deliverability will be weaker and security buyers may notice.</p>
+        <p>Do not publish outbound emails from the new <code>hello@</code> mailbox until MX, SPF, and DKIM pass. If DKIM is not configured, deliverability will be weaker and security buyers may notice.</p>
       </section>
 
       <section class="wide">
         <h2>Verification Commands</h2>
         <p>Use these after DNS has had time to propagate.</p>
         <button class="copy" data-copy-target="verify-commands">Copy verification commands</button>
-        <pre id="verify-commands">dig +short mcpscanhq.com A
-dig +short www.mcpscanhq.com CNAME
-dig +short mcpscanhq.com MX
-dig +short mcpscanhq.com TXT
-curl -L -I https://mcpscanhq.com/
-curl -L -I https://mcpscanhq.com/secure-intake.html</pre>
+        <pre id="verify-commands">dig +short getmcpscan.com A
+dig +short www.getmcpscan.com CNAME
+dig +short getmcpscan.com MX
+dig +short getmcpscan.com TXT
+curl -L -I https://getmcpscan.com/
+curl -L -I https://getmcpscan.com/secure-intake.html</pre>
       </section>
     </main>
 

@@ -4,15 +4,15 @@
 
 If the goal is the fastest credible launch domain, buy:
 
-1. `mcpscanhq.com`
-2. `mcpscanhq.dev`
+1. `getmcpscan.com`
+2. `trymcpscan.com`
 3. `mcpscanlab.dev`
 
-`mcpscanhq.com` is the best trust/cost balance if the registrar cart confirms
+`getmcpscan.com` is the best trust/cost balance if the registrar cart confirms
 standard pricing. It keeps the MCPScan brand, uses the highest-trust TLD for
 buyers, and avoids the renewal jump that comes with many ultra-cheap TLDs.
 
-Use `mcpscanhq.dev` if you want the clearest developer-tool signal and are fine
+Use `trymcpscan.com` if you want the clearest developer-tool signal and are fine
 with a non-`.com` primary domain. `.dev` requires HTTPS, which is fine for GitHub
 Pages but should be enabled before public launch.
 

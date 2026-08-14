@@ -166,11 +166,11 @@
         <div class="form">
           <label>
             Domain
-            <input id="domain" value="mcpscanhq.com" autocomplete="off">
+            <input id="domain" value="getmcpscan.com" autocomplete="off">
           </label>
           <label>
             Email
-            <input id="email" value="hello@mcpscanhq.com" autocomplete="off">
+            <input id="email" value="hello@getmcpscan.com" autocomplete="off">
           </label>
           <label>
             Quick Audit Payment Link
@@ -233,8 +233,8 @@
       function buildCommand() {
         const values = Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input.value.trim()]));
         const errors = [];
-        if (!validDomain(values.domain)) errors.push("domain must look like mcpscanhq.com");
-        if (!validEmail(values.email)) errors.push("email must look like hello@mcpscanhq.com");
+        if (!validDomain(values.domain)) errors.push("domain must look like getmcpscan.com");
+        if (!validEmail(values.email)) errors.push("email must look like hello@getmcpscan.com");
         for (const key of ["quick", "launch", "enterprise"]) {
           if (!validUrl(values[key])) errors.push(`${key} link must be an https:// URL`);
         }

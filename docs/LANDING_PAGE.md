@@ -35,8 +35,8 @@ The fastest free production URL is GitHub Pages:
 
 Good custom-domain options once purchased:
 
-- `https://mcpscanhq.com`
-- `https://mcpscanhq.dev`
+- `https://getmcpscan.com`
+- `https://trymcpscan.com`
 - `https://mcpscanlab.dev`
 
 The page is static HTML/CSS only, so it can also be hosted on Netlify, Vercel,
@@ -93,8 +93,8 @@ After domain/email/Stripe approval, update the static site with:
 
 ```bash
 npm run launch:apply-links -- \
-  --domain mcpscanhq.com \
-  --email hello@mcpscanhq.com \
+  --domain getmcpscan.com \
+  --email hello@getmcpscan.com \
   --quick https://buy.stripe.com/quick-link \
   --launch https://buy.stripe.com/launch-link \
   --enterprise https://buy.stripe.com/enterprise-link

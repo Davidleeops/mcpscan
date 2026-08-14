@@ -8,13 +8,13 @@ Avoid choosing a domain only because it costs about $1. A cheap first-year TLD c
 
 Better first choices:
 
-- `mcpscanhq.com`
-- `mcpscanhq.dev`
+- `getmcpscan.com`
+- `trymcpscan.com`
 - `mcpscanlab.dev`
 - `mcpsecure.app`
 - `mcpscan.tools`
 
-Recommended buy: `mcpscanhq.com`, if the checkout confirms it is a standard
+Recommended buy: `getmcpscan.com`, if the checkout confirms it is a standard
 registration. It is not the cheapest first-year option, but it is the cleanest
 brand/trust choice for a security audit offer and the renewal is low.
 
