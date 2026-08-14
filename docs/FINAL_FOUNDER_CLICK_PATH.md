@@ -14,7 +14,7 @@ After the external account clicks, use `ops/founder-return-packet.html` to paste
 
 After that message is approved, Codex can run `npm run launch:apply-return-packet -- --file /path/to/approved-return-packet.txt`.
 
-Optional status tracker: copy `ops/founder-approval-status.template.json` to `ops/founder-approval-status.json` after the founder clicks and fill only public-safe values. The filled tracker is ignored by git by default. Do not add passwords, API keys, mailbox credentials, Stripe secret keys, or customer data.
+The approved return-packet command writes `ops/founder-approval-status.json` automatically. The filled tracker is ignored by git by default. Do not add passwords, API keys, mailbox credentials, Stripe secret keys, or customer data.
 
 ## Rule
 
@@ -60,10 +60,10 @@ After Stripe links exist, verify them before applying public links:
 npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt
 ```
 
-After founder clicks exist, track public-safe approval status:
+After founder clicks exist, apply the return packet and refresh public-safe approval status:
 
 ```text
-cp ops/founder-approval-status.template.json ops/founder-approval-status.json
+npm run launch:apply-return-packet -- --file /path/to/approved-return-packet.txt
 npm run launch:status
 ```
 

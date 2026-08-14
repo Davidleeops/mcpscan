@@ -44,6 +44,12 @@ Founder approval status template:
 ops/founder-approval-status.template.json
 ```
 
+The filled local tracker is written automatically by:
+
+```text
+npm run launch:apply-return-packet -- --file /path/to/approved-return-packet.txt
+```
+
 Hard rules:
 
 - Do not send external messages without same-turn approval of exact recipient and exact final content.
