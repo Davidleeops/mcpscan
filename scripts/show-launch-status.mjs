@@ -178,6 +178,7 @@ const gates = [
   { label: "Filled approval status", state: approvalStatus.state, detail: approvalStatus.detail },
   ...approvalTrackerGates(filledApprovalStatus),
   gate("Billing unblock path", exists("ops/github-actions-billing-console.html") && exists("docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md"), "GitHub billing guide exists"),
+  gate("Actions rerun helper", exists("scripts/rerun-github-actions-after-unlock.mjs"), "npm run launch:rerun-actions re-runs failed CI and Pages jobs after billing unlock"),
   ...(liveActions ? [{ label: "GitHub Actions live", state: liveActions.state, detail: liveActions.detail }] : []),
   gate("Market source verifier", exists("scripts/verify-market-sources.mjs") && exists("ops/market-research-refresh-console.html"), "npm run market:verify available before outbound"),
   gate("Domain purchase packet", exists("ops/domain-mailbox-purchase-packet.html") && exists("docs/DOMAIN_MAILBOX_PURCHASE_PACKET.md"), "founder can approve one domain and one mailbox"),

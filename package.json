@@ -29,6 +29,7 @@
     "launch:verify-stripe-qa": "node scripts/verify-stripe-checkout-qa.mjs",
     "launch:verify-dns": "node scripts/verify-domain-email-dns.mjs",
     "launch:post-click-verify": "node scripts/run-post-click-verification.mjs",
+    "launch:rerun-actions": "node scripts/rerun-github-actions-after-unlock.mjs",
     "launch:verify": "node scripts/verify-launch-readiness.mjs",
     "launch:open-public-review": "node scripts/open-public-launch-review.mjs",
     "launch:stage-public-post": "node scripts/stage-approved-public-launch-post.mjs",

@@ -25,6 +25,18 @@ GitHub is currently refusing to start MCPScan CI and Pages jobs because the acco
 4. Re-run the latest failed CI workflow.
 5. Re-run the latest failed Deploy Landing Page workflow if a public landing change was included.
 
+After the billing lock is cleared, Codex can do the re-run and wait step:
+
+```text
+npm run launch:rerun-actions
+```
+
+Dry-run the target selection before the account click if needed:
+
+```text
+npm run launch:rerun-actions -- --dry-run
+```
+
 ## Acceptance Proof
 
 The unblock is complete when:
