@@ -95,6 +95,7 @@ const gates = [
   gate("Billing unblock path", exists("ops/github-actions-billing-console.html") && exists("docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md"), "GitHub billing guide exists"),
   ...(liveActions ? [{ label: "GitHub Actions live", state: liveActions.state, detail: liveActions.detail }] : []),
   gate("Market source verifier", exists("scripts/verify-market-sources.mjs") && exists("ops/market-research-refresh-console.html"), "npm run market:verify available before outbound"),
+  gate("Stripe verifier", exists("scripts/verify-stripe-links.mjs"), "npm run launch:verify-stripe available after Payment Links exist"),
   gate("Stripe links", !checkoutPlaceholders, checkoutPlaceholders ? "placeholder checkout links remain" : "live checkout links appear applied"),
   gate("Custom domain", customDomain, customDomain ? read("landing/CNAME").trim() : "no CNAME yet"),
   gate("Security contact", securityContact, securityContact ? "custom contact appears configured" : "placeholder contact remains"),

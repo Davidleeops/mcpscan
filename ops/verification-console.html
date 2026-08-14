@@ -144,6 +144,13 @@
       </section>
 
       <section>
+        <h2>Stripe Payment Link Verification</h2>
+        <p>Run after the three Stripe Payment Links are created and before applying them to the public landing page.</p>
+        <button class="copy" data-copy-target="stripe-command">Copy command</button>
+        <pre id="stripe-command">npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK</pre>
+      </section>
+
+      <section>
         <h2>Market Source Verification</h2>
         <p>Run before outbound batches or public market claims.</p>
         <button class="copy" data-copy-target="market-command">Copy command</button>

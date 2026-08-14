@@ -34,7 +34,7 @@
       <header>
         <h1>Stripe Link QA</h1>
         <p>Use this after creating the three Stripe Payment Links and before applying them to the public landing page.</p>
-        <div class="actions"><a class="button primary" href="https://dashboard.stripe.com/payment-links" target="_blank" rel="noreferrer">Open Stripe links</a><a class="button" href="../sales/stripe-payment-link-approval-packet-2026-08-14.md">Open packet</a><a class="button" href="approved-links-command-builder.html">Command builder</a></div>
+        <div class="actions"><a class="button primary" href="https://dashboard.stripe.com/payment-links" target="_blank" rel="noreferrer">Open Stripe links</a><a class="button" href="../sales/stripe-payment-link-approval-packet-2026-08-14.md">Open packet</a><a class="button" href="../docs/STRIPE_PAYMENT_LINK_VERIFICATION.md">Verification guide</a><a class="button" href="approved-links-command-builder.html">Command builder</a></div>
       </header>
       <section class="warn"><h2>Do This Before Public Launch</h2><p>All three payment links must pass this checklist. Keep test links off the public landing page.</p></section>
       <section><h2>Checklist</h2><div class="checks" id="checks"><label><input type="checkbox"> All three products exist: Quick, Launch, Enterprise.</label><label><input type="checkbox"> Prices are $750, $1,500, and $3,500, one-time.</label><label><input type="checkbox"> Links are live mode, not test mode.</label><label><input type="checkbox"> Automatic receipts are enabled.</label><label><input type="checkbox"> Customer name, email, company, and billing address are collected.</label><label><input type="checkbox"> Primary technical contact email is required.</label><label><input type="checkbox"> Checkout redirects to thank-you page.</label><label><input type="checkbox"> Terms, privacy, refund, and secure intake URLs are available.</label><label><input type="checkbox"> Descriptions say delivery begins after intake is complete.</label><label><input type="checkbox"> Refund terms match the public refund policy.</label></div><p id="status" class="status bad">Not ready yet.</p></section>
@@ -45,6 +45,7 @@ Launch Audit: {{launch_payment_link}}
 Enterprise Audit: {{enterprise_payment_link}}
 Domain: {{chosen_domain}}
 Email: {{chosen_email}}</pre></section>
+      <section><h2>Verification Command</h2><button data-copy-target="verify-command">Copy command</button><pre id="verify-command">npm run launch:verify-stripe -- --quick {{quick_payment_link}} --launch {{launch_payment_link}} --enterprise {{enterprise_payment_link}}</pre></section>
     </main>
     <script>
       const boxes = [...document.querySelectorAll("input[type=checkbox]")];

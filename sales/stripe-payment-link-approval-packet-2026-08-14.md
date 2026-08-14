@@ -77,7 +77,13 @@ Each link must pass every item:
 
 ## Apply Links Command
 
-After all three Stripe links pass QA, use:
+After all three Stripe links pass QA, verify the link format:
+
+```text
+npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK
+```
+
+Then use:
 
 ```text
 npm run launch:apply-links -- --domain getmcpscan.com --email audit@getmcpscan.com --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK

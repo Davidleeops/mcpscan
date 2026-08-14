@@ -181,7 +181,7 @@
           <h1>Stripe Click Setup</h1>
           <p>Create the three MCPScan Payment Links, then paste the generated URLs into the launch-link command. This page does not create Stripe products automatically.</p>
         </div>
-        <div class="actions"><a class="button" href="https://dashboard.stripe.com/payment-links/create" target="_blank" rel="noreferrer">Open Stripe Payment Links</a><a class="button" href="stripe-payment-link-qa-console.html">QA links</a><a class="button" href="../sales/stripe-payment-link-approval-packet-2026-08-14.md">Approval packet</a></div>
+        <div class="actions"><a class="button" href="https://dashboard.stripe.com/payment-links/create" target="_blank" rel="noreferrer">Open Stripe Payment Links</a><a class="button" href="stripe-payment-link-qa-console.html">QA links</a><a class="button" href="../docs/STRIPE_PAYMENT_LINK_VERIFICATION.md">Verification guide</a><a class="button" href="../sales/stripe-payment-link-approval-packet-2026-08-14.md">Approval packet</a></div>
       </header>
 
       <div class="grid">
@@ -262,6 +262,7 @@
           <p>Paste the generated Payment Link URLs into this command. Keep the placeholders until the real Stripe links exist.</p>
           <a class="button" href="approved-links-command-builder.html">Open command builder</a>
           <button class="copy" data-copy="npm run launch:apply-links -- --domain getmcpscan.com --email audit@getmcpscan.com --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK">Copy launch-link command</button>
+          <button class="copy" data-copy="npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK">Copy verify command</button>
           <pre>npm run launch:apply-links -- --domain getmcpscan.com --email audit@getmcpscan.com --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK</pre>
         </section>
       </div>

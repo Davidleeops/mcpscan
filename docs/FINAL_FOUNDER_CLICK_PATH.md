@@ -21,7 +21,7 @@ Do not send external messages, start a live audit, publish packages, or accept s
 | 0 | GitHub billing | Clear the account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | CI and Pages jobs start and pass |
 | 1 | Domain | Buy `getmcpscan.com` if standard-priced, or `mcpscan.us` as the cheapest credible fallback | `ops/domain-email-dns-console.html` | Domain exists in registrar account |
 | 2 | Mailbox | Create `audit@{{chosen_domain}}` with `security@` and `hello@` aliases | `ops/domain-email-dns-console.html` | MX, SPF, DKIM, and DMARC pass |
-| 3 | Stripe | Create the three Payment Links | `ops/stripe-click-setup.html` | Quick, Launch, and Enterprise checkout links exist |
+| 3 | Stripe | Create the three Payment Links and verify their format | `ops/stripe-click-setup.html` | Quick, Launch, and Enterprise checkout links exist and `npm run launch:verify-stripe` passes |
 | 4 | Apply links | Paste real links into the command builder | `ops/approved-links-command-builder.html` | Landing page no longer uses placeholder checkout links |
 | 5 | Verify | Run launch verification | `ops/verification-console.html` | `npm run launch:verify -- --domain {{chosen_domain}}` has no domain or checkout warnings |
 | 6 | npm | Publish packages if desired | `ops/npm-publish-console.html` | npm shows version `0.1.0` for both packages |
@@ -44,6 +44,12 @@ After DNS records exist, verify the custom domain and mailbox records:
 
 ```text
 npm run launch:verify-dns -- --domain {{chosen_domain}}
+```
+
+After Stripe links exist, verify them before applying public links:
+
+```text
+npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt
 ```
 
 Before outbound, refresh the market source proof:
