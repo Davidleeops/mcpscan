@@ -128,6 +128,7 @@
         <h2>Operator Files</h2>
         <div class="actions">
           <a class="button" href="../sales/post-payment-handoff.md" target="_blank" rel="noreferrer">Post-payment handoff</a>
+          <a class="button" href="../sales/paid-audit-handoff-approval-packet.md" target="_blank" rel="noreferrer">Paid handoff approval</a>
           <a class="button" href="../sales/findings-call-scheduling.md" target="_blank" rel="noreferrer">Findings-call scheduling</a>
           <a class="button" href="../sales/customer-communications.md" target="_blank" rel="noreferrer">Customer messages</a>
           <a class="button" href="delivery-console.html">Delivery console</a>
@@ -139,12 +140,19 @@
           <h2>Payment Confirmed Checklist</h2>
           <ol>
             <li>Confirm package and customer email from Stripe.</li>
-            <li>Create private customer workspace outside the public repo.</li>
-            <li>Copy the customer workspace template into the private workspace.</li>
+            <li>Approve the paid handoff packet.</li>
+            <li>Run the one-pass handoff command outside the public repo.</li>
             <li>Send Payment Received / Intake Start.</li>
             <li>Use a private handoff path before accepting sensitive materials.</li>
             <li>Mark the pipeline row as Paid.</li>
           </ol>
+        </section>
+
+        <section>
+          <h2>One-Pass Handoff</h2>
+          <p>Use after payment clears and exact handoff values are approved.</p>
+          <button class="copy" data-copy-target="handoff-command">Copy command</button>
+          <pre id="handoff-command">npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt</pre>
         </section>
 
         <section>

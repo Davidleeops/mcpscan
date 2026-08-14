@@ -1,0 +1,49 @@
+# Paid Audit Handoff Approval Packet
+
+Status: draft only. Use after Stripe confirms payment and before any customer material is accepted.
+
+## Approval Rule
+
+Do not create a live customer handoff or start delivery until payment is confirmed and this exact packet is approved.
+
+## Exact Approval Text
+
+```text
+I approve creating this MCPScan paid audit handoff.
+
+Customer: {{customer_company}}
+Package: {{package_name}}
+Technical contact: {{technical_contact_email_or_secure_url}}
+Payment reference: {{stripe_payment_reference_or_receipt_url}}
+Date: {{yyyy-mm-dd}}
+
+Approved action:
+Create the private customer workspace and first paid audit work order outside the public MCPScan repo. Do not store customer secrets in the public repo.
+```
+
+## Command
+
+After approval, save the approved text outside the repo and run:
+
+```text
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
+```
+
+Optional output root:
+
+```text
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --root "/path/outside/public/repo"
+```
+
+## What It Creates
+
+- private customer workspace outside the public repo
+- first paid audit work order outside the public repo
+- handoff manifest outside the public repo
+
+## Stop Conditions
+
+- Do not use this for unpaid prospects.
+- Do not include Stripe secret keys.
+- Do not include production credentials, active tokens, customer data, private source code, or sensitive customer materials.
+- Do not start review work until client acceptance, authorization, and safe intake are complete.

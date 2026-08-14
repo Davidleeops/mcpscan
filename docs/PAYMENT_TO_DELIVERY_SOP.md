@@ -30,13 +30,19 @@ Include:
 
 ## Step 3: Create Private Workspace
 
-Run:
+Default one-pass handoff after approval:
+
+```text
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
+```
+
+The handoff creates the private workspace and first paid audit work order outside the public MCPScan repo.
+
+Fallback workspace-only command:
 
 ```text
 npm run delivery:workspace -- --customer "{{customer_company}}" --date YYYY-MM-DD
 ```
-
-The workspace must be outside the public MCPScan repo.
 
 ## Step 4: Complete Client Acceptance
 

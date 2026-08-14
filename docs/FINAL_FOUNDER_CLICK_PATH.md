@@ -91,6 +91,12 @@ After all 10 exact route messages are approved in the same turn, stage the whole
 npm run outbound:stage-route-packet -- --file /path/to/approved-first-10-route-packet.txt
 ```
 
+After first payment clears and exact handoff values are approved:
+
+```text
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
+```
+
 ## Current Local Proof Until Billing Is Fixed
 
 Fresh remote snapshot verification passes with:

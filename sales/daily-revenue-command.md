@@ -79,6 +79,12 @@ npm run outbound:route-packet -- --sender "{{sender_name}}"
 After first payment:
 
 ```text
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
+```
+
+Fallback separate commands:
+
+```text
 npm run delivery:work-order -- --customer "{{customer_company}}" --package "{{package_name}}" --contact "{{technical_contact}}" --payment "{{stripe_reference}}"
 npm run delivery:workspace -- --customer "{{customer_company}}"
 ```

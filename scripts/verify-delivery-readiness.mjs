@@ -30,6 +30,8 @@ const requiredFiles = [
   "docs/SEVERITY_RUBRIC.md",
   "docs/PAYMENT_TO_DELIVERY_SOP.md",
   "scripts/create-first-paid-audit-work-order.mjs",
+  "scripts/create-paid-audit-handoff.mjs",
+  "sales/paid-audit-handoff-approval-packet.md",
   "docs/PAID_AUDIT_RUNBOOK.md",
   "delivery/customer-workspace-template/client-acceptance.md",
   "delivery/customer-workspace-template/evidence-register.csv",

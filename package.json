@@ -33,6 +33,7 @@
     "gtm:verify": "node scripts/verify-gtm-claims.mjs",
     "delivery:workspace": "node scripts/create-customer-workspace.mjs",
     "delivery:work-order": "node scripts/create-first-paid-audit-work-order.mjs",
+    "delivery:handoff": "node scripts/create-paid-audit-handoff.mjs",
     "delivery:verify": "node scripts/verify-delivery-readiness.mjs",
     "delivery:dry-run": "node scripts/run-delivery-dry-run.mjs",
     "launch:status": "node scripts/show-launch-status.mjs",
