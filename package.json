@@ -25,6 +25,7 @@
     "launch:stripe-packet": "node scripts/build-stripe-setup-packet.mjs",
     "launch:verify-stripe": "node scripts/verify-stripe-links.mjs",
     "launch:verify-return-packet": "node scripts/apply-founder-return-packet.mjs --dry-run true --file ops/founder-return-packet.sample.txt",
+    "launch:simulate-return-apply": "node scripts/simulate-founder-return-apply.mjs",
     "launch:verify-stripe-qa": "node scripts/verify-stripe-checkout-qa.mjs",
     "launch:verify-dns": "node scripts/verify-domain-email-dns.mjs",
     "launch:post-click-verify": "node scripts/run-post-click-verification.mjs",

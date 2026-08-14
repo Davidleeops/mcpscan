@@ -257,6 +257,7 @@ const requiredFiles = [
   "scripts/create-first-paid-audit-work-order.mjs",
   "scripts/create-paid-audit-handoff.mjs",
   "scripts/apply-founder-return-packet.mjs",
+  "scripts/simulate-founder-return-apply.mjs",
   "scripts/build-domain-dns-packet.mjs",
   "scripts/build-stripe-setup-packet.mjs",
   "scripts/prepare-cheap-launch-packets.mjs",
