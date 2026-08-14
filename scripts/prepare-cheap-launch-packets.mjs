@@ -50,7 +50,7 @@ function writeCsv(file, rows) {
 }
 
 const args = parseArgs(process.argv.slice(2));
-const domain = (args.domain ?? "mcpscan.site").trim().toLowerCase();
+const domain = (args.domain ?? "mcpscan.online").trim().toLowerCase();
 const mailbox = (args.mailbox ?? `security@${domain}`).trim();
 const mailProvider = (args["mail-provider"] ?? "zoho").trim().toLowerCase();
 const date = args.date ?? new Date().toISOString().slice(0, 10);
@@ -85,7 +85,7 @@ const mailProviders = {
 };
 
 if (!validDomain(domain)) {
-  console.error("Domain must look like mcpscan.site.");
+  console.error("Domain must look like mcpscan.online.");
   process.exit(1);
 }
 

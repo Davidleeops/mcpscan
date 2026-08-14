@@ -23,6 +23,7 @@ const reviewSurfaces = [
 const externalUrls = [
   "https://www.spaceship.com/domain-search/?query=mcpattest.dev",
   "https://www.spaceship.com/domain-search/?query=getmcpscan.com",
+  "https://www.spaceship.com/domain-search/?query=mcpscan.online",
   "https://www.spaceship.com/domain-search/?query=mcpscan.site",
   "https://dashboard.stripe.com/payment-links"
 ];

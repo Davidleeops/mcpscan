@@ -37,20 +37,21 @@ Aliases: audit@getmcpscan.xyz, hello@getmcpscan.xyz
 Near-dollar validation option:
 
 ```text
-Domain: mcpscan.site
-Primary mailbox: security@mcpscan.site
-Aliases: audit@mcpscan.site, hello@mcpscan.site
+Domain: mcpscan.online
+Primary mailbox: security@mcpscan.online
+Aliases: audit@mcpscan.online, hello@mcpscan.online
 ```
 
-Use the cheap validation lane only if the founder wants to keep the domain purchase near `$1` to `$3` and accepts the weaker trust signal. Search `.xyz` first for the best cheap renewal tradeoff, `.site` second for the lowest first-year total, then `.online`. Avoid `.shop` as the primary MCPScan domain.
+Use the cheap validation lane only if the founder wants to keep the domain purchase near `$1` to `$3` and accepts the weaker trust signal. Search `mcpscan.online` first for the current near-dollar lane, `mcpscan.site` second if the .online cart fails, then `getmcpscan.xyz` if renewal posture matters more than the absolute lowest first-year price. Avoid `.shop` as the primary MCPScan domain.
 
 ## Current Cart Rules
 
 - Search `getmcpscan.com` first unless the domain budget is strictly capped near `$1` to `$3`.
 - Search `mcpattest.dev` first if you are open to a cleaner security brand.
-- Search `getmcpscan.xyz` first if the strict cash cap is `$1` to `$3` and you want the cleaner renewal tradeoff.
-- Search `mcpscan.site` if the strict cash cap is near `$1` and the higher renewal is acceptable.
-- If `.xyz` or `.site` jumps in cart pricing, search `mcpscan.online`, `getmcpscan.site`, then `getmcpscan.online`.
+- Search `mcpscan.online` first if the strict cash cap is near `$1` and the higher renewal is acceptable.
+- Search `mcpscan.site` if the `.online` cart fails, is unavailable, or is materially worse.
+- Search `getmcpscan.xyz` if the strict cash cap is `$1` to `$3` and you want the cleaner renewal tradeoff.
+- If `.online` or `.site` jumps in cart pricing, search `getmcpscan.site`, then `getmcpscan.online`.
 - Confirm the renewal price before purchase. `.site` and `.online` can renew near the low `$20s`, while `.xyz` is currently lower.
 - Use promo codes only if the cart accepts them. Official Spaceship pages showed `.site` and `.online` at `$0.98` plus the ICANN fee on 2026-08-14, and `.xyz` at `$1.86` with `$12.52` renewal. The Spaceship cart is the final source.
 - Buy the domain at Spaceship if the cart confirms standard `.com` pricing.

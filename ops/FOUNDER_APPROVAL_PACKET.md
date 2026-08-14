@@ -28,7 +28,7 @@ To prebuild the default cheap-lane DNS and Stripe packets:
 npm run launch:prepare-cheap
 ```
 
-That command writes the DNS packet, Stripe setup packet, DNS records CSV, and Stripe products CSV into `ops/generated-launch-packets/` for the default `mcpscan.site` lane. Open `ops/cheap-launch-packet-console.html` to use the generated files from one screen.
+That command writes the DNS packet, Stripe setup packet, DNS records CSV, and Stripe products CSV into `ops/generated-launch-packets/` for the default `mcpscan.online` lane. Open `ops/cheap-launch-packet-console.html` to use the generated files from one screen.
 
 After the founder clicks, download the exact approval message from `ops/founder-return-packet.html` and the checkout QA evidence JSON from `ops/stripe-payment-link-qa-console.html`.
 

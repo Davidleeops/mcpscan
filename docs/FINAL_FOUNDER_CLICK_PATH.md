@@ -36,7 +36,7 @@ First revenue does not require npm publishing. Sell and deliver the `$1,500` MCP
 | Order | Gate | Founder Action | Console | Done When |
 | --- | --- | --- | --- | --- |
 | 0 | GitHub billing | Clear the account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | CI and Pages jobs start and pass |
-| 1 | Domain | Buy `getmcpscan.com` if Spaceship shows standard `.com` pricing. Use `mcpattest.dev` if you approve the cleaner brand. Use `getmcpscan.xyz` or `mcpscan.site` only if the hard cash cap matters more than buyer trust | `ops/domain-mailbox-purchase-packet.html` | Domain exists in registrar account |
+| 1 | Domain | Buy `getmcpscan.com` if Spaceship shows standard `.com` pricing. Use `mcpattest.dev` if you approve the cleaner brand. Use `mcpscan.online` or `getmcpscan.xyz` only if the hard cash cap matters more than buyer trust | `ops/domain-mailbox-purchase-packet.html` | Domain exists in registrar account |
 | 2 | Mailbox | Create `security@{{chosen_domain}}` with `audit@` and `hello@` aliases. Use Zoho Mail Lite for cheapest credible email, Google Workspace for highest buyer trust, or Spacemail for one-vendor convenience | `ops/domain-email-dns-console.html` | MX, SPF, DKIM, and DMARC pass for the selected provider |
 | 3 | Stripe | Generate setup packet, create three Payment Links, verify format and checkout QA evidence | `ops/stripe-click-setup.html`, `ops/stripe-payment-link-qa-console.html` | Quick, Launch, and Enterprise checkout links exist, `npm run launch:verify-stripe` passes, and `npm run launch:verify-stripe-qa` passes |
 | 4 | Apply links | Approve exact return packet values | `ops/founder-return-packet.html` | Landing page no longer uses placeholder checkout links |

@@ -1,0 +1,16 @@
+system,type,host,value,priority,notes
+GitHub Pages,A,@,185.199.108.153,,Apex domain
+GitHub Pages,A,@,185.199.109.153,,Apex domain
+GitHub Pages,A,@,185.199.110.153,,Apex domain
+GitHub Pages,A,@,185.199.111.153,,Apex domain
+GitHub Pages,AAAA,@,2606:50c0:8000::153,,Apex domain
+GitHub Pages,AAAA,@,2606:50c0:8001::153,,Apex domain
+GitHub Pages,AAAA,@,2606:50c0:8002::153,,Apex domain
+GitHub Pages,AAAA,@,2606:50c0:8003::153,,Apex domain
+GitHub Pages,CNAME,www,davidleeops.github.io,,www subdomain
+Zoho Mail,MX,@,mx.zoho.com,10,Mail exchanger
+Zoho Mail,MX,@,mx2.zoho.com,20,Mail exchanger
+Zoho Mail,MX,@,mx3.zoho.com,50,Mail exchanger
+Zoho Mail,TXT,@,v=spf1 include:zohomail.com ~all,,SPF
+Zoho Mail,TXT,_dmarc,v=DMARC1; p=none; rua=mailto:security@mcpscan.online,,DMARC
+Zoho Mail,TXT,{{zoho_dkim_selector}}._domainkey,{{zoho_dkim_value}},,Replace with exact Zoho DKIM value

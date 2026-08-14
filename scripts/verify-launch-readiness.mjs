@@ -226,6 +226,7 @@ const requiredFiles = [
   "docs/DOMAIN_MAILBOX_PURCHASE_PACKET.md",
   "docs/DOMAIN_AND_MAILBOX_DECISION.md",
   "docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md",
+  "docs/CHEAP_DOMAIN_DECISION_2026-08-14.md",
   "docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md",
   "docs/PUBLIC_TRUST_CHECKLIST.md",
   "docs/MARKET_SOURCE_PACK_2026-08-14.md",
@@ -371,6 +372,7 @@ if (exists("scripts/open-next-founder-action.mjs")) {
   const requiredNextActionUrls = [
     "https://www.spaceship.com/domain-search/?query=mcpattest.dev",
     "https://www.spaceship.com/domain-search/?query=getmcpscan.com",
+    "https://www.spaceship.com/domain-search/?query=mcpscan.online",
     "https://www.spaceship.com/domain-search/?query=mcpscan.site",
     "https://dashboard.stripe.com/payment-links"
   ];
@@ -405,6 +407,7 @@ if (exists("scripts/open-founder-clicks.mjs")) {
     "https://www.spaceship.com/domain-search/?query=getmcpscan.com",
     "https://www.spaceship.com/domain-search/?query=mcpattest.dev",
     "https://www.spaceship.com/domain-search/?query=getmcpscan.xyz",
+    "https://www.spaceship.com/domain-search/?query=mcpscan.online",
     "https://www.spaceship.com/domain-search/?query=mcpscan.site"
   ];
   const missingFounderClickUrls = requiredFounderClickUrls.filter((url) => !founderClicks.includes(url));

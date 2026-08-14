@@ -10,7 +10,7 @@ Search `mcpattest.dev` first only if you are willing to use a cleaner product na
 
 If `getmcpscan.com` is unavailable or premium-priced, buy `trymcpscan.com`. If both are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
 
-If the founder wants the `$1` to `$3` launch lane, search `getmcpscan.xyz` before `mcpscan.site`. Buy `getmcpscan.xyz` if the cart is still near `$1` to `$3` and the renewal is acknowledged. Buy `mcpscan.site` only if the lowest first-year checkout matters more than buyer trust and renewal quality.
+If the founder wants the `$1` to `$3` launch lane, search `mcpscan.online` before `mcpscan.site`. Buy `mcpscan.online` if the cart is still near `$1` to `$3` and the renewal is acknowledged. Buy `getmcpscan.xyz` if lower renewal matters more than the absolute lowest first-year checkout.
 
 If you want the cheapest credible option, buy `mcpscan.us` if Spaceship shows it available. It is a legitimate US-founder fallback and avoids the trust penalty of novelty TLDs.
 
@@ -36,7 +36,8 @@ Clean-brand candidates to search before checkout:
 | `getmcpscan.com` | Best MCPScan trust lane if keeping the product name | Search first if you want the MCPScan name |
 | `trymcpscan.com` | Good MCPScan trust lane if the default is unavailable | Search second if you want the MCPScan name |
 | `getmcpscan.xyz` | Cheap MCPScan validation lane with better renewal posture than `.site` | Search before `.site` if cash is tight |
-| `mcpscan.site` | Lowest near-dollar lane if promo pricing is real in cart | Use only as validation or redirect |
+| `mcpscan.online` | Current near-dollar lane if promo pricing is real in cart | Use only as validation or redirect |
+| `mcpscan.site` | Backup near-dollar lane if .online fails in cart | Use only as validation or redirect |
 
 ## Live Availability Snapshot
 
@@ -59,9 +60,9 @@ Checked through the domain availability tool on 2026-08-14:
 | `trymcpscan.com` | Likely available in current RDAP signal | About $9 to $12 | Strong backup |
 | `mcpscanhq.com` | Likely available in current RDAP signal | About $9 to $12 | Backup trust pick |
 | `usemcpscan.com` | Available in prior live check | About $9 to $12 | Backup trust pick |
-| `mcpscan.site` | Available in current availability signal | About $0.98 plus ICANN fee at Spaceship, about $1.99 in availability tool | Best cheap launch lane |
+| `mcpscan.online` | Available in current availability signal | About $0.98 plus ICANN fee at Spaceship, about $1.99 in availability tool | Current cheap launch lane |
+| `mcpscan.site` | Available in current availability signal | About $0.98 plus ICANN fee at Spaceship, about $1.99 in availability tool | Backup cheap launch lane |
 | `getmcpscan.site` | Available in current availability signal | About $0.98 plus ICANN fee at Spaceship, about $1.99 in availability tool | Cheapest backup launch lane |
-| `mcpscan.online` | Available in current availability signal | About $0.98 plus ICANN fee at Spaceship, about $1.99 in availability tool | Cheapest backup launch lane |
 | `getmcpscan.online` | Available in current availability signal | About $0.98 plus ICANN fee at Spaceship, about $1.99 in availability tool | Cheapest backup launch lane |
 
 ## Registrar Price Signals
@@ -94,7 +95,7 @@ The public trust launch checklist lives in `docs/PUBLIC_TRUST_CHECKLIST.md`.
 5. If `getmcpscan.com` is unavailable or premium-priced, search and buy `trymcpscan.com`.
 6. If both `.com` trust picks are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
 7. If you want the cheapest credible option, search and buy `mcpscan.us`.
-8. If you want the absolute cheapest today, search `getmcpscan.xyz`, `mcpscan.site`, `getmcpscan.site`, `mcpscan.online`, and `getmcpscan.online`, then buy one only if the cart is around `$1` to `$3` and you accept the renewal tradeoff.
+8. If you want the absolute cheapest today, search `mcpscan.online`, `mcpscan.site`, `getmcpscan.xyz`, `getmcpscan.site`, and `getmcpscan.online`, then buy one only if the cart is around `$1` to `$3` and you accept the renewal tradeoff.
 9. Buy one domain first.
 10. Create one mailbox first: `security@{{chosen_domain}}`. Use Zoho Mail Lite for cheapest credible email, Google Workspace for maximum trust, or Spacemail if you prefer keeping email in the same Spaceship account.
 11. Add aliases for `audit@{{chosen_domain}}` and `hello@{{chosen_domain}}`.
