@@ -30,7 +30,8 @@ const requiredOutboundFiles = [
   "scripts/log-approved-send.mjs",
   "scripts/log-approved-route-batch-sends.mjs",
   "scripts/compose-follow-up-approval.mjs",
-  "scripts/build-revenue-snapshot.mjs"
+  "scripts/build-revenue-snapshot.mjs",
+  "scripts/verify-first-send-gates.mjs"
 ];
 const strict = process.argv.includes("--strict");
 const allowedChannels = new Set(["Email", "LinkedIn", "Contact form", "Warm intro", "Email or LinkedIn"]);

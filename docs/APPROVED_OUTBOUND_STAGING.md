@@ -36,6 +36,14 @@ Before requesting approval, check candidate readiness:
 npm run outbound:verify
 ```
 
+Before any manual send from the launch mailbox, run:
+
+```text
+npm run outbound:send-gates
+```
+
+That command checks the private founder approval tracker for live domain, mailbox DNS, Stripe QA, landing link, and approval gates. Do not send if it fails.
+
 By default, the packet is written outside the public repo:
 
 ```text

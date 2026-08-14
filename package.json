@@ -34,6 +34,7 @@
     "outbound:log-route-batch": "node scripts/log-approved-route-batch-sends.mjs",
     "outbound:compose-follow-up": "node scripts/compose-follow-up-approval.mjs",
     "outbound:verify": "node scripts/verify-outbound-readiness.mjs",
+    "outbound:send-gates": "node scripts/verify-first-send-gates.mjs",
     "outbound:queue": "node scripts/generate-outbound-approval-queue.mjs",
     "release:preflight": "node scripts/prepare-npm-release.mjs",
     "test": "npm run test --workspaces --if-present",

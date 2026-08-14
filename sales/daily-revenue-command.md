@@ -43,6 +43,12 @@ npm run revenue:snapshot
 npm run gtm:verify
 ```
 
+Before any manual send:
+
+```text
+npm run outbound:send-gates
+```
+
 After domain and mailbox exist:
 
 ```text

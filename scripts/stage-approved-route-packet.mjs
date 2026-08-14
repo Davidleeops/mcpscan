@@ -89,7 +89,7 @@ function writePacket(packetDir, date, parsed) {
     "",
     "- Founder approved this exact route and exact final message.",
     "- This packet does not send anything automatically.",
-    "- Confirm domain, mailbox authentication, and Stripe links before sending.",
+    "- Run npm run outbound:send-gates before sending.",
     "",
     "## Final Message",
     "",
