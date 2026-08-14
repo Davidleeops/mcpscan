@@ -5,10 +5,12 @@ This packet summarizes the remaining founder-only clicks. Everything else has be
 Start here:
 
 ```text
-ops/launch-cockpit.html
+npm run launch:next
 ```
 
-Or open it from the repo:
+That command opens the current founder action stack, prints live launch status, and shows the next action ladder. It does not buy, publish, send, apply links, or create customer files.
+
+To open only the launch cockpit:
 
 ```text
 npm run launch:open
@@ -84,6 +86,7 @@ The first product to sell is a fixed-scope paid audit. The CLI and public sample
 Current public state:
 
 ```text
+npm run launch:next
 npm run launch:verify
 ```
 
@@ -110,6 +113,7 @@ Current expected warnings before founder clicks:
 ```text
 docs/FINAL_FOUNDER_CLICK_PATH.md
 ops/final-founder-click-console.html
+npm run launch:next
 ```
 
 ## Suggested Click Order

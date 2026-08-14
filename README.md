@@ -10,10 +10,19 @@ MCPScan is a free CLI security scanner and audit-readiness toolkit for Model Con
 
 The first-revenue motion is a fixed-scope MCP readiness audit, supported by the CLI, public sample report, intake pages, and local launch consoles.
 
-Start here:
+Start here from the repo:
+
+```bash
+npm run launch:next
+```
+
+That command opens the current founder action stack, prints live launch status, and shows the next action ladder. It does not buy, publish, send, apply links, or create customer files.
+
+Key surfaces:
 
 - [Founder approval packet](ops/FOUNDER_APPROVAL_PACKET.md)
 - [Launch cockpit](ops/launch-cockpit.html)
+- [Final founder click path](ops/final-founder-click-console.html)
 - [GitHub issue action board](ops/GITHUB_ISSUE_ACTION_BOARD.md)
 - [Public landing page](https://davidleeops.github.io/mcpscan/)
 - [Sample report](https://davidleeops.github.io/mcpscan/sample-report.html)
@@ -22,11 +31,11 @@ Start here:
 Current launch verification:
 
 ```bash
-npm run launch:open
+npm run launch:next
 npm run launch:verify
 ```
 
-Expected pre-approval warnings are checkout links, custom domain, and custom security email until the founder-only clicks are complete.
+Expected pre-approval warnings are GitHub Actions billing or account lock, checkout links, custom domain, and custom security email until the founder-only clicks are complete.
 
 ```bash
 npx mcpscan scan ./claude_desktop_config.json

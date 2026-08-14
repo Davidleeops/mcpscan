@@ -5,8 +5,10 @@ This board maps each open launch-blocker issue to the local click console that r
 Start here:
 
 ```text
-ops/launch-cockpit.html
+npm run launch:next
 ```
+
+This opens the current founder action stack, live status, issue board, and next commands without buying, publishing, sending, applying links, or creating customer files.
 
 Current market proof:
 
@@ -47,6 +49,7 @@ npm run launch:apply-return-packet -- --file /path/to/approved-return-packet.txt
 Current public launch state:
 
 ```text
+npm run launch:next
 npm run writing:check
 npm run launch:verify
 ```

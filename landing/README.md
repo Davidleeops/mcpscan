@@ -34,6 +34,13 @@ Any static host can deploy this directory:
 Replace temporary GitHub issue CTAs with Stripe Payment Links before sending
 paid traffic. See `docs/LANDING_PAGE.md` for the publishing checklist.
 
+From the repo root, use the launch front door before publishing or sending
+traffic:
+
+```bash
+npm run launch:next
+```
+
 Use `thank-you.html` as the Stripe redirect page after payment and `intake.html`
 as the sanitized intake checklist until a private customer portal exists.
 
