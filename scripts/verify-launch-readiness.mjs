@@ -308,6 +308,8 @@ const requiredFiles = [
   "scripts/stage-approved-public-launch-post.mjs",
   "scripts/stage-approved-outbound.mjs",
   "scripts/open-first-10-outbound-approval.mjs",
+  "scripts/open-first-10-send-session.mjs",
+  "scripts/simulate-first-10-send-session.mjs",
   "scripts/open-first-send-readiness.mjs",
   "scripts/open-reply-to-close-review.mjs",
   "scripts/stage-approved-reply.mjs",
@@ -845,6 +847,7 @@ if (exists("scripts/open-first-revenue-runway.mjs") && exists("package.json") &&
     "ops/paid-audit-handoff-builder.html",
     "sales/daily-revenue-command.md",
     "npm run launch:post-click-session",
+    "npm run outbound:first-10-session",
     "This command opens surfaces only"
   ];
   const missingRunwayMarkers = requiredRunwayMarkers.filter((marker) => !firstRevenueRunway.includes(marker));
@@ -858,6 +861,8 @@ if (exists("scripts/open-first-revenue-runway.mjs") && exists("package.json") &&
 if (exists("scripts/open-first-10-outbound-approval.mjs") && exists("ops/first-10-outbound-approval-console.html") && exists("package.json")) {
   const firstTenBatchPath = [
     read("scripts/open-first-10-outbound-approval.mjs"),
+    exists("scripts/open-first-10-send-session.mjs") ? read("scripts/open-first-10-send-session.mjs") : "",
+    exists("scripts/simulate-first-10-send-session.mjs") ? read("scripts/simulate-first-10-send-session.mjs") : "",
     read("scripts/open-first-send-readiness.mjs"),
     read("scripts/log-approved-route-batch-sends.mjs"),
     read("ops/first-10-outbound-approval-console.html"),
@@ -866,17 +871,24 @@ if (exists("scripts/open-first-10-outbound-approval.mjs") && exists("ops/first-1
     read("package.json")
   ].join("\n");
   const requiredFirstTenBatchMarkers = [
+    "outbound:first-10-session",
+    "outbound:simulate-first-10-session",
+    "MCPScan First 10 Send Session",
+    "FIRST_10_SEND_SESSION.md",
     "outbound:stage-named-first-10",
     "outbound:stage-route-packet",
     "outbound:log-first-10-batch",
     "outbound:send-gates",
+    "revenue:snapshot",
     "--cart-file",
     "--return-file",
     "--qa-file",
     "Do not send automatically",
+    "Refusing to create the first-10 send session inside the public MCPScan repo.",
     "first-10-named-approvals",
     "first-10-route-approvals",
     "This command does not send messages",
+    "This command does not send, post, publish, charge, stage approval, or create customer files.",
     "route or named-recipient"
   ];
   const missingFirstTenBatchMarkers = requiredFirstTenBatchMarkers.filter((marker) => !firstTenBatchPath.includes(marker));

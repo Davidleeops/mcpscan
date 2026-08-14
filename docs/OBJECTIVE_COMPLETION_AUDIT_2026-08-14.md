@@ -27,7 +27,7 @@ Best current positioning:
 | Return packet after clicks | `ops/founder-return-packet.html`, `ops/approved-links-command-builder.html`, `ops/founder-status-console.html`, `docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md`, `npm run launch:open-return-review`, `npm run launch:post-click-session`, `npm run launch:simulate-post-click-session`, `npm run launch:verify-status` | Prepared |
 | First-revenue runway after live gates | `npm run launch:open-first-revenue`, `npm run launch:verify-live`, `scripts/open-first-revenue-runway.mjs`, `scripts/verify-first-revenue-live.mjs` | Prepared |
 | Agentized swarm throughput model | `docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md`, `ops/swarm-throughput-console.html`, `npm run launch:open-swarm`, `npm run launch:verify` | Prepared |
-| Outbound approval path | `ops/first-10-outbound-approval-console.html`, `npm run outbound:stage-named-first-10`, `npm run outbound:stage-route-packet`, `npm run outbound:log-first-10-batch`, `sales/first-10-recipient-approval-packet-2026-08-14.md`, `sales/first-10-route-approval-packet-2026-08-14.md` | Prepared |
+| Outbound approval path | `ops/first-10-outbound-approval-console.html`, `npm run outbound:first-10-session`, `npm run outbound:simulate-first-10-session`, `npm run outbound:stage-named-first-10`, `npm run outbound:stage-route-packet`, `npm run outbound:log-first-10-batch`, `sales/first-10-recipient-approval-packet-2026-08-14.md`, `sales/first-10-route-approval-packet-2026-08-14.md` | Prepared |
 | Pre-send safety gates | `npm run outbound:send-gates`, `scripts/verify-first-send-gates.mjs` | Prepared |
 | Reply-to-close path | `sales/reply-to-close-packet.md`, `npm run outbound:open-reply-close` | Prepared |
 | Payment to delivery path | `ops/paid-audit-handoff-builder.html`, `npm run delivery:open-handoff`, `npm run delivery:handoff -- --payment-evidence /path/to/payment-confirmation-evidence.json` | Prepared |
@@ -77,7 +77,7 @@ Latest local readiness proof:
 
 ```text
 npm run launch:verify
-Summary: 234 passed, 3 expected founder-click warnings, 0 failures.
+Summary: 236 passed, 3 expected founder-click warnings, 0 failures.
 ```
 
 Current consolidated proof:

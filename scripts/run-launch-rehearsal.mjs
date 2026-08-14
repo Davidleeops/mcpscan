@@ -7,6 +7,7 @@ const steps = [
   ["founder post-click session simulation", ["run", "launch:simulate-post-click-session"]],
   ["first-10 route staging simulation", ["run", "outbound:simulate-route-staging"]],
   ["first-10 named-recipient staging simulation", ["run", "outbound:simulate-named-staging"]],
+  ["first-10 send session simulation", ["run", "outbound:simulate-first-10-session"]],
   ["first-send gate simulation", ["run", "outbound:simulate-send-gates"]],
   ["private revenue follow-up simulation", ["run", "outbound:simulate-revenue-flow"]],
   ["paid audit delivery dry run", ["run", "delivery:dry-run"]]

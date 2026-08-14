@@ -126,8 +126,8 @@ console.log("1. Confirm domain, mailbox, Stripe links, and security contact are 
 console.log("2. Open market research with npm run market:open and verify current evidence with npm run market:verify.");
 console.log("3. Open the swarm throughput console to split work into agent lanes.");
 console.log("4. Approve exact public post or first-10 outbound packet.");
-console.log("5. Stage the approved packet outside the public repo. Do not send automatically.");
-console.log("6. Run npm run outbound:send-gates before any manual send.");
+console.log("5. Open npm run outbound:first-10-session after live gates and exact packet approval.");
+console.log("6. Stage the approved packet outside the public repo. Do not send automatically.");
 console.log("7. Log every manual send outside the public repo.");
 console.log("8. Use the reply-to-close packet after any prospect reply.");
 console.log("9. After payment clears, build payment evidence and paid audit handoff.");

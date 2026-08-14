@@ -45,6 +45,7 @@ npm run launch:status:live
 npm run market:verify
 npm run outbound:verify
 npm run outbound:open-first-10
+npm run outbound:first-10-session
 npm run outbound:open-send-gates
 npm run outbound:open-reply-close
 npm run launch:verify
@@ -56,6 +57,7 @@ npm run gtm:verify
 Before any manual send:
 
 ```text
+npm run outbound:first-10-session
 npm run outbound:open-send-gates
 npm run outbound:send-gates -- --status-file ops/founder-approval-status.json --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json"
 ```
