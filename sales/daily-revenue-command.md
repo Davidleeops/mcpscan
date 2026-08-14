@@ -28,6 +28,7 @@ Use this as the one-screen operating surface for first revenue.
 7. Stage approved messages outside the public repo.
 8. Send manually from authenticated mailbox only after SPF, DKIM, and DMARC pass.
 9. Log replies and use `sales/reply-to-close-packet.md`.
+10. Stage approved replies with `npm run outbound:stage-reply`.
 10. When payment clears, create the private delivery workspace.
 
 ## Command Set
@@ -118,3 +119,4 @@ Approved outcome:
 - Do not discuss SaaS subscriptions until a buyer asks for ongoing monitoring.
 - Do not imply a vulnerability without authorized testing.
 - Keep every reply pointed at scope, checkout, or safe intake.
+- Do not send replies until the exact final reply is approved and staged.

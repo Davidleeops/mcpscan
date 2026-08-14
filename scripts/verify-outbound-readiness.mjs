@@ -9,6 +9,7 @@ const contactRouteFile = "sales/first-10-contact-routes-2026-08-14.csv";
 const requiredOutboundFiles = [
   "docs/FINAL_OUTBOUND_COMPOSER.md",
   "docs/CONTACT_ROUTE_OUTBOUND_PACKETS.md",
+  "docs/APPROVED_REPLY_STAGING.md",
   "sales/reply-to-close-packet.md",
   "sales/daily-revenue-command.md",
   "sales/first-10-contact-routes-2026-08-14.csv",
@@ -17,7 +18,8 @@ const requiredOutboundFiles = [
   "scripts/compose-contact-route-outbound.mjs",
   "scripts/build-first-10-route-approval-packet.mjs",
   "scripts/stage-approved-route-packet.mjs",
-  "scripts/stage-approved-outbound.mjs"
+  "scripts/stage-approved-outbound.mjs",
+  "scripts/stage-approved-reply.mjs"
 ];
 const strict = process.argv.includes("--strict");
 const allowedChannels = new Set(["Email", "LinkedIn", "Contact form", "Warm intro", "Email or LinkedIn"]);

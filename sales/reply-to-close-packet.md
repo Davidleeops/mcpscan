@@ -216,3 +216,9 @@ Final message:
 Approved action:
 Stage this approved reply outside the public repo for manual sending review. Do not send automatically.
 ```
+
+After approval, stage the reply packet outside the public repo:
+
+```text
+npm run outbound:stage-reply -- --file /path/to/approved-reply.txt
+```
