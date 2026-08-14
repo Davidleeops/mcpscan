@@ -112,7 +112,7 @@
       <h1>Sample Launch Audit</h1>
       <div class="cover-meta">
         <span>Target: packages/cli/test/fixtures/commercial-risk-config.json</span>
-        <span>Scanned: 2026-06-17 18:23:37 UTC</span>
+        <span>Scanned: 2026-08-14 19:42:46 UTC</span>
         <span>Customer: Sample AI Co</span>
         <span>Auditor: MCPScan Audit Desk</span>
       </div>
@@ -121,7 +121,7 @@
           <div class="grade">F</div>
           <div class="score">Score 0/100</div>
         </div>
-        <p class="summary-text">The target achieved grade F with 9 open findings across 16 checks. 4 critical or high severity items should be remediated before production use or buyer acceptance.</p>
+        <p class="summary-text">The target achieved grade F with 13 open findings across 22 checks. 5 critical or high severity items should be remediated before production use or buyer acceptance.</p>
       </div>
     </header>
 
@@ -130,8 +130,8 @@
       <div class="stats">
         <div class="stat"><span class="stat-label">Grade</span><span class="stat-value">F</span></div>
         <div class="stat"><span class="stat-label">Score</span><span class="stat-value">0/100</span></div>
-        <div class="stat"><span class="stat-label">Checks</span><span class="stat-value">16</span></div>
-        <div class="stat"><span class="stat-label">Open Findings</span><span class="stat-value">9</span></div>
+        <div class="stat"><span class="stat-label">Checks</span><span class="stat-value">22</span></div>
+        <div class="stat"><span class="stat-label">Open Findings</span><span class="stat-value">13</span></div>
       </div>
     </section>
 
@@ -140,12 +140,12 @@
         <h2>Assessment Details</h2>
         <div class="meta-table">
     <div class="meta-label">Target</div><div>packages/cli/test/fixtures/commercial-risk-config.json</div>
-    <div class="meta-label">Scanned At</div><div>2026-06-17 18:23:37 UTC</div>
+    <div class="meta-label">Scanned At</div><div>2026-08-14 19:42:46 UTC</div>
     <div class="meta-label">Duration</div><div>0.0s</div>
-    <div class="meta-label">Checks Run</div><div>16</div>
-    <div class="meta-label">Passed</div><div>7</div>
-    <div class="meta-label">Warnings</div><div>5</div>
-    <div class="meta-label">Failures</div><div>4</div>
+    <div class="meta-label">Checks Run</div><div>22</div>
+    <div class="meta-label">Passed</div><div>9</div>
+    <div class="meta-label">Warnings</div><div>8</div>
+    <div class="meta-label">Failures</div><div>5</div>
     <div class="meta-label">Customer</div><div>Sample AI Co</div>
     <div class="meta-label">Auditor</div><div>MCPScan Audit Desk</div>
     <div class="meta-label">Engagement</div><div>Sample Launch Audit</div>
@@ -155,8 +155,8 @@
         <h2>Severity Counts</h2>
         <div class="severity-grid">
           <div class="severity critical"><span>critical</span><strong>1</strong></div>
-          <div class="severity high"><span>high</span><strong>3</strong></div>
-          <div class="severity medium"><span>medium</span><strong>4</strong></div>
+          <div class="severity high"><span>high</span><strong>4</strong></div>
+          <div class="severity medium"><span>medium</span><strong>7</strong></div>
           <div class="severity low"><span>low</span><strong>1</strong></div>
           <div class="severity info"><span>info</span><strong>0</strong></div>
         </div>
@@ -167,10 +167,10 @@
       <h2>Remediation Priority</h2>
       <ol class="priority-list">
     <li><strong>CRITICAL: Command injection via tool arguments</strong><br>Avoid passing user input to shells. Use fixed command allowlists, structured argument arrays, strict enums, and per-command sandboxing.</li>
+    <li><strong>HIGH: Bearer token validation</strong><br>Validate bearer/API tokens on every request, reject missing/expired/invalid tokens, and avoid bypass flags in production MCP servers.</li>
     <li><strong>HIGH: SQL injection via tool arguments</strong><br>Expose narrow query operations, use parameterized statements, validate filter fields against allowlists, and avoid accepting raw SQL from callers.</li>
     <li><strong>HIGH: Path traversal via file-related tools</strong><br>Resolve paths against an approved workspace root, reject &#39;..&#39; segments and absolute paths, and enforce schema patterns or enums for allowed locations.</li>
     <li><strong>HIGH: Excessive tool permissions</strong><br>Run tools with least privilege, narrow filesystem and network scopes, separate read/write/admin capabilities, and require explicit approval for destructive actions.</li>
-    <li><strong>MEDIUM: Argument type confusion or oversized input risk</strong><br>Declare explicit JSON Schema types, reject unknown object keys, and add maxLength, maxItems, numeric bounds, or enums for caller-controlled fields.</li>
   </ol>
     </section>
 
@@ -197,7 +197,20 @@
 <div class="finding">
     <div class="finding-head">
       <div>
-        <h3>2. SQL injection via tool arguments</h3>
+        <h3>2. Bearer token validation</h3>
+        <div class="finding-id">AUTH-002 · AUTH</div>
+      </div>
+      <span class="badge high">high</span>
+    </div>
+    <p>Bearer/API token validation could not be confirmed for the target.</p>
+    <p class="detail"><strong>Evidence:</strong> No bearer token, API key, OAuth, or authorization validation hints found.</p>
+    <p class="detail"><strong>Recommended remediation:</strong> Validate bearer/API tokens on every request, reject missing/expired/invalid tokens, and avoid bypass flags in production MCP servers.</p>
+    <p class="detail"><strong>References:</strong> OWASP MCP Top 10: authentication and authorization failures, NSA MCP security advisory: access control guidance, CWE-287: Improper Authentication</p>
+  </div>
+<div class="finding">
+    <div class="finding-head">
+      <div>
+        <h3>3. SQL injection via tool arguments</h3>
         <div class="finding-id">INPUT-002 · INPUT</div>
       </div>
       <span class="badge high">high</span>
@@ -210,7 +223,7 @@
 <div class="finding">
     <div class="finding-head">
       <div>
-        <h3>3. Path traversal via file-related tools</h3>
+        <h3>4. Path traversal via file-related tools</h3>
         <div class="finding-id">INPUT-003 · INPUT</div>
       </div>
       <span class="badge high">high</span>
@@ -223,7 +236,7 @@
 <div class="finding">
     <div class="finding-head">
       <div>
-        <h3>4. Excessive tool permissions</h3>
+        <h3>5. Excessive tool permissions</h3>
         <div class="finding-id">TOOL-002 · TOOLING</div>
       </div>
       <span class="badge high">high</span>
@@ -236,7 +249,20 @@
 <div class="finding">
     <div class="finding-head">
       <div>
-        <h3>5. Argument type confusion or oversized input risk</h3>
+        <h3>6. Session fixation and token reuse</h3>
+        <div class="finding-id">AUTH-004 · AUTH</div>
+      </div>
+      <span class="badge medium">medium</span>
+    </div>
+    <p>The configuration suggests static, shared, or reusable session/token material.</p>
+    <p class="detail"><strong>Evidence:</strong> Matched pattern \bsession[_-]?id[&quot;&#39;]?\s*[:=]\s*[&quot;&#39;]?(default|static|shared|test|demo|admin|changeme)\b</p>
+    <p class="detail"><strong>Recommended remediation:</strong> Issue per-client sessions, rotate tokens, bind sessions to authenticated principals, and avoid shared/static MCP client credentials.</p>
+    <p class="detail"><strong>References:</strong> OWASP MCP Top 10: authentication and authorization failures, CWE-384: Session Fixation, CWE-613: Insufficient Session Expiration</p>
+  </div>
+<div class="finding">
+    <div class="finding-head">
+      <div>
+        <h3>7. Argument type confusion or oversized input risk</h3>
         <div class="finding-id">INPUT-005 · INPUT</div>
       </div>
       <span class="badge medium">medium</span>
@@ -249,7 +275,7 @@
 <div class="finding">
     <div class="finding-head">
       <div>
-        <h3>6. Excessive data exposure</h3>
+        <h3>8. Excessive data exposure</h3>
         <div class="finding-id">OUTPUT-002 · OUTPUT</div>
       </div>
       <span class="badge medium">medium</span>
@@ -262,7 +288,20 @@
 <div class="finding">
     <div class="finding-head">
       <div>
-        <h3>7. Shadow tools heuristic</h3>
+        <h3>9. Stdio process isolation</h3>
+        <div class="finding-id">TRANSPORT-002 · TRANSPORT</div>
+      </div>
+      <span class="badge medium">medium</span>
+    </div>
+    <p>A local/stdio-style server exposes high-impact capabilities without visible isolation hints.</p>
+    <p class="detail"><strong>Evidence:</strong> Tool &quot;run_shell&quot; matched high-impact capability heuristics and no sandbox/container/read-only/no-network hint was found.</p>
+    <p class="detail"><strong>Recommended remediation:</strong> Run stdio MCP servers in a sandbox/container, restrict filesystem paths, disable network where unnecessary, and split high-impact tools into separate least-privilege servers.</p>
+    <p class="detail"><strong>References:</strong> NSA MCP security advisory: sandboxing and least privilege, OWASP MCP Top 10: excessive permissions, CWE-250: Execution with Unnecessary Privileges</p>
+  </div>
+<div class="finding">
+    <div class="finding-head">
+      <div>
+        <h3>10. Shadow tools heuristic</h3>
         <div class="finding-id">TOOL-003 · TOOLING</div>
       </div>
       <span class="badge medium">medium</span>
@@ -275,7 +314,7 @@
 <div class="finding">
     <div class="finding-head">
       <div>
-        <h3>8. Tool name collision</h3>
+        <h3>11. Tool name collision</h3>
         <div class="finding-id">TOOL-004 · TOOLING</div>
       </div>
       <span class="badge medium">medium</span>
@@ -288,7 +327,20 @@
 <div class="finding">
     <div class="finding-head">
       <div>
-        <h3>9. Error message information disclosure</h3>
+        <h3>12. Debug mode enabled</h3>
+        <div class="finding-id">CONFIG-002 · CONFIG</div>
+      </div>
+      <span class="badge medium">medium</span>
+    </div>
+    <p>Debug or verbose error mode appears enabled.</p>
+    <p class="detail"><strong>Evidence:</strong> Matched pattern \bdebug[_-]?mode\b</p>
+    <p class="detail"><strong>Recommended remediation:</strong> Disable debug and inspector modes in production, return sanitized errors to MCP clients, and keep detailed traces in protected logs only.</p>
+    <p class="detail"><strong>References:</strong> OWASP MCP Top 10: insecure configuration, CWE-489: Active Debug Code, CWE-209: Generation of Error Message Containing Sensitive Information</p>
+  </div>
+<div class="finding">
+    <div class="finding-head">
+      <div>
+        <h3>13. Error message information disclosure</h3>
         <div class="finding-id">OUTPUT-003 · OUTPUT</div>
       </div>
       <span class="badge low">low</span>
