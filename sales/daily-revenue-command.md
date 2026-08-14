@@ -35,6 +35,7 @@ Use this as the one-screen operating surface for first revenue.
 ## Command Set
 
 ```text
+npm run launch:next
 npm run launch:status:live
 npm run market:verify
 npm run outbound:verify

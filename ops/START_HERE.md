@@ -18,6 +18,12 @@ For the founder-only click path:
 npm run launch:open-founder
 ```
 
+For the current next action stack:
+
+```text
+npm run launch:next
+```
+
 To prebuild the default cheap-lane DNS and Stripe packets:
 
 ```text
