@@ -18,6 +18,7 @@
     "launch:open": "node scripts/open-launch-cockpit.mjs",
     "launch:verify-stripe": "node scripts/verify-stripe-links.mjs",
     "launch:verify-dns": "node scripts/verify-domain-email-dns.mjs",
+    "launch:post-click-verify": "node scripts/run-post-click-verification.mjs",
     "launch:verify": "node scripts/verify-launch-readiness.mjs",
     "outbound:stage-approved": "node scripts/stage-approved-outbound.mjs",
     "outbound:compose-final": "node scripts/compose-final-outbound.mjs",
