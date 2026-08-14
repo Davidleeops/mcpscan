@@ -127,6 +127,10 @@ function parseCsvRows(text) {
   });
 }
 
+function includesAll(text, markers) {
+  return markers.filter((marker) => !text.includes(marker));
+}
+
 function print(results) {
   for (const item of results) {
     const mark = item.kind === "pass" ? "PASS" : item.kind === "warn" ? "WARN" : "FAIL";
@@ -154,6 +158,62 @@ if (fs.existsSync(path.join(root, "sales/first-account-dossier-2026-08-14.md")))
   results.push(missingMarkers.length === 0 ? result("pass", "buyer route status table", "route, confidence, checked date, and next click fields present") : result("fail", "buyer route status table", missingMarkers.join(", ")));
   results.push(missingAccounts.length === 0 ? result("pass", "buyer route account coverage", "10 accounts") : result("fail", "buyer route account coverage", missingAccounts.join(", ")));
   results.push(checkedRows >= 10 ? result("pass", "buyer route checked dates", `${checkedRows} dated rows`) : result("fail", "buyer route checked dates", "expected 10 rows checked on 2026-08-14"));
+}
+
+if (fs.existsSync(path.join(root, "docs/MARKET_SOURCE_PACK_2026-08-14.md")) && fs.existsSync(path.join(root, "docs/MARKET_REALITY_BRIEF_2026-08-14.md"))) {
+  const sourcePack = read("docs/MARKET_SOURCE_PACK_2026-08-14.md");
+  const realityBrief = read("docs/MARKET_REALITY_BRIEF_2026-08-14.md");
+  const marketText = `${sourcePack}\n${realityBrief}`;
+  const serviceFirstMarkers = [
+    "service-first MCP governance and readiness audit",
+    "not a generic scanner signup",
+    "Do not lead with SaaS",
+    "buyer-safe evidence packet",
+    "Use the scanner as proof and fulfillment leverage"
+  ];
+  const pricingMarkers = [
+    "MCP Launch Audit at $1,500",
+    "$750 MCP Quick Audit",
+    "$499 to $750",
+    "$3,500",
+    "$7,500 to $12,500"
+  ];
+  const competitorMarkers = [
+    "Snyk Agent Scan",
+    "Cisco MCP Scanner",
+    "Invariant MCP-Scan",
+    "MCP gateways",
+    "AI security posture platforms",
+    "Vendor-native controls"
+  ];
+  const buyerPainMarkers = [
+    "Which MCP servers are approved",
+    "Which tools can read, write, delete, deploy, send, pay, or change production state",
+    "Which credentials are inherited by agents",
+    "Which unapproved or shadow MCP servers exist",
+    "Can a security team review the exact tool call before approval",
+    "Can the company show audit evidence"
+  ];
+  const sourceSignalMarkers = [
+    "Official MCP security guidance",
+    "OWASP MCP Top 10",
+    "NSA published MCP security design guidance",
+    "Cloudflare",
+    "Netskope",
+    "GitHub documents MCP registry and allowlist controls",
+    "scanner reliability research"
+  ];
+
+  const missingServiceFirst = includesAll(marketText, serviceFirstMarkers);
+  const missingPricing = includesAll(marketText, pricingMarkers);
+  const missingCompetitors = includesAll(marketText, competitorMarkers);
+  const missingBuyerPain = includesAll(marketText, buyerPainMarkers);
+  const missingSourceSignals = includesAll(marketText, sourceSignalMarkers);
+  results.push(missingServiceFirst.length === 0 ? result("pass", "core opportunity claim", "service-first audit positioning is explicit") : result("fail", "core opportunity claim", missingServiceFirst.join(", ")));
+  results.push(missingPricing.length === 0 ? result("pass", "pricing claim ladder", "snapshot, quick audit, launch audit, and expansion prices are present") : result("fail", "pricing claim ladder", missingPricing.join(", ")));
+  results.push(missingCompetitors.length === 0 ? result("pass", "competitor reality claim", "scanner, gateway, platform, and native-control substitutes are named") : result("fail", "competitor reality claim", missingCompetitors.join(", ")));
+  results.push(missingBuyerPain.length === 0 ? result("pass", "buyer pain claim", "approval, permissions, credentials, shadow servers, review, and audit evidence needs are present") : result("fail", "buyer pain claim", missingBuyerPain.join(", ")));
+  results.push(missingSourceSignals.length === 0 ? result("pass", "source-backed market claim", "official, OWASP, government, vendor, SASE, admin, and scanner-reliability signals are present") : result("fail", "source-backed market claim", missingSourceSignals.join(", ")));
 }
 
 if (fs.existsSync(path.join(root, "sales/first-10-contact-routes-2026-08-14.csv"))) {
