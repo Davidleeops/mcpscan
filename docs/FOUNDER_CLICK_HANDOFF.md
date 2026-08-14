@@ -44,8 +44,9 @@ ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-products.csv
 8. Use the founder return packet to download the exact approval message.
 9. Give the approved return packet and QA evidence JSON to Codex.
 10. Codex applies public links and runs verification. Commit and push happen after verification and separate explicit approval.
-11. Approve exact outbound recipients and exact final messages.
-12. After payment, run the paid audit handoff and deliver from a private workspace.
+11. Open the first-revenue runway with `npm run launch:open-first-revenue`.
+12. Approve exact outbound recipients and exact final messages.
+13. After payment, run the paid audit handoff and deliver from a private workspace.
 
 ## Current Next Click Script
 
@@ -80,6 +81,7 @@ ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-products.csv
 - Verify Stripe checkout QA evidence.
 - Apply approved public links.
 - Verify launch state.
+- Open the first-revenue runway after live gates clear.
 - Stage approved outbound without sending.
 - Create paid audit handoff after payment.
 

@@ -93,6 +93,12 @@ npm run market:verify
 npm run outbound:send-gates
 ```
 
+After the live gates are clear, open the full first-revenue runway:
+
+```text
+npm run launch:open-first-revenue
+```
+
 After exact recipient and message approval, stage the send packet outside the public repo:
 
 ```text
