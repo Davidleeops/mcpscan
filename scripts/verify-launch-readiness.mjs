@@ -704,6 +704,38 @@ if (exists("scripts/open-first-10-outbound-approval.mjs") && exists("ops/first-1
   );
 }
 
+if (exists("scripts/create-paid-audit-handoff.mjs") && exists("ops/paid-audit-handoff-builder.html") && exists("docs/PAYMENT_TO_DELIVERY_SOP.md")) {
+  const paidDelivery = [
+    read("scripts/create-paid-audit-handoff.mjs"),
+    read("scripts/create-customer-workspace.mjs"),
+    read("scripts/create-first-paid-audit-work-order.mjs"),
+    read("scripts/run-delivery-dry-run.mjs"),
+    read("ops/paid-audit-handoff-builder.html"),
+    read("ops/post-payment-console.html"),
+    read("ops/delivery-console.html"),
+    read("sales/paid-audit-handoff-approval-packet.md"),
+    read("docs/PAYMENT_TO_DELIVERY_SOP.md"),
+    read("docs/PAID_AUDIT_START_AUTOMATION.md")
+  ].join("\n");
+  const requiredPaidDeliveryMarkers = [
+    "Missing required --payment-evidence path",
+    "scripts/verify-payment-evidence.mjs",
+    "Payment evidence ${key} does not match",
+    "paymentEvidencePath",
+    "called-from-handoff",
+    "Refusing to create a live customer workspace directly.",
+    "Refusing to create a live paid audit work order directly.",
+    "--payment-evidence /path/to/payment-confirmation-evidence.json",
+    "rehearsal"
+  ];
+  const missingPaidDeliveryMarkers = requiredPaidDeliveryMarkers.filter((marker) => !paidDelivery.includes(marker));
+  results.push(
+    missingPaidDeliveryMarkers.length === 0
+      ? result("pass", "paid delivery payment-evidence gate", "handoff, docs, console, and dry run require verified matching payment evidence")
+      : result("fail", "paid delivery payment-evidence gate", missingPaidDeliveryMarkers.join(", "))
+  );
+}
+
 if (
   exists("scripts/build-domain-dns-packet.mjs") &&
   exists("scripts/verify-domain-email-dns.mjs") &&

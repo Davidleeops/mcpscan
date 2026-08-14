@@ -60,6 +60,14 @@ function assertOutsideRepo(target) {
 }
 
 const args = parseArgs(process.argv.slice(2));
+const calledFromHandoff = args["called-from-handoff"] === "true";
+
+if (!calledFromHandoff) {
+  console.error("Refusing to create a live paid audit work order directly.");
+  console.error("Use npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json");
+  process.exit(1);
+}
+
 const customer = requireValue("customer", args.customer);
 const packageName = requireValue("package", args.package);
 const contact = args.contact ?? "{{technical_contact}}";
@@ -101,11 +109,9 @@ const workOrder = [
   "- [ ] Private customer workspace created outside the public repo.",
   "- [ ] Retention and deletion log initialized.",
   "",
-  "## Workspace Command",
+  "## Workspace",
   "",
-  "```text",
-  `npm run delivery:workspace -- --customer "${customer}" --date ${date}`,
-  "```",
+  "The private workspace is created by the evidence-backed paid handoff. Do not create a separate live workspace with a standalone command.",
   "",
   "## Delivery Checklist",
   "",

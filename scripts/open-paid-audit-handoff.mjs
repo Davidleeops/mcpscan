@@ -43,7 +43,7 @@ console.log("Approval rule:");
 console.log("Run this only after Stripe payment clears and the exact paid audit handoff packet is approved.");
 console.log("");
 console.log("After approval, create the private workspace and work order outside the public repo with:");
-console.log("npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt");
+console.log("npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json");
 console.log("");
 console.log("Then compose or review the draft-only intake message with:");
 console.log("npm run delivery:intake-message -- --file /path/outside/public/repo/pipeline-status/YYYY-MM-DD_customer_package_pipeline-status.json");

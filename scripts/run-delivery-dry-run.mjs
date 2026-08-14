@@ -11,6 +11,7 @@ const customer = "Sample Buyer Co";
 const packageName = "MCP Launch Audit";
 const fixture = path.join(root, "packages", "cli", "test", "fixtures", "commercial-risk-config.json");
 const cli = path.join(root, "packages", "cli", "dist", "index.js");
+const shared = path.join(root, "packages", "shared", "dist", "index.js");
 
 function fail(message) {
   console.error(message);
@@ -43,7 +44,8 @@ if (!fs.existsSync(fixture)) {
   fail("Commercial risk fixture is missing.");
 }
 
-if (!fs.existsSync(cli)) {
+if (!fs.existsSync(cli) || !fs.existsSync(shared)) {
+  run("npm", ["run", "clean"]);
   run("npm", ["run", "build"]);
 }
 
@@ -93,6 +95,8 @@ run("node", [
   "scripts/create-paid-audit-handoff.mjs",
   "--file",
   packet,
+  "--payment-evidence",
+  paymentEvidence,
   "--root",
   privateOutput
 ]);

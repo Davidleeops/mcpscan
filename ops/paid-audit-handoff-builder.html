@@ -243,7 +243,7 @@ Create the private customer workspace and first paid audit work order outside th
           "--output " + quote(evidencePath)
         ].join(" ");
         verify.textContent = "npm run delivery:verify-payment -- --file " + quote(evidencePath);
-        command.textContent = "npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt" + rootPart;
+        command.textContent = "npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence " + quote(evidencePath) + rootPart;
         status.textContent = "Paid handoff packet ready.";
         status.className = "status good";
       }

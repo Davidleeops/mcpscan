@@ -36,10 +36,10 @@ This confirms the package, amount, payment reference, safe intake path, and no-s
 Use the one-pass handoff command after exact values are approved:
 
 ```text
-npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json
 ```
 
-This creates the private workspace, private work order, private pipeline status, and draft-only intake start message outside the public MCPScan repo.
+This verifies the payment evidence again, confirms it matches the approved handoff packet, then creates the private workspace, private work order, private pipeline status, and draft-only intake start message outside the public MCPScan repo.
 
 Review and approve the exact intake message before sending.
 
@@ -55,7 +55,7 @@ Include:
 Default one-pass handoff after approval:
 
 ```text
-npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json
 ```
 
 The handoff creates the private workspace, first paid audit work order, handoff manifest, private pipeline status files, and draft-only intake start message outside the public MCPScan repo. It refuses to overwrite existing same-day files for the same customer and package.
@@ -66,11 +66,7 @@ If you need to regenerate the post-payment intake message from the private pipel
 npm run delivery:intake-message -- --file /path/outside/public/repo/pipeline-status/YYYY-MM-DD_customer_package_pipeline-status.json
 ```
 
-Fallback workspace-only command:
-
-```text
-npm run delivery:workspace -- --customer "{{customer_company}}" --date YYYY-MM-DD
-```
+Do not use a fallback workspace-only command for live paid customers. Live delivery starts from the evidence-backed handoff command so payment proof, approval, workspace, work order, private pipeline status, and draft-only intake stay tied together.
 
 ## Step 4: Complete Client Acceptance
 

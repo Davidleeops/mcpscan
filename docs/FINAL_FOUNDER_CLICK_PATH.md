@@ -114,7 +114,7 @@ npm run outbound:stage-route-packet -- --file /path/to/approved-first-10-route-p
 After first payment clears and exact handoff values are approved:
 
 ```text
-npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json
 ```
 
 ## Current Local Proof Until Billing Is Fixed

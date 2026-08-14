@@ -41,10 +41,18 @@ const customer = args.customer;
 const date = args.date ?? today();
 const baseDir = args.root ?? path.join(os.homedir(), "MCPScan Audits");
 const dryRun = args["dry-run"] === "true";
+const calledFromHandoff = args["called-from-handoff"] === "true";
 
 if (!customer) {
   console.error("Missing required --customer value.");
-  console.error("Example: npm run delivery:workspace -- --customer Acme --date 2026-08-14");
+  console.error("Use npm run delivery:handoff with verified payment evidence for live paid delivery.");
+  console.error("Internal dry-run example: npm run delivery:workspace -- --customer Acme --date 2026-08-14 --dry-run true");
+  process.exit(1);
+}
+
+if (!calledFromHandoff && !dryRun) {
+  console.error("Refusing to create a live customer workspace directly.");
+  console.error("Use npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json");
   process.exit(1);
 }
 

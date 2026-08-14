@@ -30,7 +30,7 @@ Best current positioning:
 | Outbound approval path | `ops/first-10-outbound-approval-console.html`, `npm run outbound:stage-named-first-10`, `npm run outbound:stage-route-packet`, `npm run outbound:log-first-10-batch`, `sales/first-10-recipient-approval-packet-2026-08-14.md`, `sales/first-10-route-approval-packet-2026-08-14.md` | Ready |
 | Pre-send safety gates | `npm run outbound:send-gates`, `scripts/verify-first-send-gates.mjs` | Ready |
 | Reply-to-close path | `sales/reply-to-close-packet.md`, `npm run outbound:open-reply-close` | Ready |
-| Payment to delivery path | `ops/paid-audit-handoff-builder.html`, `npm run delivery:open-handoff`, `npm run delivery:handoff` | Ready |
+| Payment to delivery path | `ops/paid-audit-handoff-builder.html`, `npm run delivery:open-handoff`, `npm run delivery:handoff -- --payment-evidence /path/to/payment-confirmation-evidence.json` | Ready |
 | Deliverable quality proof | `npm run delivery:dry-run`, `delivery/customer-workspace-template/` | Ready |
 | Public launch proof | `npm run launch:verify` checks live GitHub Pages URLs and launch artifacts | Ready with expected founder-click warnings |
 
@@ -74,7 +74,7 @@ Latest local readiness proof:
 
 ```text
 npm run launch:verify
-Summary: 214 passed, 3 expected founder-click warnings, 0 failures.
+Summary: 215 passed, 3 expected founder-click warnings, 0 failures.
 ```
 
 Current consolidated proof:

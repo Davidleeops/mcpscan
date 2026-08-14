@@ -98,6 +98,12 @@ const evidence = {
   operatorInitials
 };
 
+if (evidence.paymentProvider === "Manual approved" || /^manual_/i.test(paymentReference)) {
+  evidence.approvedBy = requireValue("approved-by", args["approved-by"]);
+  evidence.approvalTimestamp = requireValue("approval-timestamp", args["approval-timestamp"]);
+  evidence.approvalSource = requireValue("approval-source", args["approval-source"]);
+}
+
 fs.writeFileSync(outputPath, `${JSON.stringify(evidence, null, 2)}\n`, "utf8");
 runVerifier(outputPath);
 

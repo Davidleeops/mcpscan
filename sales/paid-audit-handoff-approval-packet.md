@@ -34,13 +34,13 @@ Create the private customer workspace and first paid audit work order outside th
 After approval, save the approved text outside the repo and run:
 
 ```text
-npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json
 ```
 
 Optional output root:
 
 ```text
-npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --root "/path/outside/public/repo"
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json --root "/path/outside/public/repo"
 ```
 
 ## What It Creates
@@ -50,6 +50,7 @@ npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --ro
 - handoff manifest outside the public repo
 - private pipeline status JSON and CSV outside the public repo
 - customer and package specific output filenames to prevent same-day overwrites
+- payment evidence path recorded in the handoff manifest and pipeline status
 
 ## Stop Conditions
 

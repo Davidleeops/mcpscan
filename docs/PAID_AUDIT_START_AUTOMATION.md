@@ -19,13 +19,13 @@ npm run delivery:evidence -- --customer "{{customer_company}}" --package "{{pack
 Then run the paid handoff after the exact packet is approved:
 
 ```text
-npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json
 ```
 
 Use `--root` when you want to choose the private output location:
 
 ```text
-npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --root "/path/outside/public/repo"
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json --root "/path/outside/public/repo"
 ```
 
 ## Private Output
@@ -36,6 +36,7 @@ The command creates:
 - private work order
 - private pipeline status JSON and CSV
 - draft-only intake start message
+- handoff manifest and pipeline status that reference the verified payment evidence path
 
 The draft-only intake message is written under:
 

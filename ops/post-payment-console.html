@@ -151,7 +151,7 @@
             <li>Save public-safe payment evidence outside the public repo.</li>
             <li>Verify the payment evidence.</li>
             <li>Approve the paid handoff packet.</li>
-            <li>Run the one-pass handoff command from this repo with an output path outside the public repo.</li>
+            <li>Run the one-pass handoff command from this repo with the verified payment evidence file and an output path outside the public repo.</li>
             <li>Review the generated draft-only intake start message.</li>
             <li>Approve the exact intake message before sending.</li>
             <li>Use a private handoff path before accepting sensitive materials.</li>
@@ -171,7 +171,7 @@
           <p>Use after payment clears and exact handoff values are approved. This also writes a draft-only intake message in the private customer communications folder.</p>
           <a class="button" href="paid-audit-handoff-builder.html">Build approval packet</a>
           <button class="copy" data-copy-target="handoff-command">Copy command</button>
-          <pre id="handoff-command">npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt</pre>
+          <pre id="handoff-command">npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json</pre>
         </section>
 
         <section>

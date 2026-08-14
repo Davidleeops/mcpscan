@@ -6,7 +6,7 @@
   "currentPositioning": "We turn noisy MCP scanner output into a validated MCP risk report, remediation plan, and customer-ready security proof in 3 to 5 days.",
   "launchReadinessProof": {
     "command": "npm run launch:verify",
-    "passed": 214,
+    "passed": 215,
     "expectedWarnings": 3,
     "failures": 0
   },
@@ -130,6 +130,9 @@
       "evidence": [
         "ops/paid-audit-handoff-builder.html",
         "ops/delivery-console.html",
+        "scripts/create-payment-evidence.mjs",
+        "scripts/verify-payment-evidence.mjs",
+        "scripts/create-paid-audit-handoff.mjs",
         "scripts/run-delivery-dry-run.mjs",
         "delivery/customer-workspace-template/report-template.md",
         "delivery/customer-workspace-template/buyer-facing-summary.md"

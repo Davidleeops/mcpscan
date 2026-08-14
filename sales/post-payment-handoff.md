@@ -22,7 +22,7 @@ Use this immediately after Stripe confirms payment. The goal is to move the buye
 One-pass command:
 
 ```text
-npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json
 ```
 
 Regenerate draft-only intake command if needed:

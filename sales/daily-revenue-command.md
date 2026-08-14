@@ -128,7 +128,7 @@ After first payment:
 
 ```text
 npm run delivery:open-handoff
-npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json
 ```
 
 This creates the private workspace, first paid audit work order, handoff manifest, and private pipeline status files outside the public repo.
@@ -139,12 +139,7 @@ Then draft the intake email from the private pipeline status JSON:
 npm run delivery:intake-message -- --file /path/outside/public/repo/pipeline-status/YYYY-MM-DD_customer_package_pipeline-status.json
 ```
 
-Fallback separate commands:
-
-```text
-npm run delivery:work-order -- --customer "{{customer_company}}" --package "{{package_name}}" --contact "{{technical_contact}}" --payment "{{stripe_reference}}"
-npm run delivery:workspace -- --customer "{{customer_company}}"
-```
+Do not use separate workspace or work-order commands for live paid customers. Those are handoff-internal building blocks and require the evidence-backed handoff gate.
 
 ## Approval Needed Today
 

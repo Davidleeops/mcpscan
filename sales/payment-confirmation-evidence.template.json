@@ -13,5 +13,8 @@
   "noProductionSecrets": true,
   "noCustomerData": true,
   "noPublicRepoStorage": true,
-  "operatorInitials": "{{operator_initials}}"
+  "operatorInitials": "{{operator_initials}}",
+  "approvedBy": "{{required_only_for_manual_approved_payments}}",
+  "approvalTimestamp": "{{required_only_for_manual_approved_payments}}",
+  "approvalSource": "{{required_only_for_manual_approved_payments}}"
 }

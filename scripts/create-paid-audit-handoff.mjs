@@ -53,6 +53,10 @@ function validDate(value) {
   return !Number.isNaN(parsed.getTime()) && parsed.toISOString().slice(0, 10) === value;
 }
 
+function normalize(value) {
+  return String(value ?? "").trim().toLowerCase();
+}
+
 function hasPlaceholder(value) {
   return /\{\{[^}]+\}\}/.test(value);
 }
@@ -85,6 +89,28 @@ function assertOutsideRepo(target) {
 function runNode(args) {
   const child = spawnSync(process.execPath, args, { stdio: "inherit" });
   if (child.status !== 0) process.exit(child.status ?? 1);
+}
+
+function verifyPaymentEvidence(file) {
+  if (!file) {
+    throw new Error("Missing required --payment-evidence path. Verify public-safe payment evidence before creating the paid audit handoff.");
+  }
+
+  const resolved = assertOutsideRepo(file);
+  if (!fs.existsSync(resolved)) {
+    throw new Error(`Payment evidence file does not exist: ${resolved}`);
+  }
+
+  runNode(["scripts/verify-payment-evidence.mjs", "--file", resolved]);
+
+  let data;
+  try {
+    data = JSON.parse(fs.readFileSync(resolved, "utf8"));
+  } catch {
+    throw new Error("Payment evidence file must be valid JSON.");
+  }
+
+  return { resolved, data };
 }
 
 function assertDoesNotExist(label, target) {
@@ -133,6 +159,20 @@ for (const [label, value] of Object.entries({ customer, packageName, contact, pa
   if (hasPlaceholder(value)) throw new Error(`Replace template placeholder before paid handoff: ${label}.`);
 }
 
+const paymentEvidence = verifyPaymentEvidence(args["payment-evidence"]);
+const evidenceMatches = [
+  ["customerCompany", customer],
+  ["packageName", packageName],
+  ["technicalContact", contact],
+  ["paymentReference", payment]
+];
+
+for (const [key, expected] of evidenceMatches) {
+  if (normalize(paymentEvidence.data[key]) !== normalize(expected)) {
+    throw new Error(`Payment evidence ${key} does not match the approved handoff packet.`);
+  }
+}
+
 assertDoesNotExist("Handoff manifest", manifestPath);
 assertDoesNotExist("Pipeline status JSON", pipelineStatusPath);
 assertDoesNotExist("Pipeline status CSV", pipelineCsvPath);
@@ -140,6 +180,8 @@ assertDoesNotExist("Intake draft", intakeDraftPath);
 
 runNode([
   "scripts/create-customer-workspace.mjs",
+  "--called-from-handoff",
+  "true",
   "--customer",
   customer,
   "--date",
@@ -150,6 +192,8 @@ runNode([
 
 runNode([
   "scripts/create-first-paid-audit-work-order.mjs",
+  "--called-from-handoff",
+  "true",
   "--customer",
   customer,
   "--package",
@@ -170,6 +214,7 @@ const manifest = {
   package: packageName,
   contact,
   payment,
+  paymentEvidencePath: paymentEvidence.resolved,
   workspaceRoot,
   workOrderRoot,
   customerCommsRoot: commsRoot,
@@ -217,6 +262,7 @@ const pipelineStatus = {
   package: packageName,
   technicalContact: contact,
   paymentReference: payment,
+  paymentEvidencePath: paymentEvidence.resolved,
   paymentStatus: "Paid",
   deliveryStatus: "Workspace created",
   nextAction: "Review and approve the draft-only intake start message, confirm secure handoff, and complete client acceptance before sending.",
@@ -233,6 +279,7 @@ const pipelineCsvHeader = [
   "package",
   "technical_contact",
   "payment_reference",
+  "payment_evidence_path",
   "payment_status",
   "delivery_status",
   "next_action",
@@ -249,6 +296,7 @@ const pipelineCsvRow = [
   pipelineStatus.package,
   pipelineStatus.technicalContact,
   pipelineStatus.paymentReference,
+  pipelineStatus.paymentEvidencePath,
   pipelineStatus.paymentStatus,
   pipelineStatus.deliveryStatus,
   pipelineStatus.nextAction,

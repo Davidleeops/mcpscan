@@ -86,10 +86,74 @@ if (exists("sales/payment-confirmation-evidence.template.json")) {
     "noStripeSecrets",
     "noProductionSecrets",
     "noCustomerData",
-    "noPublicRepoStorage"
+    "noPublicRepoStorage",
+    "approvedBy",
+    "approvalTimestamp",
+    "approvalSource"
   ];
   const hasRequiredPaymentFields = requiredPaymentFields.every((field) => template.includes(`"${field}"`));
   results.push(hasRequiredPaymentFields ? result("pass", "payment evidence template", "public-safe confirmation fields present") : result("fail", "payment evidence template", "missing confirmation fields"));
+}
+
+if (exists("scripts/verify-payment-evidence.mjs") && exists("scripts/create-payment-evidence.mjs")) {
+  const paymentGate = `${read("scripts/verify-payment-evidence.mjs")}\n${read("scripts/create-payment-evidence.mjs")}`;
+  const requiredManualPaymentMarkers = [
+    "Manual payment evidence missing required field",
+    "approvedBy",
+    "approvalTimestamp",
+    "approvalSource",
+    "approved-by"
+  ];
+  const missingManualPaymentMarkers = requiredManualPaymentMarkers.filter((marker) => !paymentGate.includes(marker));
+  results.push(
+    missingManualPaymentMarkers.length === 0
+      ? result("pass", "manual payment evidence gate", "manual payment evidence requires approver, timestamp, and source")
+      : result("fail", "manual payment evidence gate", missingManualPaymentMarkers.join(", "))
+  );
+}
+
+if (exists("scripts/create-paid-audit-handoff.mjs")) {
+  const handoff = read("scripts/create-paid-audit-handoff.mjs");
+  const requiredHandoffMarkers = [
+    "Missing required --payment-evidence path",
+    "scripts/verify-payment-evidence.mjs",
+    "Payment evidence ${key} does not match",
+    "paymentEvidencePath"
+  ];
+  const missingHandoffMarkers = requiredHandoffMarkers.filter((marker) => !handoff.includes(marker));
+  results.push(
+    missingHandoffMarkers.length === 0
+      ? result("pass", "paid handoff payment gate", "handoff requires verified matching payment evidence")
+      : result("fail", "paid handoff payment gate", missingHandoffMarkers.join(", "))
+  );
+}
+
+if (exists("scripts/run-delivery-dry-run.mjs")) {
+  const dryRun = read("scripts/run-delivery-dry-run.mjs");
+  results.push(
+    dryRun.includes("--payment-evidence") && dryRun.includes("payment-confirmation-evidence.json")
+      ? result("pass", "delivery dry run payment gate", "rehearsal exercises evidence-gated handoff")
+      : result("fail", "delivery dry run payment gate", "dry run does not pass payment evidence into the handoff")
+  );
+}
+
+if (exists("scripts/create-customer-workspace.mjs") && exists("scripts/create-first-paid-audit-work-order.mjs") && exists("scripts/create-paid-audit-handoff.mjs")) {
+  const workspace = read("scripts/create-customer-workspace.mjs");
+  const workOrder = read("scripts/create-first-paid-audit-work-order.mjs");
+  const handoff = read("scripts/create-paid-audit-handoff.mjs");
+  const requiredInternalMarkers = [
+    "called-from-handoff",
+    "Refusing to create a live customer workspace directly.",
+    "Refusing to create a live paid audit work order directly.",
+    "The private workspace is created by the evidence-backed paid handoff."
+  ];
+  const combined = `${workspace}\n${workOrder}\n${handoff}`;
+  const missingInternalMarkers = requiredInternalMarkers.filter((marker) => !combined.includes(marker));
+  results.push(
+    missingInternalMarkers.length === 0
+      ? result("pass", "handoff-internal delivery builders", "workspace and work-order commands cannot bypass the paid handoff gate")
+      : result("fail", "handoff-internal delivery builders", missingInternalMarkers.join(", "))
+  );
 }
 
 if (exists("delivery/customer-workspace-template/retention-and-deletion-log.md")) {

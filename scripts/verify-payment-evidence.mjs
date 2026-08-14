@@ -134,6 +134,20 @@ if (data.paymentProvider !== "Stripe" && data.paymentProvider !== "Manual approv
   fail("Payment provider must be Stripe or Manual approved.");
 }
 
+if (data.paymentProvider === "Manual approved" || /^manual_/i.test(data.paymentReference)) {
+  const manualFields = ["approvedBy", "approvalTimestamp", "approvalSource"];
+  for (const key of manualFields) {
+    if (typeof data[key] !== "string" || data[key].trim().length === 0) {
+      fail(`Manual payment evidence missing required field: ${key}.`);
+    }
+    if (hasPlaceholder(data[key])) fail(`Replace template placeholder before using manual payment evidence: ${key}.`);
+  }
+
+  if (!validDateOrTimestamp(data.approvalTimestamp)) {
+    fail("Manual payment approvalTimestamp must be YYYY-MM-DD or an ISO timestamp.");
+  }
+}
+
 if (!validPaymentReference(data.paymentReference)) {
   fail("Payment reference must look like a Stripe reference, receipt URL, invoice URL, checkout URL, or approved manual reference.");
 }

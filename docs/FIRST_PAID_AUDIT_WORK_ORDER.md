@@ -7,7 +7,7 @@ Use this after payment clears to create the operator packet for the first paid a
 Default one-pass command:
 
 ```text
-npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json
 ```
 
 ## Command
@@ -15,7 +15,7 @@ npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
 Fallback work-order-only command:
 
 ```text
-npm run delivery:work-order -- --customer "Acme" --package "MCP Launch Audit" --contact "security@example.com" --payment "pi_or_checkout_reference"
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json
 ```
 
 By default, the command writes outside the public repo:
