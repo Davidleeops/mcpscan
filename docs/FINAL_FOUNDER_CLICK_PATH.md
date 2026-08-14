@@ -18,7 +18,15 @@ Before the external account clicks, prepare the private local evidence workspace
 npm run launch:prepare-founder-clicks -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}}
 ```
 
-This creates local files under `$HOME/MCPScan Founder Clicks/current/` for the domain cart proof, founder return packet, and Stripe checkout QA evidence. Keep that folder outside the public repo.
+This creates local files under `$HOME/MCPScan Founder Clicks/current/` for the domain cart proof, founder return packet, Stripe checkout QA evidence, command packet, and the guided click session sheet. Keep that folder outside the public repo.
+
+Open this generated file during the founder account session:
+
+```text
+$HOME/MCPScan Founder Clicks/current/CLICK_SESSION.md
+```
+
+Use `CLICK_SESSION.md` as the live checklist for account pages, exact public values, files to fill, verification commands, and stop conditions.
 
 After the external account clicks, use `ops/founder-return-packet.html` to paste the purchased domain, mailbox, aliases, and Stripe links into one approval message.
 

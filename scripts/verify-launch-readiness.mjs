@@ -465,6 +465,7 @@ if (exists("scripts/prepare-founder-click-workspace.mjs") && exists("package.jso
     "stripe-checkout-qa-evidence.json",
     "CLICK_SESSION.md",
     "Use the click session sheet",
+    "MCPScan Founder Clicks/current/CLICK_SESSION.md",
     "Spaceship domain search",
     "Stripe Payment Links",
     "Refusing to create the founder click workspace inside the public MCPScan repo"

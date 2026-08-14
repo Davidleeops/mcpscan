@@ -22,6 +22,14 @@ Prepare the private founder evidence workspace before buying anything:
 npm run launch:prepare-founder-clicks -- --domain getmcpscan.xyz --mail-provider spacemail
 ```
 
+Then open the generated click session sheet:
+
+```text
+$HOME/MCPScan Founder Clicks/current/CLICK_SESSION.md
+```
+
+That sheet is the live founder-account checklist. It includes the account links, chosen domain, mailbox aliases, local files to fill, verification commands, and stop conditions.
+
 Prebuild the cheap-lane DNS and Stripe packets:
 
 ```text
@@ -40,7 +48,7 @@ ops/generated-launch-packets/2026-08-14_getmcpscan-xyz_stripe-products.csv
 
 ## Sequence
 
-1. Prepare the private founder evidence workspace.
+1. Prepare the private founder evidence workspace and open `CLICK_SESSION.md`.
 2. Search `getmcpscan.xyz` in Spaceship.
 3. Buy one domain only if the cart is at or below `$3`, renewal is visible, and no paid add-ons appear.
 4. Create one Spacemail mailbox: `security@getmcpscan.xyz`, with `audit@getmcpscan.xyz` and `hello@getmcpscan.xyz` aliases.
@@ -60,14 +68,10 @@ ops/generated-launch-packets/2026-08-14_getmcpscan-xyz_stripe-products.csv
 ```text
 1. Run npm run launch:open-founder.
 2. Run npm run launch:prepare-founder-clicks -- --domain getmcpscan.xyz --mail-provider spacemail.
-3. Open the domain purchase packet.
-4. Search getmcpscan.xyz first.
-5. Buy one domain only after first-year price, renewal price, and add-ons are clear.
-6. Create one Spacemail mailbox: security@getmcpscan.xyz.
-7. Add aliases: audit@getmcpscan.xyz and hello@getmcpscan.xyz.
-8. Create the three live Stripe Payment Links.
-9. Download the approval message from ops/founder-return-packet.html after Stripe links exist.
-10. Download the QA evidence JSON from ops/stripe-payment-link-qa-console.html after the checklist passes.
+3. Open $HOME/MCPScan Founder Clicks/current/CLICK_SESSION.md.
+4. Follow that sheet through domain, mailbox, DNS, Stripe, return packet, status tracker, and verification.
+5. Download the approval message from ops/founder-return-packet.html after Stripe links exist.
+6. Download the QA evidence JSON from ops/stripe-payment-link-qa-console.html after the checklist passes.
 ```
 
 ## Founder-Only Clicks

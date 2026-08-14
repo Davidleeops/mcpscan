@@ -116,6 +116,7 @@ const commands = [
   `- Domain cart proof: ${cartProofPath}`,
   `- Founder return packet: ${returnPacketPath}`,
   `- Stripe checkout QA evidence: ${qaEvidencePath}`,
+  "- Default click session sheet: $HOME/MCPScan Founder Clicks/current/CLICK_SESSION.md",
   "",
   "## Before Purchase",
   "",
