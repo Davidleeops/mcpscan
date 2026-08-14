@@ -11,7 +11,18 @@ STRIPE_LAUNCH=https://buy.stripe.com/...
 STRIPE_ENTERPRISE=https://buy.stripe.com/...
 ```
 
-Then Codex can run:
+Primary path: paste these values into `ops/founder-return-packet.html`, attach
+Stripe QA evidence from `ops/stripe-payment-link-qa-console.html`, then Codex
+can run:
+
+```bash
+npm run launch:post-click-verify -- \
+  --file /path/to/approved-return-packet.txt \
+  --qa-file /path/to/stripe-checkout-qa-evidence.json \
+  --apply true
+```
+
+Fallback path if the return packet UI is unavailable:
 
 ```bash
 npm run launch:apply-links -- \
