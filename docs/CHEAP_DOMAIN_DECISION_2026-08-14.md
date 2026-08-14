@@ -6,13 +6,28 @@ Status: founder purchase approval required. Do not buy until the Spaceship cart 
 
 ## Decision
 
-For the near-dollar path, search `getmcpscan.xyz` first. Spaceship's current promo page showed `.xyz` at `$0.75/yr` with promo code `XYZ52`, while the live `.xyz` pricing page showed `$1.86/yr` before any accepted cart promo. The cart is the source of truth.
+For the cheap validation path, search `getmcpscan.xyz` first. The current official Spaceship pricing page shows `.xyz` at `$1.86/yr` before final cart confirmation, with renewal around `$12.52/yr`. That is still under the `$3` cheap-lane cap and has a better renewal posture than the near-dollar novelty options. The final Spaceship cart is the source of truth.
 
-Use `mcpscan.online` or `mcpscan.site` only as backups if `getmcpscan.xyz` is unavailable, premium-priced, or blocked in the final cart. They can be cheap in the first year, but renewal posture is materially worse.
+Use `mcpscan.online` or `mcpscan.site` only as backups if `getmcpscan.xyz` is unavailable, premium-priced, or blocked in the final cart. Current official Spaceship pricing shows `.online` and `.site` at `$0.98/yr` before ICANN fee, with renewal around `$21.38/yr`. They are useful for a near-dollar validation lane, but their renewal posture and buyer-trust signal are materially weaker.
 
-Use `getmcpscan.com` if you decide the extra credibility is worth a small extra first-year cost. Spaceship's current promo page showed `.com` at `$3.72/yr` with promo code `COM67`. That is still cheap enough for the trust lane if the exact name is available and not premium-priced.
+Use `getmcpscan.com` if you decide the extra credibility is worth a higher first-year cost. Current official Spaceship pricing shows `.com` at `$8.88/yr` before ICANN fee, with renewal around `$9.98/yr`. That is still the best buyer-trust choice if the exact name is available and not premium-priced.
 
-Avoid `mcpscan.shop` for the primary launch domain even if it is cheaper. It reads like ecommerce, not B2B security.
+Avoid `mcpscan.shop` for the primary launch domain even if it is cheaper. Current official Spaceship pricing shows `.shop` at `$0.70/yr`, but renewal is around `$31.05/yr` and the extension reads like ecommerce, not B2B security.
+
+## Current Official Spaceship Price Signals
+
+Checked on August 14, 2026. These are pricing-page signals, not purchase approval. The cart must still show the exact name, renewal price, add-ons, mailbox plan, and final total before buying.
+
+| TLD | First-Year Signal | Renewal Signal | Use |
+| --- | ---: | ---: | --- |
+| `.shop` | `$0.70` plus ICANN fee | about `$31.05` plus ICANN fee | Avoid for security brand |
+| `.online` | `$0.98` plus ICANN fee | about `$21.38` plus ICANN fee | Near-dollar backup |
+| `.site` | `$0.98` plus ICANN fee | about `$21.38` plus ICANN fee | Near-dollar backup |
+| `.click` | `$1.04` plus ICANN fee | about `$10.35` plus ICANN fee | Emergency fallback only |
+| `.xyz` | `$1.86` plus ICANN fee | about `$12.52` plus ICANN fee | Best cheap validation lane |
+| `.com` | `$8.88` plus ICANN fee | about `$9.98` plus ICANN fee | Best trust lane |
+
+My current call: buy `getmcpscan.xyz` if the exact final cart is at or below `$3`, not premium-priced, and the renewal is acknowledged. Buy `mcpscan.online` or `mcpscan.site` only if the absolute lowest first-year checkout matters more than trust and renewal. Buy `getmcpscan.com` if you want the best buyer trust per dollar.
 
 Before purchase, create a public-safe cart proof and run:
 

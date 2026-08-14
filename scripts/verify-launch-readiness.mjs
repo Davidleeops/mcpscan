@@ -521,6 +521,36 @@ if (exists("ops/domain-mailbox-purchase-packet.html") && exists("ops/cheap-launc
   );
 }
 
+if (exists("docs/CHEAP_DOMAIN_DECISION_2026-08-14.md") && exists("docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md") && exists("docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md")) {
+  const cheapDomainDecision = read("docs/CHEAP_DOMAIN_DECISION_2026-08-14.md");
+  const domainPricePath = [
+    cheapDomainDecision,
+    read("docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md"),
+    read("docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md")
+  ].join("\n");
+  const requiredDomainPriceMarkers = [
+    "Current Official Spaceship Price Signals",
+    "The final Spaceship cart is the source of truth.",
+    "`.online` and `.site` at `$0.98/yr`",
+    "`.shop` at `$0.70/yr`",
+    "`.xyz` at `$1.86/yr`",
+    "`.com` at `$8.88/yr`",
+    "getmcpscan.xyz",
+    "getmcpscan.com",
+    "buyer trust per dollar"
+  ];
+  const missingDomainPriceMarkers = requiredDomainPriceMarkers.filter((marker) => !domainPricePath.includes(marker));
+  const staleCheapDomainMarkers = [
+    "$0.75/yr",
+    "COM67"
+  ].filter((marker) => cheapDomainDecision.includes(marker));
+  results.push(
+    missingDomainPriceMarkers.length === 0 && staleCheapDomainMarkers.length === 0
+      ? result("pass", "current cheap domain decision", "official Spaceship price signals, trust lane, cheap lane, and cart-source rule are current")
+      : result("fail", "current cheap domain decision", [...missingDomainPriceMarkers, ...staleCheapDomainMarkers].join(", "))
+  );
+}
+
 if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-return-packet.html")) {
   const returnReview = [
     read("scripts/open-founder-return-review.mjs"),
