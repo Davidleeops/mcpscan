@@ -48,6 +48,7 @@ Use this after the founder buys the domain, creates the mailbox, and creates Str
 ## Codex Apply Command
 
 ```text
+npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json
 npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider {{zoho_or_google_or_spacemail}}
 npm run launch:simulate-post-click-bundle
 npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json
@@ -65,6 +66,7 @@ Use `--dkim-selector {{selector}}` only when the provider shows a DKIM selector.
 The post-purchase handoff is ready when:
 
 - `npm run launch:verify-return-packet` passes for the saved return packet shape.
+- `npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json` passes for the final Spaceship cart if the cheap lane was used.
 - `npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider {{zoho_or_google_or_spacemail}}` writes a private bundle outside the public repo.
 - `npm run launch:simulate-post-click-bundle` proves the bundle path with temporary QA evidence.
 - `npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json` proves the status tracker matches the approved return packet and Stripe QA evidence.

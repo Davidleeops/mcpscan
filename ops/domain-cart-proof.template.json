@@ -1,0 +1,33 @@
+{
+  "generatedFor": "MCPScan first revenue launch",
+  "updatedAt": "{{YYYY-MM-DD}}",
+  "domain": "{{chosen_domain}}",
+  "registrar": "Spaceship",
+  "domainAvailable": false,
+  "firstYearDomainUsd": null,
+  "maxFirstYearDomainUsd": 3,
+  "renewalDomainUsd": null,
+  "renewalAcknowledged": false,
+  "cheapRenewalTradeoffAcknowledged": false,
+  "domainCount": 1,
+  "mailProvider": "{{spacemail_or_zoho_or_google}}",
+  "primaryMailbox": "security@{{chosen_domain}}",
+  "auditAlias": "audit@{{chosen_domain}}",
+  "helloAlias": "hello@{{chosen_domain}}",
+  "mailboxCount": 1,
+  "mailboxUsd": null,
+  "mailboxBillingTerm": "{{monthly_or_annual_or_trial}}",
+  "paidHosting": false,
+  "paidSsl": false,
+  "siteBuilder": false,
+  "extraDomains": false,
+  "extraMailboxes": false,
+  "paidPrivacyUpsell": false,
+  "freePrivacyKept": true,
+  "founderApproval": false,
+  "approvalText": "{{paste_exact_approval_phrase}}",
+  "notes": [
+    "Public-safe cart proof only.",
+    "Do not include card data, account passwords, mailbox passwords, Stripe secrets, or registrar login details."
+  ]
+}

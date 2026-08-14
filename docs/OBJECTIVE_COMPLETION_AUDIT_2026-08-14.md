@@ -22,7 +22,7 @@ Best current positioning:
 | Go-to-market plan | `docs/GO_TO_MARKET.md`, `docs/FIRST_REVENUE_BATTLECARD.md`, `sales/first-10-outbound-approval-packet.md` | Ready |
 | Full list of what must happen to get live | `docs/FINAL_FOUNDER_CLICK_PATH.md`, `docs/FOUNDER_CLICK_HANDOFF.md`, `docs/FOUNDER_RETURN_VALUES_CHECKLIST.md`, `ops/launch-day-runbook.html` | Ready |
 | Clickable founder path | `npm run launch:day`, `npm run launch:next`, `npm run launch:open-founder`, `ops/launch-day-runbook.html`, `ops/final-founder-click-console.html`, `ops/founder-click-handoff.html` | Ready |
-| Domain and mailbox packets | `npm run domain:open`, `ops/domain-mailbox-purchase-packet.html`, `ops/domain-email-dns-console.html`, `npm run launch:dns-packet`, `ops/generated-launch-packets/2026-08-14_mcpscan-online_dns-packet.md` | Ready |
+| Domain and mailbox packets | `npm run domain:open`, `ops/domain-mailbox-purchase-packet.html`, `ops/domain-cart-proof.template.json`, `npm run launch:verify-cart`, `ops/domain-email-dns-console.html`, `npm run launch:dns-packet`, `ops/generated-launch-packets/2026-08-14_mcpscan-online_dns-packet.md` | Ready |
 | Stripe setup packet | `ops/stripe-click-setup.html`, `npm run launch:stripe-packet`, `ops/stripe-payment-link-qa-console.html` | Ready |
 | Return packet after clicks | `ops/founder-return-packet.html`, `ops/approved-links-command-builder.html`, `ops/founder-status-console.html`, `docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md`, `npm run launch:open-return-review`, `npm run launch:post-click-bundle`, `npm run launch:verify-status`, `npm run launch:post-click-verify` | Ready |
 | First-revenue runway after live gates | `npm run launch:open-first-revenue`, `scripts/open-first-revenue-runway.mjs` | Ready |
@@ -74,7 +74,7 @@ Latest local readiness proof:
 
 ```text
 npm run launch:verify
-Summary: 219 passed, 3 expected founder-click warnings, 0 failures.
+Summary: 224 passed, 3 expected founder-click warnings, 0 failures.
 ```
 
 Current consolidated proof:

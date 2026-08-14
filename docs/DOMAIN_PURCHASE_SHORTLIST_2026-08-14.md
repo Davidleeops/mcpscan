@@ -20,6 +20,8 @@ Use a `$1` to `$3` domain such as `mcpscan.online`, `mcpscan.site`, or `getmcpsc
 
 Naming risk update: public adjacent names include `mcpscan.dev`, `scanmcp.com`, `mcpscanner.dev`, and Invariant's MCP-Scan. This does not stop launch, but it does create confusion risk. Search `mcpattest.dev`, `agentposture.dev`, `toolattest.dev`, and `toolposture.dev` before buying if you are willing to avoid that risk.
 
+Cart proof update: before buying a Spaceship cheap-lane domain, fill `ops/domain-cart-proof.template.json` with the final cart values and run `npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json`. The rehearsal sample passes with `npm run launch:verify-cart`.
+
 ## Current Availability Signal
 
 Checked through the domain availability tool on 2026-08-14:
@@ -80,7 +82,8 @@ Email pricing checked on 2026-08-14: Zoho Mail Lite is the cheapest credible cus
 12. Buy one domain only unless the founder explicitly approves a protective second domain.
 13. Create one mailbox only: `security@{{chosen_domain}}`.
 14. Add aliases for `audit@{{chosen_domain}}` and `hello@{{chosen_domain}}`.
-15. Do not send outbound until MX, SPF, DKIM, and DMARC pass.
+15. For a Spaceship cheap-lane purchase, run the cart proof verifier before checkout.
+16. Do not send outbound until MX, SPF, DKIM, and DMARC pass.
 
 ## Founder Approval Text
 
@@ -109,6 +112,7 @@ Buy one MCPScan launch domain and one matching mailbox. Do not buy extra domains
 - Spaceship promos: `https://www.spaceship.com/promos/`
 - Spaceship business email: `https://www.spaceship.com/business-email/`
 - Spacemail pricing: `https://www.spacemail.com/`
+- Spaceship cart proof: `docs/SPACESHIP_CART_PROOF_2026-08-14.md`
 - Zoho Mail pricing: `https://www.zoho.com/mail/zohomail-pricing.html`
 - Google Workspace pricing: `https://workspace.google.com/pricing`
 - TLD-List Spaceship comparison: `https://tld-list.com/registrars/spaceship`

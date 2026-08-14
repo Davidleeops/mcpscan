@@ -117,6 +117,7 @@
         <div class="actions">
           <a class="button primary" href="https://www.spaceship.com/domain-search/?query=mcpscan.online" target="_blank" rel="noreferrer">Search mcpscan.online</a>
           <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscan.site" target="_blank" rel="noreferrer">Backup .site</a>
+          <a class="button" href="domain-cart-proof.template.json">Cart proof template</a>
           <a class="button" href="founder-click-handoff.html">Founder handoff</a>
           <a class="button" href="launch-cockpit.html">Launch cockpit</a>
         </div>
@@ -124,7 +125,7 @@
 
       <section class="decision">
         <h2>Use This Lane Only If The Cart Is Still Cheap</h2>
-        <p>Buy one domain and one mailbox only. Use <code>mcpscan.online</code>, <code>security@mcpscan.online</code>, <code>audit@mcpscan.online</code>, and <code>hello@mcpscan.online</code>. Use <code>mcpscan.site</code> only if the cart blocks the .online name or .site is materially cheaper. Do not add paid hosting, site builder, paid SSL, extra domains, or extra mailboxes.</p>
+        <p>Buy one domain and one mailbox only. Use <code>mcpscan.online</code>, <code>security@mcpscan.online</code>, <code>audit@mcpscan.online</code>, and <code>hello@mcpscan.online</code>. Use <code>mcpscan.site</code> only if the cart blocks the .online name or .site is materially cheaper. Fill the cart proof before purchase. Do not add paid hosting, site builder, paid SSL, extra domains, or extra mailboxes.</p>
       </section>
 
       <div class="grid">
@@ -176,6 +177,13 @@
             <pre id="prepare-command">npm run launch:prepare-cheap</pre>
           </section>
 
+          <section class="warning">
+            <h2>Cart Proof Command</h2>
+            <p>Run this before checkout after filling the public-safe cart proof.</p>
+            <button class="copy" data-copy-target="cart-proof-command">Copy command</button>
+            <pre id="cart-proof-command">npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json</pre>
+          </section>
+
           <section>
             <h2>Packet Folder</h2>
             <div class="linklist">
@@ -184,6 +192,7 @@
               <a href="generated-launch-packets/2026-08-14_mcpscan-online_dns-records.csv">DNS records CSV</a>
               <a href="generated-launch-packets/2026-08-14_mcpscan-online_stripe-setup-packet.md">Stripe setup packet</a>
               <a href="generated-launch-packets/2026-08-14_mcpscan-online_stripe-products.csv">Stripe products CSV</a>
+              <a href="domain-cart-proof.template.json">Domain cart proof template</a>
             </div>
           </section>
 

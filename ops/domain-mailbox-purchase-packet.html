@@ -118,13 +118,21 @@
           <a class="button" href="https://www.zoho.com/mail/zohomail-pricing.html" target="_blank" rel="noreferrer">Open Zoho Mail</a>
           <a class="button" href="https://workspace.google.com/pricing" target="_blank" rel="noreferrer">Open Google Workspace</a>
           <a class="button" href="https://www.spaceship.com/business-email/" target="_blank" rel="noreferrer">Open Spacemail</a>
+          <a class="button" href="domain-cart-proof.template.json">Cart proof template</a>
+          <a class="button" href="../docs/SPACESHIP_CART_PROOF_2026-08-14.md">Cart proof guide</a>
           <a class="button" href="founder-return-packet.html">Return packet</a>
         </div>
       </header>
 
       <section class="decision">
         <h2>Best Current Call</h2>
-        <p>Search <strong>getmcpscan.com</strong> first if you want to keep MCPScan and sell a paid B2B security audit. Search <strong>mcpattest.dev</strong> first only if you are willing to use a cleaner security brand. Use <strong>mcpscan.online</strong> for the current near-dollar validation lane, <strong>getmcpscan.xyz</strong> for better renewal posture, or <strong>mcpscan.site</strong> only if the .online cart fails or .site is materially cheaper.</p>
+        <p>Search <strong>getmcpscan.com</strong> first if you want to keep MCPScan and sell a paid B2B security audit. Search <strong>mcpattest.dev</strong> first only if you are willing to use a cleaner security brand. Use <strong>mcpscan.online</strong> for the current near-dollar validation lane, <strong>getmcpscan.xyz</strong> for better renewal posture, or <strong>mcpscan.site</strong> only if the .online cart fails or .site is materially cheaper. For a cheap Spaceship lane, fill the cart proof before checkout.</p>
+      </section>
+
+      <section class="warning">
+        <h2>Pre-Purchase Cart Proof</h2>
+        <p>Before buying a cheap Spaceship domain, fill `ops/domain-cart-proof.template.json` with the final cart facts and run the verifier. This blocks premium pricing, hidden renewal, paid hosting, paid SSL, site builder, paid privacy upsells, extra domains, and extra mailboxes.</p>
+        <pre>npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json</pre>
       </section>
 
       <div class="grid">

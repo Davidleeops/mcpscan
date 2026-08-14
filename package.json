@@ -25,6 +25,7 @@
     "launch:day": "node scripts/open-launch-day-runbook.mjs",
     "launch:open-return-review": "node scripts/open-founder-return-review.mjs",
     "launch:prepare-cheap": "node scripts/prepare-cheap-launch-packets.mjs",
+    "launch:verify-cart": "node scripts/verify-domain-cart-proof.mjs",
     "launch:dns-packet": "node scripts/build-domain-dns-packet.mjs",
     "launch:stripe-packet": "node scripts/build-stripe-setup-packet.mjs",
     "launch:verify-stripe": "node scripts/verify-stripe-links.mjs",

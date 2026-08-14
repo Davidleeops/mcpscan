@@ -1,0 +1,33 @@
+{
+  "generatedFor": "MCPScan first revenue launch",
+  "updatedAt": "2026-08-14",
+  "domain": "mcpscan.online",
+  "registrar": "Spaceship",
+  "domainAvailable": true,
+  "firstYearDomainUsd": 0.98,
+  "maxFirstYearDomainUsd": 3,
+  "renewalDomainUsd": 21.38,
+  "renewalAcknowledged": true,
+  "cheapRenewalTradeoffAcknowledged": true,
+  "domainCount": 1,
+  "mailProvider": "spacemail",
+  "primaryMailbox": "security@mcpscan.online",
+  "auditAlias": "audit@mcpscan.online",
+  "helloAlias": "hello@mcpscan.online",
+  "mailboxCount": 1,
+  "mailboxUsd": 11.76,
+  "mailboxBillingTerm": "annual after 30-day trial",
+  "paidHosting": false,
+  "paidSsl": false,
+  "siteBuilder": false,
+  "extraDomains": false,
+  "extraMailboxes": false,
+  "paidPrivacyUpsell": false,
+  "freePrivacyKept": true,
+  "founderApproval": true,
+  "approvalText": "I approve buying the MCPScan launch domain",
+  "notes": [
+    "Sample proof for verifier rehearsal only.",
+    "Use the final Spaceship cart as source of truth before purchase."
+  ]
+}

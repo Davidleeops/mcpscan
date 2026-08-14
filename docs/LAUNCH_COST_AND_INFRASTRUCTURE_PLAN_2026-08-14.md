@@ -166,6 +166,18 @@ Total before payment processing: about $19 to $31
 
 Do not add paid database, SaaS hosting, analytics, CRM, or dashboard infrastructure before the first sale.
 
+Before a cheap Spaceship checkout, fill the public-safe cart proof and run:
+
+```text
+npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json
+```
+
+The sample proof can be rehearsed with:
+
+```text
+npm run launch:verify-cart
+```
+
 ## Current Source Notes
 
 Public pricing signals checked on 2026-08-14:
@@ -176,7 +188,7 @@ Public pricing signals checked on 2026-08-14:
 - Spaceship domain pricing showed `.shop` at about `$0.70` first year and about `$31.05` renewal.
 - Spaceship domain pricing showed `.us` at about `$4.14` first year and about `$6.48` renewal.
 - Spaceship promo terms say offers can change, apply to first-year registrations, and exclude premium names.
-- Spacemail public pricing shows business email from `$0.79/mo`, with Pro one-mailbox pricing around `$18.88` for 2 years after trial.
+- Spaceship promos showed Spacemail Pro at `$0.00` for 30 days and `$11.76/yr` after trial.
 - Public search also showed existing MCP scanner brands and domains, including `mcpscan.ai`, which makes a credible modifier such as `getmcpscan.com` safer than chasing novelty TLD cheapness.
 - Public `.us` registry and registrar guidance shows `.us` has US nexus and privacy considerations, so it is a fallback rather than the default.
 

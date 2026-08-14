@@ -165,6 +165,8 @@ const requiredFiles = [
   "ops/final-founder-click-console.html",
   "ops/founder-return-packet.sample.txt",
   "ops/domain-mailbox-purchase-packet.html",
+  "ops/domain-cart-proof.template.json",
+  "ops/domain-cart-proof.sample.json",
   "ops/cheap-launch-packet-console.html",
   "ops/domain-email-dns-console.html",
   "ops/stripe-click-setup.html",
@@ -230,6 +232,7 @@ const requiredFiles = [
   "docs/DOMAIN_AND_MAILBOX_DECISION.md",
   "docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md",
   "docs/CHEAP_DOMAIN_DECISION_2026-08-14.md",
+  "docs/SPACESHIP_CART_PROOF_2026-08-14.md",
   "docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md",
   "docs/PUBLIC_TRUST_CHECKLIST.md",
   "docs/MARKET_SOURCE_PACK_2026-08-14.md",
@@ -279,6 +282,7 @@ const requiredFiles = [
   "scripts/build-domain-dns-packet.mjs",
   "scripts/build-stripe-setup-packet.mjs",
   "scripts/prepare-cheap-launch-packets.mjs",
+  "scripts/verify-domain-cart-proof.mjs",
   "scripts/build-static-launch-bundle.mjs",
   "scripts/open-static-launch-bundle.mjs",
   "scripts/open-domain-purchase-path.mjs",
@@ -433,15 +437,46 @@ if (exists("scripts/open-founder-clicks.mjs")) {
   );
 }
 
+if (exists("ops/domain-mailbox-purchase-packet.html") && exists("ops/cheap-launch-packet-console.html")) {
+  const cartProofPath = [
+    read("ops/domain-mailbox-purchase-packet.html"),
+    read("ops/cheap-launch-packet-console.html"),
+    exists("docs/SPACESHIP_CART_PROOF_2026-08-14.md") ? read("docs/SPACESHIP_CART_PROOF_2026-08-14.md") : "",
+    exists("docs/CHEAP_DOMAIN_DECISION_2026-08-14.md") ? read("docs/CHEAP_DOMAIN_DECISION_2026-08-14.md") : "",
+    exists("scripts/verify-domain-cart-proof.mjs") ? read("scripts/verify-domain-cart-proof.mjs") : "",
+    read("package.json")
+  ].join("\n");
+  const requiredCartProofMarkers = [
+    "launch:verify-cart",
+    "domain-cart-proof.template.json",
+    "domain-cart-proof.sample.json",
+    "firstYearDomainUsd",
+    "renewalAcknowledged",
+    "cheapRenewalTradeoffAcknowledged",
+    "paidHosting",
+    "paidSsl",
+    "extraDomains",
+    "extraMailboxes"
+  ];
+  const missingCartProofMarkers = requiredCartProofMarkers.filter((marker) => !cartProofPath.includes(marker));
+  results.push(
+    missingCartProofMarkers.length === 0
+      ? result("pass", "cheap domain cart proof path", "cart verifier, template, sample, and no-upsell gates are present")
+      : result("fail", "cheap domain cart proof path", missingCartProofMarkers.join(", "))
+  );
+}
+
 if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-return-packet.html")) {
   const returnReview = [
     read("scripts/open-founder-return-review.mjs"),
     read("ops/founder-return-packet.html"),
     exists("ops/approved-links-command-builder.html") ? read("ops/approved-links-command-builder.html") : "",
     exists("docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md") ? read("docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md") : "",
+    exists("docs/SPACESHIP_CART_PROOF_2026-08-14.md") ? read("docs/SPACESHIP_CART_PROOF_2026-08-14.md") : "",
     exists("ops/launch-day-runbook.html") ? read("ops/launch-day-runbook.html") : ""
   ].join("\n");
   const requiredReturnReviewCommands = [
+    "npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json",
     "npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json",
     "npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json",
     "npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true",
@@ -523,12 +558,19 @@ if (exists("ops/founder-return-packet.html") && exists("ops/stripe-payment-link-
   const approvalSurfaces = [
     read("ops/founder-return-packet.html"),
     read("ops/stripe-payment-link-qa-console.html"),
-    read("ops/founder-return-packet.sample.txt")
+    read("ops/founder-return-packet.sample.txt"),
+    exists("ops/domain-cart-proof.template.json") ? read("ops/domain-cart-proof.template.json") : "",
+    exists("ops/domain-cart-proof.sample.json") ? read("ops/domain-cart-proof.sample.json") : "",
+    exists("scripts/verify-domain-cart-proof.mjs") ? read("scripts/verify-domain-cart-proof.mjs") : ""
   ].join("\n");
   const requiredApprovalMarkers = [
     "Commit and push require a separate explicit approval after verification.",
     "keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval",
-    "launch:post-click-bundle"
+    "launch:post-click-bundle",
+    "I approve buying the MCPScan launch domain",
+    "paidHosting",
+    "paidSsl",
+    "extraMailboxes"
   ];
   const missingApprovalMarkers = requiredApprovalMarkers.filter((marker) => !approvalSurfaces.includes(marker));
   const unsafeApprovalMarkers = [
@@ -556,6 +598,7 @@ if (exists("ops/launch-day-runbook.html") && exists("scripts/open-launch-day-run
     "founder-status-console.html",
     "swarm-throughput-console.html",
     "docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md",
+    "launch:verify-cart",
     "launch:post-click-bundle",
     "launch:simulate-post-click-bundle",
     "launch:verify-status",

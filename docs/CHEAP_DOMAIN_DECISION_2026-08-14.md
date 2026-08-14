@@ -14,6 +14,14 @@ Use `getmcpscan.xyz` if renewal posture matters more than first-year price. It i
 
 Avoid `mcpscan.shop` for the primary launch domain even if it is cheaper. It reads like ecommerce, not B2B security.
 
+Before purchase, create a public-safe cart proof and run:
+
+```text
+npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json
+```
+
+Use `ops/domain-cart-proof.template.json` as the fill-in shape. The sample can be rehearsed with `npm run launch:verify-cart`.
+
 ## Click Order
 
 1. Open `ops/domain-mailbox-purchase-packet.html`.
@@ -21,11 +29,12 @@ Avoid `mcpscan.shop` for the primary launch domain even if it is cheaper. It rea
 3. Search `mcpscan.online` in Spaceship.
 4. Confirm the first-year price is at or below `$3`.
 5. Confirm the renewal price is visible and acceptable.
-6. Remove paid hosting, paid SSL, site builder, paid privacy upsells, extra domains, and extra mailboxes.
-7. Create one mailbox only: `security@mcpscan.online`.
-8. Add aliases: `audit@mcpscan.online` and `hello@mcpscan.online`.
-9. Open `ops/cheap-launch-packet-console.html` and use the prebuilt DNS and Stripe packet links.
-10. Paste the final public values into `ops/founder-return-packet.html`.
+6. Fill the cart proof and run `npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json`.
+7. Remove paid hosting, paid SSL, site builder, paid privacy upsells, extra domains, and extra mailboxes.
+8. Create one mailbox only: `security@mcpscan.online`.
+9. Add aliases: `audit@mcpscan.online` and `hello@mcpscan.online`.
+10. Open `ops/cheap-launch-packet-console.html` and use the prebuilt DNS and Stripe packet links.
+11. Paste the final public values into `ops/founder-return-packet.html`.
 
 ## Cart Limits
 
@@ -44,5 +53,7 @@ Stop if any cart line is unclear. The cart is the final source of truth.
 ## Sources
 
 - Spaceship domains: `https://www.spaceship.com/domains/`
+- Spaceship promos: `https://www.spaceship.com/promos/`
 - Spaceship business email: `https://www.spaceship.com/business-email/`
+- Cart proof: `docs/SPACESHIP_CART_PROOF_2026-08-14.md`
 - TLDSpy Spaceship pricing comparison: `https://tldspy.com/registrar/spaceship`
