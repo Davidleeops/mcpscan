@@ -144,6 +144,7 @@ const results = [];
 
 const requiredFiles = [
   "landing/index.html",
+  "landing/mcp-security-audit.html",
   "landing/intake.html",
   "landing/thank-you.html",
   "landing/secure-intake.html",
@@ -226,6 +227,7 @@ const requiredFiles = [
   "docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md",
   "docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md",
   "docs/PUBLIC_TRUST_CHECKLIST.md",
+  "docs/MARKET_SOURCE_PACK_2026-08-14.md",
   "docs/MARKET_REALITY_BRIEF_2026-08-14.md",
   "docs/MARKET_PULSE_REFRESH_2026-08-14.md",
   "sales/buyer-intent-map-2026-08-14.md",
@@ -364,7 +366,7 @@ if (exists("scripts/open-next-founder-action.mjs")) {
   const nextAction = read("scripts/open-next-founder-action.mjs");
   const requiredNextActionUrls = [
     "https://www.spaceship.com/domain-search/?query=mcpattest.dev",
-    "https://www.spaceship.com/domain-search/?query=trymcpscan.com",
+    "https://www.spaceship.com/domain-search/?query=getmcpscan.com",
     "https://www.spaceship.com/domain-search/?query=mcpscan.site",
     "https://dashboard.stripe.com/payment-links"
   ];
@@ -396,7 +398,7 @@ if (exists("scripts/open-next-founder-action.mjs")) {
 if (exists("scripts/open-founder-clicks.mjs")) {
   const founderClicks = read("scripts/open-founder-clicks.mjs");
   const requiredFounderClickUrls = [
-    "https://www.spaceship.com/domain-search/?query=trymcpscan.com",
+    "https://www.spaceship.com/domain-search/?query=getmcpscan.com",
     "https://www.spaceship.com/domain-search/?query=mcpattest.dev",
     "https://www.spaceship.com/domain-search/?query=getmcpscan.xyz",
     "https://www.spaceship.com/domain-search/?query=mcpscan.site"
@@ -434,6 +436,7 @@ results.push(
 const urls = [
   `${baseUrl}/`,
   `${baseUrl}/sample-report.html`,
+  `${baseUrl}/mcp-security-audit.html`,
   `${baseUrl}/intake.html`,
   `${baseUrl}/secure-intake.html`,
   `${baseUrl}/thank-you.html`,

@@ -49,7 +49,7 @@ const dkimValue = (args["dkim-value"] ?? "{{spacemail_dkim_value}}").trim();
 const outputRoot = path.resolve(args.output ?? path.join(os.tmpdir(), "mcpscan-dns-packets"));
 
 if (!validDomain(domain)) {
-  console.error("Usage: npm run launch:dns-packet -- --domain trymcpscan.com");
+  console.error("Usage: npm run launch:dns-packet -- --domain getmcpscan.com");
   process.exit(1);
 }
 

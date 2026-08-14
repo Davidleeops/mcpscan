@@ -110,7 +110,7 @@
           <p>Choose one launch lane, copy the exact approval, then buy one domain and one mailbox. This page does not purchase anything or send anything.</p>
         </div>
         <div class="actions">
-          <a class="button primary" href="https://www.spaceship.com/domain-search/?query=trymcpscan.com" target="_blank" rel="noreferrer">Search .com trust pick</a>
+          <a class="button primary" href="https://www.spaceship.com/domain-search/?query=getmcpscan.com" target="_blank" rel="noreferrer">Search .com trust pick</a>
           <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpattest.dev" target="_blank" rel="noreferrer">Search clean .dev</a>
           <a class="button" href="https://www.spaceship.com/domain-search/?query=getmcpscan.xyz" target="_blank" rel="noreferrer">Search cheap .xyz</a>
           <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscan.site" target="_blank" rel="noreferrer">Search cheap .site</a>
@@ -122,7 +122,7 @@
 
       <section class="decision">
         <h2>Best Current Call</h2>
-        <p>Search <strong>trymcpscan.com</strong> first if you want to keep MCPScan and sell a paid B2B security audit. Search <strong>mcpattest.dev</strong> first only if you are willing to use a cleaner security brand. Use <strong>getmcpscan.xyz</strong> for cheap validation with better renewal posture, or <strong>mcpscan.site</strong> only if the near-dollar cart total matters most.</p>
+        <p>Search <strong>getmcpscan.com</strong> first if you want to keep MCPScan and sell a paid B2B security audit. Search <strong>mcpattest.dev</strong> first only if you are willing to use a cleaner security brand. Use <strong>getmcpscan.xyz</strong> for cheap validation with better renewal posture, or <strong>mcpscan.site</strong> only if the near-dollar cart total matters most.</p>
       </section>
 
       <div class="grid">
@@ -137,17 +137,17 @@
                 <option value="custom">Custom approved domain</option>
               </select>
             </label>
-            <label>Domain to buy<input id="domain" value="trymcpscan.com" autocomplete="off"></label>
+            <label>Domain to buy<input id="domain" value="getmcpscan.com" autocomplete="off"></label>
             <label>Maximum first-year domain spend<input id="spend" value="$12" autocomplete="off"></label>
             <label class="wide">Renewal acknowledged<input id="renewal" value="$9.98 plus ICANN if standard .com" autocomplete="off"></label>
-            <label>Primary mailbox<input id="mailbox" value="security@trymcpscan.com" autocomplete="off"></label>
-            <label class="wide">Aliases<input id="aliases" value="audit@trymcpscan.com, hello@trymcpscan.com" autocomplete="off"></label>
+            <label>Primary mailbox<input id="mailbox" value="security@getmcpscan.com" autocomplete="off"></label>
+            <label class="wide">Aliases<input id="aliases" value="audit@getmcpscan.com, hello@getmcpscan.com" autocomplete="off"></label>
           </div>
           <h3>Cart Safety Check</h3>
           <div class="form">
             <label>Cart first-year domain price<input id="cartDomainPrice" value="$8.88" autocomplete="off"></label>
             <label>Cart renewal price<input id="cartRenewalPrice" value="$9.98" autocomplete="off"></label>
-            <label class="wide">Cart mailbox total<input id="cartMailboxTotal" value="$18.88 for 2 years expected" autocomplete="off"></label>
+            <label class="wide">Cart mailbox total<input id="cartMailboxTotal" value="Zoho Mail Lite about $1/user/month, or Spacemail one-mailbox price if same-vendor" autocomplete="off"></label>
             <label>Extra domains in cart<input id="extraDomains" value="0" inputmode="numeric" autocomplete="off"></label>
             <label>Extra mailboxes in cart<input id="extraMailboxes" value="0" inputmode="numeric" autocomplete="off"></label>
             <label>Other paid add-ons<input id="paidAddons" value="none, free privacy ok" autocomplete="off"></label>
@@ -186,7 +186,7 @@
           <li>Confirm the first-year price and renewal price in the Spaceship cart.</li>
           <li>Try the active Spaceship promo field only if it is visible. Public promo pages showed near-dollar `.site` and `.online` codes on 2026-08-14, but official Spaceship pricing and the cart decide.</li>
           <li>Remove hosting, site builder, paid SSL, paid privacy upsells, extra domains, and extra mailboxes. Keep free included privacy if available.</li>
-          <li>Pick Spacemail Pro, one mailbox, unless the cart clearly offers a cheaper one-mailbox equivalent with aliases.</li>
+          <li>Pick Zoho Mail Lite for cheapest credible email, Google Workspace for maximum buyer trust, or Spacemail if one-vendor convenience matters most.</li>
           <li>Click buy only when the generated approval says the cart is clear.</li>
         </ul>
       </section>
@@ -256,7 +256,7 @@
           cartDomainPrice.value = "$8.28";
           cartRenewalPrice.value = "$12.42";
         } else if (lane.value === "com") {
-          domain.value = "trymcpscan.com";
+          domain.value = "getmcpscan.com";
           spend.value = "$12";
           renewal.value = "$9.98 plus ICANN if standard .com";
           cartDomainPrice.value = "$8.88";
@@ -310,7 +310,7 @@
         const chosenMailbox = mailbox.value.trim();
         const chosenAliases = aliases.value.trim();
         const errors = [];
-        if (!validDomain(chosenDomain)) errors.push("Domain must look like mcpattest.dev or trymcpscan.com");
+        if (!validDomain(chosenDomain)) errors.push("Domain must look like mcpattest.dev or getmcpscan.com");
         if (!validEmail(chosenMailbox)) errors.push("Mailbox must be a real email address");
         if (validEmail(chosenMailbox) && validDomain(chosenDomain) && !chosenMailbox.toLowerCase().endsWith("@" + chosenDomain)) {
           errors.push("Mailbox must use the chosen domain");
@@ -339,7 +339,7 @@ Domain to buy: ${chosenDomain}
 Registrar: Spaceship
 Maximum first-year domain spend: ${spend.value.trim()}
 Renewal price acknowledged: ${renewal.value.trim()}
-Mailbox plan: Spacemail Pro, one mailbox
+Mailbox plan: Zoho Mail Lite one mailbox, Google Workspace one mailbox, or Spacemail one mailbox
 Primary mailbox: ${chosenMailbox}
 Aliases: ${chosenAliases}
 Cart first-year domain price: ${cartDomainPrice.value.trim()}

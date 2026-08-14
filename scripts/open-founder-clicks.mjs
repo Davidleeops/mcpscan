@@ -13,7 +13,7 @@ const pages = [
 ];
 
 const externalUrls = [
-  "https://www.spaceship.com/domain-search/?query=trymcpscan.com",
+  "https://www.spaceship.com/domain-search/?query=getmcpscan.com",
   "https://www.spaceship.com/domain-search/?query=mcpattest.dev",
   "https://www.spaceship.com/domain-search/?query=getmcpscan.xyz",
   "https://www.spaceship.com/domain-search/?query=mcpscan.site",

@@ -74,7 +74,7 @@ const customDomainMode = !domain.includes("/");
 const publicBaseUrl = customDomainMode ? `https://${domain}` : `https://${domain}`;
 
 if (customDomainMode && !validDomain(domain)) {
-  console.error("Domain must be a hostname like trymcpscan.com or the GitHub Pages path davidleeops.github.io/mcpscan.");
+  console.error("Domain must be a hostname like getmcpscan.com or the GitHub Pages path davidleeops.github.io/mcpscan.");
   process.exit(1);
 }
 

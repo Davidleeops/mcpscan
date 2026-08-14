@@ -58,10 +58,10 @@
         <section>
           <h2>Launch Values</h2>
           <div class="form">
-            <label>Domain<input id="domain" value="trymcpscan.com" autocomplete="off"></label>
-            <label>Primary mailbox<input id="mailbox" value="security@trymcpscan.com" autocomplete="off"></label>
-            <label>Audit alias<input id="audit" value="audit@trymcpscan.com" autocomplete="off"></label>
-            <label>Hello alias<input id="hello" value="hello@trymcpscan.com" autocomplete="off"></label>
+            <label>Domain<input id="domain" value="getmcpscan.com" autocomplete="off"></label>
+            <label>Primary mailbox<input id="mailbox" value="security@getmcpscan.com" autocomplete="off"></label>
+            <label>Audit alias<input id="audit" value="audit@getmcpscan.com" autocomplete="off"></label>
+            <label>Hello alias<input id="hello" value="hello@getmcpscan.com" autocomplete="off"></label>
             <label class="wide">Quick Audit Stripe link<input id="quick" placeholder="https://buy.stripe.com/..."></label>
             <label class="wide">Launch Audit Stripe link<input id="launch" placeholder="https://buy.stripe.com/..."></label>
             <label class="wide">Enterprise Readiness Stripe link<input id="enterprise" placeholder="https://buy.stripe.com/..."></label>
@@ -152,7 +152,7 @@
       function build() {
         const values = Object.fromEntries(Object.entries(textFields).map(([key, input]) => [key, input.value.trim()]));
         const errors = [];
-        if (!validDomain(values.domain)) errors.push("Domain must look like trymcpscan.com");
+        if (!validDomain(values.domain)) errors.push("Domain must look like getmcpscan.com");
         for (const key of ["mailbox", "audit", "hello"]) {
           if (!validEmail(values[key])) errors.push(key + " must be an email address");
           if (validEmail(values[key]) && validDomain(values.domain) && !values[key].toLowerCase().endsWith("@" + values.domain.toLowerCase())) {

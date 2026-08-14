@@ -6,15 +6,15 @@ Status: approval required. Do not purchase a domain or mailbox until the founder
 
 ## Recommendation
 
-For the current founder preference, search `trymcpscan.com` first if you want to keep the MCPScan name. It is the best trust-to-cost choice for a paid B2B security audit if the Spaceship cart shows standard pricing.
+For the current founder preference, search `getmcpscan.com` first if you want to keep the MCPScan name. It is the best trust-to-cost choice for a paid B2B security audit if the Spaceship cart shows standard pricing.
 
 Search `mcpattest.dev` first only if you are willing to use a cleaner product name than MCPScan. It is more security-native and less crowded than the exact MCPScan lane.
 
 Use the cheap validation lane carefully. Search `getmcpscan.xyz` first if the hard cash cap matters more than buyer trust, then search `mcpscan.site` if the goal is the closest possible near-dollar checkout.
 
-My call: buy `trymcpscan.com` if it is available at normal `.com` pricing and you are keeping MCPScan. Buy `mcpattest.dev` if it is available at normal `.dev` pricing and you are open to a cleaner brand. Buy `getmcpscan.xyz` only if the final Spaceship cart is still at or below `$3` and the renewal is acceptable. Buy `mcpscan.site` only if the first-year cart total matters more than renewal and buyer trust.
+My call: buy `getmcpscan.com` if it is available at normal `.com` pricing and you are keeping MCPScan. Buy `mcpattest.dev` if it is available at normal `.dev` pricing and you are open to a cleaner brand. Buy `getmcpscan.xyz` only if the final Spaceship cart is still at or below `$3` and the renewal is acceptable. Buy `mcpscan.site` only if the first-year cart total matters more than renewal and buyer trust.
 
-If `trymcpscan.com` is unavailable or premium-priced at checkout, buy `getmcpscan.com`. If both are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
+If `getmcpscan.com` is unavailable or premium-priced at checkout, buy `trymcpscan.com`. If both are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
 
 Use a `$1` to `$3` domain such as `getmcpscan.xyz`, `mcpscan.site`, or `mcpscan.online` as a first-sale validation lane, not the long-term brand asset. If choosing the cheap lane, prefer `.xyz` over `.site` unless the final cart total is the only decision factor.
 
@@ -31,8 +31,8 @@ Checked through the domain availability tool on 2026-08-14:
 | `toolattest.dev` | Needs final Spaceship cart check | Standard `.dev` pricing expected | Strong attestation backup |
 | `toolposture.dev` | Needs final Spaceship cart check | Standard `.dev` pricing expected | Strong posture backup |
 | `mcpscan.com` | Not available | N/A | Skip |
-| `trymcpscan.com` | Likely available from RDAP signal | Standard `.com` pricing expected | Best trust pick |
-| `getmcpscan.com` | Available | `$11.25` for 1 year | Strong trust backup |
+| `getmcpscan.com` | Available from RDAP signal | Standard `.com` pricing expected | Best trust pick |
+| `trymcpscan.com` | Likely available from RDAP signal | Standard `.com` pricing expected | Strong trust backup |
 | `mcpscanhq.com` | Likely available from RDAP signal | Standard `.com` pricing expected | Backup trust pick |
 | `usemcpscan.com` | Likely available from RDAP signal | Standard `.com` pricing expected | Backup trust pick |
 | `mcpscan.site` | Available | `$1.99` for 1 year | Lowest first-year cheap pick |
@@ -62,12 +62,12 @@ Public Spaceship pricing signals refreshed on 2026-08-14:
 
 Spaceship promo terms checked on 2026-08-14: first-year promotional offers are limited, may exclude premium domains, and can change. Official Spaceship pages show `.site` and `.online` at `$0.98` plus the ICANN fee, `.xyz` at `$1.86`, `.click` near `$1.04`, and `.com` at `$8.88`. Use official Spaceship TLD pages and the final cart as source of truth.
 
-Spacemail pricing checked on 2026-08-14: Spaceship advertises business email from `$0.79/mo`, and the Pro one-mailbox plan appears around `$18.88` for 2 years after the free trial on public pricing. Buy one mailbox first, then use aliases.
+Email pricing checked on 2026-08-14: Zoho Mail Lite is the cheapest credible custom-domain mailbox path at about `$1/user/month` when billed annually. Google Workspace Business Starter is the stronger buyer-trust mailbox path at about `$7/user/month` when billed annually. Spaceship advertises business email from `$0.79/mo`, and the Pro one-mailbox plan appears around `$18.88` for 2 years after the free trial on public pricing. Buy one mailbox first, then use aliases.
 
 ## Buy Rule
 
-1. Search `trymcpscan.com` first if the name remains MCPScan.
-2. If `trymcpscan.com` is unavailable or premium-priced, search `getmcpscan.com`, then `mcpscanhq.com`, then `usemcpscan.com`.
+1. Search `getmcpscan.com` first if the name remains MCPScan.
+2. If `getmcpscan.com` is unavailable or premium-priced, search `trymcpscan.com`, then `mcpscanhq.com`, then `usemcpscan.com`.
 3. Search `mcpattest.dev` first if the founder is open to a cleaner product name.
 4. If `mcpattest.dev` is available at normal `.dev` pricing, buy it unless the name must remain MCPScan.
 5. Search `getmcpscan.xyz` if the founder wants a cheap but more renewal-balanced MCPScan option.
@@ -109,6 +109,8 @@ Buy one MCPScan launch domain and one matching mailbox. Do not buy extra domains
 - Spaceship promos: `https://www.spaceship.com/promos/`
 - Spaceship business email: `https://www.spaceship.com/business-email/`
 - Spacemail pricing: `https://www.spacemail.com/`
+- Zoho Mail pricing: `https://www.zoho.com/mail/zohomail-pricing.html`
+- Google Workspace pricing: `https://workspace.google.com/pricing`
 - TLD-List Spaceship comparison: `https://tld-list.com/registrars/spaceship`
 - TLD-List promo codes: `https://tld-list.com/promo-codes`
 - TLDSpy Spaceship pricing: `https://tldspy.com/registrar/spaceship`

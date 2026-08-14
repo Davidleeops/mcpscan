@@ -31,7 +31,7 @@ function requireUrl(name, value) {
 function optionalDomain(value) {
   if (!value) return undefined;
   if (!/^[a-z0-9.-]+\.[a-z]{2,}$/i.test(value)) {
-    throw new Error("--domain must be a hostname like trymcpscan.com.");
+    throw new Error("--domain must be a hostname like getmcpscan.com.");
   }
   return value.toLowerCase();
 }
@@ -39,7 +39,7 @@ function optionalDomain(value) {
 function optionalEmail(value) {
   if (!value) return undefined;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-    throw new Error("--email must be an email address like security@trymcpscan.com.");
+    throw new Error("--email must be an email address like security@getmcpscan.com.");
   }
   return value;
 }
