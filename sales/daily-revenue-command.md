@@ -42,6 +42,7 @@ npm run outbound:open-first-10
 npm run outbound:open-send-gates
 npm run outbound:open-reply-close
 npm run launch:verify
+npm run launch:open-public-review
 npm run revenue:snapshot
 npm run gtm:verify
 ```
@@ -75,6 +76,7 @@ npm run outbound:stage-route-packet -- --file /path/to/approved-first-10-route-p
 After public launch post approval exists:
 
 ```text
+npm run launch:open-public-review
 npm run launch:stage-public-post -- --file /path/to/approved-public-launch-post.txt
 ```
 

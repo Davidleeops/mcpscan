@@ -12,6 +12,7 @@ const requiredFiles = [
   "docs/METHODOLOGY_AND_LIMITATIONS.md",
   "docs/PUBLIC_TRUST_CHECKLIST.md",
   "docs/PUBLIC_LAUNCH_POST_APPROVAL.md",
+  "scripts/open-public-launch-review.mjs",
   "docs/FIRST_PAID_AUDIT_GO_NO_GO.md"
 ];
 

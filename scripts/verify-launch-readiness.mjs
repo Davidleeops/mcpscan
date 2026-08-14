@@ -261,6 +261,7 @@ const requiredFiles = [
   "scripts/verify-stripe-links.mjs",
   "scripts/verify-stripe-checkout-qa.mjs",
   "scripts/run-post-click-verification.mjs",
+  "scripts/open-public-launch-review.mjs",
   "scripts/stage-approved-public-launch-post.mjs",
   "scripts/stage-approved-outbound.mjs",
   "scripts/open-first-10-outbound-approval.mjs",
