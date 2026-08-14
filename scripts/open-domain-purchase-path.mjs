@@ -78,6 +78,7 @@ console.log("6. Buy one domain only after the cart shows first-year price, renew
 console.log("7. Create one security@ mailbox and aliases for audit@ and hello@.");
 console.log("8. Paste only public values into the founder return packet.");
 console.log("9. Run npm run launch:verify-dns after DNS records propagate.");
+console.log("10. For the guided private buyer cockpit, run npm run launch:domain-session.");
 
 console.log("");
 console.log("Hard rule:");

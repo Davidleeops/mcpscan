@@ -6,7 +6,7 @@
   "currentPositioning": "We turn noisy MCP scanner output into a validated MCP risk report, remediation plan, and customer-ready security proof in 3 to 5 days.",
   "launchReadinessProof": {
     "command": "npm run launch:verify",
-    "passed": 245,
+    "passed": 247,
     "expectedWarnings": 3,
     "failures": 0
   },
@@ -73,6 +73,8 @@
         "ops/domain-cart-proof.template.json",
         "ops/domain-cart-proof.sample.json",
         "scripts/open-domain-purchase-path.mjs",
+        "scripts/open-domain-mailbox-session.mjs",
+        "scripts/simulate-domain-mailbox-session.mjs",
         "scripts/verify-domain-cart-proof.mjs",
         "ops/domain-email-dns-console.html",
         "docs/SPACESHIP_CART_PROOF_2026-08-14.md",

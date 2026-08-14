@@ -19,6 +19,8 @@
     "launch:bundle": "node scripts/build-static-launch-bundle.mjs",
     "launch:open-bundle": "node scripts/open-static-launch-bundle.mjs",
     "launch:open-domain": "node scripts/open-domain-purchase-path.mjs",
+    "launch:domain-session": "node scripts/open-domain-mailbox-session.mjs",
+    "launch:simulate-domain-session": "node scripts/simulate-domain-mailbox-session.mjs",
     "launch:open": "node scripts/open-launch-cockpit.mjs",
     "launch:open-founder": "node scripts/open-founder-clicks.mjs",
     "launch:click-session": "node scripts/open-founder-click-session.mjs",

@@ -290,6 +290,8 @@ const requiredFiles = [
   "scripts/build-static-launch-bundle.mjs",
   "scripts/open-static-launch-bundle.mjs",
   "scripts/open-domain-purchase-path.mjs",
+  "scripts/open-domain-mailbox-session.mjs",
+  "scripts/simulate-domain-mailbox-session.mjs",
   "scripts/open-market-research-console.mjs",
   "scripts/verify-market-sources.mjs",
   "scripts/verify-domain-email-dns.mjs",
@@ -813,6 +815,8 @@ if (exists("scripts/open-market-research-console.mjs") && exists("ops/market-res
 if (exists("scripts/open-domain-purchase-path.mjs") && exists("ops/domain-mailbox-purchase-packet.html") && exists("package.json")) {
   const domainOpen = [
     read("scripts/open-domain-purchase-path.mjs"),
+    exists("scripts/open-domain-mailbox-session.mjs") ? read("scripts/open-domain-mailbox-session.mjs") : "",
+    exists("scripts/simulate-domain-mailbox-session.mjs") ? read("scripts/simulate-domain-mailbox-session.mjs") : "",
     read("ops/domain-mailbox-purchase-packet.html"),
     read("package.json"),
     exists("scripts/show-launch-status.mjs") ? read("scripts/show-launch-status.mjs") : ""
@@ -832,6 +836,15 @@ if (exists("scripts/open-domain-purchase-path.mjs") && exists("ops/domain-mailbo
     "mcpscan.online",
     "mcpscan.site",
     "Avoid .shop",
+    "launch:domain-session",
+    "launch:simulate-domain-session",
+    "MCPScan Domain And Mailbox Session",
+    "DOMAIN_MAILBOX_SESSION.html",
+    "DOMAIN_MAILBOX_APPROVAL.md",
+    "I approve buying one MCPScan launch domain and one matching mailbox.",
+    "Refusing to create the domain and mailbox session inside the public MCPScan repo.",
+    "Refusing to write ${label} inside the public MCPScan repo.",
+    "This command opens pages only. It does not buy, publish, send, charge, apply DNS, create mailboxes, or approve cart values.",
     "This command opens account pages only"
   ];
   const missingDomainOpenMarkers = requiredDomainOpenMarkers.filter((marker) => !domainOpen.includes(marker));
