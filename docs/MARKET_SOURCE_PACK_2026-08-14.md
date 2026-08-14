@@ -121,7 +121,7 @@ Recommended cart order:
 4. `usemcpscan.com`
 5. `mcpscan.pro`
 6. `getmcpscan.xyz`
-7. `mcpscan.site`
+7. `mcpscan.online`
 
 Buy a `.com` if it is standard-priced. A 98 cent domain is acceptable only for speed validation, but it is weaker for security sales email and may have a renewal trap.
 

@@ -48,7 +48,7 @@ The first product to sell is a fixed-scope paid audit. The CLI and public sample
 | Gate | Founder Action | Console | Cost / Risk | Done When |
 | --- | --- | --- | --- | --- |
 | GitHub billing | Clear account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | Account/payment issue | CI and Pages jobs start and pass |
-| Domain | Buy `getmcpscan.com` if standard-priced, `mcpattest.dev` if you approve the cleaner brand, or `getmcpscan.xyz` / `mcpscan.site` only if the hard cash cap matters more than trust | `ops/domain-email-dns-console.html` | About $9 to $13 for trust or clean brand, about $1 to $3 for cheap validation | Domain resolves to GitHub Pages |
+| Domain | Buy `getmcpscan.com` if standard-priced, `mcpattest.dev` if you approve the cleaner brand, `mcpscan.online` for the near-dollar validation lane, or `getmcpscan.xyz` if renewal posture matters more than first-year cost | `ops/domain-email-dns-console.html` | About $9 to $13 for trust or clean brand, about $1 to $3 for cheap validation | Domain resolves to GitHub Pages |
 | Email | Create `security@{{chosen_domain}}` with `audit@` and `hello@` aliases using Zoho Mail Lite, Google Workspace, or Spacemail | `ops/domain-email-dns-console.html` | About $12 to $84 per year depending on provider choice and cart | MX, SPF, DKIM, and DMARC pass |
 | Stripe | Create 3 Payment Links | `ops/stripe-click-setup.html` | Stripe processing fees only | Quick, Launch, Enterprise links exist |
 | Link update | Apply real domain/email/Stripe links | `ops/approved-links-command-builder.html` | No spend | `npm run launch:verify -- --domain {{chosen_domain}}` has no checkout/domain warnings |

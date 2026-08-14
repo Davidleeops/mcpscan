@@ -53,8 +53,8 @@ Public Spaceship pricing signals refreshed on 2026-08-14:
 | TLD | First-Year Signal | Renewal Signal | Decision |
 | --- | ---: | ---: | --- |
 | `.xyz` | `$1.86` on official Spaceship pricing, lower promo may appear | `$12.52` | Best cheap renewal tradeoff if the name is clean |
-| `.site` | `$0.98` plus ICANN fee on official Spaceship pricing | About `$21.38` plus ICANN fee | Lowest first-year launch lane, weaker trust |
-| `.online` | `$0.98` plus ICANN fee on official Spaceship pricing | About `$21.38` plus ICANN fee | Cheap backup, weaker trust |
+| `.online` | `$0.98` plus ICANN fee on official Spaceship pricing | About `$21.38` plus ICANN fee | Current near-dollar launch lane, weaker trust |
+| `.site` | `$0.98` plus ICANN fee on official Spaceship pricing | About `$21.38` plus ICANN fee | Backup near-dollar launch lane, weaker trust |
 | `.click` | About `$1.04` plus ICANN fee | About `$10.35` plus ICANN fee | Cheap renewal, but less serious for a security audit brand |
 | `.shop` | `$0.70` plus ICANN fee | About `$31.05` plus ICANN fee | Avoid for MCPScan |
 | `.com` | `$8.88` plus ICANN fee on official Spaceship pricing | About `$9.98` plus ICANN fee | Best trust per dollar |

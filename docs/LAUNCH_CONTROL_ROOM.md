@@ -57,7 +57,7 @@ can come after demand is proven.
 | Repo | Current GitHub repo | $0 | Public and already deployed |
 | npm | `mcpscan` + `@mcpscan/shared` | $0 | Needs owner npm auth/OTP |
 
-Use `mcpscan.site` for the cheap launch lane only if the first-year cart is
+Use `mcpscan.online` for the cheap launch lane only if the first-year cart is
 about `$1` to `$3` and the renewal tradeoff is accepted. Use `getmcpscan.com`
 when buyer trust is worth the few extra dollars. Use `trymcpscan.com` if the first
 pick is unavailable. Avoid `.shop` as the canonical
@@ -65,7 +65,7 @@ security brand.
 
 ## Approval Buttons To Click
 
-1. [Issue #2](https://github.com/Davidleeops/mcpscan/issues/2): buy `getmcpscan.com` for the trust lane or `mcpscan.site` for the cheap validation lane, then create `security@{{chosen_domain}}`.
+1. [Issue #2](https://github.com/Davidleeops/mcpscan/issues/2): buy `getmcpscan.com` for the trust lane or `mcpscan.online` for the cheap validation lane, then create `security@{{chosen_domain}}`.
 2. [Issue #3](https://github.com/Davidleeops/mcpscan/issues/3): create Stripe one-time Payment Links for:
    - MCP Quick Audit: $750
    - MCP Launch Audit: $1,500

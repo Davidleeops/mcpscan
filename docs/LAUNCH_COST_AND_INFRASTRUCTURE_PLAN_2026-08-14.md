@@ -12,7 +12,7 @@ Best buy path:
 2. If it is unavailable or premium-priced, search `trymcpscan.com`, then `mcpscanhq.com`, then `usemcpscan.com`.
 3. Buy `mcpattest.dev` if you approve a cleaner product name and Spaceship shows standard `.dev` pricing.
 4. If the hard cash cap matters more than buyer trust, buy `getmcpscan.xyz` if Spaceship confirms standard cheap pricing and the name is clean.
-5. Use `mcpscan.site` only if the final cart is near `$1` and the higher renewal is accepted.
+5. Use `mcpscan.online` only if the final cart is near `$1` and the higher renewal is accepted.
 6. If you want the cheapest credible non-promo fallback, buy `mcpscan.us`, but only after accepting the US nexus and registration privacy tradeoffs.
 7. Avoid `.shop` and similar commerce-oriented near-dollar names as the primary security brand.
 8. Do not pay for hosting. GitHub Pages plus a domain and one mailbox is enough before first revenue.
@@ -37,7 +37,7 @@ That avoids paying for infrastructure before there is proof that buyers want the
 | GitHub repo | Existing public repo | $0 | $0 | Yes |
 | GitHub Pages | Existing Pages site | $0 | $0 | Yes |
 | Domain | `getmcpscan.com` | About $8.88 plus ICANN fee if standard-priced before any coupon | About $9.98 plus ICANN fee | Yes, only if founder trust matters more than the lowest spend |
-| Cheapest validation domain | `mcpscan.site` | About $0.98 plus ICANN fee at Spaceship if promo-priced | About $21.38 plus ICANN fee | Yes, current lowest cash path |
+| Cheapest validation domain | `mcpscan.online` | About $0.98 plus ICANN fee at Spaceship if promo-priced | About $21.38 plus ICANN fee | Yes, current lowest cash path |
 | Cheap renewal-friendlier domain | `getmcpscan.xyz` | About $1.86 at Spaceship before any coupon | About $12.52 | Yes, if choosing the cheap lane |
 | Cheap low-renewal fallback | `.click` name | About $1.04 plus ICANN fee | About $10.35 plus ICANN fee | No, weaker buyer trust |
 | Cheap credible fallback | `mcpscan.us` | About $4.14 | About $6.48 | Only if avoiding `.com` |
@@ -119,8 +119,8 @@ Using the same GitHub account is fine. Using the same repo is the part to avoid.
 4. If it is unavailable or premium-priced, search `trymcpscan.com`, then `mcpscanhq.com`, then `usemcpscan.com`.
 5. Search `mcpattest.dev` if the founder approves the cleaner brand.
 6. Search `getmcpscan.xyz` if the approved budget cap is `$1` to `$3` and renewal tradeoff matters more than buyer trust.
-7. Search `mcpscan.site` only if the approved budget cap is near `$1`.
-8. If `.site` or `.xyz` is unavailable or cart pricing jumps, search `mcpscan.online`, `getmcpscan.site`, then `getmcpscan.online`.
+7. Search `mcpscan.online` only if the approved budget cap is near `$1`.
+8. If `.online` or `.xyz` is unavailable or cart pricing jumps, search `mcpscan.site`, then `getmcpscan.site`, then `getmcpscan.online`.
 9. If the goal is the absolute lowest credible non-promo spend, search `mcpscan.us`.
 10. Before buying `.us`, confirm the founder accepts US nexus eligibility and the registration privacy tradeoff.
 11. Buy one domain only.
