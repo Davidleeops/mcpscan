@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Founder Click Handoff</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #14171a;
+        --muted: #5b6470;
+        --line: #d7dde3;
+        --panel: #ffffff;
+        --soft: #f5f7f9;
+        --accent: #0b6bcb;
+        --good: #0f7b4f;
+        --warn: #9a5a00;
+        --danger: #aa2b2b;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--soft);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        align-items: end;
+        margin-bottom: 18px;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { font-size: clamp(32px, 5vw, 58px); line-height: 1; margin-bottom: 12px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      h3 { font-size: 16px; margin-bottom: 8px; }
+      p, li, td { color: var(--muted); line-height: 1.5; }
+
+      .stack { display: grid; gap: 16px; }
+      section, article { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+      .steps { display: grid; gap: 12px; }
+      .step { display: grid; grid-template-columns: 42px 1fr minmax(190px, auto); gap: 12px; align-items: start; }
+      .num { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 999px; background: var(--soft); color: var(--ink); font-weight: 800; }
+      .ready { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .warn { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .danger { border-left: 4px solid var(--danger); background: #fff6f6; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+      a.button, button.copy {
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--accent);
+        border-radius: 7px;
+        padding: 9px 12px;
+        color: var(--accent);
+        background: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      a.button.primary { color: #ffffff; background: var(--accent); }
+      table { border-collapse: collapse; width: 100%; }
+      th, td { border-top: 1px solid var(--line); padding: 10px 8px; text-align: left; vertical-align: top; }
+      th { color: var(--ink); }
+      code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      pre { margin: 10px 0 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; }
+      .tag { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 12px; line-height: 1; padding: 5px 8px; }
+      .tag.warn { border-color: #e4c98e; color: var(--warn); }
+      .tag.good { border-color: #a8d8c0; color: var(--good); }
+
+      @media (max-width: 920px) {
+        header, .grid, .step { grid-template-columns: 1fr; }
+        .actions { justify-content: start; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <div>
+          <h1>Founder Click Handoff</h1>
+          <p>One screen for the remaining founder-only actions. Work top to bottom. Codex prepares packets, applies approved values, verifies, commits, and pushes.</p>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../docs/FOUNDER_CLICK_HANDOFF.md">Open guide</a>
+          <a class="button" href="launch-approval-queue.html">Approval queue</a>
+          <a class="button" href="founder-return-packet.html">Return packet</a>
+        </div>
+      </header>
+
+      <section class="danger">
+        <h2>Founder-Only Boundary</h2>
+        <p>No external purchase, DNS change, Stripe publish, public link apply, outbound send, or customer delivery happens without the matching click or same-turn approval.</p>
+      </section>
+
+      <section class="steps">
+        <article class="step warn">
+          <div class="num">0</div>
+          <div>
+            <h3>Unlock GitHub Actions <span class="tag warn">account gate</span></h3>
+            <p>GitHub reports the account is billing-locked. CI and Pages fail before any steps start until billing is cleared.</p>
+          </div>
+          <div class="actions"><a class="button" href="github-actions-billing-console.html">Billing guide</a><a class="button" href="https://github.com/Davidleeops/mcpscan/actions" target="_blank" rel="noreferrer">Actions</a></div>
+        </article>
+
+        <article class="step warn">
+          <div class="num">1</div>
+          <div>
+            <h3>Approve Domain And Mailbox <span class="tag warn">purchase gate</span></h3>
+            <p>Choose `.com` trust lane or cheap validation lane. Buy one domain and one `security@domain` mailbox, with `audit@` and `hello@` aliases.</p>
+          </div>
+          <div class="actions"><a class="button" href="domain-mailbox-purchase-packet.html">Purchase packet</a><a class="button" href="https://www.spaceship.com/domain-search/?query=trymcpscan.com" target="_blank" rel="noreferrer">Search .com</a><a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscan.site" target="_blank" rel="noreferrer">Search cheap</a></div>
+        </article>
+
+        <article class="step warn">
+          <div class="num">2</div>
+          <div>
+            <h3>Apply DNS Records <span class="tag warn">registrar gate</span></h3>
+            <p>After the domain exists, Codex generates the DNS packet. Apply only the GitHub Pages and Spacemail records in that packet.</p>
+          </div>
+          <div class="actions"><a class="button" href="domain-email-dns-console.html">DNS console</a><button class="copy" data-copy-target="dns-command">Copy command</button></div>
+        </article>
+
+        <article class="step warn">
+          <div class="num">3</div>
+          <div>
+            <h3>Create Stripe Links <span class="tag warn">Stripe gate</span></h3>
+            <p>Generate the Stripe setup packet, create the three live Payment Links, then use the QA console to build evidence and the final approval prompt.</p>
+          </div>
+          <div class="actions"><a class="button" href="stripe-click-setup.html">Setup</a><a class="button" href="stripe-payment-link-qa-console.html">QA builder</a><button class="copy" data-copy-target="stripe-command">Copy command</button></div>
+        </article>
+
+        <article class="step warn">
+          <div class="num">4</div>
+          <div>
+            <h3>Approve Return Packet <span class="tag warn">same-turn approval</span></h3>
+            <p>Use the QA console or return packet to produce the exact approved values. Codex applies public links only after the exact message is approved.</p>
+          </div>
+          <div class="actions"><a class="button" href="founder-return-packet.html">Return packet</a><a class="button" href="approved-links-command-builder.html">Command builder</a></div>
+        </article>
+
+        <article class="step warn">
+          <div class="num">5</div>
+          <div>
+            <h3>Verify Public Launch <span class="tag warn">proof gate</span></h3>
+            <p>After approved values are applied, run post-click verification for domain, mailbox, Stripe, writing rules, public pages, and launch status.</p>
+          </div>
+          <div class="actions"><a class="button" href="../docs/POST_CLICK_VERIFICATION.md">Post-click verifier</a><button class="copy" data-copy-target="post-click-command">Copy command</button></div>
+        </article>
+
+        <article class="step warn">
+          <div class="num">6</div>
+          <div>
+            <h3>Approve Outbound <span class="tag warn">same-turn approval</span></h3>
+            <p>Approve exact route, recipient description, and final message before any send. The first wave sells the MCP Launch Audit.</p>
+          </div>
+          <div class="actions"><a class="button" href="first-10-outbound-approval-console.html">First 10</a><a class="button" href="outbound-recipient-approval-builder.html">Approval builder</a></div>
+        </article>
+
+        <article class="step ready">
+          <div class="num">7</div>
+          <div>
+            <h3>Start Paid Delivery <span class="tag good">after payment</span></h3>
+            <p>After Stripe payment clears and handoff values are approved, Codex creates the private workspace, work order, pipeline status, and draft-only intake message.</p>
+          </div>
+          <div class="actions"><a class="button" href="post-payment-console.html">Post-payment</a><a class="button" href="delivery-console.html">Delivery</a></div>
+        </article>
+      </section>
+
+      <div class="grid">
+        <section>
+          <h2>Commands Codex Runs After Approval</h2>
+          <pre id="dns-command">npm run launch:dns-packet -- --domain {{chosen_domain}} --mailbox security@{{chosen_domain}}</pre>
+          <pre id="stripe-command">npm run launch:stripe-packet -- --domain {{chosen_domain}} --mailbox security@{{chosen_domain}}</pre>
+          <pre id="post-click-command">npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --domain {{chosen_domain}}</pre>
+        </section>
+
+        <section>
+          <h2>Current External Clicks</h2>
+          <table>
+            <tr><th>Click</th><th>Why Codex Cannot Click Alone</th></tr>
+            <tr><td>GitHub billing</td><td>Requires account owner billing authority.</td></tr>
+            <tr><td>Domain and mailbox</td><td>Requires registrar checkout and payment authority.</td></tr>
+            <tr><td>DNS records</td><td>Requires registrar account access unless delegated.</td></tr>
+            <tr><td>Stripe Payment Links</td><td>Requires Stripe login and live payment authority.</td></tr>
+            <tr><td>Outbound send</td><td>Requires same-turn approval of exact recipient and content.</td></tr>
+          </table>
+        </section>
+      </div>
+
+      <section class="ready">
+        <h2>Done Means</h2>
+        <ul>
+          <li>Custom domain and `security@domain` are live.</li>
+          <li>Stripe format and checkout QA evidence both pass.</li>
+          <li>Landing CTAs point to live Stripe Payment Links.</li>
+          <li>Security contact is no longer a placeholder.</li>
+          <li>First outbound messages are staged only after exact approval.</li>
+          <li>Paid customer work starts only in a private workspace.</li>
+        </ul>
+      </section>
+    </main>
+    <script>
+      for (const button of document.querySelectorAll("[data-copy-target]")) {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          await navigator.clipboard.writeText(target.textContent.trim());
+          const label = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = label; }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>
