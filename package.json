@@ -47,6 +47,7 @@
     "outbound:log-send": "node scripts/log-approved-send.mjs",
     "outbound:log-route-batch": "node scripts/log-approved-route-batch-sends.mjs",
     "outbound:compose-follow-up": "node scripts/compose-follow-up-approval.mjs",
+    "outbound:simulate-revenue-flow": "node scripts/simulate-revenue-follow-up-flow.mjs",
     "outbound:verify": "node scripts/verify-outbound-readiness.mjs",
     "outbound:send-gates": "node scripts/verify-first-send-gates.mjs",
     "outbound:queue": "node scripts/generate-outbound-approval-queue.mjs",
