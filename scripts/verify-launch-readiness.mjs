@@ -245,6 +245,7 @@ const requiredFiles = [
   "sales/customer-intake.md",
   "sales/discovery-call-script.md",
   "scripts/create-customer-workspace.mjs",
+  "scripts/open-paid-audit-handoff.mjs",
   "scripts/run-delivery-dry-run.mjs",
   "scripts/verify-delivery-readiness.mjs",
   "scripts/create-first-paid-audit-work-order.mjs",

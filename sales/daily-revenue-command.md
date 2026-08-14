@@ -114,6 +114,7 @@ npm run outbound:route-packet -- --sender "{{sender_name}}"
 After first payment:
 
 ```text
+npm run delivery:open-handoff
 npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
 ```
 

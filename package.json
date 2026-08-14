@@ -47,6 +47,7 @@
     "gtm:verify": "node scripts/verify-gtm-claims.mjs",
     "revenue:snapshot": "node scripts/build-revenue-snapshot.mjs",
     "delivery:workspace": "node scripts/create-customer-workspace.mjs",
+    "delivery:open-handoff": "node scripts/open-paid-audit-handoff.mjs",
     "delivery:work-order": "node scripts/create-first-paid-audit-work-order.mjs",
     "delivery:handoff": "node scripts/create-paid-audit-handoff.mjs",
     "delivery:intake-message": "node scripts/compose-post-payment-intake.mjs",

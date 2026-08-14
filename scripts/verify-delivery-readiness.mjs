@@ -32,6 +32,7 @@ const requiredFiles = [
   "docs/PAID_AUDIT_START_AUTOMATION.md",
   "scripts/create-first-paid-audit-work-order.mjs",
   "scripts/create-paid-audit-handoff.mjs",
+  "scripts/open-paid-audit-handoff.mjs",
   "scripts/compose-post-payment-intake.mjs",
   "ops/paid-audit-handoff-builder.html",
   "sales/paid-audit-handoff-approval-packet.md",
