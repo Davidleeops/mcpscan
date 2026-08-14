@@ -97,10 +97,10 @@ ops/generated-launch-packets/2026-08-14_getmcpscan-xyz_stripe-products.csv
 - Stage approved outbound without sending.
 - Create paid audit handoff after payment.
 
-Canonical post-click verification command:
+Canonical post-click session command:
 
 ```text
-npm run launch:post-click-verify -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --apply true --mail-provider spacemail
+npm run launch:post-click-session -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --apply true --publish true --mail-provider spacemail
 ```
 
 ## Stop Conditions

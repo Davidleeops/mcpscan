@@ -89,7 +89,7 @@
 
       <section>
         <h2>Codex Apply Command</h2>
-        <p>After approval, Codex can save the approved message to a temporary file and build the post-click handoff bundle. It validates approved links against Stripe QA evidence, then prints the exact apply, publish, verify, and first-revenue commands.</p>
+        <p>After approval, Codex can save the approved message to the private founder click workspace and run the post-click session command. It validates approved links against cart proof and Stripe QA evidence, applies public values, publishes the fallback, verifies live proof, and opens the first-revenue runway.</p>
         <pre>npm run launch:prepare-founder-clicks -- --domain CHOSEN_DOMAIN --mail-provider zoho
 npm run launch:open-return-review</pre>
         <pre id="applyCommand">Build the approval message to generate the exact provider-aware command.</pre>
@@ -229,26 +229,13 @@ I also approve keeping outbound paused until I approve exact recipients and exac
 1. Save the approval message as a temporary founder return packet.
 2. Use the prepared private founder click workspace:
    $HOME/MCPScan Founder Clicks/current
-3. Run:
-   npm run launch:post-click-bundle -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --mail-provider ${values.mailProvider}
-4. Apply:
-   npm run launch:post-click-verify -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --apply true --mail-provider ${values.mailProvider}
-5. Verify first-revenue live gate:
-   npm run launch:verify-live -- --status-file ops/founder-approval-status.json --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json"
-6. Publish:
-   npm run launch:publish-pages-fallback -- --wait true
-7. Verify live:
-   npm run launch:full-proof -- --live true --status-file ops/founder-approval-status.json --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --mail-provider ${values.mailProvider}
-   npm run launch:status:live
-8. Open first-revenue runway:
+3. Run the post-click session:
+   npm run launch:post-click-session -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --apply true --publish true --mail-provider ${values.mailProvider}
+4. Open first-revenue runway:
    npm run launch:open-first-revenue`;
         applyCommand.textContent = `npm run launch:prepare-founder-clicks -- --domain ${values.domain} --mail-provider ${values.mailProvider}
 npm run launch:open-return-review
-npm run launch:post-click-bundle -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --mail-provider ${values.mailProvider}
-npm run launch:post-click-verify -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --apply true --mail-provider ${values.mailProvider}
-npm run launch:verify-live -- --status-file ops/founder-approval-status.json --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json"
-npm run launch:publish-pages-fallback -- --wait true
-npm run launch:full-proof -- --live true --status-file ops/founder-approval-status.json --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --mail-provider ${values.mailProvider}
+npm run launch:post-click-session -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --apply true --publish true --mail-provider ${values.mailProvider}
 npm run launch:open-first-revenue`;
         status.textContent = "Approval message built.";
         status.className = "status good";

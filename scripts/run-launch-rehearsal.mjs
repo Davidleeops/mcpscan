@@ -4,6 +4,7 @@ import { spawnSync } from "node:child_process";
 const steps = [
   ["founder return packet parser", ["run", "launch:verify-return-packet"]],
   ["founder return apply simulation", ["run", "launch:simulate-return-apply"]],
+  ["founder post-click session simulation", ["run", "launch:simulate-post-click-session"]],
   ["first-10 route staging simulation", ["run", "outbound:simulate-route-staging"]],
   ["first-10 named-recipient staging simulation", ["run", "outbound:simulate-named-staging"]],
   ["first-send gate simulation", ["run", "outbound:simulate-send-gates"]],

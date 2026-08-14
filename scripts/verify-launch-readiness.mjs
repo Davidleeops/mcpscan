@@ -297,6 +297,8 @@ const requiredFiles = [
   "scripts/verify-first-revenue-live.mjs",
   "scripts/verify-stripe-checkout-qa.mjs",
   "scripts/run-post-click-verification.mjs",
+  "scripts/run-founder-post-click-session.mjs",
+  "scripts/simulate-founder-post-click-session.mjs",
   "scripts/publish-pages-fallback.mjs",
   "scripts/rerun-github-actions-after-unlock.mjs",
   "scripts/run-launch-rehearsal.mjs",
@@ -531,20 +533,16 @@ if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-retu
     "MCPScan Founder Clicks/current/approved-return-packet.txt",
     "MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json",
     "npm run launch:verify-cart",
-    "npm run launch:post-click-bundle",
-    "npm run launch:verify-status",
-    "npm run launch:post-click-verify",
-    "npm run launch:publish-pages-fallback -- --wait true",
-    "npm run launch:verify -- --domain",
-    "npm run launch:full-proof -- --live true",
-    "npm run launch:status:live",
+    "npm run launch:post-click-session",
+    "--apply true",
+    "--publish true",
     "Mail provider:",
     "mailProvider"
   ];
   const missingReturnReviewCommands = requiredReturnReviewCommands.filter((command) => !returnReview.includes(command));
   results.push(
     missingReturnReviewCommands.length === 0
-      ? result("pass", "founder return post-click path", "apply, publish, live verify, and live status commands are present")
+      ? result("pass", "founder return post-click path", "one-command apply, publish, and proof path is present")
       : result("fail", "founder return post-click path", missingReturnReviewCommands.join(", "))
   );
 
@@ -591,8 +589,9 @@ if (exists("ops/founder-status-console.html") && exists("docs/POST_PURCHASE_PUBL
     "Load cheap lane",
     "Load trust lane",
     "founder-approval-status.json",
-    "launch:post-click-bundle",
+    "launch:post-click-session",
     "launch:simulate-post-click-bundle",
+    "launch:simulate-post-click-session",
     "launch:verify-status",
     "launch:full-proof",
     "--live true",
@@ -656,7 +655,7 @@ if (exists("ops/founder-return-packet.html") && exists("ops/stripe-payment-link-
   const requiredApprovalMarkers = [
     "Commit and push require a separate explicit approval after verification.",
     "keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval",
-    "launch:post-click-bundle",
+    "launch:post-click-session",
     "--cart-file",
     "--return-file",
     "I approve buying the MCPScan launch domain",
@@ -707,10 +706,12 @@ if (exists("ops/launch-day-runbook.html") && exists("scripts/open-launch-day-run
   );
 }
 
-if (exists("scripts/create-post-click-handoff-bundle.mjs") && exists("scripts/simulate-post-click-handoff-bundle.mjs")) {
+if (exists("scripts/create-post-click-handoff-bundle.mjs") && exists("scripts/simulate-post-click-handoff-bundle.mjs") && exists("scripts/run-founder-post-click-session.mjs") && exists("scripts/simulate-founder-post-click-session.mjs")) {
   const bundlePath = [
     read("scripts/create-post-click-handoff-bundle.mjs"),
     read("scripts/simulate-post-click-handoff-bundle.mjs"),
+    read("scripts/run-founder-post-click-session.mjs"),
+    read("scripts/simulate-founder-post-click-session.mjs"),
     read("package.json")
   ].join("\n");
   const requiredBundleMarkers = [
@@ -720,7 +721,12 @@ if (exists("scripts/create-post-click-handoff-bundle.mjs") && exists("scripts/si
     "launch:verify-stripe-qa",
     "public-safe-summary.json",
     "NEXT_COMMANDS.md",
-    "launch:simulate-post-click-bundle"
+    "launch:simulate-post-click-bundle",
+    "launch:post-click-session",
+    "launch:simulate-post-click-session",
+    "--apply true",
+    "Publish Pages fallback",
+    "Outbound remains paused until exact recipients and exact final messages are approved in the same turn."
   ];
   const missingBundleMarkers = requiredBundleMarkers.filter((marker) => !bundlePath.includes(marker));
   results.push(
@@ -838,7 +844,7 @@ if (exists("scripts/open-first-revenue-runway.mjs") && exists("package.json") &&
     "sales/reply-to-close-packet.md",
     "ops/paid-audit-handoff-builder.html",
     "sales/daily-revenue-command.md",
-    "npm run launch:full-proof -- --live true",
+    "npm run launch:post-click-session",
     "This command opens surfaces only"
   ];
   const missingRunwayMarkers = requiredRunwayMarkers.filter((marker) => !firstRevenueRunway.includes(marker));
