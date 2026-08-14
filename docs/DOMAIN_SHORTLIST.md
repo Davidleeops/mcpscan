@@ -6,15 +6,15 @@ If the goal is the fastest credible launch domain, buy:
 
 1. `getmcpscan.com`
 2. `trymcpscan.com`
-3. `mcpscanlab.dev`
+3. `mcpscan.us`
 
 `getmcpscan.com` is the best trust/cost balance if the registrar cart confirms
 standard pricing. It keeps the MCPScan brand, uses the highest-trust TLD for
 buyers, and avoids the renewal jump that comes with many ultra-cheap TLDs.
 
-Use `trymcpscan.com` if you want the clearest developer-tool signal and are fine
-with a non-`.com` primary domain. `.dev` requires HTTPS, which is fine for GitHub
-Pages but should be enabled before public launch.
+Use `mcpscan.us` if you want the cheapest credible option. It is less global than
+`.com`, but it is more credible for a B2B security offer than a novelty promo
+TLD.
 
 Only buy a `$0.98` `.online` or `.site` domain as a temporary redirect or test.
 For a paid security audit offer, the low first-year price is not worth the lower
@@ -42,6 +42,7 @@ Current public Spaceship pricing observations:
 - `.tools`: about $7.25 first year, renews around $28.98.
 - `.online`: about $0.98 first year, renews around $21.38.
 - `.pro`: can be cheap first year, but renewal can be materially higher than `.com`.
+- `.us`: often cheaper than `.com`, with lower renewal risk than many novelty TLDs.
 - `.security`: not budget-friendly; current public pricing is far above the launch budget.
 - Spacemail Pro: about $18.88 for two years on current public pricing.
 
@@ -54,3 +55,4 @@ Always confirm in the Spaceship cart before purchase because promo pricing and I
 3. Enable HTTPS in GitHub Pages.
 4. Create `audit@domain` mailbox with `security@domain` and `hello@domain` aliases.
 5. Replace GitHub issue CTAs in `landing/index.html` with Stripe links and/or `mailto:audit@domain`.
+6. Verify DNS and mail records with `npm run launch:verify-dns -- --domain domain`.

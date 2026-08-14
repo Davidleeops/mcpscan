@@ -6,7 +6,7 @@ Generated: 2026-08-14
 
 Buy `getmcpscan.com` if Spaceship shows it available near normal `.com` pricing. It costs a few dollars more than a discount TLD, but it is the strongest trust signal for a B2B security buyer.
 
-If you want the cheapest credible option, buy `mcpscan.us` if Spaceship shows it available. It is available through the live checker at $7.99 for one year, and it is a legitimate US-founder fallback.
+If you want the cheapest credible option, buy `mcpscan.us` if Spaceship shows it available. It is a legitimate US-founder fallback and avoids the trust penalty of novelty TLDs.
 
 Avoid `.site`, `.online`, `.shop`, and similar near-dollar TLDs for the first paid security buyer. They save a few dollars but weaken trust.
 
@@ -22,10 +22,10 @@ Checked through the domain availability tool on 2026-08-14:
 | `mcpguard.dev` | Not available | N/A | Skip |
 | `mcpaudit.dev` | Not available | N/A | Skip |
 | Exact short `.xyz` name | Not available in live check | N/A | Skip unless Spaceship directly shows otherwise |
-| `mcpscan.us` | Available | $7.99 | Cheapest credible fallback |
-| `getmcpscan.com` | Available | $11.25 | Best overall pick |
-| `trymcpscan.com` | Available | $11.25 | Good backup |
-| `usemcpscan.com` | Available | $11.25 | Good backup |
+| `mcpscan.us` | Available in prior live check | Low single digits to about $8 | Cheapest credible fallback |
+| `getmcpscan.com` | Available in prior live check | About $9 to $12 | Best overall pick |
+| `trymcpscan.com` | Available in prior live check | About $9 to $12 | Good backup |
+| `usemcpscan.com` | Available in prior live check | About $9 to $12 | Good backup |
 
 ## Registrar Price Signals
 
@@ -38,7 +38,7 @@ Checked through the domain availability tool on 2026-08-14:
 | `.site` or `.online` at Spaceship | About $1 to $2 promo pricing | About $21 to $22 renewal | Cheap first year, weaker trust signal for B2B security |
 | Spacemail Pro | About $18.88 for 2 years | Check checkout before purchase | One mailbox with aliases is enough for launch |
 
-Sources checked on 2026-08-14: Spaceship domain pricing, Spaceship registrar prices on TLD-List, TLDSpy Spaceship pricing, Spacemail pricing, and the live domain availability checker.
+Sources checked on 2026-08-14: Spaceship domain pricing, Spaceship promo terms, Spaceship registrar prices on TLD-List, TLDSpy Spaceship pricing, Spacemail pricing, and the live domain availability checker.
 
 ## Buying Rule
 
@@ -62,3 +62,17 @@ ALIASES=security@{{chosen_domain}},hello@{{chosen_domain}}
 ```
 
 Then use `ops/domain-email-dns-console.html` for DNS and mailbox setup.
+
+## DNS Verification
+
+After the domain and mailbox records have time to propagate, run:
+
+```text
+npm run launch:verify-dns -- --domain {{chosen_domain}}
+```
+
+Use strict mode only when you expect every record to be live:
+
+```text
+npm run launch:verify-dns -- --domain {{chosen_domain}} --strict
+```

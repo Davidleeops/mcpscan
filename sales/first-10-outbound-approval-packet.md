@@ -19,14 +19,14 @@ Approved to send:
 
 ## Revenue Goal
 
-Book the first paid MCP Launch Audit at $1,500. The first close should be a fixed-scope service with a clear 48-hour delivery promise, not a broad SaaS sale.
+Book the first paid MCP Launch Audit at $1,500. The first close should be a fixed-scope service with a clear 5-business-day delivery promise after complete safe intake, not a broad SaaS sale.
 
 ## Offer Ladder
 
 | Offer | Price | Best Fit | Delivery Promise |
 | --- | --- | --- | --- |
 | MCP Quick Audit | $750 | Smaller startup or one MCP client | One-page risk snapshot and priority fixes |
-| MCP Launch Audit | $1,500 | Team enabling coding agents or one high-risk MCP integration | 48-hour readiness report, tool risk map, and remediation checklist |
+| MCP Launch Audit | $1,500 | Team enabling coding agents or one high-risk MCP integration | 5-business-day readiness report, tool risk map, and remediation checklist |
 | MCP Enterprise Readiness Audit | $3,500 | Multi-tool rollout across code, docs, tickets, cloud, Slack, or Atlassian | Executive summary, control map, evidence appendix, and rollout guardrails |
 
 Default ask: MCP Launch Audit at $1,500.
@@ -67,7 +67,7 @@ I am reaching out because teams enabling MCP for {{tool_or_platform}} are starti
 
 MCPScan runs a fixed-scope readiness audit for that moment. We inventory MCP servers and configs, classify read/write/destructive tools, check auth and secrets exposure, review approval drift, and deliver an AppSec-ready report with practical remediation steps.
 
-The usual fit is a 48-hour MCP Launch Audit at $1,500.
+The usual fit is a fixed-scope MCP Launch Audit at $1,500.
 
 Worth sending the one-page scope so you can decide if this is relevant for {{company}}?
 

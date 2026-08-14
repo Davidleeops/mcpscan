@@ -69,7 +69,7 @@ Enable MCP safely before developer-agent tool access becomes unmanaged.
 Best first-customer wedge:
 
 ```text
-Before you turn on MCP broadly, run a 48-hour MCP readiness audit:
+Before you turn on MCP broadly, run a fixed-scope MCP Launch Audit:
 discover configs, inventory servers, classify read/write/destructive tools,
 detect risky auth/secrets, check allowlist drift, and produce an AppSec-ready
 approval report.

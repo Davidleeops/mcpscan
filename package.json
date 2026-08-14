@@ -15,6 +15,7 @@
     "launch:apply-return-packet": "node scripts/apply-founder-return-packet.mjs",
     "launch:bundle": "node scripts/build-static-launch-bundle.mjs",
     "launch:open": "node scripts/open-launch-cockpit.mjs",
+    "launch:verify-dns": "node scripts/verify-domain-email-dns.mjs",
     "launch:verify": "node scripts/verify-launch-readiness.mjs",
     "outbound:queue": "node scripts/generate-outbound-approval-queue.mjs",
     "release:preflight": "node scripts/prepare-npm-release.mjs",
@@ -22,6 +23,7 @@
     "typecheck": "npm run build -w @mcpscan/shared && npm run typecheck -ws --if-present",
     "writing:check": "node scripts/check-writing-rules.mjs",
     "delivery:workspace": "node scripts/create-customer-workspace.mjs",
+    "delivery:dry-run": "node scripts/run-delivery-dry-run.mjs",
     "launch:status": "node scripts/show-launch-status.mjs",
     "launch:status:live": "node scripts/show-launch-status.mjs --live"
   },

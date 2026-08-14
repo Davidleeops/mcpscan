@@ -26,6 +26,12 @@ Preview the target path without creating files:
 npm run delivery:workspace -- --customer CUSTOMER_NAME --date YYYY-MM-DD --dry-run
 ```
 
+Run a full sample delivery rehearsal with no customer data:
+
+```text
+npm run delivery:dry-run
+```
+
 ## Folder Setup
 
 ```text
@@ -58,4 +64,3 @@ customer-workspace/
 - Final report from `report-template.md`
 - Delivery note from `delivery-email-cover.md`
 - Evidence archive or links, stored outside the public repo
-

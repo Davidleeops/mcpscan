@@ -175,6 +175,7 @@
         <div class="actions">
           <a class="button primary" href="https://www.spaceship.com/domain-search/?query=getmcpscan.com" target="_blank" rel="noreferrer">Search getmcpscan.com</a>
           <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscan.us" target="_blank" rel="noreferrer">Search cheap fallback</a>
+          <a class="button" href="../docs/DOMAIN_SHORTLIST.md">Domain shortlist</a>
           <a class="button" href="https://www.spaceship.com/business-email/" target="_blank" rel="noreferrer">Open Spacemail</a>
         </div>
       </header>
@@ -183,6 +184,16 @@
         <h2>Launch Choice</h2>
         <p>Use <strong>getmcpscan.com</strong> if it is available at standard pricing. Use <strong>mcpscan.us</strong> as the cheapest credible fallback. Create one mailbox first: <strong>audit@the chosen domain</strong>. Add aliases for <strong>security@</strong> and <strong>hello@</strong>.</p>
         <div class="actions"><a class="button" href="../docs/DOMAIN_AND_MAILBOX_DECISION.md">Open domain decision</a></div>
+      </section>
+
+      <section class="wide">
+        <h2>Current Domain Price Call</h2>
+        <table>
+          <tr><th>Choice</th><th>Expected first year</th><th>Renewal risk</th><th>Use when</th></tr>
+          <tr><td><code>getmcpscan.com</code></td><td>About $9 to $12</td><td>Low</td><td>Best trust choice for paid B2B security outreach.</td></tr>
+          <tr><td><code>mcpscan.us</code></td><td>Low single digits to about $8</td><td>Low to moderate</td><td>Best cheap fallback if you want to stay under about $5 to $8.</td></tr>
+          <tr><td><code>.online</code> or <code>.site</code></td><td>About $1 to $2 promo pricing</td><td>High</td><td>Temporary test only. Avoid as the main paid audit brand.</td></tr>
+        </table>
       </section>
 
       <div class="grid">
@@ -257,7 +268,8 @@ TXT _dmarc "v=DMARC1; p=none; rua=mailto:audit@the chosen domain"</pre>
         <h2>Verification Commands</h2>
         <p>Use these after DNS has had time to propagate.</p>
         <button class="copy" data-copy-target="verify-commands">Copy verification commands</button>
-        <pre id="verify-commands">dig +short getmcpscan.com A
+        <pre id="verify-commands">npm run launch:verify-dns -- --domain getmcpscan.com
+dig +short getmcpscan.com A
 dig +short getmcpscan.com AAAA
 dig +short www.getmcpscan.com CNAME
 dig +short getmcpscan.com MX

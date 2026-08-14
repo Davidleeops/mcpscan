@@ -14,6 +14,15 @@ mkdir -p ~/MCPScan-Audits/customer-slug/{input,output,notes,delivery}
 Never commit customer files, configs, reports, notes, screenshots, credentials,
 or scan outputs to this repository.
 
+Before the first paid delivery, run the internal rehearsal:
+
+```text
+npm run delivery:dry-run
+```
+
+This creates a temporary workspace outside the repo, runs the commercial fixture
+through the scanner, and proves the report artifacts are generated.
+
 ## 1. Scope Confirmation
 
 Send after payment and before reviewing materials.
@@ -227,4 +236,3 @@ Ask after delivery:
 - Did this help with a buyer, internal security review, or rollout decision?
 - Would monthly drift monitoring be valuable?
 - Can we use an anonymized version of one finding as a public example?
-

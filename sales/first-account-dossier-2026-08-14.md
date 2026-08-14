@@ -62,7 +62,7 @@ Subject: MCP readiness review for voice-agent tools
 
 Hi {{first_name}},
 
-I saw Vapi exposes APIs as MCP tools for assistants, phone numbers, and calls. Voice-agent tooling is a high-trust surface because it can touch real customer interactions, phone workflows, and operational actions. MCPScan runs a 72-hour MCP exposure audit that maps servers, tools, read/write actions, auth and secrets exposure, approval gates, and buyer-safe remediation evidence. Worth sending the one-page scope?
+I saw Vapi exposes APIs as MCP tools for assistants, phone numbers, and calls. Voice-agent tooling is a high-trust surface because it can touch real customer interactions, phone workflows, and operational actions. MCPScan runs a fixed-scope MCP Launch Audit that maps servers, tools, read/write actions, auth and secrets exposure, approval gates, and buyer-safe remediation evidence. Worth sending the one-page scope?
 
 {{sender_name}}
 ```
@@ -86,7 +86,7 @@ Subject: MCP exposure review for broad SaaS tool access
 
 Hi {{first_name}},
 
-I saw Pipedream provides MCP servers across thousands of apps and pre-built tools. That breadth is valuable, but it also makes the review question practical: which tools can act, whose credentials are used, and what should be gated before customer or enterprise rollout? MCPScan runs a 72-hour MCP exposure audit for exactly that kind of connected-agent surface. Worth a quick look at the scope?
+I saw Pipedream provides MCP servers across thousands of apps and pre-built tools. That breadth is valuable, but it also makes the review question practical: which tools can act, whose credentials are used, and what should be gated before customer or enterprise rollout? MCPScan runs a fixed-scope MCP Launch Audit for exactly that kind of connected-agent surface. Worth a quick look at the scope?
 
 {{sender_name}}
 ```
@@ -122,7 +122,7 @@ Subject: MCP readiness check for feature-gate actions
 
 Hi {{first_name}},
 
-I saw Statsig MCP supports both read and write tools for gates, experiments, configs, and bulk changes. Feature gates and experiments are production-control surfaces, so the security review usually comes down to tool scopes, write permissions, approval gates, and audit evidence. MCPScan runs a 72-hour MCP exposure audit that turns that surface into a concise remediation report. Open to me sending the one-page scope?
+I saw Statsig MCP supports both read and write tools for gates, experiments, configs, and bulk changes. Feature gates and experiments are production-control surfaces, so the security review usually comes down to tool scopes, write permissions, approval gates, and audit evidence. MCPScan runs a fixed-scope MCP Launch Audit that turns that surface into a concise remediation report. Open to me sending the one-page scope?
 
 {{sender_name}}
 ```
@@ -158,7 +158,7 @@ Subject: MCP readiness review for error and trace access
 
 Hi {{first_name}},
 
-I saw Sentry MCP connects AI assistants to errors, performance data, issue triage, docs, and project management. Error traces and project data can carry sensitive production context, so security reviewers tend to ask what agents can read, what they can change, and how tool calls are attributed. MCPScan runs a 72-hour MCP exposure audit and produces a buyer-safe remediation report. Open to me sending the one-page scope?
+I saw Sentry MCP connects AI assistants to errors, performance data, issue triage, docs, and project management. Error traces and project data can carry sensitive production context, so security reviewers tend to ask what agents can read, what they can change, and how tool calls are attributed. MCPScan runs a fixed-scope MCP Launch Audit and produces a buyer-safe remediation report. Open to me sending the one-page scope?
 
 {{sender_name}}
 ```
@@ -202,7 +202,7 @@ Hi {{first_name}},
 
 Closing the loop here. If MCP review is not a priority right now, no worries.
 
-If it is on the roadmap, the small scope I had in mind is a 72-hour audit with a server/tool inventory, risky action map, auth and secrets review, approval-gate notes, and a buyer-safe remediation summary.
+If it is on the roadmap, the small scope I had in mind is a fixed-scope MCP Launch Audit with a server/tool inventory, risky action map, auth and secrets review, approval-gate notes, and a buyer-safe remediation summary.
 
 Should I send the scope, or circle back later?
 
@@ -212,7 +212,7 @@ Should I send the scope, or circle back later?
 ### Reply Handler, Interested
 
 ```text
-Thanks, {{first_name}}. The usual starting point is the MCP Quick Audit: fixed scope, 72-hour review, and a buyer-safe report. It covers server/tool inventory, read/write/destructive action classification, auth and secrets exposure, approval gates, and a prioritized remediation checklist.
+Thanks, {{first_name}}. The usual starting point is the MCP Launch Audit: fixed scope, 5-business-day review after complete safe intake, and a buyer-safe report. It covers server/tool inventory, read/write/destructive action classification, auth and secrets exposure, approval gates, and a prioritized remediation checklist.
 
 I can send the payment link and secure intake after scope approval. Nothing sensitive should be sent over email.
 ```

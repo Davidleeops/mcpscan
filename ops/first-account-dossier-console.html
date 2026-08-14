@@ -39,13 +39,13 @@
         <div class="actions"><a class="button primary" href="../sales/first-account-dossier-2026-08-14.md">Open dossier</a><a class="button" href="recipient-finder-console.html">Recipient finder</a><a class="button" href="../sales/first-account-pipeline-2026-08-14.csv">Pipeline CSV</a><a class="button" href="first-10-outbound-approval-console.html">First 10 copy</a></div>
       </header>
       <section class="danger"><h2>No-Send Rule</h2><p>No outreach can be sent until the exact recipient and exact final content are approved in the same turn. Use public signals only and do not imply any account has a vulnerability.</p></section>
-      <section class="ready"><h2>Best First Offer</h2><p>Lead with a 72-hour MCP exposure audit that produces inventory, risky action paths, auth and secrets review, approval-gate notes, and a buyer-safe remediation report.</p></section>
+      <section class="ready"><h2>Best First Offer</h2><p>Lead with the MCP Launch Audit at $1,500. It produces inventory, risky action paths, auth and secrets review, approval-gate notes, and a buyer-safe remediation report within 5 business days after complete safe intake.</p></section>
       <section><h2>First-Wave Accounts</h2><table><tr><th>#</th><th>Account</th><th>Signal</th><th>Buyer</th><th>Offer</th></tr><tr><td>1</td><td>Vapi</td><td>Vapi exposes APIs as MCP tools for assistants, phone numbers, and calls.</td><td>Head of Engineering, Security Lead, CTO</td><td>MCP Quick Audit</td></tr><tr><td>2</td><td>Retool</td><td>Retool MCP lets agents manage apps, workflows, users, and org resources from Claude, Cursor, Codex, or Kiro.</td><td>Product Security Lead, Enterprise Engineering Lead</td><td>MCP Quick Audit</td></tr><tr><td>3</td><td>Pipedream</td><td>Pipedream provides MCP servers for thousands of apps and pre-built tools with managed OAuth and credential storage.</td><td>Head of Platform, Security Engineering Lead</td><td>MCP Quick Audit</td></tr><tr><td>4</td><td>Composio</td><td>Composio offers centralized MCP server management, managed toolkits, and custom MCP servers behind one gateway.</td><td>Founder, CTO, Head of Platform</td><td>MCP Quick Audit plus buyer-safe summary</td></tr><tr><td>5</td><td>PostHog</td><td>PostHog MCP lets agents run analytics queries, manage feature flags and experiments, triage tickets, use SQL, and work with CDP destinations.</td><td>Product Security Lead, Head of Engineering</td><td>MCP Quick Audit</td></tr><tr><td>6</td><td>Statsig</td><td>Statsig MCP supports read tools and write tools for gates, experiments, configs, and bulk changes.</td><td>Product Security Lead, Platform Engineering Lead</td><td>MCP Quick Audit</td></tr><tr><td>7</td><td>Braintrust</td><td>Braintrust MCP lets AI coding tools query experiments, search docs, and analyze production logs.</td><td>Security Lead, Head of Product Engineering</td><td>MCP Exposure Audit</td></tr><tr><td>8</td><td>Granola</td><td>Granola MCP connects meeting notes to Claude, ChatGPT, Cursor, and other AI tools.</td><td>Security Lead, CTO, Head of Enterprise</td><td>MCP Exposure Audit</td></tr><tr><td>9</td><td>Sentry</td><td>Sentry MCP connects AI assistants to errors, performance, issue triage, docs, and project management.</td><td>Product Security Lead, Developer Platform Lead</td><td>MCP Quick Audit</td></tr><tr><td>10</td><td>Replit</td><td>Replit Agent can connect to pre-listed and custom MCP servers, with guidance to trust sources and review access.</td><td>Head of Security, AI Platform Lead</td><td>Platform Exposure Audit</td></tr></table></section>
       <section><h2>Copy Drafts</h2><p>Select an account, review the draft, then copy it into the approval prompt with the exact recipient.</p><div class="actions"><select id="draft-select"><option value="draft-0">Vapi</option><option value="draft-1">Retool</option><option value="draft-2">Pipedream</option><option value="draft-3">Composio</option><option value="draft-4">PostHog</option><option value="draft-5">Statsig</option><option value="draft-6">Braintrust</option><option value="draft-7">Granola</option><option value="draft-8">Sentry</option><option value="draft-9">Replit</option></select><button class="copy" data-active-draft="true">Copy selected draft</button></div><pre id="draft-0" class="draft-copy">Subject: MCP readiness review for voice-agent tools
 
 Hi {{first_name}},
 
-I saw Vapi exposes APIs as MCP tools for assistants, phone numbers, and calls. Voice-agent tooling is a high-trust surface because it can touch real customer interactions, phone workflows, and operational actions. MCPScan runs a 72-hour MCP exposure audit that maps servers, tools, read/write actions, auth and secrets exposure, approval gates, and buyer-safe remediation evidence. Worth sending the one-page scope?
+I saw Vapi exposes APIs as MCP tools for assistants, phone numbers, and calls. Voice-agent tooling is a high-trust surface because it can touch real customer interactions, phone workflows, and operational actions. MCPScan runs a fixed-scope MCP Launch Audit that maps servers, tools, read/write actions, auth and secrets exposure, approval gates, and buyer-safe remediation evidence. Worth sending the one-page scope?
 
 {{sender_name}}</pre>
 <pre id="draft-1" class="draft-copy">Subject: MCP readiness review for internal-tool access
@@ -59,7 +59,7 @@ I saw Retool MCP lets agents manage apps, workflows, users, and org resources fr
 
 Hi {{first_name}},
 
-I saw Pipedream provides MCP servers across thousands of apps and pre-built tools. That breadth is valuable, but it also makes the review question practical: which tools can act, whose credentials are used, and what should be gated before customer or enterprise rollout? MCPScan runs a 72-hour MCP exposure audit for exactly that kind of connected-agent surface. Worth a quick look at the scope?
+I saw Pipedream provides MCP servers across thousands of apps and pre-built tools. That breadth is valuable, but it also makes the review question practical: which tools can act, whose credentials are used, and what should be gated before customer or enterprise rollout? MCPScan runs a fixed-scope MCP Launch Audit for exactly that kind of connected-agent surface. Worth a quick look at the scope?
 
 {{sender_name}}</pre>
 <pre id="draft-3" class="draft-copy">Subject: MCP trust review for gateway-managed tools
@@ -80,7 +80,7 @@ I saw PostHog MCP supports analytics queries, feature flags, experiments, SQL, C
 
 Hi {{first_name}},
 
-I saw Statsig MCP supports both read and write tools for gates, experiments, configs, and bulk changes. Feature gates and experiments are production-control surfaces, so the security review usually comes down to tool scopes, write permissions, approval gates, and audit evidence. MCPScan runs a 72-hour MCP exposure audit that turns that surface into a concise remediation report. Open to me sending the one-page scope?
+I saw Statsig MCP supports both read and write tools for gates, experiments, configs, and bulk changes. Feature gates and experiments are production-control surfaces, so the security review usually comes down to tool scopes, write permissions, approval gates, and audit evidence. MCPScan runs a fixed-scope MCP Launch Audit that turns that surface into a concise remediation report. Open to me sending the one-page scope?
 
 {{sender_name}}</pre>
 <pre id="draft-6" class="draft-copy">Subject: MCP exposure snapshot for eval and log access
@@ -101,7 +101,7 @@ I saw Granola MCP connects meeting notes to Claude, ChatGPT, Cursor, and other A
 
 Hi {{first_name}},
 
-I saw Sentry MCP connects AI assistants to errors, performance data, issue triage, docs, and project management. Error traces and project data can carry sensitive production context, so security reviewers tend to ask what agents can read, what they can change, and how tool calls are attributed. MCPScan runs a 72-hour MCP exposure audit and produces a buyer-safe remediation report. Open to me sending the one-page scope?
+I saw Sentry MCP connects AI assistants to errors, performance data, issue triage, docs, and project management. Error traces and project data can carry sensitive production context, so security reviewers tend to ask what agents can read, what they can change, and how tool calls are attributed. MCPScan runs a fixed-scope MCP Launch Audit and produces a buyer-safe remediation report. Open to me sending the one-page scope?
 
 {{sender_name}}</pre>
 <pre id="draft-9" class="draft-copy">Subject: MCP exposure review for custom coding-agent tools

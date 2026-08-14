@@ -37,7 +37,7 @@ Purpose: give MCPScan a current, practical list of where buyers are showing pain
 | Buyer | Pain | Best Offer | First CTA |
 | --- | --- | --- | --- |
 | CTO at AI startup | Need to ship quickly without surprising customers | MCP Exposure Snapshot | Want me to send the one-page scope? |
-| Devtool founder | Public MCP server could become trust objection | MCP Quick Audit | Worth a 72-hour pre-review before wider rollout? |
+| Devtool founder | Public MCP server could become trust objection | MCP Launch Audit | Worth a fixed-scope pre-review before wider rollout? |
 | AppSec lead | Asked to approve MCP without inventory | MCP Quick Audit | Want a fixed-scope review of servers, tools, auth, and secrets exposure? |
 | Platform engineering lead | Needs allowlist and managed settings | MCP Launch Readiness Audit | Want an approval map before rollout? |
 | IT or Slack admin | Internal docs/messages may be exposed | MCP Enterprise Readiness Audit | Useful to map read/write boundaries before enabling? |

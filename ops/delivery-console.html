@@ -151,9 +151,11 @@
           <button class="copy" data-copy-target="workspace-command">Copy setup command</button>
           <a class="button" href="../delivery/customer-workspace-template/README.md" target="_blank" rel="noreferrer">Open template</a>
           <button class="copy" data-copy-target="workspace-dry-run-command">Copy dry run</button>
+          <button class="copy" data-copy-target="delivery-rehearsal-command">Copy rehearsal</button>
         </div>
         <pre id="workspace-command">npm run delivery:workspace -- --customer CUSTOMER_NAME --date YYYY-MM-DD</pre>
         <pre id="workspace-dry-run-command">npm run delivery:workspace -- --customer CUSTOMER_NAME --date YYYY-MM-DD --dry-run</pre>
+        <pre id="delivery-rehearsal-command">npm run delivery:dry-run</pre>
       </section>
 
       <div class="grid">
@@ -206,6 +208,12 @@ node packages/cli/dist/index.js scan PATH_TO_SANITIZED_CONFIG --format json</pre
           <li>The customer knows whether a findings call or re-scan is included.</li>
           <li>The final report is stored outside the public repo.</li>
         </ul>
+      </section>
+
+      <section class="ready">
+        <h2>Dry-Run Proof</h2>
+        <p>Run the rehearsal before the first paid delivery. It creates a temporary private workspace, generates JSON, SARIF, HTML, and Markdown outputs, and writes a proof file outside this repo.</p>
+        <pre>npm run delivery:dry-run</pre>
       </section>
     </main>
 

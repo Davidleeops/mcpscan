@@ -8,9 +8,9 @@ This is still a good opportunity, but only if MCPScan is sold as a fast security
 
 Go forward with a service-first launch:
 
-- Primary offer: 72-hour MCP Quick Audit.
-- Main price: $1,500 to $2,500 after the first buyer.
-- First-close entry option: $499 to $750 exposure snapshot.
+- Primary offer: MCP Launch Audit at $1,500.
+- First-close fallback: $750 MCP Quick Audit for small, low-complexity setups.
+- Optional entry option: $499 to $750 exposure snapshot when the buyer needs a lighter first yes.
 - Stretch first-close price: $3,500 only when the buyer has urgent enterprise review, customer due diligence, or regulated-data pressure.
 - Do not lead with SaaS. Use the scanner as proof and fulfillment leverage.
 
@@ -20,7 +20,7 @@ MCP security has moved from theory into buyer pain. The pain is not abstract. Te
 
 The strongest wedge is:
 
-> 72-hour MCP exposure audit for AI agent teams shipping tools that touch customer data, code, cloud systems, or SaaS actions.
+> Fixed-scope MCP Launch Audit for AI agent teams shipping tools that touch customer data, code, cloud systems, or SaaS actions.
 
 ## Why The Opportunity Is Real
 
@@ -64,6 +64,7 @@ The recurring needs are:
 
 There is meaningful name collision risk around MCPScan and MCP-Scan. Keep the repo and current product name for speed, but public selling should emphasize the offer name first:
 
+- MCP Launch Audit
 - MCP Quick Audit
 - MCP Exposure Snapshot
 - MCP Launch Readiness Audit
@@ -94,9 +95,9 @@ Avoid first:
 
 | Offer | First-Close Price | Normal Early Price | When To Use |
 | --- | ---: | ---: | --- |
-| MCP Exposure Snapshot | $499 to $750 | $750 | First sale, founder-led, limited scope |
-| MCP Quick Audit | $1,500 | $1,500 to $2,500 | Best main offer for first 30 days |
-| MCP Launch Readiness Audit | $2,500 | $3,500 | Buyer has customer or production deadline |
+| MCP Exposure Snapshot | $499 to $750 | $750 | First sale, founder-led, very limited scope |
+| MCP Quick Audit | $750 | $750 | Small setup, low urgency, one environment |
+| MCP Launch Audit | $1,500 | $1,500 to $2,500 | Best main offer for first 30 days |
 | MCP Enterprise Readiness Audit | $3,500 | $5,000 to $7,500 | Multiple tools, higher risk, readout needed |
 
 Do not try to sell $5,000 or more first unless the buyer has a warm relationship, deadline, procurement trigger, or regulated-data urgency.

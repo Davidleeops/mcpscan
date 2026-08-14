@@ -40,6 +40,12 @@ npm run landing:sample-report
 npm run launch:bundle
 ```
 
+After DNS records exist, verify the custom domain and mailbox records:
+
+```text
+npm run launch:verify-dns -- --domain {{chosen_domain}}
+```
+
 ## Current Local Proof Until Billing Is Fixed
 
 Fresh remote snapshot verification passes with:
