@@ -8,7 +8,7 @@ Use this as the one-screen operating surface for first revenue.
 
 | Lane | Current State | Next Action | Owner |
 | --- | --- | --- | --- |
-| Domain | Not purchased | Buy `getmcpscan.com` if standard-priced, or `mcpscan.us` after accepting `.us` tradeoffs | Founder |
+| Domain | Not purchased | Buy `mcpscan.site` for the cheap launch lane, or `getmcpscan.com` for the trust lane | Founder |
 | Mailbox | Not purchased | Create `audit@{{chosen_domain}}` plus `security@` and `hello@` aliases | Founder |
 | Stripe | Payment Links not live | Create three live one-time Payment Links | Founder |
 | Landing page | Live with placeholder issue CTAs | Apply approved domain, email, and Stripe links after return packet | Codex |
@@ -27,9 +27,10 @@ Use this as the one-screen operating surface for first revenue.
 6. Ask for same-turn approval.
 7. Stage approved messages outside the public repo.
 8. Send manually from authenticated mailbox only after SPF, DKIM, and DMARC pass.
-9. Log replies and use `sales/reply-to-close-packet.md`.
-10. Stage approved replies with `npm run outbound:stage-reply`.
-10. When payment clears, create the private delivery workspace.
+9. Log manual sends with `npm run outbound:log-send`.
+10. Log replies and use `sales/reply-to-close-packet.md`.
+11. Stage approved replies with `npm run outbound:stage-reply`.
+12. When payment clears, create the private delivery workspace.
 
 ## Command Set
 
@@ -57,6 +58,12 @@ After first outbound approval exists:
 ```text
 npm run outbound:stage-approved -- --file /path/to/approved-outbound.txt
 npm run outbound:stage-route-packet -- --file /path/to/approved-first-10-route-packet.txt
+```
+
+After manual send:
+
+```text
+npm run outbound:log-send -- --manifest /path/outside/public/repo/manifest.json
 ```
 
 To generate an exact approval packet before staging:
