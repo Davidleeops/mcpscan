@@ -30,6 +30,8 @@
     "launch:verify-stripe": "node scripts/verify-stripe-links.mjs",
     "launch:verify-return-qa": "node scripts/verify-return-qa-consistency.mjs",
     "launch:verify-return-packet": "node scripts/apply-founder-return-packet.mjs --dry-run true --file ops/founder-return-packet.sample.txt",
+    "launch:post-click-bundle": "node scripts/create-post-click-handoff-bundle.mjs",
+    "launch:simulate-post-click-bundle": "node scripts/simulate-post-click-handoff-bundle.mjs",
     "launch:simulate-return-apply": "node scripts/simulate-founder-return-apply.mjs",
     "launch:verify-stripe-qa": "node scripts/verify-stripe-checkout-qa.mjs",
     "launch:verify-dns": "node scripts/verify-domain-email-dns.mjs",

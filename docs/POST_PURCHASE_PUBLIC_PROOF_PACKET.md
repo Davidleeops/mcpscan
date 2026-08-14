@@ -43,10 +43,13 @@ Use this after the founder buys the domain, creates the mailbox, and creates Str
 7. Open `ops/founder-status-console.html`.
 8. Use the same preset, mark only the gates that are true, then download `founder-approval-status.json`.
 9. Send Codex the approval message, the Stripe QA evidence path, and the public-safe status JSON.
+10. Codex runs `npm run launch:post-click-bundle` to create a private handoff bundle before applying public links.
 
 ## Codex Apply Command
 
 ```text
+npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider {{zoho_or_google_or_spacemail}}
+npm run launch:simulate-post-click-bundle
 npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 npm run launch:publish-pages-fallback -- --wait true
 npm run launch:verify -- --domain {{chosen_domain}}
@@ -61,6 +64,8 @@ Use `--dkim-selector {{selector}}` only when the provider shows a DKIM selector.
 The post-purchase handoff is ready when:
 
 - `npm run launch:verify-return-packet` passes for the saved return packet shape.
+- `npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider {{zoho_or_google_or_spacemail}}` writes a private bundle outside the public repo.
+- `npm run launch:simulate-post-click-bundle` proves the bundle path with temporary QA evidence.
 - `npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status` passes.
 - `npm run launch:verify-return-qa -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json` passes.
 - `npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status` passes.

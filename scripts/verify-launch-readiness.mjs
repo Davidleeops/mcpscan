@@ -273,6 +273,8 @@ const requiredFiles = [
   "scripts/create-first-paid-audit-work-order.mjs",
   "scripts/create-paid-audit-handoff.mjs",
   "scripts/apply-founder-return-packet.mjs",
+  "scripts/create-post-click-handoff-bundle.mjs",
+  "scripts/simulate-post-click-handoff-bundle.mjs",
   "scripts/simulate-founder-return-apply.mjs",
   "scripts/build-domain-dns-packet.mjs",
   "scripts/build-stripe-setup-packet.mjs",
@@ -438,6 +440,7 @@ if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-retu
     exists("ops/launch-day-runbook.html") ? read("ops/launch-day-runbook.html") : ""
   ].join("\n");
   const requiredReturnReviewCommands = [
+    "npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json",
     "npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true",
     "npm run launch:publish-pages-fallback -- --wait true",
     "npm run launch:verify -- --domain",
@@ -495,6 +498,8 @@ if (exists("ops/founder-status-console.html") && exists("docs/POST_PURCHASE_PUBL
     "Load cheap lane",
     "Load trust lane",
     "founder-approval-status.json",
+    "launch:post-click-bundle",
+    "launch:simulate-post-click-bundle",
     "Download JSON",
     "mcpscan.online",
     "security@mcpscan.online",
@@ -517,7 +522,8 @@ if (exists("ops/founder-return-packet.html") && exists("ops/stripe-payment-link-
   ].join("\n");
   const requiredApprovalMarkers = [
     "Commit and push require a separate explicit approval after verification.",
-    "keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval"
+    "keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval",
+    "launch:post-click-bundle"
   ];
   const missingApprovalMarkers = requiredApprovalMarkers.filter((marker) => !approvalSurfaces.includes(marker));
   const unsafeApprovalMarkers = [
@@ -545,6 +551,8 @@ if (exists("ops/launch-day-runbook.html") && exists("scripts/open-launch-day-run
     "founder-status-console.html",
     "swarm-throughput-console.html",
     "docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md",
+    "launch:post-click-bundle",
+    "launch:simulate-post-click-bundle",
     "launch:post-click-verify",
     "launch:open-first-revenue",
     "This page opens surfaces only"
@@ -554,6 +562,28 @@ if (exists("ops/launch-day-runbook.html") && exists("scripts/open-launch-day-run
     missingLaunchDayMarkers.length === 0
       ? result("pass", "launch day runbook path", "ordered click, proof, verification, and revenue surfaces are present")
       : result("fail", "launch day runbook path", missingLaunchDayMarkers.join(", "))
+  );
+}
+
+if (exists("scripts/create-post-click-handoff-bundle.mjs") && exists("scripts/simulate-post-click-handoff-bundle.mjs")) {
+  const bundlePath = [
+    read("scripts/create-post-click-handoff-bundle.mjs"),
+    read("scripts/simulate-post-click-handoff-bundle.mjs"),
+    read("package.json")
+  ].join("\n");
+  const requiredBundleMarkers = [
+    "Refusing to write post-click handoff bundle inside the public MCPScan repo.",
+    "launch:verify-return-qa",
+    "launch:verify-stripe-qa",
+    "public-safe-summary.json",
+    "NEXT_COMMANDS.md",
+    "launch:simulate-post-click-bundle"
+  ];
+  const missingBundleMarkers = requiredBundleMarkers.filter((marker) => !bundlePath.includes(marker));
+  results.push(
+    missingBundleMarkers.length === 0
+      ? result("pass", "post-click handoff bundle", "private bundle command validates return packet and Stripe QA evidence before apply")
+      : result("fail", "post-click handoff bundle", missingBundleMarkers.join(", "))
   );
 }
 

@@ -24,7 +24,7 @@ Best current positioning:
 | Clickable founder path | `npm run launch:day`, `npm run launch:next`, `npm run launch:open-founder`, `ops/launch-day-runbook.html`, `ops/final-founder-click-console.html`, `ops/founder-click-handoff.html` | Ready |
 | Domain and mailbox packets | `npm run domain:open`, `ops/domain-mailbox-purchase-packet.html`, `ops/domain-email-dns-console.html`, `npm run launch:dns-packet`, `ops/generated-launch-packets/2026-08-14_mcpscan-online_dns-packet.md` | Ready |
 | Stripe setup packet | `ops/stripe-click-setup.html`, `npm run launch:stripe-packet`, `ops/stripe-payment-link-qa-console.html` | Ready |
-| Return packet after clicks | `ops/founder-return-packet.html`, `ops/approved-links-command-builder.html`, `ops/founder-status-console.html`, `docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md`, `npm run launch:open-return-review`, `npm run launch:post-click-verify` | Ready |
+| Return packet after clicks | `ops/founder-return-packet.html`, `ops/approved-links-command-builder.html`, `ops/founder-status-console.html`, `docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md`, `npm run launch:open-return-review`, `npm run launch:post-click-bundle`, `npm run launch:post-click-verify` | Ready |
 | First-revenue runway after live gates | `npm run launch:open-first-revenue`, `scripts/open-first-revenue-runway.mjs` | Ready |
 | Agentized swarm throughput model | `docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md`, `ops/swarm-throughput-console.html`, `npm run launch:open-swarm`, `npm run launch:verify` | Ready |
 | Outbound approval path | `ops/first-10-outbound-approval-console.html`, `npm run outbound:stage-named-first-10`, `npm run outbound:stage-route-packet`, `npm run outbound:log-first-10-batch`, `sales/first-10-recipient-approval-packet-2026-08-14.md`, `sales/first-10-route-approval-packet-2026-08-14.md` | Ready |
@@ -74,7 +74,7 @@ Latest local readiness proof:
 
 ```text
 npm run launch:verify
-Summary: 215 passed, 3 expected founder-click warnings, 0 failures.
+Summary: 218 passed, 3 expected founder-click warnings, 0 failures.
 ```
 
 Current consolidated proof:
