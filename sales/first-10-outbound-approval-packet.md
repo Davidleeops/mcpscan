@@ -94,16 +94,22 @@ Hi {{first_name}}, quick note because teams enabling MCP for {{tool_or_platform}
 
 ## Founder Approval Prompt
 
-Use this when ready to send:
+Use `ops/outbound-recipient-approval-builder.html` when ready to stage one approved message:
 
 ```text
-Please approve or revise these first outbound messages. I will not send anything unless you approve the exact recipient and exact final text in this same turn.
+I approve staging this exact MCPScan outbound message.
 
-1. {{channel}} to {{recipient}}, {{title}}, {{company}}, {{contact}}
+Account: {{account}}
+Channel: {{channel}}
+Recipient: {{recipient}}, {{title}}, {{company}}
+Contact or profile URL: {{contact_or_profile_url}}
+Source URL: {{public_signal_url}}
+
+Final message:
 {{exact_message}}
 
-2. {{channel}} to {{recipient}}, {{title}}, {{company}}, {{contact}}
-{{exact_message}}
+Approved action:
+Stage this approved outbound packet outside the public repo for manual sending review. Do not send automatically.
 ```
 
 ## Stop Conditions

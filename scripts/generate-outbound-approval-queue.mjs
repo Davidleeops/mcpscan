@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
-const input = path.join(root, "sales/seed-prospect-list-2026-07-15.csv");
+const input = path.join(root, "sales/first-account-pipeline-2026-08-14.csv");
 const output = path.join(root, "sales/outreach-approval-queue.md");
 
 function parseCsv(text) {
@@ -59,9 +59,7 @@ function toRecords(rows) {
 }
 
 function subjectFor(record) {
-  if (record.recommended_offer.includes("Enterprise")) return "MCP readiness review before enterprise rollout";
-  if (record.recommended_offer.includes("Quick")) return "Quick MCP access review";
-  return "MCP access review before rollout";
+  return record.draft_angle || "MCP readiness check before agent rollout";
 }
 
 function emailDraft(record) {
@@ -69,9 +67,9 @@ function emailDraft(record) {
 
 Hi {{first_name}},
 
-I saw the public ${record.category.toLowerCase()} signal around ${record.account}: ${record.trigger_note}.
+I saw the public MCP signal around ${record.account}: ${record.trigger}.
 
-The risk pattern is pretty practical: ${record.likely_pain}. MCP setups can move from local agent workflow to real company access before there is a clean inventory of what the agent can reach.
+The risk pattern is practical: MCP setups can move from local agent workflow to real company access before there is a clean inventory of what the agent can reach.
 
 MCPScan runs a fixed-scope readiness audit covering MCP server/tool inventory, risky permissions, secret exposure, prompt-injection/tool-description risk, and a prioritized remediation checklist.
 
@@ -83,12 +81,12 @@ Worth sending the one-page scope so you can decide if it is relevant?
 }
 
 function linkedinDraft(record) {
-  return `Hi {{first_name}}, saw public MCP/agent activity around ${record.account}. Quick question: has the team reviewed ${record.likely_pain.toLowerCase()} yet? MCPScan does fixed-scope readiness audits that map MCP servers, tools, permissions, secret exposure, and remediation priorities before rollout. Open to me sending the one-page scope?`;
+  return `Hi {{first_name}}, saw public MCP activity around ${record.account}. Quick question: has the team reviewed what the connected tools can read, write, or change before rollout expands? MCPScan does fixed-scope readiness audits that map MCP servers, tools, permissions, secret exposure, and remediation priorities. Open to me sending the one-page scope?`;
 }
 
 const records = toRecords(parseCsv(fs.readFileSync(input, "utf8")));
 const selected = records
-  .filter((record) => record.priority === "P1")
+  .filter((record) => record.stage === "Qualified")
   .slice(0, 10);
 
 const generatedAt = new Date().toISOString();
@@ -98,13 +96,13 @@ const sections = selected.map((record, index) => `## ${index + 1}. ${record.acco
 Status: draft only. Do not send without same-turn approval for exact recipient and final content.
 
 - Category: ${record.category}
-- Trigger URL: ${record.trigger_url}
-- Trigger note: ${record.trigger_note}
-- Buyer hypothesis: ${record.buyer_hypothesis}
-- Likely pain: ${record.likely_pain}
+- Trigger URL: ${record.source_url}
+- Trigger note: ${record.trigger}
+- Buyer hypothesis: ${record.contact_role}
+- Score: ${record.score}
 - Recommended offer: ${record.recommended_offer}
-- Caveat: ${record.caveat}
 - Next action: ${record.next_action}
+- Approval status: ${record.approval_status}
 
 ### Email Draft
 
@@ -127,10 +125,10 @@ Status: draft only. This file is a preparation artifact, not permission to send.
 No external messages may be sent until the exact recipient and exact final text
 are approved in the same turn.
 
-Source: \`sales/seed-prospect-list-2026-07-15.csv\`
+Source: \`sales/first-account-pipeline-2026-08-14.csv\`
 
-Use this queue to pick the first 10 account pools, qualify specific accounts,
-then replace placeholders before requesting send approval.
+Use this queue to pick exact recipients, then stage the approved message with
+\`ops/outbound-recipient-approval-builder.html\`.
 
 ${sections.join("\n")}
 `;

@@ -45,18 +45,25 @@ A recipient is approval-ready only when all of these are true:
 4. Paste the recipient into the approval prompt.
 5. Paste the account-specific draft from `ops/first-account-dossier-console.html`.
 6. Ask for same-turn approval before sending.
+7. After approval, use `ops/outbound-recipient-approval-builder.html` to create the parser-ready packet.
+8. Stage the approved packet outside the public repo with `npm run outbound:stage-approved`.
 
 ## Approval Request Template
 
 ```text
-Please approve or revise this outreach. I will not send anything unless you approve the exact recipient and exact final content in this same turn.
+I approve staging this exact MCPScan outbound message.
 
 Account: {{account}}
 Channel: {{email_or_linkedin_or_contact_form}}
-Recipient: {{name}}, {{title}}, {{company}}, {{contact_or_profile_url}}
+Recipient: {{name}}, {{title}}, {{company}}
+Contact or profile URL: {{contact_or_profile_url}}
 Source URL: {{public_signal_url}}
+
 Final message:
 {{paste_exact_message}}
+
+Approved action:
+Stage this approved outbound packet outside the public repo for manual sending review. Do not send automatically.
 ```
 
 ## Do Not Use

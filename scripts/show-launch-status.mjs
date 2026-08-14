@@ -53,6 +53,10 @@ function hasBannedPunctuation() {
   return files.some((file) => read(file).includes("\u2014"));
 }
 
+function hasRecipientCandidates() {
+  return exists("sales/recipient-candidates-2026-08-14.csv");
+}
+
 function getLiveActionsState() {
   if (!live) return null;
   try {
@@ -98,6 +102,8 @@ const gates = [
   gate("Static bundle fallback", exists("scripts/build-static-launch-bundle.mjs") && exists("ops/static-launch-bundle-console.html"), "static host fallback is available"),
   gate("Delivery workspace", exists("scripts/create-customer-workspace.mjs"), "npm run delivery:workspace available"),
   gate("Delivery dry run", exists("scripts/run-delivery-dry-run.mjs"), "npm run delivery:dry-run proves the first audit workflow"),
+  gate("Outbound staging", exists("scripts/stage-approved-outbound.mjs") && exists("ops/outbound-recipient-approval-builder.html"), "approved messages can be staged outside the public repo"),
+  gate("Recipient candidates", hasRecipientCandidates(), "npm run outbound:verify checks candidate readiness"),
   gate("Buyer summary", exists("delivery/customer-workspace-template/buyer-facing-summary.md"), "customer deliverable exists")
 ];
 

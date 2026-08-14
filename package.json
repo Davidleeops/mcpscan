@@ -18,6 +18,8 @@
     "launch:open": "node scripts/open-launch-cockpit.mjs",
     "launch:verify-dns": "node scripts/verify-domain-email-dns.mjs",
     "launch:verify": "node scripts/verify-launch-readiness.mjs",
+    "outbound:stage-approved": "node scripts/stage-approved-outbound.mjs",
+    "outbound:verify": "node scripts/verify-outbound-readiness.mjs",
     "outbound:queue": "node scripts/generate-outbound-approval-queue.mjs",
     "release:preflight": "node scripts/prepare-npm-release.mjs",
     "test": "npm run test -ws --if-present",
