@@ -113,6 +113,11 @@ assertValid("Quick Audit link", quick, validStripeUrl);
 assertValid("Launch Audit link", launch, validStripeUrl);
 assertValid("Enterprise Readiness link", enterprise, validStripeUrl);
 
+const uniqueStripeLinks = new Set([quick, launch, enterprise].map((value) => value.toLowerCase()));
+if (uniqueStripeLinks.size !== 3) {
+  throw new Error("Stripe Payment Links must be three unique URLs.");
+}
+
 for (const [label, value] of Object.entries({ email, audit, hello })) {
   if (!value.toLowerCase().endsWith(`@${domain}`)) {
     throw new Error(`${label} must use the approved domain: ${domain}`);

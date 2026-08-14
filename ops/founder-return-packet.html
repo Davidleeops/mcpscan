@@ -37,7 +37,7 @@
       <header>
         <h1>Founder Return Packet</h1>
         <p>Use this after the founder-account clicks are done. Paste the purchased domain, mailbox, and Stripe links once, then copy the exact approval message back to Codex.</p>
-        <div class="actions"><a class="button" href="launch-approval-queue.html">Approval queue</a><a class="button" href="founder-status-console.html">Status tracker</a><a class="button" href="stripe-payment-link-qa-console.html">Stripe QA</a><a class="button" href="approved-links-command-builder.html">Fallback builder</a></div>
+        <div class="actions"><a class="button" href="launch-approval-queue.html">Approval queue</a><a class="button" href="cheap-launch-packet-console.html">Cheap packets</a><a class="button" href="founder-status-console.html">Status tracker</a><a class="button" href="stripe-payment-link-qa-console.html">Stripe QA</a><a class="button" href="approved-links-command-builder.html">Fallback builder</a></div>
       </header>
 
       <section class="guardrail">
@@ -59,6 +59,7 @@
         <div class="actions">
           <button id="build" class="primary" type="button">Build approval message</button>
           <button id="copy" type="button">Copy message</button>
+          <button id="download" type="button">Download message</button>
         </div>
         <p id="status" class="status"></p>
       </section>
@@ -116,10 +117,24 @@
         return /^https:\/\/buy\.stripe\.com\/\S+$/i.test(value) && !/test_/i.test(value);
       }
 
+      function uniqueLinks(values) {
+        const links = [values.quick, values.launch, values.enterprise].map((value) => value.toLowerCase());
+        return new Set(links).size === links.length;
+      }
+
+      function downloadText(filename, text) {
+        const blob = new Blob([text.trim() + "\n"], { type: "text/plain" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
+        URL.revokeObjectURL(link.href);
+      }
+
       function buildMessage() {
         const values = Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input.value.trim()]));
         const errors = [];
-        if (!validDomain(values.domain)) errors.push("domain must look like trymcpscan.com");
+        if (!validDomain(values.domain)) errors.push("domain must look like mcpscan.site");
         for (const key of ["email", "security", "hello"]) {
           if (!validEmail(values[key])) errors.push(key + " must be a real email address");
           if (validEmail(values[key]) && validDomain(values.domain) && !emailMatchesDomain(values[key], values.domain)) {
@@ -129,6 +144,7 @@
         for (const key of ["quick", "launch", "enterprise"]) {
           if (!validStripeUrl(values[key])) errors.push(key + " link must be a live https://buy.stripe.com/... URL");
         }
+        if (errors.length === 0 && !uniqueLinks(values)) errors.push("Stripe links must be three unique URLs");
         if (errors.length > 0) {
           status.textContent = errors.join(". ");
           status.className = "status bad";
@@ -160,6 +176,14 @@ I also approve keeping outbound paused until I approve exact recipients and exac
         await navigator.clipboard.writeText(output.textContent.trim());
         status.textContent = "Copied.";
         status.className = "status good";
+      });
+      document.getElementById("download").addEventListener("click", () => {
+        if (!output.textContent.includes("I approve applying these exact MCPScan launch values")) buildMessage();
+        if (output.textContent.includes("I approve applying these exact MCPScan launch values")) {
+          downloadText("mcpscan-founder-return-packet.txt", output.textContent);
+          status.textContent = "Downloaded.";
+          status.className = "status good";
+        }
       });
     </script>
   </body>

@@ -40,11 +40,12 @@ ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-products.csv
 4. Use the generated DNS packet and DNS records CSV.
 5. Use the generated Stripe setup packet and Stripe products CSV.
 6. Create three live Stripe Payment Links.
-7. Use the Stripe QA console to generate the evidence JSON and exact return approval.
-8. Give the approved return packet to Codex.
-9. Codex applies public links and runs verification. Commit and push happen after verification and separate explicit approval.
-10. Approve exact outbound recipients and exact final messages.
-11. After payment, run the paid audit handoff and deliver from a private workspace.
+7. Use the Stripe QA console to download the evidence JSON.
+8. Use the founder return packet to download the exact approval message.
+9. Give the approved return packet and QA evidence JSON to Codex.
+10. Codex applies public links and runs verification. Commit and push happen after verification and separate explicit approval.
+11. Approve exact outbound recipients and exact final messages.
+12. After payment, run the paid audit handoff and deliver from a private workspace.
 
 ## Current Next Click Script
 
@@ -56,7 +57,8 @@ ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-products.csv
 5. If the cart jumps or the renewal feels too high, search getmcpscan.xyz.
 6. Create one Spacemail mailbox: security@chosen-domain.
 7. Add aliases: audit@chosen-domain and hello@chosen-domain.
-8. Paste the bought domain and mailbox values into ops/founder-return-packet.html after Stripe links exist.
+8. Download the approval message from ops/founder-return-packet.html after Stripe links exist.
+9. Download the QA evidence JSON from ops/stripe-payment-link-qa-console.html after the checklist passes.
 ```
 
 ## Founder-Only Clicks
