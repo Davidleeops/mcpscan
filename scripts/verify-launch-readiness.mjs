@@ -231,6 +231,7 @@ const requiredFiles = [
   "docs/MARKET_SOURCE_PACK_2026-08-14.md",
   "docs/MARKET_REALITY_BRIEF_2026-08-14.md",
   "docs/MARKET_PULSE_REFRESH_2026-08-14.md",
+  "docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md",
   "sales/buyer-intent-map-2026-08-14.md",
   "sales/first-account-dossier-2026-08-14.md",
   "sales/first-account-dossier-2026-08-14.csv",
@@ -281,6 +282,7 @@ const requiredFiles = [
   "scripts/rerun-github-actions-after-unlock.mjs",
   "scripts/run-launch-rehearsal.mjs",
   "scripts/open-public-launch-review.mjs",
+  "scripts/open-first-revenue-runway.mjs",
   "scripts/stage-approved-public-launch-post.mjs",
   "scripts/stage-approved-outbound.mjs",
   "scripts/open-first-10-outbound-approval.mjs",
@@ -427,6 +429,30 @@ if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-retu
     missingReturnReviewCommands.length === 0
       ? result("pass", "founder return post-click path", "apply, publish, live verify, and live status commands are present")
       : result("fail", "founder return post-click path", missingReturnReviewCommands.join(", "))
+  );
+}
+
+if (exists("scripts/open-first-revenue-runway.mjs") && exists("package.json") && exists("ops/launch-cockpit.html")) {
+  const firstRevenueRunway = [
+    read("scripts/open-first-revenue-runway.mjs"),
+    read("package.json"),
+    read("ops/launch-cockpit.html")
+  ].join("\n");
+  const requiredRunwayMarkers = [
+    "launch:open-first-revenue",
+    "docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md",
+    "ops/public-channel-drafts-console.html",
+    "ops/first-10-outbound-approval-console.html",
+    "sales/reply-to-close-packet.md",
+    "ops/paid-audit-handoff-builder.html",
+    "sales/daily-revenue-command.md",
+    "This command opens surfaces only"
+  ];
+  const missingRunwayMarkers = requiredRunwayMarkers.filter((marker) => !firstRevenueRunway.includes(marker));
+  results.push(
+    missingRunwayMarkers.length === 0
+      ? result("pass", "first revenue runway path", "public, outbound, reply, payment, and delivery surfaces open from one command")
+      : result("fail", "first revenue runway path", missingRunwayMarkers.join(", "))
   );
 }
 
