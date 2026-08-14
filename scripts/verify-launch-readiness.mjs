@@ -153,6 +153,7 @@ const requiredFiles = [
   "landing/refund.html",
   "ops/launch-cockpit.html",
   "ops/launch-day-runbook.html",
+  "ops/swarm-throughput-console.html",
   "ops/launch-approval-queue.html",
   "ops/founder-return-packet.html",
   "ops/static-launch-bundle-console.html",
@@ -235,6 +236,7 @@ const requiredFiles = [
   "docs/MARKET_REALITY_BRIEF_2026-08-14.md",
   "docs/MARKET_PULSE_REFRESH_2026-08-14.md",
   "docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md",
+  "docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md",
   "docs/OBJECTIVE_COMPLETION_AUDIT_2026-08-14.md",
   "docs/OBJECTIVE_COMPLETION_MATRIX_2026-08-14.json",
   "sales/buyer-intent-map-2026-08-14.md",
@@ -516,6 +518,7 @@ if (exists("ops/launch-day-runbook.html") && exists("scripts/open-launch-day-run
     "stripe-payment-link-qa-console.html",
     "founder-return-packet.html",
     "founder-status-console.html",
+    "swarm-throughput-console.html",
     "docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md",
     "launch:post-click-verify",
     "launch:open-first-revenue",
@@ -526,6 +529,28 @@ if (exists("ops/launch-day-runbook.html") && exists("scripts/open-launch-day-run
     missingLaunchDayMarkers.length === 0
       ? result("pass", "launch day runbook path", "ordered click, proof, verification, and revenue surfaces are present")
       : result("fail", "launch day runbook path", missingLaunchDayMarkers.join(", "))
+  );
+}
+
+if (exists("docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md") && exists("ops/swarm-throughput-console.html")) {
+  const swarm = `${read("docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md")}\n${read("ops/swarm-throughput-console.html")}`;
+  const requiredSwarmMarkers = [
+    "Market Pulse",
+    "Domain And Mailbox",
+    "Stripe And Checkout",
+    "Public Launch",
+    "Outbound Prep",
+    "Reply To Close",
+    "Paid Delivery",
+    "Quality And Safety",
+    "npm run launch:full-proof",
+    "No outbound before domain, mailbox authentication, Stripe links, and security contact are live."
+  ];
+  const missingSwarmMarkers = requiredSwarmMarkers.filter((marker) => !swarm.includes(marker));
+  results.push(
+    missingSwarmMarkers.length === 0
+      ? result("pass", "swarm throughput model", "agent lanes, proof commands, and approval boundaries are present")
+      : result("fail", "swarm throughput model", missingSwarmMarkers.join(", "))
   );
 }
 

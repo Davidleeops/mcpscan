@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Swarm Throughput Console</title>
+    <style>
+      :root { color-scheme: light; --ink: #14171a; --muted: #5b6470; --line: #d7dde3; --panel: #ffffff; --soft: #f5f7f9; --accent: #0b6bcb; --good: #0f7b4f; --warn: #9a5a00; --danger: #aa2b2b; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--soft); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 48px; }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { font-size: clamp(34px, 6vw, 62px); line-height: 1; margin-bottom: 12px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      h3 { font-size: 15px; margin-bottom: 8px; }
+      p, li, td { color: var(--muted); line-height: 1.5; }
+      .stack { display: grid; gap: 16px; }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+      section, article { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+      .ready { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .warn { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .danger { border-left: 4px solid var(--danger); background: #fff6f6; }
+      .lanes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+      .lane { display: grid; gap: 8px; min-height: 210px; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+      a.button, button { display: inline-flex; min-height: 38px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 12px; color: var(--accent); background: #ffffff; font-weight: 700; text-decoration: none; cursor: pointer; }
+      a.button.primary { color: #ffffff; background: var(--accent); }
+      code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      pre { margin: 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; }
+      table { width: 100%; border-collapse: collapse; }
+      th, td { border-top: 1px solid var(--line); padding: 10px 8px; text-align: left; vertical-align: top; }
+      th { color: var(--ink); }
+      @media (max-width: 1000px) { .lanes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+      @media (max-width: 720px) { .grid, .lanes { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>Swarm Throughput Console</h1>
+        <p>Use this after launch gates are live to keep market, outbound, reply, payment, and delivery work split into agent lanes with clear approval gates.</p>
+        <div class="actions">
+          <a class="button primary" href="../docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md">Operating model</a>
+          <a class="button" href="launch-day-runbook.html">Launch day</a>
+          <a class="button" href="first-10-outbound-approval-console.html">First 10</a>
+          <a class="button" href="paid-audit-handoff-builder.html">Paid handoff</a>
+          <a class="button" href="delivery-console.html">Delivery</a>
+        </div>
+      </header>
+
+      <section class="ready">
+        <h2>Throughput Rule</h2>
+        <p>Agents prepare and verify. The founder approves account clicks, exact public claims, exact outbound content, paid handoffs, and commit or push after live verification.</p>
+      </section>
+
+      <section>
+        <h2>Agent Lanes</h2>
+        <div class="lanes">
+          <article class="lane"><h3>Market Pulse</h3><p>Refresh buyer pain and claim boundaries before campaigns.</p><pre>npm run market:verify</pre></article>
+          <article class="lane"><h3>Domain And Mailbox</h3><p>Keep DNS, mailbox records, and public contact gates aligned.</p><pre>npm run launch:verify-dns</pre></article>
+          <article class="lane"><h3>Stripe And Checkout</h3><p>Create link packets, QA evidence, and return values.</p><pre>npm run launch:verify-stripe-qa</pre></article>
+          <article class="lane"><h3>Public Launch</h3><p>Apply approved public values, publish fallback, and verify live.</p><pre>npm run launch:post-click-verify</pre></article>
+          <article class="lane"><h3>Outbound Prep</h3><p>Prepare first-10 packets and stage approved drafts outside the public repo.</p><pre>npm run outbound:send-gates</pre></article>
+          <article class="lane"><h3>Reply To Close</h3><p>Turn replies into approved responses, scope, and payment routes.</p><pre>npm run outbound:open-reply-close</pre></article>
+          <article class="lane"><h3>Paid Delivery</h3><p>Create the private workspace and work order after payment evidence.</p><pre>npm run delivery:verify</pre></article>
+          <article class="lane"><h3>Quality And Safety</h3><p>Run the consolidated proof and stop unsafe claims or actions.</p><pre>npm run launch:full-proof</pre></article>
+        </div>
+      </section>
+
+      <div class="grid">
+        <section class="warn">
+          <h2>Daily Loop</h2>
+          <ol>
+            <li>Run launch status.</li>
+            <li>Clear founder-click gates if any remain.</li>
+            <li>Approve one outbound batch or one reply action.</li>
+            <li>After payment, create a private delivery handoff.</li>
+            <li>Run delivery verification before accepting customer materials.</li>
+          </ol>
+          <pre>npm run launch:status
+npm run launch:day
+npm run launch:open-first-revenue
+npm run delivery:open-handoff</pre>
+        </section>
+
+        <section class="danger">
+          <h2>Do Not Cross</h2>
+          <ul>
+            <li>No outbound before domain, mailbox authentication, Stripe links, and security contact are live.</li>
+            <li>No customer secrets or customer configs in the public repo.</li>
+            <li>No named vulnerability claims without authorized evidence.</li>
+            <li>No automatic sending or charging from agent lanes.</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

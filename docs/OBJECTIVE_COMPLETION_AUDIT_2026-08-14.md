@@ -26,6 +26,7 @@ Best current positioning:
 | Stripe setup packet | `ops/stripe-click-setup.html`, `npm run launch:stripe-packet`, `ops/stripe-payment-link-qa-console.html` | Ready |
 | Return packet after clicks | `ops/founder-return-packet.html`, `ops/founder-status-console.html`, `docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md`, `npm run launch:open-return-review`, `npm run launch:post-click-verify` | Ready |
 | First-revenue runway after live gates | `npm run launch:open-first-revenue`, `scripts/open-first-revenue-runway.mjs` | Ready |
+| Agentized swarm throughput model | `docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md`, `ops/swarm-throughput-console.html`, `npm run launch:verify` | Ready |
 | Outbound approval path | `ops/first-10-outbound-approval-console.html`, `sales/first-10-recipient-approval-packet-2026-08-14.md`, `sales/first-10-route-approval-packet-2026-08-14.md` | Ready |
 | Pre-send safety gates | `npm run outbound:send-gates`, `scripts/verify-first-send-gates.mjs` | Ready |
 | Reply-to-close path | `sales/reply-to-close-packet.md`, `npm run outbound:open-reply-close` | Ready |
@@ -71,7 +72,7 @@ Latest local readiness proof:
 
 ```text
 npm run launch:verify
-Summary: 204 passed, 3 expected founder-click warnings, 0 failures.
+Summary: 207 passed, 3 expected founder-click warnings, 0 failures.
 ```
 
 Current consolidated proof:
