@@ -7,7 +7,8 @@ const pages = [
   "ops/founder-click-handoff.html",
   "ops/launch-approval-queue.html",
   "ops/github-actions-billing-console.html",
-  "ops/domain-mailbox-purchase-packet.html"
+  "ops/domain-mailbox-purchase-packet.html",
+  "ops/cheap-launch-packet-console.html"
 ];
 
 const externalUrls = [

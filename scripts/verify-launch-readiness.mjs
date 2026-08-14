@@ -161,6 +161,7 @@ const requiredFiles = [
   "ops/founder-status-console.html",
   "ops/final-founder-click-console.html",
   "ops/domain-mailbox-purchase-packet.html",
+  "ops/cheap-launch-packet-console.html",
   "ops/domain-email-dns-console.html",
   "ops/stripe-click-setup.html",
   "ops/stripe-payment-link-qa-console.html",

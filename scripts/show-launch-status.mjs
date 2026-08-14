@@ -177,6 +177,7 @@ const gates = [
   ...(liveActions ? [{ label: "GitHub Actions live", state: liveActions.state, detail: liveActions.detail }] : []),
   gate("Market source verifier", exists("scripts/verify-market-sources.mjs") && exists("ops/market-research-refresh-console.html"), "npm run market:verify available before outbound"),
   gate("Domain purchase packet", exists("ops/domain-mailbox-purchase-packet.html") && exists("docs/DOMAIN_MAILBOX_PURCHASE_PACKET.md"), "founder can approve one domain and one mailbox"),
+  gate("Cheap launch packet console", exists("ops/cheap-launch-packet-console.html"), "single page opens default mcpscan.site DNS, Stripe, and CSV payloads"),
   gate("Cheap launch packet prep", exists("scripts/prepare-cheap-launch-packets.mjs"), "npm run launch:prepare-cheap builds DNS, Stripe, and CSV copy-paste payloads for mcpscan.site"),
   gate("Generated cheap packets", exists("ops/generated-launch-packets/README.md") && exists("ops/generated-launch-packets/2026-08-14_mcpscan-site_dns-packet.md") && exists("ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-setup-packet.md") && exists("ops/generated-launch-packets/2026-08-14_mcpscan-site_dns-records.csv") && exists("ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-products.csv"), "default mcpscan.site DNS, Stripe, and CSV copy-paste payloads are prebuilt"),
   gate("DNS packet generator", exists("scripts/build-domain-dns-packet.mjs"), "npm run launch:dns-packet creates domain-specific records"),

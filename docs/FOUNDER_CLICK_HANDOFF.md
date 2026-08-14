@@ -25,6 +25,7 @@ npm run launch:prepare-cheap
 That creates the founder-ready packet set:
 
 ```text
+ops/cheap-launch-packet-console.html
 ops/generated-launch-packets/2026-08-14_mcpscan-site_dns-packet.md
 ops/generated-launch-packets/2026-08-14_mcpscan-site_dns-records.csv
 ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-setup-packet.md
