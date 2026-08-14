@@ -186,7 +186,7 @@
 
       <section class="decision">
         <h2>Launch Choice</h2>
-          <p>Use <strong>trymcpscan.com</strong> if Spaceship confirms standard .com pricing. Use <strong>getmcpscan.com</strong> if the first pick is unavailable. Use <strong>getmcpscan.xyz</strong> for the $1 to $3 validation lane, or <strong>mcpscan.site</strong> only if the lowest first-year cart total matters most. Create one mailbox first: <strong>security@the chosen domain</strong>. Add aliases for <strong>audit@</strong> and <strong>hello@</strong>.</p>
+          <p>For the current low-cash sprint, use <strong>mcpscan.site</strong> if the cart is near $1 and the renewal is accepted, or <strong>getmcpscan.xyz</strong> if the renewal tradeoff matters more. Use <strong>trymcpscan.com</strong> only if founder trust is worth the extra spend. Create one mailbox first: <strong>security@the chosen domain</strong>. Add aliases for <strong>audit@</strong> and <strong>hello@</strong>.</p>
         <div class="actions"><a class="button" href="../docs/DOMAIN_AND_MAILBOX_DECISION.md">Open domain decision</a><a class="button" href="../docs/PUBLIC_TRUST_CHECKLIST.md">Trust checklist</a></div>
       </section>
 
@@ -196,8 +196,8 @@
           <tr><th>Choice</th><th>Expected first year</th><th>Renewal risk</th><th>Use when</th></tr>
           <tr><td><code>trymcpscan.com</code></td><td>About $9 to $12</td><td>Low</td><td>Best trust choice for paid B2B security outreach.</td></tr>
           <tr><td><code>getmcpscan.com</code></td><td>About $9 to $12</td><td>Low</td><td>Backup trust choice if the first pick is unavailable.</td></tr>
-          <tr><td><code>getmcpscan.xyz</code></td><td>About $2 before any accepted coupon</td><td>Medium</td><td>Preferred cheap launch lane with lower renewal than `.site` or `.online`.</td></tr>
           <tr><td><code>mcpscan.site</code></td><td>About $1 to $3 when promo-priced</td><td>High</td><td>Lowest first-year cart-total lane if renewal tradeoff is accepted.</td></tr>
+          <tr><td><code>getmcpscan.xyz</code></td><td>About $2 before any accepted coupon</td><td>Medium</td><td>Cheap launch lane with lower renewal than `.site` or `.online`.</td></tr>
           <tr><td><code>mcpscan.online</code> or <code>getmcpscan.site</code></td><td>About $1 to $3 when promo-priced</td><td>High</td><td>Backup cheap launch lane if mcpscan.site is unavailable or jumps in cart pricing.</td></tr>
         </table>
       </section>
@@ -232,7 +232,7 @@ AAAA @ 2606:50c0:8001::153
 AAAA @ 2606:50c0:8002::153
 AAAA @ 2606:50c0:8003::153
 CNAME www davidleeops.github.io</pre>
-          <pre id="dns-packet-command">npm run launch:dns-packet -- --domain trymcpscan.com --mailbox security@trymcpscan.com</pre>
+          <pre id="dns-packet-command">npm run launch:dns-packet -- --domain CHOSEN_DOMAIN --mailbox security@CHOSEN_DOMAIN</pre>
         </article>
 
         <article>

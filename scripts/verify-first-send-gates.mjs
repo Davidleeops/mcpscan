@@ -93,15 +93,15 @@ for (const [field, label] of [
 }
 
 if (Number.isInteger(status.stagedRouteApprovalCount)) {
-  results.push(status.stagedRouteApprovalCount > 0 ? result("pass", "staged route approvals", `${status.stagedRouteApprovalCount}`) : result("warn", "staged route approvals", "none staged yet"));
+  results.push(status.stagedRouteApprovalCount > 0 ? result("pass", "staged route approvals", `${status.stagedRouteApprovalCount}`) : result("fail", "staged route approvals", "must be greater than 0 before first send"));
 } else {
-  results.push(result("warn", "staged route approvals", "not recorded"));
+  results.push(result("fail", "staged route approvals", "not recorded"));
 }
 
 if (status.firstTenRoutePacketApproved === true) {
   results.push(result("pass", "first 10 route packet", "approved and staged"));
 } else {
-  results.push(result("warn", "first 10 route packet", "not approved as a full batch"));
+  results.push(result("fail", "first 10 route packet", "not approved as a full batch"));
 }
 
 print(results);

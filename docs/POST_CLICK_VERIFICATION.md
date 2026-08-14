@@ -8,13 +8,7 @@ This command verifies the launch state. It does not buy domains, create Stripe l
 
 ## Standard Run
 
-```text
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt
-```
-
-## Apply And Verify In One Run
-
-After the founder has approved the exact return packet and the Stripe QA evidence JSON exists, use:
+After the founder has approved the exact return packet and the Stripe QA evidence JSON exists, use the full apply and QA command:
 
 ```text
 npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
@@ -32,6 +26,14 @@ Use strict mode only after DNS has propagated and the custom domain is expected 
 npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --dkim-selector {{dkim_selector}} --strict true
 ```
 
+## Diagnostic Runs Only
+
+```text
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt
+```
+
+The diagnostic command verifies parser and link format only. It does not apply landing links and does not prove checkout QA.
+
 ## What It Runs
 
 - optional return-packet apply step
@@ -44,7 +46,7 @@ npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt -
 
 ## Partial Checks
 
-Use these only while waiting for DNS propagation or while testing the handoff parser:
+Use these only while waiting for DNS propagation or while testing the handoff parser. They are not launch-complete checks.
 
 ```text
 npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --skip-dns true

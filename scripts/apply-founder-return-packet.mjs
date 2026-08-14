@@ -41,8 +41,8 @@ function validEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
-function validUrl(value) {
-  return /^https:\/\/\S+$/i.test(value);
+function validStripeUrl(value) {
+  return /^https:\/\/buy\.stripe\.com\/\S+$/i.test(value) && !/test_/i.test(value);
 }
 
 function assertValid(label, value, test) {
@@ -109,9 +109,9 @@ assertValid("domain", domain, validDomain);
 assertValid("primary mailbox", email, validEmail);
 assertValid("audit alias", audit, validEmail);
 assertValid("hello alias", hello, validEmail);
-assertValid("Quick Audit link", quick, validUrl);
-assertValid("Launch Audit link", launch, validUrl);
-assertValid("Enterprise Readiness link", enterprise, validUrl);
+assertValid("Quick Audit link", quick, validStripeUrl);
+assertValid("Launch Audit link", launch, validStripeUrl);
+assertValid("Enterprise Readiness link", enterprise, validStripeUrl);
 
 for (const [label, value] of Object.entries({ email, audit, hello })) {
   if (!value.toLowerCase().endsWith(`@${domain}`)) {

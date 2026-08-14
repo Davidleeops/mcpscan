@@ -37,7 +37,7 @@
       <header>
         <h1>Founder Return Packet</h1>
         <p>Use this after the founder-account clicks are done. Paste the purchased domain, mailbox, and Stripe links once, then copy the exact approval message back to Codex.</p>
-        <div class="actions"><a class="button" href="launch-approval-queue.html">Approval queue</a><a class="button" href="founder-status-console.html">Status tracker</a><a class="button" href="stripe-payment-link-qa-console.html">Stripe QA</a><a class="button" href="approved-links-command-builder.html">Command builder</a></div>
+        <div class="actions"><a class="button" href="launch-approval-queue.html">Approval queue</a><a class="button" href="founder-status-console.html">Status tracker</a><a class="button" href="stripe-payment-link-qa-console.html">Stripe QA</a><a class="button" href="approved-links-command-builder.html">Fallback builder</a></div>
       </header>
 
       <section class="guardrail">
@@ -48,10 +48,10 @@
       <section>
         <h2>Approved Live Values</h2>
         <div class="form">
-          <label>Purchased domain<input id="domain" value="trymcpscan.com" autocomplete="off"></label>
-          <label>Primary mailbox<input id="email" value="security@trymcpscan.com" autocomplete="off"></label>
-          <label>Audit alias<input id="security" value="audit@trymcpscan.com" autocomplete="off"></label>
-          <label>Hello alias<input id="hello" value="hello@trymcpscan.com" autocomplete="off"></label>
+          <label>Purchased domain<input id="domain" value="mcpscan.site" autocomplete="off"></label>
+          <label>Primary mailbox<input id="email" value="security@mcpscan.site" autocomplete="off"></label>
+          <label>Audit alias<input id="security" value="audit@mcpscan.site" autocomplete="off"></label>
+          <label>Hello alias<input id="hello" value="hello@mcpscan.site" autocomplete="off"></label>
           <label class="wide">Quick Audit Stripe link<input id="quick" placeholder="https://buy.stripe.com/..."></label>
           <label class="wide">Launch Audit Stripe link<input id="launch" placeholder="https://buy.stripe.com/..."></label>
           <label class="wide">Enterprise Readiness Stripe link<input id="enterprise" placeholder="https://buy.stripe.com/..."></label>
@@ -112,8 +112,8 @@
         return email.toLowerCase().endsWith("@" + domain.toLowerCase());
       }
 
-      function validUrl(value) {
-        return /^https:\/\/\S+$/i.test(value);
+      function validStripeUrl(value) {
+        return /^https:\/\/buy\.stripe\.com\/\S+$/i.test(value) && !/test_/i.test(value);
       }
 
       function buildMessage() {
@@ -127,7 +127,7 @@
           }
         }
         for (const key of ["quick", "launch", "enterprise"]) {
-          if (!validUrl(values[key])) errors.push(key + " link must be an https:// URL");
+          if (!validStripeUrl(values[key])) errors.push(key + " link must be a live https://buy.stripe.com/... URL");
         }
         if (errors.length > 0) {
           status.textContent = errors.join(". ");
@@ -148,7 +148,7 @@ Launch Audit: ${values.launch}
 Enterprise Readiness: ${values.enterprise}
 
 Approved action:
-Apply these links to the public landing page, update the public contact email, add the custom domain file, update security/contact references, run verification, commit, and push.
+Apply these links to the public landing page, update the public contact email, add the custom domain file, update security/contact references, and run verification. Commit and push require a separate explicit approval after verification.
 
 I also approve keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval.`;
         status.textContent = "Approval message built.";

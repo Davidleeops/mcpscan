@@ -13,7 +13,7 @@ Better first choices:
 - `mcpscanhq.com`
 - `usemcpscan.com`
 
-Recommended buy: `trymcpscan.com`, if the checkout confirms it is a standard registration. It is not the cheapest first-year option, but it is the cleanest trust choice for a security audit offer and the renewal is low. Use `getmcpscan.xyz` for the `$1` to `$3` validation lane if you want the better renewal tradeoff. Use `mcpscan.site` only when the lowest first-year cart total matters more than buyer trust.
+For the current low-cash sprint, use `mcpscan.site` if the cart is near `$1` and the higher renewal is accepted. Use `getmcpscan.xyz` for the `$1` to `$3` validation lane if you want the better renewal tradeoff. Use `trymcpscan.com` if the founder decides the buyer-trust bump is worth the extra first-year spend.
 
 Current pricing notes from Spaceship research:
 
@@ -71,7 +71,15 @@ Host: www
 Value: davidleeops.github.io
 ```
 
-For an apex/root domain, use GitHub Pages' current `A` records from the official GitHub Pages docs.
+For an apex/root domain, use GitHub Pages' current `A` records from the official GitHub Pages docs. Do not guess if GitHub changes these records. Open the official docs or use the generated DNS packet, then capture the exact records before saving DNS.
+
+```text
+Captured GitHub Pages A records:
+A @ {{github_pages_a_record_1}}
+A @ {{github_pages_a_record_2}}
+A @ {{github_pages_a_record_3}}
+A @ {{github_pages_a_record_4}}
+```
 
 Codex can generate a domain-specific DNS packet after the domain and mailbox are chosen:
 
