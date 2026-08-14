@@ -26,6 +26,7 @@
     "outbound:stage-route-packet": "node scripts/stage-approved-route-packet.mjs",
     "outbound:stage-reply": "node scripts/stage-approved-reply.mjs",
     "outbound:log-send": "node scripts/log-approved-send.mjs",
+    "outbound:compose-follow-up": "node scripts/compose-follow-up-approval.mjs",
     "outbound:verify": "node scripts/verify-outbound-readiness.mjs",
     "outbound:queue": "node scripts/generate-outbound-approval-queue.mjs",
     "release:preflight": "node scripts/prepare-npm-release.mjs",

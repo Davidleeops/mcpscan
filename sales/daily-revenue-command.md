@@ -66,6 +66,12 @@ After manual send:
 npm run outbound:log-send -- --manifest /path/outside/public/repo/manifest.json
 ```
 
+When a follow-up is due:
+
+```text
+npm run outbound:compose-follow-up -- --file /path/outside/public/repo/send-log.json --step follow-up-1
+```
+
 To generate an exact approval packet before staging:
 
 ```text
