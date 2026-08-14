@@ -47,6 +47,10 @@ function validPayment(value) {
   return /^(pi_|cs_|plink_|ch_|checkout_|receipt_|manual_|\{\{)/i.test(value) || /^https:\/\/\S+$/i.test(value);
 }
 
+function csvCell(value) {
+  return `"${String(value).replaceAll('"', '""')}"`;
+}
+
 function today() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -83,6 +87,7 @@ const date = args.date ?? input.match(/^Date:\s*(.+)$/m)?.[1]?.trim() ?? today()
 const baseDir = assertOutsideRepo(args.root ?? path.join(os.homedir(), "MCPScan Paid Audits"));
 const workspaceRoot = path.join(baseDir, "workspaces");
 const workOrderRoot = path.join(baseDir, "work-orders");
+const statusRoot = path.join(baseDir, "pipeline-status");
 
 if (!validPackage(packageName)) throw new Error("Package must mention Quick, Launch, or Enterprise.");
 if (!validEmail(contact) && !/^https:\/\/\S+$/i.test(contact)) throw new Error("Technical contact must be an email address or HTTPS URL.");
@@ -122,11 +127,63 @@ const manifest = {
   payment,
   workspaceRoot,
   workOrderRoot,
+  pipelineStatusRoot: statusRoot,
   noCustomerSecretsInPublicRepo: true
 };
 
+const pipelineStatus = {
+  date,
+  stage: "Paid",
+  account: customer,
+  package: packageName,
+  technicalContact: contact,
+  paymentReference: payment,
+  paymentStatus: "Paid",
+  deliveryStatus: "Workspace created",
+  nextAction: "Send intake start, confirm secure handoff, and complete client acceptance.",
+  workspaceRoot,
+  workOrderRoot,
+  publicRepoSecretStatus: "No customer secrets stored in public repo."
+};
+
+const pipelineCsvHeader = [
+  "date",
+  "stage",
+  "account",
+  "package",
+  "technical_contact",
+  "payment_reference",
+  "payment_status",
+  "delivery_status",
+  "next_action",
+  "workspace_root",
+  "work_order_root",
+  "public_repo_secret_status"
+];
+
+const pipelineCsvRow = [
+  pipelineStatus.date,
+  pipelineStatus.stage,
+  pipelineStatus.account,
+  pipelineStatus.package,
+  pipelineStatus.technicalContact,
+  pipelineStatus.paymentReference,
+  pipelineStatus.paymentStatus,
+  pipelineStatus.deliveryStatus,
+  pipelineStatus.nextAction,
+  pipelineStatus.workspaceRoot,
+  pipelineStatus.workOrderRoot,
+  pipelineStatus.publicRepoSecretStatus
+];
+
 fs.mkdirSync(baseDir, { recursive: true });
+fs.mkdirSync(statusRoot, { recursive: true });
 fs.writeFileSync(path.join(baseDir, `${date}_handoff-manifest.json`), `${JSON.stringify(manifest, null, 2)}\n`);
+fs.writeFileSync(path.join(statusRoot, `${date}_pipeline-status.json`), `${JSON.stringify(pipelineStatus, null, 2)}\n`);
+fs.writeFileSync(
+  path.join(statusRoot, `${date}_pipeline-status.csv`),
+  `${pipelineCsvHeader.map(csvCell).join(",")}\n${pipelineCsvRow.map(csvCell).join(",")}\n`
+);
 
 console.log("Created paid audit handoff.");
 console.log(baseDir);

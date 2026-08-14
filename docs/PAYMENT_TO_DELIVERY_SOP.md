@@ -36,7 +36,7 @@ Default one-pass handoff after approval:
 npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
 ```
 
-The handoff creates the private workspace and first paid audit work order outside the public MCPScan repo.
+The handoff creates the private workspace, first paid audit work order, handoff manifest, and private pipeline status files outside the public MCPScan repo.
 
 Fallback workspace-only command:
 

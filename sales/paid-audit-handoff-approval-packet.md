@@ -40,6 +40,7 @@ npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --ro
 - private customer workspace outside the public repo
 - first paid audit work order outside the public repo
 - handoff manifest outside the public repo
+- private pipeline status JSON and CSV outside the public repo
 
 ## Stop Conditions
 

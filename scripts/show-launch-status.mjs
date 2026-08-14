@@ -172,7 +172,7 @@ const gates = [
   gate("Static bundle fallback", exists("scripts/build-static-launch-bundle.mjs") && exists("ops/static-launch-bundle-console.html"), "static host fallback is available"),
   gate("Delivery workspace", exists("scripts/create-customer-workspace.mjs"), "npm run delivery:workspace available"),
   gate("Delivery work order", exists("scripts/create-first-paid-audit-work-order.mjs"), "npm run delivery:work-order available after first payment"),
-  gate("Paid handoff", exists("scripts/create-paid-audit-handoff.mjs") && exists("sales/paid-audit-handoff-approval-packet.md"), "npm run delivery:handoff creates workspace and work order after payment"),
+  gate("Paid handoff", exists("scripts/create-paid-audit-handoff.mjs") && exists("sales/paid-audit-handoff-approval-packet.md"), "npm run delivery:handoff creates workspace, work order, and private pipeline status after payment"),
   gate("Delivery verifier", exists("scripts/verify-delivery-readiness.mjs"), "npm run delivery:verify checks first paid audit gates"),
   gate("Delivery dry run", exists("scripts/run-delivery-dry-run.mjs"), "npm run delivery:dry-run proves the first audit workflow"),
   gate("Outbound staging", exists("scripts/stage-approved-outbound.mjs") && exists("ops/outbound-recipient-approval-builder.html"), "approved messages can be staged outside the public repo"),
