@@ -32,6 +32,21 @@ Aliases: audit@getmcpscan.xyz, hello@getmcpscan.xyz
 - Use promo codes only if the cart accepts them. Official Spaceship pages showed `.site` and `.online` at `$0.98` plus the ICANN fee on 2026-08-14, and `.xyz` at `$1.86` with `$12.52` renewal. The Spaceship cart is the final source.
 - Buy one Spacemail mailbox only, preferably the Pro one-mailbox plan, then add aliases.
 
+## Cart Safety Gate
+
+Before clicking buy, enter the visible Spaceship cart values in `ops/domain-mailbox-purchase-packet.html`.
+
+The packet should show no cart errors for:
+
+- first-year domain price at or below the approved spend cap
+- renewal price visible
+- one Spacemail mailbox total visible
+- zero extra domains
+- zero extra mailboxes
+- no hosting, site builder, paid SSL, privacy upsell, or other paid add-on
+
+Stop and remove the item if the generated approval does not say the cart has no extra domains, no extra mailboxes, and no paid add-ons.
+
 ## Founder Purchase Approval
 
 ```text

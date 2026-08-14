@@ -141,6 +141,15 @@
             <label>Primary mailbox<input id="mailbox" value="security@trymcpscan.com" autocomplete="off"></label>
             <label>Aliases<input id="aliases" value="audit@trymcpscan.com, hello@trymcpscan.com" autocomplete="off"></label>
           </div>
+          <h3>Cart Safety Check</h3>
+          <div class="form">
+            <label>Cart first-year domain price<input id="cartDomainPrice" value="$8.88" autocomplete="off"></label>
+            <label>Cart renewal price<input id="cartRenewalPrice" value="$9.98" autocomplete="off"></label>
+            <label>Cart mailbox total<input id="cartMailboxTotal" value="$18.88 for 2 years" autocomplete="off"></label>
+            <label>Extra domains in cart<input id="extraDomains" value="0" inputmode="numeric" autocomplete="off"></label>
+            <label>Extra mailboxes in cart<input id="extraMailboxes" value="0" inputmode="numeric" autocomplete="off"></label>
+            <label>Other paid add-ons<input id="paidAddons" value="none" autocomplete="off"></label>
+          </div>
           <div class="actions">
             <button class="primary" id="build" type="button">Build approval</button>
             <button id="copyApproval" type="button">Copy approval</button>
@@ -175,6 +184,7 @@
           <li>Try the active Spaceship promo field only if it is visible. Public promo pages showed near-dollar `.site` and `.online` codes on 2026-08-14, but official Spaceship pricing and the cart decide.</li>
           <li>Remove hosting, site builder, paid SSL, extra domains, and extra mailboxes.</li>
           <li>Pick Spacemail Pro, one mailbox, unless the cart clearly offers a cheaper one-mailbox equivalent.</li>
+          <li>Click buy only when the generated approval says the cart is clear.</li>
         </ul>
       </section>
 
@@ -202,6 +212,12 @@
       const renewal = document.getElementById("renewal");
       const mailbox = document.getElementById("mailbox");
       const aliases = document.getElementById("aliases");
+      const cartDomainPrice = document.getElementById("cartDomainPrice");
+      const cartRenewalPrice = document.getElementById("cartRenewalPrice");
+      const cartMailboxTotal = document.getElementById("cartMailboxTotal");
+      const extraDomains = document.getElementById("extraDomains");
+      const extraMailboxes = document.getElementById("extraMailboxes");
+      const paidAddons = document.getElementById("paidAddons");
       const approval = document.getElementById("approval");
       const values = document.getElementById("values");
       const status = document.getElementById("status");
@@ -214,15 +230,34 @@
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
       }
 
+      function moneyValue(value) {
+        const match = value.replace(/,/g, "").match(/\$?\s*(\d+(?:\.\d{1,2})?)/);
+        return match ? Number(match[1]) : NaN;
+      }
+
+      function wholeNumber(value) {
+        const parsed = Number.parseInt(value, 10);
+        return Number.isFinite(parsed) ? parsed : NaN;
+      }
+
+      function hasPaidAddons(value) {
+        const normalized = value.trim().toLowerCase();
+        return normalized && !["none", "no", "n/a", "0"].includes(normalized);
+      }
+
       function setLaneDefaults() {
         if (lane.value === "com") {
           domain.value = "trymcpscan.com";
           spend.value = "$12";
           renewal.value = "About $9.98 plus ICANN fee if standard .com pricing is confirmed";
+          cartDomainPrice.value = "$8.88";
+          cartRenewalPrice.value = "$9.98";
         } else if (lane.value === "cheap") {
           domain.value = "getmcpscan.xyz";
           spend.value = "$3";
           renewal.value = "About $12.52 if .xyz pricing is confirmed; .site and .online can renew higher";
+          cartDomainPrice.value = "$1.86";
+          cartRenewalPrice.value = "$12.52";
         }
         if (lane.value !== "custom") {
           mailbox.value = "security@" + domain.value.trim();
@@ -236,6 +271,29 @@
           mailbox.value = "security@" + domain.value.trim();
           aliases.value = "audit@" + domain.value.trim() + ", hello@" + domain.value.trim();
         }
+      }
+
+      function cartErrors() {
+        const errors = [];
+        const maxSpend = moneyValue(spend.value);
+        const firstYearPrice = moneyValue(cartDomainPrice.value);
+        const renewalPrice = moneyValue(cartRenewalPrice.value);
+        const mailboxTotal = moneyValue(cartMailboxTotal.value);
+        const domainCount = wholeNumber(extraDomains.value);
+        const mailboxCount = wholeNumber(extraMailboxes.value);
+
+        if (!Number.isFinite(maxSpend)) errors.push("Maximum first-year spend must include a dollar amount");
+        if (!Number.isFinite(firstYearPrice)) errors.push("Cart first-year domain price must include a dollar amount");
+        if (Number.isFinite(maxSpend) && Number.isFinite(firstYearPrice) && firstYearPrice > maxSpend) {
+          errors.push("Cart first-year domain price is above the approved spend cap");
+        }
+        if (!Number.isFinite(renewalPrice)) errors.push("Cart renewal price must be visible before purchase");
+        if (!Number.isFinite(mailboxTotal)) errors.push("Mailbox cart total must include a dollar amount");
+        if (!Number.isFinite(domainCount) || domainCount !== 0) errors.push("Remove extra domains from the cart");
+        if (!Number.isFinite(mailboxCount) || mailboxCount !== 0) errors.push("Remove extra mailboxes from the cart");
+        if (hasPaidAddons(paidAddons.value)) errors.push("Remove paid add-ons before purchase");
+
+        return errors;
       }
 
       function build() {
@@ -254,6 +312,7 @@
             errors.push("Alias must use the chosen domain: " + alias);
           }
         }
+        errors.push(...cartErrors());
 
         if (errors.length > 0) {
           status.textContent = errors.join(". ");
@@ -274,6 +333,10 @@ Renewal price acknowledged: ${renewal.value.trim()}
 Mailbox plan: Spacemail Pro, one mailbox
 Primary mailbox: ${chosenMailbox}
 Aliases: ${chosenAliases}
+Cart first-year domain price: ${cartDomainPrice.value.trim()}
+Cart renewal price: ${cartRenewalPrice.value.trim()}
+Cart mailbox total: ${cartMailboxTotal.value.trim()}
+Cart extras: no extra domains, no extra mailboxes, no paid add-ons
 
 Approved action:
 Buy one MCPScan launch domain and one matching mailbox. Do not buy extra domains, paid hosting, extra mailboxes, SSL add-ons, privacy add-ons, or site-builder products without separate approval.`;
@@ -298,7 +361,7 @@ Hello alias: ${chosenAliases.split(",")[1]?.trim() || "hello@" + chosenDomain}`;
         if (lane.value !== "custom") syncMailbox();
         build();
       });
-      for (const input of [spend, renewal, mailbox, aliases]) input.addEventListener("input", build);
+      for (const input of [spend, renewal, mailbox, aliases, cartDomainPrice, cartRenewalPrice, cartMailboxTotal, extraDomains, extraMailboxes, paidAddons]) input.addEventListener("input", build);
       document.getElementById("build").addEventListener("click", build);
       document.getElementById("copyApproval").addEventListener("click", () => copyText(approval));
       document.getElementById("copyValues").addEventListener("click", () => copyText(values));
