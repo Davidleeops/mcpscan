@@ -92,16 +92,21 @@ for (const [field, label] of [
   results.push(validStripeUrl(status[field]) ? result("pass", label, "live Stripe URL") : result("fail", label, "missing or invalid live Stripe URL"));
 }
 
-if (Number.isInteger(status.stagedRouteApprovalCount)) {
-  results.push(status.stagedRouteApprovalCount > 0 ? result("pass", "staged route approvals", `${status.stagedRouteApprovalCount}`) : result("fail", "staged route approvals", "must be greater than 0 before first send"));
+const stagedRouteCount = Number.isInteger(status.stagedRouteApprovalCount) ? status.stagedRouteApprovalCount : 0;
+const stagedNamedCount = Number.isInteger(status.stagedNamedRecipientApprovalCount) ? status.stagedNamedRecipientApprovalCount : 0;
+const stagedOutboundCount = Math.max(stagedRouteCount, stagedNamedCount);
+const firstTenApproved = status.firstTenRoutePacketApproved === true || status.firstTenNamedRecipientPacketApproved === true;
+
+if (Number.isInteger(status.stagedRouteApprovalCount) && Number.isInteger(status.stagedNamedRecipientApprovalCount)) {
+  results.push(stagedOutboundCount > 0 ? result("pass", "staged outbound approvals", `${stagedOutboundCount}`) : result("fail", "staged outbound approvals", "must be greater than 0 before first send"));
 } else {
-  results.push(result("fail", "staged route approvals", "not recorded"));
+  results.push(result("fail", "staged outbound approvals", "route or named-recipient counts not recorded"));
 }
 
-if (status.firstTenRoutePacketApproved === true) {
-  results.push(result("pass", "first 10 route packet", "approved and staged"));
+if (firstTenApproved) {
+  results.push(result("pass", "first 10 outbound packet", status.firstTenNamedRecipientPacketApproved ? "named-recipient batch approved and staged" : "route batch approved and staged"));
 } else {
-  results.push(result("fail", "first 10 route packet", "not approved as a full batch"));
+  results.push(result("fail", "first 10 outbound packet", "route or named-recipient batch not approved"));
 }
 
 print(results);

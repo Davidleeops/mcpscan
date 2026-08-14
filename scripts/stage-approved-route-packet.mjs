@@ -119,7 +119,7 @@ function writePacket(packetDir, date, parsed, mode) {
   fs.writeFileSync(path.join(packetDir, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
 }
 
-function updateApprovalStatus(count) {
+function updateApprovalStatus(count, mode) {
   const file = path.join(root, "ops/founder-approval-status.json");
   if (!fs.existsSync(file)) {
     console.log("INFO approval status - ops/founder-approval-status.json not found, skipping tracker update");
@@ -128,8 +128,13 @@ function updateApprovalStatus(count) {
 
   const status = JSON.parse(fs.readFileSync(file, "utf8"));
   status.updatedAt = new Date().toISOString();
-  status.stagedRouteApprovalCount = count;
-  status.firstTenRoutePacketApproved = count === 10;
+  if (mode === "named") {
+    status.stagedNamedRecipientApprovalCount = count;
+    status.firstTenNamedRecipientPacketApproved = count === 10;
+  } else {
+    status.stagedRouteApprovalCount = count;
+    status.firstTenRoutePacketApproved = count === 10;
+  }
   fs.writeFileSync(file, `${JSON.stringify(status, null, 2)}\n`);
   console.log("INFO approval status - updated ops/founder-approval-status.json");
 }
@@ -179,7 +184,7 @@ const batchManifest = {
 };
 
 fs.writeFileSync(path.join(batchDir, "batch-manifest.json"), `${JSON.stringify(batchManifest, null, 2)}\n`, "utf8");
-updateApprovalStatus(parsedBlocks.length);
+updateApprovalStatus(parsedBlocks.length, approvalMode);
 
 console.log(`Staged approved first-10 ${approvalMode} outbound packets.`);
 console.log(batchDir);

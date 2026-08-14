@@ -83,9 +83,11 @@
             <label><input id="stripeCheckoutQaConfirmed" type="checkbox"> Stripe checkout QA confirmed</label>
             <label><input id="founderReturnPacketApproved" type="checkbox"> Return packet approved</label>
             <label><input id="landingLinksApplied" type="checkbox"> Landing links applied</label>
-            <label><input id="firstTenRoutePacketApproved" type="checkbox"> First 10 approved</label>
+            <label><input id="firstTenRoutePacketApproved" type="checkbox"> First 10 routes approved</label>
+            <label><input id="firstTenNamedRecipientPacketApproved" type="checkbox"> First 10 named recipients approved</label>
           </div>
           <label style="margin-top: 12px;">Staged route approval count<input id="stagedRouteApprovalCount" value="0" inputmode="numeric"></label>
+          <label style="margin-top: 12px;">Staged named-recipient approval count<input id="stagedNamedRecipientApprovalCount" value="0" inputmode="numeric"></label>
           <div class="actions">
             <button id="build" class="primary" type="button">Build tracker</button>
             <button id="copyJson" type="button">Copy JSON</button>
@@ -128,7 +130,8 @@
         "stripeCheckoutQaConfirmed",
         "founderReturnPacketApproved",
         "landingLinksApplied",
-        "firstTenRoutePacketApproved"
+        "firstTenRoutePacketApproved",
+        "firstTenNamedRecipientPacketApproved"
       ];
       const jsonOutput = document.getElementById("jsonOutput");
       const commandsOutput = document.getElementById("commandsOutput");
@@ -160,7 +163,9 @@
           if (!validPublicStripe(values[key])) errors.push(key + " must be a public Stripe Payment Link");
         }
         const stagedCount = Number.parseInt(document.getElementById("stagedRouteApprovalCount").value, 10);
+        const stagedNamedCount = Number.parseInt(document.getElementById("stagedNamedRecipientApprovalCount").value, 10);
         if (!Number.isInteger(stagedCount) || stagedCount < 0 || stagedCount > 10) errors.push("Staged route count must be 0 through 10");
+        if (!Number.isInteger(stagedNamedCount) || stagedNamedCount < 0 || stagedNamedCount > 10) errors.push("Staged named-recipient count must be 0 through 10");
 
         if (errors.length > 0) {
           status.textContent = errors.join(". ");
@@ -195,6 +200,8 @@
           landingLinksApplied: document.getElementById("landingLinksApplied").checked,
           stagedRouteApprovalCount: stagedCount,
           firstTenRoutePacketApproved: document.getElementById("firstTenRoutePacketApproved").checked,
+          stagedNamedRecipientApprovalCount: stagedNamedCount,
+          firstTenNamedRecipientPacketApproved: document.getElementById("firstTenNamedRecipientPacketApproved").checked,
           notes: [
             "Generated from ops/founder-status-console.html.",
             "Keep passwords, API keys, Stripe secret keys, customer data, and mailbox credentials out of this file.",
@@ -224,6 +231,7 @@ npm run launch:status`;
       for (const input of Object.values(textFields)) input.addEventListener("input", build);
       for (const key of boolFields) document.getElementById(key).addEventListener("change", build);
       document.getElementById("stagedRouteApprovalCount").addEventListener("input", build);
+      document.getElementById("stagedNamedRecipientApprovalCount").addEventListener("input", build);
       build();
     </script>
   </body>

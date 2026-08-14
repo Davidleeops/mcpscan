@@ -90,10 +90,13 @@ function hasFilledApprovalStatus() {
     "founderReturnPacketApproved",
     "landingLinksApplied",
     "stagedRouteApprovalCount",
-    "firstTenRoutePacketApproved"
+    "firstTenRoutePacketApproved",
+    "stagedNamedRecipientApprovalCount",
+    "firstTenNamedRecipientPacketApproved"
   ];
-  const hasBooleans = requiredBooleans.filter((key) => key !== "stagedRouteApprovalCount").every((key) => typeof status[key] === "boolean");
-  return hasBooleans && typeof status.stagedRouteApprovalCount === "number";
+  const countFields = new Set(["stagedRouteApprovalCount", "stagedNamedRecipientApprovalCount"]);
+  const hasBooleans = requiredBooleans.filter((key) => !countFields.has(key)).every((key) => typeof status[key] === "boolean");
+  return hasBooleans && typeof status.stagedRouteApprovalCount === "number" && typeof status.stagedNamedRecipientApprovalCount === "number";
 }
 
 function getApprovalStatusState() {
@@ -105,12 +108,14 @@ function approvalTrackerGates(status) {
   if (!status || !hasFilledApprovalStatus()) return [];
   const pagesReady = status.githubPagesAConfigured && status.githubPagesWwwConfigured;
   const mailReady = status.mxConfigured && status.spfConfigured && status.dkimConfigured && status.dmarcConfigured;
+  const outboundBatchApproved = status.firstTenRoutePacketApproved || status.firstTenNamedRecipientPacketApproved;
+  const outboundCount = Math.max(status.stagedRouteApprovalCount || 0, status.stagedNamedRecipientApprovalCount || 0);
   return [
     gate("Tracker Stripe format", status.stripeLinkFormatVerified, status.stripeLinkFormatVerified ? "Stripe Payment Link format verified" : "run npm run launch:verify-stripe with --update-status"),
     gate("Tracker Stripe QA", status.stripeCheckoutQaConfirmed, status.stripeCheckoutQaConfirmed ? "Stripe checkout QA confirmed" : "run npm run launch:verify-stripe-qa with --update-status"),
     gate("Tracker GitHub Pages DNS", pagesReady, pagesReady ? "apex and www records verified" : "run npm run launch:verify-dns with --update-status after DNS propagates"),
     gate("Tracker mailbox auth", mailReady, mailReady ? "MX, SPF, DKIM, and DMARC verified" : "MX, SPF, DKIM, or DMARC still not verified"),
-    gate("Tracker first-10 approval", status.firstTenRoutePacketApproved, status.firstTenRoutePacketApproved ? "10 route packets staged for manual sending review" : `${status.stagedRouteApprovalCount || 0}/10 route packets staged`)
+    gate("Tracker first-10 approval", outboundBatchApproved, outboundBatchApproved ? `${outboundCount}/10 outbound packets staged for manual sending review` : `${status.stagedRouteApprovalCount || 0}/10 route packets staged, ${status.stagedNamedRecipientApprovalCount || 0}/10 named-recipient packets staged`)
   ];
 }
 
@@ -210,6 +215,7 @@ const gates = [
   gate("Outbound send gates", exists("scripts/verify-first-send-gates.mjs") && exists("scripts/open-first-send-readiness.mjs"), "npm run outbound:open-send-gates opens pre-send proof; npm run outbound:send-gates blocks sends until launch, DNS, Stripe, and approvals are ready"),
   gate("Route staging simulation", exists("scripts/simulate-first-10-route-staging.mjs"), "npm run outbound:simulate-route-staging proves first-10 route approvals stage outside the public repo without sending"),
   gate("Named recipient staging simulation", exists("scripts/simulate-first-10-named-recipient-staging.mjs"), "npm run outbound:simulate-named-staging proves first-10 named-recipient approvals stage outside the public repo without sending"),
+  gate("First-send gate simulation", exists("scripts/simulate-first-send-gates.mjs"), "npm run outbound:simulate-send-gates proves route and named-recipient approval statuses can pass the pre-send gate"),
   gate("Send logging", exists("scripts/log-approved-send.mjs") && exists("docs/APPROVED_SEND_LOGGING.md"), "manual sends can create private follow-up schedules"),
   gate("Batch send logging", exists("scripts/log-approved-route-batch-sends.mjs") && exists("docs/BATCH_SEND_LOGGING.md"), "first-10 route sends can be logged in one private batch"),
   gate("Follow-up composer", exists("scripts/compose-follow-up-approval.mjs") && exists("docs/FOLLOW_UP_APPROVAL_COMPOSER.md"), "private send logs can draft follow-up approval packets"),

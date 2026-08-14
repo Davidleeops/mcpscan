@@ -23,9 +23,11 @@
   "landingLinksApplied": false,
   "stagedRouteApprovalCount": 0,
   "firstTenRoutePacketApproved": false,
+  "stagedNamedRecipientApprovalCount": 0,
+  "firstTenNamedRecipientPacketApproved": false,
   "notes": [
     "Keep passwords, API keys, Stripe secret keys, customer data, and mailbox credentials out of this file.",
     "This tracker is public-safe only when it contains public domain, public mailbox, public aliases, and public Stripe Payment Link URLs.",
-    "Do not set firstTenRoutePacketApproved to true until the exact route and exact message blocks are approved in the same turn."
+    "Do not set firstTenRoutePacketApproved or firstTenNamedRecipientPacketApproved to true until the exact recipient or route and exact message blocks are approved in the same turn."
   ]
 }

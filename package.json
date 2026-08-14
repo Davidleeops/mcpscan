@@ -46,6 +46,7 @@
     "outbound:stage-first-10": "node scripts/stage-approved-route-packet.mjs",
     "outbound:simulate-route-staging": "node scripts/simulate-first-10-route-staging.mjs",
     "outbound:simulate-named-staging": "node scripts/simulate-first-10-named-recipient-staging.mjs",
+    "outbound:simulate-send-gates": "node scripts/simulate-first-send-gates.mjs",
     "outbound:stage-reply": "node scripts/stage-approved-reply.mjs",
     "outbound:log-send": "node scripts/log-approved-send.mjs",
     "outbound:log-route-batch": "node scripts/log-approved-route-batch-sends.mjs",
