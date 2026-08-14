@@ -6,10 +6,10 @@ Use this immediately after the founder account clicks. The goal is to give Codex
 
 | Gate | Value To Return | Example |
 | --- | --- | --- |
-| Domain | Purchased domain | `mcpscan.site` |
-| Mailbox | Primary public mailbox | `security@mcpscan.site` |
-| Alias | Audit alias | `audit@mcpscan.site` |
-| Alias | General alias | `hello@mcpscan.site` |
+| Domain | Purchased domain | `getmcpscan.com` |
+| Mailbox | Primary public mailbox | `security@getmcpscan.com` |
+| Alias | Audit alias | `audit@getmcpscan.com` |
+| Alias | General alias | `hello@getmcpscan.com` |
 | Stripe | Quick Audit Payment Link | `https://buy.stripe.com/...` |
 | Stripe | Launch Audit Payment Link | `https://buy.stripe.com/...` |
 | Stripe | Enterprise Readiness Payment Link | `https://buy.stripe.com/...` |
@@ -36,14 +36,18 @@ Use this immediately after the founder account clicks. The goal is to give Codex
 3. Build the approval message.
 4. Open `ops/stripe-payment-link-qa-console.html`.
 5. Build and download the Stripe QA evidence JSON.
-6. Send Codex the approval message and the QA evidence file path.
-7. If DNS has propagated, include the DKIM selector if Spacemail shows one.
+6. Copy the one-paste post-click handoff packet from `ops/founder-return-packet.html`.
+7. Send Codex the approval message, the QA evidence file path, and the handoff packet.
+8. If DNS has propagated, include the DKIM selector if the mailbox provider shows one.
 
 ## Codex Runs After Approval
 
 ```text
 npm run launch:open-return-review
 npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
+npm run launch:publish-pages-fallback -- --wait true
+npm run launch:verify -- --domain {{chosen_domain}}
+npm run launch:status:live
 ```
 
 If Spacemail provides a DKIM selector:

@@ -46,8 +46,8 @@
       <section>
         <h2>Live Values</h2>
         <div class="form">
-          <label>Chosen domain<input id="domain" type="text" value="mcpscan.site" autocomplete="off"></label>
-          <label>Primary mailbox<input id="mailbox" type="email" value="security@mcpscan.site" autocomplete="off"></label>
+          <label>Chosen domain<input id="domain" type="text" value="getmcpscan.com" autocomplete="off"></label>
+          <label>Primary mailbox<input id="mailbox" type="email" value="security@getmcpscan.com" autocomplete="off"></label>
           <label class="wide-field">Quick Audit link<input id="quick" type="url" placeholder="https://buy.stripe.com/..."></label>
           <label class="wide-field">Launch Audit link<input id="launch" type="url" placeholder="https://buy.stripe.com/..."></label>
           <label class="wide-field">Enterprise Readiness link<input id="enterprise" type="url" placeholder="https://buy.stripe.com/..."></label>
@@ -120,7 +120,7 @@
           enterprise: fields.enterprise.value.trim()
         };
         const errors = [];
-        if (!validDomain(domain)) errors.push("Domain must look like mcpscan.site.");
+        if (!validDomain(domain)) errors.push("Domain must look like getmcpscan.com.");
         if (!validEmail(mailbox) || !mailbox.toLowerCase().endsWith("@" + domain)) errors.push("Mailbox must use the chosen domain.");
         for (const [key, value] of Object.entries(links)) {
           if (!validStripeUrl(value)) errors.push(key + " must be a live https://buy.stripe.com/... URL.");
@@ -185,7 +185,7 @@ Launch Audit: ${links.launch}
 Enterprise Readiness: ${links.enterprise}
 
 Approved action:
-Apply these links to the public landing page, update the public contact email, add the custom domain file, update security/contact references, run verification, commit, and push.
+Apply these links to the public landing page, update the public contact email, add the custom domain file, update security/contact references, publish the Pages fallback, run verification, commit, and push.
 
 I also approve keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval.`;
         verifyCommand.textContent = `npm run launch:verify-stripe -- --quick ${links.quick} --launch ${links.launch} --enterprise ${links.enterprise} --update-status`;

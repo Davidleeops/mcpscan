@@ -45,6 +45,9 @@ console.log("Run the apply step only after the founder approves the exact return
 console.log("");
 console.log("After approval, apply and verify with:");
 console.log("npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true");
+console.log("npm run launch:publish-pages-fallback -- --wait true");
+console.log("npm run launch:verify -- --domain getmcpscan.com");
+console.log("npm run launch:status:live");
 console.log("");
 console.log("If DNS is still propagating, use the same command with:");
 console.log("--skip-dns true");
