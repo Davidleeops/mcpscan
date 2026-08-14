@@ -12,6 +12,20 @@ Recommended private workspace path:
 ~/MCPScan Audits/YYYY-MM-DD_customer-name/
 ```
 
+## Automated Setup
+
+From the repo, create a private workspace outside the public repository:
+
+```text
+npm run delivery:workspace -- --customer CUSTOMER_NAME --date YYYY-MM-DD
+```
+
+Preview the target path without creating files:
+
+```text
+npm run delivery:workspace -- --customer CUSTOMER_NAME --date YYYY-MM-DD --dry-run
+```
+
 ## Folder Setup
 
 ```text

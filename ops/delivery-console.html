@@ -150,9 +150,10 @@
         <div class="actions">
           <button class="copy" data-copy-target="workspace-command">Copy setup command</button>
           <a class="button" href="../delivery/customer-workspace-template/README.md" target="_blank" rel="noreferrer">Open template</a>
+          <button class="copy" data-copy-target="workspace-dry-run-command">Copy dry run</button>
         </div>
-        <pre id="workspace-command">mkdir -p "$HOME/MCPScan Audits/YYYY-MM-DD_customer-name"
-cp -R delivery/customer-workspace-template "$HOME/MCPScan Audits/YYYY-MM-DD_customer-name/customer-workspace"</pre>
+        <pre id="workspace-command">npm run delivery:workspace -- --customer CUSTOMER_NAME --date YYYY-MM-DD</pre>
+        <pre id="workspace-dry-run-command">npm run delivery:workspace -- --customer CUSTOMER_NAME --date YYYY-MM-DD --dry-run</pre>
       </section>
 
       <div class="grid">

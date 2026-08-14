@@ -18,7 +18,8 @@
     "release:preflight": "node scripts/prepare-npm-release.mjs",
     "test": "npm run test -ws --if-present",
     "typecheck": "npm run build -w @mcpscan/shared && npm run typecheck -ws --if-present",
-    "writing:check": "node scripts/check-writing-rules.mjs"
+    "writing:check": "node scripts/check-writing-rules.mjs",
+    "delivery:workspace": "node scripts/create-customer-workspace.mjs"
   },
   "workspaces": [
     "packages/shared",
