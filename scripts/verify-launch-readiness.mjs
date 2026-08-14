@@ -139,8 +139,14 @@ const requiredFiles = [
   "ops/github-actions-billing-console.html",
   "ops/npm-publish-console.html",
   "ops/delivery-console.html",
+  "ops/customer-comms-console.html",
+  "ops/discovery-console.html",
+  "ops/pipeline-console.html",
+  "ops/prospect-sourcing-console.html",
   "docs/FIRST_REVENUE_BATTLECARD.md",
+  "docs/FIRST_AUDIT_DELIVERY_PACKET.md",
   "docs/SERVICE_AGREEMENT_APPENDIX.md",
+  "docs/SECURE_CUSTOMER_HANDOFF.md",
   "docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md",
   "docs/FINAL_FOUNDER_CLICK_PATH.md",
   "docs/DOMAIN_AND_MAILBOX_DECISION.md",
@@ -155,6 +161,9 @@ const requiredFiles = [
   "sales/first-14-days-operating-cadence.md",
   "sales/post-payment-handoff.md",
   "sales/findings-call-scheduling.md",
+  "sales/customer-communications.md",
+  "sales/customer-intake.md",
+  "sales/discovery-call-script.md",
   "scripts/create-customer-workspace.mjs",
   "scripts/show-launch-status.mjs",
   "delivery/customer-workspace-template/report-template.md",
@@ -214,7 +223,9 @@ const authorizationFiles = [
   "landing/index.html",
   "landing/secure-intake.html",
   "docs/FIRST_REVENUE_BATTLECARD.md",
-  "docs/SAMPLE_AUDIT_SCOPE.md"
+  "docs/SAMPLE_AUDIT_SCOPE.md",
+  "ops/customer-comms-console.html",
+  "sales/customer-communications.md"
 ];
 
 const missingAuthorizationLanguage = authorizationFiles.filter((file) => {

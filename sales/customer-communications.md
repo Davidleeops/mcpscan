@@ -1,6 +1,6 @@
 # MCPScan Customer Communications
 
-These are draft-only templates. Do not send any external message until the exact recipient and exact final content are approved in the same turn.
+These are draft-only templates. Do not send any external message until the exact recipient and exact final content are approved in the same turn. MCPScan only reviews systems and materials the customer is authorized to submit for the agreed scope.
 
 ## Scope/Checkout Follow-Up
 
@@ -20,7 +20,7 @@ The audit will focus on:
 
 Checkout/scope link: {{approved_link}}
 
-Please do not send production credentials, active tokens, customer data, or sensitive files through email or public issues. If sensitive evidence is needed, we will confirm a private handoff path first.
+Please do not send production credentials, active tokens, customer data, or sensitive files through email or public issues. Please only submit systems and materials you are authorized to include in the agreed scope. If sensitive evidence is needed, we will confirm a private handoff path first.
 
 Thanks,
 MCPScan
@@ -46,7 +46,7 @@ The audit clock starts after intake materials are complete. Please begin with sa
 Secure intake guidance:
 https://davidleeops.github.io/mcpscan/secure-intake.html
 
-Please do not send production credentials, active tokens, customer data, or sensitive files through email or public issues.
+Please do not send production credentials, active tokens, customer data, or sensitive files through email or public issues. Please only submit systems and materials you are authorized to include in the agreed scope.
 
 Thanks,
 MCPScan
