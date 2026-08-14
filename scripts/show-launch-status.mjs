@@ -1,8 +1,11 @@
 #!/usr/bin/env node
+import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
+const repo = "Davidleeops/mcpscan";
+const live = process.argv.includes("--live");
 
 function exists(file) {
   return fs.existsSync(path.join(root, file));
@@ -12,9 +15,9 @@ function read(file) {
   return fs.readFileSync(path.join(root, file), "utf8");
 }
 
-function line(label, status, detail) {
+function line(label, state, detail) {
   const suffix = detail ? " | " + detail : "";
-  console.log(status.padEnd(8) + label + suffix);
+  console.log(state.padEnd(8) + label + suffix);
 }
 
 function hasCheckoutPlaceholders() {
@@ -50,29 +53,61 @@ function hasBannedPunctuation() {
   return files.some((file) => read(file).includes("\u2014"));
 }
 
-const gates = [
-  { label: "Writing rule", ready: !hasBannedPunctuation(), detail: "no em dash in scanned launch artifacts" },
-  { label: "Launch cockpit", ready: exists("ops/launch-cockpit.html"), detail: "local operator hub exists" },
-  { label: "Final click path", ready: exists("ops/final-founder-click-console.html") && exists("docs/FINAL_FOUNDER_CLICK_PATH.md"), detail: "founder sequence exists" },
-  { label: "Billing unblock path", ready: exists("ops/github-actions-billing-console.html") && exists("docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md"), detail: "GitHub billing guide exists" },
-  { label: "Stripe links", ready: !hasCheckoutPlaceholders(), detail: hasCheckoutPlaceholders() ? "placeholder checkout links remain" : "live checkout links appear applied" },
-  { label: "Custom domain", ready: hasCustomDomain(), detail: hasCustomDomain() ? read("landing/CNAME").trim() : "no CNAME yet" },
-  { label: "Security contact", ready: hasSecurityContact(), detail: hasSecurityContact() ? "custom contact appears configured" : "placeholder contact remains" },
-  { label: "Delivery workspace", ready: exists("scripts/create-customer-workspace.mjs"), detail: "npm run delivery:workspace available" },
-  { label: "Buyer summary", ready: exists("delivery/customer-workspace-template/buyer-facing-summary.md"), detail: "customer deliverable exists" }
-];
-
-console.log("MCPScan Launch Status");
-console.log("");
-for (const gate of gates) {
-  line(gate.label, gate.ready ? "READY" : "WAIT", gate.detail);
+function getLiveActionsState() {
+  if (!live) return null;
+  try {
+    const raw = execFileSync("gh", ["run", "list", "--repo", repo, "--limit", "6", "--json", "databaseId,conclusion,status,workflowName,displayTitle"], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
+    const runs = JSON.parse(raw);
+    if (runs.length === 0) return { state: "INFO", detail: "no recent workflow runs found" };
+    const active = runs.find((run) => run.status !== "completed");
+    if (active) return { state: "INFO", detail: "workflow still running: " + active.workflowName };
+    for (const run of runs.filter((item) => item.conclusion === "failure")) {
+      const view = execFileSync("gh", ["run", "view", String(run.databaseId), "--repo", repo], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
+      if (view.includes("account is locked due to a billing issue")) {
+        return { state: "WAIT", detail: "GitHub billing lock is still blocking workflow startup" };
+      }
+    }
+    const latestFailed = runs.find((run) => run.conclusion === "failure");
+    if (latestFailed) return { state: "WAIT", detail: "latest workflow failure needs review: " + latestFailed.workflowName };
+    return { state: "READY", detail: "recent GitHub Actions runs have no failures" };
+  } catch (error) {
+    return { state: "INFO", detail: "live GitHub check unavailable: " + error.message };
+  }
 }
 
-const waiting = gates.filter((gate) => !gate.ready);
+function gate(label, ready, detail) {
+  return { label, state: ready ? "READY" : "WAIT", detail };
+}
+
+const checkoutPlaceholders = hasCheckoutPlaceholders();
+const customDomain = hasCustomDomain();
+const securityContact = hasSecurityContact();
+const liveActions = getLiveActionsState();
+
+const gates = [
+  gate("Writing rule", !hasBannedPunctuation(), "no em dash in scanned launch artifacts"),
+  gate("Launch cockpit", exists("ops/launch-cockpit.html"), "local operator hub exists"),
+  gate("Final click path", exists("ops/final-founder-click-console.html") && exists("docs/FINAL_FOUNDER_CLICK_PATH.md"), "founder sequence exists"),
+  gate("Billing unblock path", exists("ops/github-actions-billing-console.html") && exists("docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md"), "GitHub billing guide exists"),
+  ...(liveActions ? [{ label: "GitHub Actions live", state: liveActions.state, detail: liveActions.detail }] : []),
+  gate("Stripe links", !checkoutPlaceholders, checkoutPlaceholders ? "placeholder checkout links remain" : "live checkout links appear applied"),
+  gate("Custom domain", customDomain, customDomain ? read("landing/CNAME").trim() : "no CNAME yet"),
+  gate("Security contact", securityContact, securityContact ? "custom contact appears configured" : "placeholder contact remains"),
+  gate("Delivery workspace", exists("scripts/create-customer-workspace.mjs"), "npm run delivery:workspace available"),
+  gate("Buyer summary", exists("delivery/customer-workspace-template/buyer-facing-summary.md"), "customer deliverable exists")
+];
+
+console.log("MCPScan Launch Status" + (live ? " (live)" : ""));
+console.log("");
+for (const item of gates) {
+  line(item.label, item.state, item.detail);
+}
+
+const waiting = gates.filter((item) => item.state === "WAIT");
 console.log("");
 if (waiting.length === 0) {
   console.log("Next action: run strict launch verification and start approved outbound.");
 } else {
   console.log("Next founder clicks:");
-  for (const gate of waiting) console.log("- " + gate.label + ": " + gate.detail);
+  for (const item of waiting) console.log("- " + item.label + ": " + item.detail);
 }

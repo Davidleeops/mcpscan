@@ -20,7 +20,8 @@
     "typecheck": "npm run build -w @mcpscan/shared && npm run typecheck -ws --if-present",
     "writing:check": "node scripts/check-writing-rules.mjs",
     "delivery:workspace": "node scripts/create-customer-workspace.mjs",
-    "launch:status": "node scripts/show-launch-status.mjs"
+    "launch:status": "node scripts/show-launch-status.mjs",
+    "launch:status:live": "node scripts/show-launch-status.mjs --live"
   },
   "workspaces": [
     "packages/shared",
