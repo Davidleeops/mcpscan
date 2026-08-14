@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Launch Day Runbook</title>
+    <style>
+      :root { color-scheme: light; --ink: #14171a; --muted: #5b6470; --line: #d7dde3; --panel: #ffffff; --soft: #f5f7f9; --accent: #0b6bcb; --good: #0f7b4f; --warn: #9a5a00; --danger: #aa2b2b; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--soft); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 48px; }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { font-size: clamp(34px, 6vw, 64px); line-height: 1; margin-bottom: 12px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      h3 { font-size: 16px; margin-bottom: 8px; }
+      p, li, td { color: var(--muted); line-height: 1.5; }
+      .stack { display: grid; gap: 16px; }
+      .grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 16px; align-items: start; }
+      section, article { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+      .ready { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .warn { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .danger { border-left: 4px solid var(--danger); background: #fff6f6; }
+      .steps { display: grid; gap: 12px; }
+      .step { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; align-items: start; }
+      .num { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 999px; background: var(--soft); color: var(--ink); font-weight: 800; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+      a.button, button { display: inline-flex; min-height: 38px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 12px; color: var(--accent); background: #ffffff; font-weight: 700; text-decoration: none; cursor: pointer; }
+      a.button.primary, button.primary { color: #ffffff; background: var(--accent); }
+      code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      pre { margin: 8px 0 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; }
+      table { width: 100%; border-collapse: collapse; }
+      th, td { border-top: 1px solid var(--line); padding: 10px 8px; text-align: left; vertical-align: top; }
+      th { color: var(--ink); }
+      @media (max-width: 900px) { .grid, .step { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>Launch Day Runbook</h1>
+        <p>Use this when the founder is ready to click through domain, mailbox, Stripe, return packet, verification, and first revenue activation. This page opens surfaces only. It does not buy, publish, send, charge, or create customer files.</p>
+        <div class="actions">
+          <a class="button primary" href="launch-approval-queue.html">Approval queue</a>
+          <a class="button" href="final-founder-click-console.html">Final click path</a>
+          <a class="button" href="founder-click-handoff.html">Founder handoff</a>
+          <a class="button" href="verification-console.html">Verification</a>
+        </div>
+      </header>
+
+      <section class="ready">
+        <h2>Current Sale</h2>
+        <p>Sell the MCP Launch Audit first. Default price is <strong>$1,500</strong>. The product is the validated report, remediation plan, and buyer-safe security proof, not raw scanner output.</p>
+      </section>
+
+      <div class="grid">
+        <section class="steps">
+          <h2>Click Order</h2>
+          <article class="step warn">
+            <div class="num">1</div>
+            <div>
+              <h3>Buy One Domain And One Mailbox</h3>
+              <p>Use the trust lane if the cart is standard-priced, or use <code>mcpscan.online</code> if the near-dollar lane is approved. Create one mailbox and aliases only.</p>
+              <div class="actions">
+                <a class="button primary" href="domain-mailbox-purchase-packet.html">Purchase packet</a>
+                <a class="button" href="cheap-launch-packet-console.html">Cheap packets</a>
+                <a class="button" href="domain-email-dns-console.html">DNS console</a>
+                <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscan.online" target="_blank" rel="noreferrer">Search mcpscan.online</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="step warn">
+            <div class="num">2</div>
+            <div>
+              <h3>Create Three Stripe Payment Links</h3>
+              <p>Create Quick, Launch, and Enterprise links from the generated setup packet. The Launch Audit is the first sale target.</p>
+              <div class="actions">
+                <a class="button primary" href="stripe-click-setup.html">Stripe setup</a>
+                <a class="button" href="stripe-payment-link-qa-console.html">Stripe QA</a>
+                <a class="button" href="https://dashboard.stripe.com/payment-links/create" target="_blank" rel="noreferrer">Open Stripe</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="step warn">
+            <div class="num">3</div>
+            <div>
+              <h3>Return Only Public Values</h3>
+              <p>Use the preset return packet, QA evidence, and public-safe status tracker. Do not paste passwords, keys, card details, or customer data.</p>
+              <div class="actions">
+                <a class="button primary" href="founder-return-packet.html">Return packet</a>
+                <a class="button" href="founder-status-console.html">Status JSON</a>
+                <a class="button" href="../docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md">Proof packet</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="step ready">
+            <div class="num">4</div>
+            <div>
+              <h3>Apply, Publish, Verify</h3>
+              <p>After the approved return packet and Stripe QA file exist, run the post-click handoff, publish the Pages fallback, then verify the custom domain and status.</p>
+              <pre>npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider zoho
+npm run launch:publish-pages-fallback -- --wait true
+npm run launch:verify -- --domain mcpscan.online
+npm run launch:status:live</pre>
+            </div>
+          </article>
+
+          <article class="step ready">
+            <div class="num">5</div>
+            <div>
+              <h3>Open First Revenue Runway</h3>
+              <p>Only after domain, mailbox auth, Stripe links, and security contact are live, open the public, outbound, reply, payment, and delivery surfaces.</p>
+              <div class="actions">
+                <a class="button primary" href="gtm-placement-console.html">GTM placement</a>
+                <a class="button" href="first-10-outbound-approval-console.html">First 10</a>
+                <a class="button" href="paid-audit-handoff-builder.html">Paid handoff</a>
+                <a class="button" href="delivery-console.html">Delivery</a>
+              </div>
+              <pre>npm run launch:open-first-revenue</pre>
+            </div>
+          </article>
+        </section>
+
+        <aside class="stack">
+          <section class="danger">
+            <h2>Stop Conditions</h2>
+            <ul>
+              <li>No outbound until MX, SPF, DKIM, and DMARC pass.</li>
+              <li>No public Stripe links until checkout QA evidence passes.</li>
+              <li>No external messages without exact recipient and content approval in the same turn.</li>
+              <li>No customer secrets, private configs, customer data, or final private reports in the public repo.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>One-Command Openers</h2>
+            <table>
+              <tr><th>Need</th><th>Command</th></tr>
+              <tr><td>Current click stack</td><td><code>npm run launch:next</code></td></tr>
+              <tr><td>Launch day page</td><td><code>npm run launch:day</code></td></tr>
+              <tr><td>Return review</td><td><code>npm run launch:open-return-review</code></td></tr>
+              <tr><td>First revenue runway</td><td><code>npm run launch:open-first-revenue</code></td></tr>
+              <tr><td>Launch status</td><td><code>npm run launch:status</code></td></tr>
+            </table>
+          </section>
+
+          <section>
+            <h2>Required Proof</h2>
+            <ul>
+              <li>Approved return packet text.</li>
+              <li>Stripe checkout QA evidence JSON.</li>
+              <li>Founder approval status JSON.</li>
+              <li>DNS verification output after propagation.</li>
+              <li>Launch verification output with no checkout, domain, or security-contact warnings.</li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>

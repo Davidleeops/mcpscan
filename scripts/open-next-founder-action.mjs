@@ -5,6 +5,7 @@ import { pathToFileURL } from "node:url";
 
 const reviewSurfaces = [
   "ops/launch-cockpit.html",
+  "ops/launch-day-runbook.html",
   "ops/final-founder-click-console.html",
   "ops/founder-click-handoff.html",
   "ops/cheap-launch-packet-console.html",

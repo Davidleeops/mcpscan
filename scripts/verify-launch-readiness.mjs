@@ -152,6 +152,7 @@ const requiredFiles = [
   "landing/privacy.html",
   "landing/refund.html",
   "ops/launch-cockpit.html",
+  "ops/launch-day-runbook.html",
   "ops/launch-approval-queue.html",
   "ops/founder-return-packet.html",
   "ops/static-launch-bundle-console.html",
@@ -309,6 +310,7 @@ const requiredFiles = [
   "scripts/verify-gtm-claims.mjs",
   "scripts/show-launch-status.mjs",
   "scripts/open-next-founder-action.mjs",
+  "scripts/open-launch-day-runbook.mjs",
   "scripts/open-founder-clicks.mjs",
   "scripts/open-founder-return-review.mjs",
   "delivery/customer-workspace-template/report-template.md",
@@ -474,6 +476,31 @@ if (exists("ops/founder-status-console.html") && exists("docs/POST_PURCHASE_PUBL
     missingPostPurchaseMarkers.length === 0
       ? result("pass", "post-purchase public proof path", "status JSON and safe value handoff markers are present")
       : result("fail", "post-purchase public proof path", missingPostPurchaseMarkers.join(", "))
+  );
+}
+
+if (exists("ops/launch-day-runbook.html") && exists("scripts/open-launch-day-runbook.mjs") && exists("package.json")) {
+  const launchDay = [
+    read("ops/launch-day-runbook.html"),
+    read("scripts/open-launch-day-runbook.mjs"),
+    read("package.json")
+  ].join("\n");
+  const requiredLaunchDayMarkers = [
+    "launch:day",
+    "domain-mailbox-purchase-packet.html",
+    "stripe-payment-link-qa-console.html",
+    "founder-return-packet.html",
+    "founder-status-console.html",
+    "docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md",
+    "launch:post-click-verify",
+    "launch:open-first-revenue",
+    "This page opens surfaces only"
+  ];
+  const missingLaunchDayMarkers = requiredLaunchDayMarkers.filter((marker) => !launchDay.includes(marker));
+  results.push(
+    missingLaunchDayMarkers.length === 0
+      ? result("pass", "launch day runbook path", "ordered click, proof, verification, and revenue surfaces are present")
+      : result("fail", "launch day runbook path", missingLaunchDayMarkers.join(", "))
   );
 }
 

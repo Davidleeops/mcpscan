@@ -198,6 +198,7 @@ const filledApprovalStatus = exists("ops/founder-approval-status.json") ? parseJ
 const gates = [
   gate("Writing rule", !hasBannedPunctuation(), "no em dash in scanned launch artifacts"),
   gate("Launch cockpit", exists("ops/launch-cockpit.html"), "local operator hub exists"),
+  gate("Launch day runbook", exists("ops/launch-day-runbook.html") && exists("scripts/open-launch-day-runbook.mjs"), "npm run launch:day opens ordered launch-day surfaces"),
   gate("Next action launcher", exists("scripts/open-next-founder-action.mjs"), "npm run launch:next opens the current founder action stack"),
   gate("Founder click handoff", exists("ops/founder-click-handoff.html") && exists("docs/FOUNDER_CLICK_HANDOFF.md"), "single founder click sequence exists"),
   gate("Founder click launcher", exists("scripts/open-founder-clicks.mjs"), "npm run launch:open-founder opens the next-click pages"),

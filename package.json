@@ -19,6 +19,7 @@
     "launch:open": "node scripts/open-launch-cockpit.mjs",
     "launch:open-founder": "node scripts/open-founder-clicks.mjs",
     "launch:next": "node scripts/open-next-founder-action.mjs",
+    "launch:day": "node scripts/open-launch-day-runbook.mjs",
     "launch:open-return-review": "node scripts/open-founder-return-review.mjs",
     "launch:prepare-cheap": "node scripts/prepare-cheap-launch-packets.mjs",
     "launch:dns-packet": "node scripts/build-domain-dns-packet.mjs",
