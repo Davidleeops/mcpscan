@@ -12,6 +12,7 @@ ops/launch-cockpit.html
 
 | Issue | Gate | Console | Completion Proof |
 | --- | --- | --- | --- |
+| [#7](https://github.com/Davidleeops/mcpscan/issues/7) | Clear GitHub Actions billing lock | `ops/github-actions-billing-console.html` | CI and Pages jobs start and pass |
 | [#2](https://github.com/Davidleeops/mcpscan/issues/2) | Buy domain and create mailbox | `ops/domain-email-dns-console.html` | Domain resolves, mailbox exists, MX/SPF/DKIM pass |
 | [#3](https://github.com/Davidleeops/mcpscan/issues/3) | Create Stripe Payment Links | `ops/stripe-click-setup.html` | Three live Stripe Payment Links exist |
 | [#4](https://github.com/Davidleeops/mcpscan/issues/4) | Replace landing CTAs and contact links | `ops/approved-links-command-builder.html` | `npm run launch:verify -- --domain mcpscanhq.com` has no checkout/custom-domain warnings |
@@ -23,6 +24,7 @@ ops/launch-cockpit.html
 Current public launch state:
 
 ```text
+npm run writing:check
 npm run launch:verify
 ```
 
