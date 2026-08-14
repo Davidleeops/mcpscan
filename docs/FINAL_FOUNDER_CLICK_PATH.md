@@ -27,7 +27,7 @@ First revenue does not require npm publishing. Sell and deliver the `$1,500` MCP
 | Order | Gate | Founder Action | Console | Done When |
 | --- | --- | --- | --- | --- |
 | 0 | GitHub billing | Clear the account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | CI and Pages jobs start and pass |
-| 1 | Domain | Buy `trymcpscan.com` if standard-priced, or `getmcpscan.com` if the first pick is unavailable. Use `mcpscan.site` only for the cheap validation lane | `ops/domain-email-dns-console.html` | Domain exists in registrar account |
+| 1 | Domain | Buy `trymcpscan.com` if standard-priced, or `getmcpscan.com` if the first pick is unavailable. Use `mcpscan.site` only for the cheap validation lane | `ops/domain-mailbox-purchase-packet.html` | Domain exists in registrar account |
 | 2 | Mailbox | Create `security@{{chosen_domain}}` with `audit@` and `hello@` aliases | `ops/domain-email-dns-console.html` | MX, SPF, DKIM, and DMARC pass |
 | 3 | Stripe | Create the three Payment Links and verify their format | `ops/stripe-click-setup.html` | Quick, Launch, and Enterprise checkout links exist and `npm run launch:verify-stripe` passes |
 | 4 | Apply links | Paste real links into the command builder | `ops/approved-links-command-builder.html` | Landing page no longer uses placeholder checkout links |
@@ -51,6 +51,7 @@ npm run launch:bundle
 After DNS records exist, verify the custom domain and mailbox records:
 
 ```text
+npm run launch:dns-packet -- --domain {{chosen_domain}} --mailbox security@{{chosen_domain}}
 npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status
 ```
 

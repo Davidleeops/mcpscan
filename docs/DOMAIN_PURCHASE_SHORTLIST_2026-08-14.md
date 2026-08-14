@@ -57,8 +57,8 @@ Spacemail pricing checked on 2026-08-14: one-mailbox plans start around `$0.98` 
 4. If both are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
 5. Use `mcpscan.site` only if the founder chooses the `$1` to `$3` validation lane and accepts the renewal tradeoff.
 6. Buy one domain only unless the founder explicitly approves a protective second domain.
-7. Create one mailbox only, preferably `security@{{chosen_domain}}` or `audit@{{chosen_domain}}`.
-8. Add aliases for `hello@{{chosen_domain}}` and the second security mailbox name.
+7. Create one mailbox only: `security@{{chosen_domain}}`.
+8. Add aliases for `audit@{{chosen_domain}}` and `hello@{{chosen_domain}}`.
 9. Do not send outbound until MX, SPF, DKIM, and DMARC pass.
 
 ## Founder Approval Text

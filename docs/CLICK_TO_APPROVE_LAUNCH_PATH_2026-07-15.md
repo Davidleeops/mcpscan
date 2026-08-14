@@ -54,19 +54,19 @@ After purchase, give Codex the domain name. Then Codex can:
 
 Recommended:
 
-- mailbox: `audit@<domain>`
-- aliases later: `audits@<domain>`, `security@<domain>`, `support@<domain>`
+- mailbox: `security@<domain>`
+- aliases: `audit@<domain>`, `hello@<domain>`
 
 Click path:
 
 1. In Spaceship, choose Spacemail for the purchased domain.
 2. Buy the cheapest mailbox plan only if the checkout total is acceptable.
-3. Create `audit@<domain>`.
+3. Create `security@<domain>`.
 4. Share only the public email address with Codex, not the password.
 
 After email exists, Codex can:
 
-- update landing contact CTA to `mailto:audit@<domain>`
+- update landing contact CTA to `mailto:security@<domain>`
 - update SECURITY.md with disclosure/contact language
 - update audit request docs
 

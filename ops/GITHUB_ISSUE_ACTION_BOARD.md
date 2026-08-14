@@ -67,6 +67,6 @@ npm run launch:verify -- --domain CHOSEN_DOMAIN --strict
 
 - Do not send external messages without same-turn approval of exact recipient and exact content.
 - Do not store customer secrets, private configs, customer data, or final private reports in the public repo.
-- Do not send outbound from `audit@{{chosen_domain}}` until MX, SPF, DKIM, and DMARC pass.
+- Do not send outbound from `security@{{chosen_domain}}` until MX, SPF, DKIM, and DMARC pass.
 - Do not wait on npm publishing before selling the paid audit.
 - Do not publish npm packages until npm login and 2FA/OTP are confirmed.

@@ -8,15 +8,12 @@ Avoid choosing a domain only because it costs about $1. A cheap first-year TLD c
 
 Better first choices:
 
-- `getmcpscan.com`
 - `trymcpscan.com`
-- `mcpscanlab.dev`
-- `mcpsecure.app`
-- `mcpscan.tools`
+- `getmcpscan.com`
+- `mcpscanhq.com`
+- `usemcpscan.com`
 
-Recommended buy: `getmcpscan.com`, if the checkout confirms it is a standard
-registration. It is not the cheapest first-year option, but it is the cleanest
-brand/trust choice for a security audit offer and the renewal is low.
+Recommended buy: `trymcpscan.com`, if the checkout confirms it is a standard registration. It is not the cheapest first-year option, but it is the cleanest trust choice for a security audit offer and the renewal is low. Use `mcpscan.site` only for the `$1` to `$3` validation lane.
 
 Current pricing notes from Spaceship research:
 
@@ -43,15 +40,14 @@ docs/PUBLIC_TRUST_CHECKLIST.md
 
 Once the domain is purchased, create:
 
-- `audit@<domain>` for sales and support.
-- `security@<domain>` as an alias for disclosure and trust workflows.
+- `security@<domain>` as the primary mailbox for trust, disclosure, sales, and delivery workflows.
+- `audit@<domain>` as an alias for audit-specific replies.
 - `hello@<domain>` as an alias for general inbound.
-- `audits@<domain>` for delivery and report handoff.
 
 Start with one mailbox and aliases:
 
-- mailbox: `audit@<domain>`
-- aliases: `security@<domain>`, `hello@<domain>`, `support@<domain>`
+- mailbox: `security@<domain>`
+- aliases: `audit@<domain>`, `hello@<domain>`
 
 This is enough for first revenue. Add separate mailboxes only after inbound
 volume or delivery operations justify it.
@@ -75,12 +71,18 @@ Value: davidleeops.github.io
 
 For an apex/root domain, use GitHub Pages' current `A` records from the official GitHub Pages docs.
 
+Codex can generate a domain-specific DNS packet after the domain and mailbox are chosen:
+
+```text
+npm run launch:dns-packet -- --domain {{chosen_domain}} --mailbox security@{{chosen_domain}}
+```
+
 ## Landing Page Updates
 
 After Stripe and email exist, update `landing/index.html`:
 
 - Replace GitHub issue links with Stripe Payment Links.
-- Replace contact link with `mailto:audit@<domain>` or a form.
+- Replace contact link with `mailto:security@<domain>` or a form.
 - Add domain to GitHub Pages settings.
 
 ## Purchase Stop Point

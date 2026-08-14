@@ -164,6 +164,8 @@ const gates = [
   gate("Billing unblock path", exists("ops/github-actions-billing-console.html") && exists("docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md"), "GitHub billing guide exists"),
   ...(liveActions ? [{ label: "GitHub Actions live", state: liveActions.state, detail: liveActions.detail }] : []),
   gate("Market source verifier", exists("scripts/verify-market-sources.mjs") && exists("ops/market-research-refresh-console.html"), "npm run market:verify available before outbound"),
+  gate("Domain purchase packet", exists("ops/domain-mailbox-purchase-packet.html") && exists("docs/DOMAIN_MAILBOX_PURCHASE_PACKET.md"), "founder can approve one domain and one mailbox"),
+  gate("DNS packet generator", exists("scripts/build-domain-dns-packet.mjs"), "npm run launch:dns-packet creates domain-specific records"),
   gate("Stripe verifier", exists("scripts/verify-stripe-links.mjs"), "npm run launch:verify-stripe available after Payment Links exist"),
   gate("Post-click verifier", exists("scripts/run-post-click-verification.mjs") && exists("docs/POST_CLICK_VERIFICATION.md"), "one command verifies domain, mailbox, Stripe, writing, and launch after founder clicks"),
   gate("Stripe links", !checkoutPlaceholders, checkoutPlaceholders ? "placeholder checkout links remain" : "live checkout links appear applied"),

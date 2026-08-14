@@ -54,7 +54,7 @@ Hard rules:
 
 - Do not send external messages without same-turn approval of exact recipient and exact final content.
 - Do not store customer secrets, private configs, customer data, or final private reports in the public repo.
-- Do not send outbound from `audit@{{chosen_domain}}` until MX, SPF, DKIM, and DMARC pass.
+- Do not send outbound from `security@{{chosen_domain}}` until MX, SPF, DKIM, and DMARC pass.
 - Do not publish npm packages until npm login and 2FA/OTP are confirmed.
 - Do not buy a novelty promo TLD as the primary security brand unless this is
   intentionally only a temporary redirect.

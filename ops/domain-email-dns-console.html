@@ -170,12 +170,13 @@
       <header>
         <div>
           <h1>Domain & Email DNS Console</h1>
-          <p>Use this after buying the domain and mailbox. It gives you the exact GitHub Pages and Spacemail records to copy into Spaceship DNS.</p>
+          <p>Use this after buying the domain and mailbox. Codex can generate the domain-specific DNS packet, then the founder can approve and apply the records in Spaceship.</p>
         </div>
         <div class="actions">
           <a class="button primary" href="https://www.spaceship.com/domain-search/?query=trymcpscan.com" target="_blank" rel="noreferrer">Search trymcpscan.com</a>
           <a class="button" href="https://www.spaceship.com/domain-search/?query=getmcpscan.com" target="_blank" rel="noreferrer">Search getmcpscan.com</a>
           <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscan.site" target="_blank" rel="noreferrer">Search cheap .site</a>
+          <a class="button" href="domain-mailbox-purchase-packet.html">Purchase packet</a>
           <a class="button" href="../docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md">Domain shortlist</a>
           <a class="button" href="https://www.spaceship.com/business-email/" target="_blank" rel="noreferrer">Open Spacemail</a>
         </div>
@@ -201,7 +202,7 @@
       <div class="grid">
         <article>
           <h2>GitHub Pages DNS</h2>
-          <p>For the apex domain, add these A records in Spaceship DNS. Replace the examples with the domain you bought, such as <code>trymcpscan.com</code> or <code>getmcpscan.com</code>.</p>
+          <p>For the apex domain, add these A records in Spaceship DNS. Prefer the generated DNS packet once the exact domain is chosen.</p>
           <table>
             <tr><th>Type</th><th>Host</th><th>Value</th></tr>
             <tr><td>A</td><td>@</td><td><code>185.199.108.153</code></td></tr>
@@ -216,6 +217,7 @@
           </table>
           <div class="actions">
             <button class="copy" data-copy-target="github-records">Copy records</button>
+            <button class="copy" data-copy-target="dns-packet-command">Copy packet command</button>
             <a class="button" href="https://github.com/Davidleeops/mcpscan/settings/pages" target="_blank" rel="noreferrer">GitHub Pages settings</a>
           </div>
           <pre id="github-records">A @ 185.199.108.153
@@ -227,6 +229,7 @@ AAAA @ 2606:50c0:8001::153
 AAAA @ 2606:50c0:8002::153
 AAAA @ 2606:50c0:8003::153
 CNAME www davidleeops.github.io</pre>
+          <pre id="dns-packet-command">npm run launch:dns-packet -- --domain trymcpscan.com --mailbox security@trymcpscan.com</pre>
         </article>
 
         <article>

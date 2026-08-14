@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Domain Purchase Packet</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #151719;
+        --muted: #5b6470;
+        --line: #d7dde3;
+        --panel: #ffffff;
+        --soft: #f5f7f9;
+        --accent: #0b6bcb;
+        --good: #0f7b4f;
+        --warn: #9a5a00;
+        --danger: #aa2b2b;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--soft);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        align-items: end;
+        margin-bottom: 18px;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1; margin-bottom: 12px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      h3 { font-size: 16px; margin-bottom: 8px; }
+      p, li, label, td { color: var(--muted); line-height: 1.5; }
+
+      .stack { display: grid; gap: 16px; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+      section, article { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+      .wide { grid-column: 1 / -1; }
+      .decision { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .warning { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .danger { border-left: 4px solid var(--danger); background: #fff6f6; }
+
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+      a.button, button {
+        display: inline-flex;
+        min-height: 40px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--accent);
+        border-radius: 7px;
+        padding: 9px 12px;
+        color: var(--accent);
+        background: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      a.button.primary, button.primary { color: #ffffff; background: var(--accent); }
+
+      .form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      label { display: grid; gap: 6px; font-weight: 700; }
+      input, select {
+        min-height: 42px;
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        color: var(--ink);
+        font: inherit;
+        padding: 10px 12px;
+        background: #ffffff;
+      }
+
+      input:focus, select:focus { border-color: var(--accent); outline: 2px solid rgba(11, 107, 203, 0.16); }
+      table { border-collapse: collapse; width: 100%; }
+      th, td { border-top: 1px solid var(--line); padding: 10px 8px; text-align: left; vertical-align: top; }
+      th { color: var(--ink); }
+      code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      pre { margin: 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; min-height: 180px; }
+      .status { min-height: 24px; color: var(--muted); }
+      .status.good { color: var(--good); }
+      .status.bad { color: var(--danger); }
+
+      @media (max-width: 900px) {
+        header, .grid, .form { grid-template-columns: 1fr; }
+        .wide { grid-column: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <div>
+          <h1>Domain Purchase Packet</h1>
+          <p>Choose one launch lane, copy the exact approval, then buy one domain and one mailbox. This page does not purchase anything or send anything.</p>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="https://www.spaceship.com/domain-search/?query=trymcpscan.com" target="_blank" rel="noreferrer">Search .com pick</a>
+          <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscan.site" target="_blank" rel="noreferrer">Search cheap pick</a>
+          <a class="button" href="https://www.spaceship.com/business-email/" target="_blank" rel="noreferrer">Open Spacemail</a>
+          <a class="button" href="founder-return-packet.html">Return packet</a>
+        </div>
+      </header>
+
+      <section class="decision">
+        <h2>Best Current Call</h2>
+        <p>Use <strong>trymcpscan.com</strong> if it is standard-priced. Use <strong>mcpscan.site</strong> only if cash conservation matters more than the trust signal and the renewal tradeoff is accepted.</p>
+      </section>
+
+      <div class="grid">
+        <section>
+          <h2>Purchase Inputs</h2>
+          <div class="form">
+            <label>Launch lane
+              <select id="lane">
+                <option value="com">Trust lane, .com</option>
+                <option value="cheap">Cheap validation lane</option>
+                <option value="custom">Custom approved domain</option>
+              </select>
+            </label>
+            <label>Domain to buy<input id="domain" value="trymcpscan.com" autocomplete="off"></label>
+            <label>Maximum first-year domain spend<input id="spend" value="$12" autocomplete="off"></label>
+            <label>Renewal acknowledged<input id="renewal" value="About $9.98 plus ICANN fee if standard .com pricing is confirmed" autocomplete="off"></label>
+            <label>Primary mailbox<input id="mailbox" value="security@trymcpscan.com" autocomplete="off"></label>
+            <label>Aliases<input id="aliases" value="audit@trymcpscan.com, hello@trymcpscan.com" autocomplete="off"></label>
+          </div>
+          <div class="actions">
+            <button class="primary" id="build" type="button">Build approval</button>
+            <button id="copyApproval" type="button">Copy approval</button>
+          </div>
+          <p id="status" class="status"></p>
+        </section>
+
+        <section class="warning">
+          <h2>Do Not Add</h2>
+          <ul>
+            <li>No extra domains unless separately approved.</li>
+            <li>No paid hosting, site builder, SSL upsells, or privacy upsells.</li>
+            <li>No second mailbox before first revenue.</li>
+            <li>No outbound until mailbox DNS passes.</li>
+          </ul>
+          <table>
+            <tr><th>Lane</th><th>Expected first-year domain cost</th><th>Renewal posture</th></tr>
+            <tr><td>.com trust</td><td>About $8.88 plus ICANN fee</td><td>Low</td></tr>
+            <tr><td>.site cheap</td><td>About $0.98 plus ICANN fee if promo-priced</td><td>High</td></tr>
+            <tr><td>.online cheap</td><td>About $0.98 plus ICANN fee if promo-priced</td><td>High</td></tr>
+          </table>
+        </section>
+      </div>
+
+      <section class="wide">
+        <h2>Founder Purchase Approval</h2>
+        <pre id="approval">Build the approval message.</pre>
+      </section>
+
+      <section class="wide">
+        <h2>Post-Click Values</h2>
+        <p>After purchase, copy these values into the Founder Return Packet with the Stripe links.</p>
+        <div class="actions">
+          <button id="copyValues" type="button">Copy values</button>
+          <a class="button" href="founder-return-packet.html">Open return packet</a>
+          <a class="button" href="domain-email-dns-console.html">Open DNS console</a>
+        </div>
+        <pre id="values">Build the approval message.</pre>
+      </section>
+    </main>
+
+    <script>
+      const lane = document.getElementById("lane");
+      const domain = document.getElementById("domain");
+      const spend = document.getElementById("spend");
+      const renewal = document.getElementById("renewal");
+      const mailbox = document.getElementById("mailbox");
+      const aliases = document.getElementById("aliases");
+      const approval = document.getElementById("approval");
+      const values = document.getElementById("values");
+      const status = document.getElementById("status");
+
+      function validDomain(value) {
+        return /^[a-z0-9.-]+\.[a-z]{2,}$/i.test(value);
+      }
+
+      function validEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      }
+
+      function setLaneDefaults() {
+        if (lane.value === "com") {
+          domain.value = "trymcpscan.com";
+          spend.value = "$12";
+          renewal.value = "About $9.98 plus ICANN fee if standard .com pricing is confirmed";
+        } else if (lane.value === "cheap") {
+          domain.value = "mcpscan.site";
+          spend.value = "$3";
+          renewal.value = "About $21.38 plus ICANN fee if .site promo pricing is confirmed";
+        }
+        if (lane.value !== "custom") {
+          mailbox.value = "security@" + domain.value.trim();
+          aliases.value = "audit@" + domain.value.trim() + ", hello@" + domain.value.trim();
+        }
+        build();
+      }
+
+      function syncMailbox() {
+        if (validDomain(domain.value.trim())) {
+          mailbox.value = "security@" + domain.value.trim();
+          aliases.value = "audit@" + domain.value.trim() + ", hello@" + domain.value.trim();
+        }
+      }
+
+      function build() {
+        const chosenDomain = domain.value.trim().toLowerCase();
+        const chosenMailbox = mailbox.value.trim();
+        const chosenAliases = aliases.value.trim();
+        const errors = [];
+        if (!validDomain(chosenDomain)) errors.push("Domain must look like trymcpscan.com");
+        if (!validEmail(chosenMailbox)) errors.push("Mailbox must be a real email address");
+        if (validEmail(chosenMailbox) && validDomain(chosenDomain) && !chosenMailbox.toLowerCase().endsWith("@" + chosenDomain)) {
+          errors.push("Mailbox must use the chosen domain");
+        }
+        for (const alias of chosenAliases.split(",").map((item) => item.trim()).filter(Boolean)) {
+          if (!validEmail(alias)) errors.push("Alias is not a real email address: " + alias);
+          if (validEmail(alias) && validDomain(chosenDomain) && !alias.toLowerCase().endsWith("@" + chosenDomain)) {
+            errors.push("Alias must use the chosen domain: " + alias);
+          }
+        }
+
+        if (errors.length > 0) {
+          status.textContent = errors.join(". ");
+          status.className = "status bad";
+          approval.textContent = "Fix the fields above, then build again.";
+          values.textContent = "Fix the fields above, then build again.";
+          return;
+        }
+
+        const laneLabel = lane.value === "com" ? ".com trust lane" : lane.value === "cheap" ? "cheap validation lane" : "custom approved lane";
+        approval.textContent = `I approve buying one MCPScan launch domain and one matching mailbox.
+
+Purchase lane: ${laneLabel}
+Domain to buy: ${chosenDomain}
+Registrar: Spaceship
+Maximum first-year domain spend: ${spend.value.trim()}
+Renewal price acknowledged: ${renewal.value.trim()}
+Mailbox plan: Spacemail Pro, one mailbox
+Primary mailbox: ${chosenMailbox}
+Aliases: ${chosenAliases}
+
+Approved action:
+Buy one MCPScan launch domain and one matching mailbox. Do not buy extra domains, paid hosting, extra mailboxes, SSL add-ons, privacy add-ons, or site-builder products without separate approval.`;
+
+        values.textContent = `Domain: ${chosenDomain}
+Primary mailbox: ${chosenMailbox}
+Audit alias: ${chosenAliases.split(",")[0]?.trim() || "audit@" + chosenDomain}
+Hello alias: ${chosenAliases.split(",")[1]?.trim() || "hello@" + chosenDomain}`;
+
+        status.textContent = "Packet ready.";
+        status.className = "status good";
+      }
+
+      async function copyText(node) {
+        await navigator.clipboard.writeText(node.textContent.trim());
+        status.textContent = "Copied.";
+        status.className = "status good";
+      }
+
+      lane.addEventListener("change", setLaneDefaults);
+      domain.addEventListener("change", () => {
+        if (lane.value !== "custom") syncMailbox();
+        build();
+      });
+      for (const input of [spend, renewal, mailbox, aliases]) input.addEventListener("input", build);
+      document.getElementById("build").addEventListener("click", build);
+      document.getElementById("copyApproval").addEventListener("click", () => copyText(approval));
+      document.getElementById("copyValues").addEventListener("click", () => copyText(values));
+      build();
+    </script>
+  </body>
+</html>

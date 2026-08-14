@@ -10,7 +10,7 @@ Use this before pointing paid outreach or community launch traffic at MCPScan.
 | --- | --- | --- |
 | Custom domain | `getmcpscan.com`, `trymcpscan.com`, or approved fallback resolves to the landing page | Browser visit plus `npm run launch:verify -- --domain {{chosen_domain}}` |
 | HTTPS | HTTPS is enforced on the public site | Browser lock icon and GitHub Pages setting |
-| Audit mailbox | `audit@{{chosen_domain}}` receives email | Test inbound email |
+| Primary mailbox | `security@{{chosen_domain}}` receives email | Test inbound email |
 | Security mailbox | `security@{{chosen_domain}}` reaches the monitored launch inbox | Test inbound email |
 | Audit alias | `audit@{{chosen_domain}}` reaches the same monitored inbox | Test inbound email |
 | General alias | `hello@{{chosen_domain}}` reaches the same mailbox or monitored inbox | Test inbound email |
@@ -23,7 +23,7 @@ Use this before pointing paid outreach or community launch traffic at MCPScan.
 | Refund policy | Refund policy is reachable from the landing page | Browser visit |
 | Sample report | Sample report is reachable and readable | Browser visit |
 | Secure intake | Intake page tells buyers not to paste secrets into the public repo | Browser visit |
-| Contact consistency | Landing, security policy, and sales docs use the same public mailbox | `npm run launch:verify -- --domain {{chosen_domain}}` |
+| Contact consistency | Landing, security policy, and sales docs use `security@{{chosen_domain}}` as the primary public mailbox | `npm run launch:verify -- --domain {{chosen_domain}}` |
 | No customer data | Public repo contains no customer configs, reports, secrets, or private scan artifacts | `npm run launch:verify` plus manual review |
 
 ## Required Before Taking Payment
