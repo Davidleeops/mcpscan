@@ -58,6 +58,7 @@ The return packet is usable when:
 
 - `npm run launch:apply-return-packet -- --file /path/to/approved-return-packet.txt --dry-run true` passes.
 - `npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status` passes.
+- `npm run launch:verify-return-qa -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json` passes.
 - `npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status` passes.
 - `npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status` passes after DNS propagation.
 - `npm run launch:verify` has no checkout, custom-domain, or security-contact warnings after apply and deploy.

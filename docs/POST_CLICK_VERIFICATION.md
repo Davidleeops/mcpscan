@@ -51,6 +51,7 @@ npm run launch:apply-return-packet -- --file /path/to/approved-return-packet.txt
 
 - optional return-packet apply step
 - Stripe Payment Link verification
+- return packet and Stripe checkout QA consistency verification when `--qa-file` is provided
 - Stripe checkout QA evidence verification when `--qa-file` is provided
 - DNS and mailbox verification, unless explicitly skipped
 - writing rule check

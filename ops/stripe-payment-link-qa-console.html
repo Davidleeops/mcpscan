@@ -57,7 +57,7 @@
       <section><h2>Checklist</h2><div class="checks" id="checks"><label><input id="products" type="checkbox"> All three products exist: Quick, Launch, Enterprise.</label><label><input id="prices" type="checkbox"> Prices are $750, $1,500, and $3,500, one-time.</label><label><input id="liveMode" type="checkbox"> Links are live mode, not test mode.</label><label><input id="sameAccount" type="checkbox"> All three links are in the same live Stripe account.</label><label><input id="noSubscription" type="checkbox"> No subscriptions, trials, metered billing, or customer portal settings are enabled.</label><label><input id="quantity" type="checkbox"> Quantity adjustment is disabled.</label><label><input id="promos" type="checkbox"> Promotion codes and coupons are disabled unless separately approved.</label><label><input id="shipping" type="checkbox"> Shipping address collection is disabled.</label><label><input id="receipts" type="checkbox"> Automatic receipts are enabled.</label><label><input id="fields" type="checkbox"> Customer name, email, company, and billing address are collected.</label><label><input id="technicalContact" type="checkbox"> Primary technical contact email is required.</label><label><input id="redirect" type="checkbox"> Checkout redirects to thank-you page.</label><label><input id="policies" type="checkbox"> Terms, privacy, refund, and secure intake URLs are available.</label><label><input id="intake" type="checkbox"> Descriptions say delivery begins after intake is complete.</label><label><input id="refund" type="checkbox"> Refund terms match the public refund policy.</label></div><div class="actions"><button class="primary" id="build" type="button">Build QA packet</button><button data-copy-target="qa-json">Copy QA JSON</button><button id="download-qa" type="button">Download QA JSON</button></div><p id="status" class="status bad">Not ready yet.</p></section>
       <section class="ready"><h2>QA Evidence JSON</h2><pre id="qa-json">Fill the live values, complete the checklist, then build.</pre></section>
       <section class="ready"><h2>Approval Prompt</h2><button class="primary" data-copy-target="approval">Copy prompt</button><pre id="approval">Fill the live values, complete the checklist, then build.</pre></section>
-      <section><h2>Verification Commands</h2><button data-copy-target="verify-command">Copy format command</button><button data-copy-target="qa-command">Copy QA command</button><pre id="verify-command">npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK --update-status</pre><pre id="qa-command">npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status</pre></section>
+      <section><h2>Verification Commands</h2><button data-copy-target="verify-command">Copy format command</button><button data-copy-target="consistency-command">Copy consistency command</button><button data-copy-target="qa-command">Copy QA command</button><pre id="verify-command">npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK --update-status</pre><pre id="consistency-command">npm run launch:verify-return-qa -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json</pre><pre id="qa-command">npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status</pre></section>
     </main>
     <script>
       const boxes = [...document.querySelectorAll("input[type=checkbox]")];
@@ -72,6 +72,7 @@
       const approval = document.getElementById("approval");
       const qaJson = document.getElementById("qa-json");
       const verifyCommand = document.getElementById("verify-command");
+      const consistencyCommand = document.getElementById("consistency-command");
 
       function validDomain(value) {
         return /^[a-z0-9.-]+\.[a-z]{2,}$/i.test(value);
@@ -188,6 +189,7 @@ Apply these links to the public landing page, update the public contact email, a
 
 I also approve keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval.`;
         verifyCommand.textContent = `npm run launch:verify-stripe -- --quick ${links.quick} --launch ${links.launch} --enterprise ${links.enterprise} --update-status`;
+        consistencyCommand.textContent = "npm run launch:verify-return-qa -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json";
         status.textContent = "Ready for founder approval.";
         status.className = "status good";
       }

@@ -271,6 +271,7 @@ const requiredFiles = [
   "scripts/verify-market-sources.mjs",
   "scripts/verify-domain-email-dns.mjs",
   "scripts/verify-stripe-links.mjs",
+  "scripts/verify-return-qa-consistency.mjs",
   "scripts/verify-stripe-checkout-qa.mjs",
   "scripts/run-post-click-verification.mjs",
   "scripts/rerun-github-actions-after-unlock.mjs",

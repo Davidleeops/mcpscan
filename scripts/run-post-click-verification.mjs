@@ -70,6 +70,7 @@ run("Stripe Payment Link verification", "npm", stripeArgs);
 
 if (qaFile) {
   if (!fs.existsSync(qaFile)) fail(`Stripe QA evidence file not found: ${qaFile}`);
+  run("return packet and Stripe QA consistency", "npm", ["run", "launch:verify-return-qa", "--", "--file", args.file, "--qa-file", qaFile]);
   run("Stripe checkout QA evidence verification", "npm", ["run", "launch:verify-stripe-qa", "--", "--file", qaFile, "--update-status"]);
 } else if (strict) {
   fail("Strict post-click verification requires --qa-file /path/to/stripe-checkout-qa-evidence.json.");
