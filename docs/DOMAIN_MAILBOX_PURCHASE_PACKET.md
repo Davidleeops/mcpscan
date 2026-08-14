@@ -6,7 +6,7 @@ Use this before buying a domain or mailbox. It keeps the purchase lane, spend ca
 
 ## Default Choice
 
-Use the `.com` trust lane if the founder approves spending about `$9` to `$12` for the first year domain.
+Use the `.com` trust lane if the founder approves spending about `$9` to `$12` for the first-year domain. This is still the best trust-per-dollar choice for a paid B2B security audit.
 
 ```text
 Domain: trymcpscan.com
@@ -14,13 +14,22 @@ Primary mailbox: security@trymcpscan.com
 Aliases: audit@trymcpscan.com, hello@trymcpscan.com
 ```
 
-Use the cheap validation lane only if the founder wants to keep the domain purchase near `$1` to `$3` and accepts the higher renewal.
+Use the cheap validation lane only if the founder wants to keep the domain purchase near `$1` to `$3` and accepts the weaker trust signal. Search `.site` first for the lowest first-year cost, then `.xyz` for the better renewal tradeoff, then `.online`. Avoid `.shop` as the primary MCPScan domain.
 
 ```text
 Domain: mcpscan.site
 Primary mailbox: security@mcpscan.site
 Aliases: audit@mcpscan.site, hello@mcpscan.site
 ```
+
+## Current Cart Rules
+
+- Search `trymcpscan.com` first if trust matters more than saving a few dollars.
+- Search `mcpscan.site` first if the strict cash cap is `$1` to `$3`.
+- If `.site` jumps in cart pricing, search `getmcpscan.xyz`, `mcpscan.online`, `getmcpscan.site`, then `getmcpscan.online`.
+- Confirm the renewal price before purchase. The cheap first year can renew near the low `$20s`.
+- Use promo codes only if the cart accepts them. Public promo pages showed `.site` and `.online` near `$1` on 2026-08-14, but the Spaceship cart is the final source. Official Spaceship pricing showed `.xyz` at `$1.86` and `$12.52` renewal.
+- Buy one Spacemail mailbox only, preferably the Pro one-mailbox plan, then add aliases.
 
 ## Founder Purchase Approval
 

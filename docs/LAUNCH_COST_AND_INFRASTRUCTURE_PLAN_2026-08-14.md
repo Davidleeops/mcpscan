@@ -13,6 +13,7 @@ Best buy path:
 3. If the founder wants a `$1` to `$3` validation domain, buy `mcpscan.site` if Spaceship confirms promo pricing and the renewal tradeoff is accepted.
 4. If you want the cheapest credible non-promo fallback, buy `mcpscan.us`, but only after accepting the US nexus and registration privacy tradeoffs.
 5. Avoid `.shop` and similar commerce-oriented near-dollar names as the primary security brand.
+6. Do not pay for hosting. GitHub Pages plus a domain and one mailbox is enough before first revenue.
 
 ## Why This Is The Right Cost Posture
 
@@ -33,10 +34,11 @@ That avoids paying for infrastructure before there is proof that buyers want the
 | --- | --- | ---: | ---: | --- |
 | GitHub repo | Existing public repo | $0 | $0 | Yes |
 | GitHub Pages | Existing Pages site | $0 | $0 | Yes |
-| Domain | `trymcpscan.com` | About $8.88 plus ICANN fee if standard-priced | About $9.98 plus ICANN fee | Yes |
-| Cheap validation domain | `mcpscan.site` | About $0.98 plus ICANN fee at Spaceship if promo-priced | About $21.38 plus ICANN fee | Yes, if cash cap is `$1` to `$3` |
+| Domain | `trymcpscan.com` | About $8.88 plus ICANN fee if standard-priced before any coupon | About $9.98 plus ICANN fee | Yes |
+| Cheapest validation domain | `mcpscan.site` | About $0.98 plus ICANN fee at Spaceship if promo-priced | About $21.38 plus ICANN fee | Yes, if cash cap is `$1` to `$3` |
+| Cheap renewal-friendlier domain | `getmcpscan.xyz` | About $1.86 at Spaceship before any coupon | About $12.52 | Yes, if exact `.site` is unavailable or trust tradeoff is accepted |
 | Cheap credible fallback | `mcpscan.us` | About $4.14 | About $6.48 | Only if avoiding `.com` |
-| 98-cent promo TLD | `.online` or `.site` | About $0.98 plus ICANN fee | About $21.38 | No |
+| Near-dollar promo TLD | `.online` or `.site` | About $0.98 plus ICANN fee | About $21.38 | No |
 | Ultra-cheap promo TLD | `.shop` | About $0.70 plus ICANN fee | About $31.05 | No |
 | Email | One Spacemail mailbox | About $14 to $19 for the first term, depending on current cart | Confirm in cart | Yes |
 | Stripe Payment Links | Stripe account | $0 monthly | Processing fees per payment | Yes |
@@ -114,13 +116,14 @@ Using the same GitHub account is fine. Using the same repo is the part to avoid.
 4. Buy only if it is standard-priced and not premium.
 5. If it is not available, use the backup from `docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md`.
 6. If the approved budget cap is `$1` to `$3`, search `mcpscan.site`.
-7. If the goal is the absolute lowest credible non-promo spend, search `mcpscan.us`.
-8. Before buying `.us`, confirm the founder accepts US nexus eligibility and the registration privacy tradeoff.
-9. Buy one domain only.
-10. Buy one mailbox only.
-11. Create `security@{{chosen_domain}}`.
-12. Add aliases for `hello@{{chosen_domain}}` and `audit@{{chosen_domain}}`.
-13. Do not send outbound until MX, SPF, DKIM, and DMARC pass.
+7. If `.site` is unavailable or cart pricing jumps, search `getmcpscan.xyz`, `mcpscan.online`, `getmcpscan.site`, then `getmcpscan.online`.
+8. If the goal is the absolute lowest credible non-promo spend, search `mcpscan.us`.
+9. Before buying `.us`, confirm the founder accepts US nexus eligibility and the registration privacy tradeoff.
+10. Buy one domain only.
+11. Buy one mailbox only.
+12. Create `security@{{chosen_domain}}`.
+13. Add aliases for `hello@{{chosen_domain}}` and `audit@{{chosen_domain}}`.
+14. Do not send outbound until MX, SPF, DKIM, and DMARC pass.
 
 ## After Purchase
 
@@ -163,10 +166,13 @@ Do not add paid database, SaaS hosting, analytics, CRM, or dashboard infrastruct
 
 Public pricing signals checked on 2026-08-14:
 
-- Spaceship domain pricing showed `.com` at about `$8.88` first year and `$9.98` renewal, plus ICANN fee.
-- Spaceship domain pricing showed `.online` and `.site` at about `$0.98` first year and about `$21.38` renewal.
+- Official Spaceship pricing showed `.com` at `$8.88` first year and `$9.98` renewal, plus ICANN fee, before any accepted coupon.
+- Official Spaceship pricing showed `.xyz` at `$1.86` first year and `$12.52` renewal.
+- Official Spaceship pricing showed `.online` and `.site` at `$0.98` first year and about `$21.38` renewal, plus ICANN fee.
 - Spaceship domain pricing showed `.shop` at about `$0.70` first year and about `$31.05` renewal.
 - Spaceship domain pricing showed `.us` at about `$4.14` first year and about `$6.48` renewal.
+- Spaceship promo terms say offers can change, apply to first-year registrations, and exclude premium names.
+- Spacemail public pricing shows business email from `$0.79/mo`, with Pro one-mailbox pricing around `$18.88` for 2 years after trial.
 - Public search also showed existing MCP scanner brands and domains, including `mcpscan.ai`, which makes a credible modifier such as `getmcpscan.com` safer than chasing novelty TLD cheapness.
 - Public `.us` registry and registrar guidance shows `.us` has US nexus and privacy considerations, so it is a fallback rather than the default.
 
