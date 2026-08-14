@@ -52,6 +52,7 @@ npm run writing:check
 npm run market:verify
 npm run launch:verify -- --domain {{chosen_domain}}
 npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status
+npm run outbound:send-gates -- --status-file /path/to/founder-approval-status.json --cart-file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json
 npm run outbound:verify
 ```
 
@@ -66,5 +67,6 @@ npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --upd
 - Do not send outbound if DKIM is missing.
 - Do not send outbound if DMARC is missing.
 - Do not accept payment if Stripe links have not been verified.
+- Do not send outbound if the cart proof, return packet, Stripe QA evidence, and status tracker do not match.
 - Do not ask customers to paste secrets into GitHub issues.
 - Do not claim certification, formal compliance approval, or full penetration-test coverage.

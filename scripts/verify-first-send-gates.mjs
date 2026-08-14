@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -46,6 +47,15 @@ function validStripeUrl(value) {
   return /^https:\/\/buy\.stripe\.com\/\S+$/i.test(value ?? "") && !/test_/i.test(value ?? "");
 }
 
+function runEvidenceCheck(label, command, args) {
+  const child = spawnSync(command, args, { stdio: "inherit" });
+  if (child.status !== 0) {
+    results.push(result("fail", label, `command failed: ${command} ${args.join(" ")}`));
+  } else {
+    results.push(result("pass", label));
+  }
+}
+
 const args = parseArgs(process.argv.slice(2));
 const statusFile = args["status-file"] ?? "ops/founder-approval-status.json";
 const resolvedStatusFile = path.resolve(process.cwd(), statusFile);
@@ -60,6 +70,25 @@ if (!fs.existsSync(resolvedStatusFile)) {
 }
 
 const status = JSON.parse(fs.readFileSync(resolvedStatusFile, "utf8"));
+const returnFile = args["return-file"];
+const qaFile = args["qa-file"];
+const cartFile = args["cart-file"];
+
+if (cartFile || returnFile || qaFile) {
+  if (cartFile && returnFile) {
+    runEvidenceCheck("cart proof matches return packet", "npm", ["run", "launch:verify-cart", "--", "--file", cartFile, "--return-file", returnFile]);
+  } else if (cartFile || returnFile) {
+    results.push(result("fail", "cart proof matches return packet", "requires both --cart-file and --return-file"));
+  }
+
+  if (returnFile && qaFile) {
+    runEvidenceCheck("return packet matches Stripe QA", "npm", ["run", "launch:verify-return-qa", "--", "--file", returnFile, "--qa-file", qaFile]);
+    runEvidenceCheck("Stripe checkout QA evidence", "npm", ["run", "launch:verify-stripe-qa", "--", "--file", qaFile]);
+    runEvidenceCheck("status matches return packet and Stripe QA", "npm", ["run", "launch:verify-status", "--", "--status-file", statusFile, "--file", returnFile, "--qa-file", qaFile]);
+  } else if (returnFile || qaFile) {
+    results.push(result("fail", "return packet and Stripe QA evidence", "requires both --return-file and --qa-file"));
+  }
+}
 
 results.push(validDomain(status.domain) ? result("pass", "domain", status.domain) : result("fail", "domain", "missing or invalid"));
 results.push(validEmail(status.mailbox) && status.mailbox.endsWith(`@${status.domain}`) ? result("pass", "mailbox", status.mailbox) : result("fail", "mailbox", "missing or not on approved domain"));

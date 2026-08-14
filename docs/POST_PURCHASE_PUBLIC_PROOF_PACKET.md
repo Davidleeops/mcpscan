@@ -55,6 +55,7 @@ npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-
 npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --cart-file /path/to/domain-cart-proof.json --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 npm run launch:publish-pages-fallback -- --wait true
 npm run launch:verify -- --domain {{chosen_domain}}
+npm run outbound:send-gates -- --status-file /path/to/founder-approval-status.json --cart-file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json
 npm run launch:status:live
 npm run launch:open-first-revenue
 ```
@@ -75,3 +76,4 @@ The post-purchase handoff is ready when:
 - `npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status` passes.
 - `npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status` passes after DNS propagation.
 - `npm run launch:verify -- --domain {{chosen_domain}}` has no checkout, custom-domain, or security-contact warnings after apply and publish.
+- `npm run outbound:send-gates -- --status-file /path/to/founder-approval-status.json --cart-file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json` passes before any first-send batch.
