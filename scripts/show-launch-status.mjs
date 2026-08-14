@@ -232,6 +232,7 @@ const gates = [
   gate("Security contact", securityContact, securityContact ? "custom contact appears configured" : "placeholder contact remains"),
   gate("DNS verifier", exists("scripts/verify-domain-email-dns.mjs"), "npm run launch:verify-dns available after domain purchase"),
   gate("Static bundle fallback", exists("scripts/build-static-launch-bundle.mjs") && exists("scripts/open-static-launch-bundle.mjs") && exists("ops/static-launch-bundle-console.html"), "static host fallback and upload-folder launcher are available"),
+  gate("Pages fallback publisher", exists("scripts/publish-pages-fallback.mjs"), "npm run launch:publish-pages-fallback publishes landing to gh-pages and triggers a Pages build"),
   gate("Delivery workspace", exists("scripts/create-customer-workspace.mjs"), "npm run delivery:workspace available"),
   gate("Delivery work order", exists("scripts/create-first-paid-audit-work-order.mjs"), "npm run delivery:work-order available after first payment"),
   gate("Payment evidence builder", exists("scripts/create-payment-evidence.mjs") && exists("scripts/verify-payment-evidence.mjs") && exists("sales/payment-confirmation-evidence.template.json"), "npm run delivery:evidence creates and verifies paid status without storing Stripe secrets"),

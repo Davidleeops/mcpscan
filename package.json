@@ -34,6 +34,7 @@
     "launch:rehearsal": "node scripts/run-launch-rehearsal.mjs",
     "launch:verify": "node scripts/verify-launch-readiness.mjs",
     "launch:open-public-review": "node scripts/open-public-launch-review.mjs",
+    "launch:publish-pages-fallback": "node scripts/publish-pages-fallback.mjs",
     "launch:stage-public-post": "node scripts/stage-approved-public-launch-post.mjs",
     "outbound:stage-approved": "node scripts/stage-approved-outbound.mjs",
     "outbound:open-first-10": "node scripts/open-first-10-outbound-approval.mjs",

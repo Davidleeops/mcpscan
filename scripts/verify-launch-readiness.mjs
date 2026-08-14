@@ -274,6 +274,7 @@ const requiredFiles = [
   "scripts/verify-return-qa-consistency.mjs",
   "scripts/verify-stripe-checkout-qa.mjs",
   "scripts/run-post-click-verification.mjs",
+  "scripts/publish-pages-fallback.mjs",
   "scripts/rerun-github-actions-after-unlock.mjs",
   "scripts/run-launch-rehearsal.mjs",
   "scripts/open-public-launch-review.mjs",

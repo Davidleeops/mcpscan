@@ -67,6 +67,7 @@ Static landing fallback:
 ```text
 npm run landing:sample-report
 npm run launch:bundle
+npm run launch:publish-pages-fallback -- --wait true
 ```
 
 The fallback bundle includes `FALLBACK_UPLOAD_PACKET.md` with freshness proof and the upload stop conditions.

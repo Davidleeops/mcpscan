@@ -20,6 +20,12 @@ After the founder has approved the exact return packet and the Stripe QA evidenc
 npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 ```
 
+If GitHub Actions remains blocked, publish the verified landing folder through the branch fallback:
+
+```text
+npm run launch:publish-pages-fallback -- --wait true
+```
+
 If Spacemail gives you a DKIM selector:
 
 ```text

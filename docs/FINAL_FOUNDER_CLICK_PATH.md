@@ -55,6 +55,7 @@ If Pages stays stale after a launch update, build the static launch bundle and u
 ```text
 npm run landing:sample-report
 npm run launch:bundle
+npm run launch:publish-pages-fallback -- --wait true
 ```
 
 After DNS records exist, verify the custom domain and mailbox records:

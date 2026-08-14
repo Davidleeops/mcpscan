@@ -14,6 +14,14 @@ To build the bundle and open the upload folder, fallback packet, and manifest:
 npm run launch:open-bundle
 ```
 
+To publish the current `landing/` folder directly to the live GitHub Pages fallback branch:
+
+```text
+npm run launch:publish-pages-fallback -- --wait true
+```
+
+This publishes to `gh-pages`, makes sure GitHub Pages is set to legacy branch publishing from `gh-pages` at `/`, triggers a Pages build, and optionally waits for the build to complete.
+
 The generated folder is:
 
 ```text
