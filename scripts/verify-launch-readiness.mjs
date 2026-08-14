@@ -160,6 +160,7 @@ const requiredFiles = [
   "ops/founder-click-handoff.html",
   "ops/founder-status-console.html",
   "ops/final-founder-click-console.html",
+  "ops/founder-return-packet.sample.txt",
   "ops/domain-mailbox-purchase-packet.html",
   "ops/cheap-launch-packet-console.html",
   "ops/domain-email-dns-console.html",

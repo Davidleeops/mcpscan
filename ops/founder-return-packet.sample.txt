@@ -1,0 +1,16 @@
+I approve applying these exact MCPScan launch values:
+
+Domain: mcpattest.dev
+Primary mailbox: security@mcpattest.dev
+Audit alias: audit@mcpattest.dev
+Hello alias: hello@mcpattest.dev
+
+Stripe Payment Links:
+Quick Audit: https://buy.stripe.com/mcpscanQuickAuditSample
+Launch Audit: https://buy.stripe.com/mcpscanLaunchAuditSample
+Enterprise Readiness: https://buy.stripe.com/mcpscanEnterpriseReadinessSample
+
+Approved action:
+Apply these links to the public landing page, update the public contact email, add the custom domain file, update security/contact references, and run verification. Commit and push require a separate explicit approval after verification.
+
+I also approve keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval.

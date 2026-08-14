@@ -88,6 +88,7 @@ function writeApprovalStatus(values) {
 
 const args = parseArgs(process.argv.slice(2));
 const input = readInput(args.file);
+const dryRun = args["dry-run"] === "true";
 
 if (!input.includes("I approve applying these exact MCPScan launch values")) {
   throw new Error("Founder approval phrase is missing.");
@@ -122,6 +123,16 @@ for (const [label, value] of Object.entries({ email, audit, hello })) {
   if (!value.toLowerCase().endsWith(`@${domain}`)) {
     throw new Error(`${label} must use the approved domain: ${domain}`);
   }
+}
+
+if (dryRun) {
+  console.log("Founder return packet dry run passed.");
+  console.log(`Domain: ${domain}`);
+  console.log(`Security mailbox: ${email}`);
+  console.log(`Audit alias: ${audit}`);
+  console.log(`Hello alias: ${hello}`);
+  console.log("Stripe Payment Link values parsed and validated.");
+  process.exit(0);
 }
 
 const child = spawnSync(

@@ -35,10 +35,17 @@ npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt -
 ## Diagnostic Runs Only
 
 ```text
+npm run launch:verify-return-packet
 npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt
 ```
 
-The diagnostic command verifies parser and link format only. It does not apply landing links and does not prove checkout QA.
+The sample diagnostic command verifies parser and link format with `ops/founder-return-packet.sample.txt`. It does not apply landing links and does not prove checkout QA.
+
+Use this parser-only check for a real approved return packet before applying:
+
+```text
+npm run launch:apply-return-packet -- --file /path/to/approved-return-packet.txt --dry-run true
+```
 
 ## What It Runs
 

@@ -60,6 +60,12 @@ function replaceAll(content, replacements) {
   return next;
 }
 
+function replaceAnchorHrefByText(content, text, href) {
+  const escapedText = text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pattern = new RegExp(`(<a\\b[^>]*\\bhref=")[^"]+("[^>]*>\\s*${escapedText}\\s*<\\/a>)`, "g");
+  return content.replace(pattern, `$1${href}$2`);
+}
+
 function publicBaseUrl(domain) {
   return domain ? `https://${domain}` : "https://davidleeops.github.io/mcpscan";
 }
@@ -78,12 +84,17 @@ const baseUrl = publicBaseUrl(domain);
 const mailto = email ? `mailto:${email}?subject=MCPScan%20audit%20scope` : "https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20audit%20request";
 
 const landingFile = "landing/index.html";
-const landing = replaceAll(read(landingFile), [
+let landing = replaceAll(read(landingFile), [
   ["https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Quick%20Audit%20request", quick],
   ["https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Launch%20Audit%20request", launch],
   ["https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Enterprise%20Audit%20request", enterprise],
   ["https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20audit%20request", mailto]
 ]);
+landing = replaceAnchorHrefByText(landing, "Purchase Quick Audit", quick);
+landing = replaceAnchorHrefByText(landing, "Purchase Launch Audit", launch);
+landing = replaceAnchorHrefByText(landing, "Purchase Enterprise Audit", enterprise);
+landing = replaceAnchorHrefByText(landing, "Buy an audit", launch);
+landing = replaceAnchorHrefByText(landing, "Ask about scope", mailto);
 write(landingFile, landing);
 
 const urlReplacements = [
