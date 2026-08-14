@@ -114,6 +114,7 @@ const gates = [
   gate("Outbound staging", exists("scripts/stage-approved-outbound.mjs") && exists("ops/outbound-recipient-approval-builder.html"), "approved messages can be staged outside the public repo"),
   gate("Outbound composer", exists("scripts/compose-final-outbound.mjs"), "npm run outbound:compose-final creates exact approval packets"),
   gate("Contact-route composer", exists("scripts/compose-contact-route-outbound.mjs"), "npm run outbound:compose-contact-routes creates first-10 route packets"),
+  gate("Route approval packet", exists("sales/first-10-route-approval-packet-2026-08-14.md"), "first-10 route approval packet is ready for same-turn review"),
   gate("GTM claim verifier", exists("scripts/verify-gtm-claims.mjs"), "npm run gtm:verify checks overclaim risk"),
   gate("Reply-to-close packet", exists("sales/reply-to-close-packet.md"), "approved reply templates exist for inbound prospect responses"),
   gate("Daily revenue command", exists("sales/daily-revenue-command.md"), "one-screen revenue operating surface exists"),

@@ -32,6 +32,18 @@ sales/first-10-contact-routes-2026-08-14.csv
 
 Each route must include a public source URL and confidence level.
 
+Build the founder approval packet:
+
+```text
+npm run outbound:route-packet -- --sender David
+```
+
+Output:
+
+```text
+sales/first-10-route-approval-packet-2026-08-14.md
+```
+
 Generated drafts are written to:
 
 ```text

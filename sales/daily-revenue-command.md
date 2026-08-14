@@ -69,6 +69,12 @@ To generate first-10 packets for official contact routes instead of named people
 npm run outbound:compose-contact-routes -- --routes sales/first-10-contact-routes-2026-08-14.csv --sender "{{sender_name}}"
 ```
 
+To build the repo-tracked founder approval packet:
+
+```text
+npm run outbound:route-packet -- --sender "{{sender_name}}"
+```
+
 After first payment:
 
 ```text

@@ -12,8 +12,10 @@ const requiredOutboundFiles = [
   "sales/reply-to-close-packet.md",
   "sales/daily-revenue-command.md",
   "sales/first-10-contact-routes-2026-08-14.csv",
+  "sales/first-10-route-approval-packet-2026-08-14.md",
   "scripts/compose-final-outbound.mjs",
   "scripts/compose-contact-route-outbound.mjs",
+  "scripts/build-first-10-route-approval-packet.mjs",
   "scripts/stage-approved-outbound.mjs"
 ];
 const strict = process.argv.includes("--strict");
@@ -162,6 +164,17 @@ for (const [index, row] of routes.entries()) {
   if (!row.confidence) results.push(result("warn", label, "missing confidence"));
   if (row.contact_route_url && row.contact_route_url.includes("data-broker")) {
     results.push(result("fail", label, "data broker route is not allowed"));
+  }
+}
+
+if (exists("sales/first-10-route-approval-packet-2026-08-14.md")) {
+  const packet = fs.readFileSync(path.join(root, "sales/first-10-route-approval-packet-2026-08-14.md"), "utf8");
+  const approvalCount = (packet.match(/I approve staging this exact MCPScan outbound message/g) ?? []).length;
+  const noAutoCount = (packet.match(/Do not send automatically/g) ?? []).length;
+  results.push(approvalCount === 10 ? result("pass", "route approval packet approvals", "10 approval blocks") : result("fail", "route approval packet approvals", `${approvalCount} approval blocks`));
+  results.push(noAutoCount === 10 ? result("pass", "route approval packet no-auto-send", "10 no-auto-send statements") : result("fail", "route approval packet no-auto-send", `${noAutoCount} no-auto-send statements`));
+  for (const account of pipelineAccounts) {
+    results.push(packet.includes(`## ${account}`) ? result("pass", `route packet account: ${account}`) : result("fail", `route packet account: ${account}`, "missing"));
   }
 }
 
