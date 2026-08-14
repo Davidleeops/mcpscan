@@ -39,6 +39,7 @@ npm run launch:status:live
 npm run market:verify
 npm run outbound:verify
 npm run outbound:open-first-10
+npm run outbound:open-send-gates
 npm run launch:verify
 npm run revenue:snapshot
 npm run gtm:verify
@@ -47,6 +48,7 @@ npm run gtm:verify
 Before any manual send:
 
 ```text
+npm run outbound:open-send-gates
 npm run outbound:send-gates
 ```
 
