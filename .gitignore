@@ -10,3 +10,4 @@ packages/*/*.tsbuildinfo
 coverage/
 .turbo/
 sales/generated-outbound/
+ops/founder-approval-status.json

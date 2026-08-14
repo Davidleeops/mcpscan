@@ -14,7 +14,7 @@ After the external account clicks, use `ops/founder-return-packet.html` to paste
 
 After that message is approved, Codex can run `npm run launch:apply-return-packet -- --file /path/to/approved-return-packet.txt`.
 
-Optional status tracker: copy `ops/founder-approval-status.template.json` to `ops/founder-approval-status.json` after the founder clicks and fill only public-safe values. Do not add passwords, API keys, mailbox credentials, Stripe secret keys, or customer data.
+Optional status tracker: copy `ops/founder-approval-status.template.json` to `ops/founder-approval-status.json` after the founder clicks and fill only public-safe values. The filled tracker is ignored by git by default. Do not add passwords, API keys, mailbox credentials, Stripe secret keys, or customer data.
 
 ## Rule
 
