@@ -173,16 +173,17 @@
           <p>Use this after buying the domain and mailbox. It gives you the exact GitHub Pages and Spacemail records to copy into Spaceship DNS.</p>
         </div>
         <div class="actions">
-          <a class="button primary" href="https://www.spaceship.com/domain-search/?query=getmcpscan.com" target="_blank" rel="noreferrer">Search getmcpscan.com</a>
-          <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscan.us" target="_blank" rel="noreferrer">Search cheap fallback</a>
-          <a class="button" href="../docs/DOMAIN_SHORTLIST.md">Domain shortlist</a>
+          <a class="button primary" href="https://www.spaceship.com/domain-search/?query=mcpscan.site" target="_blank" rel="noreferrer">Search mcpscan.site</a>
+          <a class="button" href="https://www.spaceship.com/domain-search/?query=getmcpscan.com" target="_blank" rel="noreferrer">Search getmcpscan.com</a>
+          <a class="button" href="https://www.spaceship.com/domain-search/?query=getmcpscan.site" target="_blank" rel="noreferrer">Search backup .site</a>
+          <a class="button" href="../docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md">Domain shortlist</a>
           <a class="button" href="https://www.spaceship.com/business-email/" target="_blank" rel="noreferrer">Open Spacemail</a>
         </div>
       </header>
 
       <section class="decision">
         <h2>Launch Choice</h2>
-          <p>Use <strong>getmcpscan.com</strong> if it is available at standard pricing. Use <strong>mcpscan.us</strong> as the cheapest credible fallback only if the founder accepts the `.us` nexus and privacy tradeoffs. Create one mailbox first: <strong>audit@the chosen domain</strong>. Add aliases for <strong>security@</strong> and <strong>hello@</strong>.</p>
+          <p>Use <strong>mcpscan.site</strong> if the founder wants the $1 to $3 launch lane and Spaceship confirms promo pricing. Use <strong>getmcpscan.com</strong> if the founder wants the stronger trust lane. Create one mailbox first: <strong>audit@the chosen domain</strong>. Add aliases for <strong>security@</strong> and <strong>hello@</strong>.</p>
         <div class="actions"><a class="button" href="../docs/DOMAIN_AND_MAILBOX_DECISION.md">Open domain decision</a><a class="button" href="../docs/PUBLIC_TRUST_CHECKLIST.md">Trust checklist</a></div>
       </section>
 
@@ -190,16 +191,16 @@
         <h2>Current Domain Price Call</h2>
         <table>
           <tr><th>Choice</th><th>Expected first year</th><th>Renewal risk</th><th>Use when</th></tr>
+          <tr><td><code>mcpscan.site</code></td><td>About $1 to $3 when promo-priced</td><td>High</td><td>Best cheap launch lane if renewal tradeoff is accepted.</td></tr>
           <tr><td><code>getmcpscan.com</code></td><td>About $9 to $12</td><td>Low</td><td>Best trust choice for paid B2B security outreach.</td></tr>
-          <tr><td><code>mcpscan.us</code></td><td>Low single digits to about $8</td><td>Low to moderate</td><td>Best cheap fallback if you accept `.us` eligibility and privacy tradeoffs.</td></tr>
-          <tr><td><code>.online</code> or <code>.site</code></td><td>About $1 to $2 promo pricing</td><td>High</td><td>Temporary test only. Avoid as the main paid audit brand.</td></tr>
+          <tr><td><code>getmcpscan.site</code> or <code>mcpscan.online</code></td><td>About $1 to $3 when promo-priced</td><td>High</td><td>Backup cheap launch lane if mcpscan.site is unavailable.</td></tr>
         </table>
       </section>
 
       <div class="grid">
         <article>
           <h2>GitHub Pages DNS</h2>
-          <p>For the apex domain, add these A records in Spaceship DNS. Replace the examples with the domain you bought, such as <code>getmcpscan.com</code> or <code>mcpscan.us</code>.</p>
+          <p>For the apex domain, add these A records in Spaceship DNS. Replace the examples with the domain you bought, such as <code>mcpscan.site</code> or <code>getmcpscan.com</code>.</p>
           <table>
             <tr><th>Type</th><th>Host</th><th>Value</th></tr>
             <tr><td>A</td><td>@</td><td><code>185.199.108.153</code></td></tr>
@@ -268,16 +269,16 @@ TXT _dmarc "v=DMARC1; p=none; rua=mailto:audit@the chosen domain"</pre>
         <h2>Verification Commands</h2>
         <p>Use these after DNS has had time to propagate. Add the DKIM selector shown by Spacemail when available.</p>
         <button class="copy" data-copy-target="verify-commands">Copy verification commands</button>
-        <pre id="verify-commands">npm run launch:verify-dns -- --domain getmcpscan.com --update-status --dkim-selector DKIM_SELECTOR
-dig +short getmcpscan.com A
-dig +short getmcpscan.com AAAA
-dig +short www.getmcpscan.com CNAME
-dig +short getmcpscan.com MX
-dig +short getmcpscan.com TXT
-dig +short DKIM_SELECTOR._domainkey.getmcpscan.com TXT
-dig +short _dmarc.getmcpscan.com TXT
-curl -L -I https://getmcpscan.com/
-curl -L -I https://getmcpscan.com/secure-intake.html</pre>
+        <pre id="verify-commands">npm run launch:verify-dns -- --domain CHOSEN_DOMAIN --update-status --dkim-selector DKIM_SELECTOR
+dig +short CHOSEN_DOMAIN A
+dig +short CHOSEN_DOMAIN AAAA
+dig +short www.CHOSEN_DOMAIN CNAME
+dig +short CHOSEN_DOMAIN MX
+dig +short CHOSEN_DOMAIN TXT
+dig +short DKIM_SELECTOR._domainkey.CHOSEN_DOMAIN TXT
+dig +short _dmarc.CHOSEN_DOMAIN TXT
+curl -L -I https://CHOSEN_DOMAIN/
+curl -L -I https://CHOSEN_DOMAIN/secure-intake.html</pre>
       </section>
     </main>
 

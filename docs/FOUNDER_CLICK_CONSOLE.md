@@ -88,7 +88,7 @@ Avoid using `.online` as the primary brand domain unless minimizing first-year c
 ## Remaining Founder Clicks
 
 1. Buy the domain in Spaceship, then use `ops/domain-email-dns-console.html` for GitHub Pages and Spacemail DNS records.
-2. Create `audit@getmcpscan.com` in Spacemail Pro, add `security@` and `hello@` aliases, and copy the DKIM record Spacemail displays.
+2. Create `audit@{{chosen_domain}}` in Spacemail Pro, add `security@` and `hello@` aliases, and copy the DKIM record Spacemail displays.
 3. Create the three Stripe Payment Links using `ops/stripe-click-setup.html`.
 4. Approve the generated command that applies those links to the landing page.
 5. Approve exact first outbound messages in `ops/outbound-approval-console.html` before anything is sent.

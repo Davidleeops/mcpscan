@@ -4,8 +4,8 @@ Fill this only after the owner has approved the public values. Do not put API
 keys, passwords, npm tokens, Stripe secret keys, or mailbox passwords here.
 
 ```text
-DOMAIN=getmcpscan.com
-EMAIL=audit@getmcpscan.com
+DOMAIN=mcpscan.site
+EMAIL=audit@mcpscan.site
 STRIPE_QUICK=https://buy.stripe.com/...
 STRIPE_LAUNCH=https://buy.stripe.com/...
 STRIPE_ENTERPRISE=https://buy.stripe.com/...

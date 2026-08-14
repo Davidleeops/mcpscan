@@ -39,7 +39,7 @@ function optionalDomain(value) {
 function optionalEmail(value) {
   if (!value) return undefined;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-    throw new Error("--email must be an email address like audit@getmcpscan.com.");
+    throw new Error("--email must be an email address like audit@mcpscan.site.");
   }
   return value;
 }

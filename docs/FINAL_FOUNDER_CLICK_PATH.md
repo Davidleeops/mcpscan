@@ -27,7 +27,7 @@ First revenue does not require npm publishing. Sell and deliver the `$1,500` MCP
 | Order | Gate | Founder Action | Console | Done When |
 | --- | --- | --- | --- | --- |
 | 0 | GitHub billing | Clear the account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | CI and Pages jobs start and pass |
-| 1 | Domain | Buy `getmcpscan.com` if standard-priced, or `mcpscan.us` as the cheapest credible fallback after accepting `.us` tradeoffs | `ops/domain-email-dns-console.html` | Domain exists in registrar account |
+| 1 | Domain | Buy `mcpscan.site` for the `$1` to `$3` launch lane, or `getmcpscan.com` for the stronger trust lane | `ops/domain-email-dns-console.html` | Domain exists in registrar account |
 | 2 | Mailbox | Create `audit@{{chosen_domain}}` with `security@` and `hello@` aliases | `ops/domain-email-dns-console.html` | MX, SPF, DKIM, and DMARC pass |
 | 3 | Stripe | Create the three Payment Links and verify their format | `ops/stripe-click-setup.html` | Quick, Launch, and Enterprise checkout links exist and `npm run launch:verify-stripe` passes |
 | 4 | Apply links | Paste real links into the command builder | `ops/approved-links-command-builder.html` | Landing page no longer uses placeholder checkout links |
@@ -121,7 +121,7 @@ Best buyer: a team enabling Copilot, Claude Code, Cursor, VS Code agent mode, Sl
 
 Do not wait for npm to sell this. The paid audit deliverable, report template, buyer summary, delivery dry run, outbound packet, and post-payment handoff are already the revenue path.
 
-Spend ceiling before first revenue: about `$19` to `$31` for domain plus one mailbox. Do not add paid dashboard infrastructure before the first paid audit.
+Spend ceiling before first revenue: about `$19` to `$31` for domain plus one mailbox if using the cheap launch lane, or about `$27` to `$40` if using the `.com` trust lane. Do not add paid dashboard infrastructure before the first paid audit.
 
 ## Stop Conditions
 

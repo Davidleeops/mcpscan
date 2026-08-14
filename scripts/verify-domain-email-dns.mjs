@@ -89,7 +89,7 @@ const updateStatus = args["update-status"] === "true";
 const dkimSelector = args["dkim-selector"];
 
 if (!validDomain(domain)) {
-  console.error("Usage: npm run launch:verify-dns -- --domain getmcpscan.com");
+  console.error("Usage: npm run launch:verify-dns -- --domain CHOSEN_DOMAIN");
   process.exit(1);
 }
 

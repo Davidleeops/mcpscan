@@ -60,5 +60,5 @@ npm run launch:bundle
 Post-domain DNS proof:
 
 ```text
-npm run launch:verify-dns -- --domain getmcpscan.com --update-status
+npm run launch:verify-dns -- --domain CHOSEN_DOMAIN --update-status
 ```

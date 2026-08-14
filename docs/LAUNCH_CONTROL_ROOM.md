@@ -57,13 +57,14 @@ can come after demand is proven.
 | Repo | Current GitHub repo | $0 | Public and already deployed |
 | npm | `mcpscan` + `@mcpscan/shared` | $0 | Needs owner npm auth/OTP |
 
-Do not buy `.online`, `.site`, or `.shop` as the canonical brand. They are cheap
-first year but weaker for a security audit offer and can renew higher than
-`.com` or `.us`.
+Use `mcpscan.site` for the cheap launch lane only if the first-year cart is
+about `$1` to `$3` and the renewal tradeoff is accepted. Use `getmcpscan.com`
+when buyer trust is worth the few extra dollars. Avoid `.shop` as the canonical
+security brand.
 
 ## Approval Buttons To Click
 
-1. [Issue #2](https://github.com/Davidleeops/mcpscan/issues/2): buy `getmcpscan.com` if standard-priced and create `audit@getmcpscan.com`.
+1. [Issue #2](https://github.com/Davidleeops/mcpscan/issues/2): buy `mcpscan.site` for the cheap launch lane or `getmcpscan.com` for the trust lane, then create `audit@{{chosen_domain}}`.
 2. [Issue #3](https://github.com/Davidleeops/mcpscan/issues/3): create Stripe one-time Payment Links for:
    - MCP Quick Audit: $750
    - MCP Launch Audit: $1,500
@@ -88,8 +89,8 @@ After domain/email/Stripe links exist, Codex can run:
 
 ```bash
 npm run launch:apply-links -- \
-  --domain getmcpscan.com \
-  --email audit@getmcpscan.com \
+  --domain CHOSEN_DOMAIN \
+  --email audit@CHOSEN_DOMAIN \
   --quick https://buy.stripe.com/quick-link \
   --launch https://buy.stripe.com/launch-link \
   --enterprise https://buy.stripe.com/enterprise-link

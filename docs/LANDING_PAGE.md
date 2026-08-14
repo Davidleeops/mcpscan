@@ -35,6 +35,7 @@ The fastest free production URL is GitHub Pages:
 
 Good custom-domain options once purchased:
 
+- `https://mcpscan.site`
 - `https://getmcpscan.com`
 - `https://trymcpscan.com`
 - `https://mcpscanlab.dev`
@@ -93,8 +94,8 @@ After domain/email/Stripe approval, update the static site with:
 
 ```bash
 npm run launch:apply-links -- \
-  --domain getmcpscan.com \
-  --email audit@getmcpscan.com \
+  --domain CHOSEN_DOMAIN \
+  --email audit@CHOSEN_DOMAIN \
   --quick https://buy.stripe.com/quick-link \
   --launch https://buy.stripe.com/launch-link \
   --enterprise https://buy.stripe.com/enterprise-link

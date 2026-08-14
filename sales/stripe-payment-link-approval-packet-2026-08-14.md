@@ -86,14 +86,14 @@ npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYME
 Then use:
 
 ```text
-npm run launch:apply-links -- --domain getmcpscan.com --email audit@getmcpscan.com --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK
+npm run launch:apply-links -- --domain CHOSEN_DOMAIN --email audit@CHOSEN_DOMAIN --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK
 ```
 
 Then verify:
 
 ```text
 npm run writing:check
-npm run launch:verify -- --domain getmcpscan.com
+npm run launch:verify -- --domain CHOSEN_DOMAIN
 ```
 
 ## Founder Approval Prompt
