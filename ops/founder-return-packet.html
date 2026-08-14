@@ -233,17 +233,20 @@ I also approve keeping outbound paused until I approve exact recipients and exac
    npm run launch:post-click-bundle -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --mail-provider ${values.mailProvider}
 4. Apply:
    npm run launch:post-click-verify -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --apply true --mail-provider ${values.mailProvider}
-5. Publish:
+5. Verify first-revenue live gate:
+   npm run launch:verify-live -- --status-file ops/founder-approval-status.json --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json"
+6. Publish:
    npm run launch:publish-pages-fallback -- --wait true
-6. Verify live:
+7. Verify live:
    npm run launch:full-proof -- --live true --status-file ops/founder-approval-status.json --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --mail-provider ${values.mailProvider}
    npm run launch:status:live
-7. Open first-revenue runway:
+8. Open first-revenue runway:
    npm run launch:open-first-revenue`;
         applyCommand.textContent = `npm run launch:prepare-founder-clicks -- --domain ${values.domain} --mail-provider ${values.mailProvider}
 npm run launch:open-return-review
 npm run launch:post-click-bundle -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --mail-provider ${values.mailProvider}
 npm run launch:post-click-verify -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --apply true --mail-provider ${values.mailProvider}
+npm run launch:verify-live -- --status-file ops/founder-approval-status.json --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json"
 npm run launch:publish-pages-fallback -- --wait true
 npm run launch:full-proof -- --live true --status-file ops/founder-approval-status.json --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --mail-provider ${values.mailProvider}
 npm run launch:open-first-revenue`;
