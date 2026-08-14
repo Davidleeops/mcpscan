@@ -161,9 +161,9 @@
 
         <section>
           <h2>Payment Evidence Gate</h2>
-          <p>Run this before the one-pass handoff. The evidence file must stay outside the public repo.</p>
+          <p>Run this before the one-pass handoff. The evidence file is created and verified outside the public repo.</p>
           <button class="copy" data-copy-target="payment-evidence-command">Copy command</button>
-          <pre id="payment-evidence-command">npm run delivery:verify-payment -- --file /path/to/payment-confirmation-evidence.json</pre>
+          <pre id="payment-evidence-command">npm run delivery:evidence -- --customer "{{customer_company}}" --package "{{package_name}}" --payment "{{stripe_payment_reference_or_receipt_url}}" --contact "{{technical_contact_email_or_secure_url}}" --safe-intake "/path/outside/public/repo/intake" --operator "{{initials}}"</pre>
         </section>
 
         <section>

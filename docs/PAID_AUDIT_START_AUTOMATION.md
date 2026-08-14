@@ -10,6 +10,14 @@ The command refuses to overwrite existing same-day handoff files for the same cu
 
 ## Command
 
+First create and verify the public-safe payment evidence file outside the repo:
+
+```text
+npm run delivery:evidence -- --customer "{{customer_company}}" --package "{{package_name}}" --payment "{{stripe_payment_reference_or_receipt_url}}" --contact "{{technical_contact_email_or_secure_url}}" --safe-intake "/path/outside/public/repo/intake" --operator "{{initials}}"
+```
+
+Then run the paid handoff after the exact packet is approved:
+
 ```text
 npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
 ```
@@ -46,5 +54,6 @@ MCPScan Paid Audits/customer-comms/
 ## Stop Conditions
 
 - Do not start delivery without confirmed payment.
+- Do not create the private workspace until payment evidence passes verification.
 - Do not start the audit clock until intake materials are complete.
 - Do not place customer configs, evidence, reports, credentials, or private messages in the public repo.

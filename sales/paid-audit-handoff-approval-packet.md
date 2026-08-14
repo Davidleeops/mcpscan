@@ -6,13 +6,13 @@ Status: draft only. Use after Stripe confirms payment and before any customer ma
 
 Do not create a live customer handoff or start delivery until payment is confirmed and this exact packet is approved.
 
-Before running the handoff, verify public-safe payment evidence:
+Before running the handoff, create and verify public-safe payment evidence:
 
 ```text
-npm run delivery:verify-payment -- --file /path/to/payment-confirmation-evidence.json
+npm run delivery:evidence -- --customer "{{customer_company}}" --package "{{package_name}}" --payment "{{stripe_payment_reference_or_receipt_url}}" --contact "{{technical_contact_email_or_secure_url}}" --safe-intake "/path/outside/public/repo/intake" --operator "{{initials}}"
 ```
 
-Use `sales/payment-confirmation-evidence.template.json` as the shape. Save the filled evidence outside the public repo.
+You can also use `sales/payment-confirmation-evidence.template.json` as the shape. Save the filled evidence outside the public repo.
 
 ## Exact Approval Text
 

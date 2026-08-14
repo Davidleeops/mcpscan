@@ -257,6 +257,7 @@ const requiredFiles = [
   "scripts/open-paid-audit-handoff.mjs",
   "scripts/run-delivery-dry-run.mjs",
   "scripts/verify-delivery-readiness.mjs",
+  "scripts/create-payment-evidence.mjs",
   "scripts/verify-payment-evidence.mjs",
   "scripts/create-first-paid-audit-work-order.mjs",
   "scripts/create-paid-audit-handoff.mjs",

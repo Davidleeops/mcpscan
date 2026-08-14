@@ -69,31 +69,23 @@ fs.writeFileSync(
   "utf8"
 );
 
-fs.writeFileSync(
-  paymentEvidence,
-  `${JSON.stringify({
-    customerCompany: customer,
-    packageName,
-    amountUsd: 1500,
-    paymentProvider: "Stripe",
-    paymentReference: "pi_dry_run_12345",
-    paidAt: date,
-    technicalContact: "buyer@example.com",
-    safeIntakePath: path.join(privateOutput, "secure-intake"),
-    paymentConfirmed: true,
-    approvedForPrivateWorkspace: true,
-    noStripeSecrets: true,
-    noProductionSecrets: true,
-    noCustomerData: true,
-    noPublicRepoStorage: true,
-    operatorInitials: "DR"
-  }, null, 2)}\n`,
-  "utf8"
-);
-
 run("node", [
-  "scripts/verify-payment-evidence.mjs",
-  "--file",
+  "scripts/create-payment-evidence.mjs",
+  "--customer",
+  customer,
+  "--package",
+  packageName,
+  "--payment",
+  "pi_dry_run_12345",
+  "--contact",
+  "buyer@example.com",
+  "--safe-intake",
+  path.join(privateOutput, "secure-intake"),
+  "--operator",
+  "DR",
+  "--date",
+  date,
+  "--output",
   paymentEvidence
 ]);
 

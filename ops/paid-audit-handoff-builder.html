@@ -71,13 +71,18 @@
             </label>
             <label class="wide">Technical contact<input id="contact" placeholder="buyer@example.com or https://secure-intake.example/path" autocomplete="off"></label>
             <label class="wide">Payment reference<input id="payment" placeholder="pi_..., cs_..., receipt URL, invoice URL, or manual_approved_reference" autocomplete="off"></label>
+            <label>Amount USD<input id="amount" inputmode="decimal" placeholder="1500" autocomplete="off"></label>
+            <label>Operator initials<input id="operator" placeholder="DL" autocomplete="off"></label>
+            <label class="wide">Safe intake path<input id="safeIntake" placeholder="https://secure-intake.example/path or /private/customer/intake" autocomplete="off"></label>
             <label class="wide">Payment evidence JSON<input id="evidence" placeholder="/path/outside/public/repo/payment-confirmation-evidence.json" autocomplete="off"></label>
             <label>Date<input id="date" autocomplete="off"></label>
             <label>Optional output root<input id="root" placeholder="/Users/you/MCPScan Paid Audits" autocomplete="off"></label>
           </div>
           <div class="actions">
             <button id="build" class="primary" type="button">Build handoff</button>
+            <button id="copyEvidence" type="button">Copy evidence</button>
             <button id="copyApproval" type="button">Copy approval</button>
+            <button id="copyCreateEvidence" type="button">Copy create evidence</button>
             <button id="copyVerify" type="button">Copy verify</button>
             <button id="copyCommand" type="button">Copy command</button>
           </div>
@@ -95,6 +100,16 @@
           </ul>
         </section>
       </div>
+
+      <section class="wide ready">
+        <h2>Payment Evidence JSON</h2>
+        <pre id="evidenceJson">Fill the fields, then build the approval packet.</pre>
+      </section>
+
+      <section class="wide">
+        <h2>Create Evidence Command</h2>
+        <pre id="createEvidence">Fill the fields, then build the approval packet.</pre>
+      </section>
 
       <section class="wide ready">
         <h2>Approval Message</h2>
@@ -117,10 +132,15 @@
         packageName: document.getElementById("packageName"),
         contact: document.getElementById("contact"),
         payment: document.getElementById("payment"),
+        amount: document.getElementById("amount"),
+        operator: document.getElementById("operator"),
+        safeIntake: document.getElementById("safeIntake"),
         evidence: document.getElementById("evidence"),
         date: document.getElementById("date"),
         root: document.getElementById("root")
       };
+      const evidenceJson = document.getElementById("evidenceJson");
+      const createEvidence = document.getElementById("createEvidence");
       const approval = document.getElementById("approval");
       const verify = document.getElementById("verify");
       const command = document.getElementById("command");
@@ -146,6 +166,12 @@
         return '"' + value.replaceAll('"', '\\"') + '"';
       }
 
+      function defaultAmount(packageName) {
+        if (/enterprise/i.test(packageName)) return "3500";
+        if (/quick/i.test(packageName)) return "750";
+        return "1500";
+      }
+
       function build() {
         const values = Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input.value.trim()]));
         const errors = [];
@@ -153,6 +179,9 @@
         if (!/quick|launch|enterprise/i.test(values.packageName)) errors.push("Package must be Quick, Launch, or Enterprise");
         if (!validContact(values.contact)) errors.push("Technical contact must be an email address or HTTPS URL");
         if (!validPayment(values.payment)) errors.push("Payment reference must look like a Stripe reference, receipt URL, invoice URL, checkout URL, or manual_ reference");
+        if (!values.amount || Number.isNaN(Number(values.amount)) || Number(values.amount) <= 0) errors.push("Amount must be a positive number");
+        if (!values.operator) errors.push("Operator initials are required");
+        if (!/^https:\/\/\S+$/i.test(values.safeIntake) && !/^\//.test(values.safeIntake)) errors.push("Safe intake path must be an HTTPS URL or absolute private path");
         if (!validDate(values.date)) errors.push("Date must use YYYY-MM-DD");
         for (const [key, value] of Object.entries(values)) {
           if (/\{\{[^}]+\}\}/.test(value)) errors.push(key + " still has a template placeholder");
@@ -161,11 +190,32 @@
         if (errors.length > 0) {
           status.textContent = errors.join(". ");
           status.className = "status bad";
+          evidenceJson.textContent = "Fix the fields above, then build again.";
+          createEvidence.textContent = "Fix the fields above, then build again.";
           approval.textContent = "Fix the fields above, then build again.";
           verify.textContent = "Fix the fields above, then build again.";
           command.textContent = "Fix the fields above, then build again.";
           return;
         }
+
+        const evidence = {
+          customerCompany: values.customer,
+          packageName: values.packageName,
+          amountUsd: Number(values.amount),
+          paymentProvider: "Stripe",
+          paymentReference: values.payment,
+          paidAt: values.date,
+          technicalContact: values.contact,
+          safeIntakePath: values.safeIntake,
+          paymentConfirmed: true,
+          approvedForPrivateWorkspace: true,
+          noStripeSecrets: true,
+          noProductionSecrets: true,
+          noCustomerData: true,
+          noPublicRepoStorage: true,
+          operatorInitials: values.operator
+        };
+        evidenceJson.textContent = JSON.stringify(evidence, null, 2);
 
         approval.textContent = `I approve creating this MCPScan paid audit handoff.
 
@@ -180,6 +230,18 @@ Create the private customer workspace and first paid audit work order outside th
 
         const rootPart = values.root ? " --root " + quote(values.root) : "";
         const evidencePath = values.evidence || "/path/to/payment-confirmation-evidence.json";
+        createEvidence.textContent = [
+          "npm run delivery:evidence --",
+          "--customer " + quote(values.customer),
+          "--package " + quote(values.packageName),
+          "--payment " + quote(values.payment),
+          "--contact " + quote(values.contact),
+          "--safe-intake " + quote(values.safeIntake),
+          "--operator " + quote(values.operator),
+          "--amount " + quote(values.amount),
+          "--date " + quote(values.date),
+          "--output " + quote(evidencePath)
+        ].join(" ");
         verify.textContent = "npm run delivery:verify-payment -- --file " + quote(evidencePath);
         command.textContent = "npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt" + rootPart;
         status.textContent = "Paid handoff packet ready.";
@@ -193,12 +255,18 @@ Create the private customer workspace and first paid audit work order outside th
       }
 
       fields.date.value = today();
+      fields.amount.value = defaultAmount(fields.packageName.value);
       document.getElementById("build").addEventListener("click", build);
+      document.getElementById("copyEvidence").addEventListener("click", () => copy(evidenceJson));
+      document.getElementById("copyCreateEvidence").addEventListener("click", () => copy(createEvidence));
       document.getElementById("copyApproval").addEventListener("click", () => copy(approval));
       document.getElementById("copyVerify").addEventListener("click", () => copy(verify));
       document.getElementById("copyCommand").addEventListener("click", () => copy(command));
       for (const input of Object.values(fields)) input.addEventListener("input", build);
-      fields.packageName.addEventListener("change", build);
+      fields.packageName.addEventListener("change", () => {
+        fields.amount.value = defaultAmount(fields.packageName.value);
+        build();
+      });
       build();
     </script>
   </body>

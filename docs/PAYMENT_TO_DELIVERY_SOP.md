@@ -17,13 +17,13 @@ Record:
 
 Do not store Stripe secret keys in the repo or customer workspace.
 
-Save public-safe payment evidence outside the repo using:
+Create public-safe payment evidence outside the repo:
 
 ```text
-sales/payment-confirmation-evidence.template.json
+npm run delivery:evidence -- --customer "{{customer_company}}" --package "{{package_name}}" --payment "{{stripe_payment_reference_or_receipt_url}}" --contact "{{technical_contact_email_or_secure_url}}" --safe-intake "/path/outside/public/repo/intake" --operator "{{initials}}"
 ```
 
-Then verify it:
+If you already have a filled evidence file, verify it:
 
 ```text
 npm run delivery:verify-payment -- --file /path/to/payment-confirmation-evidence.json
