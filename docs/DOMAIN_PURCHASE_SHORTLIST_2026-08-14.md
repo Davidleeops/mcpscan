@@ -10,13 +10,13 @@ For the current founder preference, search `getmcpscan.com` first if you want to
 
 Search `mcpattest.dev` first only if you are willing to use a cleaner product name than MCPScan. It is more security-native and less crowded than the exact MCPScan lane.
 
-Use the cheap validation lane carefully. Search `mcpscan.online` first if the hard cash cap matters more than buyer trust, then search `mcpscan.site` if the .online cart fails. Search `getmcpscan.xyz` if renewal posture matters more than the lowest first-year checkout.
+Use the cheap validation lane carefully. Search `getmcpscan.xyz` first if the hard cash cap matters more than buyer trust. Search `mcpscan.online` or `mcpscan.site` only if the `.xyz` cart fails or those carts are materially better.
 
-My call: buy `getmcpscan.com` if it is available at normal `.com` pricing and you are keeping MCPScan. Buy `mcpattest.dev` if it is available at normal `.dev` pricing and you are open to a cleaner brand. Buy `mcpscan.online` only if the final Spaceship cart is still at or below `$3` and the renewal is acceptable. Buy `getmcpscan.xyz` if the first-year cap is flexible and renewal matters more.
+My call: buy `getmcpscan.xyz` if the final Spaceship cart is still at or below `$3` and the renewal is acceptable. Buy `getmcpscan.com` if it is available at normal `.com` pricing and you decide buyer trust is worth the extra few dollars. Buy `mcpattest.dev` if it is available at normal `.dev` pricing and you are open to a cleaner brand.
 
 If `getmcpscan.com` is unavailable or premium-priced at checkout, buy `trymcpscan.com`. If both are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
 
-Use a `$1` to `$3` domain such as `mcpscan.online`, `mcpscan.site`, or `getmcpscan.xyz` as a first-sale validation lane, not the long-term brand asset. If choosing the cheap lane, prefer `.online` for the current default, `.site` as backup, and `.xyz` when lower renewal matters more.
+Use a `$1` to `$3` domain such as `getmcpscan.xyz`, `mcpscan.online`, or `mcpscan.site` as a first-sale validation lane, not the long-term brand asset. If choosing the cheap lane, prefer `getmcpscan.xyz` for the current default, with `.online` or `.site` as backups only if the cart wins.
 
 Naming risk update: public adjacent names include `mcpscan.dev`, `scanmcp.com`, `mcpscanner.dev`, and Invariant's MCP-Scan. This does not stop launch, but it does create confusion risk. Search `mcpattest.dev`, `agentposture.dev`, `toolattest.dev`, and `toolposture.dev` before buying if you are willing to avoid that risk.
 
@@ -55,7 +55,7 @@ Public Spaceship pricing signals refreshed on 2026-08-14:
 | TLD | First-Year Signal | Renewal Signal | Decision |
 | --- | ---: | ---: | --- |
 | `.xyz` | `$1.86` on official Spaceship pricing, lower promo may appear | `$12.52` | Best cheap renewal tradeoff if the name is clean |
-| `.online` | `$0.98` plus ICANN fee on official Spaceship pricing | About `$21.38` plus ICANN fee | Current near-dollar launch lane, weaker trust |
+| `.online` | `$0.98` plus ICANN fee on official Spaceship pricing | About `$21.38` plus ICANN fee | Backup near-dollar launch lane, weaker trust |
 | `.site` | `$0.98` plus ICANN fee on official Spaceship pricing | About `$21.38` plus ICANN fee | Backup near-dollar launch lane, weaker trust |
 | `.click` | About `$1.04` plus ICANN fee | About `$10.35` plus ICANN fee | Cheap renewal, but less serious for a security audit brand |
 | `.shop` | `$0.70` plus ICANN fee | About `$31.05` plus ICANN fee | Avoid for MCPScan |
@@ -74,9 +74,9 @@ Email pricing checked on 2026-08-14: Zoho Mail Lite is the cheapest credible cus
 4. If `mcpattest.dev` is available at normal `.dev` pricing, buy it unless the name must remain MCPScan.
 5. Search `getmcpscan.xyz` if the founder wants a cheap but more renewal-balanced MCPScan option.
 6. Buy `getmcpscan.xyz` if the final cart is at or below `$3` and the renewal is acknowledged.
-7. Search `mcpscan.online` in Spaceship if the founder wants the closest possible near-dollar checkout.
-8. If `mcpscan.online` is available at about `$0.98` plus ICANN fee and the renewal is acceptable, it can be used for the first-sale validation lane.
-9. If `.online` and `.site` are unavailable or cart pricing jumps, search `getmcpscan.xyz`, then `getmcpscan.site`, then `getmcpscan.online`.
+7. Search `mcpscan.online` in Spaceship only if the `.xyz` cart fails or the founder wants the closest possible near-dollar checkout.
+8. If `mcpscan.online` is available at about `$0.98` plus ICANN fee and the renewal is acceptable, it can be used as the backup first-sale validation lane.
+9. If `.xyz`, `.online`, and `.site` are unavailable or cart pricing jumps, search `getmcpscan.site`, then `getmcpscan.online`.
 10. Use `.click` only as an emergency low-renewal fallback. It is financially clean but weaker for buyer trust.
 11. Avoid `.shop` for the primary brand even if it is cheaper, because it reads like ecommerce rather than security.
 12. Buy one domain only unless the founder explicitly approves a protective second domain.

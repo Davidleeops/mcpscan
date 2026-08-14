@@ -8,10 +8,10 @@ Use this after the founder buys the domain, creates the mailbox, and creates Str
 
 | Gate | Public Value | Cheap Lane Example |
 | --- | --- | --- |
-| Domain | Purchased domain | `mcpscan.online` or `getmcpscan.xyz` |
-| Mailbox | Public mailbox | `security@mcpscan.online` or `security@getmcpscan.xyz` |
-| Alias | Audit alias | `audit@mcpscan.online` or `audit@getmcpscan.xyz` |
-| Alias | General alias | `hello@mcpscan.online` or `hello@getmcpscan.xyz` |
+| Domain | Purchased domain | `getmcpscan.xyz` or `getmcpscan.com` |
+| Mailbox | Public mailbox | `security@getmcpscan.xyz` or `security@getmcpscan.com` |
+| Alias | Audit alias | `audit@getmcpscan.xyz` or `audit@getmcpscan.com` |
+| Alias | General alias | `hello@getmcpscan.xyz` or `hello@getmcpscan.com` |
 | Mail | Provider name | `zoho` |
 | DNS | DKIM selector if visible | provider-specific selector only |
 | Stripe | Quick Audit Payment Link | `https://buy.stripe.com/...` |
@@ -35,7 +35,7 @@ Use this after the founder buys the domain, creates the mailbox, and creates Str
 ## One-Screen Return Flow
 
 1. Open `ops/founder-return-packet.html`.
-2. Click `Load cheap lane` for `mcpscan.online`, use the backup cheap values for `getmcpscan.xyz` if that is the purchased domain, or click `Load trust lane` for `getmcpscan.com`.
+2. Click `Load cheap lane` for `getmcpscan.xyz`, or click `Load trust lane` for `getmcpscan.com`.
 3. Paste the three live Stripe Payment Links.
 4. Build and download the approval message.
 5. Open `ops/stripe-payment-link-qa-console.html`.

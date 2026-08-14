@@ -19,7 +19,7 @@ npm run launch:open-founder
 Prepare the private founder evidence workspace before buying anything:
 
 ```text
-npm run launch:prepare-founder-clicks -- --domain mcpscan.online --mail-provider spacemail
+npm run launch:prepare-founder-clicks -- --domain getmcpscan.xyz --mail-provider spacemail
 ```
 
 Prebuild the cheap-lane DNS and Stripe packets:
@@ -32,18 +32,18 @@ That creates the founder-ready packet set:
 
 ```text
 ops/cheap-launch-packet-console.html
-ops/generated-launch-packets/2026-08-14_mcpscan-online_dns-packet.md
-ops/generated-launch-packets/2026-08-14_mcpscan-online_dns-records.csv
-ops/generated-launch-packets/2026-08-14_mcpscan-online_stripe-setup-packet.md
-ops/generated-launch-packets/2026-08-14_mcpscan-online_stripe-products.csv
+ops/generated-launch-packets/2026-08-14_getmcpscan-xyz_dns-packet.md
+ops/generated-launch-packets/2026-08-14_getmcpscan-xyz_dns-records.csv
+ops/generated-launch-packets/2026-08-14_getmcpscan-xyz_stripe-setup-packet.md
+ops/generated-launch-packets/2026-08-14_getmcpscan-xyz_stripe-products.csv
 ```
 
 ## Sequence
 
 1. Prepare the private founder evidence workspace.
-2. Search `mcpscan.online` in Spaceship.
+2. Search `getmcpscan.xyz` in Spaceship.
 3. Buy one domain only if the cart is at or below `$3`, renewal is visible, and no paid add-ons appear.
-4. Create one Spacemail mailbox: `security@mcpscan.online`, with `audit@mcpscan.online` and `hello@mcpscan.online` aliases.
+4. Create one Spacemail mailbox: `security@getmcpscan.xyz`, with `audit@getmcpscan.xyz` and `hello@getmcpscan.xyz` aliases.
 5. Use the generated DNS packet and DNS records CSV.
 6. Use the generated Stripe setup packet and Stripe products CSV.
 7. Create three live Stripe Payment Links.
@@ -59,12 +59,12 @@ ops/generated-launch-packets/2026-08-14_mcpscan-online_stripe-products.csv
 
 ```text
 1. Run npm run launch:open-founder.
-2. Run npm run launch:prepare-founder-clicks -- --domain mcpscan.online --mail-provider spacemail.
+2. Run npm run launch:prepare-founder-clicks -- --domain getmcpscan.xyz --mail-provider spacemail.
 3. Open the domain purchase packet.
-4. Search mcpscan.online first.
+4. Search getmcpscan.xyz first.
 5. Buy one domain only after first-year price, renewal price, and add-ons are clear.
-6. Create one Spacemail mailbox: security@mcpscan.online.
-7. Add aliases: audit@mcpscan.online and hello@mcpscan.online.
+6. Create one Spacemail mailbox: security@getmcpscan.xyz.
+7. Add aliases: audit@getmcpscan.xyz and hello@getmcpscan.xyz.
 8. Create the three live Stripe Payment Links.
 9. Download the approval message from ops/founder-return-packet.html after Stripe links exist.
 10. Download the QA evidence JSON from ops/stripe-payment-link-qa-console.html after the checklist passes.

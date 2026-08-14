@@ -63,15 +63,15 @@
         <section>
           <h2>Launch Values</h2>
           <div class="form">
-            <label>Domain<input id="domain" value="mcpscan.online" autocomplete="off"></label>
+            <label>Domain<input id="domain" value="getmcpscan.xyz" autocomplete="off"></label>
             <label>Mail provider<select id="mailProvider">
               <option value="zoho">Zoho Mail</option>
               <option value="google">Google Workspace</option>
               <option value="spacemail">Spacemail</option>
             </select></label>
-            <label>Primary mailbox<input id="mailbox" value="security@mcpscan.online" autocomplete="off"></label>
-            <label>Audit alias<input id="audit" value="audit@mcpscan.online" autocomplete="off"></label>
-            <label>Hello alias<input id="hello" value="hello@mcpscan.online" autocomplete="off"></label>
+            <label>Primary mailbox<input id="mailbox" value="security@getmcpscan.xyz" autocomplete="off"></label>
+            <label>Audit alias<input id="audit" value="audit@getmcpscan.xyz" autocomplete="off"></label>
+            <label>Hello alias<input id="hello" value="hello@getmcpscan.xyz" autocomplete="off"></label>
             <label class="wide">Quick Audit Stripe link<input id="quick" placeholder="https://buy.stripe.com/..."></label>
             <label class="wide">Launch Audit Stripe link<input id="launch" placeholder="https://buy.stripe.com/..."></label>
             <label class="wide">Enterprise Readiness Stripe link<input id="enterprise" placeholder="https://buy.stripe.com/..."></label>
@@ -175,7 +175,7 @@
       }
 
       function applyPreset(kind) {
-        setDomainValues(kind === "trust" ? "getmcpscan.com" : "mcpscan.online");
+        setDomainValues(kind === "trust" ? "getmcpscan.com" : "getmcpscan.xyz");
         build();
       }
 

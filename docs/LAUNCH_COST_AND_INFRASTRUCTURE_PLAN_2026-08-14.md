@@ -37,13 +37,13 @@ That avoids paying for infrastructure before there is proof that buyers want the
 | GitHub repo | Existing public repo | $0 | $0 | Yes |
 | GitHub Pages | Existing Pages site | $0 | $0 | Yes |
 | Domain | `getmcpscan.com` | About $8.88 plus ICANN fee if standard-priced before any coupon | About $9.98 plus ICANN fee | Yes, only if founder trust matters more than the lowest spend |
-| Cheapest validation domain | `mcpscan.online` | About $0.98 plus ICANN fee at Spaceship if promo-priced | About $21.38 plus ICANN fee | Yes, current lowest cash path |
-| Cheap renewal-friendlier domain | `getmcpscan.xyz` | About $1.86 at Spaceship before any coupon | About $12.52 | Yes, if choosing the cheap lane |
+| Cheapest validation domain | `getmcpscan.xyz` | About $1.86 at Spaceship before any coupon, or lower if promo code `XYZ52` applies | About $12.52 | Yes, current cheap lane |
+| Near-dollar backup domain | `mcpscan.online` | About $0.98 plus ICANN fee at Spaceship if promo-priced | About $21.38 plus ICANN fee | Only if the `.xyz` cart fails |
 | Cheap low-renewal fallback | `.click` name | About $1.04 plus ICANN fee | About $10.35 plus ICANN fee | No, weaker buyer trust |
 | Cheap credible fallback | `mcpscan.us` | About $4.14 | About $6.48 | Only if avoiding `.com` |
 | Near-dollar promo TLD | `.online` or `.site` | About $0.98 plus ICANN fee | About $21.38 | No |
 | Ultra-cheap promo TLD | `.shop` | About $0.70 plus ICANN fee | About $31.05 | No |
-| Email | Zoho Mail Lite, Google Workspace, or Spacemail | About $12 to $84 per year depending on provider choice and cart | Confirm in cart | Yes |
+| Email | Spacemail Pro, Zoho Mail Lite, or Google Workspace | Spacemail Pro is currently shown as a 30-day free trial, then `$18.88/2 yr`; Zoho and Google vary by cart | Confirm in cart | Yes |
 | Stripe Payment Links | Stripe account | $0 monthly | Processing fees per payment | Yes |
 | npm publish | npm public packages | $0 | $0 | Useful |
 | Database | None for launch | $0 | $0 | No |
@@ -119,7 +119,7 @@ Using the same GitHub account is fine. Using the same repo is the part to avoid.
 4. If it is unavailable or premium-priced, search `trymcpscan.com`, then `mcpscanhq.com`, then `usemcpscan.com`.
 5. Search `mcpattest.dev` if the founder approves the cleaner brand.
 6. Search `getmcpscan.xyz` if the approved budget cap is `$1` to `$3` and renewal tradeoff matters more than buyer trust.
-7. Search `mcpscan.online` only if the approved budget cap is near `$1`.
+7. Search `mcpscan.online` only if the `.xyz` cart fails and the approved budget cap is near `$1`.
 8. If `.online` or `.xyz` is unavailable or cart pricing jumps, search `mcpscan.site`, then `getmcpscan.site`, then `getmcpscan.online`.
 9. If the goal is the absolute lowest credible non-promo spend, search `mcpscan.us`.
 10. Before buying `.us`, confirm the founder accepts US nexus eligibility and the registration privacy tradeoff.
@@ -156,8 +156,8 @@ npm run launch:verify -- --domain {{chosen_domain}}
 Target maximum spend before the first paid audit:
 
 ```text
-Domain: $5 to $12
-Mailbox: $14 to $19
+Domain: $2 to $12
+Mailbox: $0 today if using the Spacemail trial, then about $18.88 over 2 years if the current Pro cart holds
 Stripe: $0 monthly
 GitHub Pages: $0
 npm: $0
@@ -188,7 +188,7 @@ Public pricing signals checked on 2026-08-14:
 - Spaceship domain pricing showed `.shop` at about `$0.70` first year and about `$31.05` renewal.
 - Spaceship domain pricing showed `.us` at about `$4.14` first year and about `$6.48` renewal.
 - Spaceship promo terms say offers can change, apply to first-year registrations, and exclude premium names.
-- Spaceship promos showed Spacemail Pro at `$0.00` for 30 days and `$11.76/yr` after trial.
+- Spaceship business email showed Spacemail Pro at `$0.00` for 30 days and `$18.88/2 yr` after trial.
 - Public search also showed existing MCP scanner brands and domains, including `mcpscan.ai`, which makes a credible modifier such as `getmcpscan.com` safer than chasing novelty TLD cheapness.
 - Public `.us` registry and registrar guidance shows `.us` has US nexus and privacy considerations, so it is a fallback rather than the default.
 

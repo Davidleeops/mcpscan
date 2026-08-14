@@ -48,8 +48,8 @@ First revenue does not require npm publishing. Sell and deliver the `$1,500` MCP
 
 | Order | Gate | Founder Action | Console | Done When |
 | --- | --- | --- | --- | --- |
-| 1 | Domain | Buy `mcpscan.online` if Spaceship shows first-year domain pricing at or below `$3`, visible renewal, and no paid add-ons. Use `getmcpscan.com` only if you consciously choose trust over the tight cash cap | `ops/domain-mailbox-purchase-packet.html` | Domain exists in registrar account |
-| 2 | Mailbox | Create Spacemail mailbox `security@mcpscan.online` with `audit@mcpscan.online` and `hello@mcpscan.online` aliases. Use another provider only if you intentionally switch lanes | `ops/domain-email-dns-console.html` | MX, SPF, DKIM, and DMARC pass for the selected provider |
+| 1 | Domain | Buy `getmcpscan.xyz` if Spaceship shows first-year domain pricing at or below `$3`, visible renewal, and no paid add-ons. Use `getmcpscan.com` only if you consciously choose trust over the tight cash cap | `ops/domain-mailbox-purchase-packet.html` | Domain exists in registrar account |
+| 2 | Mailbox | Create Spacemail mailbox `security@getmcpscan.xyz` with `audit@getmcpscan.xyz` and `hello@getmcpscan.xyz` aliases. Use another provider only if you intentionally switch lanes | `ops/domain-email-dns-console.html` | MX, SPF, DKIM, and DMARC pass for the selected provider |
 | 3 | Stripe | Generate setup packet, create three Payment Links, verify format and checkout QA evidence | `ops/stripe-click-setup.html`, `ops/stripe-payment-link-qa-console.html` | Quick, Launch, and Enterprise checkout links exist, `npm run launch:verify-stripe` passes, and `npm run launch:verify-stripe-qa` passes |
 | 4 | Apply links | Approve exact return packet values | `ops/founder-return-packet.html` | Landing page no longer uses placeholder checkout links |
 | 5 | Verify | Run launch verification | `ops/verification-console.html` | `npm run launch:verify -- --domain {{chosen_domain}}` has no domain or checkout warnings |
@@ -166,7 +166,7 @@ Best buyer: a team enabling Copilot, Claude Code, Cursor, VS Code agent mode, Sl
 
 Do not wait for npm to sell this. The paid audit deliverable, report template, buyer summary, delivery dry run, outbound packet, and post-payment handoff are already the revenue path.
 
-Spend ceiling before first revenue: about `$27` to `$40` if using the `.com` trust lane, about `$26` to `$40` if using the clean `.dev` lane, about `$21` to `$31` if using `.xyz`, or about `$19` to `$22` for a near-dollar domain plus one mailbox if using the cheapest launch lane. Do not add paid dashboard infrastructure before the first paid audit.
+Spend ceiling before first revenue: about `$27` to `$40` if using the `.com` trust lane, about `$26` to `$40` if using the clean `.dev` lane, or about `$20` to `$22` if using the prepared `.xyz` cheap lane with the current Spacemail Pro cart. Do not add paid dashboard infrastructure before the first paid audit.
 
 ## Stop Conditions
 

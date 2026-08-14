@@ -50,11 +50,11 @@ function writeIfMissing(file, content) {
 }
 
 const args = parseArgs(process.argv.slice(2));
-const domain = String(args.domain ?? "mcpscan.online").trim().toLowerCase();
+const domain = String(args.domain ?? "getmcpscan.xyz").trim().toLowerCase();
 const mailProvider = String(args["mail-provider"] ?? "spacemail").trim().toLowerCase();
 const allowedProviders = new Set(["zoho", "google", "spacemail"]);
 
-if (!validDomain(domain)) fail("Use --domain with a value like mcpscan.online or getmcpscan.com.");
+if (!validDomain(domain)) fail("Use --domain with a value like getmcpscan.xyz or getmcpscan.com.");
 if (!allowedProviders.has(mailProvider)) fail("Use --mail-provider zoho, google, or spacemail.");
 
 const workspaceRoot = assertOutsideRepo(args.root ?? path.join(os.homedir(), "MCPScan Founder Clicks"));

@@ -10,17 +10,17 @@ This proof keeps the domain purchase cheap and clean. Before buying, put only pu
 
 ## Current Cheap Recommendation
 
-Search `mcpscan.online` first for the near-dollar lane. Official Spaceship pricing on August 14, 2026 showed `.online` at `$0.98/yr`, renewal at `$21.38/yr`, and a `$0.20/yr` ICANN fee.
+Search `getmcpscan.xyz` first for the cheap validation lane. Official Spaceship pricing on August 14, 2026 showed `.xyz` at `$1.86/yr` before any accepted promo and renewal at `$12.52/yr`.
 
-Use `mcpscan.site` only if the `.online` cart fails. It currently has the same first-year and renewal posture as `.online`.
+Use `mcpscan.online` or `mcpscan.site` only if the `.xyz` cart fails or those carts are materially better. They can be cheap in the first year, but renewal posture is materially worse.
 
-Use `getmcpscan.xyz` if renewal posture matters more than the lowest first-year price. Official Spaceship pricing showed `.xyz` at `$1.86/yr`, renewal at `$12.52/yr`, and a `$0.20/yr` ICANN fee.
+Use `getmcpscan.com` if buyer trust matters more than the lowest first-year price.
 
 Avoid `.shop` even though it is cheaper, because it reads like ecommerce rather than a B2B security audit.
 
 ## Mailbox Recommendation
 
-For the tightest Spaceship-only checkout, use one Spacemail Pro mailbox if the cart matches the public promo. Spaceship promos showed Spacemail Pro at `$0.00` for 30 days and `$11.76/yr` after trial.
+For the tightest Spaceship-only checkout, use one Spacemail Pro mailbox if the cart matches the public pricing. Spaceship business email showed Spacemail Pro at `$0.00` for 30 days and `$18.88/2 yr` after trial.
 
 Zoho Mail remains a credible low-cost alternative. Google Workspace is higher-trust but costs more.
 

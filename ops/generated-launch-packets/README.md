@@ -6,15 +6,15 @@ Use these only after the founder buys the matching domain and mailbox.
 
 ## Prepared Cheap Lanes
 
-Use `mcpscan.online` first if the founder wants the current near-dollar validation lane and the final cart shows first-year price, renewal price, and no paid add-ons.
+Use `getmcpscan.xyz` first if the founder wants the current cheap validation lane and the final cart shows first-year price, renewal price, and no paid add-ons.
 
-- Domain: mcpscan.online
-- Primary mailbox: security@mcpscan.online
+- Domain: getmcpscan.xyz
+- Primary mailbox: security@getmcpscan.xyz
 - Mail provider: Spacemail or the selected provider in the final DNS packet
-- Audit alias: audit@mcpscan.online
-- Hello alias: hello@mcpscan.online
+- Audit alias: audit@getmcpscan.xyz
+- Hello alias: hello@getmcpscan.xyz
 
-Use `getmcpscan.xyz` only if the `.online` cart fails, the founder prefers lower renewal posture, or the final `.online` price is unclear.
+Use `mcpscan.online` only if the `.xyz` cart fails or the final `.online` price is materially better.
 
 - Domain: getmcpscan.xyz
 - Primary mailbox: security@getmcpscan.xyz
@@ -36,7 +36,7 @@ Use `getmcpscan.xyz` only if the `.online` cart fails, the founder prefers lower
 ## Founder Click Order
 
 1. Clear GitHub billing or account lock.
-2. Search `mcpscan.online` first, then `getmcpscan.xyz` only if the `.online` cart fails or renewal posture wins.
+2. Search `getmcpscan.xyz` first, then `mcpscan.online` only if the `.xyz` cart fails or final cart pricing wins.
 3. Buy one domain only.
 4. Create one Spacemail mailbox on the purchased domain.
 5. Apply only the DNS records in the generated DNS packet.

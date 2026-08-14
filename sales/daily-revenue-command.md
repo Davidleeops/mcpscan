@@ -8,9 +8,9 @@ Use this as the one-screen operating surface for first revenue.
 
 | Lane | Current State | Next Action | Owner |
 | --- | --- | --- | --- |
-| Founder click workspace | Not prepared until command runs | Run `npm run launch:prepare-founder-clicks -- --domain mcpscan.online --mail-provider spacemail` | Codex |
-| Domain | Not purchased | Buy `mcpscan.online` only if Spaceship cart stays at or below `$3`, renewal is visible, and no paid add-ons appear | Founder |
-| Mailbox | Not purchased | Create Spacemail mailbox `security@mcpscan.online` plus `audit@` and `hello@` aliases | Founder |
+| Founder click workspace | Not prepared until command runs | Run `npm run launch:prepare-founder-clicks -- --domain getmcpscan.xyz --mail-provider spacemail` | Codex |
+| Domain | Not purchased | Buy `getmcpscan.xyz` only if Spaceship cart stays at or below `$3`, renewal is visible, and no paid add-ons appear | Founder |
+| Mailbox | Not purchased | Create Spacemail mailbox `security@getmcpscan.xyz` plus `audit@` and `hello@` aliases | Founder |
 | Stripe | Payment Links not live | Create three live one-time Payment Links | Founder |
 | Landing page | Live with placeholder issue CTAs | Apply approved domain, email, and Stripe links after return packet | Codex |
 | Approval status | Missing until post-click apply | Outbound send gates fail until `ops/founder-approval-status.json` exists and proves live domain, mailbox, Stripe, and staged outbound approvals | Codex |
@@ -40,7 +40,7 @@ Use this as the one-screen operating surface for first revenue.
 
 ```text
 npm run launch:next
-npm run launch:prepare-founder-clicks -- --domain mcpscan.online --mail-provider spacemail
+npm run launch:prepare-founder-clicks -- --domain getmcpscan.xyz --mail-provider spacemail
 npm run launch:status:live
 npm run market:verify
 npm run outbound:verify

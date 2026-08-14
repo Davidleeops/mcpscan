@@ -564,8 +564,6 @@ if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-retu
     "Load trust lane",
     "getmcpscan.xyz",
     "security@getmcpscan.xyz",
-    "mcpscan.online",
-    "security@mcpscan.online",
     "getmcpscan.com",
     "security@getmcpscan.com"
   ];
@@ -593,8 +591,6 @@ if (exists("ops/founder-status-console.html") && exists("docs/POST_PURCHASE_PUBL
     "Download JSON",
     "getmcpscan.xyz",
     "security@getmcpscan.xyz",
-    "mcpscan.online",
-    "security@mcpscan.online",
     "stripe-checkout-qa-evidence.json",
     "Do Not Return These Values"
   ];

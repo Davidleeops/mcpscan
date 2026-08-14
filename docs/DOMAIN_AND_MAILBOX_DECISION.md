@@ -7,19 +7,19 @@ Generated: 2026-08-14
 Use this path if speed and a tiny first-year domain checkout matter most:
 
 ```text
-Domain: mcpscan.online
+Domain: getmcpscan.xyz
 Registrar: Spaceship
 Mail provider: Spacemail
-Primary mailbox: security@mcpscan.online
-Aliases: audit@mcpscan.online, hello@mcpscan.online
+Primary mailbox: security@getmcpscan.xyz
+Aliases: audit@getmcpscan.xyz, hello@getmcpscan.xyz
 ```
 
-Reason: it matches the current near-dollar domain lane, keeps domain and mailbox setup in one account, and removes a provider choice from the first-revenue path.
+Reason: it matches the current cheap validation lane, keeps domain and mailbox setup in one account, uses the prebuilt `getmcpscan.xyz` packet, and removes a provider choice from the first-revenue path.
 
 Run this before buying:
 
 ```text
-npm run launch:prepare-founder-clicks -- --domain mcpscan.online --mail-provider spacemail
+npm run launch:prepare-founder-clicks -- --domain getmcpscan.xyz --mail-provider spacemail
 ```
 
 Only switch lanes if the cart fails, the renewal price is unacceptable, or you decide B2B security trust is worth spending more now.
@@ -32,7 +32,7 @@ Search `mcpattest.dev` first only if you are willing to use a cleaner product na
 
 If `getmcpscan.com` is unavailable or premium-priced, buy `trymcpscan.com`. If both are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
 
-If the founder wants the `$1` to `$3` launch lane, search `mcpscan.online` before `mcpscan.site`. Buy `mcpscan.online` if the cart is still near `$1` to `$3` and the renewal is acknowledged. Buy `getmcpscan.xyz` if lower renewal matters more than the absolute lowest first-year checkout.
+If the founder wants the `$1` to `$3` launch lane, search `getmcpscan.xyz` before `mcpscan.online` or `mcpscan.site`. Buy `getmcpscan.xyz` if the cart is still at or below `$3` and the renewal is acknowledged. Use `mcpscan.online` or `mcpscan.site` only if the `.xyz` cart fails or those are materially better in the final cart.
 
 If you want the cheapest credible option, buy `mcpscan.us` if Spaceship shows it available. It is a legitimate US-founder fallback and avoids the trust penalty of novelty TLDs.
 
@@ -57,8 +57,8 @@ Clean-brand candidates to search before checkout:
 | `scancontext.dev` | Developer-friendly, but less direct than attestation or posture | Search only after the first four |
 | `getmcpscan.com` | Best MCPScan trust lane if keeping the product name | Search first if you want the MCPScan name |
 | `trymcpscan.com` | Good MCPScan trust lane if the default is unavailable | Search second if you want the MCPScan name |
-| `getmcpscan.xyz` | Cheap MCPScan validation lane with better renewal posture than `.site` | Search before `.site` if cash is tight |
-| `mcpscan.online` | Current near-dollar lane if promo pricing is real in cart | Use only as validation or redirect |
+| `getmcpscan.xyz` | Cheap MCPScan validation lane with better renewal posture than `.site` | Default cheap lane if cash is tight |
+| `mcpscan.online` | Near-dollar lane if promo pricing is real in cart | Use only as backup validation or redirect |
 | `mcpscan.site` | Backup near-dollar lane if .online fails in cart | Use only as validation or redirect |
 
 ## Live Availability Snapshot
@@ -82,7 +82,7 @@ Checked through the domain availability tool on 2026-08-14:
 | `trymcpscan.com` | Likely available in current RDAP signal | About $9 to $12 | Strong backup |
 | `mcpscanhq.com` | Likely available in current RDAP signal | About $9 to $12 | Backup trust pick |
 | `usemcpscan.com` | Available in prior live check | About $9 to $12 | Backup trust pick |
-| `mcpscan.online` | Available in current availability signal | About $0.98 plus ICANN fee at Spaceship, about $1.99 in availability tool | Current cheap launch lane |
+| `mcpscan.online` | Available in current availability signal | About $0.98 plus ICANN fee at Spaceship, about $1.99 in availability tool | Backup cheap launch lane |
 | `mcpscan.site` | Available in current availability signal | About $0.98 plus ICANN fee at Spaceship, about $1.99 in availability tool | Backup cheap launch lane |
 | `getmcpscan.site` | Available in current availability signal | About $0.98 plus ICANN fee at Spaceship, about $1.99 in availability tool | Cheapest backup launch lane |
 | `getmcpscan.online` | Available in current availability signal | About $0.98 plus ICANN fee at Spaceship, about $1.99 in availability tool | Cheapest backup launch lane |
@@ -94,13 +94,13 @@ Checked through the domain availability tool on 2026-08-14:
 | `.com` at Spaceship | About $8.88 plus ICANN fee on current pricing pages | About $9.98 renewal plus ICANN fee | Best credibility per dollar when the name is available |
 | `.dev` at Spaceship | About $8.28 plus ICANN fee | About $12.42 renewal | Best developer-tool signal, but key names checked unavailable |
 | `.us` at Spaceship or comparable registrar | Low single digits to about $8 depending on registrar | Lower renewal than most novelty TLDs | Legitimate for a US founder, less SaaS-native than `.com` |
-| `.xyz` at Spaceship | About $1 to $2 depending on promo | About $12 to $13 renewal | Cheap and developer-friendly, but the exact short name checked unavailable |
+| `.xyz` at Spaceship | About $1 to $2 depending on promo | About $12 to $13 renewal | Cheap and developer-friendly; `getmcpscan.xyz` is the current prepared cheap lane |
 | `.online` at Spaceship | About $0.98 plus ICANN fee | About $21.38 renewal plus ICANN fee | Cheapest visible promo option, weaker trust signal for B2B security |
 | `.site` at Spaceship | About $0.98 plus ICANN fee | About $21.38 renewal plus ICANN fee | Cheapest visible promo option, weaker trust signal for B2B security |
 | `.shop` at Spaceship | About $0.70 plus ICANN fee | About $31.05 renewal plus ICANN fee | Lowest visible first-year price, not a good fit for a security audit brand |
 | Zoho Mail Lite | About $1 per user per month when billed annually | Check checkout before purchase | Cheapest credible custom-domain mailbox path |
 | Google Workspace Business Starter | About $7 per user per month when billed annually | Check checkout before purchase | Best buyer-trust mailbox path if budget allows |
-| Spacemail Pro | About $18.88 for 2 years | Check checkout before purchase | One-vendor convenience path if buying email in Spaceship |
+| Spacemail Pro | 30-day free trial, then about $18.88 for 2 years on current Spaceship pricing | Check checkout before purchase | One-vendor convenience path if buying email in Spaceship |
 
 Sources checked on 2026-08-14: Spaceship domain pricing, Spaceship promo terms, RDAP availability checks, Spaceship registrar prices on TLD-List, TLDSpy Spaceship pricing, Spacemail pricing, Zoho Mail pricing, Google Workspace pricing, and the live domain availability checker.
 
@@ -110,12 +110,12 @@ The public trust launch checklist lives in `docs/PUBLIC_TRUST_CHECKLIST.md`.
 
 ## Buying Rule
 
-1. Search `mcpscan.online` on Spaceship first.
+1. Search `getmcpscan.xyz` on Spaceship first.
 2. Buy it only if it is available, first-year domain cost is at or below `$3`, renewal is visible, and no paid add-ons are in cart.
-3. Create one Spacemail mailbox first: `security@mcpscan.online`.
-4. Add aliases for `audit@mcpscan.online` and `hello@mcpscan.online`.
+3. Create one Spacemail mailbox first: `security@getmcpscan.xyz`.
+4. Add aliases for `audit@getmcpscan.xyz` and `hello@getmcpscan.xyz`.
 5. Do not use the mailbox for outbound until MX, SPF, DKIM, and DMARC pass.
-6. If the cheap cart fails, search `mcpscan.site`, then `getmcpscan.xyz`.
+6. If the cheap cart fails, search `mcpscan.online`, then `mcpscan.site`.
 7. If you decide trust matters more than the cash cap, search `getmcpscan.com`, then `trymcpscan.com`.
 8. If you decide the product should use a cleaner security brand, search `mcpattest.dev`.
 9. Buy one domain only.
