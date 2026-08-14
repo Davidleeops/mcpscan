@@ -12,6 +12,7 @@ const targets = [
   "ops/stripe-payment-link-qa-console.html",
   "ops/founder-return-packet.html",
   "ops/founder-status-console.html",
+  "ops/swarm-throughput-console.html",
   "ops/verification-console.html",
   "docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md",
   "sales/daily-revenue-command.md"
@@ -72,3 +73,4 @@ console.log("2. Create three Stripe Payment Links.");
 console.log("3. Return only public values through the preset return packet, QA evidence, and status JSON.");
 console.log("4. Run post-click verification and publish the Pages fallback after approval.");
 console.log("5. Open first revenue runway only after live gates clear.");
+console.log("6. Use npm run launch:open-swarm to coordinate the agent lanes after live gates clear.");

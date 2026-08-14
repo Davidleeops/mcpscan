@@ -217,6 +217,8 @@ const gates = [
   ...(pagesFallback ? [{ label: "GitHub Pages fallback", state: pagesFallback.state, detail: pagesFallback.detail }] : []),
   ...(liveActions ? [{ label: "GitHub Actions live", state: liveActions.state, detail: liveActions.detail }] : []),
   gate("Market source verifier", exists("scripts/verify-market-sources.mjs") && exists("ops/market-research-refresh-console.html") && exists("docs/MARKET_PULSE_REFRESH_2026-08-14.md"), "npm run market:verify checks current market pulse before outbound"),
+  gate("Swarm throughput console", exists("ops/swarm-throughput-console.html") && exists("docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md"), "npm run launch:open-swarm opens agent lanes, proof commands, and approval boundaries"),
+  gate("Swarm throughput launcher", exists("scripts/open-swarm-throughput-console.mjs"), "agentized market, launch, outbound, reply, delivery, and quality lanes have a direct opener"),
   gate("Domain purchase packet", exists("ops/domain-mailbox-purchase-packet.html") && exists("docs/DOMAIN_MAILBOX_PURCHASE_PACKET.md"), "founder can approve one domain and one mailbox"),
   gate("Cheap launch packet console", exists("ops/cheap-launch-packet-console.html"), "single page opens default mcpscan.online DNS, Stripe, and CSV payloads"),
   gate("Cheap launch packet prep", exists("scripts/prepare-cheap-launch-packets.mjs"), "npm run launch:prepare-cheap builds DNS, Stripe, and CSV copy-paste payloads for mcpscan.online with the selected mail provider"),

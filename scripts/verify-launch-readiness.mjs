@@ -290,6 +290,7 @@ const requiredFiles = [
   "scripts/run-launch-rehearsal.mjs",
   "scripts/open-public-launch-review.mjs",
   "scripts/open-first-revenue-runway.mjs",
+  "scripts/open-swarm-throughput-console.mjs",
   "scripts/stage-approved-public-launch-post.mjs",
   "scripts/stage-approved-outbound.mjs",
   "scripts/open-first-10-outbound-approval.mjs",
@@ -533,7 +534,13 @@ if (exists("ops/launch-day-runbook.html") && exists("scripts/open-launch-day-run
 }
 
 if (exists("docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md") && exists("ops/swarm-throughput-console.html")) {
-  const swarm = `${read("docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md")}\n${read("ops/swarm-throughput-console.html")}`;
+  const swarm = [
+    read("docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md"),
+    read("ops/swarm-throughput-console.html"),
+    exists("scripts/open-swarm-throughput-console.mjs") ? read("scripts/open-swarm-throughput-console.mjs") : "",
+    read("package.json"),
+    exists("scripts/show-launch-status.mjs") ? read("scripts/show-launch-status.mjs") : ""
+  ].join("\n");
   const requiredSwarmMarkers = [
     "Market Pulse",
     "Domain And Mailbox",
@@ -544,6 +551,8 @@ if (exists("docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md") && exists("ops
     "Paid Delivery",
     "Quality And Safety",
     "npm run launch:full-proof",
+    "launch:open-swarm",
+    "Swarm throughput console",
     "No outbound before domain, mailbox authentication, Stripe links, and security contact are live."
   ];
   const missingSwarmMarkers = requiredSwarmMarkers.filter((marker) => !swarm.includes(marker));

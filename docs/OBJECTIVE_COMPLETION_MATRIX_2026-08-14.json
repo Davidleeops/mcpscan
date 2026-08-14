@@ -6,7 +6,7 @@
   "currentPositioning": "We turn noisy MCP scanner output into a validated MCP risk report, remediation plan, and customer-ready security proof in 3 to 5 days.",
   "launchReadinessProof": {
     "command": "npm run launch:verify",
-    "passed": 207,
+    "passed": 208,
     "expectedWarnings": 3,
     "failures": 0
   },
@@ -111,6 +111,7 @@
       "evidence": [
         "docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md",
         "ops/swarm-throughput-console.html",
+        "scripts/open-swarm-throughput-console.mjs",
         "ops/launch-day-runbook.html",
         "scripts/verify-launch-readiness.mjs"
       ]
