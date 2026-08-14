@@ -266,6 +266,7 @@ const requiredFiles = [
   "scripts/verify-outbound-readiness.mjs",
   "scripts/verify-gtm-claims.mjs",
   "scripts/show-launch-status.mjs",
+  "scripts/open-founder-clicks.mjs",
   "delivery/customer-workspace-template/report-template.md",
   "delivery/customer-workspace-template/buyer-facing-summary.md",
   "delivery/customer-workspace-template/findings-tracker.csv",

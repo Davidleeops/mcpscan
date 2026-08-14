@@ -10,6 +10,12 @@ Use this as the shortest live path from prepared repo to first paid audit.
 ops/founder-click-handoff.html
 ```
 
+One-command launcher:
+
+```text
+npm run launch:open-founder
+```
+
 ## Sequence
 
 1. Clear the GitHub billing lock.
@@ -27,7 +33,7 @@ ops/founder-click-handoff.html
 ## Current Next Click Script
 
 ```text
-1. Open ops/launch-approval-queue.html.
+1. Run npm run launch:open-founder.
 2. Open the GitHub billing guide and clear the account lock.
 3. Open the near-dollar Spaceship search for mcpscan.site.
 4. If the cart is near $1 and renewal is acceptable, buy one domain only.

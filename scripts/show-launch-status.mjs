@@ -165,6 +165,7 @@ const gates = [
   gate("Writing rule", !hasBannedPunctuation(), "no em dash in scanned launch artifacts"),
   gate("Launch cockpit", exists("ops/launch-cockpit.html"), "local operator hub exists"),
   gate("Founder click handoff", exists("ops/founder-click-handoff.html") && exists("docs/FOUNDER_CLICK_HANDOFF.md"), "single founder click sequence exists"),
+  gate("Founder click launcher", exists("scripts/open-founder-clicks.mjs"), "npm run launch:open-founder opens the next-click pages"),
   gate("Final click path", exists("ops/final-founder-click-console.html") && exists("docs/FINAL_FOUNDER_CLICK_PATH.md"), "founder sequence exists"),
   gate("Cost plan", exists("docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md"), "domain, mailbox, repo, and infra cost plan exists"),
   gate("Public trust checklist", exists("docs/PUBLIC_TRUST_CHECKLIST.md"), "pre-outbound public trust checklist exists"),

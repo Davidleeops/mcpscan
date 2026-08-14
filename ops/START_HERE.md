@@ -12,6 +12,12 @@ Or from the repo:
 npm run launch:open
 ```
 
+For the founder-only click path:
+
+```text
+npm run launch:open-founder
+```
+
 It points to every founder click gate:
 
 1. Domain and email DNS console

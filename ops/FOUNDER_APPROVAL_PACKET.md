@@ -14,6 +14,12 @@ Or open it from the repo:
 npm run launch:open
 ```
 
+For the founder-only click path:
+
+```text
+npm run launch:open-founder
+```
+
 ## Current Reality
 
 MCPScan is a real opportunity, but the strongest wedge is not "generic AI security platform." The strongest first-revenue offer is:
@@ -30,7 +36,7 @@ The first product to sell is a fixed-scope paid audit. The CLI and public sample
 | Gate | Founder Action | Console | Cost / Risk | Done When |
 | --- | --- | --- | --- | --- |
 | GitHub billing | Clear account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | Account/payment issue | CI and Pages jobs start and pass |
-| Domain | Buy `trymcpscan.com` for trust or `mcpscan.site` for the cheap validation lane | `ops/domain-email-dns-console.html` | About $1 to $3 for `.site`, about $9 for `.com` | Domain resolves to GitHub Pages |
+| Domain | Buy `mcpscan.site` for the near-dollar lane, `getmcpscan.xyz` for cheap renewal balance, or `trymcpscan.com` only if trust is worth the extra spend | `ops/domain-email-dns-console.html` | About $1 to $3 for cheap validation, about $9 for `.com` | Domain resolves to GitHub Pages |
 | Email | Create `security@{{chosen_domain}}` with `audit@` and `hello@` aliases | `ops/domain-email-dns-console.html` | About $18.88 for 2 years | MX, SPF, DKIM, and DMARC pass |
 | Stripe | Create 3 Payment Links | `ops/stripe-click-setup.html` | Stripe processing fees only | Quick, Launch, Enterprise links exist |
 | Link update | Apply real domain/email/Stripe links | `ops/approved-links-command-builder.html` | No spend | `npm run launch:verify -- --domain {{chosen_domain}}` has no checkout/domain warnings |
@@ -99,7 +105,7 @@ ops/final-founder-click-console.html
 ## Suggested Click Order
 
 1. Clear the GitHub billing lock and re-run failed Actions jobs.
-2. Buy `trymcpscan.com` or the approved fallback.
+2. Buy `mcpscan.site` if the cart is near $1 and renewal is accepted, or `getmcpscan.xyz` if renewal matters more.
 3. Create the matching `security@` mailbox.
 4. Add DNS records and wait for DNS/email authentication.
 5. Create Stripe Payment Links.
