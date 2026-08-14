@@ -121,6 +121,12 @@ function getLiveActionsState() {
     const active = runs.find((run) => run.status !== "completed");
     if (active) return { state: "INFO", detail: "workflow still running: " + active.workflowName };
     for (const run of runs.filter((item) => item.conclusion === "failure")) {
+      const json = execFileSync("gh", ["run", "view", String(run.databaseId), "--repo", repo, "--json", "jobs,url,workflowName,displayTitle"], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
+      const viewData = JSON.parse(json);
+      const failedBeforeSteps = viewData.jobs?.some((job) => job.conclusion === "failure" && Array.isArray(job.steps) && job.steps.length === 0);
+      if (failedBeforeSteps) {
+        return { state: "WAIT", detail: `${run.workflowName} failed before repo steps started; clear GitHub billing or account lock` };
+      }
       const view = execFileSync("gh", ["run", "view", String(run.databaseId), "--repo", repo], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
       if (view.includes("account is locked due to a billing issue")) {
         return { state: "WAIT", detail: "GitHub billing lock is still blocking workflow startup" };

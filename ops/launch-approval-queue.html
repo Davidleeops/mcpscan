@@ -17,12 +17,13 @@
       .stack { display: grid; gap: 16px; }
       section, article { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
       .queue { display: grid; gap: 12px; }
-      .item { display: grid; grid-template-columns: 42px 1fr minmax(190px, auto); gap: 12px; align-items: start; }
+      .item { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 12px; align-items: start; }
       .num { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 999px; background: var(--soft); color: var(--ink); font-weight: 800; }
       .ready { border-left: 4px solid var(--good); background: #f3fbf6; }
       .warn { border-left: 4px solid var(--warn); background: #fff9ec; }
       .danger { border-left: 4px solid var(--danger); background: #fff6f6; }
-      .actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-start; }
+      .item > .actions { grid-column: 2 / -1; }
       a.button, button.copy { display: inline-flex; min-height: 38px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 12px; color: var(--accent); background: #ffffff; font-weight: 700; text-decoration: none; cursor: pointer; }
       a.button.primary { color: #ffffff; background: var(--accent); }
       table { border-collapse: collapse; width: 100%; }
@@ -62,9 +63,9 @@
           <div class="num">2</div>
           <div>
             <h3>Buy domain and mailbox <span class="tag warn">payment gate</span></h3>
-            <p>Trust lane: buy trymcpscan.com if Spaceship confirms standard .com pricing, or getmcpscan.com if the first pick is unavailable. Cheap validation lane: buy mcpscan.site only if the renewal tradeoff is accepted. Create security@chosen-domain before outbound, with audit@ and hello@ as aliases.</p>
+            <p>Cheap validation lane: buy mcpscan.site if the cart is near $1 and the higher renewal is accepted, or getmcpscan.xyz if renewal tradeoff matters more. Trust lane: buy trymcpscan.com only if the buyer-trust bump is worth the extra spend. Create security@chosen-domain before outbound, with audit@ and hello@ as aliases.</p>
           </div>
-          <div class="actions"><a class="button" href="domain-mailbox-purchase-packet.html">Purchase packet</a><a class="button" href="domain-email-dns-console.html">DNS console</a><a class="button" href="https://www.spaceship.com/domain-search/?query=trymcpscan.com" target="_blank" rel="noreferrer">Search trust lane</a><a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscan.site" target="_blank" rel="noreferrer">Search cheap lane</a></div>
+          <div class="actions"><a class="button" href="domain-mailbox-purchase-packet.html">Purchase packet</a><a class="button" href="domain-email-dns-console.html">DNS console</a><a class="button primary" href="https://www.spaceship.com/domain-search/?query=mcpscan.site" target="_blank" rel="noreferrer">Search near-dollar lane</a><a class="button" href="https://www.spaceship.com/domain-search/?query=getmcpscan.xyz" target="_blank" rel="noreferrer">Search .xyz lane</a><a class="button" href="https://www.spaceship.com/domain-search/?query=trymcpscan.com" target="_blank" rel="noreferrer">Search trust lane</a></div>
         </article>
 
         <article class="item warn">
