@@ -215,6 +215,7 @@ const gates = [
   { label: "Filled approval status", state: approvalStatus.state, detail: approvalStatus.detail },
   ...approvalTrackerGates(filledApprovalStatus),
   gate("Billing unblock path", exists("ops/github-actions-billing-console.html") && exists("docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md"), "GitHub billing guide exists"),
+  gate("Actions unblock session", exists("scripts/open-github-actions-unblock-session.mjs") && exists("scripts/simulate-github-actions-unblock-session.mjs"), "npm run launch:actions-session creates the private failed-run and billing click cockpit"),
   gate("Actions rerun helper", exists("scripts/rerun-github-actions-after-unlock.mjs"), "npm run launch:rerun-actions re-runs failed CI and Pages jobs after billing unlock"),
   ...(pagesFallback ? [{ label: "GitHub Pages fallback", state: pagesFallback.state, detail: pagesFallback.detail }] : []),
   ...(liveActions ? [{ label: "GitHub Actions live", state: liveActions.state, detail: liveActions.detail }] : []),

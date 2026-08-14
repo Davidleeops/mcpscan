@@ -10,14 +10,17 @@ const reviewSurfaces = [
   "ops/stripe-click-setup.html",
   "ops/stripe-payment-link-qa-console.html",
   "ops/founder-return-packet.html",
-  "ops/founder-status-console.html"
+  "ops/founder-status-console.html",
+  "ops/github-actions-billing-console.html"
 ];
 
 const externalUrls = [
   "https://www.spaceship.com/promos/",
   "https://www.spaceship.com/domain-search/?query=getmcpscan.xyz",
   "https://www.spaceship.com/domain-search/?query=mcpscan.online",
-  "https://dashboard.stripe.com/payment-links"
+  "https://dashboard.stripe.com/payment-links",
+  "https://github.com/settings/billing",
+  "https://github.com/Davidleeops/mcpscan/actions"
 ];
 
 function openerFor(target) {
@@ -84,7 +87,7 @@ console.log("13. Run npm run launch:open-public-review before any public post.")
 console.log("14. Run npm run outbound:open-send-gates before any outreach.");
 console.log("15. Run npm run outbound:open-reply-close after any prospect reply.");
 console.log("16. Run npm run delivery:open-handoff after payment clears.");
-console.log("17. Clear GitHub billing later so normal CI resumes.");
+console.log("17. Run npm run launch:actions-session to clear the GitHub Actions billing lock and rerun CI.");
 
 console.log("");
 console.log("Hard rule:");

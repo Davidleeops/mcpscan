@@ -52,6 +52,8 @@
     "launch:open-first-revenue": "node scripts/open-first-revenue-runway.mjs",
     "launch:open-swarm": "node scripts/open-swarm-throughput-console.mjs",
     "launch:publish-pages-fallback": "node scripts/publish-pages-fallback.mjs",
+    "launch:actions-session": "node scripts/open-github-actions-unblock-session.mjs",
+    "launch:simulate-actions-session": "node scripts/simulate-github-actions-unblock-session.mjs",
     "launch:stage-public-post": "node scripts/stage-approved-public-launch-post.mjs",
     "outbound:stage-approved": "node scripts/stage-approved-outbound.mjs",
     "outbound:open-first-10": "node scripts/open-first-10-outbound-approval.mjs",

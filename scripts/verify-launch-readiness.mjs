@@ -303,6 +303,8 @@ const requiredFiles = [
   "scripts/simulate-founder-post-click-session.mjs",
   "scripts/publish-pages-fallback.mjs",
   "scripts/rerun-github-actions-after-unlock.mjs",
+  "scripts/open-github-actions-unblock-session.mjs",
+  "scripts/simulate-github-actions-unblock-session.mjs",
   "scripts/run-launch-rehearsal.mjs",
   "scripts/open-public-launch-review.mjs",
   "scripts/open-first-revenue-runway.mjs",
@@ -412,8 +414,8 @@ if (exists("scripts/open-next-founder-action.mjs")) {
   );
 
   results.push(
-    exists("ops/github-actions-billing-console.html") && exists("docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md")
-      ? result("pass", "billing repair path", "billing unlock docs remain available outside the first-click path")
+    exists("ops/github-actions-billing-console.html") && exists("docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md") && exists("scripts/open-github-actions-unblock-session.mjs") && exists("scripts/simulate-github-actions-unblock-session.mjs")
+      ? result("pass", "billing repair path", "billing unlock docs and private failed-run session remain available")
       : result("fail", "billing repair path", "missing billing repair docs")
   );
 
@@ -421,6 +423,7 @@ if (exists("scripts/open-next-founder-action.mjs")) {
     "approval-gated",
     "does not buy, publish, send, apply, or create customer files",
     "npm run launch:click-session",
+    "npm run launch:actions-session",
     "npm run launch:post-click-bundle",
     "getmcpscan.xyz",
     "mcpscan.online",

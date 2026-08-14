@@ -6,6 +6,7 @@ const steps = [
   ["founder click session simulation", ["run", "launch:simulate-click-session"]],
   ["founder return apply simulation", ["run", "launch:simulate-return-apply"]],
   ["founder post-click session simulation", ["run", "launch:simulate-post-click-session"]],
+  ["GitHub Actions unblock session simulation", ["run", "launch:simulate-actions-session"]],
   ["first-10 route staging simulation", ["run", "outbound:simulate-route-staging"]],
   ["first-10 named-recipient staging simulation", ["run", "outbound:simulate-named-staging"]],
   ["first-10 send session simulation", ["run", "outbound:simulate-first-10-session"]],
