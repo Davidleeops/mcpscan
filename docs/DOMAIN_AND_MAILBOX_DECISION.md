@@ -2,7 +2,29 @@
 
 Generated: 2026-08-14
 
-## Recommendation
+## Default Recommendation
+
+Use this path if speed and a tiny first-year domain checkout matter most:
+
+```text
+Domain: mcpscan.online
+Registrar: Spaceship
+Mail provider: Spacemail
+Primary mailbox: security@mcpscan.online
+Aliases: audit@mcpscan.online, hello@mcpscan.online
+```
+
+Reason: it matches the current near-dollar domain lane, keeps domain and mailbox setup in one account, and removes a provider choice from the first-revenue path.
+
+Run this before buying:
+
+```text
+npm run launch:prepare-founder-clicks -- --domain mcpscan.online --mail-provider spacemail
+```
+
+Only switch lanes if the cart fails, the renewal price is unacceptable, or you decide B2B security trust is worth spending more now.
+
+## Higher-Trust Alternatives
 
 Search `getmcpscan.com` first if you want to keep MCPScan as the public product name. It reads cleanly, keeps the brand intact, and should land around standard `.com` pricing if the Spaceship cart confirms availability.
 
@@ -88,18 +110,15 @@ The public trust launch checklist lives in `docs/PUBLIC_TRUST_CHECKLIST.md`.
 
 ## Buying Rule
 
-1. Search `getmcpscan.com` on Spaceship first if you want to keep the MCPScan name.
-2. If `getmcpscan.com` is available and standard-priced, buy it.
-3. Search `mcpattest.dev` first only if you are willing to use a cleaner product name.
-4. If `mcpattest.dev` is available and normal-priced, buy it unless you strongly want the MCPScan name.
-5. If `getmcpscan.com` is unavailable or premium-priced, search and buy `trymcpscan.com`.
-6. If both `.com` trust picks are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
-7. If you want the cheapest credible option, search and buy `mcpscan.us`.
-8. If you want the absolute cheapest today, search `mcpscan.online`, `mcpscan.site`, `getmcpscan.xyz`, `getmcpscan.site`, and `getmcpscan.online`, then buy one only if the cart is around `$1` to `$3` and you accept the renewal tradeoff.
-9. Buy one domain first.
-10. Create one mailbox first: `security@{{chosen_domain}}`. Use Zoho Mail Lite for cheapest credible email, Google Workspace for maximum trust, or Spacemail if you prefer keeping email in the same Spaceship account.
-11. Add aliases for `audit@{{chosen_domain}}` and `hello@{{chosen_domain}}`.
-12. Do not use the mailbox for outbound until MX, SPF, DKIM, and DMARC pass.
+1. Search `mcpscan.online` on Spaceship first.
+2. Buy it only if it is available, first-year domain cost is at or below `$3`, renewal is visible, and no paid add-ons are in cart.
+3. Create one Spacemail mailbox first: `security@mcpscan.online`.
+4. Add aliases for `audit@mcpscan.online` and `hello@mcpscan.online`.
+5. Do not use the mailbox for outbound until MX, SPF, DKIM, and DMARC pass.
+6. If the cheap cart fails, search `mcpscan.site`, then `getmcpscan.xyz`.
+7. If you decide trust matters more than the cash cap, search `getmcpscan.com`, then `trymcpscan.com`.
+8. If you decide the product should use a cleaner security brand, search `mcpattest.dev`.
+9. Buy one domain only.
 
 ## After Purchase
 

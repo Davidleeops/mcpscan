@@ -101,7 +101,7 @@ function hasFilledApprovalStatus() {
 
 function getApprovalStatusState() {
   if (hasFilledApprovalStatus()) return { state: "READY", detail: "ops/founder-approval-status.json is present and structurally valid" };
-  return { state: "INFO", detail: "copy template after founder clicks if you want a public-safe tracker" };
+  return { state: "WAIT", detail: "missing until founder clicks return public-safe values; outbound send gates will fail without it" };
 }
 
 function approvalTrackerGates(status) {
@@ -202,6 +202,7 @@ const gates = [
   gate("Next action launcher", exists("scripts/open-next-founder-action.mjs"), "npm run launch:next opens the current founder action stack"),
   gate("Founder click handoff", exists("ops/founder-click-handoff.html") && exists("docs/FOUNDER_CLICK_HANDOFF.md"), "single founder click sequence exists"),
   gate("Founder click launcher", exists("scripts/open-founder-clicks.mjs"), "npm run launch:open-founder opens the next-click pages"),
+  gate("Founder click workspace", exists("scripts/prepare-founder-click-workspace.mjs"), "npm run launch:prepare-founder-clicks creates private cart, return, and Stripe QA evidence paths"),
   gate("Founder return review launcher", exists("scripts/open-founder-return-review.mjs"), "npm run launch:open-return-review opens the post-click approval pages"),
   gate("Founder return values checklist", exists("docs/FOUNDER_RETURN_VALUES_CHECKLIST.md"), "safe public values checklist exists before post-click apply"),
   gate("Final click path", exists("ops/final-founder-click-console.html") && exists("docs/FINAL_FOUNDER_CLICK_PATH.md"), "founder sequence exists"),

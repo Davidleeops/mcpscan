@@ -23,6 +23,7 @@
     "launch:open-founder": "node scripts/open-founder-clicks.mjs",
     "launch:next": "node scripts/open-next-founder-action.mjs",
     "launch:day": "node scripts/open-launch-day-runbook.mjs",
+    "launch:prepare-founder-clicks": "node scripts/prepare-founder-click-workspace.mjs",
     "launch:open-return-review": "node scripts/open-founder-return-review.mjs",
     "launch:prepare-cheap": "node scripts/prepare-cheap-launch-packets.mjs",
     "launch:verify-cart": "node scripts/verify-domain-cart-proof.mjs",

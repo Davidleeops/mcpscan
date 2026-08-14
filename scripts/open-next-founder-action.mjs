@@ -4,28 +4,17 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 const reviewSurfaces = [
-  "ops/launch-cockpit.html",
-  "ops/launch-day-runbook.html",
   "ops/final-founder-click-console.html",
   "ops/founder-click-handoff.html",
-  "ops/cheap-launch-packet-console.html",
   "ops/domain-mailbox-purchase-packet.html",
   "ops/stripe-click-setup.html",
   "ops/stripe-payment-link-qa-console.html",
-  "ops/gtm-placement-console.html",
-  "docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md",
-  "ops/public-channel-drafts-console.html",
   "ops/founder-return-packet.html",
-  "ops/verification-console.html",
-  "sales/daily-revenue-command.md",
-  "ops/GITHUB_ISSUE_ACTION_BOARD.md"
+  "ops/founder-status-console.html"
 ];
 
 const externalUrls = [
-  "https://www.spaceship.com/domain-search/?query=mcpattest.dev",
-  "https://www.spaceship.com/domain-search/?query=getmcpscan.com",
   "https://www.spaceship.com/domain-search/?query=mcpscan.online",
-  "https://www.spaceship.com/domain-search/?query=mcpscan.site",
   "https://dashboard.stripe.com/payment-links"
 ];
 
@@ -56,7 +45,7 @@ function runStatus() {
 
 console.log("MCPScan next founder action launcher");
 console.log("");
-console.log("Opening launch control surfaces:");
+console.log("Opening the narrow founder action path:");
 
 for (const page of reviewSurfaces) {
   const url = pathToFileURL(path.resolve(page)).toString();
@@ -77,17 +66,21 @@ runStatus();
 
 console.log("");
 console.log("Next action ladder:");
-console.log("1. Buy the approved domain and mailbox.");
-console.log("2. Create Stripe Payment Links and checkout QA evidence.");
-console.log("3. Paste exact values into the founder return packet.");
-console.log("4. Run npm run launch:post-click-bundle after return packet and QA evidence exist.");
-console.log("5. Run npm run launch:open-return-review after values exist.");
-console.log("6. Run npm run launch:publish-pages-fallback -- --wait true after approved values are applied.");
-console.log("7. Run npm run launch:open-public-review before any public post.");
-console.log("8. Run npm run outbound:open-send-gates before any outreach.");
-console.log("9. Run npm run outbound:open-reply-close after any prospect reply.");
-console.log("10. Run npm run delivery:open-handoff after payment clears.");
-console.log("11. Clear GitHub billing later so normal CI resumes.");
+console.log("1. Run npm run launch:prepare-founder-clicks -- --domain mcpscan.online --mail-provider spacemail before buying anything.");
+console.log("2. Fill the generated cart proof from the visible Spaceship cart.");
+console.log("3. Buy mcpscan.online only if the cart stays at or below the approved cap and renewal is visible.");
+console.log("4. Create one Spacemail mailbox: security@mcpscan.online, with audit@ and hello@ aliases.");
+console.log("5. Create Stripe Payment Links and checkout QA evidence.");
+console.log("6. Paste exact values into the generated founder return packet.");
+console.log("7. Run npm run launch:post-click-bundle after return packet and QA evidence exist.");
+console.log("8. Run npm run launch:open-return-review after values exist.");
+console.log("9. Run npm run launch:publish-pages-fallback -- --wait true after approved values are applied.");
+console.log("10. Run npm run launch:full-proof -- --live true with the generated evidence files.");
+console.log("11. Run npm run launch:open-public-review before any public post.");
+console.log("12. Run npm run outbound:open-send-gates before any outreach.");
+console.log("13. Run npm run outbound:open-reply-close after any prospect reply.");
+console.log("14. Run npm run delivery:open-handoff after payment clears.");
+console.log("15. Clear GitHub billing later so normal CI resumes.");
 
 console.log("");
 console.log("Hard rule:");

@@ -4,9 +4,26 @@ Generated: 2026-08-14
 
 Use this before buying a domain or mailbox. It keeps the purchase lane, spend cap, renewal tradeoff, and post-click values explicit.
 
-## Default Choice
+## Default Click Choice
 
-For first revenue, use the `.com` trust lane if Spaceship shows a standard cart price. The extra few dollars are worth it for B2B security trust and cold outbound deliverability.
+For the fastest cheap launch, use this as the default unless you explicitly decide to spend more for trust:
+
+```text
+Domain: mcpscan.online
+Registrar: Spaceship
+Mail provider: Spacemail
+Primary mailbox: security@mcpscan.online
+Aliases: audit@mcpscan.online, hello@mcpscan.online
+Maximum first-year domain spend: $3 before mailbox
+```
+
+Buy it only if the Spaceship cart shows the domain is available, the first-year domain price is at or below `$3`, the renewal price is visible, and no paid add-ons are included.
+
+## Escape Lanes
+
+Use these only if the default cart fails or you consciously choose a higher-trust path.
+
+Trust lane:
 
 Trust default:
 
@@ -34,7 +51,7 @@ Primary mailbox: security@getmcpscan.xyz
 Aliases: audit@getmcpscan.xyz, hello@getmcpscan.xyz
 ```
 
-Near-dollar validation option:
+Near-dollar backup:
 
 ```text
 Domain: mcpscan.online
@@ -42,21 +59,22 @@ Primary mailbox: security@mcpscan.online
 Aliases: audit@mcpscan.online, hello@mcpscan.online
 ```
 
-Use the cheap validation lane only if the founder wants to keep the domain purchase near `$1` to `$3` and accepts the weaker trust signal. Search `mcpscan.online` first for the current near-dollar lane, `mcpscan.site` second if the .online cart fails, then `getmcpscan.xyz` if renewal posture matters more than the absolute lowest first-year price. Avoid `.shop` as the primary MCPScan domain.
+Avoid `.shop` as the primary MCPScan domain.
 
 ## Current Cart Rules
 
-- Search `getmcpscan.com` first unless the domain budget is strictly capped near `$1` to `$3`.
-- Search `mcpattest.dev` first if you are open to a cleaner security brand.
-- Search `mcpscan.online` first if the strict cash cap is near `$1` and the higher renewal is acceptable.
+- Search `mcpscan.online` first for the default cheap lane.
+- Use Spacemail first for one-vendor convenience unless you explicitly choose Zoho Mail Lite for lowest annual mailbox cost or Google Workspace for maximum buyer trust.
+- Search `getmcpscan.com` only if you decide trust matters more than the near-dollar domain cap.
+- Search `mcpattest.dev` only if you are open to a cleaner security brand.
 - Search `mcpscan.site` if the `.online` cart fails, is unavailable, or is materially worse.
 - Search `getmcpscan.xyz` if the strict cash cap is `$1` to `$3` and you want the cleaner renewal tradeoff.
 - If `.online` or `.site` jumps in cart pricing, search `getmcpscan.site`, then `getmcpscan.online`.
 - Confirm the renewal price before purchase. `.site` and `.online` can renew near the low `$20s`, while `.xyz` is currently lower.
 - Use promo codes only if the cart accepts them. Official Spaceship pages showed `.site` and `.online` at `$0.98` plus the ICANN fee on 2026-08-14, and `.xyz` at `$1.86` with `$12.52` renewal. The Spaceship cart is the final source.
-- Buy the domain at Spaceship if the cart confirms standard `.com` pricing.
-- Cheapest credible email path: use Zoho Mail Lite for one custom-domain mailbox if the founder is comfortable with a separate email provider.
-- One-vendor convenience path: use Spacemail for one mailbox if keeping domain and mailbox in Spaceship matters more than the lowest email price.
+- Buy the domain at Spaceship if the cart confirms the selected lane.
+- Default mailbox path: use Spacemail for one mailbox in the same Spaceship account.
+- Cheapest credible email path: use Zoho Mail Lite for one custom-domain mailbox only if the founder wants the lowest annual mailbox cost and accepts a separate provider.
 - Create one mailbox only, then add aliases.
 
 ## Cart Safety Gate
@@ -94,15 +112,16 @@ Buy one MCPScan launch domain and one matching mailbox. Do not buy extra domains
 
 ## Click Path
 
-1. Open `ops/domain-mailbox-purchase-packet.html`.
-2. Choose the `.com` trust lane if the cart is standard-priced, the clean `.dev` lane if you approve a cleaner brand, or the cheap validation lane only if cash cap matters more than trust.
-3. Copy the purchase approval message.
-4. Buy one domain only in Spaceship.
-5. Create one mailbox for that domain through Zoho Mail Lite, Google Workspace, or Spacemail.
-6. Add `audit@` and `hello@` aliases.
-7. Copy the generated post-click values into `ops/founder-return-packet.html`.
-8. Create Stripe Payment Links.
-9. Send the approved return packet to Codex.
+1. Run `npm run launch:prepare-founder-clicks -- --domain mcpscan.online --mail-provider spacemail`.
+2. Open `ops/domain-mailbox-purchase-packet.html`.
+3. Search `mcpscan.online` in Spaceship.
+4. Copy the purchase approval message only if the cart is at or below the cap and has no paid add-ons.
+5. Buy one domain only in Spaceship.
+6. Create one Spacemail mailbox for that domain.
+7. Add `audit@` and `hello@` aliases.
+8. Copy the generated post-click values into `ops/founder-return-packet.html`.
+9. Create Stripe Payment Links.
+10. Send the approved return packet to Codex.
 
 ## Stop Conditions
 

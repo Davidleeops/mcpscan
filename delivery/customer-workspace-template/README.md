@@ -12,15 +12,17 @@ Recommended private workspace path:
 ~/MCPScan Audits/YYYY-MM-DD_customer-name/
 ```
 
-## Automated Setup
+## Automated Live Setup
 
-From the repo, create a private workspace outside the public repository:
+For live paid customers, use the evidence-backed handoff command from the repo:
 
 ```text
-npm run delivery:workspace -- --customer CUSTOMER_NAME --date YYYY-MM-DD
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json
 ```
 
-Preview the target path without creating files:
+This ties payment proof, founder approval, private workspace creation, the work order, pipeline status, and the draft intake message together. Do not use the workspace-only command for live paid customers.
+
+Preview the workspace-only target path without creating files:
 
 ```text
 npm run delivery:workspace -- --customer CUSTOMER_NAME --date YYYY-MM-DD --dry-run

@@ -278,6 +278,7 @@ const requiredFiles = [
   "scripts/create-paid-audit-handoff.mjs",
   "scripts/apply-founder-return-packet.mjs",
   "scripts/create-post-click-handoff-bundle.mjs",
+  "scripts/prepare-founder-click-workspace.mjs",
   "scripts/simulate-post-click-handoff-bundle.mjs",
   "scripts/simulate-founder-return-apply.mjs",
   "scripts/build-domain-dns-packet.mjs",
@@ -389,16 +390,13 @@ if (exists("SECURITY.md")) {
 if (exists("scripts/open-next-founder-action.mjs")) {
   const nextAction = read("scripts/open-next-founder-action.mjs");
   const requiredNextActionUrls = [
-    "https://www.spaceship.com/domain-search/?query=mcpattest.dev",
-    "https://www.spaceship.com/domain-search/?query=getmcpscan.com",
     "https://www.spaceship.com/domain-search/?query=mcpscan.online",
-    "https://www.spaceship.com/domain-search/?query=mcpscan.site",
     "https://dashboard.stripe.com/payment-links"
   ];
   const missingNextActionUrls = requiredNextActionUrls.filter((url) => !nextAction.includes(url));
   results.push(
     missingNextActionUrls.length === 0
-      ? result("pass", "launch next account links", "all founder account links are present")
+      ? result("pass", "launch next account links", "cheap default domain search and Stripe account links are present")
       : result("fail", "launch next account links", missingNextActionUrls.join(", "))
   );
 
@@ -411,7 +409,10 @@ if (exists("scripts/open-next-founder-action.mjs")) {
   const nextActionSafetyMarkers = [
     "approval-gated",
     "does not buy, publish, send, apply, or create customer files",
-    "npm run launch:post-click-bundle"
+    "npm run launch:prepare-founder-clicks",
+    "npm run launch:post-click-bundle",
+    "mcpscan.online",
+    "spacemail"
   ];
   const missingNextActionSafetyMarkers = nextActionSafetyMarkers.filter((marker) => !nextAction.includes(marker));
   results.push(
@@ -447,6 +448,24 @@ if (exists("scripts/open-founder-clicks.mjs")) {
     missingFounderClickSurfaces.length === 0
       ? result("pass", "founder click return surfaces", "return packet, status tracker, and Stripe QA console open together")
       : result("fail", "founder click return surfaces", missingFounderClickSurfaces.join(", "))
+  );
+}
+
+if (exists("scripts/prepare-founder-click-workspace.mjs") && exists("package.json")) {
+  const packageJson = read("package.json");
+  const workspaceScript = read("scripts/prepare-founder-click-workspace.mjs");
+  const requiredWorkspaceMarkers = [
+    "launch:prepare-founder-clicks",
+    "domain-cart-proof.json",
+    "approved-return-packet.txt",
+    "stripe-checkout-qa-evidence.json",
+    "Refusing to create the founder click workspace inside the public MCPScan repo"
+  ];
+  const missingWorkspaceMarkers = requiredWorkspaceMarkers.filter((marker) => !packageJson.includes(marker) && !workspaceScript.includes(marker));
+  results.push(
+    missingWorkspaceMarkers.length === 0
+      ? result("pass", "founder click private workspace", "cart proof, return packet, and Stripe QA paths are generated outside the repo")
+      : result("fail", "founder click private workspace", missingWorkspaceMarkers.join(", "))
   );
 }
 
@@ -494,17 +513,19 @@ if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-retu
     exists("ops/launch-day-runbook.html") ? read("ops/launch-day-runbook.html") : ""
   ].join("\n");
   const requiredReturnReviewCommands = [
-    "npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt",
-    "npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json",
-    "npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json",
-    "npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --cart-file /path/to/domain-cart-proof.json --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true",
+    "MCPScan Founder Clicks/current/domain-cart-proof.json",
+    "MCPScan Founder Clicks/current/approved-return-packet.txt",
+    "MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json",
+    "npm run launch:verify-cart",
+    "npm run launch:post-click-bundle",
+    "npm run launch:verify-status",
+    "npm run launch:post-click-verify",
     "npm run launch:publish-pages-fallback -- --wait true",
     "npm run launch:verify -- --domain",
     "npm run launch:full-proof -- --live true",
     "npm run launch:status:live",
     "Mail provider:",
-    "mailProvider",
-    "npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider {{zoho_or_google_or_spacemail}}"
+    "mailProvider"
   ];
   const missingReturnReviewCommands = requiredReturnReviewCommands.filter((command) => !returnReview.includes(command));
   results.push(
@@ -561,7 +582,8 @@ if (exists("ops/founder-status-console.html") && exists("docs/POST_PURCHASE_PUBL
     "launch:verify-status",
     "launch:full-proof",
     "--live true",
-    "--status-file /path/to/founder-approval-status.json",
+    "--status-file ops/founder-approval-status.json",
+    "MCPScan Founder Clicks/current/domain-cart-proof.json",
     "Download JSON",
     "mcpscan.online",
     "security@mcpscan.online",

@@ -12,6 +12,14 @@ Cost and infrastructure decision: `docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026
 
 Public trust checklist: `docs/PUBLIC_TRUST_CHECKLIST.md`.
 
+Before the external account clicks, prepare the private local evidence workspace:
+
+```text
+npm run launch:prepare-founder-clicks -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}}
+```
+
+This creates local files under `$HOME/MCPScan Founder Clicks/current/` for the domain cart proof, founder return packet, and Stripe checkout QA evidence. Keep that folder outside the public repo.
+
 After the external account clicks, use `ops/founder-return-packet.html` to paste the purchased domain, mailbox, aliases, and Stripe links into one approval message.
 
 Use `docs/FOUNDER_RETURN_VALUES_CHECKLIST.md` before pasting values back. Return only public launch values and Stripe QA evidence. Do not return passwords, secret keys, credit card details, recovery codes, customer configs, customer data, or production secrets.
@@ -20,10 +28,11 @@ After that message is approved, Codex can run the full post-click handoff:
 
 ```text
 npm run launch:open-return-review
-npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt
-npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider {{zoho_or_google_or_spacemail}}
-npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --cart-file /path/to/domain-cart-proof.json --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
+npm run launch:verify-cart -- --file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt"
+npm run launch:post-click-bundle -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --mail-provider {{zoho_or_google_or_spacemail}}
+npm run launch:verify-status -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json"
+npm run launch:post-click-verify -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --apply true
+npm run launch:full-proof -- --live true --status-file ops/founder-approval-status.json --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --mail-provider {{zoho_or_google_or_spacemail}}
 ```
 
 The approved return-packet command writes `ops/founder-approval-status.json` automatically. The filled tracker is ignored by git by default. Do not add passwords, API keys, mailbox credentials, Stripe secret keys, or customer data.
@@ -38,8 +47,8 @@ First revenue does not require npm publishing. Sell and deliver the `$1,500` MCP
 
 | Order | Gate | Founder Action | Console | Done When |
 | --- | --- | --- | --- | --- |
-| 1 | Domain | Buy `getmcpscan.com` if Spaceship shows standard `.com` pricing. Use `mcpattest.dev` if you approve the cleaner brand. Use `mcpscan.online` or `getmcpscan.xyz` only if the hard cash cap matters more than buyer trust | `ops/domain-mailbox-purchase-packet.html` | Domain exists in registrar account |
-| 2 | Mailbox | Create `security@{{chosen_domain}}` with `audit@` and `hello@` aliases. Use Zoho Mail Lite for cheapest credible email, Google Workspace for highest buyer trust, or Spacemail for one-vendor convenience | `ops/domain-email-dns-console.html` | MX, SPF, DKIM, and DMARC pass for the selected provider |
+| 1 | Domain | Buy `mcpscan.online` if Spaceship shows first-year domain pricing at or below `$3`, visible renewal, and no paid add-ons. Use `getmcpscan.com` only if you consciously choose trust over the tight cash cap | `ops/domain-mailbox-purchase-packet.html` | Domain exists in registrar account |
+| 2 | Mailbox | Create Spacemail mailbox `security@mcpscan.online` with `audit@mcpscan.online` and `hello@mcpscan.online` aliases. Use another provider only if you intentionally switch lanes | `ops/domain-email-dns-console.html` | MX, SPF, DKIM, and DMARC pass for the selected provider |
 | 3 | Stripe | Generate setup packet, create three Payment Links, verify format and checkout QA evidence | `ops/stripe-click-setup.html`, `ops/stripe-payment-link-qa-console.html` | Quick, Launch, and Enterprise checkout links exist, `npm run launch:verify-stripe` passes, and `npm run launch:verify-stripe-qa` passes |
 | 4 | Apply links | Approve exact return packet values | `ops/founder-return-packet.html` | Landing page no longer uses placeholder checkout links |
 | 5 | Verify | Run launch verification | `ops/verification-console.html` | `npm run launch:verify -- --domain {{chosen_domain}}` has no domain or checkout warnings |
@@ -84,18 +93,19 @@ npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_o
 After Stripe links exist, verify them before applying public links:
 
 ```text
-npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status
-npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status
+npm run launch:verify-stripe -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --update-status
+npm run launch:verify-stripe-qa -- --file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --update-status
 ```
 
 After founder clicks exist, apply the return packet, verify Stripe QA evidence, verify DNS, and refresh public-safe approval status:
 
 ```text
 npm run launch:open-return-review
-npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt
-npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider {{zoho_or_google_or_spacemail}}
-npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --cart-file /path/to/domain-cart-proof.json --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
+npm run launch:verify-cart -- --file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt"
+npm run launch:post-click-bundle -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --mail-provider {{zoho_or_google_or_spacemail}}
+npm run launch:verify-status -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json"
+npm run launch:post-click-verify -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --apply true
+npm run launch:full-proof -- --live true --status-file ops/founder-approval-status.json --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --mail-provider {{zoho_or_google_or_spacemail}}
 npm run launch:status
 ```
 

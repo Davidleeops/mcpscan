@@ -32,13 +32,15 @@ Do not begin if:
 
 ## Workspace Setup
 
-Create a private working folder for each customer:
+For live paid customers, create the private workspace only through the evidence-backed paid handoff:
 
-```bash
-mkdir -p audits/customer-name/input audits/customer-name/output audits/customer-name/notes
+```text
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json
 ```
 
-Store customer-provided files under `input/`.
+This creates the private workspace, work order, pipeline status, and draft intake message outside the public MCPScan repo after payment evidence and exact handoff values are verified.
+
+Store customer-provided files only inside the private workspace created by that handoff.
 
 Never commit customer files, scan outputs, reports, screenshots, secrets, or notes to the MCPScan repo.
 
@@ -81,10 +83,10 @@ mcpscan --help
 
 Capture the command used in internal notes.
 
-Example pattern:
+Example pattern inside the private customer workspace:
 
 ```bash
-mcpscan scan audits/customer-name/input/mcp-config.json --output audits/customer-name/output/mcpscan-results.json
+mcpscan scan 00-intake/mcp-config.json --output 03-scan-output/mcpscan-results.json
 ```
 
 If the installed command or flags differ, use the equivalent documented command and record the exact version.
@@ -212,11 +214,20 @@ Use these workspace artifacts before final delivery:
 - `qa-signoff.md`
 - `retention-and-deletion-log.md`
 
-Run:
+Run the repository readiness verifier:
 
 ```bash
 npm run delivery:verify
 ```
+
+Then complete the private workspace QA artifacts before delivery:
+
+- `redaction-checklist.md`
+- `qa-signoff.md`
+- `evidence-register.csv`
+- `retention-and-deletion-log.md`
+
+The repository verifier proves the delivery system is prepared. It does not replace final customer-specific QA in the private workspace.
 
 ## Step 11: Deliver
 

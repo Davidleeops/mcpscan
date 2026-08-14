@@ -253,13 +253,13 @@
         };
 
         jsonOutput.textContent = JSON.stringify(tracker, null, 2);
-        commandsOutput.textContent = `npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status
-npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status
-npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json
+        commandsOutput.textContent = `npm run launch:verify-stripe -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --update-status
+npm run launch:verify-stripe-qa -- --file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --update-status
+npm run launch:verify-status -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json"
 npm run launch:verify-dns -- --domain ${values.domain} --mail-provider ${mailProvider} --update-status
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --cart-file /path/to/domain-cart-proof.json --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --domain ${values.domain} --mail-provider ${mailProvider}
-npm run launch:full-proof -- --live true --status-file /path/to/founder-approval-status.json --cart-file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider ${mailProvider}
-npm run outbound:send-gates -- --status-file /path/to/founder-approval-status.json --cart-file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json
+npm run launch:post-click-verify -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --apply true --domain ${values.domain} --mail-provider ${mailProvider}
+npm run launch:full-proof -- --live true --status-file ops/founder-approval-status.json --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --mail-provider ${mailProvider}
+npm run outbound:send-gates -- --status-file ops/founder-approval-status.json --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json"
 npm run launch:status
 npm run launch:open-first-revenue`;
         status.textContent = "Tracker built.";

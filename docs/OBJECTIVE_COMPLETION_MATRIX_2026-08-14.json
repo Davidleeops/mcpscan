@@ -6,7 +6,7 @@
   "currentPositioning": "We turn noisy MCP scanner output into a validated MCP risk report, remediation plan, and customer-ready security proof in 3 to 5 days.",
   "launchReadinessProof": {
     "command": "npm run launch:verify",
-    "passed": 226,
+    "passed": 229,
     "expectedWarnings": 3,
     "failures": 0
   },
@@ -54,7 +54,8 @@
         "scripts/open-launch-day-runbook.mjs",
         "ops/final-founder-click-console.html",
         "ops/founder-click-handoff.html",
-        "ops/launch-approval-queue.html"
+        "ops/launch-approval-queue.html",
+        "scripts/prepare-founder-click-workspace.mjs"
       ]
     },
     {
@@ -96,6 +97,7 @@
         "docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md",
         "scripts/apply-founder-return-packet.mjs",
         "scripts/create-post-click-handoff-bundle.mjs",
+        "scripts/prepare-founder-click-workspace.mjs",
         "scripts/simulate-post-click-handoff-bundle.mjs",
         "scripts/verify-founder-approval-status.mjs",
         "scripts/run-post-click-verification.mjs"

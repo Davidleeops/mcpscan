@@ -16,6 +16,12 @@ One-command launcher:
 npm run launch:open-founder
 ```
 
+Prepare the private founder evidence workspace before buying anything:
+
+```text
+npm run launch:prepare-founder-clicks -- --domain mcpscan.online --mail-provider spacemail
+```
+
 Prebuild the cheap-lane DNS and Stripe packets:
 
 ```text
@@ -34,30 +40,31 @@ ops/generated-launch-packets/2026-08-14_mcpscan-online_stripe-products.csv
 
 ## Sequence
 
-1. Clear the GitHub billing lock.
-2. Choose the domain lane and approve one domain plus one mailbox. Search `getmcpscan.com` first if MCPScan stays the name, `mcpattest.dev` first if you approve a cleaner brand, and `mcpscan.online` or `getmcpscan.xyz` only if the hard cash cap matters more than buyer trust.
-3. Buy one domain and one mailbox. Use Zoho Mail Lite for cheapest credible email, Google Workspace for highest buyer trust, or Spacemail for one-vendor convenience.
-4. Use the generated DNS packet and DNS records CSV.
-5. Use the generated Stripe setup packet and Stripe products CSV.
-6. Create three live Stripe Payment Links.
-7. Use the Stripe QA console to download the evidence JSON.
-8. Use the founder return packet to download the exact approval message.
-9. Give the approved return packet and QA evidence JSON to Codex.
-10. Codex applies public links and runs verification. Commit and push happen after verification and separate explicit approval.
-11. Open the first-revenue runway with `npm run launch:open-first-revenue`.
-12. Approve exact outbound recipients and exact final messages.
-13. After payment, run the paid audit handoff and deliver from a private workspace.
+1. Prepare the private founder evidence workspace.
+2. Search `mcpscan.online` in Spaceship.
+3. Buy one domain only if the cart is at or below `$3`, renewal is visible, and no paid add-ons appear.
+4. Create one Spacemail mailbox: `security@mcpscan.online`, with `audit@mcpscan.online` and `hello@mcpscan.online` aliases.
+5. Use the generated DNS packet and DNS records CSV.
+6. Use the generated Stripe setup packet and Stripe products CSV.
+7. Create three live Stripe Payment Links.
+8. Use the Stripe QA console to download the evidence JSON.
+9. Use the founder return packet to download the exact approval message.
+10. Give the approved return packet and QA evidence JSON to Codex.
+11. Codex applies public links and runs verification. Commit and push happen after verification and separate explicit approval.
+12. Open the first-revenue runway with `npm run launch:open-first-revenue`.
+13. Approve exact outbound recipients and exact final messages.
+14. After payment, run the paid audit handoff and deliver from a private workspace.
 
 ## Current Next Click Script
 
 ```text
 1. Run npm run launch:open-founder.
-2. Open the domain purchase packet.
-3. Search getmcpscan.com first if MCPScan stays the name and the cart is standard-priced.
-4. If the hard cash cap matters more than buyer trust, search mcpscan.online, then getmcpscan.xyz, then mcpscan.site.
+2. Run npm run launch:prepare-founder-clicks -- --domain mcpscan.online --mail-provider spacemail.
+3. Open the domain purchase packet.
+4. Search mcpscan.online first.
 5. Buy one domain only after first-year price, renewal price, and add-ons are clear.
-6. Create one mailbox: security@chosen-domain using Zoho Mail Lite, Google Workspace, or Spacemail.
-7. Add aliases: audit@chosen-domain and hello@chosen-domain.
+6. Create one Spacemail mailbox: security@mcpscan.online.
+7. Add aliases: audit@mcpscan.online and hello@mcpscan.online.
 8. Create the three live Stripe Payment Links.
 9. Download the approval message from ops/founder-return-packet.html after Stripe links exist.
 10. Download the QA evidence JSON from ops/stripe-payment-link-qa-console.html after the checklist passes.
@@ -89,7 +96,7 @@ ops/generated-launch-packets/2026-08-14_mcpscan-online_stripe-products.csv
 Canonical post-click verification command:
 
 ```text
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
+npm run launch:post-click-verify -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --apply true --mail-provider spacemail
 ```
 
 ## Stop Conditions

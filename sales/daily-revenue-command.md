@@ -8,10 +8,12 @@ Use this as the one-screen operating surface for first revenue.
 
 | Lane | Current State | Next Action | Owner |
 | --- | --- | --- | --- |
-| Domain | Not purchased | Buy `getmcpscan.com` for the trust lane, or `mcpscan.online` only for the cheap validation lane | Founder |
-| Mailbox | Not purchased | Create `security@{{chosen_domain}}` plus `audit@` and `hello@` aliases | Founder |
+| Founder click workspace | Not prepared until command runs | Run `npm run launch:prepare-founder-clicks -- --domain mcpscan.online --mail-provider spacemail` | Codex |
+| Domain | Not purchased | Buy `mcpscan.online` only if Spaceship cart stays at or below `$3`, renewal is visible, and no paid add-ons appear | Founder |
+| Mailbox | Not purchased | Create Spacemail mailbox `security@mcpscan.online` plus `audit@` and `hello@` aliases | Founder |
 | Stripe | Payment Links not live | Create three live one-time Payment Links | Founder |
 | Landing page | Live with placeholder issue CTAs | Apply approved domain, email, and Stripe links after return packet | Codex |
+| Approval status | Missing until post-click apply | Outbound send gates fail until `ops/founder-approval-status.json` exists and proves live domain, mailbox, Stripe, and staged outbound approvals | Codex |
 | GitHub Actions | Account billing lock | Clear billing lock and re-run failed workflows | Founder |
 | npm | Ready for auth gate | Authenticate npm, then publish if desired | Founder and Codex |
 | Outbound | Exact recipients still need approval | Approve exact recipient and exact final message before any send | Founder |
@@ -20,22 +22,25 @@ Use this as the one-screen operating surface for first revenue.
 ## Daily Sequence
 
 1. Check live launch status.
-2. Clear any account gates that only the founder can click.
-3. Refresh market proof before outbound.
-4. Pick 10 recipient candidates.
-5. Generate exact messages.
-6. Ask for same-turn approval.
-7. Stage approved messages outside the public repo.
-8. Send manually from authenticated mailbox only after SPF, DKIM, and DMARC pass.
-9. Log single manual sends with `npm run outbound:log-send`, or first-10 batches with `npm run outbound:log-first-10-batch`.
-10. Log replies and use `sales/reply-to-close-packet.md`.
-11. Stage approved replies with `npm run outbound:stage-reply`.
-12. When payment clears, create the private delivery workspace.
+2. Prepare the private founder click workspace.
+3. Clear account gates that only the founder can click.
+4. Run live full proof after the return packet, cart proof, and Stripe QA evidence exist.
+5. Refresh market proof before outbound.
+6. Pick 10 recipient candidates.
+7. Generate exact messages.
+8. Ask for same-turn approval.
+9. Stage approved messages outside the public repo.
+10. Send manually from authenticated mailbox only after SPF, DKIM, and DMARC pass.
+11. Log single manual sends with `npm run outbound:log-send`, or first-10 batches with `npm run outbound:log-first-10-batch`.
+12. Log replies and use `sales/reply-to-close-packet.md`.
+13. Stage approved replies with `npm run outbound:stage-reply`.
+14. When payment clears, create the private delivery workspace.
 
 ## Command Set
 
 ```text
 npm run launch:next
+npm run launch:prepare-founder-clicks -- --domain mcpscan.online --mail-provider spacemail
 npm run launch:status:live
 npm run market:verify
 npm run outbound:verify
@@ -52,7 +57,7 @@ Before any manual send:
 
 ```text
 npm run outbound:open-send-gates
-npm run outbound:send-gates
+npm run outbound:send-gates -- --status-file ops/founder-approval-status.json --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json"
 ```
 
 After domain and mailbox exist:
@@ -64,7 +69,8 @@ npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_o
 After Stripe links exist:
 
 ```text
-npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status
+npm run launch:verify-stripe -- --file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --update-status
+npm run launch:verify-stripe-qa -- --file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json" --update-status
 ```
 
 After first outbound approval exists:

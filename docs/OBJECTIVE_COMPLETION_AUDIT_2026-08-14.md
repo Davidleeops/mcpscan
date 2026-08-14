@@ -74,7 +74,7 @@ Latest local readiness proof:
 
 ```text
 npm run launch:verify
-Summary: 226 passed, 3 expected founder-click warnings, 0 failures.
+Summary: 229 passed, 3 expected founder-click warnings, 0 failures.
 ```
 
 Current consolidated proof:

@@ -105,4 +105,4 @@ console.log("Optional current market proof:");
 console.log("npm run launch:full-proof -- --market true");
 console.log("");
 console.log("Live evidence proof after founder clicks:");
-console.log("npm run launch:full-proof -- --live true --status-file /path/to/founder-approval-status.json --cart-file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json");
+console.log('npm run launch:full-proof -- --live true --status-file ops/founder-approval-status.json --cart-file "$HOME/MCPScan Founder Clicks/current/domain-cart-proof.json" --return-file "$HOME/MCPScan Founder Clicks/current/approved-return-packet.txt" --qa-file "$HOME/MCPScan Founder Clicks/current/stripe-checkout-qa-evidence.json"');
