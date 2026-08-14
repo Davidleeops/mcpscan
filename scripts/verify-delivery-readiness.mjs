@@ -32,10 +32,12 @@ const requiredFiles = [
   "docs/PAID_AUDIT_START_AUTOMATION.md",
   "scripts/create-first-paid-audit-work-order.mjs",
   "scripts/create-paid-audit-handoff.mjs",
+  "scripts/verify-payment-evidence.mjs",
   "scripts/open-paid-audit-handoff.mjs",
   "scripts/compose-post-payment-intake.mjs",
   "ops/paid-audit-handoff-builder.html",
   "sales/paid-audit-handoff-approval-packet.md",
+  "sales/payment-confirmation-evidence.template.json",
   "docs/PAID_AUDIT_RUNBOOK.md",
   "delivery/customer-workspace-template/client-acceptance.md",
   "delivery/customer-workspace-template/evidence-register.csv",
@@ -72,6 +74,20 @@ if (exists("delivery/customer-workspace-template/qa-signoff.md")) {
 if (exists("delivery/customer-workspace-template/client-acceptance.md")) {
   const text = read("delivery/customer-workspace-template/client-acceptance.md").toLowerCase();
   results.push(text.includes("authorized") && text.includes("refund boundary") ? result("pass", "client acceptance", "authorization and commercial checks present") : result("fail", "client acceptance", "missing authorization or refund checks"));
+}
+
+if (exists("sales/payment-confirmation-evidence.template.json")) {
+  const template = read("sales/payment-confirmation-evidence.template.json");
+  const requiredPaymentFields = [
+    "paymentConfirmed",
+    "approvedForPrivateWorkspace",
+    "noStripeSecrets",
+    "noProductionSecrets",
+    "noCustomerData",
+    "noPublicRepoStorage"
+  ];
+  const hasRequiredPaymentFields = requiredPaymentFields.every((field) => template.includes(`"${field}"`));
+  results.push(hasRequiredPaymentFields ? result("pass", "payment evidence template", "public-safe confirmation fields present") : result("fail", "payment evidence template", "missing confirmation fields"));
 }
 
 if (exists("delivery/customer-workspace-template/retention-and-deletion-log.md")) {

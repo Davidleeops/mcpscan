@@ -66,6 +66,7 @@
     "delivery:work-order": "node scripts/create-first-paid-audit-work-order.mjs",
     "delivery:handoff": "node scripts/create-paid-audit-handoff.mjs",
     "delivery:intake-message": "node scripts/compose-post-payment-intake.mjs",
+    "delivery:verify-payment": "node scripts/verify-payment-evidence.mjs",
     "delivery:verify": "node scripts/verify-delivery-readiness.mjs",
     "delivery:dry-run": "node scripts/run-delivery-dry-run.mjs",
     "launch:status": "node scripts/show-launch-status.mjs",

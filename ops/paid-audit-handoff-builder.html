@@ -71,12 +71,14 @@
             </label>
             <label class="wide">Technical contact<input id="contact" placeholder="buyer@example.com or https://secure-intake.example/path" autocomplete="off"></label>
             <label class="wide">Payment reference<input id="payment" placeholder="pi_..., cs_..., receipt URL, invoice URL, or manual_approved_reference" autocomplete="off"></label>
+            <label class="wide">Payment evidence JSON<input id="evidence" placeholder="/path/outside/public/repo/payment-confirmation-evidence.json" autocomplete="off"></label>
             <label>Date<input id="date" autocomplete="off"></label>
             <label>Optional output root<input id="root" placeholder="/Users/you/MCPScan Paid Audits" autocomplete="off"></label>
           </div>
           <div class="actions">
             <button id="build" class="primary" type="button">Build handoff</button>
             <button id="copyApproval" type="button">Copy approval</button>
+            <button id="copyVerify" type="button">Copy verify</button>
             <button id="copyCommand" type="button">Copy command</button>
           </div>
           <p id="status" class="status"></p>
@@ -100,6 +102,11 @@
       </section>
 
       <section class="wide">
+        <h2>Payment Evidence Command</h2>
+        <pre id="verify">Fill the fields, then build the approval packet.</pre>
+      </section>
+
+      <section class="wide">
         <h2>Codex Command</h2>
         <pre id="command">Fill the fields, then build the approval packet.</pre>
       </section>
@@ -110,10 +117,12 @@
         packageName: document.getElementById("packageName"),
         contact: document.getElementById("contact"),
         payment: document.getElementById("payment"),
+        evidence: document.getElementById("evidence"),
         date: document.getElementById("date"),
         root: document.getElementById("root")
       };
       const approval = document.getElementById("approval");
+      const verify = document.getElementById("verify");
       const command = document.getElementById("command");
       const status = document.getElementById("status");
 
@@ -153,6 +162,7 @@
           status.textContent = errors.join(". ");
           status.className = "status bad";
           approval.textContent = "Fix the fields above, then build again.";
+          verify.textContent = "Fix the fields above, then build again.";
           command.textContent = "Fix the fields above, then build again.";
           return;
         }
@@ -169,6 +179,8 @@ Approved action:
 Create the private customer workspace and first paid audit work order outside the public MCPScan repo. Do not store customer secrets in the public repo.`;
 
         const rootPart = values.root ? " --root " + quote(values.root) : "";
+        const evidencePath = values.evidence || "/path/to/payment-confirmation-evidence.json";
+        verify.textContent = "npm run delivery:verify-payment -- --file " + quote(evidencePath);
         command.textContent = "npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt" + rootPart;
         status.textContent = "Paid handoff packet ready.";
         status.className = "status good";
@@ -183,6 +195,7 @@ Create the private customer workspace and first paid audit work order outside th
       fields.date.value = today();
       document.getElementById("build").addEventListener("click", build);
       document.getElementById("copyApproval").addEventListener("click", () => copy(approval));
+      document.getElementById("copyVerify").addEventListener("click", () => copy(verify));
       document.getElementById("copyCommand").addEventListener("click", () => copy(command));
       for (const input of Object.values(fields)) input.addEventListener("input", build);
       fields.packageName.addEventListener("change", build);

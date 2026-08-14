@@ -17,6 +17,20 @@ Record:
 
 Do not store Stripe secret keys in the repo or customer workspace.
 
+Save public-safe payment evidence outside the repo using:
+
+```text
+sales/payment-confirmation-evidence.template.json
+```
+
+Then verify it:
+
+```text
+npm run delivery:verify-payment -- --file /path/to/payment-confirmation-evidence.json
+```
+
+This confirms the package, amount, payment reference, safe intake path, and no-secret flags before a private workspace is created.
+
 ## Step 2: Create Private Workspace And Intake Draft
 
 Use the one-pass handoff command after exact values are approved:

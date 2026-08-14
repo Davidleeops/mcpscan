@@ -1,0 +1,17 @@
+{
+  "customerCompany": "{{customer_company}}",
+  "packageName": "{{package_name}}",
+  "amountUsd": 1500,
+  "paymentProvider": "Stripe",
+  "paymentReference": "{{stripe_payment_reference_or_receipt_url}}",
+  "paidAt": "{{yyyy-mm-dd_or_iso_timestamp}}",
+  "technicalContact": "{{technical_contact_email_or_secure_url}}",
+  "safeIntakePath": "{{approved_private_intake_path_or_secure_url}}",
+  "paymentConfirmed": true,
+  "approvedForPrivateWorkspace": true,
+  "noStripeSecrets": true,
+  "noProductionSecrets": true,
+  "noCustomerData": true,
+  "noPublicRepoStorage": true,
+  "operatorInitials": "{{operator_initials}}"
+}

@@ -48,6 +48,7 @@ if (!fs.existsSync(cli)) {
 }
 
 const packet = path.join(dryRunRoot, "approved-paid-audit-handoff.txt");
+const paymentEvidence = path.join(dryRunRoot, "payment-confirmation-evidence.json");
 const privateOutput = path.join(dryRunRoot, "private-output");
 
 fs.writeFileSync(
@@ -67,6 +68,34 @@ fs.writeFileSync(
   ].join("\n"),
   "utf8"
 );
+
+fs.writeFileSync(
+  paymentEvidence,
+  `${JSON.stringify({
+    customerCompany: customer,
+    packageName,
+    amountUsd: 1500,
+    paymentProvider: "Stripe",
+    paymentReference: "pi_dry_run_12345",
+    paidAt: date,
+    technicalContact: "buyer@example.com",
+    safeIntakePath: path.join(privateOutput, "secure-intake"),
+    paymentConfirmed: true,
+    approvedForPrivateWorkspace: true,
+    noStripeSecrets: true,
+    noProductionSecrets: true,
+    noCustomerData: true,
+    noPublicRepoStorage: true,
+    operatorInitials: "DR"
+  }, null, 2)}\n`,
+  "utf8"
+);
+
+run("node", [
+  "scripts/verify-payment-evidence.mjs",
+  "--file",
+  paymentEvidence
+]);
 
 run("node", [
   "scripts/create-paid-audit-handoff.mjs",
@@ -126,7 +155,7 @@ run("node", [...baseScanArgs, "--format", "sarif", "--output", sarifReport], { c
 run("node", [...baseScanArgs, "--format", "html", "--output", htmlReport], { capture: true });
 run("node", [...baseScanArgs, "--format", "markdown", "--output", markdownReport], { capture: true });
 
-for (const file of [workOrder, handoffManifest, pipelineStatusJson, pipelineStatusCsv, sanitizedConfig, intake, jsonReport, sarifReport, htmlReport, markdownReport]) {
+for (const file of [paymentEvidence, workOrder, handoffManifest, pipelineStatusJson, pipelineStatusCsv, sanitizedConfig, intake, jsonReport, sarifReport, htmlReport, markdownReport]) {
   assertFile(file);
 }
 
@@ -164,6 +193,7 @@ fs.writeFileSync(
     "- 04-report/report.html",
     "- 04-report/findings.md",
     "- private handoff manifest",
+    "- public-safe payment evidence verification",
     "- private pipeline status JSON",
     "- private pipeline status CSV",
     "- first paid audit work order",

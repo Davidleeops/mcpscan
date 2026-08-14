@@ -148,6 +148,8 @@
           <h2>Payment Confirmed Checklist</h2>
           <ol>
             <li>Confirm package and customer email from Stripe.</li>
+            <li>Save public-safe payment evidence outside the public repo.</li>
+            <li>Verify the payment evidence.</li>
             <li>Approve the paid handoff packet.</li>
             <li>Run the one-pass handoff command from this repo with an output path outside the public repo.</li>
             <li>Review the generated draft-only intake start message.</li>
@@ -155,6 +157,13 @@
             <li>Use a private handoff path before accepting sensitive materials.</li>
             <li>Use the generated private pipeline status as the paid delivery record.</li>
           </ol>
+        </section>
+
+        <section>
+          <h2>Payment Evidence Gate</h2>
+          <p>Run this before the one-pass handoff. The evidence file must stay outside the public repo.</p>
+          <button class="copy" data-copy-target="payment-evidence-command">Copy command</button>
+          <pre id="payment-evidence-command">npm run delivery:verify-payment -- --file /path/to/payment-confirmation-evidence.json</pre>
         </section>
 
         <section>
@@ -184,6 +193,7 @@ Package:
 Customer:
 Technical contact:
 Stripe link/product:
+Payment evidence JSON:
 Private workspace:
 Safe intake path:
 Scope confirmed:
