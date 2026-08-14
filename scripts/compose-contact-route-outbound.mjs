@@ -105,6 +105,8 @@ for (const row of candidates) {
   const route = routeByAccount.get(row.account.toLowerCase());
   const contactRoute = route?.contact_route_url?.trim() || "{{official_contact_or_security_route}}";
   const channel = route?.channel?.trim() || "Official contact route";
+  const routeSource = route?.source_url?.trim();
+  const notes = route?.notes?.trim();
   const [subject, context] = accountDraft(row.account) ?? [];
   if (!subject || !context) throw new Error(`Missing account draft for ${row.account}.`);
   if (contactRoute !== "{{official_contact_or_security_route}}" && !validUrl(contactRoute) && !contactRoute.includes("@")) {
@@ -132,6 +134,8 @@ for (const row of candidates) {
     `Recipient: Security, platform, or engineering owner at ${row.account}`,
     `Contact route: ${contactRoute}`,
     `Source URL: ${row.public_evidence_url}`,
+    routeSource ? `Route source: ${routeSource}` : "",
+    notes ? `Route note: ${notes}` : "",
     "",
     "```text",
     message,

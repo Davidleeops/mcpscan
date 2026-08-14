@@ -57,6 +57,10 @@ function hasRecipientCandidates() {
   return exists("sales/recipient-candidates-2026-08-14.csv");
 }
 
+function hasContactRoutes() {
+  return exists("sales/first-10-contact-routes-2026-08-14.csv");
+}
+
 function getLiveActionsState() {
   if (!live) return null;
   try {
@@ -115,6 +119,7 @@ const gates = [
   gate("Daily revenue command", exists("sales/daily-revenue-command.md"), "one-screen revenue operating surface exists"),
   gate("Payment link manifest", exists("sales/payment-link-manifest.template.json"), "non-secret checkout source template exists"),
   gate("Recipient candidates", hasRecipientCandidates(), "npm run outbound:verify checks candidate readiness"),
+  gate("Contact routes", hasContactRoutes(), "official first-10 contact routes exist for route-based approvals"),
   gate("Buyer summary", exists("delivery/customer-workspace-template/buyer-facing-summary.md"), "customer deliverable exists")
 ];
 

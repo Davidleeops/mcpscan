@@ -5,16 +5,20 @@ import path from "node:path";
 const root = process.cwd();
 const candidateFile = "sales/recipient-candidates-2026-08-14.csv";
 const pipelineFile = "sales/first-account-pipeline-2026-08-14.csv";
+const contactRouteFile = "sales/first-10-contact-routes-2026-08-14.csv";
 const requiredOutboundFiles = [
   "docs/FINAL_OUTBOUND_COMPOSER.md",
+  "docs/CONTACT_ROUTE_OUTBOUND_PACKETS.md",
   "sales/reply-to-close-packet.md",
   "sales/daily-revenue-command.md",
+  "sales/first-10-contact-routes-2026-08-14.csv",
   "scripts/compose-final-outbound.mjs",
   "scripts/compose-contact-route-outbound.mjs",
   "scripts/stage-approved-outbound.mjs"
 ];
 const strict = process.argv.includes("--strict");
 const allowedChannels = new Set(["Email", "LinkedIn", "Contact form", "Warm intro", "Email or LinkedIn"]);
+const allowedRouteChannels = new Set(["Trust center", "Vulnerability disclosure", "Security inbox", "Contact form", "Trust inbox", "Official contact route"]);
 const allowedApprovalStates = new Set(["Candidate needed", "Ready for founder approval", "Approved to stage", "Staged", "Rejected"]);
 
 function parseCsv(text) {
@@ -92,6 +96,10 @@ function validUrl(value) {
   return /^https?:\/\/\S+$/i.test(value);
 }
 
+function validContactRoute(value) {
+  return validUrl(value) || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
 const results = [];
 
 for (const file of requiredOutboundFiles) {
@@ -112,12 +120,17 @@ if (!exists(pipelineFile)) {
 
 const candidates = readRecords(candidateFile);
 const pipeline = readRecords(pipelineFile);
+const routes = exists(contactRouteFile) ? readRecords(contactRouteFile) : [];
 const candidateAccounts = new Set(candidates.map((row) => row.account));
 const pipelineAccounts = new Set(pipeline.map((row) => row.account));
+const routeAccounts = new Set(routes.map((row) => row.account));
 const missingCandidateRows = [...pipelineAccounts].filter((account) => !candidateAccounts.has(account));
+const missingRouteRows = [...pipelineAccounts].filter((account) => !routeAccounts.has(account));
 
 results.push(candidates.length >= 10 ? result("pass", "recipient candidate rows", `${candidates.length} rows`) : result("warn", "recipient candidate rows", `${candidates.length} rows`));
 results.push(missingCandidateRows.length === 0 ? result("pass", "pipeline account coverage", "all first-wave accounts have candidate rows") : result("fail", "pipeline account coverage", missingCandidateRows.join(", ")));
+results.push(routes.length >= 10 ? result("pass", "contact route rows", `${routes.length} rows`) : result("warn", "contact route rows", `${routes.length} rows`));
+results.push(missingRouteRows.length === 0 ? result("pass", "contact route coverage", "all first-wave accounts have contact routes") : result("fail", "contact route coverage", missingRouteRows.join(", ")));
 
 for (const [index, row] of candidates.entries()) {
   const label = `${index + 1}. ${row.account || "missing account"}`;
@@ -137,6 +150,18 @@ for (const [index, row] of candidates.entries()) {
   }
   if (row.contact_or_profile_url && row.contact_or_profile_url.includes("data-broker")) {
     results.push(result("fail", label, "data broker contact source is not allowed"));
+  }
+}
+
+for (const [index, row] of routes.entries()) {
+  const label = `route ${index + 1}. ${row.account || "missing account"}`;
+  if (!row.account) results.push(result("fail", label, "missing account"));
+  if (!allowedRouteChannels.has(row.channel)) results.push(result("fail", label, `unsupported route channel: ${row.channel}`));
+  if (!validContactRoute(row.contact_route_url)) results.push(result("fail", label, "contact route must be an email or HTTP/HTTPS URL"));
+  if (!validUrl(row.source_url)) results.push(result("fail", label, "source URL must be HTTP or HTTPS"));
+  if (!row.confidence) results.push(result("warn", label, "missing confidence"));
+  if (row.contact_route_url && row.contact_route_url.includes("data-broker")) {
+    results.push(result("fail", label, "data broker route is not allowed"));
   }
 }
 

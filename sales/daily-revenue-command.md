@@ -66,7 +66,7 @@ npm run outbound:compose-final -- --account Vapi --recipient "{{name}}" --title 
 To generate first-10 packets for official contact routes instead of named people:
 
 ```text
-npm run outbound:compose-contact-routes -- --sender "{{sender_name}}"
+npm run outbound:compose-contact-routes -- --routes sales/first-10-contact-routes-2026-08-14.csv --sender "{{sender_name}}"
 ```
 
 After first payment:

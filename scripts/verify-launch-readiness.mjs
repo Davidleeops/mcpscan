@@ -204,6 +204,7 @@ const requiredFiles = [
   "sales/first-account-dossier-2026-08-14.csv",
   "sales/first-account-pipeline-2026-08-14.csv",
   "sales/recipient-candidates-2026-08-14.csv",
+  "sales/first-10-contact-routes-2026-08-14.csv",
   "sales/recipient-approval-packet-2026-08-14.md",
   "sales/stripe-payment-link-approval-packet-2026-08-14.md",
   "sales/payment-link-manifest.template.json",
