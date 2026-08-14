@@ -4,6 +4,8 @@ This is the single founder sequence for turning the prepared MCPScan launch syst
 
 Fastest working console: `ops/launch-approval-queue.html`.
 
+GitHub Pages fallback console: `ops/static-launch-bundle-console.html`.
+
 After the external account clicks, use `ops/founder-return-packet.html` to paste the purchased domain, mailbox, aliases, and Stripe links into one approval message.
 
 After that message is approved, Codex can run `npm run launch:apply-return-packet -- --file /path/to/approved-return-packet.txt`.
@@ -30,6 +32,13 @@ Do not send external messages, start a live audit, publish packages, or accept s
 ## Current Known Blocker
 
 GitHub Actions is not starting CI or Pages jobs because GitHub reports an account billing lock. This does not mean the repo checks failed. It means GitHub refused to start the jobs.
+
+If Pages stays stale after a launch update, build the static launch bundle and upload `dist/mcpscan-static-launch/` to a static host.
+
+```text
+npm run landing:sample-report
+npm run launch:bundle
+```
 
 ## Current Local Proof Until Billing Is Fixed
 

@@ -15,6 +15,7 @@ GitHub is currently refusing to start MCPScan CI and Pages jobs because the acco
 - Fresh remote snapshots can still be downloaded and verified locally.
 - Local CI-equivalent checks pass from the downloaded remote snapshot.
 - Existing public GitHub Pages URLs still respond.
+- Static launch bundles can be built and uploaded to another static host if Pages remains stale.
 
 ## Founder Action
 
@@ -47,4 +48,11 @@ npm test
 npm audit --omit=dev
 npm pack --dry-run -w @mcpscan/shared
 npm pack --dry-run -w mcpscan
+```
+
+Static landing fallback:
+
+```text
+npm run landing:sample-report
+npm run launch:bundle
 ```
