@@ -14,6 +14,9 @@ const pages = [
 const externalUrls = [
   "https://github.com/settings/billing",
   "https://github.com/Davidleeops/mcpscan/actions",
+  "https://www.spaceship.com/domain-search/?query=trymcpscan.com",
+  "https://www.spaceship.com/domain-search/?query=mcpattest.dev",
+  "https://www.spaceship.com/domain-search/?query=getmcpscan.xyz",
   "https://www.spaceship.com/domain-search/?query=mcpscan.site"
 ];
 

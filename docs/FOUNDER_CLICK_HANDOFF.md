@@ -35,7 +35,7 @@ ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-products.csv
 ## Sequence
 
 1. Clear the GitHub billing lock.
-2. Choose the domain lane and approve one domain plus one mailbox. For the current low-cash sprint, search `mcpscan.site` first, `getmcpscan.xyz` second, and `trymcpscan.com` only if the trust bump is worth the extra spend.
+2. Choose the domain lane and approve one domain plus one mailbox. Search `trymcpscan.com` first if MCPScan stays the name, `mcpattest.dev` first if you approve a cleaner brand, and `getmcpscan.xyz` or `mcpscan.site` only if the hard cash cap matters more than buyer trust.
 3. Buy one domain and one Spacemail mailbox.
 4. Use the generated DNS packet and DNS records CSV.
 5. Use the generated Stripe setup packet and Stripe products CSV.

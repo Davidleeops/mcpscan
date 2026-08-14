@@ -13,7 +13,7 @@ Better first choices:
 - `mcpscanhq.com`
 - `usemcpscan.com`
 
-For the current low-cash sprint, use `mcpscan.site` if the cart is near `$1` and the higher renewal is accepted. Use `getmcpscan.xyz` for the `$1` to `$3` validation lane if you want the better renewal tradeoff. Use `trymcpscan.com` if the founder decides the buyer-trust bump is worth the extra first-year spend.
+For first revenue, use `trymcpscan.com` if the cart is standard-priced. Use `mcpattest.dev` if the founder approves a cleaner security brand. Use `getmcpscan.xyz` for the `$1` to `$3` validation lane if the hard cash cap matters more than buyer trust. Use `mcpscan.site` only if the near-dollar checkout total is the deciding factor and the higher renewal is accepted.
 
 Current pricing notes from Spaceship research:
 

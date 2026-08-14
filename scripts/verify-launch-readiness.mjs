@@ -382,6 +382,22 @@ if (exists("scripts/open-next-founder-action.mjs")) {
   );
 }
 
+if (exists("scripts/open-founder-clicks.mjs")) {
+  const founderClicks = read("scripts/open-founder-clicks.mjs");
+  const requiredFounderClickUrls = [
+    "https://www.spaceship.com/domain-search/?query=trymcpscan.com",
+    "https://www.spaceship.com/domain-search/?query=mcpattest.dev",
+    "https://www.spaceship.com/domain-search/?query=getmcpscan.xyz",
+    "https://www.spaceship.com/domain-search/?query=mcpscan.site"
+  ];
+  const missingFounderClickUrls = requiredFounderClickUrls.filter((url) => !founderClicks.includes(url));
+  results.push(
+    missingFounderClickUrls.length === 0
+      ? result("pass", "founder domain search links", "trust, clean-brand, and cheap fallback searches are present")
+      : result("fail", "founder domain search links", missingFounderClickUrls.join(", "))
+  );
+}
+
 const authorizationFiles = [
   "README.md",
   "landing/index.html",
