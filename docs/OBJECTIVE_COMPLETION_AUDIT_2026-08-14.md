@@ -59,6 +59,7 @@ This opens the ordered launch-day runbook, domain and mailbox packet, Stripe set
 
 ```text
 npm run market:verify
+npm run launch:full-proof
 npm run writing:check
 npm run launch:day
 npm run launch:verify
@@ -70,8 +71,16 @@ Latest local readiness proof:
 
 ```text
 npm run launch:verify
-Summary: 200 passed, 3 expected founder-click warnings, 0 failures.
+Summary: 203 passed, 3 expected founder-click warnings, 0 failures.
 ```
+
+Current consolidated proof:
+
+```text
+npm run launch:full-proof
+```
+
+This runs the objective completion matrix, launch readiness proof, writing rule check, and launch status without opening account pages or taking external actions.
 
 ## Stop Conditions
 

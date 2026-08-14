@@ -310,6 +310,7 @@ const requiredFiles = [
   "scripts/verify-outbound-readiness.mjs",
   "scripts/verify-gtm-claims.mjs",
   "scripts/verify-objective-completion.mjs",
+  "scripts/run-full-launch-proof.mjs",
   "scripts/show-launch-status.mjs",
   "scripts/open-next-founder-action.mjs",
   "scripts/open-launch-day-runbook.mjs",
