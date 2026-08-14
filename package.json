@@ -31,6 +31,7 @@
     "outbound:stage-approved": "node scripts/stage-approved-outbound.mjs",
     "outbound:open-first-10": "node scripts/open-first-10-outbound-approval.mjs",
     "outbound:open-send-gates": "node scripts/open-first-send-readiness.mjs",
+    "outbound:open-reply-close": "node scripts/open-reply-to-close-review.mjs",
     "outbound:compose-final": "node scripts/compose-final-outbound.mjs",
     "outbound:compose-contact-routes": "node scripts/compose-contact-route-outbound.mjs",
     "outbound:route-packet": "node scripts/build-first-10-route-approval-packet.mjs",

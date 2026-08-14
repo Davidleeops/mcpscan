@@ -40,6 +40,7 @@ npm run market:verify
 npm run outbound:verify
 npm run outbound:open-first-10
 npm run outbound:open-send-gates
+npm run outbound:open-reply-close
 npm run launch:verify
 npm run revenue:snapshot
 npm run gtm:verify
@@ -93,6 +94,13 @@ When a follow-up is due:
 
 ```text
 npm run outbound:compose-follow-up -- --file /path/outside/public/repo/send-log.json --step follow-up-1
+```
+
+After a prospect replies:
+
+```text
+npm run outbound:open-reply-close
+npm run outbound:stage-reply -- --file /path/to/approved-reply.txt
 ```
 
 To generate an exact approval packet before staging:

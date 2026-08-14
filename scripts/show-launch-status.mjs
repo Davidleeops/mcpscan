@@ -208,7 +208,7 @@ const gates = [
   gate("Route approval packet", exists("sales/first-10-route-approval-packet-2026-08-14.md"), "first-10 route approval packet is ready for same-turn review"),
   gate("GTM claim verifier", exists("scripts/verify-gtm-claims.mjs"), "npm run gtm:verify checks overclaim risk"),
   gate("Public launch post staging", exists("scripts/stage-approved-public-launch-post.mjs") && exists("docs/PUBLIC_LAUNCH_POST_APPROVAL.md"), "approved public launch posts can be staged without publishing"),
-  gate("Reply-to-close packet", exists("sales/reply-to-close-packet.md"), "approved reply templates exist for inbound prospect responses"),
+  gate("Reply-to-close packet", exists("sales/reply-to-close-packet.md") && exists("scripts/open-reply-to-close-review.mjs"), "approved reply templates and launcher exist for inbound prospect responses"),
   gate("Reply staging", exists("scripts/stage-approved-reply.mjs") && exists("docs/APPROVED_REPLY_STAGING.md"), "approved replies can be staged outside the public repo"),
   gate("Daily revenue command", exists("sales/daily-revenue-command.md"), "one-screen revenue operating surface exists"),
   gate("Payment link manifest", exists("sales/payment-link-manifest.template.json"), "non-secret checkout source template exists"),
