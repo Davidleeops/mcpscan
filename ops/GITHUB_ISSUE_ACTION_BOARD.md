@@ -13,6 +13,8 @@ Current market proof:
 ```text
 docs/MARKET_REALITY_BRIEF_2026-08-14.md
 sales/buyer-intent-map-2026-08-14.md
+sales/first-account-dossier-2026-08-14.md
+ops/first-account-dossier-console.html
 ```
 
 ## Open Gates

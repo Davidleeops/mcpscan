@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan First Account Dossier</title>
+    <style>
+      :root { color-scheme: light; --ink: #14171a; --muted: #5b6470; --line: #d7dde3; --panel: #ffffff; --soft: #f5f7f9; --accent: #0b6bcb; --good: #0f7b4f; --warn: #9a5a00; --danger: #aa2b2b; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--soft); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 48px; }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { font-size: clamp(32px, 5vw, 58px); line-height: 1; margin-bottom: 12px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      h3 { font-size: 16px; margin-bottom: 8px; }
+      p, li, td { color: var(--muted); line-height: 1.5; }
+      .stack { display: grid; gap: 16px; }
+      section, article { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+      .danger { border-left: 4px solid var(--danger); background: #fff6f6; }
+      .ready { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+      a.button, button.copy { display: inline-flex; min-height: 38px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 12px; color: var(--accent); background: #ffffff; font-weight: 700; text-decoration: none; cursor: pointer; }
+      a.button.primary { color: #ffffff; background: var(--accent); }
+      table { width: 100%; border-collapse: collapse; }
+      th, td { border-top: 1px solid var(--line); padding: 10px 8px; text-align: left; vertical-align: top; }
+      th { color: var(--ink); }
+      pre { margin: 10px 0 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; }
+      @media (max-width: 900px) { .actions { justify-content: start; } }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>First Account Dossier</h1>
+        <p>Concrete first-wave account research for MCPScan. This page prepares approval. It does not send anything.</p>
+        <div class="actions"><a class="button primary" href="../sales/first-account-dossier-2026-08-14.md">Open dossier</a><a class="button" href="first-10-outbound-approval-console.html">First 10 copy</a></div>
+      </header>
+      <section class="danger"><h2>No-Send Rule</h2><p>No outreach can be sent until the exact recipient and exact final content are approved in the same turn. Use public signals only and do not imply any account has a vulnerability.</p></section>
+      <section class="ready"><h2>Best First Offer</h2><p>Lead with a 72-hour MCP exposure audit that produces inventory, risky action paths, auth and secrets review, approval-gate notes, and a buyer-safe remediation report.</p></section>
+      <section><h2>First-Wave Accounts</h2><table><tr><th>#</th><th>Account</th><th>Signal</th><th>Buyer</th><th>Offer</th></tr><tr><td>1</td><td>Partoo</td><td>MCP server for AI agents interacting with platform data and features</td><td>CTO or product security</td><td>Launch Readiness</td></tr><tr><td>2</td><td>Coralogix</td><td>MCP server for observability data across environments</td><td>Security engineering or observability owner</td><td>Quick Audit</td></tr><tr><td>3</td><td>Trigger.dev</td><td>MCP server for tasks, deploys, debugging, and runs</td><td>Founder, CTO, DevEx</td><td>Quick Audit</td></tr><tr><td>4</td><td>Dust</td><td>Uses Stripe MCP for financial data and agent workflows</td><td>CTO or security lead</td><td>Enterprise Readiness</td></tr><tr><td>5</td><td>Visible.vc</td><td>AI MCP Server for portfolio-data workflows</td><td>CTO or product lead</td><td>Launch Readiness</td></tr><tr><td>6</td><td>Unity AI</td><td>Official MCP Server exposes project runtime state and editor context</td><td>Product security or AI tools lead</td><td>Enterprise Readiness</td></tr><tr><td>7</td><td>Getty Images</td><td>MCP Server for licensed creative and editorial content access</td><td>Product security or AI product owner</td><td>Launch Readiness</td></tr><tr><td>8</td><td>Zendesk</td><td>MCP adoption for support data and AI connectivity</td><td>Customer trust or product security</td><td>Enterprise Readiness</td></tr><tr><td>9</td><td>Front</td><td>Community demand for an official MCP server</td><td>Developer relations or platform lead</td><td>Exposure Snapshot</td></tr><tr><td>10</td><td>Cua</td><td>MCP support for computer-use agent functionality</td><td>Founder, CTO, product security</td><td>Quick Audit</td></tr></table></section>
+      <section><h2>Approval Prompt</h2><button class="copy" data-copy-target="approval-prompt">Copy prompt</button><pre id="approval-prompt">Please approve or revise this outreach. I will not send anything unless you approve the exact recipient and exact final content in this same turn.
+
+Account: {{account}}
+Channel: {{email_or_linkedin}}
+Recipient: {{name}}, {{title}}, {{company}}, {{contact}}
+Source URL: {{public_signal_url}}
+Final message:
+{{paste_exact_message}}</pre></section>
+    </main>
+    <script>
+      for (const button of document.querySelectorAll("[data-copy-target]")) {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          await navigator.clipboard.writeText(target.textContent.trim());
+          const label = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = label; }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>
