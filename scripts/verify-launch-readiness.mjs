@@ -262,6 +262,7 @@ const requiredFiles = [
   "scripts/run-post-click-verification.mjs",
   "scripts/stage-approved-public-launch-post.mjs",
   "scripts/stage-approved-outbound.mjs",
+  "scripts/open-first-10-outbound-approval.mjs",
   "scripts/stage-approved-reply.mjs",
   "scripts/log-approved-send.mjs",
   "scripts/log-approved-route-batch-sends.mjs",

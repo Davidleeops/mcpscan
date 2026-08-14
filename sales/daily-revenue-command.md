@@ -38,6 +38,7 @@ Use this as the one-screen operating surface for first revenue.
 npm run launch:status:live
 npm run market:verify
 npm run outbound:verify
+npm run outbound:open-first-10
 npm run launch:verify
 npm run revenue:snapshot
 npm run gtm:verify
