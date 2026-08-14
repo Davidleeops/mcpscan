@@ -95,6 +95,7 @@ const requiredFiles = [
   "sales/post-payment-handoff.md",
   "sales/findings-call-scheduling.md",
   "delivery/customer-workspace-template/report-template.md",
+  "delivery/customer-workspace-template/buyer-facing-summary.md",
   "delivery/customer-workspace-template/findings-tracker.csv"
 ];
 
