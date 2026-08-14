@@ -174,7 +174,7 @@
           <div class="num">5</div>
           <div>
             <h3>Verify Public Launch <span class="tag warn">proof gate</span></h3>
-            <p>After approved values are applied, run post-click verification for domain, mailbox, Stripe, writing rules, public pages, and launch status.</p>
+            <p>After approved values are applied, run post-click verification and the live full-proof command for domain, mailbox, Stripe, GTM safety, writing rules, public pages, and launch status.</p>
           </div>
           <div class="actions"><a class="button" href="../docs/POST_CLICK_VERIFICATION.md">Post-click verifier</a><button class="copy" data-copy-target="post-click-command">Copy command</button></div>
         </article>
@@ -203,7 +203,8 @@
           <h2>Commands Codex Runs After Approval</h2>
           <pre id="dns-command">npm run launch:dns-packet -- --domain {{chosen_domain}} --mailbox security@{{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}}</pre>
           <pre id="stripe-command">npm run launch:stripe-packet -- --domain {{chosen_domain}} --mailbox security@{{chosen_domain}}</pre>
-          <pre id="post-click-command">npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --cart-file /path/to/domain-cart-proof.json --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true</pre>
+          <pre id="post-click-command">npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --cart-file /path/to/domain-cart-proof.json --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
+npm run launch:full-proof -- --live true --status-file /path/to/founder-approval-status.json --cart-file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider {{zoho_or_google_or_spacemail}}</pre>
         </section>
 
         <section>

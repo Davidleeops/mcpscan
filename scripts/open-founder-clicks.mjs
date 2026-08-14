@@ -9,7 +9,9 @@ const pages = [
   "ops/domain-mailbox-purchase-packet.html",
   "ops/cheap-launch-packet-console.html",
   "ops/stripe-click-setup.html",
-  "ops/stripe-payment-link-qa-console.html"
+  "ops/stripe-payment-link-qa-console.html",
+  "ops/founder-return-packet.html",
+  "ops/founder-status-console.html"
 ];
 
 const externalUrls = [

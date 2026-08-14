@@ -436,6 +436,18 @@ if (exists("scripts/open-founder-clicks.mjs")) {
       ? result("pass", "founder domain search links", "trust, clean-brand, and cheap fallback searches are present")
       : result("fail", "founder domain search links", missingFounderClickUrls.join(", "))
   );
+
+  const requiredFounderClickSurfaces = [
+    "ops/founder-return-packet.html",
+    "ops/founder-status-console.html",
+    "ops/stripe-payment-link-qa-console.html"
+  ];
+  const missingFounderClickSurfaces = requiredFounderClickSurfaces.filter((surface) => !founderClicks.includes(surface));
+  results.push(
+    missingFounderClickSurfaces.length === 0
+      ? result("pass", "founder click return surfaces", "return packet, status tracker, and Stripe QA console open together")
+      : result("fail", "founder click return surfaces", missingFounderClickSurfaces.join(", "))
+  );
 }
 
 if (exists("ops/domain-mailbox-purchase-packet.html") && exists("ops/cheap-launch-packet-console.html")) {
@@ -759,6 +771,7 @@ if (exists("scripts/open-first-revenue-runway.mjs") && exists("package.json") &&
     "sales/reply-to-close-packet.md",
     "ops/paid-audit-handoff-builder.html",
     "sales/daily-revenue-command.md",
+    "npm run launch:full-proof -- --live true",
     "This command opens surfaces only"
   ];
   const missingRunwayMarkers = requiredRunwayMarkers.filter((marker) => !firstRevenueRunway.includes(marker));
