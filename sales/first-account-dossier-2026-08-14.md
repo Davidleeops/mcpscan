@@ -29,6 +29,23 @@ Use it to choose the first 10 outreach approvals after domain, mailbox, and Stri
 | 9 | Sentry | Sentry MCP connects AI assistants to errors, performance, issue triage, docs, and project management. | Product Security Lead, Developer Platform Lead | Error traces and project data can include secrets, PII, stack details, and production context. | MCP Quick Audit | Not approved |
 | 10 | Replit | Replit Agent can connect to pre-listed and custom MCP servers, with guidance to trust sources and review access. | Head of Security, AI Platform Lead | Custom MCP servers inside coding environments create tool-poisoning, credential, workspace, and unsafe execution risks. | Platform Exposure Audit | Not approved |
 
+## Current Buyer Route Status
+
+Use this table to approve the first contact route without guessing. Exact person-level outreach still requires same-turn approval of the exact recipient, route, and final message.
+
+| Account | Exact Approved Route | Buyer Authority Confidence | Source Checked Date | Next Approval Click |
+| --- | --- | --- | --- | --- |
+| Vapi | Trust center: `https://security.vapi.ai/` | Medium | 2026-08-14 | Approve trust-route message or pick a named security owner |
+| Retool | Vulnerability disclosure: `https://retool.com/vulnerability-reporting` | High | 2026-08-14 | Approve security-review wording that avoids vulnerability claims |
+| Pipedream | Security inbox: `security@pipedream.com` | High | 2026-08-14 | Approve exact email recipient route and final copy |
+| Composio | Security inbox: `security@composio.dev` | High | 2026-08-14 | Approve exact email recipient route and final copy |
+| PostHog | Security inbox: `security-reports@posthog.com` | High | 2026-08-14 | Approve exact email recipient route and final copy |
+| Statsig | Contact form: `https://www.statsig.com/contact/us` | Medium | 2026-08-14 | Approve form-route message or pick a named security owner |
+| Braintrust | Trust inbox: `trust@braintrustdata.com` | Medium | 2026-08-14 | Approve trust-route message or pick a named security owner |
+| Granola | Security inbox: `security@granola.so` | High | 2026-08-14 | Approve exact email recipient route and final copy |
+| Sentry | Security inbox: `security@sentry.io` | High | 2026-08-14 | Approve exact email recipient route and final copy |
+| Replit | Security inbox: `security@replit.com` | High | 2026-08-14 | Approve exact email recipient route and final copy |
+
 ## Source URLs
 
 | Account | Source |

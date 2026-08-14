@@ -10,7 +10,8 @@ const defaultFiles = [
   "docs/MARKET_PULSE_REFRESH_2026-08-14.md",
   "docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md",
   "sales/buyer-intent-map-2026-08-14.md",
-  "sales/first-account-dossier-2026-08-14.md"
+  "sales/first-account-dossier-2026-08-14.md",
+  "sales/first-10-contact-routes-2026-08-14.csv"
 ];
 
 function parseArgs(argv) {
@@ -46,7 +47,7 @@ function extractUrls(file) {
   if (!fs.existsSync(path.join(root, file))) return [];
   const text = read(file);
   const matches = text.match(/https?:\/\/[^\s)<>"']+/g) ?? [];
-  return matches.map((url) => url.replace(/[.,;]+$/, ""));
+  return matches.map((url) => url.replace(/[`.,;]+$/, ""));
 }
 
 function unique(values) {
@@ -99,6 +100,33 @@ function result(kind, label, detail = "") {
   return { kind, label, detail };
 }
 
+function parseCsvRows(text) {
+  const lines = text.trim().split(/\r?\n/);
+  if (lines.length < 2) return [];
+  const headers = lines[0].split(",").map((header) => header.trim());
+  return lines.slice(1).map((line) => {
+    const values = [];
+    let current = "";
+    let quoted = false;
+    for (let index = 0; index < line.length; index += 1) {
+      const char = line[index];
+      if (char === '"' && line[index + 1] === '"') {
+        current += '"';
+        index += 1;
+      } else if (char === '"') {
+        quoted = !quoted;
+      } else if (char === "," && !quoted) {
+        values.push(current);
+        current = "";
+      } else {
+        current += char;
+      }
+    }
+    values.push(current);
+    return Object.fromEntries(headers.map((header, index) => [header, values[index] ?? ""]));
+  });
+}
+
 function print(results) {
   for (const item of results) {
     const mark = item.kind === "pass" ? "PASS" : item.kind === "warn" ? "WARN" : "FAIL";
@@ -114,6 +142,27 @@ const results = [];
 
 for (const file of files) {
   results.push(fs.existsSync(path.join(root, file)) ? result("pass", `market file: ${file}`) : result("fail", `market file: ${file}`, "missing"));
+}
+
+if (fs.existsSync(path.join(root, "sales/first-account-dossier-2026-08-14.md"))) {
+  const dossier = read("sales/first-account-dossier-2026-08-14.md");
+  const accounts = ["Vapi", "Retool", "Pipedream", "Composio", "PostHog", "Statsig", "Braintrust", "Granola", "Sentry", "Replit"];
+  const routeMarkers = ["Current Buyer Route Status", "Exact Approved Route", "Buyer Authority Confidence", "Source Checked Date", "Next Approval Click"];
+  const missingMarkers = routeMarkers.filter((marker) => !dossier.includes(marker));
+  const missingAccounts = accounts.filter((account) => !dossier.includes(`| ${account} |`));
+  const checkedRows = (dossier.match(/\| 2026-08-14 \|/g) ?? []).length;
+  results.push(missingMarkers.length === 0 ? result("pass", "buyer route status table", "route, confidence, checked date, and next click fields present") : result("fail", "buyer route status table", missingMarkers.join(", ")));
+  results.push(missingAccounts.length === 0 ? result("pass", "buyer route account coverage", "10 accounts") : result("fail", "buyer route account coverage", missingAccounts.join(", ")));
+  results.push(checkedRows >= 10 ? result("pass", "buyer route checked dates", `${checkedRows} dated rows`) : result("fail", "buyer route checked dates", "expected 10 rows checked on 2026-08-14"));
+}
+
+if (fs.existsSync(path.join(root, "sales/first-10-contact-routes-2026-08-14.csv"))) {
+  const rows = parseCsvRows(read("sales/first-10-contact-routes-2026-08-14.csv"));
+  const missingRouteFields = rows.filter((row) => !row.account || !row.channel || !row.contact_route_url || !row.source_url || !row.confidence);
+  const highOrMedium = rows.filter((row) => ["High", "Medium"].includes(row.confidence)).length;
+  results.push(rows.length === 10 ? result("pass", "first-10 contact route rows", "10 rows") : result("fail", "first-10 contact route rows", `${rows.length} rows`));
+  results.push(missingRouteFields.length === 0 ? result("pass", "first-10 contact route fields", "all required fields present") : result("fail", "first-10 contact route fields", `${missingRouteFields.length} incomplete rows`));
+  results.push(highOrMedium === 10 ? result("pass", "first-10 route confidence", "all routes are High or Medium confidence") : result("fail", "first-10 route confidence", `${highOrMedium}/10 High or Medium`));
 }
 
 if (urls.length === 0) {
