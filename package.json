@@ -15,6 +15,7 @@
     "launch:apply-links": "node scripts/apply-approved-launch-links.mjs",
     "launch:apply-return-packet": "node scripts/apply-founder-return-packet.mjs",
     "launch:bundle": "node scripts/build-static-launch-bundle.mjs",
+    "launch:open-bundle": "node scripts/open-static-launch-bundle.mjs",
     "launch:open": "node scripts/open-launch-cockpit.mjs",
     "launch:open-founder": "node scripts/open-founder-clicks.mjs",
     "launch:prepare-cheap": "node scripts/prepare-cheap-launch-packets.mjs",

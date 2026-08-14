@@ -8,6 +8,12 @@ Use this only if GitHub Pages remains stale or unavailable while a launch change
 npm run launch:bundle
 ```
 
+To build the bundle and open the upload folder, fallback packet, and manifest:
+
+```text
+npm run launch:open-bundle
+```
+
 The generated folder is:
 
 ```text

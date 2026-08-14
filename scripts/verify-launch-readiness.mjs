@@ -254,6 +254,7 @@ const requiredFiles = [
   "scripts/build-stripe-setup-packet.mjs",
   "scripts/prepare-cheap-launch-packets.mjs",
   "scripts/build-static-launch-bundle.mjs",
+  "scripts/open-static-launch-bundle.mjs",
   "scripts/verify-market-sources.mjs",
   "scripts/verify-domain-email-dns.mjs",
   "scripts/verify-stripe-links.mjs",

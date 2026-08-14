@@ -189,7 +189,7 @@ const gates = [
   gate("Custom domain", customDomain, customDomain ? read("landing/CNAME").trim() : "no CNAME yet"),
   gate("Security contact", securityContact, securityContact ? "custom contact appears configured" : "placeholder contact remains"),
   gate("DNS verifier", exists("scripts/verify-domain-email-dns.mjs"), "npm run launch:verify-dns available after domain purchase"),
-  gate("Static bundle fallback", exists("scripts/build-static-launch-bundle.mjs") && exists("ops/static-launch-bundle-console.html"), "static host fallback is available"),
+  gate("Static bundle fallback", exists("scripts/build-static-launch-bundle.mjs") && exists("scripts/open-static-launch-bundle.mjs") && exists("ops/static-launch-bundle-console.html"), "static host fallback and upload-folder launcher are available"),
   gate("Delivery workspace", exists("scripts/create-customer-workspace.mjs"), "npm run delivery:workspace available"),
   gate("Delivery work order", exists("scripts/create-first-paid-audit-work-order.mjs"), "npm run delivery:work-order available after first payment"),
   gate("Paid handoff", exists("scripts/create-paid-audit-handoff.mjs") && exists("sales/paid-audit-handoff-approval-packet.md") && exists("ops/paid-audit-handoff-builder.html"), "builder and command create workspace, work order, and private pipeline status after payment"),

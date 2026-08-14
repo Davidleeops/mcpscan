@@ -59,6 +59,12 @@ npm run launch:bundle
 
 The fallback bundle includes `FALLBACK_UPLOAD_PACKET.md` with freshness proof and the upload stop conditions.
 
+To build the fallback and open the upload folder plus packet:
+
+```text
+npm run launch:open-bundle
+```
+
 Post-domain DNS proof:
 
 ```text
