@@ -229,6 +229,7 @@ const requiredFiles = [
   "scripts/verify-domain-email-dns.mjs",
   "scripts/verify-stripe-links.mjs",
   "scripts/stage-approved-outbound.mjs",
+  "scripts/stage-approved-route-packet.mjs",
   "scripts/compose-final-outbound.mjs",
   "scripts/compose-contact-route-outbound.mjs",
   "scripts/build-first-10-route-approval-packet.mjs",

@@ -16,6 +16,7 @@ const requiredOutboundFiles = [
   "scripts/compose-final-outbound.mjs",
   "scripts/compose-contact-route-outbound.mjs",
   "scripts/build-first-10-route-approval-packet.mjs",
+  "scripts/stage-approved-route-packet.mjs",
   "scripts/stage-approved-outbound.mjs"
 ];
 const strict = process.argv.includes("--strict");
@@ -171,8 +172,10 @@ if (exists("sales/first-10-route-approval-packet-2026-08-14.md")) {
   const packet = fs.readFileSync(path.join(root, "sales/first-10-route-approval-packet-2026-08-14.md"), "utf8");
   const approvalCount = (packet.match(/I approve staging this exact MCPScan outbound message/g) ?? []).length;
   const noAutoCount = (packet.match(/Do not send automatically/g) ?? []).length;
+  const hasAllTenApproval = packet.includes("I approve staging all 10 exact MCPScan route outbound messages.");
   results.push(approvalCount === 10 ? result("pass", "route approval packet approvals", "10 approval blocks") : result("fail", "route approval packet approvals", `${approvalCount} approval blocks`));
-  results.push(noAutoCount === 10 ? result("pass", "route approval packet no-auto-send", "10 no-auto-send statements") : result("fail", "route approval packet no-auto-send", `${noAutoCount} no-auto-send statements`));
+  results.push(hasAllTenApproval ? result("pass", "route approval packet all-10 approval", "all-10 approval phrase present") : result("fail", "route approval packet all-10 approval", "missing all-10 approval phrase"));
+  results.push(noAutoCount === 11 ? result("pass", "route approval packet no-auto-send", "10 block statements plus all-10 guard") : result("fail", "route approval packet no-auto-send", `${noAutoCount} no-auto-send statements`));
   for (const account of pipelineAccounts) {
     results.push(packet.includes(`## ${account}`) ? result("pass", `route packet account: ${account}`) : result("fail", `route packet account: ${account}`, "missing"));
   }

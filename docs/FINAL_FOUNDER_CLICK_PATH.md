@@ -85,6 +85,12 @@ After exact recipient and message approval, stage the send packet outside the pu
 npm run outbound:stage-approved -- --file /path/to/approved-outbound.txt
 ```
 
+After all 10 exact route messages are approved in the same turn, stage the whole batch outside the public repo:
+
+```text
+npm run outbound:stage-route-packet -- --file /path/to/approved-first-10-route-packet.txt
+```
+
 ## Current Local Proof Until Billing Is Fixed
 
 Fresh remote snapshot verification passes with:

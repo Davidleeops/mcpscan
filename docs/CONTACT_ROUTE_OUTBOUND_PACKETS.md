@@ -44,6 +44,12 @@ Output:
 sales/first-10-route-approval-packet-2026-08-14.md
 ```
 
+After same-turn founder approval of all 10 exact route messages, stage them outside the public repo:
+
+```text
+npm run outbound:stage-route-packet -- --file /path/to/approved-first-10-route-packet.txt
+```
+
 Generated drafts are written to:
 
 ```text

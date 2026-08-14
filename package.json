@@ -23,6 +23,7 @@
     "outbound:compose-final": "node scripts/compose-final-outbound.mjs",
     "outbound:compose-contact-routes": "node scripts/compose-contact-route-outbound.mjs",
     "outbound:route-packet": "node scripts/build-first-10-route-approval-packet.mjs",
+    "outbound:stage-route-packet": "node scripts/stage-approved-route-packet.mjs",
     "outbound:verify": "node scripts/verify-outbound-readiness.mjs",
     "outbound:queue": "node scripts/generate-outbound-approval-queue.mjs",
     "release:preflight": "node scripts/prepare-npm-release.mjs",

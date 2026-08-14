@@ -19,6 +19,7 @@
   "stripeLinksVerified": false,
   "founderReturnPacketApproved": false,
   "landingLinksApplied": false,
+  "stagedRouteApprovalCount": 0,
   "firstTenRoutePacketApproved": false,
   "notes": [
     "Keep passwords, API keys, Stripe secret keys, customer data, and mailbox credentials out of this file.",

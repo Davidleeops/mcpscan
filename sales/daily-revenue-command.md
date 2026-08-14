@@ -55,6 +55,7 @@ After first outbound approval exists:
 
 ```text
 npm run outbound:stage-approved -- --file /path/to/approved-outbound.txt
+npm run outbound:stage-route-packet -- --file /path/to/approved-first-10-route-packet.txt
 ```
 
 To generate an exact approval packet before staging:

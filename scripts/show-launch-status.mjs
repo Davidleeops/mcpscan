@@ -85,9 +85,11 @@ function hasFilledApprovalStatus() {
     "stripeLinksVerified",
     "founderReturnPacketApproved",
     "landingLinksApplied",
+    "stagedRouteApprovalCount",
     "firstTenRoutePacketApproved"
   ];
-  return requiredBooleans.every((key) => typeof status[key] === "boolean");
+  const hasBooleans = requiredBooleans.filter((key) => key !== "stagedRouteApprovalCount").every((key) => typeof status[key] === "boolean");
+  return hasBooleans && typeof status.stagedRouteApprovalCount === "number";
 }
 
 function getApprovalStatusState() {
@@ -103,7 +105,7 @@ function approvalTrackerGates(status) {
     gate("Tracker Stripe QA", status.stripeLinksVerified, status.stripeLinksVerified ? "Stripe Payment Links verified" : "run npm run launch:verify-stripe with --update-status"),
     gate("Tracker GitHub Pages DNS", pagesReady, pagesReady ? "apex and www records verified" : "run npm run launch:verify-dns with --update-status after DNS propagates"),
     gate("Tracker mailbox auth", mailReady, mailReady ? "MX, SPF, DKIM, and DMARC verified" : "MX, SPF, DKIM, or DMARC still not verified"),
-    gate("Tracker first-10 approval", status.firstTenRoutePacketApproved, status.firstTenRoutePacketApproved ? "first-10 route packet approved" : "exact route and exact message approval still required")
+    gate("Tracker first-10 approval", status.firstTenRoutePacketApproved, status.firstTenRoutePacketApproved ? "10 route packets staged for manual sending review" : `${status.stagedRouteApprovalCount || 0}/10 route packets staged`)
   ];
 }
 

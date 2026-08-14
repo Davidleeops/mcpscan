@@ -172,6 +172,19 @@ const packet = [
   "npm run outbound:stage-approved -- --file /path/to/approved-outbound.txt",
   "```",
   "",
+  "To approve and stage all 10 route messages outside the public repo in one pass, paste this line above the full packet in the same approved file:",
+  "",
+  "```text",
+  "I approve staging all 10 exact MCPScan route outbound messages.",
+  "Do not send automatically.",
+  "```",
+  "",
+  "Then run:",
+  "",
+  "```text",
+  "npm run outbound:stage-route-packet -- --file /path/to/approved-first-10-route-packet.txt",
+  "```",
+  "",
   ...sections
 ].join("\n");
 
