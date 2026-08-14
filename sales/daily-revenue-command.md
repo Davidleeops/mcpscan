@@ -42,13 +42,13 @@ npm run launch:verify
 After domain and mailbox exist:
 
 ```text
-npm run launch:verify-dns -- --domain {{chosen_domain}}
+npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status
 ```
 
 After Stripe links exist:
 
 ```text
-npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt
+npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status
 ```
 
 After first outbound approval exists:

@@ -59,6 +59,8 @@ function writeApprovalStatus(values) {
     helloAlias: values.hello,
     domainPurchased: true,
     mailboxCreated: true,
+    githubPagesAConfigured: false,
+    githubPagesWwwConfigured: false,
     mxConfigured: false,
     spfConfigured: false,
     dkimConfigured: false,

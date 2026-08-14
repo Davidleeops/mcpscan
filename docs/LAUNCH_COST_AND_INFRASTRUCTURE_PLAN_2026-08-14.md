@@ -134,8 +134,8 @@ npm run launch:apply-return-packet -- --file /path/to/approved-return-packet.txt
 Verification:
 
 ```text
-npm run launch:verify-dns -- --domain {{chosen_domain}}
-npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt
+npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status
+npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status
 npm run launch:verify -- --domain {{chosen_domain}}
 ```
 

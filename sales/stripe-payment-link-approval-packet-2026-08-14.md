@@ -80,7 +80,7 @@ Each link must pass every item:
 After all three Stripe links pass QA, verify the link format:
 
 ```text
-npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK
+npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK --update-status
 ```
 
 Then use:

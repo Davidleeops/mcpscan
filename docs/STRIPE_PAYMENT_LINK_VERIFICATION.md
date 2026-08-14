@@ -5,19 +5,19 @@ Use this after creating Stripe Payment Links and before applying links to the pu
 ## Verify Directly
 
 ```text
-npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK
+npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK --update-status
 ```
 
 ## Verify From An Approval Packet
 
 ```text
-npm run launch:verify-stripe -- --file /path/to/stripe-approval.txt
+npm run launch:verify-stripe -- --file /path/to/stripe-approval.txt --update-status
 ```
 
 ## Optional HTTP Check
 
 ```text
-npm run launch:verify-stripe -- --file /path/to/stripe-approval.txt --http
+npm run launch:verify-stripe -- --file /path/to/stripe-approval.txt --http --update-status
 ```
 
 ## What It Proves

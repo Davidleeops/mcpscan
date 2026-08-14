@@ -7,6 +7,8 @@
   "helloAlias": "hello@{{chosen_domain}}",
   "domainPurchased": false,
   "mailboxCreated": false,
+  "githubPagesAConfigured": false,
+  "githubPagesWwwConfigured": false,
   "mxConfigured": false,
   "spfConfigured": false,
   "dkimConfigured": false,

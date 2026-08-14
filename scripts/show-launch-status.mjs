@@ -76,6 +76,8 @@ function hasFilledApprovalStatus() {
   const requiredBooleans = [
     "domainPurchased",
     "mailboxCreated",
+    "githubPagesAConfigured",
+    "githubPagesWwwConfigured",
     "mxConfigured",
     "spfConfigured",
     "dkimConfigured",
@@ -91,6 +93,18 @@ function hasFilledApprovalStatus() {
 function getApprovalStatusState() {
   if (hasFilledApprovalStatus()) return { state: "READY", detail: "ops/founder-approval-status.json is present and structurally valid" };
   return { state: "INFO", detail: "copy template after founder clicks if you want a public-safe tracker" };
+}
+
+function approvalTrackerGates(status) {
+  if (!status || !hasFilledApprovalStatus()) return [];
+  const pagesReady = status.githubPagesAConfigured && status.githubPagesWwwConfigured;
+  const mailReady = status.mxConfigured && status.spfConfigured && status.dkimConfigured && status.dmarcConfigured;
+  return [
+    gate("Tracker Stripe QA", status.stripeLinksVerified, status.stripeLinksVerified ? "Stripe Payment Links verified" : "run npm run launch:verify-stripe with --update-status"),
+    gate("Tracker GitHub Pages DNS", pagesReady, pagesReady ? "apex and www records verified" : "run npm run launch:verify-dns with --update-status after DNS propagates"),
+    gate("Tracker mailbox auth", mailReady, mailReady ? "MX, SPF, DKIM, and DMARC verified" : "MX, SPF, DKIM, or DMARC still not verified"),
+    gate("Tracker first-10 approval", status.firstTenRoutePacketApproved, status.firstTenRoutePacketApproved ? "first-10 route packet approved" : "exact route and exact message approval still required")
+  ];
 }
 
 function getLiveActionsState() {
@@ -134,6 +148,7 @@ const securityContact = hasSecurityContact();
 const liveActions = getLiveActionsState();
 const npmAuth = getNpmAuthState();
 const approvalStatus = getApprovalStatusState();
+const filledApprovalStatus = exists("ops/founder-approval-status.json") ? parseJson("ops/founder-approval-status.json") : null;
 
 const gates = [
   gate("Writing rule", !hasBannedPunctuation(), "no em dash in scanned launch artifacts"),
@@ -143,6 +158,7 @@ const gates = [
   gate("Public trust checklist", exists("docs/PUBLIC_TRUST_CHECKLIST.md"), "pre-outbound public trust checklist exists"),
   gate("Approval status template", exists("ops/founder-approval-status.template.json"), "public-safe founder gate tracker template exists"),
   { label: "Filled approval status", state: approvalStatus.state, detail: approvalStatus.detail },
+  ...approvalTrackerGates(filledApprovalStatus),
   gate("Billing unblock path", exists("ops/github-actions-billing-console.html") && exists("docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md"), "GitHub billing guide exists"),
   ...(liveActions ? [{ label: "GitHub Actions live", state: liveActions.state, detail: liveActions.detail }] : []),
   gate("Market source verifier", exists("scripts/verify-market-sources.mjs") && exists("ops/market-research-refresh-console.html"), "npm run market:verify available before outbound"),

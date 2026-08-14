@@ -45,7 +45,7 @@ Launch Audit: {{launch_payment_link}}
 Enterprise Audit: {{enterprise_payment_link}}
 Domain: {{chosen_domain}}
 Email: {{chosen_email}}</pre></section>
-      <section><h2>Verification Command</h2><button data-copy-target="verify-command">Copy command</button><pre id="verify-command">npm run launch:verify-stripe -- --quick {{quick_payment_link}} --launch {{launch_payment_link}} --enterprise {{enterprise_payment_link}}</pre></section>
+      <section><h2>Verification Command</h2><button data-copy-target="verify-command">Copy command</button><pre id="verify-command">npm run launch:verify-stripe -- --quick {{quick_payment_link}} --launch {{launch_payment_link}} --enterprise {{enterprise_payment_link}} --update-status</pre></section>
     </main>
     <script>
       const boxes = [...document.querySelectorAll("input[type=checkbox]")];

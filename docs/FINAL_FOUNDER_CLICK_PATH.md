@@ -51,13 +51,19 @@ npm run launch:bundle
 After DNS records exist, verify the custom domain and mailbox records:
 
 ```text
-npm run launch:verify-dns -- --domain {{chosen_domain}}
+npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status
+```
+
+If Spacemail provides a DKIM selector, include it:
+
+```text
+npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status --dkim-selector {{dkim_selector}}
 ```
 
 After Stripe links exist, verify them before applying public links:
 
 ```text
-npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt
+npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status
 ```
 
 After founder clicks exist, apply the return packet and refresh public-safe approval status:

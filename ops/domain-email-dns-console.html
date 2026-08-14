@@ -266,14 +266,15 @@ TXT _dmarc "v=DMARC1; p=none; rua=mailto:audit@the chosen domain"</pre>
 
       <section class="wide">
         <h2>Verification Commands</h2>
-        <p>Use these after DNS has had time to propagate.</p>
+        <p>Use these after DNS has had time to propagate. Add the DKIM selector shown by Spacemail when available.</p>
         <button class="copy" data-copy-target="verify-commands">Copy verification commands</button>
-        <pre id="verify-commands">npm run launch:verify-dns -- --domain getmcpscan.com
+        <pre id="verify-commands">npm run launch:verify-dns -- --domain getmcpscan.com --update-status --dkim-selector DKIM_SELECTOR
 dig +short getmcpscan.com A
 dig +short getmcpscan.com AAAA
 dig +short www.getmcpscan.com CNAME
 dig +short getmcpscan.com MX
 dig +short getmcpscan.com TXT
+dig +short DKIM_SELECTOR._domainkey.getmcpscan.com TXT
 dig +short _dmarc.getmcpscan.com TXT
 curl -L -I https://getmcpscan.com/
 curl -L -I https://getmcpscan.com/secure-intake.html</pre>

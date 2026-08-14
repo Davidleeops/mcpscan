@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import https from "node:https";
 import fs from "node:fs";
+import path from "node:path";
 
 function parseArgs(argv) {
   const values = {};
@@ -81,10 +82,30 @@ function validatePaymentLink(label, value) {
   return results;
 }
 
+function updateApprovalStatus(links, results) {
+  const file = path.join(process.cwd(), "ops/founder-approval-status.json");
+  if (!fs.existsSync(file)) {
+    console.log("INFO approval status - ops/founder-approval-status.json not found, skipping tracker update");
+    return;
+  }
+
+  const status = JSON.parse(fs.readFileSync(file, "utf8"));
+  const failures = results.some((item) => item.kind === "fail");
+  const warnings = results.some((item) => item.kind === "warn");
+  status.updatedAt = new Date().toISOString();
+  status.stripeQuickAuditLink = links["Quick Audit"] ?? status.stripeQuickAuditLink;
+  status.stripeLaunchAuditLink = links["Launch Audit"] ?? status.stripeLaunchAuditLink;
+  status.stripeEnterpriseReadinessLink = links["Enterprise Readiness"] ?? status.stripeEnterpriseReadinessLink;
+  status.stripeLinksVerified = !failures && !warnings;
+  fs.writeFileSync(file, `${JSON.stringify(status, null, 2)}\n`);
+  console.log("INFO approval status - updated ops/founder-approval-status.json");
+}
+
 const args = parseArgs(process.argv.slice(2));
 const input = readInput(args.file);
 const strict = args.strict === "true";
 const shouldCheckHttp = args.http === "true";
+const updateStatus = args["update-status"] === "true";
 
 const links = {
   "Quick Audit": args.quick ?? valueFromInput("Quick Audit", input),
@@ -113,6 +134,10 @@ const warnings = results.filter((item) => item.kind === "warn");
 
 console.log("");
 console.log(`Summary: ${results.length - failures.length - warnings.length} passed, ${warnings.length} warnings, ${failures.length} failures.`);
+
+if (updateStatus) {
+  updateApprovalStatus(links, results);
+}
 
 if (strict && (failures.length > 0 || warnings.length > 0)) {
   process.exit(1);

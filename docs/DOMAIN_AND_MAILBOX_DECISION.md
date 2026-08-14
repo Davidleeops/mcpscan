@@ -81,11 +81,11 @@ Then use `ops/domain-email-dns-console.html` for DNS and mailbox setup.
 After the domain and mailbox records have time to propagate, run:
 
 ```text
-npm run launch:verify-dns -- --domain {{chosen_domain}}
+npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status
 ```
 
 Use strict mode only when you expect every record to be live:
 
 ```text
-npm run launch:verify-dns -- --domain {{chosen_domain}} --strict
+npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status --strict
 ```

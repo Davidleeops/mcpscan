@@ -138,16 +138,16 @@
 
       <section>
         <h2>DNS and Mail Verification</h2>
-        <p>Run after the domain, GitHub Pages records, MX, SPF, DKIM, and DMARC are saved.</p>
+        <p>Run after the domain, GitHub Pages records, MX, SPF, DKIM, and DMARC are saved. Add the DKIM selector shown by Spacemail when available.</p>
         <button class="copy" data-copy-target="dns-command">Copy command</button>
-        <pre id="dns-command">npm run launch:verify-dns -- --domain getmcpscan.com</pre>
+        <pre id="dns-command">npm run launch:verify-dns -- --domain getmcpscan.com --update-status --dkim-selector DKIM_SELECTOR</pre>
       </section>
 
       <section>
         <h2>Stripe Payment Link Verification</h2>
-        <p>Run after the three Stripe Payment Links are created and before applying them to the public landing page.</p>
+        <p>Run after the three Stripe Payment Links are created and before applying them to the public landing page. Add update status after the founder return packet has created the local tracker.</p>
         <button class="copy" data-copy-target="stripe-command">Copy command</button>
-        <pre id="stripe-command">npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK</pre>
+        <pre id="stripe-command">npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK --update-status</pre>
       </section>
 
       <section>

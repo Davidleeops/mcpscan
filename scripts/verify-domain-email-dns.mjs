@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 import dns from "node:dns/promises";
+import fs from "node:fs";
+import path from "node:path";
 
 const githubA = new Set(["185.199.108.153", "185.199.109.153", "185.199.110.153", "185.199.111.153"]);
 const githubAaaa = new Set(["2606:50c0:8000::153", "2606:50c0:8001::153", "2606:50c0:8002::153", "2606:50c0:8003::153"]);
@@ -29,6 +31,33 @@ function result(kind, label, detail = "") {
   return { kind, label, detail };
 }
 
+function isPass(results, label) {
+  return results.some((item) => item.label === label && item.kind === "pass");
+}
+
+function updateApprovalStatus(domain, results) {
+  const file = path.join(process.cwd(), "ops/founder-approval-status.json");
+  if (!fs.existsSync(file)) {
+    console.log("INFO approval status - ops/founder-approval-status.json not found, skipping tracker update");
+    return;
+  }
+
+  const status = JSON.parse(fs.readFileSync(file, "utf8"));
+  status.updatedAt = new Date().toISOString();
+  status.domain = status.domain || domain;
+  status.githubPagesAConfigured = isPass(results, "apex A records");
+  status.githubPagesWwwConfigured = isPass(results, "www CNAME");
+  status.mxConfigured = isPass(results, "Spacemail MX");
+  status.spfConfigured = isPass(results, "Spacemail SPF");
+  if (results.some((item) => item.label === "Spacemail DKIM")) {
+    status.dkimConfigured = isPass(results, "Spacemail DKIM");
+  }
+  status.dmarcConfigured = isPass(results, "DMARC");
+
+  fs.writeFileSync(file, `${JSON.stringify(status, null, 2)}\n`);
+  console.log("INFO approval status - updated ops/founder-approval-status.json");
+}
+
 function print(results) {
   for (const item of results) {
     const mark = item.kind === "pass" ? "PASS" : item.kind === "warn" ? "WARN" : "FAIL";
@@ -56,6 +85,8 @@ function validDomain(value) {
 const args = parseArgs(process.argv.slice(2));
 const domain = (args.domain ?? "").toLowerCase();
 const strict = args.strict === "true";
+const updateStatus = args["update-status"] === "true";
+const dkimSelector = args["dkim-selector"];
 
 if (!validDomain(domain)) {
   console.error("Usage: npm run launch:verify-dns -- --domain getmcpscan.com");
@@ -105,6 +136,16 @@ if (txt.ok) {
   results.push(result("warn", "Spacemail SPF", txt.error));
 }
 
+if (dkimSelector) {
+  const dkim = await resolveRecord("TXT", `${dkimSelector}._domainkey.${domain}`);
+  if (dkim.ok) {
+    const record = dkim.values.find((value) => value.toLowerCase().startsWith("v=dkim1"));
+    results.push(record ? result("pass", "Spacemail DKIM", `${dkimSelector}._domainkey.${domain}`) : result("warn", "Spacemail DKIM", "no v=DKIM1 TXT found"));
+  } else {
+    results.push(result("warn", "Spacemail DKIM", dkim.error));
+  }
+}
+
 const dmarc = await resolveRecord("TXT", `_dmarc.${domain}`);
 if (dmarc.ok) {
   const record = dmarc.values.find((value) => value.toLowerCase().startsWith("v=dmarc1"));
@@ -120,6 +161,10 @@ const warnings = results.filter((item) => item.kind === "warn");
 
 console.log("");
 console.log(`Summary: ${results.length - failures.length - warnings.length} passed, ${warnings.length} warnings, ${failures.length} failures.`);
+
+if (updateStatus) {
+  updateApprovalStatus(domain, results);
+}
 
 if (strict && (failures.length > 0 || warnings.length > 0)) {
   process.exit(1);

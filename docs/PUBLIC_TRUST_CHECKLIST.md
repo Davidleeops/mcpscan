@@ -13,10 +13,10 @@ Use this before pointing paid outreach or community launch traffic at MCPScan.
 | Audit mailbox | `audit@{{chosen_domain}}` receives email | Test inbound email |
 | Security alias | `security@{{chosen_domain}}` reaches the same mailbox or monitored inbox | Test inbound email |
 | General alias | `hello@{{chosen_domain}}` reaches the same mailbox or monitored inbox | Test inbound email |
-| SPF | Domain includes the selected mail provider in SPF | `npm run launch:verify-dns -- --domain {{chosen_domain}}` |
+| SPF | Domain includes the selected mail provider in SPF | `npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status` |
 | DKIM | Mail provider DKIM is configured | Provider DNS check |
-| DMARC | `_dmarc.{{chosen_domain}}` exists | `npm run launch:verify-dns -- --domain {{chosen_domain}}` |
-| Stripe links | All three live Payment Links exist | `npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt` |
+| DMARC | `_dmarc.{{chosen_domain}}` exists | `npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status` |
+| Stripe links | All three live Payment Links exist | `npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status` |
 | Terms | Terms page is reachable from the landing page | Browser visit |
 | Privacy | Privacy page is reachable from the landing page | Browser visit |
 | Refund policy | Refund policy is reachable from the landing page | Browser visit |
@@ -50,14 +50,14 @@ Use this before pointing paid outreach or community launch traffic at MCPScan.
 npm run writing:check
 npm run market:verify
 npm run launch:verify -- --domain {{chosen_domain}}
-npm run launch:verify-dns -- --domain {{chosen_domain}}
+npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status
 npm run outbound:verify
 ```
 
 If Stripe links were just created:
 
 ```text
-npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt
+npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status
 ```
 
 ## Stop Conditions

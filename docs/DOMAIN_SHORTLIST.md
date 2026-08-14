@@ -69,4 +69,4 @@ Always confirm in the Spaceship cart before purchase because promo pricing and I
 3. Enable HTTPS in GitHub Pages.
 4. Create `audit@domain` mailbox with `security@domain` and `hello@domain` aliases.
 5. Replace GitHub issue CTAs in `landing/index.html` with Stripe links and/or `mailto:audit@domain`.
-6. Verify DNS and mail records with `npm run launch:verify-dns -- --domain domain`.
+6. Verify DNS and mail records with `npm run launch:verify-dns -- --domain domain --update-status`.
