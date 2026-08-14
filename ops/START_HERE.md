@@ -24,6 +24,8 @@ To prebuild the default cheap-lane DNS and Stripe packets:
 npm run launch:prepare-cheap
 ```
 
+The generated packet folder includes the DNS packet, Stripe setup packet, DNS records CSV, and Stripe products CSV for the default `mcpscan.site` lane.
+
 It points to every founder click gate:
 
 1. Domain and email DNS console

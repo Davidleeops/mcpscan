@@ -22,13 +22,22 @@ Prebuild the cheap-lane DNS and Stripe packets:
 npm run launch:prepare-cheap
 ```
 
+That creates the founder-ready packet set:
+
+```text
+ops/generated-launch-packets/2026-08-14_mcpscan-site_dns-packet.md
+ops/generated-launch-packets/2026-08-14_mcpscan-site_dns-records.csv
+ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-setup-packet.md
+ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-products.csv
+```
+
 ## Sequence
 
 1. Clear the GitHub billing lock.
 2. Choose the domain lane and approve one domain plus one mailbox. For the current low-cash sprint, search `mcpscan.site` first, `getmcpscan.xyz` second, and `trymcpscan.com` only if the trust bump is worth the extra spend.
 3. Buy one domain and one Spacemail mailbox.
-4. Generate and approve the DNS packet.
-5. Generate the Stripe setup packet.
+4. Use the generated DNS packet and DNS records CSV.
+5. Use the generated Stripe setup packet and Stripe products CSV.
 6. Create three live Stripe Payment Links.
 7. Use the Stripe QA console to generate the evidence JSON and exact return approval.
 8. Give the approved return packet to Codex.

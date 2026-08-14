@@ -26,6 +26,8 @@ To prebuild the default cheap-lane DNS and Stripe packets:
 npm run launch:prepare-cheap
 ```
 
+That command writes the DNS packet, Stripe setup packet, DNS records CSV, and Stripe products CSV into `ops/generated-launch-packets/` for the default `mcpscan.site` lane.
+
 ## Current Reality
 
 MCPScan is a real opportunity, but the strongest wedge is not "generic AI security platform." The strongest first-revenue offer is:

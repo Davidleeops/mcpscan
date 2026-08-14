@@ -181,6 +181,8 @@ const requiredFiles = [
   "ops/generated-launch-packets/README.md",
   "ops/generated-launch-packets/2026-08-14_mcpscan-site_dns-packet.md",
   "ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-setup-packet.md",
+  "ops/generated-launch-packets/2026-08-14_mcpscan-site_dns-records.csv",
+  "ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-products.csv",
   "ops/delivery-console.html",
   "ops/customer-comms-console.html",
   "ops/discovery-console.html",

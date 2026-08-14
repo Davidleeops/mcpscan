@@ -39,6 +39,16 @@ function validEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+function csvEscape(value) {
+  const text = String(value);
+  if (!/[",\n]/.test(text)) return text;
+  return `"${text.replace(/"/g, '""')}"`;
+}
+
+function writeCsv(file, rows) {
+  fs.writeFileSync(file, rows.map((row) => row.map(csvEscape).join(",")).join("\n") + "\n", "utf8");
+}
+
 const args = parseArgs(process.argv.slice(2));
 const domain = (args.domain ?? "mcpscan.site").trim().toLowerCase();
 const mailbox = (args.mailbox ?? `security@${domain}`).trim();
@@ -81,6 +91,55 @@ const stripePacket = run("Stripe packet", [
   output
 ]);
 
+const dnsCsvPath = path.join(output, `${date}_${domain.replace(/\./g, "-")}_dns-records.csv`);
+const stripeCsvPath = path.join(output, `${date}_${domain.replace(/\./g, "-")}_stripe-products.csv`);
+
+writeCsv(dnsCsvPath, [
+  ["system", "type", "host", "value", "priority", "notes"],
+  ["GitHub Pages", "A", "@", "185.199.108.153", "", "Apex domain"],
+  ["GitHub Pages", "A", "@", "185.199.109.153", "", "Apex domain"],
+  ["GitHub Pages", "A", "@", "185.199.110.153", "", "Apex domain"],
+  ["GitHub Pages", "A", "@", "185.199.111.153", "", "Apex domain"],
+  ["GitHub Pages", "AAAA", "@", "2606:50c0:8000::153", "", "Apex domain"],
+  ["GitHub Pages", "AAAA", "@", "2606:50c0:8001::153", "", "Apex domain"],
+  ["GitHub Pages", "AAAA", "@", "2606:50c0:8002::153", "", "Apex domain"],
+  ["GitHub Pages", "AAAA", "@", "2606:50c0:8003::153", "", "Apex domain"],
+  ["GitHub Pages", "CNAME", "www", "davidleeops.github.io", "", "www subdomain"],
+  ["Spacemail", "MX", "@", "mx1.spacemail.com", "0", "Mail exchanger"],
+  ["Spacemail", "MX", "@", "mx2.spacemail.com", "0", "Mail exchanger"],
+  ["Spacemail", "TXT", "@", "v=spf1 include:spf.spacemail.com ~all", "", "SPF"],
+  ["Spacemail", "TXT", "_dmarc", `v=DMARC1; p=none; rua=mailto:${mailbox}`, "", "DMARC"],
+  ["Spacemail", "TXT", "{{spacemail_dkim_selector}}._domainkey", "{{spacemail_dkim_value}}", "", "Replace with exact Spacemail DKIM value"]
+]);
+
+writeCsv(stripeCsvPath, [
+  ["product", "price_usd", "payment_type", "role", "delivery", "description"],
+  [
+    "MCP Quick Audit",
+    "750",
+    "One-time",
+    "Entry package",
+    "3 business days after intake is complete",
+    "A fixed-scope security review of up to 3 MCP servers in 1 environment. Includes MCP server and tool inventory, configuration risk review, secret exposure review, prompt-injection and tool-description risk review, written report, and remediation checklist."
+  ],
+  [
+    "MCP Launch Audit",
+    "1500",
+    "One-time",
+    "Default first-revenue package",
+    "5 business days after intake is complete",
+    "A practical MCP security audit for teams preparing customer pilots, internal rollout, or launch. Covers up to 8 MCP servers across up to 2 environments. Includes server and tool inventory, permission review, secret exposure review, prompt-injection and tool-description risk review, written report, remediation checklist, 30-minute findings call, and 1 re-scan after fixes."
+  ],
+  [
+    "MCP Enterprise Readiness Audit",
+    "3500",
+    "One-time",
+    "Enterprise package",
+    "7 business days after intake is complete",
+    "A deeper MCP security audit for teams preparing enterprise review. Covers up to 15 MCP servers across up to 3 environments. Includes server and tool inventory, configuration and permission review, secret exposure review, prompt-injection and tool-description risk review, executive summary, detailed written report, remediation checklist, 45-minute findings call, buyer-facing security summary, and 1 re-scan after fixes."
+  ]
+]);
+
 const readme = [
   "# MCPScan Generated Launch Packets",
   "",
@@ -99,6 +158,8 @@ const readme = [
   "",
   `- DNS packet: ${path.basename(dnsPacket)}`,
   `- Stripe setup packet: ${path.basename(stripePacket)}`,
+  `- DNS records CSV: ${path.basename(dnsCsvPath)}`,
+  `- Stripe products CSV: ${path.basename(stripeCsvPath)}`,
   "",
   "## Founder Click Order",
   "",
@@ -126,3 +187,5 @@ console.log("Prepared MCPScan cheap-lane launch packets.");
 console.log(readmePath);
 console.log(dnsPacket);
 console.log(stripePacket);
+console.log(dnsCsvPath);
+console.log(stripeCsvPath);

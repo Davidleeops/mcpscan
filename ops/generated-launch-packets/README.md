@@ -15,6 +15,8 @@ Hello alias: hello@mcpscan.site
 
 - DNS packet: 2026-08-14_mcpscan-site_dns-packet.md
 - Stripe setup packet: 2026-08-14_mcpscan-site_stripe-setup-packet.md
+- DNS records CSV: 2026-08-14_mcpscan-site_dns-records.csv
+- Stripe products CSV: 2026-08-14_mcpscan-site_stripe-products.csv
 
 ## Founder Click Order
 
