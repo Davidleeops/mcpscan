@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Stripe Link QA</title>
+    <style>
+      :root { color-scheme: light; --ink: #14171a; --muted: #5b6470; --line: #d7dde3; --panel: #ffffff; --soft: #f5f7f9; --accent: #635bff; --good: #0f7b4f; --warn: #9a5a00; --danger: #aa2b2b; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--soft); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 48px; }
+      h1, h2, p { margin-top: 0; }
+      h1 { font-size: clamp(32px, 5vw, 58px); line-height: 1; margin-bottom: 12px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      p, li, label { color: var(--muted); line-height: 1.5; }
+      .stack { display: grid; gap: 16px; }
+      section { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+      .warn { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .ready { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .checks { display: grid; gap: 10px; }
+      label { display: flex; gap: 10px; align-items: flex-start; }
+      input[type="checkbox"] { margin-top: 5px; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+      a.button, button { display: inline-flex; min-height: 38px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 12px; color: var(--accent); background: #ffffff; font-weight: 700; text-decoration: none; cursor: pointer; }
+      a.button.primary, button.primary { color: #ffffff; background: var(--accent); }
+      pre { margin: 10px 0 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; }
+      .status { min-height: 24px; font-weight: 700; }
+      .status.good { color: var(--good); }
+      .status.bad { color: var(--danger); }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>Stripe Link QA</h1>
+        <p>Use this after creating the three Stripe Payment Links and before applying them to the public landing page.</p>
+        <div class="actions"><a class="button primary" href="https://dashboard.stripe.com/payment-links" target="_blank" rel="noreferrer">Open Stripe links</a><a class="button" href="../sales/stripe-payment-link-approval-packet-2026-08-14.md">Open packet</a><a class="button" href="approved-links-command-builder.html">Command builder</a></div>
+      </header>
+      <section class="warn"><h2>Do This Before Public Launch</h2><p>All three payment links must pass this checklist. Keep test links off the public landing page.</p></section>
+      <section><h2>Checklist</h2><div class="checks" id="checks"><label><input type="checkbox"> All three products exist: Quick, Launch, Enterprise.</label><label><input type="checkbox"> Prices are $750, $1,500, and $3,500, one-time.</label><label><input type="checkbox"> Links are live mode, not test mode.</label><label><input type="checkbox"> Automatic receipts are enabled.</label><label><input type="checkbox"> Customer name, email, company, and billing address are collected.</label><label><input type="checkbox"> Primary technical contact email is required.</label><label><input type="checkbox"> Checkout redirects to thank-you page.</label><label><input type="checkbox"> Terms, privacy, refund, and secure intake URLs are available.</label><label><input type="checkbox"> Descriptions say delivery begins after intake is complete.</label><label><input type="checkbox"> Refund terms match the public refund policy.</label></div><p id="status" class="status bad">Not ready yet.</p></section>
+      <section class="ready"><h2>Approval Prompt</h2><button class="primary" data-copy-target="approval">Copy prompt</button><pre id="approval">Please approve these Stripe Payment Links for public launch. I will not apply them to the landing page unless you approve the exact URLs in this same turn.
+
+Quick Audit: {{quick_payment_link}}
+Launch Audit: {{launch_payment_link}}
+Enterprise Audit: {{enterprise_payment_link}}
+Domain: {{chosen_domain}}
+Email: {{chosen_email}}</pre></section>
+    </main>
+    <script>
+      const boxes = [...document.querySelectorAll("input[type=checkbox]")];
+      const status = document.getElementById("status");
+      function updateStatus() {
+        const ready = boxes.every((box) => box.checked);
+        status.textContent = ready ? "Ready for founder approval." : "Not ready yet.";
+        status.className = ready ? "status good" : "status bad";
+      }
+      boxes.forEach((box) => box.addEventListener("change", updateStatus));
+      for (const button of document.querySelectorAll("[data-copy-target]")) {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          await navigator.clipboard.writeText(target.textContent.trim());
+          const label = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = label; }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>
