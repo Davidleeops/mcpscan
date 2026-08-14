@@ -8,6 +8,13 @@ Start here:
 ops/launch-cockpit.html
 ```
 
+Current market proof:
+
+```text
+docs/MARKET_REALITY_BRIEF_2026-08-14.md
+sales/buyer-intent-map-2026-08-14.md
+```
+
 ## Open Gates
 
 | Issue | Gate | Console | Completion Proof |

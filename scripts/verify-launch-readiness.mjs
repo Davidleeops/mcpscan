@@ -140,6 +140,8 @@ const requiredFiles = [
   "docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md",
   "docs/FINAL_FOUNDER_CLICK_PATH.md",
   "docs/DOMAIN_AND_MAILBOX_DECISION.md",
+  "docs/MARKET_REALITY_BRIEF_2026-08-14.md",
+  "sales/buyer-intent-map-2026-08-14.md",
   "sales/first-10-outbound-approval-packet.md",
   "sales/first-14-days-operating-cadence.md",
   "sales/post-payment-handoff.md",
