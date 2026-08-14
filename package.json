@@ -85,6 +85,7 @@
     "delivery:intake-message": "node scripts/compose-post-payment-intake.mjs",
     "delivery:evidence": "node scripts/create-payment-evidence.mjs",
     "delivery:verify-payment": "node scripts/verify-payment-evidence.mjs",
+    "delivery:verify-workspace": "node scripts/verify-customer-workspace-completion.mjs",
     "delivery:verify": "node scripts/verify-delivery-readiness.mjs",
     "delivery:dry-run": "node scripts/run-delivery-dry-run.mjs",
     "launch:status": "node scripts/show-launch-status.mjs",

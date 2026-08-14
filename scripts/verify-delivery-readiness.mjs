@@ -34,6 +34,7 @@ const requiredFiles = [
   "scripts/create-paid-audit-handoff.mjs",
   "scripts/create-payment-evidence.mjs",
   "scripts/verify-payment-evidence.mjs",
+  "scripts/verify-customer-workspace-completion.mjs",
   "scripts/open-paid-audit-handoff.mjs",
   "scripts/compose-post-payment-intake.mjs",
   "ops/paid-audit-handoff-builder.html",
@@ -159,6 +160,26 @@ if (exists("scripts/run-delivery-dry-run.mjs")) {
     dryRun.includes("--payment-evidence") && dryRun.includes("payment-confirmation-evidence.json")
       ? result("pass", "delivery dry run payment gate", "rehearsal exercises evidence-gated handoff")
       : result("fail", "delivery dry run payment gate", "dry run does not pass payment evidence into the handoff")
+  );
+}
+
+if (exists("scripts/verify-customer-workspace-completion.mjs") && exists("package.json")) {
+  const workspaceVerifier = read("scripts/verify-customer-workspace-completion.mjs");
+  const packageJson = read("package.json");
+  const requiredWorkspaceMarkers = [
+    "Customer workspace completion verification must point outside the public MCPScan repo",
+    "client acceptance is complete",
+    "findings tracker is filled and not draft",
+    "evidence register is filled",
+    "QA signoff is complete",
+    "findings call agenda is prepared",
+    "re-scan instructions are prepared"
+  ];
+  const missingWorkspaceMarkers = requiredWorkspaceMarkers.filter((marker) => !workspaceVerifier.includes(marker));
+  results.push(
+    missingWorkspaceMarkers.length === 0 && packageJson.includes("\"delivery:verify-workspace\"")
+      ? result("pass", "customer workspace completion verifier", "completed private workspace can be checked before delivery")
+      : result("fail", "customer workspace completion verifier", missingWorkspaceMarkers.join(", ") || "missing npm script")
   );
 }
 
