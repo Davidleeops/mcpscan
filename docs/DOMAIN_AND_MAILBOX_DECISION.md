@@ -21,7 +21,7 @@ Checked through the domain availability tool on 2026-08-14:
 | `scanmcp.dev` | Not available | N/A | Skip |
 | `mcpguard.dev` | Not available | N/A | Skip |
 | `mcpaudit.dev` | Not available | N/A | Skip |
-| `mcpscan.xyz` | Not available | N/A | Skip unless Spaceship directly shows otherwise |
+| Exact short `.xyz` name | Not available in live check | N/A | Skip unless Spaceship directly shows otherwise |
 | `mcpscan.us` | Available | $7.99 | Cheapest credible fallback |
 | `getmcpscan.com` | Available | $11.25 | Best overall pick |
 | `trymcpscan.com` | Available | $11.25 | Good backup |
@@ -34,7 +34,7 @@ Checked through the domain availability tool on 2026-08-14:
 | `.com` at Spaceship | About $8.88 plus ICANN fee on current pricing pages | About $9.98 renewal plus ICANN fee | Best credibility per dollar when the name is available |
 | `.dev` at Spaceship | About $8.28 plus ICANN fee | About $12.42 renewal | Best developer-tool signal, but key names checked unavailable |
 | `.us` at Spaceship or comparable registrar | Low single digits to about $8 depending on registrar | Lower renewal than most novelty TLDs | Legitimate for a US founder, less SaaS-native than `.com` |
-| `.xyz` at Spaceship | About $1 to $2 depending on promo | About $12 to $13 renewal | Cheap and developer-friendly, but exact `mcpscan.xyz` checked unavailable |
+| `.xyz` at Spaceship | About $1 to $2 depending on promo | About $12 to $13 renewal | Cheap and developer-friendly, but the exact short name checked unavailable |
 | `.site` or `.online` at Spaceship | About $1 to $2 promo pricing | About $21 to $22 renewal | Cheap first year, weaker trust signal for B2B security |
 
 Sources checked on 2026-08-14: Spaceship domain pricing, Spaceship registrar prices on TLD-List, TLDSpy Spaceship pricing, Spacemail pricing, and the live domain availability checker.
