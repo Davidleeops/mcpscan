@@ -119,7 +119,30 @@ function approvalTrackerGates(status) {
   ];
 }
 
-function getLiveActionsState() {
+function getPagesFallbackState() {
+  if (!live) return null;
+  try {
+    const raw = execFileSync("gh", ["api", `repos/${repo}/pages`], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
+    const pages = JSON.parse(raw);
+    const branch = pages.source?.branch;
+    const pathValue = pages.source?.path;
+    if (pages.build_type !== "legacy" || branch !== "gh-pages" || pathValue !== "/") {
+      return { state: "INFO", detail: `Pages source is ${pages.build_type ?? "unknown"} ${branch ?? "unknown"}${pathValue ?? ""}` };
+    }
+
+    const buildsRaw = execFileSync("gh", ["api", `repos/${repo}/pages/builds`], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
+    const builds = JSON.parse(buildsRaw);
+    const latest = builds[0];
+    if (!latest) return { state: "INFO", detail: "legacy gh-pages source is configured; no build record returned yet" };
+    if (latest.status === "built") return { state: "READY", detail: `legacy gh-pages build is live at ${pages.html_url}` };
+    if (latest.status === "building") return { state: "INFO", detail: "legacy gh-pages build is still building" };
+    return { state: "WAIT", detail: `legacy gh-pages build status is ${latest.status}` };
+  } catch (error) {
+    return { state: "INFO", detail: "Pages fallback check unavailable: " + error.message };
+  }
+}
+
+function getLiveActionsState(pagesFallback) {
   if (!live) return null;
   try {
     const raw = execFileSync("gh", ["run", "list", "--repo", repo, "--limit", "6", "--json", "databaseId,conclusion,status,workflowName,displayTitle"], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
@@ -132,6 +155,9 @@ function getLiveActionsState() {
       const viewData = JSON.parse(json);
       const failedBeforeSteps = viewData.jobs?.some((job) => job.conclusion === "failure" && Array.isArray(job.steps) && job.steps.length === 0);
       if (failedBeforeSteps) {
+        if (pagesFallback?.state === "READY") {
+          return { state: "INFO", detail: `${run.workflowName} is blocked before repo steps; static Pages fallback is live` };
+        }
         return { state: "WAIT", detail: `${run.workflowName} failed before repo steps started; clear GitHub billing or account lock` };
       }
       const view = execFileSync("gh", ["run", "view", String(run.databaseId), "--repo", repo], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
@@ -163,7 +189,8 @@ function gate(label, ready, detail) {
 const checkoutPlaceholders = hasCheckoutPlaceholders();
 const customDomain = hasCustomDomain();
 const securityContact = hasSecurityContact();
-const liveActions = getLiveActionsState();
+const pagesFallback = getPagesFallbackState();
+const liveActions = getLiveActionsState(pagesFallback);
 const npmAuth = getNpmAuthState();
 const approvalStatus = getApprovalStatusState();
 const filledApprovalStatus = exists("ops/founder-approval-status.json") ? parseJson("ops/founder-approval-status.json") : null;
@@ -185,6 +212,7 @@ const gates = [
   ...approvalTrackerGates(filledApprovalStatus),
   gate("Billing unblock path", exists("ops/github-actions-billing-console.html") && exists("docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md"), "GitHub billing guide exists"),
   gate("Actions rerun helper", exists("scripts/rerun-github-actions-after-unlock.mjs"), "npm run launch:rerun-actions re-runs failed CI and Pages jobs after billing unlock"),
+  ...(pagesFallback ? [{ label: "GitHub Pages fallback", state: pagesFallback.state, detail: pagesFallback.detail }] : []),
   ...(liveActions ? [{ label: "GitHub Actions live", state: liveActions.state, detail: liveActions.detail }] : []),
   gate("Market source verifier", exists("scripts/verify-market-sources.mjs") && exists("ops/market-research-refresh-console.html") && exists("docs/MARKET_PULSE_REFRESH_2026-08-14.md"), "npm run market:verify checks current market pulse before outbound"),
   gate("Domain purchase packet", exists("ops/domain-mailbox-purchase-packet.html") && exists("docs/DOMAIN_MAILBOX_PURCHASE_PACKET.md"), "founder can approve one domain and one mailbox"),
