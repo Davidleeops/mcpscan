@@ -21,7 +21,7 @@ Best current positioning:
 | Buyer location research | `docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md`, `sales/buyer-intent-map-2026-08-14.md`, `sales/first-account-dossier-2026-08-14.md` | Prepared |
 | Go-to-market plan | `docs/GO_TO_MARKET.md`, `docs/FIRST_REVENUE_BATTLECARD.md`, `sales/first-10-outbound-approval-packet.md` | Prepared |
 | Full list of what must happen to get live | `docs/FINAL_FOUNDER_CLICK_PATH.md`, `docs/FOUNDER_CLICK_HANDOFF.md`, `docs/FOUNDER_RETURN_VALUES_CHECKLIST.md`, `ops/launch-day-runbook.html` | Prepared |
-| Clickable founder path | `npm run launch:day`, `npm run launch:next`, `npm run launch:open-founder`, `ops/launch-day-runbook.html`, `ops/final-founder-click-console.html`, `ops/founder-click-handoff.html` | Prepared |
+| Clickable founder path | `npm run launch:day`, `npm run launch:click-session`, `npm run launch:next`, `npm run launch:open-founder`, `ops/launch-day-runbook.html`, `ops/final-founder-click-console.html`, `ops/founder-click-handoff.html` | Prepared |
 | Domain and mailbox packets | `npm run domain:open`, `ops/domain-mailbox-purchase-packet.html`, `ops/domain-cart-proof.template.json`, `npm run launch:verify-cart`, `ops/domain-email-dns-console.html`, `npm run launch:dns-packet`, `ops/generated-launch-packets/2026-08-14_mcpscan-online_dns-packet.md` | Prepared |
 | Stripe setup packet | `ops/stripe-click-setup.html`, `npm run launch:stripe-packet`, `ops/stripe-payment-link-qa-console.html` | Prepared |
 | Return packet after clicks | `ops/founder-return-packet.html`, `ops/approved-links-command-builder.html`, `ops/founder-status-console.html`, `docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md`, `npm run launch:open-return-review`, `npm run launch:post-click-bundle`, `npm run launch:verify-status`, `npm run launch:post-click-verify` | Prepared |
@@ -51,10 +51,10 @@ GitHub Actions is also blocked by the account-side lock. It is not blocking the 
 Use this command when the founder is ready to work through the remaining clicks:
 
 ```text
-npm run launch:day
+npm run launch:click-session
 ```
 
-This opens the ordered launch-day runbook, domain and mailbox packet, Stripe setup and QA, return packet, public-safe status JSON builder, verification console, and first-revenue runway references. It opens surfaces only. It does not buy, publish, send, charge, or create customer files.
+This prepares the private founder click workspace, opens the generated click session sheet, opens the founder consoles, and opens Spaceship, Spacemail, and Stripe account pages. It does not buy, publish, send, charge, apply public links, or create customer files.
 
 ## Current Verification Command Set
 
@@ -66,6 +66,7 @@ npm run launch:full-proof
 npm run launch:verify-live
 npm run delivery:verify-workspace
 npm run writing:check
+npm run launch:click-session
 npm run launch:day
 npm run launch:verify
 npm run launch:status
@@ -76,7 +77,7 @@ Latest local readiness proof:
 
 ```text
 npm run launch:verify
-Summary: 231 passed, 3 expected founder-click warnings, 0 failures.
+Summary: 232 passed, 3 expected founder-click warnings, 0 failures.
 ```
 
 Current consolidated proof:

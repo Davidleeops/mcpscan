@@ -13,10 +13,12 @@ ops/founder-click-handoff.html
 One-command launcher:
 
 ```text
-npm run launch:open-founder
+npm run launch:click-session
 ```
 
-Prepare the private founder evidence workspace before buying anything:
+That command prepares the default private founder evidence workspace, opens the generated `CLICK_SESSION.md`, opens the local founder consoles, and opens the account pages for Spaceship, Spacemail, and Stripe. It does not buy, publish, send, charge, apply public links, or create customer files.
+
+If you only need to prepare the workspace without opening pages, run:
 
 ```text
 npm run launch:prepare-founder-clicks -- --domain getmcpscan.xyz --mail-provider spacemail
@@ -66,12 +68,10 @@ ops/generated-launch-packets/2026-08-14_getmcpscan-xyz_stripe-products.csv
 ## Current Next Click Script
 
 ```text
-1. Run npm run launch:open-founder.
-2. Run npm run launch:prepare-founder-clicks -- --domain getmcpscan.xyz --mail-provider spacemail.
-3. Open $HOME/MCPScan Founder Clicks/current/CLICK_SESSION.md.
-4. Follow that sheet through domain, mailbox, DNS, Stripe, return packet, status tracker, and verification.
-5. Download the approval message from ops/founder-return-packet.html after Stripe links exist.
-6. Download the QA evidence JSON from ops/stripe-payment-link-qa-console.html after the checklist passes.
+1. Run npm run launch:click-session.
+2. Follow $HOME/MCPScan Founder Clicks/current/CLICK_SESSION.md through domain, mailbox, DNS, Stripe, return packet, status tracker, and verification.
+3. Download the approval message from ops/founder-return-packet.html after Stripe links exist.
+4. Download the QA evidence JSON from ops/stripe-payment-link-qa-console.html after the checklist passes.
 ```
 
 ## Founder-Only Clicks

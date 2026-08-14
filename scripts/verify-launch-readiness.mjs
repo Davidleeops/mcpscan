@@ -329,6 +329,7 @@ const requiredFiles = [
   "scripts/show-launch-status.mjs",
   "scripts/open-next-founder-action.mjs",
   "scripts/open-launch-day-runbook.mjs",
+  "scripts/open-founder-click-session.mjs",
   "scripts/open-founder-clicks.mjs",
   "scripts/open-founder-return-review.mjs",
   "delivery/customer-workspace-template/report-template.md",
@@ -412,7 +413,7 @@ if (exists("scripts/open-next-founder-action.mjs")) {
   const nextActionSafetyMarkers = [
     "approval-gated",
     "does not buy, publish, send, apply, or create customer files",
-    "npm run launch:prepare-founder-clicks",
+    "npm run launch:click-session",
     "npm run launch:post-click-bundle",
     "getmcpscan.xyz",
     "mcpscan.online",
@@ -458,8 +459,10 @@ if (exists("scripts/open-founder-clicks.mjs")) {
 if (exists("scripts/prepare-founder-click-workspace.mjs") && exists("package.json")) {
   const packageJson = read("package.json");
   const workspaceScript = read("scripts/prepare-founder-click-workspace.mjs");
+  const clickSessionScript = exists("scripts/open-founder-click-session.mjs") ? read("scripts/open-founder-click-session.mjs") : "";
   const requiredWorkspaceMarkers = [
     "launch:prepare-founder-clicks",
+    "launch:click-session",
     "domain-cart-proof.json",
     "approved-return-packet.txt",
     "stripe-checkout-qa-evidence.json",
@@ -468,12 +471,14 @@ if (exists("scripts/prepare-founder-click-workspace.mjs") && exists("package.jso
     "MCPScan Founder Clicks/current/CLICK_SESSION.md",
     "Spaceship domain search",
     "Stripe Payment Links",
+    "launch:prepare-founder-clicks",
+    "no-open",
     "Refusing to create the founder click workspace inside the public MCPScan repo"
   ];
-  const missingWorkspaceMarkers = requiredWorkspaceMarkers.filter((marker) => !packageJson.includes(marker) && !workspaceScript.includes(marker));
+  const missingWorkspaceMarkers = requiredWorkspaceMarkers.filter((marker) => !packageJson.includes(marker) && !workspaceScript.includes(marker) && !clickSessionScript.includes(marker));
   results.push(
     missingWorkspaceMarkers.length === 0
-      ? result("pass", "founder click private workspace", "cart proof, return packet, and Stripe QA paths are generated outside the repo")
+      ? result("pass", "founder click private workspace", "cart proof, return packet, Stripe QA, and click session paths are generated outside the repo")
       : result("fail", "founder click private workspace", missingWorkspaceMarkers.join(", "))
   );
 }

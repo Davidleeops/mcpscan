@@ -40,7 +40,7 @@ if (!fs.existsSync(matrixPath)) {
 const matrix = JSON.parse(fs.readFileSync(matrixPath, "utf8"));
 const results = [];
 
-results.push(matrix.entryPoint === "npm run launch:day" ? result("pass", "entry point", matrix.entryPoint) : result("fail", "entry point", "expected npm run launch:day"));
+results.push(matrix.entryPoint === "npm run launch:click-session" ? result("pass", "entry point", matrix.entryPoint) : result("fail", "entry point", "expected npm run launch:click-session"));
 results.push(matrix.fullProofCommand === "npm run launch:full-proof" ? result("pass", "full proof command", matrix.fullProofCommand) : result("fail", "full proof command", "expected npm run launch:full-proof"));
 results.push(matrix.launchReadinessProof?.passed >= 200 ? result("pass", "readiness pass count", String(matrix.launchReadinessProof.passed)) : result("fail", "readiness pass count", "expected at least 200"));
 results.push(matrix.launchReadinessProof?.expectedWarnings === 3 ? result("pass", "expected warning count", "3") : result("fail", "expected warning count", "expected 3"));

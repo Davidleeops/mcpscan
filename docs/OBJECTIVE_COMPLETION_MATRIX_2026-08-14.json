@@ -1,12 +1,12 @@
 {
   "name": "MCPScan objective completion matrix",
   "date": "2026-08-14",
-  "entryPoint": "npm run launch:day",
+  "entryPoint": "npm run launch:click-session",
   "fullProofCommand": "npm run launch:full-proof",
   "currentPositioning": "We turn noisy MCP scanner output into a validated MCP risk report, remediation plan, and customer-ready security proof in 3 to 5 days.",
   "launchReadinessProof": {
     "command": "npm run launch:verify",
-    "passed": 231,
+    "passed": 232,
     "expectedWarnings": 3,
     "failures": 0
   },
@@ -52,6 +52,7 @@
       "evidence": [
         "ops/launch-day-runbook.html",
         "scripts/open-launch-day-runbook.mjs",
+        "scripts/open-founder-click-session.mjs",
         "ops/final-founder-click-console.html",
         "ops/founder-click-handoff.html",
         "ops/launch-approval-queue.html",

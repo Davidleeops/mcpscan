@@ -12,7 +12,15 @@ Cost and infrastructure decision: `docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026
 
 Public trust checklist: `docs/PUBLIC_TRUST_CHECKLIST.md`.
 
-Before the external account clicks, prepare the private local evidence workspace:
+Before the external account clicks, use the one-command founder session launcher:
+
+```text
+npm run launch:click-session
+```
+
+This prepares the private local evidence workspace, opens the generated click session sheet, opens the local founder consoles, and opens Spaceship, Spacemail, and Stripe account pages. It does not buy, publish, send, charge, apply public links, or create customer files.
+
+For a prepare-only path without opening account pages, run:
 
 ```text
 npm run launch:prepare-founder-clicks -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}}
