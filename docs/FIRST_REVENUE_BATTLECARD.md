@@ -50,6 +50,12 @@ Recommend `MCP Launch Audit` first.
 
 Use `MCP Quick Audit` only when the buyer has a small single setup and low urgency. Use `MCP Enterprise Readiness Audit` when production credentials, multiple environments, enterprise review, customer data, or buyer questionnaires are involved.
 
+Pricing reality:
+
+- The current checkout ladder is first-proof pricing.
+- If a qualified buyer already has customer diligence, multiple MCP servers, regulated data, or a fixed review deadline, the credible range is $3,500 to $5,000 for a Quick or Launch-style audit.
+- Do not slow the first close by changing the live checkout ladder before the founder has one proof-backed delivery.
+
 ## Qualification Questions
 
 Ask these before proposing a package:
@@ -68,6 +74,7 @@ Ask these before proposing a package:
 | --- | --- |
 | "We already have Snyk/Cisco/other scanners." | Great. This is not trying to replace those. MCPScan is a fast readiness packet around the actual rollout: configs, tools, permissions, secrets, risky descriptions, and the approval evidence a team can act on. |
 | "Why not just use a free scanner?" | You should use one for a baseline. The paid audit exists for the part scanners do not handle well: context, prioritization, ownership, remediation, and a buyer-safe report that security or leadership can use to make a rollout decision. |
+| "Is this just scanner output?" | No. The useful output is human-validated proof: inventory, tool capability review, risky permission paths, evidence, and a remediation plan mapped to the buyer's approval decision. |
 | "We are not ready for a full security assessment." | That is exactly why the Launch Audit exists. It is bounded, practical, and designed to identify the first issues before MCP usage spreads. |
 | "Can we just run the CLI ourselves?" | Yes. The paid audit adds manual review, prioritization, business context, and a report that AppSec or leadership can use. |
 | "Is this penetration testing?" | No. It is a fixed-scope MCP readiness audit. It avoids unauthorized exploitation and focuses on evidence, configuration, exposed tools, and remediation. |

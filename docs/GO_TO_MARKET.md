@@ -78,6 +78,13 @@ Use simple payment links and fixed scopes. Do not quote custom work until there 
 | MCP Launch Audit | $1,500 | Startups preparing pilots or customer demos | Up to 8 MCP servers, 2 environments, report, findings call, 1 re-scan | 5 business days |
 | MCP Enterprise Readiness Audit | $3,500 | Teams preparing enterprise review | Up to 15 MCP servers, 3 environments, deeper manual review, executive summary, findings call, 1 re-scan | 7 business days |
 
+First-proof pricing rule:
+
+- Keep these Stripe links for the first buyer because speed matters more than theoretical price perfection.
+- Do not position the $750 Quick Audit as the main business. It is a small-scope entry offer.
+- After one proof-backed delivery, move qualified Launch Audit buyers toward $3,500 to $5,000.
+- Use $7,500 to $12,500 for multi-server customer diligence, executive memo, retest, or cross-team readiness work.
+
 Add-ons:
 
 - Extra MCP server: $150 each.
@@ -194,6 +201,10 @@ Strong traction:
 Lead with urgency, not fear. The useful message is:
 
 > MCP gives agents real access. We help teams see exactly what that access means before customers, auditors, or incidents force the review.
+
+The strongest positioning is:
+
+> We turn noisy MCP scanner output into a validated risk report, remediation plan, and customer-ready security proof in 3 to 5 days.
 
 Avoid claiming:
 

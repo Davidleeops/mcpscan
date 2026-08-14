@@ -60,6 +60,10 @@ const cartFile = args["cart-file"];
 const skipDns = args["skip-dns"] === "true";
 const skipLaunch = args["skip-launch"] === "true";
 
+if (strict && !cartFile) {
+  fail("Strict post-click verification requires --cart-file /path/to/domain-cart-proof.json.");
+}
+
 if (cartFile) {
   if (!fs.existsSync(cartFile)) fail(`Domain cart proof file not found: ${cartFile}`);
   run("domain cart proof and return packet consistency", "npm", ["run", "launch:verify-cart", "--", "--file", cartFile, "--return-file", args.file]);

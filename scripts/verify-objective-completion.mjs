@@ -62,7 +62,7 @@ for (const item of requirements) {
 
   const missing = item.evidence.filter((file) => !exists(file));
   if (item.status === "ready") {
-    results.push(missing.length === 0 ? result("pass", `${item.id} ready evidence`) : result("fail", `${item.id} ready evidence`, missing.join(", ")));
+    results.push(missing.length === 0 ? result("pass", `${item.id} prepared evidence`) : result("fail", `${item.id} prepared evidence`, missing.join(", ")));
   } else if (item.status === "founder_click_required") {
     const present = item.evidence.filter((file) => exists(file));
     results.push(present.length > 0 ? result("pass", `${item.id} click packet evidence`, present.join(", ")) : result("fail", `${item.id} click packet evidence`, "no referenced packet exists"));

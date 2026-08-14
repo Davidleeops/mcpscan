@@ -145,6 +145,7 @@ const results = [];
 const requiredFiles = [
   "landing/index.html",
   "landing/mcp-security-audit.html",
+  "landing/owasp-mcp-top-10.html",
   "landing/intake.html",
   "landing/thank-you.html",
   "landing/secure-intake.html",
@@ -878,6 +879,7 @@ const urls = [
   `${baseUrl}/`,
   `${baseUrl}/sample-report.html`,
   `${baseUrl}/mcp-security-audit.html`,
+  `${baseUrl}/owasp-mcp-top-10.html`,
   `${baseUrl}/intake.html`,
   `${baseUrl}/secure-intake.html`,
   `${baseUrl}/thank-you.html`,
@@ -900,7 +902,8 @@ if (liveHome.ok) {
   const requiredLiveMarkers = [
     "Free scanners produce signals",
     "customer is authorized to submit",
-    "MCP Launch Audit"
+    "MCP Launch Audit",
+    "owasp-mcp-top-10.html"
   ];
   const missingMarkers = requiredLiveMarkers.filter((marker) => !liveHome.body.includes(marker));
   results.push(

@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OWASP MCP Top 10 Audit Coverage | MCPScan</title>
+    <meta
+      name="description"
+      content="MCPScan maps MCP server, tool, permission, token, and audit evidence review to OWASP MCP Top 10 style risk categories."
+    >
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f3eb;
+        --panel: #ffffff;
+        --ink: #10201b;
+        --muted: #52615b;
+        --line: #d9ddd5;
+        --accent: #0f766e;
+        --accent-dark: #115e59;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .nav,
+      main,
+      footer {
+        margin: 0 auto;
+        max-width: 1120px;
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .nav {
+        align-items: center;
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        padding-bottom: 24px;
+        padding-top: 24px;
+      }
+
+      .brand {
+        align-items: center;
+        display: inline-flex;
+        font-size: 18px;
+        font-weight: 800;
+        gap: 10px;
+        letter-spacing: 0;
+        text-decoration: none;
+      }
+
+      .mark {
+        align-items: center;
+        background: var(--ink);
+        border-radius: 7px;
+        color: #e8fff8;
+        display: inline-flex;
+        font-size: 13px;
+        font-weight: 800;
+        height: 32px;
+        justify-content: center;
+        width: 32px;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: flex-end;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .hero {
+        padding-bottom: 44px;
+        padding-top: 52px;
+      }
+
+      .eyebrow {
+        color: var(--accent-dark);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        margin: 0 0 14px;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-size: clamp(42px, 7vw, 70px);
+        letter-spacing: 0;
+        line-height: 0.98;
+        margin: 0;
+        max-width: 900px;
+      }
+
+      h2 {
+        font-size: clamp(28px, 4vw, 42px);
+        letter-spacing: 0;
+        line-height: 1.08;
+        margin: 0;
+      }
+
+      h3 {
+        font-size: 19px;
+        margin: 0 0 10px;
+      }
+
+      p,
+      li,
+      td {
+        color: var(--muted);
+      }
+
+      .lede {
+        font-size: 20px;
+        margin: 24px 0 0;
+        max-width: 760px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .button {
+        align-items: center;
+        border: 1px solid transparent;
+        border-radius: 7px;
+        display: inline-flex;
+        font-size: 15px;
+        font-weight: 800;
+        justify-content: center;
+        min-height: 46px;
+        padding: 12px 18px;
+        text-decoration: none;
+      }
+
+      .button.primary {
+        background: var(--accent);
+        color: #ffffff;
+      }
+
+      .button.secondary {
+        background: #ffffff;
+        border-color: var(--line);
+        color: var(--ink);
+      }
+
+      section {
+        padding-bottom: 46px;
+        padding-top: 46px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-top: 24px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 24px;
+      }
+
+      .table-wrap {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        margin-top: 24px;
+        overflow-x: auto;
+      }
+
+      table {
+        border-collapse: collapse;
+        min-width: 880px;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 16px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--ink);
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+
+      tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .note {
+        background: #ecfdf5;
+        border: 1px solid #8fd6b1;
+        border-radius: 8px;
+        margin-top: 24px;
+        padding: 20px;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: space-between;
+        margin-top: 36px;
+        padding-bottom: 30px;
+        padding-top: 30px;
+      }
+
+      footer a {
+        color: var(--muted);
+        margin-left: 12px;
+        text-decoration: none;
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="MCPScan home">
+        <span class="mark">MS</span>
+        <span>MCPScan</span>
+      </a>
+      <nav class="nav-links" aria-label="Page sections">
+        <a href="mcp-security-audit.html">Audit</a>
+        <a href="sample-report.html">Sample report</a>
+        <a href="secure-intake.html">Secure intake</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">OWASP MCP Top 10 mapped audit coverage</p>
+        <h1>MCP risk review that turns scanner signals into approval evidence.</h1>
+        <p class="lede">
+          MCPScan reviews MCP servers, tools, permissions, tokens, prompts, and audit
+          evidence against the risk themes security teams now recognize: shadow MCP,
+          tool poisoning, excessive scope, token exposure, weak authorization, and
+          missing telemetry.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="mcp-security-audit.html">Open audit offer</a>
+          <a class="button secondary" href="sample-report.html">View proof format</a>
+        </div>
+      </section>
+
+      <section aria-labelledby="why-mapping">
+        <h2 id="why-mapping">Why this mapping matters</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Security teams need a checklist</h3>
+            <p>
+              MCP usage spreads through IDEs, local configs, SaaS connectors, and
+              internal agent platforms. The audit gives AppSec a consistent review surface.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Scanners are a starting point</h3>
+            <p>
+              Raw scanner output needs validation, prioritization, and business context
+              before a team can decide whether to approve, restrict, or block rollout.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Buyers need proof</h3>
+            <p>
+              The output is a buyer-safe report with evidence, remediation steps, and a
+              clear recommendation that can be shared with internal reviewers.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="coverage">
+        <h2 id="coverage">Coverage Map</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Risk Theme</th>
+                <th>What MCPScan Reviews</th>
+                <th>Evidence Produced</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Shadow MCP servers</td>
+                <td>Known and discovered MCP configs, developer tools, server owners, approval status, and unmanaged instances.</td>
+                <td>Inventory, owner map, approval gaps, and recommended allowlist or registry actions.</td>
+              </tr>
+              <tr>
+                <td>Token and secret exposure</td>
+                <td>Environment variables, config references, credential handling patterns, and unsafe intake or report paths.</td>
+                <td>Secret exposure findings, safe handoff notes, and remediation steps.</td>
+              </tr>
+              <tr>
+                <td>Privilege escalation and scope creep</td>
+                <td>Read, write, delete, deploy, payment, ticketing, incident, and admin-capable tools by identity and environment.</td>
+                <td>Tool capability risk map, severity ranking, and least-privilege recommendations.</td>
+              </tr>
+              <tr>
+                <td>Tool poisoning and misleading descriptions</td>
+                <td>Tool descriptions, prompts, prompt-state assumptions, metadata, and model-facing instruction risk.</td>
+                <td>Validated findings with affected tools, evidence, business impact, and safer wording.</td>
+              </tr>
+              <tr>
+                <td>Insufficient authentication and authorization</td>
+                <td>OAuth, API token, session, consent, user-bound access, and server trust boundaries.</td>
+                <td>Auth gap summary, boundary notes, and approval or block recommendation.</td>
+              </tr>
+              <tr>
+                <td>Command, file, and network execution risk</td>
+                <td>Tools that execute commands, read files, write files, call networks, access metadata services, or mutate systems.</td>
+                <td>Exploitability context, blast-radius notes, and containment recommendations.</td>
+              </tr>
+              <tr>
+                <td>Audit and telemetry gaps</td>
+                <td>Logging, tool-call evidence, approval records, retention, and reviewer visibility.</td>
+                <td>Audit trail checklist, missing evidence list, and readiness status.</td>
+              </tr>
+              <tr>
+                <td>Context over-sharing</td>
+                <td>Tool outputs, prompt context, connected data sources, sensitive documents, and downstream agent access.</td>
+                <td>Data exposure notes, reporting boundaries, and safer workflow recommendations.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">
+          <strong>Scope note:</strong> MCPScan does not claim OWASP certification, legal
+          attestation, or full penetration testing. It provides a fixed-scope readiness
+          audit for systems the customer is authorized to submit.
+        </div>
+      </section>
+
+      <section aria-labelledby="next-step">
+        <h2 id="next-step">Best next step</h2>
+        <p>
+          Use the MCP Launch Audit when MCP touches source code, tickets, Slack, docs,
+          databases, cloud actions, customer data, payments, incidents, or production
+          workflows. Use the Exposure Snapshot when the team only needs a first inventory
+          and prioritization pass.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="mcp-security-audit.html#pricing">Review packages</a>
+          <a class="button secondary" href="secure-intake.html">Review intake rules</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>MCPScan fixed-scope MCP readiness audits.</span>
+      <span>
+        <a href="privacy.html">Privacy</a>
+        <a href="refund.html">Refund</a>
+        <a href="terms.html">Terms</a>
+      </span>
+    </footer>
+  </body>
+</html>

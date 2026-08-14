@@ -34,20 +34,27 @@ Do not send external messages, start a live audit, publish packages, or accept s
 
 First revenue does not require npm publishing. Sell and deliver the `$1,500` MCP Launch Audit first, then publish npm when the owner is logged in and ready for OTP prompts.
 
-## Click Order
+## First Revenue Blocking Gates
 
 | Order | Gate | Founder Action | Console | Done When |
 | --- | --- | --- | --- | --- |
-| 0 | GitHub billing | Clear the account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | CI and Pages jobs start and pass |
 | 1 | Domain | Buy `getmcpscan.com` if Spaceship shows standard `.com` pricing. Use `mcpattest.dev` if you approve the cleaner brand. Use `mcpscan.online` or `getmcpscan.xyz` only if the hard cash cap matters more than buyer trust | `ops/domain-mailbox-purchase-packet.html` | Domain exists in registrar account |
 | 2 | Mailbox | Create `security@{{chosen_domain}}` with `audit@` and `hello@` aliases. Use Zoho Mail Lite for cheapest credible email, Google Workspace for highest buyer trust, or Spacemail for one-vendor convenience | `ops/domain-email-dns-console.html` | MX, SPF, DKIM, and DMARC pass for the selected provider |
 | 3 | Stripe | Generate setup packet, create three Payment Links, verify format and checkout QA evidence | `ops/stripe-click-setup.html`, `ops/stripe-payment-link-qa-console.html` | Quick, Launch, and Enterprise checkout links exist, `npm run launch:verify-stripe` passes, and `npm run launch:verify-stripe-qa` passes |
 | 4 | Apply links | Approve exact return packet values | `ops/founder-return-packet.html` | Landing page no longer uses placeholder checkout links |
 | 5 | Verify | Run launch verification | `ops/verification-console.html` | `npm run launch:verify -- --domain {{chosen_domain}}` has no domain or checkout warnings |
-| 6 | npm | Optional: publish packages if desired | `ops/npm-publish-console.html` | npm shows version `0.1.0` for both packages |
-| 7 | Outbound | Refresh market sources, then approve exact recipients and exact final messages | `ops/outbound-recipient-approval-builder.html` | Approved messages are staged outside the public repo before any send |
-| 8 | Paid handoff | Use the paid handoff builder after Stripe payment | `ops/paid-audit-handoff-builder.html`, `ops/post-payment-console.html` | Private workspace exists outside public repo |
-| 9 | Delivery | Deliver report and buyer summary from private workspace | `ops/delivery-console.html` | Report is delivered without customer secrets in public repo |
+| 6 | Outbound | Refresh market sources, then approve exact recipients and exact final messages | `ops/outbound-recipient-approval-builder.html` | Approved messages are staged outside the public repo before any send |
+| 7 | Paid handoff | Use the paid handoff builder after Stripe payment | `ops/paid-audit-handoff-builder.html`, `ops/post-payment-console.html` | Private workspace exists outside public repo |
+| 8 | Delivery | Deliver report and buyer summary from private workspace | `ops/delivery-console.html` | Report is delivered without customer secrets in public repo |
+
+## Operational Cleanup Gates
+
+These are important, but they do not block first revenue while the GitHub Pages fallback remains live and the static bundle can publish.
+
+| Gate | Founder Action | Console | Done When |
+| --- | --- | --- | --- |
+| GitHub billing | Clear the account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | CI and Pages jobs start and pass |
+| npm | Optional: publish packages if desired | `ops/npm-publish-console.html` | npm shows version `0.1.0` for both packages |
 
 ## Current Known Blocker
 

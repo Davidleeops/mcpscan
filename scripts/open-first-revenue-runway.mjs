@@ -3,6 +3,23 @@ import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
+function parseArgs(argv) {
+  const values = {};
+  for (let index = 0; index < argv.length; index += 1) {
+    const arg = argv[index];
+    if (!arg.startsWith("--")) continue;
+    const key = arg.slice(2);
+    const next = argv[index + 1];
+    if (!next || next.startsWith("--")) {
+      values[key] = "true";
+    } else {
+      values[key] = next;
+      index += 1;
+    }
+  }
+  return values;
+}
+
 const reviewSurfaces = [
   "docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md",
   "ops/market-research-refresh-console.html",
@@ -26,6 +43,18 @@ const reviewSurfaces = [
   "docs/APPROVED_SEND_LOGGING.md",
   "docs/PRIVATE_REVENUE_SNAPSHOT.md",
   "docs/PAYMENT_TO_DELIVERY_SOP.md"
+];
+
+const liveGateRepairSurfaces = [
+  "ops/founder-status-console.html",
+  "ops/verification-console.html",
+  "ops/domain-mailbox-purchase-packet.html",
+  "ops/domain-email-dns-console.html",
+  "ops/stripe-click-setup.html",
+  "ops/stripe-payment-link-qa-console.html",
+  "ops/founder-return-packet.html",
+  "docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md",
+  "docs/PUBLIC_TRUST_CHECKLIST.md"
 ];
 
 function openerFor(target) {
@@ -53,11 +82,35 @@ function runStatus() {
   }
 }
 
+function runLiveSendGates(args) {
+  const gateArgs = [];
+  if (args["status-file"]) gateArgs.push("--status-file", args["status-file"]);
+  if (args["cart-file"]) gateArgs.push("--cart-file", args["cart-file"]);
+  if (args["return-file"]) gateArgs.push("--return-file", args["return-file"]);
+  if (args["qa-file"]) gateArgs.push("--qa-file", args["qa-file"]);
+  if (gateArgs.length === 0) return { attempted: false, passed: false };
+
+  const result = spawnSync("npm", ["run", "outbound:send-gates", "--", ...gateArgs], { encoding: "utf8" });
+  if (result.stdout) console.log(result.stdout.trim());
+  if (result.stderr) console.error(result.stderr.trim());
+  return { attempted: true, passed: result.status === 0 };
+}
+
+const args = parseArgs(process.argv.slice(2));
+const liveGateResult = runLiveSendGates(args);
+const surfacesToOpen = liveGateResult.attempted && !liveGateResult.passed ? liveGateRepairSurfaces : reviewSurfaces;
+
 console.log("MCPScan first revenue runway launcher");
 console.log("");
-console.log("Opening first-revenue approval and delivery surfaces:");
+if (liveGateResult.attempted && liveGateResult.passed) {
+  console.log("Live first-send gates passed. Opening first-revenue approval and delivery surfaces:");
+} else if (liveGateResult.attempted) {
+  console.log("Live first-send gates did not pass. Opening only live-gate repair surfaces:");
+} else {
+  console.log("Opening first-revenue review surfaces without live evidence gate proof:");
+}
 
-for (const page of reviewSurfaces) {
+for (const page of surfacesToOpen) {
   const url = pathToFileURL(path.resolve(page)).toString();
   const opened = openTarget(url);
   console.log(`${opened ? "OPENED" : "COPY"} ${page}${opened ? "" : ` ${url}`}`);

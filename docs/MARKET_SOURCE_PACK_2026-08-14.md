@@ -37,6 +37,25 @@ Lead with:
 - "Tool permission and credential review."
 - "A buyer-safe report your team can use before enterprise review."
 
+## August 14, 2026 Refresh Call
+
+Keep the first checkout ladder live for speed, but treat it as first-proof pricing. Current market evidence supports moving the main paid audit higher after the first proof-backed close.
+
+Recommended operating posture:
+
+- Use the $499 to $750 snapshot only as a low-friction first yes.
+- Keep the $1,500 Launch Audit as the fastest checkout path for the first buyer.
+- Move qualified buyer conversations toward $3,500 to $5,000 once the founder has one delivered proof artifact.
+- Use $7,500 to $12,500 only when the buyer needs multiple servers, an executive memo, retest evidence, or customer diligence support.
+
+Why this is commercially justified:
+
+- Official MCP security guidance names developers, server operators, and security professionals as the audience for MCP security review.
+- OWASP MCP Top 10 has turned MCP risk into recognizable checklist language.
+- NSA MCP security design guidance gives regulated and enterprise buyers authority-backed language for secure deployment.
+- Snyk Agent Scan, Cisco MCP Scanner, Invariant MCP-Scan, and mcpserver-audit validate the scanner category, but also make raw scanning a weak standalone wedge.
+- Current research and practitioner commentary point to scanner noise, false positives, and manual-validation gaps. MCPScan should sell validated proof, not raw scanner output.
+
 ## Buyer Pain To Use
 
 Use these questions in outbound and discovery:
@@ -87,9 +106,13 @@ Use proof-first posts and careful founder-led outreach in this order:
 | GitHub documents MCP as a Copilot extension surface across IDE, CLI, app, and GitHub agent workflows | MCP is no longer just local experimentation. It is moving into enterprise developer workflows where admins need policy decisions | https://docs.github.com/en/copilot/concepts/context/mcp |
 | Atlassian documents Rovo MCP server settings for OAuth 2.1, API-token authentication, domain controls, and IP allowlist interactions | Jira, Confluence, Compass, and Rovo create a high-value admin approval lane for MCP reviews | https://support.atlassian.com/security-and-access-policies/docs/control-atlassian-rovo-mcp-server-settings/ |
 | OWASP MCP Top 10 gives teams common risk language | Buyers now have checklist language for MCP risk categories | https://owasp.org/www-project-mcp-top-10/ |
+| OWASP Shadow MCP Servers category names unapproved MCP instances as a governance problem | Shadow MCP creates a direct inventory and approval-review wedge | https://owasp.org/www-project-mcp-top-10/2025/MCP09-2025%E2%80%93Shadow-MCP-Servers |
 | OWASP guidance for secure MCP server development exists | Secure MCP is a recognized implementation problem, not a niche founder claim | https://genai.owasp.org/resource/a-practical-guide-for-secure-mcp-server-development/ |
 | NSA published MCP security design guidance in 2026 | Regulated and enterprise buyers have authority-backed language for design review | https://media.defense.gov/2026/Jun/02/2003943289/-1/-1/0/CSI_MCP_SECURITY.PDF |
 | Cloud Security Alliance published agentic MCP security best practices | Industry groups are packaging MCP controls for security teams | https://labs.cloudsecurityalliance.org/agentic/agentic-mcp-security-best-practices-v1/ |
+| Remote MCP measurement research reports live exposed servers and widespread auth flaws | Auth, exposure, and server approval review are concrete paid audit modules | https://arxiv.org/abs/2605.22333 |
+| MCP tool-capability research frames over-privileged tool exposure as an audit problem | Tool capability review should stay central to every paid package | https://arxiv.org/abs/2603.21641 |
+| Large-scale scanner reliability research reports inconsistent scanner output and manual-validation gaps | Human-reviewed evidence is the paid wedge over free scanners | https://arxiv.org/html/2607.11086v1 |
 | GitHub documents MCP registry and allowlist controls for Copilot governance | MCP approval is now an enterprise admin workflow | https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-mcp-usage/restrict-based-on-registry |
 | Cloudflare documents MCP traffic detection and shadow MCP policy control | Shadow MCP is becoming a real security-operations lane, not just a local developer concern | https://blog.cloudflare.com/mcp-security-updates/ |
 | Netskope reports rapid remote MCP growth and related data-policy pressure | MCP usage is showing up in SASE and DLP buyer conversations | https://www.netskope.com/resources/threat-labs-reports/netskope-ai-report-2026 |
