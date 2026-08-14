@@ -47,6 +47,7 @@ console.log(
 
 run("objective completion matrix", "objective:verify");
 if (includeMarket) run("market source verification", "market:verify");
+run("GTM claim safety", "gtm:verify");
 run("launch readiness", "launch:verify");
 run("writing rule", "writing:check");
 
