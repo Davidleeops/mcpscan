@@ -258,6 +258,7 @@ const gates = [
   gate("GTM placement console", exists("ops/gtm-placement-console.html") && exists("docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md"), "current channel placement map is available without posting"),
   gate("Public channel drafts", exists("ops/public-channel-drafts-console.html") && exists("docs/PUBLIC_CHANNEL_LAUNCH_DRAFTS_2026-08-14.md"), "channel-specific public launch drafts are ready for approval"),
   gate("Public launch post staging", exists("scripts/stage-approved-public-launch-post.mjs") && exists("scripts/open-public-launch-review.mjs") && exists("docs/PUBLIC_LAUNCH_POST_APPROVAL.md"), "public launch review and approved post staging are available without publishing"),
+  gate("First revenue runway", exists("scripts/open-first-revenue-runway.mjs"), "npm run launch:open-first-revenue opens public, outbound, reply, payment, and delivery approval surfaces"),
   gate("Reply-to-close packet", exists("sales/reply-to-close-packet.md") && exists("scripts/open-reply-to-close-review.mjs"), "approved reply templates and launcher exist for inbound prospect responses"),
   gate("Reply staging", exists("scripts/stage-approved-reply.mjs") && exists("docs/APPROVED_REPLY_STAGING.md"), "approved replies can be staged outside the public repo"),
   gate("Daily revenue command", exists("sales/daily-revenue-command.md"), "one-screen revenue operating surface exists"),
