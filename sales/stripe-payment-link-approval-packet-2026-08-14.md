@@ -80,7 +80,7 @@ Each link must pass every item:
 After all three Stripe links pass QA, use:
 
 ```text
-npm run launch:apply-links -- --domain getmcpscan.com --email hello@getmcpscan.com --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK
+npm run launch:apply-links -- --domain getmcpscan.com --email audit@getmcpscan.com --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK
 ```
 
 Then verify:

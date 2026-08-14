@@ -121,6 +121,7 @@ const requiredFiles = [
   "landing/privacy.html",
   "landing/refund.html",
   "ops/launch-cockpit.html",
+  "ops/launch-approval-queue.html",
   "ops/GITHUB_ISSUE_ACTION_BOARD.md",
   "ops/founder-click-console.html",
   "ops/final-founder-click-console.html",
@@ -202,7 +203,7 @@ if (exists("landing/CNAME")) {
 if (exists("SECURITY.md")) {
   const security = read("SECURITY.md");
   results.push(
-    security.includes("hello@") || security.includes("@mcpscan")
+    security.includes("audit@") || security.includes("security@") || security.includes("@mcpscan")
       ? result("pass", "security contact", "custom email appears configured")
       : result("warn", "security contact", "still uses public issue/private disclosure placeholder")
   );

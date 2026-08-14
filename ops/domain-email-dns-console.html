@@ -181,7 +181,7 @@
 
       <section class="decision">
         <h2>Launch Choice</h2>
-        <p>Use <strong>getmcpscan.com</strong> if it is available at standard pricing. Use <strong>mcpscan.us</strong> as the cheapest credible fallback. Create one mailbox first: <strong>hello@the chosen domain</strong>.</p>
+        <p>Use <strong>getmcpscan.com</strong> if it is available at standard pricing. Use <strong>mcpscan.us</strong> as the cheapest credible fallback. Create one mailbox first: <strong>audit@the chosen domain</strong>. Add aliases for <strong>security@</strong> and <strong>hello@</strong>.</p>
         <div class="actions"><a class="button" href="../docs/DOMAIN_AND_MAILBOX_DECISION.md">Open domain decision</a></div>
       </section>
 
@@ -195,6 +195,10 @@
             <tr><td>A</td><td>@</td><td><code>185.199.109.153</code></td></tr>
             <tr><td>A</td><td>@</td><td><code>185.199.110.153</code></td></tr>
             <tr><td>A</td><td>@</td><td><code>185.199.111.153</code></td></tr>
+            <tr><td>AAAA</td><td>@</td><td><code>2606:50c0:8000::153</code></td></tr>
+            <tr><td>AAAA</td><td>@</td><td><code>2606:50c0:8001::153</code></td></tr>
+            <tr><td>AAAA</td><td>@</td><td><code>2606:50c0:8002::153</code></td></tr>
+            <tr><td>AAAA</td><td>@</td><td><code>2606:50c0:8003::153</code></td></tr>
             <tr><td>CNAME</td><td>www</td><td><code>davidleeops.github.io</code></td></tr>
           </table>
           <div class="actions">
@@ -205,6 +209,10 @@
 A @ 185.199.109.153
 A @ 185.199.110.153
 A @ 185.199.111.153
+AAAA @ 2606:50c0:8000::153
+AAAA @ 2606:50c0:8001::153
+AAAA @ 2606:50c0:8002::153
+AAAA @ 2606:50c0:8003::153
 CNAME www davidleeops.github.io</pre>
         </article>
 
@@ -217,6 +225,7 @@ CNAME www davidleeops.github.io</pre>
             <tr><td>MX</td><td>@</td><td><code>mx2.spacemail.com</code></td><td>0</td></tr>
             <tr><td>TXT</td><td>@</td><td><code>v=spf1 include:spf.spacemail.com ~all</code></td><td></td></tr>
             <tr><td>TXT</td><td>Spacemail DKIM host</td><td>Use the exact DKIM value Spacemail displays.</td><td></td></tr>
+            <tr><td>TXT</td><td>_dmarc</td><td><code>v=DMARC1; p=none; rua=mailto:audit@the chosen domain</code></td><td></td></tr>
           </table>
           <div class="actions">
             <button class="copy" data-copy-target="spacemail-records">Copy MX/SPF</button>
@@ -224,7 +233,8 @@ CNAME www davidleeops.github.io</pre>
           </div>
           <pre id="spacemail-records">MX @ mx1.spacemail.com priority 0
 MX @ mx2.spacemail.com priority 0
-TXT @ "v=spf1 include:spf.spacemail.com ~all"</pre>
+TXT @ "v=spf1 include:spf.spacemail.com ~all"
+TXT _dmarc "v=DMARC1; p=none; rua=mailto:audit@the chosen domain"</pre>
         </article>
       </div>
 
@@ -234,13 +244,13 @@ TXT @ "v=spf1 include:spf.spacemail.com ~all"</pre>
           <li>Run the approved launch-link command after Stripe links exist so <code>landing/CNAME</code> becomes the domain you bought.</li>
           <li>In GitHub Pages settings, set the custom domain to the chosen domain.</li>
           <li>Wait for DNS checks, then enable or confirm HTTPS enforcement.</li>
-          <li>Verify the live homepage, secure intake page, and matching hello mailbox for the chosen domain.</li>
+          <li>Verify the live homepage, secure intake page, and matching audit mailbox for the chosen domain.</li>
         </ol>
       </section>
 
       <section class="wide danger">
         <h2>Do Not Skip</h2>
-        <p>Do not publish outbound emails from the new <code>hello@</code> mailbox until MX, SPF, and DKIM pass. If DKIM is not configured, deliverability will be weaker and security buyers may notice.</p>
+        <p>Do not publish outbound emails from the new <code>audit@</code> mailbox until MX, SPF, DKIM, and DMARC pass. If DKIM is not configured, deliverability will be weaker and security buyers may notice.</p>
       </section>
 
       <section class="wide">
@@ -248,9 +258,11 @@ TXT @ "v=spf1 include:spf.spacemail.com ~all"</pre>
         <p>Use these after DNS has had time to propagate.</p>
         <button class="copy" data-copy-target="verify-commands">Copy verification commands</button>
         <pre id="verify-commands">dig +short getmcpscan.com A
+dig +short getmcpscan.com AAAA
 dig +short www.getmcpscan.com CNAME
 dig +short getmcpscan.com MX
 dig +short getmcpscan.com TXT
+dig +short _dmarc.getmcpscan.com TXT
 curl -L -I https://getmcpscan.com/
 curl -L -I https://getmcpscan.com/secure-intake.html</pre>
       </section>

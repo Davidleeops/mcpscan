@@ -170,7 +170,7 @@
           </label>
           <label>
             Email
-            <input id="email" value="hello@getmcpscan.com" autocomplete="off">
+            <input id="email" value="audit@getmcpscan.com" autocomplete="off">
           </label>
           <label>
             Quick Audit Payment Link
@@ -234,7 +234,7 @@
         const values = Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input.value.trim()]));
         const errors = [];
         if (!validDomain(values.domain)) errors.push("domain must look like getmcpscan.com");
-        if (!validEmail(values.email)) errors.push("email must look like hello@getmcpscan.com");
+        if (!validEmail(values.email)) errors.push("email must look like audit@getmcpscan.com");
         for (const key of ["quick", "launch", "enterprise"]) {
           if (!validUrl(values[key])) errors.push(`${key} link must be an https:// URL`);
         }

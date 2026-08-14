@@ -54,19 +54,19 @@ After purchase, give Codex the domain name. Then Codex can:
 
 Recommended:
 
-- mailbox: `hello@<domain>`
+- mailbox: `audit@<domain>`
 - aliases later: `audits@<domain>`, `security@<domain>`, `support@<domain>`
 
 Click path:
 
 1. In Spaceship, choose Spacemail for the purchased domain.
 2. Buy the cheapest mailbox plan only if the checkout total is acceptable.
-3. Create `hello@<domain>`.
+3. Create `audit@<domain>`.
 4. Share only the public email address with Codex, not the password.
 
 After email exists, Codex can:
 
-- update landing contact CTA to `mailto:hello@<domain>`
+- update landing contact CTA to `mailto:audit@<domain>`
 - update SECURITY.md with disclosure/contact language
 - update audit request docs
 
@@ -123,7 +123,7 @@ Automation command after all approved values exist:
 ```bash
 npm run launch:apply-links -- \
   --domain getmcpscan.com \
-  --email hello@getmcpscan.com \
+  --email audit@getmcpscan.com \
   --quick https://buy.stripe.com/quick-link \
   --launch https://buy.stripe.com/launch-link \
   --enterprise https://buy.stripe.com/enterprise-link

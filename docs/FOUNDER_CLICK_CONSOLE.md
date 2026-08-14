@@ -88,7 +88,7 @@ Avoid using `.online` as the primary brand domain unless minimizing first-year c
 ## Remaining Founder Clicks
 
 1. Buy the domain in Spaceship, then use `ops/domain-email-dns-console.html` for GitHub Pages and Spacemail DNS records.
-2. Create `hello@getmcpscan.com` in Spacemail Pro and copy the DKIM record Spacemail displays.
+2. Create `audit@getmcpscan.com` in Spacemail Pro, add `security@` and `hello@` aliases, and copy the DKIM record Spacemail displays.
 3. Create the three Stripe Payment Links using `ops/stripe-click-setup.html`.
 4. Approve the generated command that applies those links to the landing page.
 5. Approve exact first outbound messages in `ops/outbound-approval-console.html` before anything is sent.
@@ -100,7 +100,7 @@ Avoid using `.online` as the primary brand domain unless minimizing first-year c
 | Item | Best launch choice | Approximate current public pricing |
 | --- | --- | --- |
 | Domain | `getmcpscan.com` | About $9 to $12 first year, about $10 renewal if standard-priced |
-| Email | Spacemail Pro, one mailbox | About $14.16 for two years after trial |
+| Email | Spacemail Pro, one mailbox | About $18.88 for two years on current public pricing |
 | Hosting | GitHub Pages | $0 for current launch |
 | Payments | Stripe Payment Links | No fixed monthly fee; Stripe processing fees apply |
 | Repo | Existing GitHub repo | $0 additional repo cost |

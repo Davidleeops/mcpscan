@@ -45,7 +45,7 @@ can come after demand is proven.
 | Item | Pick | Estimated cost | Why |
 | --- | --- | ---: | --- |
 | Domain | `getmcpscan.com` | about $9 to $12 first year / about $10 renewal | Most credible trust/cost balance |
-| Email | Spacemail Pro | ~$14.16 for 2 years | One mailbox plus aliases is enough |
+| Email | Spacemail Pro | About $18.88 for 2 years | One mailbox plus aliases is enough |
 | Payments | Stripe Payment Links | $0 monthly | Fastest checkout path |
 | Hosting | GitHub Pages | $0 | Already live |
 | Repo | Current GitHub repo | $0 | Public and already deployed |
@@ -56,7 +56,7 @@ for a security audit offer and renews higher than `.com`.
 
 ## Approval Buttons To Click
 
-1. [Issue #2](https://github.com/Davidleeops/mcpscan/issues/2): buy `getmcpscan.com` if standard-priced and create `hello@getmcpscan.com`.
+1. [Issue #2](https://github.com/Davidleeops/mcpscan/issues/2): buy `getmcpscan.com` if standard-priced and create `audit@getmcpscan.com`.
 2. [Issue #3](https://github.com/Davidleeops/mcpscan/issues/3): create Stripe one-time Payment Links for:
    - MCP Quick Audit: $750
    - MCP Launch Audit: $1,500
@@ -82,7 +82,7 @@ After domain/email/Stripe links exist, Codex can run:
 ```bash
 npm run launch:apply-links -- \
   --domain getmcpscan.com \
-  --email hello@getmcpscan.com \
+  --email audit@getmcpscan.com \
   --quick https://buy.stripe.com/quick-link \
   --launch https://buy.stripe.com/launch-link \
   --enterprise https://buy.stripe.com/enterprise-link
@@ -114,7 +114,7 @@ npm run outbound:queue
 ## First 10 Revenue Actions
 
 1. Buy `getmcpscan.com` or the approved fallback.
-2. Create the matching `hello@` mailbox.
+2. Create the matching `audit@` mailbox.
 3. Create Stripe Payment Links.
 4. Run `npm run launch:apply-links -- ...` with approved URLs.
 5. Publish `mcpscan` to npm after `npm run release:preflight`.

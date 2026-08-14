@@ -36,6 +36,7 @@ Checked through the domain availability tool on 2026-08-14:
 | `.us` at Spaceship or comparable registrar | Low single digits to about $8 depending on registrar | Lower renewal than most novelty TLDs | Legitimate for a US founder, less SaaS-native than `.com` |
 | `.xyz` at Spaceship | About $1 to $2 depending on promo | About $12 to $13 renewal | Cheap and developer-friendly, but the exact short name checked unavailable |
 | `.site` or `.online` at Spaceship | About $1 to $2 promo pricing | About $21 to $22 renewal | Cheap first year, weaker trust signal for B2B security |
+| Spacemail Pro | About $18.88 for 2 years | Check checkout before purchase | One mailbox with aliases is enough for launch |
 
 Sources checked on 2026-08-14: Spaceship domain pricing, Spaceship registrar prices on TLD-List, TLDSpy Spaceship pricing, Spacemail pricing, and the live domain availability checker.
 
@@ -46,8 +47,9 @@ Sources checked on 2026-08-14: Spaceship domain pricing, Spaceship registrar pri
 3. If you want the cheapest acceptable option, search and buy `mcpscan.us`.
 4. If `getmcpscan.com` is unavailable at checkout, use `trymcpscan.com`.
 5. Buy one domain first.
-6. Create one mailbox first: `hello@{{chosen_domain}}`.
-7. Do not use the mailbox for outbound until MX, SPF, and DKIM pass.
+6. Create one mailbox first: `audit@{{chosen_domain}}`.
+7. Add aliases for `security@{{chosen_domain}}` and `hello@{{chosen_domain}}`.
+8. Do not use the mailbox for outbound until MX, SPF, DKIM, and DMARC pass.
 
 ## After Purchase
 
@@ -55,7 +57,8 @@ Update these values before final verification:
 
 ```text
 DOMAIN={{chosen_domain}}
-MAILBOX=hello@{{chosen_domain}}
+MAILBOX=audit@{{chosen_domain}}
+ALIASES=security@{{chosen_domain}},hello@{{chosen_domain}}
 ```
 
 Then use `ops/domain-email-dns-console.html` for DNS and mailbox setup.

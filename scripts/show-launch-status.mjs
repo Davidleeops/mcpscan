@@ -29,7 +29,7 @@ function hasCustomDomain() {
 }
 
 function hasSecurityContact() {
-  return exists("SECURITY.md") && /hello@|@mcpscan/i.test(read("SECURITY.md"));
+  return exists("SECURITY.md") && /audit@|security@|@mcpscan/i.test(read("SECURITY.md"));
 }
 
 function hasBannedPunctuation() {

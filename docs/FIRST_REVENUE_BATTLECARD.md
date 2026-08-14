@@ -65,6 +65,7 @@ Ask these before proposing a package:
 | Objection | Response |
 | --- | --- |
 | "We already have Snyk/Cisco/other scanners." | Great. This is not trying to replace those. MCPScan is a fast readiness packet around the actual rollout: configs, tools, permissions, secrets, risky descriptions, and the approval evidence a team can act on. |
+| "Why not just use a free scanner?" | You should use one for a baseline. The paid audit exists for the part scanners do not handle well: context, prioritization, ownership, remediation, and a buyer-safe report that security or leadership can use to make a rollout decision. |
 | "We are not ready for a full security assessment." | That is exactly why the Launch Audit exists. It is bounded, practical, and designed to identify the first issues before MCP usage spreads. |
 | "Can we just run the CLI ourselves?" | Yes. The paid audit adds manual review, prioritization, business context, and a report that AppSec or leadership can use. |
 | "Is this penetration testing?" | No. It is a fixed-scope MCP readiness audit. It avoids unauthorized exploitation and focuses on evidence, configuration, exposed tools, and remediation. |
@@ -103,4 +104,3 @@ Before I point you to the right package, can you confirm:
 3. Do any tools touch source code, customer data, Slack, tickets, databases, cloud, or CI/CD?
 4. Is there a rollout/customer/security-review deadline?
 ```
-

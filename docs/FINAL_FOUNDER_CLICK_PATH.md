@@ -2,6 +2,8 @@
 
 This is the single founder sequence for turning the prepared MCPScan launch system into first revenue. Each step either costs money, requires account authority, or requires same-turn approval.
 
+Fastest working console: `ops/launch-approval-queue.html`.
+
 ## Rule
 
 Do not send external messages, start a live audit, publish packages, or accept sensitive customer materials until the matching approval gate below is complete.
@@ -12,7 +14,7 @@ Do not send external messages, start a live audit, publish packages, or accept s
 | --- | --- | --- | --- | --- |
 | 0 | GitHub billing | Clear the account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | CI and Pages jobs start and pass |
 | 1 | Domain | Buy `getmcpscan.com` if standard-priced, or `mcpscan.us` as the cheapest credible fallback | `ops/domain-email-dns-console.html` | Domain exists in registrar account |
-| 2 | Mailbox | Create `hello@{{chosen_domain}}` | `ops/domain-email-dns-console.html` | MX, SPF, and DKIM pass |
+| 2 | Mailbox | Create `audit@{{chosen_domain}}` with `security@` and `hello@` aliases | `ops/domain-email-dns-console.html` | MX, SPF, DKIM, and DMARC pass |
 | 3 | Stripe | Create the three Payment Links | `ops/stripe-click-setup.html` | Quick, Launch, and Enterprise checkout links exist |
 | 4 | Apply links | Paste real links into the command builder | `ops/approved-links-command-builder.html` | Landing page no longer uses placeholder checkout links |
 | 5 | Verify | Run launch verification | `ops/verification-console.html` | `npm run launch:verify -- --domain {{chosen_domain}}` has no domain or checkout warnings |
@@ -49,7 +51,7 @@ Best buyer: a team enabling Copilot, Claude Code, Cursor, VS Code agent mode, Sl
 
 ## Stop Conditions
 
-- Do not use the new mailbox for outbound until email authentication passes.
+- Do not use the new mailbox for outbound until MX, SPF, DKIM, and DMARC pass.
 - Do not send outbound without exact recipient and exact content approval in the same turn.
 - Do not start paid delivery until payment and safe intake are confirmed.
 - Do not place customer secrets, private configs, customer data, or final reports in the public repo.

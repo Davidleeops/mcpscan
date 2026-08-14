@@ -194,7 +194,7 @@
           <h1>MCPScan Launch Cockpit</h1>
           <p>Start here. This page points to every click gate, delivery artifact, and live proof link needed to turn MCPScan into first revenue without losing the thread.</p>
         </div>
-        <div class="actions"><a class="button primary" href="final-founder-click-console.html">Final Click Path</a><a class="button" href="founder-click-console.html">Founder Console</a></div>
+        <div class="actions"><a class="button primary" href="launch-approval-queue.html">Approval Queue</a><a class="button" href="final-founder-click-console.html">Final Click Path</a><a class="button" href="founder-click-console.html">Founder Console</a></div>
       </header>
 
       <section class="decision">
@@ -205,6 +205,7 @@
       <div class="grid">
         <section>
           <h2>Click Gates In Order</h2>
+          <p>For the shortest working view, start with the <a href="launch-approval-queue.html">Launch Approval Queue</a>.</p>
           <div class="steps">
             <article class="step">
               <div class="num">0</div>
@@ -221,7 +222,7 @@
               <div class="num">1</div>
               <div>
                 <h3>Buy domain and mailbox <span class="tag warn">founder payment</span></h3>
-                <p>Buy <code>getmcpscan.com</code> if available at standard pricing, or <code>mcpscan.us</code> as the cheapest credible fallback. Create the matching <code>hello@</code> mailbox.</p>
+                <p>Buy <code>getmcpscan.com</code> if available at standard pricing, or <code>mcpscan.us</code> as the cheapest credible fallback. Create the matching <code>audit@</code> mailbox with <code>security@</code> and <code>hello@</code> aliases.</p>
               </div>
               <div class="actions">
                 <a class="button" href="domain-email-dns-console.html">DNS console</a>
@@ -313,7 +314,7 @@
             <ul>
               <li>No external messages without same-turn approval of exact recipient and content.</li>
               <li>No customer secrets or reports in the public repo.</li>
-              <li>No outbound from the new mailbox until MX, SPF, and DKIM pass.</li>
+              <li>No outbound from the new mailbox until MX, SPF, DKIM, and DMARC pass.</li>
               <li>No npm publish until login/2FA is confirmed.</li>
             </ul>
           </section>
@@ -366,7 +367,7 @@
         <table>
           <tr><th>Item</th><th>Choice</th><th>Expected fixed cost</th></tr>
           <tr><td>Domain</td><td><code>getmcpscan.com</code></td><td>About $9 to $12 first year if standard-priced</td></tr>
-          <tr><td>Email</td><td>Spacemail Pro, one mailbox</td><td>Spacemail starts around $0.79/month</td></tr>
+          <tr><td>Email</td><td>Spacemail Pro, one mailbox</td><td>About $18.88 for 2 years on current public pricing</td></tr>
           <tr><td>Hosting</td><td>GitHub Pages</td><td>$0 currently</td></tr>
           <tr><td>Payments</td><td>Stripe Payment Links</td><td>No fixed monthly cost; processing fees apply</td></tr>
           <tr><td>Repo</td><td>Existing GitHub repo</td><td>$0 additional repo cost</td></tr>

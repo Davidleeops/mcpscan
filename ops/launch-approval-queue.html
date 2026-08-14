@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Launch Approval Queue</title>
+    <style>
+      :root { color-scheme: light; --ink: #14171a; --muted: #5b6470; --line: #d7dde3; --panel: #ffffff; --soft: #f5f7f9; --accent: #0b6bcb; --good: #0f7b4f; --warn: #9a5a00; --danger: #aa2b2b; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--soft); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 48px; }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { font-size: clamp(32px, 5vw, 58px); line-height: 1; margin-bottom: 12px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      h3 { font-size: 16px; margin-bottom: 8px; }
+      p, li, td { color: var(--muted); line-height: 1.5; }
+      .stack { display: grid; gap: 16px; }
+      section, article { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+      .queue { display: grid; gap: 12px; }
+      .item { display: grid; grid-template-columns: 42px 1fr minmax(190px, auto); gap: 12px; align-items: start; }
+      .num { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 999px; background: var(--soft); color: var(--ink); font-weight: 800; }
+      .ready { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .warn { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .danger { border-left: 4px solid var(--danger); background: #fff6f6; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+      a.button, button.copy { display: inline-flex; min-height: 38px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 12px; color: var(--accent); background: #ffffff; font-weight: 700; text-decoration: none; cursor: pointer; }
+      a.button.primary { color: #ffffff; background: var(--accent); }
+      table { border-collapse: collapse; width: 100%; }
+      th, td { border-top: 1px solid var(--line); padding: 10px 8px; text-align: left; vertical-align: top; }
+      th { color: var(--ink); }
+      pre { margin: 10px 0 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; }
+      .tag { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 12px; line-height: 1; padding: 5px 8px; }
+      .tag.warn { border-color: #e4c98e; color: var(--warn); }
+      .tag.good { border-color: #a8d8c0; color: var(--good); }
+      @media (max-width: 900px) { .item { grid-template-columns: 1fr; } .actions { justify-content: start; } }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>Launch Approval Queue</h1>
+        <p>This is the current founder-click board. Work from top to bottom. Each row ends in a concrete approve, buy, paste, or verify action.</p>
+        <div class="actions"><a class="button primary" href="final-founder-click-console.html">Final click path</a><a class="button" href="launch-cockpit.html">Launch cockpit</a></div>
+      </header>
+
+      <section class="danger">
+        <h2>Non-Negotiable Rule</h2>
+        <p>No external outreach, package publish, customer scan, or live paid delivery happens until the matching row below has same-turn approval or founder account action.</p>
+      </section>
+
+      <section class="queue">
+        <article class="item warn">
+          <div class="num">1</div>
+          <div>
+            <h3>Clear GitHub billing lock <span class="tag warn">account gate</span></h3>
+            <p>GitHub Actions and Pages jobs are failing before they start. This is an account billing unlock, not a code failure.</p>
+          </div>
+          <div class="actions"><a class="button" href="github-actions-billing-console.html">Open guide</a><a class="button" href="https://github.com/Davidleeops/mcpscan/actions" target="_blank" rel="noreferrer">Open Actions</a></div>
+        </article>
+
+        <article class="item warn">
+          <div class="num">2</div>
+          <div>
+            <h3>Buy domain and mailbox <span class="tag warn">payment gate</span></h3>
+            <p>Recommended: buy getmcpscan.com if standard-priced. Cheapest credible fallback: mcpscan.us. Create audit@chosen-domain before outbound, with security@ and hello@ as aliases.</p>
+          </div>
+          <div class="actions"><a class="button" href="domain-email-dns-console.html">Domain console</a><a class="button" href="https://www.spaceship.com/domain-search/?query=getmcpscan.com" target="_blank" rel="noreferrer">Search domain</a></div>
+        </article>
+
+        <article class="item warn">
+          <div class="num">3</div>
+          <div>
+            <h3>Create Stripe links <span class="tag warn">login gate</span></h3>
+            <p>Create the three live Payment Links: Exposure Snapshot, Launch Audit, and Enterprise Readiness Audit. QA them before they touch the public landing page.</p>
+          </div>
+          <div class="actions"><a class="button" href="stripe-click-setup.html">Stripe setup</a><a class="button" href="stripe-payment-link-qa-console.html">QA links</a></div>
+        </article>
+
+        <article class="item warn">
+          <div class="num">4</div>
+          <div>
+            <h3>Approve live links <span class="tag warn">same-turn approval</span></h3>
+            <p>After domain, mailbox, and Stripe links exist, paste them into the command builder. The landing page should only change after exact URLs are approved.</p>
+          </div>
+          <div class="actions"><a class="button" href="approved-links-command-builder.html">Command builder</a></div>
+        </article>
+
+        <article class="item warn">
+          <div class="num">5</div>
+          <div>
+            <h3>Approve first 10 outbound messages <span class="tag warn">same-turn approval</span></h3>
+            <p>Approve exact recipients and exact final content. The first send should sell the $1,500 MCP Launch Audit and offer a $499 snapshot as the easier yes.</p>
+          </div>
+          <div class="actions"><a class="button" href="first-10-outbound-approval-console.html">First 10</a><a class="button" href="recipient-finder-console.html">Find recipients</a></div>
+        </article>
+
+        <article class="item ready">
+          <div class="num">6</div>
+          <div>
+            <h3>Run paid handoff <span class="tag good">after payment</span></h3>
+            <p>After Stripe payment clears, create a private customer workspace and use secure intake. Keep all customer data out of the public repo.</p>
+          </div>
+          <div class="actions"><a class="button" href="post-payment-console.html">Handoff</a><a class="button" href="delivery-console.html">Delivery</a></div>
+        </article>
+      </section>
+
+      <section>
+        <h2>Copyable Approval Prompt</h2>
+        <p>Use this whenever a row needs exact approval before I act.</p>
+        <button class="copy" data-copy-target="approval-prompt">Copy prompt</button>
+        <pre id="approval-prompt">Please approve or revise this launch action. I will not execute it unless you approve the exact action and exact content in this same turn.
+
+Gate:
+Action:
+Account or URL:
+Exact text or link list:
+Approved outcome:</pre>
+      </section>
+
+      <section>
+        <h2>Current Waits</h2>
+        <table>
+          <tr><th>Wait</th><th>Why it needs founder authority</th><th>Next result</th></tr>
+          <tr><td>GitHub billing</td><td>Requires account owner billing access</td><td>Actions jobs start and CI proof becomes live again</td></tr>
+          <tr><td>Domain and mailbox</td><td>Requires payment and registrar access</td><td>Custom site URL plus credible audit mailbox</td></tr>
+          <tr><td>Stripe links</td><td>Requires Stripe login and live payments authority</td><td>Public checkout can replace placeholder issue links</td></tr>
+          <tr><td>Outbound approval</td><td>External sending requires exact same-turn approval</td><td>First revenue push can begin</td></tr>
+        </table>
+      </section>
+
+      <section class="ready">
+        <h2>Verification After Clicks</h2>
+        <pre>npm run writing:check
+npm run launch:verify -- --domain {{chosen_domain}}
+npm run launch:status:live</pre>
+      </section>
+    </main>
+    <script>
+      for (const button of document.querySelectorAll("[data-copy-target]")) {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          await navigator.clipboard.writeText(target.textContent.trim());
+          const label = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = label; }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -43,7 +43,7 @@ Current public Spaceship pricing observations:
 - `.online`: about $0.98 first year, renews around $21.38.
 - `.pro`: can be cheap first year, but renewal can be materially higher than `.com`.
 - `.security`: not budget-friendly; current public pricing is far above the launch budget.
-- Spacemail Pro: about $14.16 for two years after trial, renews around $18.88 for two years.
+- Spacemail Pro: about $18.88 for two years on current public pricing.
 
 Always confirm in the Spaceship cart before purchase because promo pricing and ICANN fees can change.
 
@@ -52,5 +52,5 @@ Always confirm in the Spaceship cart before purchase because promo pricing and I
 1. Add the domain to GitHub Pages for `Davidleeops/mcpscan`.
 2. Add DNS records in Spaceship.
 3. Enable HTTPS in GitHub Pages.
-4. Create `hello@domain` mailbox or alias.
-5. Replace GitHub issue CTAs in `landing/index.html` with Stripe links and/or `mailto:hello@domain`.
+4. Create `audit@domain` mailbox with `security@domain` and `hello@domain` aliases.
+5. Replace GitHub issue CTAs in `landing/index.html` with Stripe links and/or `mailto:audit@domain`.

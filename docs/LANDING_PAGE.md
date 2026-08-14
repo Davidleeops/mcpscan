@@ -94,7 +94,7 @@ After domain/email/Stripe approval, update the static site with:
 ```bash
 npm run launch:apply-links -- \
   --domain getmcpscan.com \
-  --email hello@getmcpscan.com \
+  --email audit@getmcpscan.com \
   --quick https://buy.stripe.com/quick-link \
   --launch https://buy.stripe.com/launch-link \
   --enterprise https://buy.stripe.com/enterprise-link

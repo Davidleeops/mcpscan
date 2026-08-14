@@ -24,19 +24,21 @@ Current pricing notes from Spaceship research:
 - `.dev` is around $8.28/year first year and renews around $12.42/year.
 - `.app` is around $8.28/year first year and renews around $14.49/year.
 - `.online` can be around $0.98 for the first year, but renewal is much higher and the trust signal is weaker.
-- Spacemail Pro is around $14.16 for 2 years after trial for 1 mailbox, with aliases.
+- Spacemail Pro is around $18.88 for 2 years for 1 mailbox, with aliases.
 
 ## Recommended Email
 
 Once the domain is purchased, create:
 
-- `hello@<domain>` for sales and support.
+- `audit@<domain>` for sales and support.
+- `security@<domain>` as an alias for disclosure and trust workflows.
+- `hello@<domain>` as an alias for general inbound.
 - `audits@<domain>` for delivery and report handoff.
 
 Start with one mailbox and aliases:
 
-- mailbox: `hello@<domain>`
-- aliases: `audits@<domain>`, `support@<domain>`, `security@<domain>`
+- mailbox: `audit@<domain>`
+- aliases: `security@<domain>`, `hello@<domain>`, `support@<domain>`
 
 This is enough for first revenue. Add separate mailboxes only after inbound
 volume or delivery operations justify it.
@@ -65,7 +67,7 @@ For an apex/root domain, use GitHub Pages' current `A` records from the official
 After Stripe and email exist, update `landing/index.html`:
 
 - Replace GitHub issue links with Stripe Payment Links.
-- Replace contact link with `mailto:hello@<domain>` or a form.
+- Replace contact link with `mailto:audit@<domain>` or a form.
 - Add domain to GitHub Pages settings.
 
 ## Purchase Stop Point
