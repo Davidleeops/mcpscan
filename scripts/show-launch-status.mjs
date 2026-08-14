@@ -201,7 +201,7 @@ const gates = [
   gate("Launch day runbook", exists("ops/launch-day-runbook.html") && exists("scripts/open-launch-day-runbook.mjs"), "npm run launch:day opens ordered launch-day surfaces"),
   gate("Next action launcher", exists("scripts/open-next-founder-action.mjs"), "npm run launch:next opens the current founder action stack"),
   gate("Founder click handoff", exists("ops/founder-click-handoff.html") && exists("docs/FOUNDER_CLICK_HANDOFF.md"), "single founder click sequence exists"),
-  gate("Founder click session launcher", exists("scripts/open-founder-click-session.mjs"), "npm run launch:click-session prepares the private checklist and opens the account session"),
+  gate("Founder click session launcher", exists("scripts/open-founder-click-session.mjs") && exists("scripts/simulate-founder-click-session.mjs"), "npm run launch:click-session prepares the private browser cockpit, checklist, and account session"),
   gate("Founder click launcher", exists("scripts/open-founder-clicks.mjs"), "npm run launch:open-founder opens the next-click pages"),
   gate("Founder click workspace", exists("scripts/prepare-founder-click-workspace.mjs"), "npm run launch:prepare-founder-clicks creates private cart, return, and Stripe QA evidence paths"),
   gate("Founder return review launcher", exists("scripts/open-founder-return-review.mjs"), "npm run launch:open-return-review opens the post-click approval pages"),

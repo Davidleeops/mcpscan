@@ -16,7 +16,7 @@ One-command launcher:
 npm run launch:click-session
 ```
 
-That command prepares the default private founder evidence workspace, opens the generated `CLICK_SESSION.md`, opens the local founder consoles, and opens the account pages for Spaceship, Spacemail, and Stripe. It does not buy, publish, send, charge, apply public links, or create customer files.
+That command prepares the default private founder evidence workspace, opens the generated `CLICK_SESSION.html` browser cockpit, opens the generated `CLICK_SESSION.md` backup sheet, opens the local founder consoles, and opens the account pages for Spaceship, Spacemail, and Stripe. It does not buy, publish, send, charge, apply public links, or create customer files.
 
 If you only need to prepare the workspace without opening pages, run:
 
@@ -24,13 +24,19 @@ If you only need to prepare the workspace without opening pages, run:
 npm run launch:prepare-founder-clicks -- --domain getmcpscan.xyz --mail-provider spacemail
 ```
 
-Then open the generated click session sheet:
+Then open the generated browser cockpit:
+
+```text
+$HOME/MCPScan Founder Clicks/current/CLICK_SESSION.html
+```
+
+Use the Markdown sheet as the backup checklist:
 
 ```text
 $HOME/MCPScan Founder Clicks/current/CLICK_SESSION.md
 ```
 
-That sheet is the live founder-account checklist. It includes the account links, chosen domain, mailbox aliases, local files to fill, verification commands, and stop conditions.
+The browser cockpit is the live founder-account checklist. It includes the account links, chosen domain, mailbox aliases, local files to fill, verification commands, copy buttons, and stop conditions.
 
 Prebuild the cheap-lane DNS and Stripe packets:
 
@@ -50,7 +56,7 @@ ops/generated-launch-packets/2026-08-14_getmcpscan-xyz_stripe-products.csv
 
 ## Sequence
 
-1. Prepare the private founder evidence workspace and open `CLICK_SESSION.md`.
+1. Prepare the private founder evidence workspace and open `CLICK_SESSION.html`.
 2. Search `getmcpscan.xyz` in Spaceship.
 3. Buy one domain only if the cart is at or below `$3`, renewal is visible, and no paid add-ons appear.
 4. Create one Spacemail mailbox: `security@getmcpscan.xyz`, with `audit@getmcpscan.xyz` and `hello@getmcpscan.xyz` aliases.
@@ -69,7 +75,7 @@ ops/generated-launch-packets/2026-08-14_getmcpscan-xyz_stripe-products.csv
 
 ```text
 1. Run npm run launch:click-session.
-2. Follow $HOME/MCPScan Founder Clicks/current/CLICK_SESSION.md through domain, mailbox, DNS, Stripe, return packet, status tracker, and verification.
+2. Follow $HOME/MCPScan Founder Clicks/current/CLICK_SESSION.html through domain, mailbox, DNS, Stripe, return packet, status tracker, and verification.
 3. Download the approval message from ops/founder-return-packet.html after Stripe links exist.
 4. Download the QA evidence JSON from ops/stripe-payment-link-qa-console.html after the checklist passes.
 ```

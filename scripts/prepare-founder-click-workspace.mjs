@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 const root = process.cwd();
 
@@ -49,6 +50,23 @@ function writeIfMissing(file, content) {
   return true;
 }
 
+function writeGenerated(file, content) {
+  fs.writeFileSync(file, content, "utf8");
+  return true;
+}
+
+function html(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function pathToFileUrl(file) {
+  return pathToFileURL(file).toString();
+}
+
 const args = parseArgs(process.argv.slice(2));
 const domain = String(args.domain ?? "getmcpscan.xyz").trim().toLowerCase();
 const mailProvider = String(args["mail-provider"] ?? "spacemail").trim().toLowerCase();
@@ -66,6 +84,7 @@ const returnPacketPath = path.join(workspaceDir, "approved-return-packet.txt");
 const qaEvidencePath = path.join(workspaceDir, "stripe-checkout-qa-evidence.json");
 const commandsPath = path.join(workspaceDir, "NEXT_COMMANDS.md");
 const clickSessionPath = path.join(workspaceDir, "CLICK_SESSION.md");
+const clickSessionHtmlPath = path.join(workspaceDir, "CLICK_SESSION.html");
 
 const cartTemplate = JSON.parse(safeRead("ops/domain-cart-proof.template.json"));
 cartTemplate.updatedAt = new Date().toISOString().slice(0, 10);
@@ -117,6 +136,7 @@ const commands = [
   `- Founder return packet: ${returnPacketPath}`,
   `- Stripe checkout QA evidence: ${qaEvidencePath}`,
   "- Default click session sheet: $HOME/MCPScan Founder Clicks/current/CLICK_SESSION.md",
+  "- Default click browser cockpit: $HOME/MCPScan Founder Clicks/current/CLICK_SESSION.html",
   "",
   "## Before Purchase",
   "",
@@ -178,6 +198,7 @@ const clickSession = [
   `- Cart proof: ${cartProofPath}`,
   `- Founder return packet: ${returnPacketPath}`,
   `- Stripe checkout QA evidence: ${qaEvidencePath}`,
+  `- Click browser cockpit: ${clickSessionHtmlPath}`,
   "",
   "## Click Order",
   "",
@@ -216,6 +237,133 @@ const clickSession = [
   ""
 ].join("\n");
 
+const verifyCartCommand = `npm run launch:verify-cart -- --file "${cartProofPath}"`;
+const verifyCartReturnCommand = `npm run launch:verify-cart -- --file "${cartProofPath}" --return-file "${returnPacketPath}"`;
+const verifyReturnQaCommand = `npm run launch:verify-return-qa -- --file "${returnPacketPath}" --qa-file "${qaEvidencePath}"`;
+const verifyStripeQaCommand = `npm run launch:verify-stripe-qa -- --file "${qaEvidencePath}" --update-status`;
+const postClickCommand = `npm run launch:post-click-session -- --file "${returnPacketPath}" --cart-file "${cartProofPath}" --qa-file "${qaEvidencePath}" --apply true --publish true --mail-provider ${mailProvider}`;
+const firstRevenueCommand = "npm run launch:open-first-revenue";
+
+const clickSessionHtml = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Founder Click Session</title>
+    <style>
+      :root { color-scheme: light; --ink: #12161c; --muted: #5a6370; --line: #d7dde4; --panel: #ffffff; --soft: #f5f7f9; --accent: #0b6bcb; --good: #0f7b4f; --warn: #9a5a00; --danger: #aa2b2b; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--soft); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 48px; }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { font-size: clamp(30px, 5vw, 54px); line-height: 1; margin-bottom: 10px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      h3 { font-size: 15px; margin-bottom: 8px; }
+      p, li, td { color: var(--muted); line-height: 1.5; }
+      .stack { display: grid; gap: 16px; }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+      section, article { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+      .wide { grid-column: 1 / -1; }
+      .ready { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .warn { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .danger { border-left: 4px solid var(--danger); background: #fff6f6; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+      a.button, button.copy { display: inline-flex; min-height: 38px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 12px; color: var(--accent); background: #ffffff; font-weight: 700; text-decoration: none; cursor: pointer; }
+      a.button.primary { color: #ffffff; background: var(--accent); }
+      ol { padding-left: 22px; }
+      pre { margin: 10px 0 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; }
+      code { color: var(--ink); }
+      @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .wide { grid-column: auto; } .actions { justify-content: start; } }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>MCPScan Founder Click Session</h1>
+        <p>Private browser cockpit for the live account pass. It opens account pages, local consoles, exact files, and proof commands. It does not buy, publish, send, charge, apply public links, or create customer files.</p>
+        <div class="actions">
+          <a class="button primary" href="https://www.spaceship.com/domain-search/?query=${encodeURIComponent(domain)}" target="_blank" rel="noreferrer">Search domain</a>
+          <a class="button" href="https://www.spaceship.com/business-email/" target="_blank" rel="noreferrer">Open mailbox</a>
+          <a class="button" href="https://dashboard.stripe.com/payment-links" target="_blank" rel="noreferrer">Open Stripe links</a>
+        </div>
+      </header>
+      <section class="ready">
+        <h2>Chosen Lane</h2>
+        <p><strong>Domain:</strong> ${html(domain)}<br><strong>Mail provider:</strong> ${html(mailProvider)}<br><strong>Mailbox:</strong> security@${html(domain)}<br><strong>Aliases:</strong> audit@${html(domain)}, hello@${html(domain)}</p>
+      </section>
+      <div class="grid">
+        <section>
+          <h2>Private Files</h2>
+          <p>Fill only public-safe evidence. Never paste card data, passwords, Stripe secrets, recovery codes, customer configs, or customer data.</p>
+          <pre id="private-files">${html(`Cart proof: ${cartProofPath}
+Founder return packet: ${returnPacketPath}
+Stripe QA evidence: ${qaEvidencePath}
+Command packet: ${commandsPath}
+Markdown checklist: ${clickSessionPath}`)}</pre>
+          <div class="actions"><button class="copy" data-copy-target="private-files">Copy paths</button></div>
+        </section>
+        <section>
+          <h2>Local Consoles</h2>
+          <div class="actions">
+            <a class="button" href="${html(pathToFileUrl(path.resolve("ops/domain-mailbox-purchase-packet.html")))}">Domain packet</a>
+            <a class="button" href="${html(pathToFileUrl(path.resolve("ops/domain-email-dns-console.html")))}">DNS console</a>
+            <a class="button" href="${html(pathToFileUrl(path.resolve("ops/stripe-click-setup.html")))}">Stripe setup</a>
+            <a class="button" href="${html(pathToFileUrl(path.resolve("ops/stripe-payment-link-qa-console.html")))}">Stripe QA</a>
+            <a class="button" href="${html(pathToFileUrl(path.resolve("ops/founder-return-packet.html")))}">Return packet</a>
+            <a class="button" href="${html(pathToFileUrl(path.resolve("ops/founder-status-console.html")))}">Status tracker</a>
+          </div>
+        </section>
+      </div>
+      <section class="wide">
+        <h2>Click Order</h2>
+        <ol>
+          <li>Confirm the exact domain price, renewal price, and no add-ons in the visible cart.</li>
+          <li>Fill the cart proof file, then run the pre-purchase verifier.</li>
+          <li>Buy only after the cart proof passes and founder spend approval is explicit.</li>
+          <li>Create one mailbox and the two aliases on the chosen domain.</li>
+          <li>Add GitHub Pages and mail DNS records for the selected provider.</li>
+          <li>Create the three live Stripe Payment Links.</li>
+          <li>Complete Stripe QA and save the QA evidence JSON.</li>
+          <li>Build the founder return packet and save the approval message.</li>
+          <li>Run the post-click session only after exact approval.</li>
+        </ol>
+      </section>
+      <section class="ready">
+        <h2>Proof Commands</h2>
+        <pre id="proof-commands">${html(`${verifyCartCommand}
+${verifyCartReturnCommand}
+${verifyReturnQaCommand}
+${verifyStripeQaCommand}
+${postClickCommand}
+${firstRevenueCommand}`)}</pre>
+        <div class="actions"><button class="copy" data-copy-target="proof-commands">Copy commands</button></div>
+      </section>
+      <section class="danger">
+        <h2>Stop Conditions</h2>
+        <ul>
+          <li>Stop if the domain is premium-priced or renewal is hidden.</li>
+          <li>Stop if the cart adds hosting, site builder, paid SSL, paid privacy, extra domains, or extra mailboxes.</li>
+          <li>Stop if the mailbox cannot use the chosen domain.</li>
+          <li>Stop if any Stripe link is test-mode or not a live buy.stripe.com URL.</li>
+          <li>Stop if any evidence file contains secrets or customer material.</li>
+        </ul>
+      </section>
+    </main>
+    <script>
+      document.querySelectorAll("[data-copy-target]").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          if (!target) return;
+          await navigator.clipboard.writeText(target.textContent.trim());
+          button.textContent = "Copied";
+          setTimeout(() => { button.textContent = "Copy " + (button.dataset.copyTarget === "proof-commands" ? "commands" : "paths"); }, 1200);
+        });
+      });
+    </script>
+  </body>
+</html>
+`;
+
 const created = [
   [cartProofPath, `${JSON.stringify(cartTemplate, null, 2)}\n`],
   [returnPacketPath, `${returnPacket}\n`],
@@ -223,6 +371,8 @@ const created = [
   [commandsPath, commands],
   [clickSessionPath, clickSession]
 ].map(([file, content]) => ({ file, created: writeIfMissing(file, content) }));
+
+created.push({ file: clickSessionHtmlPath, created: writeGenerated(clickSessionHtmlPath, clickSessionHtml) });
 
 console.log("MCPScan founder click workspace prepared.");
 console.log(workspaceDir);
@@ -232,6 +382,9 @@ for (const item of created) {
 console.log("");
 console.log("Open the command packet:");
 console.log(commandsPath);
+console.log("");
+console.log("Use the click session browser cockpit:");
+console.log(clickSessionHtmlPath);
 console.log("");
 console.log("Use the click session sheet:");
 console.log(clickSessionPath);

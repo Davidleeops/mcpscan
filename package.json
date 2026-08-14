@@ -22,6 +22,7 @@
     "launch:open": "node scripts/open-launch-cockpit.mjs",
     "launch:open-founder": "node scripts/open-founder-clicks.mjs",
     "launch:click-session": "node scripts/open-founder-click-session.mjs",
+    "launch:simulate-click-session": "node scripts/simulate-founder-click-session.mjs",
     "launch:next": "node scripts/open-next-founder-action.mjs",
     "launch:day": "node scripts/open-launch-day-runbook.mjs",
     "launch:prepare-founder-clicks": "node scripts/prepare-founder-click-workspace.mjs",

@@ -42,6 +42,7 @@ const mailProvider = String(args["mail-provider"] ?? "spacemail").trim().toLower
 const workspaceRoot = args.root ? path.resolve(args.root) : path.join(os.homedir(), "MCPScan Founder Clicks");
 const shouldOpen = args.open !== "false" && args["no-open"] !== "true";
 const clickSessionPath = path.join(workspaceRoot, "current", "CLICK_SESSION.md");
+const clickSessionHtmlPath = path.join(workspaceRoot, "current", "CLICK_SESSION.html");
 const nextCommandsPath = path.join(workspaceRoot, "current", "NEXT_COMMANDS.md");
 
 console.log("MCPScan founder click session");
@@ -72,6 +73,7 @@ if (prepare.status !== 0) {
 }
 
 const localTargets = [
+  clickSessionHtmlPath,
   clickSessionPath,
   nextCommandsPath,
   path.resolve("ops/founder-click-handoff.html"),
@@ -108,6 +110,6 @@ for (const target of externalTargets) {
 
 console.log("");
 console.log("Start here:");
-console.log(clickSessionPath);
+console.log(clickSessionHtmlPath);
 console.log("");
 console.log("This command does not buy, publish, send, charge, apply public links, or create customer files.");

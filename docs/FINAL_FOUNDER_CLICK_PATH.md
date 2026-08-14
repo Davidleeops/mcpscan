@@ -18,7 +18,7 @@ Before the external account clicks, use the one-command founder session launcher
 npm run launch:click-session
 ```
 
-This prepares the private local evidence workspace, opens the generated click session sheet, opens the local founder consoles, and opens Spaceship, Spacemail, and Stripe account pages. It does not buy, publish, send, charge, apply public links, or create customer files.
+This prepares the private local evidence workspace, opens the generated click session browser cockpit, opens the generated Markdown backup sheet, opens the local founder consoles, and opens Spaceship, Spacemail, and Stripe account pages. It does not buy, publish, send, charge, apply public links, or create customer files.
 
 For a prepare-only path without opening account pages, run:
 
@@ -26,15 +26,21 @@ For a prepare-only path without opening account pages, run:
 npm run launch:prepare-founder-clicks -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}}
 ```
 
-This creates local files under `$HOME/MCPScan Founder Clicks/current/` for the domain cart proof, founder return packet, Stripe checkout QA evidence, command packet, and the guided click session sheet. Keep that folder outside the public repo.
+This creates local files under `$HOME/MCPScan Founder Clicks/current/` for the domain cart proof, founder return packet, Stripe checkout QA evidence, command packet, guided browser cockpit, and Markdown backup sheet. Keep that folder outside the public repo.
 
-Open this generated file during the founder account session:
+Open this generated browser cockpit during the founder account session:
+
+```text
+$HOME/MCPScan Founder Clicks/current/CLICK_SESSION.html
+```
+
+Use this generated Markdown file as the backup checklist:
 
 ```text
 $HOME/MCPScan Founder Clicks/current/CLICK_SESSION.md
 ```
 
-Use `CLICK_SESSION.md` as the live checklist for account pages, exact public values, files to fill, verification commands, and stop conditions.
+Use `CLICK_SESSION.html` as the live checklist for account pages, exact public values, files to fill, verification commands, copy buttons, and stop conditions.
 
 After the external account clicks, use `ops/founder-return-packet.html` to paste the purchased domain, mailbox, aliases, and Stripe links into one approval message.
 
