@@ -30,10 +30,23 @@ The strongest wedge is:
 | GitHub has enterprise MCP registry and allowlist controls | Large buyers are already trying to govern MCP usage in Copilot and VS Code | https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-mcp-usage/restrict-based-on-registry |
 | GitHub community requested enterprise allowlists because MCP servers were seen as too risky to unleash broadly | There is direct admin and AppSec pain around approved servers and tool control | https://github.com/orgs/community/discussions/169533 |
 | Cursor users are asking for better MCP approval, visibility, and tool-call arguments | Developer teams feel the friction and risk at the usage layer | https://forum.cursor.com/t/can-not-see-call-args-in-mcp-tool-calls/165328/22 |
+| Microsoft frames MCP security as a 2026 governance problem | Platform security buyers are being told to manage MCP at scale, not just experiment with it | https://techcommunity.microsoft.com/blog/microsoft-security-blog/the-state-of-mcp-security-in-2026/4531327 |
 | NSA published MCP security design guidance in 2026 | Regulated and enterprise buyers now have an authority reference for validation, logging, filtering, and secure deployment | https://media.defense.gov/2026/Jun/02/2003943289/-1/-1/0/CSI_MCP_SECURITY.PDF |
+| CoSAI published a 2026 MCP security taxonomy | The risk surface is broad enough for industry-group treatment, with dozens of threat categories for implementers and evaluators | https://www.coalitionforsecureai.org/wp-content/uploads/2026/03/model-context-protocol-security-1.pdf |
+| OWASP MCP Top 10 entered beta with categories buyers recognize | Token exposure, scope creep, tool poisoning, command injection, audit gaps, shadow MCP, and over-sharing are now packaged as review language | https://owasp.org/www-project-mcp-top-10/ |
 | OWASP documents MCP tool poisoning | Security teams can understand this as a recognized attack class, not a niche founder claim | https://owasp.org/www-community/attacks/MCP_Tool_Poisoning |
+| OWASP MCP cheat sheet names least privilege, sandboxing, human approval, validation, auth, audit, consent, and prompt-injection controls | These map directly to a paid readiness audit checklist | https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html |
+| OWASP GenAI guidance now covers secure MCP server development | Security buyers have practical expectations around auth, validation, isolation, and hardened deployment | https://genai.owasp.org/resource/a-practical-guide-for-secure-mcp-server-development/ |
 | Vendors are building MCP gateways | Bigger companies validate that governance and control budgets are forming | https://tyk.io/learning-center/enterprise-mcp-gateway-key-considerations/ |
+| GitHub expanded MCP governance to CLI registry allowlists in 2026 | MCP governance is moving into daily developer workflows, not just admin dashboards | https://github.blog/changelog/2026-04-16-copilot-cli-supports-custom-registry-based-mcp-allowlists/ |
+| Visual Studio added MCP server configuration and tool permission workflows | Microsoft developer ecosystems are normalizing MCP setup, which creates more review moments | https://learn.microsoft.com/en-us/visualstudio/ide/mcp-servers?view=visualstudio |
+| OpenAI documents workspace admin controls for MCP apps and connected apps | ChatGPT Business, Enterprise, and Edu buyers need policy, role, and app-action decisions around connected tools | https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt |
+| Anthropic supports MCP connectors as a workflow primitive | Claude and Claude for Work adoption keeps expanding the surface that security teams must review | https://www.anthropic.com/news/model-context-protocol |
 | Security blogs now catalog real MCP incidents and exploit classes | This gives outbound copy concrete urgency, but claims must stay careful | https://www.upguard.com/blog/mcp-security-incidents |
+| NVD lists CVE-2025-54136 for Cursor MCP config poisoning | Public vulnerability records give buyers a concrete example, but outreach must not imply unrelated prospects are affected | https://nvd.nist.gov/vuln/detail/CVE-2025-54136 |
+| CSA research warns about MCP supply-chain exposure and high-severity platform issues | Use as urgency context, but verify and avoid claiming a prospect is affected without evidence | https://labs.cloudsecurityalliance.org/research/csa-research-note-mcp-security-crisis-20260504-csa-styled/ |
+| Cloudflare is shipping MCP architecture and security controls | Infrastructure vendors are validating demand for MCP traffic detection, portals, and controlled enterprise deployment | https://blog.cloudflare.com/enterprise-mcp/ |
+| Enterprise AI data policy reports connect MCP adoption with downstream data exposure risk | AI agents connected to enterprise systems create buyer concern beyond prompt-input leakage | https://www.expresscomputer.in/news/downstream-ai-data-violations-more-than-double-as-agents-connect-to-enterprise-systems/137144/ |
 | Communities discuss production use concerns around approvals, logs, credentials, and rate limits | The pain is practical and operational, not only academic | https://www.reddit.com/r/mcp/comments/1nldx5m/anyone_using_mcp_in_production_curious_about/ |
 | Job posts mention securing MCP servers and AI integrations | Hiring demand supports a service wedge when teams lack internal capacity | https://jobs.lever.co/beghouconsulting/bf119e5f-07e1-4c47-ba90-f7cfb2f93961 |
 
@@ -45,10 +58,14 @@ The recurring needs are:
 - Which tools can read, write, delete, deploy, send, pay, or change production state?
 - Which credentials are inherited by agents?
 - Which tool descriptions or metadata could steer the model in unsafe ways?
+- Which unapproved or shadow MCP servers exist outside central governance?
 - Can local MCP usage be governed with allowlists, registries, or managed settings?
+- Do CLI, IDE, and local developer workflows follow the same approved registry or allowlist?
+- Are ChatGPT, Claude, Copilot, Cursor, and IDE connector settings aligned with company approval rules?
 - Can a security team review the exact tool call before approval?
 - Can the company show audit evidence for customer diligence, SOC 2, ISO 27001, or enterprise review?
 - What can be approved now, what must be blocked, and what needs guardrails?
+- Are AI data policy violations being inspected downstream, after agents retrieve or act on enterprise data?
 
 ## Competitor And Substitute Reality
 
@@ -83,6 +100,9 @@ Best first buyers:
 5. B2B SaaS founder preparing for enterprise security review.
 6. AppSec lead asked to approve MCP without a mature checklist.
 7. Platform team trying to set allowlists, registries, and managed settings.
+8. Developer productivity lead rolling MCP into VS Code, Visual Studio, JetBrains, Eclipse, or CLI workflows.
+9. AI governance owner asked to show downstream data controls for agent-connected systems.
+10. Workspace admin managing ChatGPT, Claude, Copilot, Cursor, or connector app permissions.
 
 Avoid first:
 
@@ -130,6 +150,8 @@ No-go if:
 - The copy claims automated coverage beyond what the scanner can prove.
 - You compete head-on with Snyk, Cisco, Proofpoint, or Palo Alto on platform breadth.
 - Customer configs or reports would be stored in the public repo.
+- Outreach implies a named company is vulnerable just because it uses MCP or appears in a security article.
+- The copy treats research, PoCs, or CVEs as proof of customer exposure without direct evidence.
 
 ## Final Call
 
