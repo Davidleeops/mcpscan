@@ -48,6 +48,7 @@ npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt -
 npm run launch:publish-pages-fallback -- --wait true
 npm run launch:verify -- --domain {{chosen_domain}}
 npm run launch:status:live
+npm run launch:open-first-revenue
 ```
 
 If the mailbox provider provides a DKIM selector:
@@ -67,6 +68,7 @@ The return packet is usable when:
 - The post-click command reads `Mail provider` from the approved return packet.
 - `npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status` passes after DNS propagation.
 - `npm run launch:verify` has no checkout, custom-domain, or security-contact warnings after apply and deploy.
+- `npm run launch:open-first-revenue` opens the public, outbound, reply, payment, and delivery approval path after live gates are clear.
 
 ## Stop Conditions
 

@@ -47,6 +47,7 @@
           <a class="button primary" href="founder-return-packet.html">Return packet</a>
           <a class="button" href="verification-console.html">Verification</a>
           <a class="button" href="founder-click-handoff.html">Click handoff</a>
+          <a class="button" href="revenue-cadence-console.html">Revenue runway</a>
         </div>
       </header>
 
@@ -230,7 +231,8 @@
 npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status
 npm run launch:verify-dns -- --domain ${values.domain} --mail-provider ${mailProvider} --update-status
 npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --domain ${values.domain} --mail-provider ${mailProvider}
-npm run launch:status`;
+npm run launch:status
+npm run launch:open-first-revenue`;
         status.textContent = "Tracker built.";
         status.className = "status good";
       }

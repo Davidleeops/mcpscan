@@ -438,8 +438,11 @@ if (exists("scripts/open-first-revenue-runway.mjs") && exists("package.json") &&
     read("package.json"),
     read("ops/launch-cockpit.html"),
     exists("ops/final-founder-click-console.html") ? read("ops/final-founder-click-console.html") : "",
+    exists("ops/founder-return-packet.html") ? read("ops/founder-return-packet.html") : "",
+    exists("ops/founder-status-console.html") ? read("ops/founder-status-console.html") : "",
     exists("docs/FINAL_FOUNDER_CLICK_PATH.md") ? read("docs/FINAL_FOUNDER_CLICK_PATH.md") : "",
-    exists("docs/FOUNDER_CLICK_HANDOFF.md") ? read("docs/FOUNDER_CLICK_HANDOFF.md") : ""
+    exists("docs/FOUNDER_CLICK_HANDOFF.md") ? read("docs/FOUNDER_CLICK_HANDOFF.md") : "",
+    exists("docs/FOUNDER_RETURN_VALUES_CHECKLIST.md") ? read("docs/FOUNDER_RETURN_VALUES_CHECKLIST.md") : ""
   ].join("\n");
   const requiredRunwayMarkers = [
     "launch:open-first-revenue",
