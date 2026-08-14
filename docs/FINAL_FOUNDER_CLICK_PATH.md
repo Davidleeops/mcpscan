@@ -6,6 +6,10 @@ Fastest working console: `ops/launch-approval-queue.html`.
 
 GitHub Pages fallback console: `ops/static-launch-bundle-console.html`.
 
+Cost and infrastructure decision: `docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md`.
+
+Public trust checklist: `docs/PUBLIC_TRUST_CHECKLIST.md`.
+
 After the external account clicks, use `ops/founder-return-packet.html` to paste the purchased domain, mailbox, aliases, and Stripe links into one approval message.
 
 After that message is approved, Codex can run `npm run launch:apply-return-packet -- --file /path/to/approved-return-packet.txt`.
@@ -19,7 +23,7 @@ Do not send external messages, start a live audit, publish packages, or accept s
 | Order | Gate | Founder Action | Console | Done When |
 | --- | --- | --- | --- | --- |
 | 0 | GitHub billing | Clear the account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | CI and Pages jobs start and pass |
-| 1 | Domain | Buy `getmcpscan.com` if standard-priced, or `mcpscan.us` as the cheapest credible fallback | `ops/domain-email-dns-console.html` | Domain exists in registrar account |
+| 1 | Domain | Buy `getmcpscan.com` if standard-priced, or `mcpscan.us` as the cheapest credible fallback after accepting `.us` tradeoffs | `ops/domain-email-dns-console.html` | Domain exists in registrar account |
 | 2 | Mailbox | Create `audit@{{chosen_domain}}` with `security@` and `hello@` aliases | `ops/domain-email-dns-console.html` | MX, SPF, DKIM, and DMARC pass |
 | 3 | Stripe | Create the three Payment Links and verify their format | `ops/stripe-click-setup.html` | Quick, Launch, and Enterprise checkout links exist and `npm run launch:verify-stripe` passes |
 | 4 | Apply links | Paste real links into the command builder | `ops/approved-links-command-builder.html` | Landing page no longer uses placeholder checkout links |
@@ -85,6 +89,8 @@ npm pack --dry-run -w mcpscan
 Default sale: MCP Launch Audit at `$1,500`.
 
 Best buyer: a team enabling Copilot, Claude Code, Cursor, VS Code agent mode, Slack MCP, Atlassian Rovo, or a custom MCP server that touches code, tickets, docs, data, cloud, CI/CD, or customer records.
+
+Spend ceiling before first revenue: about `$19` to `$31` for domain plus one mailbox. Do not add paid dashboard infrastructure before the first paid audit.
 
 ## Stop Conditions
 

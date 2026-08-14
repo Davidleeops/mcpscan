@@ -179,6 +179,10 @@ const requiredFiles = [
   "ops/prospect-sourcing-console.html",
   "docs/FIRST_REVENUE_BATTLECARD.md",
   "docs/FIRST_AUDIT_DELIVERY_PACKET.md",
+  "docs/FIRST_PAID_AUDIT_GO_NO_GO.md",
+  "docs/METHODOLOGY_AND_LIMITATIONS.md",
+  "docs/SEVERITY_RUBRIC.md",
+  "docs/PAYMENT_TO_DELIVERY_SOP.md",
   "docs/APPROVED_OUTBOUND_STAGING.md",
   "docs/STRIPE_PAYMENT_LINK_VERIFICATION.md",
   "docs/SERVICE_AGREEMENT_APPENDIX.md",
@@ -188,6 +192,8 @@ const requiredFiles = [
   "docs/MARKET_RESEARCH_REFRESH.md",
   "docs/FINAL_FOUNDER_CLICK_PATH.md",
   "docs/DOMAIN_AND_MAILBOX_DECISION.md",
+  "docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md",
+  "docs/PUBLIC_TRUST_CHECKLIST.md",
   "docs/MARKET_REALITY_BRIEF_2026-08-14.md",
   "sales/buyer-intent-map-2026-08-14.md",
   "sales/first-account-dossier-2026-08-14.md",
@@ -196,6 +202,9 @@ const requiredFiles = [
   "sales/recipient-candidates-2026-08-14.csv",
   "sales/recipient-approval-packet-2026-08-14.md",
   "sales/stripe-payment-link-approval-packet-2026-08-14.md",
+  "sales/payment-link-manifest.template.json",
+  "sales/reply-to-close-packet.md",
+  "sales/daily-revenue-command.md",
   "sales/first-10-outbound-approval-packet.md",
   "sales/first-14-days-operating-cadence.md",
   "sales/post-payment-handoff.md",
@@ -205,6 +214,7 @@ const requiredFiles = [
   "sales/discovery-call-script.md",
   "scripts/create-customer-workspace.mjs",
   "scripts/run-delivery-dry-run.mjs",
+  "scripts/verify-delivery-readiness.mjs",
   "scripts/apply-founder-return-packet.mjs",
   "scripts/build-static-launch-bundle.mjs",
   "scripts/verify-market-sources.mjs",
@@ -215,7 +225,12 @@ const requiredFiles = [
   "scripts/show-launch-status.mjs",
   "delivery/customer-workspace-template/report-template.md",
   "delivery/customer-workspace-template/buyer-facing-summary.md",
-  "delivery/customer-workspace-template/findings-tracker.csv"
+  "delivery/customer-workspace-template/findings-tracker.csv",
+  "delivery/customer-workspace-template/client-acceptance.md",
+  "delivery/customer-workspace-template/evidence-register.csv",
+  "delivery/customer-workspace-template/redaction-checklist.md",
+  "delivery/customer-workspace-template/qa-signoff.md",
+  "delivery/customer-workspace-template/retention-and-deletion-log.md"
 ];
 
 for (const file of requiredFiles) {

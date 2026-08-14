@@ -29,6 +29,11 @@ Nothing here requires external sending or purchasing without owner approval.
 - One-page buyer scope: `sales/one-page-scope.md`
 - First audit delivery packet: `docs/FIRST_AUDIT_DELIVERY_PACKET.md`
 - Approved links template: `docs/APPROVED_LINKS_TEMPLATE.md`
+- Cost and infrastructure plan: `docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md`
+- Public trust checklist: `docs/PUBLIC_TRUST_CHECKLIST.md`
+- Daily revenue command: `sales/daily-revenue-command.md`
+- Reply-to-close packet: `sales/reply-to-close-packet.md`
+- Payment link manifest template: `sales/payment-link-manifest.template.json`
 
 ## Best Current Offer
 
@@ -45,14 +50,16 @@ can come after demand is proven.
 | Item | Pick | Estimated cost | Why |
 | --- | --- | ---: | --- |
 | Domain | `getmcpscan.com` | about $9 to $12 first year / about $10 renewal | Most credible trust/cost balance |
-| Email | Spacemail Pro | About $18.88 for 2 years | One mailbox plus aliases is enough |
+| Domain fallback | `mcpscan.us` | about $4 first year / about $6 to $7 renewal | Cheapest credible option, with `.us` nexus and privacy tradeoffs |
+| Email | One Spaceship mailbox | About $14 to $19 depending on current cart | One mailbox plus aliases is enough |
 | Payments | Stripe Payment Links | $0 monthly | Fastest checkout path |
 | Hosting | GitHub Pages | $0 | Already live |
 | Repo | Current GitHub repo | $0 | Public and already deployed |
 | npm | `mcpscan` + `@mcpscan/shared` | $0 | Needs owner npm auth/OTP |
 
-Do not buy `.online` as the canonical brand. It is cheap first year but weaker
-for a security audit offer and renews higher than `.com`.
+Do not buy `.online`, `.site`, or `.shop` as the canonical brand. They are cheap
+first year but weaker for a security audit offer and can renew higher than
+`.com` or `.us`.
 
 ## Approval Buttons To Click
 
@@ -91,6 +98,10 @@ npm run launch:apply-links -- \
 That updates landing pricing CTAs, the final scope/contact CTA, public URLs in
 launch docs, `landing/CNAME` for GitHub Pages, and `SECURITY.md` contact
 language.
+
+Use `sales/payment-link-manifest.template.json` as the single non-secret source
+of truth for approved public checkout values. Do not paste Stripe secret keys
+into this repo.
 
 After npm auth is complete, Codex can run:
 

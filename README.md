@@ -121,8 +121,8 @@ MCP adoption is accelerating, but many servers expose powerful tools through wea
 
 ```bash
 npm install
-npm test
 npm run build
+npm test
 node packages/cli/dist/index.js scan packages/cli/test/fixtures/vulnerable-config.json
 ```
 

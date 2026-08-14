@@ -1,0 +1,47 @@
+{
+  "generated": "2026-08-14",
+  "status": "template",
+  "domain": "{{chosen_domain}}",
+  "primaryMailbox": "audit@{{chosen_domain}}",
+  "securityMailbox": "security@{{chosen_domain}}",
+  "publicBaseUrl": "https://{{chosen_domain}}",
+  "termsUrl": "https://{{chosen_domain}}/terms.html",
+  "privacyUrl": "https://{{chosen_domain}}/privacy.html",
+  "refundUrl": "https://{{chosen_domain}}/refund.html",
+  "secureIntakeUrl": "https://{{chosen_domain}}/secure-intake.html",
+  "offers": [
+    {
+      "id": "quick",
+      "name": "MCP Quick Audit",
+      "priceUsd": 750,
+      "checkoutUrl": "{{quick_audit_stripe_payment_link}}",
+      "deliveryDaysAfterCompleteIntake": 3,
+      "scope": "Up to 3 MCP servers in 1 environment",
+      "publicCta": "Buy Quick Audit"
+    },
+    {
+      "id": "launch",
+      "name": "MCP Launch Audit",
+      "priceUsd": 1500,
+      "checkoutUrl": "{{launch_audit_stripe_payment_link}}",
+      "deliveryDaysAfterCompleteIntake": 5,
+      "scope": "Up to 8 MCP servers across up to 2 environments",
+      "publicCta": "Buy Launch Audit"
+    },
+    {
+      "id": "enterprise",
+      "name": "MCP Enterprise Readiness Audit",
+      "priceUsd": 3500,
+      "checkoutUrl": "{{enterprise_readiness_stripe_payment_link}}",
+      "deliveryDaysAfterCompleteIntake": 7,
+      "scope": "Up to 15 MCP servers across up to 3 environments",
+      "publicCta": "Buy Enterprise Audit"
+    }
+  ],
+  "rules": [
+    "Do not commit Stripe secret keys.",
+    "Do not publish checkout URLs until founder approval includes exact live links.",
+    "Do not accept customer secrets through GitHub issues.",
+    "Do not start delivery until payment and safe intake path are confirmed."
+  ]
+}

@@ -1,0 +1,4 @@
+"id","finding_id","evidence_type","source_file_or_link","observed_value_summary","redaction_needed","customer_visible","notes"
+"EVID-001","","Observed","","","Yes","Yes",""
+"EVID-002","","CLI heuristic","","","No","Yes",""
+"EVID-003","","Customer-stated","","","No","No",""

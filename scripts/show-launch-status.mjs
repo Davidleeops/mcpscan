@@ -92,6 +92,8 @@ const gates = [
   gate("Writing rule", !hasBannedPunctuation(), "no em dash in scanned launch artifacts"),
   gate("Launch cockpit", exists("ops/launch-cockpit.html"), "local operator hub exists"),
   gate("Final click path", exists("ops/final-founder-click-console.html") && exists("docs/FINAL_FOUNDER_CLICK_PATH.md"), "founder sequence exists"),
+  gate("Cost plan", exists("docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md"), "domain, mailbox, repo, and infra cost plan exists"),
+  gate("Public trust checklist", exists("docs/PUBLIC_TRUST_CHECKLIST.md"), "pre-outbound public trust checklist exists"),
   gate("Billing unblock path", exists("ops/github-actions-billing-console.html") && exists("docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md"), "GitHub billing guide exists"),
   ...(liveActions ? [{ label: "GitHub Actions live", state: liveActions.state, detail: liveActions.detail }] : []),
   gate("Market source verifier", exists("scripts/verify-market-sources.mjs") && exists("ops/market-research-refresh-console.html"), "npm run market:verify available before outbound"),
@@ -102,8 +104,12 @@ const gates = [
   gate("DNS verifier", exists("scripts/verify-domain-email-dns.mjs"), "npm run launch:verify-dns available after domain purchase"),
   gate("Static bundle fallback", exists("scripts/build-static-launch-bundle.mjs") && exists("ops/static-launch-bundle-console.html"), "static host fallback is available"),
   gate("Delivery workspace", exists("scripts/create-customer-workspace.mjs"), "npm run delivery:workspace available"),
+  gate("Delivery verifier", exists("scripts/verify-delivery-readiness.mjs"), "npm run delivery:verify checks first paid audit gates"),
   gate("Delivery dry run", exists("scripts/run-delivery-dry-run.mjs"), "npm run delivery:dry-run proves the first audit workflow"),
   gate("Outbound staging", exists("scripts/stage-approved-outbound.mjs") && exists("ops/outbound-recipient-approval-builder.html"), "approved messages can be staged outside the public repo"),
+  gate("Reply-to-close packet", exists("sales/reply-to-close-packet.md"), "approved reply templates exist for inbound prospect responses"),
+  gate("Daily revenue command", exists("sales/daily-revenue-command.md"), "one-screen revenue operating surface exists"),
+  gate("Payment link manifest", exists("sales/payment-link-manifest.template.json"), "non-secret checkout source template exists"),
   gate("Recipient candidates", hasRecipientCandidates(), "npm run outbound:verify checks candidate readiness"),
   gate("Buyer summary", exists("delivery/customer-workspace-template/buyer-facing-summary.md"), "customer deliverable exists")
 ];

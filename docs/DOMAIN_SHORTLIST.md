@@ -18,7 +18,7 @@ TLD.
 
 Only buy a `$0.98` `.online` or `.site` domain as a temporary redirect or test.
 For a paid security audit offer, the low first-year price is not worth the lower
-trust signal.
+trust signal or the renewal jump.
 
 ## Avoid As Primary Brand
 
@@ -41,10 +41,16 @@ Current public Spaceship pricing observations:
 - `.app`: about $8.28 first year, renews around $14.49.
 - `.tools`: about $7.25 first year, renews around $28.98.
 - `.online`: about $0.98 first year, renews around $21.38.
+- `.site`: about $0.98 first year, renews around $21.38.
+- `.shop`: about $0.70 first year, renews around $31.05.
 - `.pro`: can be cheap first year, but renewal can be materially higher than `.com`.
 - `.us`: often cheaper than `.com`, with lower renewal risk than many novelty TLDs.
 - `.security`: not budget-friendly; current public pricing is far above the launch budget.
-- Spacemail Pro: about $18.88 for two years on current public pricing.
+- Spacemail Pro: one mailbox is enough for launch. Confirm the current cart price
+  before purchase because public email promos change.
+
+For the complete cost and repo separation decision, use
+`docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md`.
 
 Always confirm in the Spaceship cart before purchase because promo pricing and ICANN fees can change.
 

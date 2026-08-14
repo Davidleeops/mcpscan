@@ -24,7 +24,20 @@ Current pricing notes from Spaceship research:
 - `.dev` is around $8.28/year first year and renews around $12.42/year.
 - `.app` is around $8.28/year first year and renews around $14.49/year.
 - `.online` can be around $0.98 for the first year, but renewal is much higher and the trust signal is weaker.
-- Spacemail Pro is around $18.88 for 2 years for 1 mailbox, with aliases.
+- `.us` can be cheaper than `.com`, but it has US nexus and registration privacy tradeoffs.
+- Spacemail Pro has been seen around $18.88 for 2 years for 1 mailbox, with aliases. Confirm the current cart before purchase.
+
+Full launch cost plan:
+
+```text
+docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md
+```
+
+Public trust checklist:
+
+```text
+docs/PUBLIC_TRUST_CHECKLIST.md
+```
 
 ## Recommended Email
 
@@ -73,3 +86,5 @@ After Stripe and email exist, update `landing/index.html`:
 ## Purchase Stop Point
 
 Domain and mailbox purchase require payment and account access. Do not automate purchase unless the owner is actively present in the Spaceship checkout session.
+
+If buying `.us`, confirm the founder is comfortable with the US nexus requirement and the domain registration privacy tradeoff before purchase.

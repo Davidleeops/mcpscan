@@ -8,7 +8,9 @@ Buy `getmcpscan.com` if Spaceship shows it available near normal `.com` pricing.
 
 If you want the cheapest credible option, buy `mcpscan.us` if Spaceship shows it available. It is a legitimate US-founder fallback and avoids the trust penalty of novelty TLDs.
 
-Avoid `.site`, `.online`, `.shop`, and similar near-dollar TLDs for the first paid security buyer. They save a few dollars but weaken trust.
+Avoid `.site`, `.online`, `.shop`, and similar near-dollar TLDs for the first paid security buyer. They save a few dollars up front, but they weaken trust and often renew for more than `.com` or `.us`.
+
+Important `.us` caveat: use `.us` only if the founder is comfortable with US nexus eligibility and the registration privacy tradeoff. It is still the cheapest credible fallback, but `.com` is cleaner for global B2B security buyers.
 
 ## Live Availability Snapshot
 
@@ -36,9 +38,14 @@ Checked through the domain availability tool on 2026-08-14:
 | `.us` at Spaceship or comparable registrar | Low single digits to about $8 depending on registrar | Lower renewal than most novelty TLDs | Legitimate for a US founder, less SaaS-native than `.com` |
 | `.xyz` at Spaceship | About $1 to $2 depending on promo | About $12 to $13 renewal | Cheap and developer-friendly, but the exact short name checked unavailable |
 | `.site` or `.online` at Spaceship | About $1 to $2 promo pricing | About $21 to $22 renewal | Cheap first year, weaker trust signal for B2B security |
+| `.shop` at Spaceship | About $1 promo pricing | About $31 renewal | Not a good fit for a security audit brand |
 | Spacemail Pro | About $18.88 for 2 years | Check checkout before purchase | One mailbox with aliases is enough for launch |
 
 Sources checked on 2026-08-14: Spaceship domain pricing, Spaceship promo terms, Spaceship registrar prices on TLD-List, TLDSpy Spaceship pricing, Spacemail pricing, and the live domain availability checker.
+
+The full launch cost and infrastructure decision lives in `docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md`.
+
+The public trust launch checklist lives in `docs/PUBLIC_TRUST_CHECKLIST.md`.
 
 ## Buying Rule
 

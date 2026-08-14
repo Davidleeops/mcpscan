@@ -21,6 +21,9 @@ It points to every founder click gate:
 5. npm publish console
 6. Paid-audit delivery console
 7. Verification console: `verification-console.html`
+8. Cost and infrastructure plan: `docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md`
+9. Daily revenue command: `sales/daily-revenue-command.md`
+10. Reply-to-close packet: `sales/reply-to-close-packet.md`
 
 GitHub issue action board:
 
@@ -40,6 +43,10 @@ Hard rules:
 - Do not store customer secrets, private configs, customer data, or final private reports in the public repo.
 - Do not send outbound from `audit@getmcpscan.com` until MX, SPF, DKIM, and DMARC pass.
 - Do not publish npm packages until npm login and 2FA/OTP are confirmed.
+- Do not buy a novelty promo TLD as the primary security brand unless this is
+  intentionally only a temporary redirect.
+- Do not send replies from `sales/reply-to-close-packet.md` until exact final
+  content is approved in the same turn.
 
 Positioning:
 

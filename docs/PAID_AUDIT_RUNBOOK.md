@@ -84,7 +84,7 @@ Capture the command used in internal notes.
 Example pattern:
 
 ```bash
-mcpscan scan --config audits/customer-name/input/mcp-config.json --output audits/customer-name/output/mcpscan-results.json
+mcpscan scan audits/customer-name/input/mcp-config.json --output audits/customer-name/output/mcpscan-results.json
 ```
 
 If the installed command or flags differ, use the equivalent documented command and record the exact version.
@@ -203,6 +203,20 @@ Before delivery, verify:
 - Out-of-scope items are clearly marked.
 - The report matches the purchased scope.
 - The findings call link is included if applicable.
+
+Use these workspace artifacts before final delivery:
+
+- `client-acceptance.md`
+- `evidence-register.csv`
+- `redaction-checklist.md`
+- `qa-signoff.md`
+- `retention-and-deletion-log.md`
+
+Run:
+
+```bash
+npm run delivery:verify
+```
 
 ## Step 11: Deliver
 

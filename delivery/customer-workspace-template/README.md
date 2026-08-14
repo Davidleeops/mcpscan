@@ -49,17 +49,25 @@ customer-workspace/
 1. Confirm payer, audit owner, security owner, package, and delivery deadline.
 2. Confirm scope and exclusions.
 3. Confirm secure handoff path.
-4. Store only sanitized configs unless a private handoff path is approved.
-5. Run MCPScan and save raw outputs in `03-scan-output/`.
-6. Fill `findings-tracker.csv`.
-7. Draft `report-template.md`.
-8. Run a second review pass for severity, proof, and remediation clarity.
-9. Deliver the report PDF/Markdown plus the short buyer summary.
-10. Schedule the included findings call or re-scan if the package includes it.
+4. Complete `client-acceptance.md`.
+5. Store only sanitized configs unless a private handoff path is approved.
+6. Run MCPScan and save raw outputs in `03-scan-output/`.
+7. Fill `evidence-register.csv`.
+8. Fill `findings-tracker.csv`.
+9. Draft `report-template.md`.
+10. Complete `redaction-checklist.md` and `qa-signoff.md`.
+11. Initialize `retention-and-deletion-log.md`.
+12. Deliver the report PDF/Markdown plus the short buyer summary.
+13. Schedule the included findings call or re-scan if the package includes it.
 
 ## Required Artifacts
 
 - Completed `intake-checklist.md`
+- Completed `client-acceptance.md`
+- Completed `evidence-register.csv`
+- Completed `redaction-checklist.md`
+- Completed `qa-signoff.md`
+- Completed `retention-and-deletion-log.md`
 - Completed `findings-tracker.csv`
 - Final report from `report-template.md`
 - Delivery note from `delivery-email-cover.md`

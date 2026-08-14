@@ -5,7 +5,7 @@
   "description": "MCPScan monorepo for the MCP security scanner CLI.",
   "license": "MIT",
   "scripts": {
-    "build": "npm run build -ws --if-present",
+    "build": "npm run build --workspaces --if-present",
     "clean": "rm -rf packages/shared/dist packages/cli/dist packages/shared/tsconfig.tsbuildinfo packages/cli/tsconfig.tsbuildinfo",
     "prepack": "npm run clean && npm run build && npm test",
     "pack:cli": "npm pack --dry-run -w mcpscan",
@@ -23,10 +23,11 @@
     "outbound:verify": "node scripts/verify-outbound-readiness.mjs",
     "outbound:queue": "node scripts/generate-outbound-approval-queue.mjs",
     "release:preflight": "node scripts/prepare-npm-release.mjs",
-    "test": "npm run test -ws --if-present",
-    "typecheck": "npm run build -w @mcpscan/shared && npm run typecheck -ws --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run build -w @mcpscan/shared && npm run typecheck --workspaces --if-present",
     "writing:check": "node scripts/check-writing-rules.mjs",
     "delivery:workspace": "node scripts/create-customer-workspace.mjs",
+    "delivery:verify": "node scripts/verify-delivery-readiness.mjs",
     "delivery:dry-run": "node scripts/run-delivery-dry-run.mjs",
     "launch:status": "node scripts/show-launch-status.mjs",
     "launch:status:live": "node scripts/show-launch-status.mjs --live"
@@ -37,6 +38,6 @@
   ],
   "devDependencies": {
     "typescript": "^5.5.4",
-    "vitest": "^2.1.1"
+    "vitest": "^4.1.10"
   }
 }
