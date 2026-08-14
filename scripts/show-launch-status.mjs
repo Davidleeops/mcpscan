@@ -61,6 +61,38 @@ function hasContactRoutes() {
   return exists("sales/first-10-contact-routes-2026-08-14.csv");
 }
 
+function parseJson(file) {
+  try {
+    return JSON.parse(read(file));
+  } catch {
+    return null;
+  }
+}
+
+function hasFilledApprovalStatus() {
+  if (!exists("ops/founder-approval-status.json")) return false;
+  const status = parseJson("ops/founder-approval-status.json");
+  if (!status) return false;
+  const requiredBooleans = [
+    "domainPurchased",
+    "mailboxCreated",
+    "mxConfigured",
+    "spfConfigured",
+    "dkimConfigured",
+    "dmarcConfigured",
+    "stripeLinksVerified",
+    "founderReturnPacketApproved",
+    "landingLinksApplied",
+    "firstTenRoutePacketApproved"
+  ];
+  return requiredBooleans.every((key) => typeof status[key] === "boolean");
+}
+
+function getApprovalStatusState() {
+  if (hasFilledApprovalStatus()) return { state: "READY", detail: "ops/founder-approval-status.json is present and structurally valid" };
+  return { state: "INFO", detail: "copy template after founder clicks if you want a public-safe tracker" };
+}
+
 function getLiveActionsState() {
   if (!live) return null;
   try {
@@ -101,6 +133,7 @@ const customDomain = hasCustomDomain();
 const securityContact = hasSecurityContact();
 const liveActions = getLiveActionsState();
 const npmAuth = getNpmAuthState();
+const approvalStatus = getApprovalStatusState();
 
 const gates = [
   gate("Writing rule", !hasBannedPunctuation(), "no em dash in scanned launch artifacts"),
@@ -108,6 +141,8 @@ const gates = [
   gate("Final click path", exists("ops/final-founder-click-console.html") && exists("docs/FINAL_FOUNDER_CLICK_PATH.md"), "founder sequence exists"),
   gate("Cost plan", exists("docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md"), "domain, mailbox, repo, and infra cost plan exists"),
   gate("Public trust checklist", exists("docs/PUBLIC_TRUST_CHECKLIST.md"), "pre-outbound public trust checklist exists"),
+  gate("Approval status template", exists("ops/founder-approval-status.template.json"), "public-safe founder gate tracker template exists"),
+  { label: "Filled approval status", state: approvalStatus.state, detail: approvalStatus.detail },
   gate("Billing unblock path", exists("ops/github-actions-billing-console.html") && exists("docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md"), "GitHub billing guide exists"),
   ...(liveActions ? [{ label: "GitHub Actions live", state: liveActions.state, detail: liveActions.detail }] : []),
   gate("Market source verifier", exists("scripts/verify-market-sources.mjs") && exists("ops/market-research-refresh-console.html"), "npm run market:verify available before outbound"),

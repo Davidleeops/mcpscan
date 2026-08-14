@@ -19,6 +19,12 @@ ops/recipient-finder-console.html
 sales/recipient-approval-packet-2026-08-14.md
 ```
 
+Public-safe founder gate tracker:
+
+```text
+ops/founder-approval-status.template.json
+```
+
 ## Open Gates
 
 | Issue | Gate | Console | Completion Proof |

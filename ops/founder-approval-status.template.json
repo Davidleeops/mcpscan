@@ -1,0 +1,26 @@
+{
+  "generatedFor": "MCPScan first revenue launch",
+  "updatedAt": "{{iso_timestamp}}",
+  "domain": "{{chosen_domain}}",
+  "mailbox": "audit@{{chosen_domain}}",
+  "securityAlias": "security@{{chosen_domain}}",
+  "helloAlias": "hello@{{chosen_domain}}",
+  "domainPurchased": false,
+  "mailboxCreated": false,
+  "mxConfigured": false,
+  "spfConfigured": false,
+  "dkimConfigured": false,
+  "dmarcConfigured": false,
+  "stripeQuickAuditLink": "{{stripe_quick_audit_payment_link}}",
+  "stripeLaunchAuditLink": "{{stripe_launch_audit_payment_link}}",
+  "stripeEnterpriseReadinessLink": "{{stripe_enterprise_readiness_payment_link}}",
+  "stripeLinksVerified": false,
+  "founderReturnPacketApproved": false,
+  "landingLinksApplied": false,
+  "firstTenRoutePacketApproved": false,
+  "notes": [
+    "Keep passwords, API keys, Stripe secret keys, customer data, and mailbox credentials out of this file.",
+    "This tracker is public-safe only when it contains public domain, public mailbox, public aliases, and public Stripe Payment Link URLs.",
+    "Do not set firstTenRoutePacketApproved to true until the exact route and exact message blocks are approved in the same turn."
+  ]
+}

@@ -172,6 +172,7 @@ const requiredFiles = [
   "ops/revenue-cadence-console.html",
   "ops/github-actions-billing-console.html",
   "ops/npm-publish-console.html",
+  "ops/founder-approval-status.template.json",
   "ops/delivery-console.html",
   "ops/customer-comms-console.html",
   "ops/discovery-console.html",

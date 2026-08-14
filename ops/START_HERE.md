@@ -24,6 +24,7 @@ It points to every founder click gate:
 8. Cost and infrastructure plan: `docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md`
 9. Daily revenue command: `sales/daily-revenue-command.md`
 10. Reply-to-close packet: `sales/reply-to-close-packet.md`
+11. Public-safe founder status tracker: `ops/founder-approval-status.template.json`
 
 GitHub issue action board:
 
@@ -35,6 +36,12 @@ Founder approval packet:
 
 ```text
 ops/FOUNDER_APPROVAL_PACKET.md
+```
+
+Founder approval status template:
+
+```text
+ops/founder-approval-status.template.json
 ```
 
 Hard rules:
