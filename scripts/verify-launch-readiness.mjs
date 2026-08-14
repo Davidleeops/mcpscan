@@ -232,6 +232,7 @@ const requiredFiles = [
   "docs/MARKET_REALITY_BRIEF_2026-08-14.md",
   "docs/MARKET_PULSE_REFRESH_2026-08-14.md",
   "docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md",
+  "docs/OBJECTIVE_COMPLETION_AUDIT_2026-08-14.md",
   "sales/buyer-intent-map-2026-08-14.md",
   "sales/first-account-dossier-2026-08-14.md",
   "sales/first-account-dossier-2026-08-14.csv",
