@@ -28,6 +28,7 @@ const requiredOutboundFiles = [
   "scripts/build-first-10-route-approval-packet.mjs",
   "scripts/generate-outbound-approval-queue.mjs",
   "scripts/stage-approved-route-packet.mjs",
+  "scripts/simulate-first-10-route-staging.mjs",
   "scripts/stage-approved-outbound.mjs",
   "scripts/open-first-10-outbound-approval.mjs",
   "scripts/open-first-send-readiness.mjs",
