@@ -404,7 +404,8 @@ if (exists("scripts/open-next-founder-action.mjs")) {
 
   const nextActionSafetyMarkers = [
     "approval-gated",
-    "does not buy, publish, send, apply, or create customer files"
+    "does not buy, publish, send, apply, or create customer files",
+    "npm run launch:post-click-bundle"
   ];
   const missingNextActionSafetyMarkers = nextActionSafetyMarkers.filter((marker) => !nextAction.includes(marker));
   results.push(
@@ -446,7 +447,8 @@ if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-retu
     "npm run launch:verify -- --domain",
     "npm run launch:status:live",
     "Mail provider:",
-    "mailProvider"
+    "mailProvider",
+    "npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider {{zoho_or_google_or_spacemail}}"
   ];
   const missingReturnReviewCommands = requiredReturnReviewCommands.filter((command) => !returnReview.includes(command));
   results.push(
