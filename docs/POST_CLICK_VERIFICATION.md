@@ -12,29 +12,51 @@ This command verifies the launch state. It does not buy domains, create Stripe l
 npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt
 ```
 
+## Apply And Verify In One Run
+
+After the founder has approved the exact return packet and the Stripe QA evidence JSON exists, use:
+
+```text
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
+```
+
 If Spacemail gives you a DKIM selector:
 
 ```text
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --dkim-selector {{dkim_selector}}
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --dkim-selector {{dkim_selector}}
 ```
 
 Use strict mode only after DNS has propagated and the custom domain is expected to be fully live:
 
 ```text
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --dkim-selector {{dkim_selector}} --strict true
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --dkim-selector {{dkim_selector}} --strict true
 ```
 
 ## What It Runs
 
+- optional return-packet apply step
 - Stripe Payment Link verification
-- DNS and mailbox verification
+- Stripe checkout QA evidence verification when `--qa-file` is provided
+- DNS and mailbox verification, unless explicitly skipped
 - writing rule check
-- launch verification against the chosen domain
+- launch verification against the chosen domain, unless explicitly skipped
 - launch status
+
+## Partial Checks
+
+Use these only while waiting for DNS propagation or while testing the handoff parser:
+
+```text
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --skip-dns true
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --skip-dns true --skip-launch true
+```
+
+Strict mode requires Stripe QA evidence and should not be used with missing live DNS.
 
 ## Stop Conditions
 
 - Do not run strict mode before DNS has propagated.
+- Do not use `--apply true` until the founder has approved the exact return packet.
 - Do not use test Stripe links on the public landing page.
 - Do not send outbound until mailbox authentication passes and exact messages are approved.
 - Do not put mailbox passwords, Stripe secret keys, or customer data in the return packet.

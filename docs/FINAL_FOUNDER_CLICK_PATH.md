@@ -14,7 +14,11 @@ Public trust checklist: `docs/PUBLIC_TRUST_CHECKLIST.md`.
 
 After the external account clicks, use `ops/founder-return-packet.html` to paste the purchased domain, mailbox, aliases, and Stripe links into one approval message.
 
-After that message is approved, Codex can run `npm run launch:apply-return-packet -- --file /path/to/approved-return-packet.txt`.
+After that message is approved, Codex can run the full post-click handoff:
+
+```text
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
+```
 
 The approved return-packet command writes `ops/founder-approval-status.json` automatically. The filled tracker is ignored by git by default. Do not add passwords, API keys, mailbox credentials, Stripe secret keys, or customer data.
 
@@ -70,10 +74,10 @@ npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --upd
 npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status
 ```
 
-After founder clicks exist, apply the return packet and refresh public-safe approval status:
+After founder clicks exist, apply the return packet, verify Stripe QA evidence, verify DNS, and refresh public-safe approval status:
 
 ```text
-npm run launch:apply-return-packet -- --file /path/to/approved-return-packet.txt
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 npm run launch:status
 ```
 
