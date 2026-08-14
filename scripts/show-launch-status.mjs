@@ -177,6 +177,7 @@ const gates = [
   gate("Delivery dry run", exists("scripts/run-delivery-dry-run.mjs"), "npm run delivery:dry-run proves the first audit workflow"),
   gate("Outbound staging", exists("scripts/stage-approved-outbound.mjs") && exists("ops/outbound-recipient-approval-builder.html"), "approved messages can be staged outside the public repo"),
   gate("Send logging", exists("scripts/log-approved-send.mjs") && exists("docs/APPROVED_SEND_LOGGING.md"), "manual sends can create private follow-up schedules"),
+  gate("Batch send logging", exists("scripts/log-approved-route-batch-sends.mjs") && exists("docs/BATCH_SEND_LOGGING.md"), "first-10 route sends can be logged in one private batch"),
   gate("Follow-up composer", exists("scripts/compose-follow-up-approval.mjs") && exists("docs/FOLLOW_UP_APPROVAL_COMPOSER.md"), "private send logs can draft follow-up approval packets"),
   gate("Revenue snapshot", exists("scripts/build-revenue-snapshot.mjs") && exists("docs/PRIVATE_REVENUE_SNAPSHOT.md"), "private logs can produce daily due-follow-up snapshots"),
   gate("Outbound composer", exists("scripts/compose-final-outbound.mjs"), "npm run outbound:compose-final creates exact approval packets"),
