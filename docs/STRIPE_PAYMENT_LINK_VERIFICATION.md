@@ -36,7 +36,9 @@ npm run launch:verify-stripe -- --file /path/to/stripe-approval.txt --http --upd
 
 ## Checkout QA Evidence
 
-Copy `sales/stripe-checkout-qa-evidence.template.json` outside the repo, fill the final values from Stripe dashboard evidence, then run:
+Use `ops/stripe-payment-link-qa-console.html` to generate the QA evidence JSON and founder approval prompt from the exact live Stripe links. As a fallback, copy `sales/stripe-checkout-qa-evidence.template.json` outside the repo and fill the final values from Stripe dashboard evidence.
+
+Then run:
 
 ```text
 npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status

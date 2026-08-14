@@ -20,6 +20,11 @@
       .checks { display: grid; gap: 10px; }
       label { display: flex; gap: 10px; align-items: flex-start; }
       input[type="checkbox"] { margin-top: 5px; }
+      .form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .form label { display: grid; gap: 6px; font-weight: 700; }
+      .wide-field { grid-column: 1 / -1; }
+      input[type="text"], input[type="url"], input[type="email"] { width: 100%; min-height: 42px; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); font: inherit; padding: 10px 12px; background: #ffffff; }
+      input:focus { border-color: var(--accent); outline: 2px solid rgba(99, 91, 255, 0.16); }
       .actions { display: flex; flex-wrap: wrap; gap: 8px; }
       a.button, button { display: inline-flex; min-height: 38px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 12px; color: var(--accent); background: #ffffff; font-weight: 700; text-decoration: none; cursor: pointer; }
       a.button.primary, button.primary { color: #ffffff; background: var(--accent); }
@@ -27,6 +32,7 @@
       .status { min-height: 24px; font-weight: 700; }
       .status.good { color: var(--good); }
       .status.bad { color: var(--danger); }
+      @media (max-width: 860px) { .form { grid-template-columns: 1fr; } .wide-field { grid-column: auto; } }
     </style>
   </head>
   <body>
@@ -37,35 +43,136 @@
         <div class="actions"><a class="button primary" href="https://dashboard.stripe.com/payment-links" target="_blank" rel="noreferrer">Open Stripe links</a><a class="button" href="../sales/stripe-checkout-qa-evidence.template.json">QA evidence template</a><a class="button" href="../sales/stripe-payment-link-approval-packet-2026-08-14.md">Open packet</a><a class="button" href="../docs/STRIPE_PAYMENT_LINK_VERIFICATION.md">Verification guide</a><a class="button" href="founder-return-packet.html">Return packet</a></div>
       </header>
       <section class="warn"><h2>Do This Before Public Launch</h2><p>All three payment links must pass this checklist. Keep test links off the public landing page.</p></section>
-      <section><h2>Checklist</h2><div class="checks" id="checks"><label><input type="checkbox"> All three products exist: Quick, Launch, Enterprise.</label><label><input type="checkbox"> Prices are $750, $1,500, and $3,500, one-time.</label><label><input type="checkbox"> Links are live mode, not test mode.</label><label><input type="checkbox"> Automatic receipts are enabled.</label><label><input type="checkbox"> Customer name, email, company, and billing address are collected.</label><label><input type="checkbox"> Primary technical contact email is required.</label><label><input type="checkbox"> Checkout redirects to thank-you page.</label><label><input type="checkbox"> Terms, privacy, refund, and secure intake URLs are available.</label><label><input type="checkbox"> Descriptions say delivery begins after intake is complete.</label><label><input type="checkbox"> Refund terms match the public refund policy.</label></div><p id="status" class="status bad">Not ready yet.</p></section>
-      <section class="ready"><h2>Approval Prompt</h2><button class="primary" data-copy-target="approval">Copy prompt</button><pre id="approval">I approve applying these exact MCPScan launch values:
+      <section>
+        <h2>Live Values</h2>
+        <div class="form">
+          <label>Chosen domain<input id="domain" type="text" value="trymcpscan.com" autocomplete="off"></label>
+          <label>Primary mailbox<input id="mailbox" type="email" value="security@trymcpscan.com" autocomplete="off"></label>
+          <label class="wide-field">Quick Audit link<input id="quick" type="url" placeholder="https://buy.stripe.com/..."></label>
+          <label class="wide-field">Launch Audit link<input id="launch" type="url" placeholder="https://buy.stripe.com/..."></label>
+          <label class="wide-field">Enterprise Readiness link<input id="enterprise" type="url" placeholder="https://buy.stripe.com/..."></label>
+        </div>
+      </section>
 
-Domain: {{chosen_domain}}
-Primary mailbox: security@{{chosen_domain}}
-Audit alias: audit@{{chosen_domain}}
-Hello alias: hello@{{chosen_domain}}
-
-Stripe Payment Links:
-
-Quick Audit: {{quick_payment_link}}
-Launch Audit: {{launch_payment_link}}
-Enterprise Readiness: {{enterprise_payment_link}}
-
-Approved action:
-Apply these links to the public landing page, update the public contact email, add the custom domain file, update security/contact references, run verification, commit, and push.
-
-I also approve keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval.</pre></section>
-      <section><h2>Verification Commands</h2><button data-copy-target="verify-command">Copy format command</button><button data-copy-target="qa-command">Copy QA command</button><pre id="verify-command">npm run launch:verify-stripe -- --quick {{quick_payment_link}} --launch {{launch_payment_link}} --enterprise {{enterprise_payment_link}} --update-status</pre><pre id="qa-command">npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status</pre></section>
+      <section><h2>Checklist</h2><div class="checks" id="checks"><label><input id="products" type="checkbox"> All three products exist: Quick, Launch, Enterprise.</label><label><input id="prices" type="checkbox"> Prices are $750, $1,500, and $3,500, one-time.</label><label><input id="liveMode" type="checkbox"> Links are live mode, not test mode.</label><label><input id="receipts" type="checkbox"> Automatic receipts are enabled.</label><label><input id="fields" type="checkbox"> Customer name, email, company, and billing address are collected.</label><label><input id="technicalContact" type="checkbox"> Primary technical contact email is required.</label><label><input id="redirect" type="checkbox"> Checkout redirects to thank-you page.</label><label><input id="policies" type="checkbox"> Terms, privacy, refund, and secure intake URLs are available.</label><label><input id="intake" type="checkbox"> Descriptions say delivery begins after intake is complete.</label><label><input id="refund" type="checkbox"> Refund terms match the public refund policy.</label></div><div class="actions"><button class="primary" id="build" type="button">Build QA packet</button><button data-copy-target="qa-json">Copy QA JSON</button></div><p id="status" class="status bad">Not ready yet.</p></section>
+      <section class="ready"><h2>QA Evidence JSON</h2><pre id="qa-json">Fill the live values, complete the checklist, then build.</pre></section>
+      <section class="ready"><h2>Approval Prompt</h2><button class="primary" data-copy-target="approval">Copy prompt</button><pre id="approval">Fill the live values, complete the checklist, then build.</pre></section>
+      <section><h2>Verification Commands</h2><button data-copy-target="verify-command">Copy format command</button><button data-copy-target="qa-command">Copy QA command</button><pre id="verify-command">npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK --update-status</pre><pre id="qa-command">npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status</pre></section>
     </main>
     <script>
       const boxes = [...document.querySelectorAll("input[type=checkbox]")];
+      const fields = {
+        domain: document.getElementById("domain"),
+        mailbox: document.getElementById("mailbox"),
+        quick: document.getElementById("quick"),
+        launch: document.getElementById("launch"),
+        enterprise: document.getElementById("enterprise")
+      };
       const status = document.getElementById("status");
+      const approval = document.getElementById("approval");
+      const qaJson = document.getElementById("qa-json");
+      const verifyCommand = document.getElementById("verify-command");
+
+      function validDomain(value) {
+        return /^[a-z0-9.-]+\.[a-z]{2,}$/i.test(value);
+      }
+
+      function validEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      }
+
+      function validStripeUrl(value) {
+        return /^https:\/\/buy\.stripe\.com\/\S+$/i.test(value) && !/test_/i.test(value);
+      }
+
       function updateStatus() {
         const ready = boxes.every((box) => box.checked);
         status.textContent = ready ? "Ready for founder approval." : "Not ready yet.";
         status.className = ready ? "status good" : "status bad";
       }
       boxes.forEach((box) => box.addEventListener("change", updateStatus));
+      for (const input of Object.values(fields)) input.addEventListener("input", () => {
+        if (input === fields.domain && validDomain(fields.domain.value.trim())) {
+          fields.mailbox.value = "security@" + fields.domain.value.trim().toLowerCase();
+        }
+      });
+
+      function build() {
+        const domain = fields.domain.value.trim().toLowerCase();
+        const mailbox = fields.mailbox.value.trim();
+        const links = {
+          quick: fields.quick.value.trim(),
+          launch: fields.launch.value.trim(),
+          enterprise: fields.enterprise.value.trim()
+        };
+        const errors = [];
+        if (!validDomain(domain)) errors.push("Domain must look like trymcpscan.com.");
+        if (!validEmail(mailbox) || !mailbox.toLowerCase().endsWith("@" + domain)) errors.push("Mailbox must use the chosen domain.");
+        for (const [key, value] of Object.entries(links)) {
+          if (!validStripeUrl(value)) errors.push(key + " must be a live https://buy.stripe.com/... URL.");
+        }
+        if (!boxes.every((box) => box.checked)) errors.push("All checklist items must be checked from Stripe dashboard evidence.");
+        if (errors.length > 0) {
+          status.textContent = errors.join(" ");
+          status.className = "status bad";
+          return;
+        }
+
+        const evidence = {
+          generated: new Date().toISOString().slice(0, 10),
+          status: "founder-approved-evidence",
+          domain,
+          primaryMailbox: mailbox,
+          mode: "live",
+          currency: "USD",
+          automaticReceiptsEnabled: true,
+          customerNameRequired: true,
+          customerEmailRequired: true,
+          companyCollected: true,
+          billingAddressRequired: true,
+          primaryTechnicalContactEmailRequired: true,
+          confirmationRedirectUrl: `https://${domain}/thank-you.html`,
+          termsUrl: `https://${domain}/terms.html`,
+          privacyUrl: `https://${domain}/privacy.html`,
+          refundUrl: `https://${domain}/refund.html`,
+          secureIntakeUrl: `https://${domain}/secure-intake.html`,
+          links: [
+            { id: "quick", name: "MCP Quick Audit", priceUsd: 750, paymentType: "one-time", checkoutUrl: links.quick, descriptionMentionsIntakeStart: true },
+            { id: "launch", name: "MCP Launch Audit", priceUsd: 1500, paymentType: "one-time", checkoutUrl: links.launch, descriptionMentionsIntakeStart: true },
+            { id: "enterprise", name: "MCP Enterprise Readiness Audit", priceUsd: 3500, paymentType: "one-time", checkoutUrl: links.enterprise, descriptionMentionsIntakeStart: true }
+          ],
+          evidence: {
+            liveModeScreenshotOrDashboardChecked: true,
+            priceScreenshotOrDashboardChecked: true,
+            receiptScreenshotOrDashboardChecked: true,
+            fieldScreenshotOrDashboardChecked: true,
+            redirectScreenshotOrDashboardChecked: true
+          }
+        };
+
+        qaJson.textContent = JSON.stringify(evidence, null, 2);
+        approval.textContent = `I approve applying these exact MCPScan launch values:
+
+Domain: ${domain}
+Primary mailbox: ${mailbox}
+Audit alias: audit@${domain}
+Hello alias: hello@${domain}
+
+Stripe Payment Links:
+Quick Audit: ${links.quick}
+Launch Audit: ${links.launch}
+Enterprise Readiness: ${links.enterprise}
+
+Approved action:
+Apply these links to the public landing page, update the public contact email, add the custom domain file, update security/contact references, run verification, commit, and push.
+
+I also approve keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval.`;
+        verifyCommand.textContent = `npm run launch:verify-stripe -- --quick ${links.quick} --launch ${links.launch} --enterprise ${links.enterprise} --update-status`;
+        status.textContent = "Ready for founder approval.";
+        status.className = "status good";
+      }
+
+      document.getElementById("build").addEventListener("click", build);
       for (const button of document.querySelectorAll("[data-copy-target]")) {
         button.addEventListener("click", async () => {
           const target = document.getElementById(button.dataset.copyTarget);
