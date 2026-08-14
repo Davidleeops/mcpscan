@@ -25,7 +25,7 @@ Do not send external messages, start a live audit, publish packages, or accept s
 | 4 | Apply links | Paste real links into the command builder | `ops/approved-links-command-builder.html` | Landing page no longer uses placeholder checkout links |
 | 5 | Verify | Run launch verification | `ops/verification-console.html` | `npm run launch:verify -- --domain {{chosen_domain}}` has no domain or checkout warnings |
 | 6 | npm | Publish packages if desired | `ops/npm-publish-console.html` | npm shows version `0.1.0` for both packages |
-| 7 | Outbound | Approve exact recipients and exact final messages | `ops/outbound-approval-console.html` | Messages are approved in the same turn before send |
+| 7 | Outbound | Refresh market sources, then approve exact recipients and exact final messages | `ops/outbound-approval-console.html` | Messages are approved in the same turn before send |
 | 8 | Paid handoff | Use post-payment handoff after Stripe payment | `ops/post-payment-console.html` | Private workspace exists outside public repo |
 | 9 | Delivery | Deliver report and buyer summary from private workspace | `ops/delivery-console.html` | Report is delivered without customer secrets in public repo |
 
@@ -44,6 +44,12 @@ After DNS records exist, verify the custom domain and mailbox records:
 
 ```text
 npm run launch:verify-dns -- --domain {{chosen_domain}}
+```
+
+Before outbound, refresh the market source proof:
+
+```text
+npm run market:verify
 ```
 
 ## Current Local Proof Until Billing Is Fixed

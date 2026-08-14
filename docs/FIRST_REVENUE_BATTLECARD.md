@@ -37,6 +37,8 @@ MCP adoption is moving into production workflows while security review is still 
 - Terms: `https://davidleeops.github.io/mcpscan/terms.html`
 - Public repo: `https://github.com/Davidleeops/mcpscan`
 
+Before a new outbound batch, run `npm run market:verify` so the market-source links are current.
+
 ## Primary Offer
 
 Recommend `MCP Launch Audit` first.
