@@ -189,6 +189,7 @@ const gates = [
   gate("Stripe setup packet", exists("scripts/build-stripe-setup-packet.mjs") && exists("docs/STRIPE_SETUP_PACKET.md"), "npm run launch:stripe-packet creates exact product setup"),
   gate("Founder return parser", exists("ops/founder-return-packet.sample.txt") && exists("scripts/apply-founder-return-packet.mjs"), "npm run launch:verify-return-packet proves post-click parser shape"),
   gate("Founder return apply simulation", exists("scripts/simulate-founder-return-apply.mjs"), "npm run launch:simulate-return-apply proves approved values update a temp launch copy"),
+  gate("Launch rehearsal", exists("scripts/run-launch-rehearsal.mjs"), "npm run launch:rehearsal proves the non-live launch, outbound, revenue, and delivery chain"),
   gate("Stripe verifier", exists("scripts/verify-stripe-links.mjs"), "npm run launch:verify-stripe available after Payment Links exist"),
   gate("Stripe QA verifier", exists("scripts/verify-stripe-checkout-qa.mjs") && exists("sales/stripe-checkout-qa-evidence.template.json"), "npm run launch:verify-stripe-qa verifies checkout evidence"),
   gate("Post-click verifier", exists("scripts/run-post-click-verification.mjs") && exists("docs/POST_CLICK_VERIFICATION.md"), "one command verifies domain, mailbox, Stripe, writing, and launch after founder clicks"),
