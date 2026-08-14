@@ -14,6 +14,8 @@ Public trust checklist: `docs/PUBLIC_TRUST_CHECKLIST.md`.
 
 After the external account clicks, use `ops/founder-return-packet.html` to paste the purchased domain, mailbox, aliases, and Stripe links into one approval message.
 
+Use `docs/FOUNDER_RETURN_VALUES_CHECKLIST.md` before pasting values back. Return only public launch values and Stripe QA evidence. Do not return passwords, secret keys, credit card details, recovery codes, customer configs, customer data, or production secrets.
+
 After that message is approved, Codex can run the full post-click handoff:
 
 ```text

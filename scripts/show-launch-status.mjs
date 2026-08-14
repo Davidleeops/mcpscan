@@ -170,6 +170,7 @@ const gates = [
   gate("Founder click handoff", exists("ops/founder-click-handoff.html") && exists("docs/FOUNDER_CLICK_HANDOFF.md"), "single founder click sequence exists"),
   gate("Founder click launcher", exists("scripts/open-founder-clicks.mjs"), "npm run launch:open-founder opens the next-click pages"),
   gate("Founder return review launcher", exists("scripts/open-founder-return-review.mjs"), "npm run launch:open-return-review opens the post-click approval pages"),
+  gate("Founder return values checklist", exists("docs/FOUNDER_RETURN_VALUES_CHECKLIST.md"), "safe public values checklist exists before post-click apply"),
   gate("Final click path", exists("ops/final-founder-click-console.html") && exists("docs/FINAL_FOUNDER_CLICK_PATH.md"), "founder sequence exists"),
   gate("Cost plan", exists("docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md"), "domain, mailbox, repo, and infra cost plan exists"),
   gate("Public trust checklist", exists("docs/PUBLIC_TRUST_CHECKLIST.md"), "pre-outbound public trust checklist exists"),
