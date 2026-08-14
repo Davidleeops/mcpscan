@@ -180,7 +180,7 @@ const gates = [
   gate("Billing unblock path", exists("ops/github-actions-billing-console.html") && exists("docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md"), "GitHub billing guide exists"),
   gate("Actions rerun helper", exists("scripts/rerun-github-actions-after-unlock.mjs"), "npm run launch:rerun-actions re-runs failed CI and Pages jobs after billing unlock"),
   ...(liveActions ? [{ label: "GitHub Actions live", state: liveActions.state, detail: liveActions.detail }] : []),
-  gate("Market source verifier", exists("scripts/verify-market-sources.mjs") && exists("ops/market-research-refresh-console.html"), "npm run market:verify available before outbound"),
+  gate("Market source verifier", exists("scripts/verify-market-sources.mjs") && exists("ops/market-research-refresh-console.html") && exists("docs/MARKET_PULSE_REFRESH_2026-08-14.md"), "npm run market:verify checks current market pulse before outbound"),
   gate("Domain purchase packet", exists("ops/domain-mailbox-purchase-packet.html") && exists("docs/DOMAIN_MAILBOX_PURCHASE_PACKET.md"), "founder can approve one domain and one mailbox"),
   gate("Cheap launch packet console", exists("ops/cheap-launch-packet-console.html"), "single page opens default mcpscan.site DNS, Stripe, and CSV payloads"),
   gate("Cheap launch packet prep", exists("scripts/prepare-cheap-launch-packets.mjs"), "npm run launch:prepare-cheap builds DNS, Stripe, and CSV copy-paste payloads for mcpscan.site"),

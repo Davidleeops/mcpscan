@@ -226,6 +226,7 @@ const requiredFiles = [
   "docs/LAUNCH_COST_AND_INFRASTRUCTURE_PLAN_2026-08-14.md",
   "docs/PUBLIC_TRUST_CHECKLIST.md",
   "docs/MARKET_REALITY_BRIEF_2026-08-14.md",
+  "docs/MARKET_PULSE_REFRESH_2026-08-14.md",
   "sales/buyer-intent-map-2026-08-14.md",
   "sales/first-account-dossier-2026-08-14.md",
   "sales/first-account-dossier-2026-08-14.csv",

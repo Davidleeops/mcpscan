@@ -6,6 +6,7 @@ import path from "node:path";
 const root = process.cwd();
 const defaultFiles = [
   "docs/MARKET_REALITY_BRIEF_2026-08-14.md",
+  "docs/MARKET_PULSE_REFRESH_2026-08-14.md",
   "sales/buyer-intent-map-2026-08-14.md",
   "sales/first-account-dossier-2026-08-14.md"
 ];
