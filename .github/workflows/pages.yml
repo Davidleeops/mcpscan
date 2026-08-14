@@ -8,6 +8,7 @@ on:
       - "landing/**"
       - "packages/**"
       - "scripts/generate-sample-report.mjs"
+      - "scripts/check-writing-rules.mjs"
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/pages.yml"
@@ -35,6 +36,7 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      - run: npm run writing:check
       - run: npm run build
       - run: npm run landing:sample-report
       - uses: actions/configure-pages@v5

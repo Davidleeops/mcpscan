@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan GitHub Actions Billing Unblock</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #151719;
+        --muted: #5b6470;
+        --line: #d7dde3;
+        --panel: #ffffff;
+        --soft: #f5f7f9;
+        --accent: #0b6bcb;
+        --warn: #9a5a00;
+        --good: #0f7b4f;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--soft); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { width: min(960px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 48px; }
+      h1, h2, p { margin-top: 0; }
+      h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1; margin-bottom: 12px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      p, li { color: var(--muted); line-height: 1.5; }
+      section { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; margin-top: 16px; padding: 18px; }
+      .warn { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .ready { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+      a.button, button.copy { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 12px; color: var(--accent); background: #ffffff; font-weight: 700; text-decoration: none; cursor: pointer; }
+      pre { margin: 10px 0 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>GitHub Actions Billing Unblock</h1>
+        <p>GitHub is refusing to start CI and Pages jobs because the account is locked due to a billing issue. This is a founder account action, not a code failure.</p>
+      </header>
+      <section class="warn">
+        <h2>Founder Action</h2>
+        <ol>
+          <li>Open GitHub billing settings for the account or organization that owns <code>Davidleeops/mcpscan</code>.</li>
+          <li>Resolve the billing lock or update the payment method.</li>
+          <li>Return to the MCPScan Actions tab.</li>
+          <li>Re-run the latest failed CI workflow.</li>
+          <li>Re-run the latest failed Deploy Landing Page workflow if a public landing change was included.</li>
+        </ol>
+        <div class="actions">
+          <a class="button" href="https://github.com/settings/billing" target="_blank" rel="noreferrer">GitHub billing</a>
+          <a class="button" href="https://github.com/Davidleeops/mcpscan/actions" target="_blank" rel="noreferrer">MCPScan Actions</a>
+          <a class="button" href="../docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md" target="_blank" rel="noreferrer">Open guide</a>
+        </div>
+      </section>
+      <section class="ready">
+        <h2>Local Proof Command</h2>
+        <p>Use this until GitHub Actions can start again.</p>
+        <button class="copy" data-copy-target="local-proof">Copy command list</button>
+        <pre id="local-proof">npm ci
+npm run writing:check
+npm run launch:verify
+npm run clean
+npm run build
+npm run typecheck
+npm test
+npm audit --omit=dev
+npm pack --dry-run -w @mcpscan/shared
+npm pack --dry-run -w mcpscan</pre>
+      </section>
+    </main>
+    <script>
+      for (const button of document.querySelectorAll("[data-copy-target]")) {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          await navigator.clipboard.writeText(target.textContent.trim());
+          const label = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = label; }, 1200);
+        });
+      }
+    </script>
+  </body>
+</html>
