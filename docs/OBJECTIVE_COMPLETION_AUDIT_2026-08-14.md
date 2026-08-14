@@ -27,7 +27,7 @@ Best current positioning:
 | Return packet after clicks | `ops/founder-return-packet.html`, `ops/approved-links-command-builder.html`, `ops/founder-status-console.html`, `docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md`, `npm run launch:open-return-review`, `npm run launch:post-click-verify` | Ready |
 | First-revenue runway after live gates | `npm run launch:open-first-revenue`, `scripts/open-first-revenue-runway.mjs` | Ready |
 | Agentized swarm throughput model | `docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md`, `ops/swarm-throughput-console.html`, `npm run launch:open-swarm`, `npm run launch:verify` | Ready |
-| Outbound approval path | `ops/first-10-outbound-approval-console.html`, `sales/first-10-recipient-approval-packet-2026-08-14.md`, `sales/first-10-route-approval-packet-2026-08-14.md` | Ready |
+| Outbound approval path | `ops/first-10-outbound-approval-console.html`, `npm run outbound:stage-named-first-10`, `npm run outbound:stage-route-packet`, `npm run outbound:log-first-10-batch`, `sales/first-10-recipient-approval-packet-2026-08-14.md`, `sales/first-10-route-approval-packet-2026-08-14.md` | Ready |
 | Pre-send safety gates | `npm run outbound:send-gates`, `scripts/verify-first-send-gates.mjs` | Ready |
 | Reply-to-close path | `sales/reply-to-close-packet.md`, `npm run outbound:open-reply-close` | Ready |
 | Payment to delivery path | `ops/paid-audit-handoff-builder.html`, `npm run delivery:open-handoff`, `npm run delivery:handoff` | Ready |
@@ -74,7 +74,7 @@ Latest local readiness proof:
 
 ```text
 npm run launch:verify
-Summary: 213 passed, 3 expected founder-click warnings, 0 failures.
+Summary: 214 passed, 3 expected founder-click warnings, 0 failures.
 ```
 
 Current consolidated proof:

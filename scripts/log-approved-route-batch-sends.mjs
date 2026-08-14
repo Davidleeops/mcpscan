@@ -71,9 +71,9 @@ function runLogger(manifest, outputRoot, date) {
 }
 
 const args = parseArgs(process.argv.slice(2));
-if (!args.batch) fail("Missing --batch path to a staged first-10 route approval batch.");
+if (!args.batch) fail("Missing --batch path to a staged first-10 route or named-recipient approval batch.");
 
-const batchDir = assertOutsideRepo(args.batch, "approved route batch");
+const batchDir = assertOutsideRepo(args.batch, "approved first-10 batch");
 const outputRoot = assertOutsideRepo(args.root ?? path.join(os.homedir(), "MCPScan Revenue Logs"), "revenue logs");
 const date = args.date;
 if (date && !validDate(date)) fail("Send date must use YYYY-MM-DD.");
@@ -81,11 +81,11 @@ if (!fs.existsSync(batchDir)) fail(`Batch directory not found: ${batchDir}`);
 
 const manifests = findManifests(batchDir);
 if (manifests.length !== 10) {
-  fail(`Expected 10 route manifest files in the approved batch, found ${manifests.length}.`);
+  fail(`Expected 10 manifest files in the approved batch, found ${manifests.length}.`);
 }
 
 for (const manifest of manifests) runLogger(manifest, outputRoot, date);
 
-console.log("Logged approved first-10 route manual sends.");
+console.log("Logged approved first-10 manual sends.");
 console.log(outputRoot);
 console.log(`Send logs created: ${manifests.length}`);

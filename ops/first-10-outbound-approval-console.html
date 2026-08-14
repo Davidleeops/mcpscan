@@ -45,13 +45,16 @@
       <section class="ready"><h2>Named All-10 Approval</h2><p>Use this only after reviewing every named recipient and exact message in the named recipient packet. It approves private staging for manual sending review only.</p><pre>I approve staging all 10 exact MCPScan named-recipient outbound messages.
 Do not send automatically.
 
-npm run outbound:stage-first-10 -- --file /path/to/approved-first-10-named-recipient-packet.txt</pre></section>
+npm run outbound:stage-named-first-10 -- --file /path/to/approved-first-10-named-recipient-packet.txt</pre></section>
       <section class="ready"><h2>Route All-10 Approval</h2><p>Use this safer fallback if any named recipient feels uncertain. It approves the official contact routes instead of named people.</p><pre>I approve staging all 10 exact MCPScan route outbound messages.
 Do not send automatically.
 
 npm run outbound:stage-route-packet -- --file /path/to/approved-first-10-route-packet.txt</pre></section>
       <section class="ready"><h2>Pre-Send Readiness Launcher</h2><p>Open the founder status tracker, send gates, route approval packet, approval builder, send logging docs, and revenue snapshot path together before any manual send.</p><pre>npm run outbound:open-send-gates</pre></section>
       <section class="danger"><h2>Pre-Send Gate</h2><p>After outbound packets are staged outside the public repo, run this before any manual send from the launch mailbox. It must pass domain, mailbox DNS, Stripe QA, landing links, and founder approval tracker checks.</p><pre>npm run outbound:send-gates</pre></section>
+      <section class="ready"><h2>After Manual Send</h2><p>After the founder manually sends the approved route or named-recipient batch, log the private staged batch and build the revenue snapshot.</p><pre>npm run outbound:log-first-10-batch -- --batch /path/outside/public/repo/YYYY-MM-DD_first-10-named-approvals
+npm run outbound:log-first-10-batch -- --batch /path/outside/public/repo/YYYY-MM-DD_first-10-route-approvals
+npm run revenue:snapshot</pre></section>
       <section class="ready"><h2>Revenue Target</h2><p>Sell the first MCP Launch Audit at <strong>$1,500</strong>. Promise a fixed-scope readiness report within 5 business days after payment and complete safe intake.</p></section>
       <section class="wide"><h2>First 10 Routes</h2><table><tr><th>#</th><th>Account</th><th>Route</th><th>Source</th></tr><tr><td>1</td><td>Vapi</td><td>Trust center</td><td>security.vapi.ai</td></tr><tr><td>2</td><td>Retool</td><td>Vulnerability disclosure route</td><td>retool.com/vulnerability-reporting</td></tr><tr><td>3</td><td>Pipedream</td><td>Security inbox</td><td>pipedream.com/docs/privacy-and-security</td></tr><tr><td>4</td><td>Composio</td><td>Security inbox</td><td>GitHub security policy</td></tr><tr><td>5</td><td>PostHog</td><td>Security inbox</td><td>PostHog handbook</td></tr><tr><td>6</td><td>Statsig</td><td>Contact form</td><td>Statsig security page</td></tr><tr><td>7</td><td>Braintrust</td><td>Trust inbox</td><td>Braintrust trust center</td></tr><tr><td>8</td><td>Granola</td><td>Security inbox</td><td>Granola disclosure policy</td></tr><tr><td>9</td><td>Sentry</td><td>Security inbox</td><td>Sentry security page</td></tr><tr><td>10</td><td>Replit</td><td>Security inbox</td><td>Replit security docs</td></tr></table></section>
       <div class="grid">

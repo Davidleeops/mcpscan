@@ -253,7 +253,7 @@ const gates = [
   gate("Named recipient staging simulation", exists("scripts/simulate-first-10-named-recipient-staging.mjs"), "npm run outbound:simulate-named-staging proves first-10 named-recipient approvals stage outside the public repo without sending"),
   gate("First-send gate simulation", exists("scripts/simulate-first-send-gates.mjs"), "npm run outbound:simulate-send-gates proves route and named-recipient approval statuses can pass the pre-send gate"),
   gate("Send logging", exists("scripts/log-approved-send.mjs") && exists("docs/APPROVED_SEND_LOGGING.md"), "manual sends can create private follow-up schedules"),
-  gate("Batch send logging", exists("scripts/log-approved-route-batch-sends.mjs") && exists("docs/BATCH_SEND_LOGGING.md"), "first-10 route sends can be logged in one private batch"),
+  gate("Batch send logging", exists("scripts/log-approved-route-batch-sends.mjs") && exists("docs/BATCH_SEND_LOGGING.md"), "first-10 route or named-recipient sends can be logged in one private batch"),
   gate("Follow-up composer", exists("scripts/compose-follow-up-approval.mjs") && exists("docs/FOLLOW_UP_APPROVAL_COMPOSER.md"), "private send logs can draft follow-up approval packets"),
   gate("Revenue follow-up simulation", exists("scripts/simulate-revenue-follow-up-flow.mjs"), "npm run outbound:simulate-revenue-flow proves staged sends, revenue snapshot, and follow-up approval packets"),
   gate("Revenue snapshot", exists("scripts/build-revenue-snapshot.mjs") && exists("docs/PRIVATE_REVENUE_SNAPSHOT.md"), "private logs can produce daily due-follow-up snapshots"),

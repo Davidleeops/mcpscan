@@ -675,6 +675,35 @@ if (exists("scripts/open-first-revenue-runway.mjs") && exists("package.json") &&
   );
 }
 
+if (exists("scripts/open-first-10-outbound-approval.mjs") && exists("ops/first-10-outbound-approval-console.html") && exists("package.json")) {
+  const firstTenBatchPath = [
+    read("scripts/open-first-10-outbound-approval.mjs"),
+    read("scripts/open-first-send-readiness.mjs"),
+    read("scripts/log-approved-route-batch-sends.mjs"),
+    read("ops/first-10-outbound-approval-console.html"),
+    read("docs/BATCH_SEND_LOGGING.md"),
+    read("sales/daily-revenue-command.md"),
+    read("package.json")
+  ].join("\n");
+  const requiredFirstTenBatchMarkers = [
+    "outbound:stage-named-first-10",
+    "outbound:stage-route-packet",
+    "outbound:log-first-10-batch",
+    "outbound:send-gates",
+    "Do not send automatically",
+    "first-10-named-approvals",
+    "first-10-route-approvals",
+    "This command does not send messages",
+    "route or named-recipient"
+  ];
+  const missingFirstTenBatchMarkers = requiredFirstTenBatchMarkers.filter((marker) => !firstTenBatchPath.includes(marker));
+  results.push(
+    missingFirstTenBatchMarkers.length === 0
+      ? result("pass", "first-10 batch approval path", "route and named-recipient batches stage, gate, and log without sending")
+      : result("fail", "first-10 batch approval path", missingFirstTenBatchMarkers.join(", "))
+  );
+}
+
 if (
   exists("scripts/build-domain-dns-packet.mjs") &&
   exists("scripts/verify-domain-email-dns.mjs") &&

@@ -226,6 +226,8 @@ if (exists("ops/first-10-outbound-approval-console.html")) {
   const consoleHtml = fs.readFileSync(path.join(root, "ops/first-10-outbound-approval-console.html"), "utf8");
   results.push(consoleHtml.includes("first-10-recipient-approval-packet-2026-08-14.md") ? result("pass", "approval console named packet link", "named recipient packet is linked") : result("fail", "approval console named packet link", "missing"));
   results.push(consoleHtml.includes("I approve staging all 10 exact MCPScan named-recipient outbound messages.") ? result("pass", "approval console named all-10 phrase", "copyable phrase present") : result("fail", "approval console named all-10 phrase", "missing"));
+  results.push(consoleHtml.includes("outbound:stage-named-first-10") ? result("pass", "approval console named staging command", "clear named-recipient staging alias present") : result("fail", "approval console named staging command", "missing outbound:stage-named-first-10"));
+  results.push(consoleHtml.includes("outbound:log-first-10-batch") ? result("pass", "approval console batch logging command", "route and named batches use generic logging alias") : result("fail", "approval console batch logging command", "missing outbound:log-first-10-batch"));
   results.push(consoleHtml.includes("It does not send anything") ? result("pass", "approval console no-auto-send framing", "no-auto-send framing present") : result("fail", "approval console no-auto-send framing", "missing"));
 }
 

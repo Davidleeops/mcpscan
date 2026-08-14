@@ -27,7 +27,7 @@ Use this as the one-screen operating surface for first revenue.
 6. Ask for same-turn approval.
 7. Stage approved messages outside the public repo.
 8. Send manually from authenticated mailbox only after SPF, DKIM, and DMARC pass.
-9. Log single manual sends with `npm run outbound:log-send`, or first-10 route batches with `npm run outbound:log-route-batch`.
+9. Log single manual sends with `npm run outbound:log-send`, or first-10 batches with `npm run outbound:log-first-10-batch`.
 10. Log replies and use `sales/reply-to-close-packet.md`.
 11. Stage approved replies with `npm run outbound:stage-reply`.
 12. When payment clears, create the private delivery workspace.
@@ -90,7 +90,7 @@ npm run outbound:log-send -- --manifest /path/outside/public/repo/manifest.json
 After a manually sent first-10 route batch:
 
 ```text
-npm run outbound:log-route-batch -- --batch /path/outside/public/repo/YYYY-MM-DD_first-10-route-approvals
+npm run outbound:log-first-10-batch -- --batch /path/outside/public/repo/YYYY-MM-DD_first-10-route-approvals
 ```
 
 When a follow-up is due:

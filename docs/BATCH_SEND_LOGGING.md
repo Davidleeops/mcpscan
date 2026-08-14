@@ -1,32 +1,33 @@
 # Batch Send Logging
 
-Use this after all 10 approved first-wave route messages have been manually sent from the authenticated mailbox.
+Use this after all 10 approved first-wave route or named-recipient messages have been manually sent from the authenticated mailbox.
 
 ## Rule
 
-This command does not send messages. It only converts private staged route manifests into private send logs and follow-up schedules.
+This command does not send messages. It only converts private staged first-10 manifests into private send logs and follow-up schedules.
 
-## Log A First-10 Route Batch
+## Log A First-10 Batch
 
 ```text
-npm run outbound:log-route-batch -- --batch "/path/to/MCPScan Outbound Approvals/YYYY-MM-DD_first-10-route-approvals"
+npm run outbound:log-first-10-batch -- --batch "/path/to/MCPScan Outbound Approvals/YYYY-MM-DD_first-10-route-approvals"
+npm run outbound:log-first-10-batch -- --batch "/path/to/MCPScan Outbound Approvals/YYYY-MM-DD_first-10-named-approvals"
 ```
 
 Use an explicit send date when needed:
 
 ```text
-npm run outbound:log-route-batch -- --batch "/path/to/MCPScan Outbound Approvals/YYYY-MM-DD_first-10-route-approvals" --date YYYY-MM-DD
+npm run outbound:log-first-10-batch -- --batch "/path/to/MCPScan Outbound Approvals/YYYY-MM-DD_first-10-route-approvals" --date YYYY-MM-DD
 ```
 
 Custom private revenue-log root:
 
 ```text
-npm run outbound:log-route-batch -- --batch "/path/to/batch" --root "/path/to/MCPScan Revenue Logs"
+npm run outbound:log-first-10-batch -- --batch "/path/to/batch" --root "/path/to/MCPScan Revenue Logs"
 ```
 
 ## Output
 
-The command creates one private send log per route manifest, including:
+The command creates one private send log per approved manifest, including:
 
 - `send-log.json`
 - `follow-up-schedule.csv`
