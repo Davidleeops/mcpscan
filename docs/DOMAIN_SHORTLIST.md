@@ -16,9 +16,17 @@ Use `mcpscan.us` if you want the cheapest credible option. It is less global tha
 `.com`, but it is more credible for a B2B security offer than a novelty promo
 TLD.
 
-Only buy a `$0.98` `.online` or `.site` domain as a temporary redirect or test.
+Only buy a `$0.98` `.online` or `.site` domain as a temporary redirect, parking
+domain, or cash-conservation launch domain.
 For a paid security audit offer, the low first-year price is not worth the lower
 trust signal or the renewal jump.
+
+If you choose the about `$1` path anyway, search these in Spaceship:
+
+1. `getmcpscan.site`
+2. `getmcpscan.online`
+3. `trymcpscan.site`
+4. `trymcpscan.online`
 
 ## Avoid As Primary Brand
 
@@ -40,9 +48,9 @@ Current public Spaceship pricing observations:
 - `.dev`: about $8.28 first year, renews around $12.42.
 - `.app`: about $8.28 first year, renews around $14.49.
 - `.tools`: about $7.25 first year, renews around $28.98.
-- `.online`: about $0.98 first year, renews around $21.38.
-- `.site`: about $0.98 first year, renews around $21.38.
-- `.shop`: about $0.70 first year, renews around $31.05.
+- `.online`: about $0.98 first year plus ICANN fee, renews around $21.38 plus ICANN fee.
+- `.site`: about $0.98 first year plus ICANN fee, renews around $21.38 plus ICANN fee.
+- `.shop`: about $0.70 first year plus ICANN fee, renews around $31.05 plus ICANN fee.
 - `.pro`: can be cheap first year, but renewal can be materially higher than `.com`.
 - `.us`: often cheaper than `.com`, with lower renewal risk than many novelty TLDs.
 - `.security`: not budget-friendly; current public pricing is far above the launch budget.

@@ -8,7 +8,9 @@ Buy `getmcpscan.com` if Spaceship shows it available near normal `.com` pricing.
 
 If you want the cheapest credible option, buy `mcpscan.us` if Spaceship shows it available. It is a legitimate US-founder fallback and avoids the trust penalty of novelty TLDs.
 
-Avoid `.site`, `.online`, `.shop`, and similar near-dollar TLDs for the first paid security buyer. They save a few dollars up front, but they weaken trust and often renew for more than `.com` or `.us`.
+If the only goal is to spend about `$1` today, use `getmcpscan.site` or `getmcpscan.online` as a temporary redirect or parking domain. Do not make either one the main buyer-facing domain unless cash conservation matters more than trust on the first paid security sale.
+
+Avoid `.shop` and similar near-dollar TLDs for the first paid security buyer. They save a few dollars up front, but they weaken trust and often renew for more than `.com` or `.us`.
 
 Important `.us` caveat: use `.us` only if the founder is comfortable with US nexus eligibility and the registration privacy tradeoff. It is still the cheapest credible fallback, but `.com` is cleaner for global B2B security buyers.
 
@@ -28,6 +30,8 @@ Checked through the domain availability tool on 2026-08-14:
 | `getmcpscan.com` | Available in prior live check | About $9 to $12 | Best overall pick |
 | `trymcpscan.com` | Available in prior live check | About $9 to $12 | Good backup |
 | `usemcpscan.com` | Available in prior live check | About $9 to $12 | Good backup |
+| `getmcpscan.site` | Check in Spaceship cart | About $0.98 plus ICANN fee | Cheapest temporary redirect |
+| `getmcpscan.online` | Check in Spaceship cart | About $0.98 plus ICANN fee | Cheapest temporary redirect |
 
 ## Registrar Price Signals
 
@@ -37,8 +41,9 @@ Checked through the domain availability tool on 2026-08-14:
 | `.dev` at Spaceship | About $8.28 plus ICANN fee | About $12.42 renewal | Best developer-tool signal, but key names checked unavailable |
 | `.us` at Spaceship or comparable registrar | Low single digits to about $8 depending on registrar | Lower renewal than most novelty TLDs | Legitimate for a US founder, less SaaS-native than `.com` |
 | `.xyz` at Spaceship | About $1 to $2 depending on promo | About $12 to $13 renewal | Cheap and developer-friendly, but the exact short name checked unavailable |
-| `.site` or `.online` at Spaceship | About $1 to $2 promo pricing | About $21 to $22 renewal | Cheap first year, weaker trust signal for B2B security |
-| `.shop` at Spaceship | About $1 promo pricing | About $31 renewal | Not a good fit for a security audit brand |
+| `.online` at Spaceship | About $0.98 plus ICANN fee | About $21.38 renewal plus ICANN fee | Cheapest visible promo option, weaker trust signal for B2B security |
+| `.site` at Spaceship | About $0.98 plus ICANN fee | About $21.38 renewal plus ICANN fee | Cheapest visible promo option, weaker trust signal for B2B security |
+| `.shop` at Spaceship | About $0.70 plus ICANN fee | About $31.05 renewal plus ICANN fee | Lowest visible first-year price, not a good fit for a security audit brand |
 | Spacemail Pro | About $18.88 for 2 years | Check checkout before purchase | One mailbox with aliases is enough for launch |
 
 Sources checked on 2026-08-14: Spaceship domain pricing, Spaceship promo terms, Spaceship registrar prices on TLD-List, TLDSpy Spaceship pricing, Spacemail pricing, and the live domain availability checker.
@@ -51,12 +56,13 @@ The public trust launch checklist lives in `docs/PUBLIC_TRUST_CHECKLIST.md`.
 
 1. Search `getmcpscan.com` on Spaceship first.
 2. If it is available and standard-priced, buy it.
-3. If you want the cheapest acceptable option, search and buy `mcpscan.us`.
-4. If `getmcpscan.com` is unavailable at checkout, use `trymcpscan.com`.
-5. Buy one domain first.
-6. Create one mailbox first: `audit@{{chosen_domain}}`.
-7. Add aliases for `security@{{chosen_domain}}` and `hello@{{chosen_domain}}`.
-8. Do not use the mailbox for outbound until MX, SPF, DKIM, and DMARC pass.
+3. If you want the cheapest credible option, search and buy `mcpscan.us`.
+4. If you want the absolute cheapest today, search `getmcpscan.site` and `getmcpscan.online`, then buy one only if the cart is around `$1` and you accept it as a temporary redirect or low-cost launch domain.
+5. If `getmcpscan.com` is unavailable at checkout, use `trymcpscan.com`.
+6. Buy one domain first.
+7. Create one mailbox first: `audit@{{chosen_domain}}`.
+8. Add aliases for `security@{{chosen_domain}}` and `hello@{{chosen_domain}}`.
+9. Do not use the mailbox for outbound until MX, SPF, DKIM, and DMARC pass.
 
 ## After Purchase
 
