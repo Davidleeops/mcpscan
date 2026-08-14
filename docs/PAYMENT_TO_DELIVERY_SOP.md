@@ -17,9 +17,17 @@ Record:
 
 Do not store Stripe secret keys in the repo or customer workspace.
 
-## Step 2: Send Intake Start
+## Step 2: Create Private Workspace And Intake Draft
 
-Use `sales/customer-communications.md` and send the Payment Received / Intake Start message.
+Use the one-pass handoff command after exact values are approved:
+
+```text
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
+```
+
+This creates the private workspace, private work order, private pipeline status, and draft-only intake start message outside the public MCPScan repo.
+
+Review and approve the exact intake message before sending.
 
 Include:
 
@@ -28,7 +36,7 @@ Include:
 - reminder not to send production credentials or customer data through email or public issues
 - note that the delivery clock starts after intake is complete
 
-## Step 3: Create Private Workspace
+## Step 3: Review Private Handoff Output
 
 Default one-pass handoff after approval:
 
@@ -36,9 +44,9 @@ Default one-pass handoff after approval:
 npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
 ```
 
-The handoff creates the private workspace, first paid audit work order, handoff manifest, and private pipeline status files outside the public MCPScan repo. Output filenames include the date, customer slug, and package slug to prevent same-day customer overwrites.
+The handoff creates the private workspace, first paid audit work order, handoff manifest, private pipeline status files, and draft-only intake start message outside the public MCPScan repo. It refuses to overwrite existing same-day files for the same customer and package.
 
-Draft the post-payment intake message from the private pipeline status JSON:
+If you need to regenerate the post-payment intake message from the private pipeline status JSON:
 
 ```text
 npm run delivery:intake-message -- --file /path/outside/public/repo/pipeline-status/YYYY-MM-DD_customer_package_pipeline-status.json

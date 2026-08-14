@@ -131,6 +131,7 @@
           <a class="button" href="../sales/paid-audit-handoff-approval-packet.md" target="_blank" rel="noreferrer">Paid handoff approval</a>
           <a class="button" href="../sales/findings-call-scheduling.md" target="_blank" rel="noreferrer">Findings-call scheduling</a>
           <a class="button" href="../sales/customer-communications.md" target="_blank" rel="noreferrer">Customer messages</a>
+          <a class="button" href="../docs/PAID_AUDIT_START_AUTOMATION.md" target="_blank" rel="noreferrer">Start automation</a>
           <a class="button" href="delivery-console.html">Delivery console</a>
         </div>
       </section>
@@ -141,8 +142,9 @@
           <ol>
             <li>Confirm package and customer email from Stripe.</li>
             <li>Approve the paid handoff packet.</li>
-            <li>Run the one-pass handoff command outside the public repo.</li>
-            <li>Send Payment Received / Intake Start.</li>
+            <li>Run the one-pass handoff command from this repo with an output path outside the public repo.</li>
+            <li>Review the generated draft-only intake start message.</li>
+            <li>Approve the exact intake message before sending.</li>
             <li>Use a private handoff path before accepting sensitive materials.</li>
             <li>Use the generated private pipeline status as the paid delivery record.</li>
           </ol>
@@ -150,7 +152,7 @@
 
         <section>
           <h2>One-Pass Handoff</h2>
-          <p>Use after payment clears and exact handoff values are approved.</p>
+          <p>Use after payment clears and exact handoff values are approved. This also writes a draft-only intake message in the private customer communications folder.</p>
           <button class="copy" data-copy-target="handoff-command">Copy command</button>
           <pre id="handoff-command">npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt</pre>
         </section>

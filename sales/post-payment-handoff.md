@@ -12,14 +12,20 @@ Use this immediately after Stripe confirms payment. The goal is to move the buye
 ## Payment Confirmation Checklist
 
 1. Confirm the paid package and customer email from Stripe.
-2. Create a private customer workspace outside the public repo.
-3. Copy `delivery/customer-workspace-template/` into that private workspace.
+2. Run the approved one-pass handoff command from this repo with output outside the public repo.
+3. Review the generated private customer workspace, work order, pipeline status, and draft-only intake start message.
 4. Record package, delivery target, included findings call/re-scan, and any add-ons.
-5. Draft the Payment Received / Intake Start message from the private pipeline status JSON.
+5. Approve the exact Payment Received / Intake Start message before sending.
 6. If sensitive files are needed, send the Private Handoff Request message before accepting materials.
 7. Use the generated private pipeline status as the paid delivery record.
 
-Draft-only command:
+One-pass command:
+
+```text
+npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
+```
+
+Regenerate draft-only intake command if needed:
 
 ```text
 npm run delivery:intake-message -- --file /path/outside/public/repo/pipeline-status/YYYY-MM-DD_customer_package_pipeline-status.json

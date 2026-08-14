@@ -87,6 +87,12 @@ function runNode(args) {
   if (child.status !== 0) process.exit(child.status ?? 1);
 }
 
+function assertDoesNotExist(label, target) {
+  if (fs.existsSync(target)) {
+    throw new Error(`${label} already exists: ${target}`);
+  }
+}
+
 const args = parseArgs(process.argv.slice(2));
 const input = readInput(args.file);
 
@@ -107,9 +113,14 @@ const baseDir = assertOutsideRepo(args.root ?? path.join(os.homedir(), "MCPScan 
 const workspaceRoot = path.join(baseDir, "workspaces");
 const workOrderRoot = path.join(baseDir, "work-orders");
 const statusRoot = path.join(baseDir, "pipeline-status");
+const commsRoot = path.join(baseDir, "customer-comms");
 const customerSlug = slugify(customer);
 const packageSlug = slugify(packageName);
 const outputStem = `${date}_${customerSlug}_${packageSlug}`;
+const manifestPath = path.join(baseDir, `${outputStem}_handoff-manifest.json`);
+const pipelineStatusPath = path.join(statusRoot, `${outputStem}_pipeline-status.json`);
+const pipelineCsvPath = path.join(statusRoot, `${outputStem}_pipeline-status.csv`);
+const intakeDraftPath = path.join(commsRoot, `${outputStem}_intake-start-draft.txt`);
 
 if (!validPackage(packageName)) throw new Error("Package must mention Quick, Launch, or Enterprise.");
 if (!validEmail(contact) && !/^https:\/\/\S+$/i.test(contact)) throw new Error("Technical contact must be an email address or HTTPS URL.");
@@ -121,6 +132,11 @@ if (!packageSlug) throw new Error("Package must contain usable letters or number
 for (const [label, value] of Object.entries({ customer, packageName, contact, payment, date })) {
   if (hasPlaceholder(value)) throw new Error(`Replace template placeholder before paid handoff: ${label}.`);
 }
+
+assertDoesNotExist("Handoff manifest", manifestPath);
+assertDoesNotExist("Pipeline status JSON", pipelineStatusPath);
+assertDoesNotExist("Pipeline status CSV", pipelineCsvPath);
+assertDoesNotExist("Intake draft", intakeDraftPath);
 
 runNode([
   "scripts/create-customer-workspace.mjs",
@@ -156,9 +172,43 @@ const manifest = {
   payment,
   workspaceRoot,
   workOrderRoot,
+  customerCommsRoot: commsRoot,
   pipelineStatusRoot: statusRoot,
   noCustomerSecretsInPublicRepo: true
 };
+
+const intakeRecipient = validEmail(contact) ? contact : "[approve exact recipient email before sending]";
+const intakeDraft = [
+  "DRAFT ONLY. Do not send until the exact recipient and exact final content are approved in the same turn.",
+  "",
+  `To: ${intakeRecipient}`,
+  "Subject: MCPScan audit intake",
+  "",
+  "Hi there,",
+  "",
+  `Thanks for purchasing ${packageName} for ${customer}.`,
+  "",
+  "The audit clock starts after intake materials are complete. Please begin with sanitized materials:",
+  "",
+  "- MCP server/config list",
+  "- sanitized MCP configs",
+  "- admin policy screenshots or exports",
+  "- known launch/security review deadline",
+  "- any tools that should be explicitly out of scope",
+  "",
+  "Secure intake guidance:",
+  "https://davidleeops.github.io/mcpscan/secure-intake.html",
+  "",
+  "Please do not send production credentials, active tokens, customer data, or sensitive files through email or public issues. Please only submit systems and materials you are authorized to include in the agreed scope.",
+  "",
+  "Thanks,",
+  "MCPScan",
+  "",
+  "Private operator note:",
+  `Workspace root: ${workspaceRoot}`,
+  "Keep customer material outside the public repo.",
+  ""
+].join("\n");
 
 const pipelineStatus = {
   date,
@@ -169,9 +219,10 @@ const pipelineStatus = {
   paymentReference: payment,
   paymentStatus: "Paid",
   deliveryStatus: "Workspace created",
-  nextAction: "Send intake start, confirm secure handoff, and complete client acceptance.",
+  nextAction: "Review and approve the draft-only intake start message, confirm secure handoff, and complete client acceptance before sending.",
   workspaceRoot,
   workOrderRoot,
+  intakeDraftPath,
   publicRepoSecretStatus: "No customer secrets stored in public repo."
 };
 
@@ -187,6 +238,7 @@ const pipelineCsvHeader = [
   "next_action",
   "workspace_root",
   "work_order_root",
+  "intake_draft_path",
   "public_repo_secret_status"
 ];
 
@@ -202,17 +254,21 @@ const pipelineCsvRow = [
   pipelineStatus.nextAction,
   pipelineStatus.workspaceRoot,
   pipelineStatus.workOrderRoot,
+  pipelineStatus.intakeDraftPath,
   pipelineStatus.publicRepoSecretStatus
 ];
 
 fs.mkdirSync(baseDir, { recursive: true });
 fs.mkdirSync(statusRoot, { recursive: true });
-fs.writeFileSync(path.join(baseDir, `${outputStem}_handoff-manifest.json`), `${JSON.stringify(manifest, null, 2)}\n`);
-fs.writeFileSync(path.join(statusRoot, `${outputStem}_pipeline-status.json`), `${JSON.stringify(pipelineStatus, null, 2)}\n`);
+fs.mkdirSync(commsRoot, { recursive: true });
+fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+fs.writeFileSync(pipelineStatusPath, `${JSON.stringify(pipelineStatus, null, 2)}\n`);
 fs.writeFileSync(
-  path.join(statusRoot, `${outputStem}_pipeline-status.csv`),
+  pipelineCsvPath,
   `${pipelineCsvHeader.map(csvCell).join(",")}\n${pipelineCsvRow.map(csvCell).join(",")}\n`
 );
+fs.writeFileSync(intakeDraftPath, intakeDraft, "utf8");
 
 console.log("Created paid audit handoff.");
 console.log(baseDir);
+console.log(`Draft-only intake message: ${intakeDraftPath}`);

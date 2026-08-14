@@ -29,6 +29,7 @@ const requiredFiles = [
   "docs/METHODOLOGY_AND_LIMITATIONS.md",
   "docs/SEVERITY_RUBRIC.md",
   "docs/PAYMENT_TO_DELIVERY_SOP.md",
+  "docs/PAID_AUDIT_START_AUTOMATION.md",
   "scripts/create-first-paid-audit-work-order.mjs",
   "scripts/create-paid-audit-handoff.mjs",
   "scripts/compose-post-payment-intake.mjs",
@@ -76,7 +77,7 @@ if (exists("delivery/customer-workspace-template/retention-and-deletion-log.md")
   results.push(text.includes("deletion confirmation") && text.includes("retention target") ? result("pass", "retention and deletion", "retention and deletion fields present") : result("fail", "retention and deletion", "missing retention fields"));
 }
 
-const scanRoots = ["docs", "delivery", "scripts"];
+const scanRoots = ["docs", "delivery", "scripts", "sales", "ops"];
 const files = [];
 function walk(entry) {
   const full = path.join(root, entry);
