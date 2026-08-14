@@ -14,6 +14,8 @@ const reviewSurfaces = [
 ];
 
 const externalUrls = [
+  "https://www.spaceship.com/promos/",
+  "https://www.spaceship.com/domain-search/?query=getmcpscan.xyz",
   "https://www.spaceship.com/domain-search/?query=mcpscan.online",
   "https://dashboard.stripe.com/payment-links"
 ];
@@ -66,21 +68,23 @@ runStatus();
 
 console.log("");
 console.log("Next action ladder:");
-console.log("1. Run npm run launch:prepare-founder-clicks -- --domain mcpscan.online --mail-provider spacemail before buying anything.");
-console.log("2. Fill the generated cart proof from the visible Spaceship cart.");
-console.log("3. Buy mcpscan.online only if the cart stays at or below the approved cap and renewal is visible.");
-console.log("4. Create one Spacemail mailbox: security@mcpscan.online, with audit@ and hello@ aliases.");
-console.log("5. Create Stripe Payment Links and checkout QA evidence.");
-console.log("6. Paste exact values into the generated founder return packet.");
-console.log("7. Run npm run launch:post-click-bundle after return packet and QA evidence exist.");
-console.log("8. Run npm run launch:open-return-review after values exist.");
-console.log("9. Run npm run launch:publish-pages-fallback -- --wait true after approved values are applied.");
-console.log("10. Run npm run launch:full-proof -- --live true with the generated evidence files.");
-console.log("11. Run npm run launch:open-public-review before any public post.");
-console.log("12. Run npm run outbound:open-send-gates before any outreach.");
-console.log("13. Run npm run outbound:open-reply-close after any prospect reply.");
-console.log("14. Run npm run delivery:open-handoff after payment clears.");
-console.log("15. Clear GitHub billing later so normal CI resumes.");
+console.log("1. Open Spaceship promos and compare getmcpscan.xyz against mcpscan.online in the final cart.");
+console.log("2. Run npm run launch:prepare-founder-clicks -- --domain getmcpscan.xyz --mail-provider spacemail if the .xyz cart wins.");
+console.log("3. Run npm run launch:prepare-founder-clicks -- --domain mcpscan.online --mail-provider spacemail if the near-dollar .online cart wins.");
+console.log("4. Fill the generated cart proof from the visible Spaceship cart before buying anything.");
+console.log("5. Buy one domain only if the cart stays at or below the approved cap and renewal is visible.");
+console.log("6. Create one Spacemail mailbox on the chosen domain: security@domain, with audit@ and hello@ aliases.");
+console.log("7. Create Stripe Payment Links and checkout QA evidence.");
+console.log("8. Paste exact values into the generated founder return packet.");
+console.log("9. Run npm run launch:post-click-bundle after return packet and QA evidence exist.");
+console.log("10. Run npm run launch:open-return-review after values exist.");
+console.log("11. Run npm run launch:publish-pages-fallback -- --wait true after approved values are applied.");
+console.log("12. Run npm run launch:full-proof -- --live true with the generated evidence files.");
+console.log("13. Run npm run launch:open-public-review before any public post.");
+console.log("14. Run npm run outbound:open-send-gates before any outreach.");
+console.log("15. Run npm run outbound:open-reply-close after any prospect reply.");
+console.log("16. Run npm run delivery:open-handoff after payment clears.");
+console.log("17. Clear GitHub billing later so normal CI resumes.");
 
 console.log("");
 console.log("Hard rule:");

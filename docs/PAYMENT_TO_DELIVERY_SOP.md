@@ -12,15 +12,16 @@ Record:
 - buyer email
 - package purchased
 - amount paid
-- Stripe receipt URL or payment reference
+- paid Stripe payment intent, charge, invoice, checkout session, receipt URL, or approved manual reference
 - purchase timestamp
 
 Do not store Stripe secret keys in the repo or customer workspace.
+Do not use a Payment Link as payment evidence. A Payment Link proves checkout exists, not that payment cleared.
 
 Create public-safe payment evidence outside the repo:
 
 ```text
-npm run delivery:evidence -- --customer "{{customer_company}}" --package "{{package_name}}" --payment "{{stripe_payment_reference_or_receipt_url}}" --contact "{{technical_contact_email_or_secure_url}}" --safe-intake "/path/outside/public/repo/intake" --operator "{{initials}}"
+npm run delivery:evidence -- --customer "{{customer_company}}" --package "{{package_name}}" --payment "{{paid_stripe_payment_intent_charge_invoice_checkout_session_or_receipt_url}}" --contact "{{technical_contact_email_or_secure_url}}" --safe-intake "/path/outside/public/repo/intake" --operator "{{initials}}" --stripe-dashboard-payment-confirmed true --stripe-paid-object-type "{{payment_intent_charge_invoice_checkout_session_or_receipt}}"
 ```
 
 If you already have a filled evidence file, verify it:
@@ -29,7 +30,7 @@ If you already have a filled evidence file, verify it:
 npm run delivery:verify-payment -- --file /path/to/payment-confirmation-evidence.json
 ```
 
-This confirms the package, amount, payment reference, safe intake path, and no-secret flags before a private workspace is created.
+This confirms the package, amount, paid transaction evidence, safe intake path, Stripe dashboard confirmation, and no-secret flags before a private workspace is created.
 
 ## Step 2: Create Private Workspace And Intake Draft
 
@@ -39,7 +40,7 @@ Use the one-pass handoff command after exact values are approved:
 npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json
 ```
 
-This verifies the payment evidence again, confirms it matches the approved handoff packet, then creates the private workspace, private work order, private pipeline status, and draft-only intake start message outside the public MCPScan repo.
+This verifies the payment evidence again, confirms it matches the approved handoff packet, then creates the private workspace, private work order, private pipeline status, and draft-only intake start message outside the public MCPScan repo. The draft intake message uses the exact approved safe intake path from payment evidence.
 
 Review and approve the exact intake message before sending.
 

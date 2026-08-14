@@ -83,6 +83,8 @@ if (exists("sales/payment-confirmation-evidence.template.json")) {
   const requiredPaymentFields = [
     "paymentConfirmed",
     "approvedForPrivateWorkspace",
+    "stripeDashboardPaymentConfirmed",
+    "stripePaidObjectType",
     "noStripeSecrets",
     "noProductionSecrets",
     "noCustomerData",
@@ -99,10 +101,15 @@ if (exists("scripts/verify-payment-evidence.mjs") && exists("scripts/create-paym
   const paymentGate = `${read("scripts/verify-payment-evidence.mjs")}\n${read("scripts/create-payment-evidence.mjs")}`;
   const requiredManualPaymentMarkers = [
     "Manual payment evidence missing required field",
+    "Payment evidence cannot use a Payment Link only",
+    "stripeDashboardPaymentConfirmed",
+    "stripePaidObjectType",
     "approvedBy",
     "approvalTimestamp",
     "approvalSource",
-    "approved-by"
+    "approved-by",
+    "stripe-dashboard-payment-confirmed",
+    "stripe-paid-object-type"
   ];
   const missingManualPaymentMarkers = requiredManualPaymentMarkers.filter((marker) => !paymentGate.includes(marker));
   results.push(
@@ -118,13 +125,31 @@ if (exists("scripts/create-paid-audit-handoff.mjs")) {
     "Missing required --payment-evidence path",
     "scripts/verify-payment-evidence.mjs",
     "Payment evidence ${key} does not match",
-    "paymentEvidencePath"
+    "paymentEvidencePath",
+    "safeIntakePath",
+    "Payment reference cannot be a Payment Link only"
   ];
   const missingHandoffMarkers = requiredHandoffMarkers.filter((marker) => !handoff.includes(marker));
   results.push(
     missingHandoffMarkers.length === 0
       ? result("pass", "paid handoff payment gate", "handoff requires verified matching payment evidence")
       : result("fail", "paid handoff payment gate", missingHandoffMarkers.join(", "))
+  );
+}
+
+if (exists("scripts/compose-post-payment-intake.mjs")) {
+  const intakeComposer = read("scripts/compose-post-payment-intake.mjs");
+  const requiredComposerMarkers = [
+    "recipient-email",
+    "safeIntakePath",
+    "validEmail(contact) ? contact",
+    "To: ${recipient}"
+  ];
+  const missingComposerMarkers = requiredComposerMarkers.filter((marker) => !intakeComposer.includes(marker));
+  results.push(
+    missingComposerMarkers.length === 0
+      ? result("pass", "post-payment intake composer safety", "URL contacts require an approved recipient email and exact safe intake path")
+      : result("fail", "post-payment intake composer safety", missingComposerMarkers.join(", "))
   );
 }
 

@@ -1,0 +1,15 @@
+system,type,host,value,priority,notes
+GitHub Pages,A,@,185.199.108.153,,Apex domain
+GitHub Pages,A,@,185.199.109.153,,Apex domain
+GitHub Pages,A,@,185.199.110.153,,Apex domain
+GitHub Pages,A,@,185.199.111.153,,Apex domain
+GitHub Pages,AAAA,@,2606:50c0:8000::153,,Apex domain
+GitHub Pages,AAAA,@,2606:50c0:8001::153,,Apex domain
+GitHub Pages,AAAA,@,2606:50c0:8002::153,,Apex domain
+GitHub Pages,AAAA,@,2606:50c0:8003::153,,Apex domain
+GitHub Pages,CNAME,www,davidleeops.github.io,,www subdomain
+Spacemail,MX,@,mx1.spacemail.com,0,Mail exchanger
+Spacemail,MX,@,mx2.spacemail.com,0,Mail exchanger
+Spacemail,TXT,@,v=spf1 include:spf.spacemail.com ~all,,SPF
+Spacemail,TXT,_dmarc,v=DMARC1; p=none; rua=mailto:security@getmcpscan.xyz,,DMARC
+Spacemail,TXT,{{spacemail_dkim_selector}}._domainkey,{{spacemail_dkim_value}},,Replace with exact Spacemail DKIM value

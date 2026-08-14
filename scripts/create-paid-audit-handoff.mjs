@@ -44,7 +44,11 @@ function validPackage(value) {
 }
 
 function validPayment(value) {
-  return /^(pi_|cs_|plink_|ch_|checkout_|receipt_|manual_)/i.test(value) || /^https:\/\/\S*(stripe|receipt|invoice|checkout)\S*$/i.test(value);
+  return /^(pi_|cs_|ch_|receipt_|manual_)/i.test(value) || /^https:\/\/\S*(stripe|receipt|invoice|checkout)\S*$/i.test(value);
+}
+
+function paymentLinkOnly(value) {
+  return /^plink_/i.test(value) || /^https:\/\/buy\.stripe\.com\//i.test(value);
 }
 
 function validDate(value) {
@@ -150,7 +154,8 @@ const intakeDraftPath = path.join(commsRoot, `${outputStem}_intake-start-draft.t
 
 if (!validPackage(packageName)) throw new Error("Package must mention Quick, Launch, or Enterprise.");
 if (!validEmail(contact) && !/^https:\/\/\S+$/i.test(contact)) throw new Error("Technical contact must be an email address or HTTPS URL.");
-if (!validPayment(payment)) throw new Error("Payment reference must look like a Stripe reference, receipt URL, or approved manual reference.");
+if (paymentLinkOnly(payment)) throw new Error("Payment reference cannot be a Payment Link only. Use paid Stripe transaction evidence or approved manual evidence.");
+if (!validPayment(payment)) throw new Error("Payment reference must look like a paid Stripe reference, receipt URL, invoice URL, checkout session, or approved manual reference.");
 if (!validDate(date)) throw new Error("Date must use YYYY-MM-DD.");
 if (!customerSlug) throw new Error("Customer must contain usable letters or numbers.");
 if (!packageSlug) throw new Error("Package must contain usable letters or numbers.");
@@ -215,6 +220,7 @@ const manifest = {
   contact,
   payment,
   paymentEvidencePath: paymentEvidence.resolved,
+  safeIntakePath: paymentEvidence.data.safeIntakePath,
   workspaceRoot,
   workOrderRoot,
   customerCommsRoot: commsRoot,
@@ -242,7 +248,7 @@ const intakeDraft = [
   "- any tools that should be explicitly out of scope",
   "",
   "Secure intake guidance:",
-  "https://davidleeops.github.io/mcpscan/secure-intake.html",
+  paymentEvidence.data.safeIntakePath,
   "",
   "Please do not send production credentials, active tokens, customer data, or sensitive files through email or public issues. Please only submit systems and materials you are authorized to include in the agreed scope.",
   "",
@@ -263,6 +269,7 @@ const pipelineStatus = {
   technicalContact: contact,
   paymentReference: payment,
   paymentEvidencePath: paymentEvidence.resolved,
+  safeIntakePath: paymentEvidence.data.safeIntakePath,
   paymentStatus: "Paid",
   deliveryStatus: "Workspace created",
   nextAction: "Review and approve the draft-only intake start message, confirm secure handoff, and complete client acceptance before sending.",
@@ -280,6 +287,7 @@ const pipelineCsvHeader = [
   "technical_contact",
   "payment_reference",
   "payment_evidence_path",
+  "safe_intake_path",
   "payment_status",
   "delivery_status",
   "next_action",
@@ -297,6 +305,7 @@ const pipelineCsvRow = [
   pipelineStatus.technicalContact,
   pipelineStatus.paymentReference,
   pipelineStatus.paymentEvidencePath,
+  pipelineStatus.safeIntakePath,
   pipelineStatus.paymentStatus,
   pipelineStatus.deliveryStatus,
   pipelineStatus.nextAction,

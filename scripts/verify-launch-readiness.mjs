@@ -390,13 +390,15 @@ if (exists("SECURITY.md")) {
 if (exists("scripts/open-next-founder-action.mjs")) {
   const nextAction = read("scripts/open-next-founder-action.mjs");
   const requiredNextActionUrls = [
+    "https://www.spaceship.com/promos/",
+    "https://www.spaceship.com/domain-search/?query=getmcpscan.xyz",
     "https://www.spaceship.com/domain-search/?query=mcpscan.online",
     "https://dashboard.stripe.com/payment-links"
   ];
   const missingNextActionUrls = requiredNextActionUrls.filter((url) => !nextAction.includes(url));
   results.push(
     missingNextActionUrls.length === 0
-      ? result("pass", "launch next account links", "cheap default domain search and Stripe account links are present")
+      ? result("pass", "launch next account links", "promo page, renewal-balanced cheap search, near-dollar search, and Stripe account links are present")
       : result("fail", "launch next account links", missingNextActionUrls.join(", "))
   );
 
@@ -411,6 +413,7 @@ if (exists("scripts/open-next-founder-action.mjs")) {
     "does not buy, publish, send, apply, or create customer files",
     "npm run launch:prepare-founder-clicks",
     "npm run launch:post-click-bundle",
+    "getmcpscan.xyz",
     "mcpscan.online",
     "spacemail"
   ];
@@ -558,6 +561,8 @@ if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-retu
   const requiredPresetMarkers = [
     "Load cheap lane",
     "Load trust lane",
+    "getmcpscan.xyz",
+    "security@getmcpscan.xyz",
     "mcpscan.online",
     "security@mcpscan.online",
     "getmcpscan.com",
@@ -585,6 +590,8 @@ if (exists("ops/founder-status-console.html") && exists("docs/POST_PURCHASE_PUBL
     "--status-file ops/founder-approval-status.json",
     "MCPScan Founder Clicks/current/domain-cart-proof.json",
     "Download JSON",
+    "getmcpscan.xyz",
+    "security@getmcpscan.xyz",
     "mcpscan.online",
     "security@mcpscan.online",
     "stripe-checkout-qa-evidence.json",

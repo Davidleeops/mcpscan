@@ -35,7 +35,15 @@ function validEmail(value) {
 }
 
 function validPaymentReference(value) {
-  return /^(pi_|cs_|plink_|ch_|checkout_|receipt_|in_|manual_)/i.test(value) || /^https:\/\/\S*(stripe|receipt|invoice|checkout)\S*$/i.test(value);
+  return /^(pi_|cs_|ch_|receipt_|in_|manual_)/i.test(value) || /^https:\/\/\S*(stripe|receipt|invoice|checkout)\S*$/i.test(value);
+}
+
+function paymentLinkOnly(value) {
+  return /^plink_/i.test(value) || /^https:\/\/buy\.stripe\.com\//i.test(value);
+}
+
+function validStripePaidObjectType(value) {
+  return ["payment_intent", "charge", "invoice", "checkout_session", "receipt"].includes(String(value ?? "").trim());
 }
 
 function validDateOrTimestamp(value) {
@@ -134,6 +142,19 @@ if (data.paymentProvider !== "Stripe" && data.paymentProvider !== "Manual approv
   fail("Payment provider must be Stripe or Manual approved.");
 }
 
+if (paymentLinkOnly(data.paymentReference)) {
+  fail("Payment evidence cannot use a Payment Link only. Use a paid Stripe payment intent, charge, invoice, checkout session, receipt, or approved manual reference.");
+}
+
+if (data.paymentProvider === "Stripe") {
+  if (data.stripeDashboardPaymentConfirmed !== true) {
+    fail("Stripe payment evidence must confirm stripeDashboardPaymentConfirmed.");
+  }
+  if (!validStripePaidObjectType(data.stripePaidObjectType)) {
+    fail("Stripe payment evidence must include stripePaidObjectType: payment_intent, charge, invoice, checkout_session, or receipt.");
+  }
+}
+
 if (data.paymentProvider === "Manual approved" || /^manual_/i.test(data.paymentReference)) {
   const manualFields = ["approvedBy", "approvalTimestamp", "approvalSource"];
   for (const key of manualFields) {
@@ -179,7 +200,7 @@ for (const key of boolFields) {
 }
 
 pass("payment evidence is structurally valid");
-pass("payment reference is usable without storing Stripe secrets");
+pass("payment evidence proves a paid transaction without storing Stripe secrets");
 pass("package and amount meet the configured floor");
 pass("private workspace and safe intake gates are approved");
 pass("payment evidence is clear of obvious secret patterns");

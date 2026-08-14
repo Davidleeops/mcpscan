@@ -17,7 +17,7 @@ Use these candidates only for same-turn founder approval. Do not send outreach u
 | Pipedream | Tod Sacerdoti, CEO and Founder | Public profile connects Sacerdoti to Pipedream leadership, and Pipedream documents MCP connection. | High | https://pipedream.com/docs/connect/mcp |
 | Composio | Soham Ganatra, Founder | Public profile connects Ganatra to Composio and agent integrations, and Composio markets an MCP gateway. | High | https://composio.dev/mcp-gateway |
 | PostHog | James Hawkins, Co-founder and Co-CEO | Public leadership profile connects Hawkins to PostHog, and PostHog documents MCP. | High | https://posthog.com/docs/model-context-protocol |
-| Statsig | Current security, product, or platform owner after OpenAI acquisition | OpenAI announced the Statsig acquisition and Vijaye Raji's new CTO of Applications role, so founder-led outreach should be reapproved before use. | Medium | https://openai.com/index/vijaye-raji-to-become-cto-of-applications-with-acquisition-of-statsig/ |
+| Statsig | Current security, product, or platform owner after Amplitude ownership update | Statsig notes that the product, brand, and customer base are now part of Amplitude as of May 5, 2026, so founder-led outreach should route through the public contact path unless a current Statsig or Amplitude owner is approved. | Medium | https://www.statsig.com/blog/openai-acquisition |
 | Braintrust | Ankur Goyal, Founder and CEO | Public profile connects Goyal to Braintrust AI evaluation leadership, and Braintrust documents MCP. | High | https://www.braintrust.dev/docs/integrations/developer-tools/mcp |
 | Granola | Christopher Pedregal, Co-founder and CEO | Public profile connects Pedregal to Granola leadership, and Granola has public MCP launch material. | High | https://www.granola.ai/blog/granola-mcp |
 | Sentry | David Cramer, Co-founder and CPO | Public profile and public Sentry materials connect Cramer to Sentry product leadership. | High | https://mcp.sentry.dev/ |
@@ -28,7 +28,7 @@ Use these candidates only for same-turn founder approval. Do not send outreach u
 - Prefer LinkedIn or official company pages over personal email.
 - Do not use scraped personal data, brokered email databases, phone numbers, or automated LinkedIn messaging.
 - If a recipient feels too senior or too broad, use the official route packet instead of a direct recipient.
-- For Statsig, confirm whether the outbound should go through the current company contact route because the acquisition context may affect ownership.
+- For Statsig, confirm whether the outbound should go through the current company contact route because the Amplitude ownership context may affect ownership.
 - For Replit, approve either the platform engineering route or founder route before staging.
 
 ## Next Command

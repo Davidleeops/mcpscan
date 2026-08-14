@@ -11,7 +11,8 @@ const defaultFiles = [
   "docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md",
   "sales/buyer-intent-map-2026-08-14.md",
   "sales/first-account-dossier-2026-08-14.md",
-  "sales/first-10-contact-routes-2026-08-14.csv"
+  "sales/first-10-contact-routes-2026-08-14.csv",
+  "sales/internal-mcp-adopter-targets-2026-08-14.csv"
 ];
 
 function parseArgs(argv) {
@@ -220,9 +221,21 @@ if (fs.existsSync(path.join(root, "sales/first-10-contact-routes-2026-08-14.csv"
   const rows = parseCsvRows(read("sales/first-10-contact-routes-2026-08-14.csv"));
   const missingRouteFields = rows.filter((row) => !row.account || !row.channel || !row.contact_route_url || !row.source_url || !row.confidence);
   const highOrMedium = rows.filter((row) => ["High", "Medium"].includes(row.confidence)).length;
+  const unsafeVulnerabilityNotes = rows.filter((row) => /vulnerability/i.test(row.notes ?? "") && !/Do not|without authorization|authorized finding/i.test(row.notes ?? ""));
   results.push(rows.length === 10 ? result("pass", "first-10 contact route rows", "10 rows") : result("fail", "first-10 contact route rows", `${rows.length} rows`));
   results.push(missingRouteFields.length === 0 ? result("pass", "first-10 contact route fields", "all required fields present") : result("fail", "first-10 contact route fields", `${missingRouteFields.length} incomplete rows`));
   results.push(highOrMedium === 10 ? result("pass", "first-10 route confidence", "all routes are High or Medium confidence") : result("fail", "first-10 route confidence", `${highOrMedium}/10 High or Medium`));
+  results.push(unsafeVulnerabilityNotes.length === 0 ? result("pass", "first-10 vulnerability-disclosure safety", "security routes are framed as readiness inquiries unless authorized") : result("fail", "first-10 vulnerability-disclosure safety", unsafeVulnerabilityNotes.map((row) => row.account).join(", ")));
+}
+
+if (fs.existsSync(path.join(root, "sales/internal-mcp-adopter-targets-2026-08-14.csv"))) {
+  const rows = parseCsvRows(read("sales/internal-mcp-adopter-targets-2026-08-14.csv"));
+  const missingFields = rows.filter((row) => !row.segment || !row.trigger_source || !row.where_to_find_people || !row.buyer_titles || !row.pain_to_validate || !row.first_offer || !row.first_cta);
+  const requiredSegments = ["GitHub Copilot enterprise rollout", "Atlassian Rovo rollout", "Cursor or Claude Code team adoption", "ChatGPT or Claude connector rollout", "Payments or revenue-system agent access"];
+  const missingSegments = requiredSegments.filter((segment) => !rows.some((row) => row.segment === segment));
+  results.push(rows.length >= 10 ? result("pass", "internal MCP adopter segments", `${rows.length} rows`) : result("fail", "internal MCP adopter segments", `${rows.length} rows`));
+  results.push(missingFields.length === 0 ? result("pass", "internal MCP adopter fields", "all required fields present") : result("fail", "internal MCP adopter fields", `${missingFields.length} incomplete rows`));
+  results.push(missingSegments.length === 0 ? result("pass", "internal MCP adopter coverage", "Copilot, Rovo, coding-agent, connector, and payment lanes present") : result("fail", "internal MCP adopter coverage", missingSegments.join(", ")));
 }
 
 if (urls.length === 0) {

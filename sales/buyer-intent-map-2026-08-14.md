@@ -15,15 +15,15 @@ Purpose: give MCPScan a current, practical list of where buyers are showing pain
 | 5 | Teams want default-deny policies for local and remote MCP servers | GitHub MCP registry and managed settings docs | Platform engineering, security engineering | Offer managed-settings and allowlist readiness review |
 | 6 | MCP registries and allowlists are moving into CLI and IDE workflows | GitHub Copilot CLI allowlists and Visual Studio MCP server docs | Developer productivity, platform engineering | Offer workflow-by-workflow MCP registry and permission review |
 | 7 | ChatGPT, Claude, Copilot, Cursor, and IDE connector surfaces now need admin decisions | OpenAI connected apps docs, Anthropic connector docs, GitHub Copilot docs, Cursor forums | Workspace admin, AI governance, AppSec | Offer cross-workspace connector permission review |
-| 6 | Security guidance names auth, consent, tokens, and confused deputy risk | MCP security best practices, authorization spec, NSA, CoSAI | Product security, identity architect | Offer auth and trust-boundary review for MCP servers |
-| 7 | OWASP MCP Top 10 and cheat sheet turn MCP risks into checklist language | OWASP MCP Top 10, OWASP MCP Cheat Sheet, OWASP GenAI guide | AppSec, AI security lead | Offer review against token, scope, tool poisoning, audit, shadow MCP, and over-sharing risks |
-| 8 | Public CVEs and PoCs make MCP risk concrete | NVD, Check Point, Tenable, Cursor security discussions | Product security, developer tools, platform security | Offer scoped review without implying the buyer is affected |
-| 9 | Gateways are becoming a category | Tyk, Kong, Portkey, Citrix, Cloudflare | Security architecture, infrastructure | Offer pre-gateway assessment before buying or deploying a control plane |
-| 10 | AI data policy discussions now include downstream agent access | Netskope-style AI data violation reporting and agent governance commentary | AI governance, DLP, security operations | Offer downstream data exposure and audit-evidence review |
-| 11 | Open-source scanners are noisy and fragmented | Hacker News and GitHub scanner threads | CTO, security engineer | Offer expert-reviewed findings and buyer-safe reporting |
-| 12 | Slack, Atlassian, Stripe, Cloudflare, Supabase, Vercel, PagerDuty MCP tools touch high-value data and actions | Vendor docs and MCP directories | IT admin, platform lead, payments/security, SRE | Offer critical-tool lane audit by connected system |
-| 13 | Audit trails are now part of the buyer conversation | Compliance and identity vendors discussing MCP auditability | Compliance, security operations | Offer audit-ready evidence packet and remediation tracker |
-| 14 | Job posts mention MCP server security and AI integration review | AI platform/security engineer openings | Hiring manager, CTO | Offer quick external audit while the team hires |
+| 8 | Security guidance names auth, consent, tokens, and confused deputy risk | MCP security best practices, authorization spec, NSA, CoSAI | Product security, identity architect | Offer auth and trust-boundary review for MCP servers |
+| 9 | OWASP MCP Top 10 and cheat sheet turn MCP risks into checklist language | OWASP MCP Top 10, OWASP MCP Cheat Sheet, OWASP GenAI guide | AppSec, AI security lead | Offer review against token, scope, tool poisoning, audit, shadow MCP, and over-sharing risks |
+| 10 | Public CVEs and PoCs make MCP risk concrete | NVD, Check Point, Tenable, Cursor security discussions | Product security, developer tools, platform security | Offer scoped review without implying the buyer is affected |
+| 11 | Gateways are becoming a category | Tyk, Kong, Portkey, Citrix, Cloudflare | Security architecture, infrastructure | Offer pre-gateway assessment before buying or deploying a control plane |
+| 12 | AI data policy discussions now include downstream agent access | Netskope-style AI data violation reporting and agent governance commentary | AI governance, DLP, security operations | Offer downstream data exposure and audit-evidence review |
+| 13 | Open-source scanners are noisy and fragmented | Hacker News and GitHub scanner threads | CTO, security engineer | Offer expert-reviewed findings and buyer-safe reporting |
+| 14 | Slack, Atlassian, Stripe, Cloudflare, Supabase, Vercel, PagerDuty MCP tools touch high-value data and actions | Vendor docs and MCP directories | IT admin, platform lead, payments/security, SRE | Offer critical-tool lane audit by connected system |
+| 15 | Audit trails are now part of the buyer conversation | Compliance and identity vendors discussing MCP auditability | Compliance, security operations | Offer audit-ready evidence packet and remediation tracker |
+| 16 | Job posts mention MCP server security and AI integration review | AI platform/security engineer openings | Hiring manager, CTO | Offer quick external audit while the team hires |
 
 ## Where To Find The First Prospects
 
@@ -40,6 +40,16 @@ Purpose: give MCPScan a current, practical list of where buyers are showing pain
 | Job boards | MCP security, AI platform security, agent security, tool governance | Company with hiring pain and likely budget |
 | Hacker News | MCP security scanner, MCP gateway, MCP server risk | Objections, competitor mentions, early adopter comments |
 | Reddit | r/cybersecurity, r/mcp, r/sysadmin, r/programming MCP threads | Objection mining and useful technical post topics, not direct prospecting |
+
+## Buyer-Of-MCP Sourcing Lane
+
+The first vendor list is useful, but the bigger buyer market is internal adoption: companies turning on Copilot, Rovo, Cursor, Claude Code, VS Code, ChatGPT connectors, Slack tools, cloud tools, incident tools, or payment tools. Use `sales/internal-mcp-adopter-targets-2026-08-14.csv` as the approval queue for that lane.
+
+Position the service as pre-gateway readiness:
+
+> Before you buy or deploy an MCP gateway, MCPScan maps what exists, what can act, and what needs policy.
+
+Do not use vulnerability-disclosure language for this lane. Use "readiness inquiry," "approval map," "permission review," or "buyer-safe evidence packet" unless an authorized, real finding exists.
 
 ## Message Matrix
 

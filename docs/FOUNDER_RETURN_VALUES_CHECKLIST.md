@@ -6,10 +6,10 @@ Use this immediately after the founder account clicks. The goal is to give Codex
 
 | Gate | Value To Return | Example |
 | --- | --- | --- |
-| Domain | Purchased domain | `mcpscan.online` |
-| Mailbox | Primary public mailbox | `security@mcpscan.online` |
-| Alias | Audit alias | `audit@mcpscan.online` |
-| Alias | General alias | `hello@mcpscan.online` |
+| Domain | Purchased domain | `mcpscan.online` or `getmcpscan.xyz` |
+| Mailbox | Primary public mailbox | `security@mcpscan.online` or `security@getmcpscan.xyz` |
+| Alias | Audit alias | `audit@mcpscan.online` or `audit@getmcpscan.xyz` |
+| Alias | General alias | `hello@mcpscan.online` or `hello@getmcpscan.xyz` |
 | Stripe | Quick Audit Payment Link | `https://buy.stripe.com/...` |
 | Stripe | Launch Audit Payment Link | `https://buy.stripe.com/...` |
 | Stripe | Enterprise Readiness Payment Link | `https://buy.stripe.com/...` |
@@ -32,7 +32,7 @@ Use this immediately after the founder account clicks. The goal is to give Codex
 ## Exact Return Flow
 
 1. Open `ops/founder-return-packet.html`.
-2. Use the cheap-lane preset for `mcpscan.online` with `security@mcpscan.online`, or the trust-lane preset for `getmcpscan.com` with `security@getmcpscan.com`.
+2. Use the cheap-lane preset for `mcpscan.online` with `security@mcpscan.online`, the backup cheap values for `getmcpscan.xyz` with `security@getmcpscan.xyz`, or the trust-lane preset for `getmcpscan.com` with `security@getmcpscan.com`.
 3. Paste the purchased domain, mailbox, aliases, and three live Stripe Payment Links.
 4. Build the approval message.
 5. Open `ops/stripe-payment-link-qa-console.html`.

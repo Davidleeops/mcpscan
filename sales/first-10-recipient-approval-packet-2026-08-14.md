@@ -23,7 +23,7 @@ Approved recipients:
 3. Tod Sacerdoti, CEO and Founder, Pipedream (Pipedream)
 4. Soham Ganatra, Founder, Composio (Composio)
 5. James Hawkins, Co-founder and Co-CEO, PostHog (PostHog)
-6. Security, product, or platform owner, Post-acquisition owner to reapprove, Statsig (Statsig)
+6. Current security, product, or platform owner, Statsig or Amplitude owner to reapprove, Statsig and Amplitude (Statsig)
 7. Ankur Goyal, Founder and CEO, Braintrust (Braintrust)
 8. Christopher Pedregal, Co-founder and CEO, Granola (Granola)
 9. David Cramer, Co-founder and CPO, Sentry (Sentry)
@@ -261,7 +261,7 @@ Stage this approved outbound packet outside the public repo for manual sending r
 
 ## 6. Statsig
 
-Candidate: Security, product, or platform owner, Post-acquisition owner to reapprove, Statsig
+Candidate: Current security, product, or platform owner, Statsig or Amplitude owner to reapprove, Statsig and Amplitude
 Channel: Contact form
 Contact or profile URL: https://www.statsig.com/contact/us
 Source URL: https://docs.statsig.com/integrations/mcp/overview
@@ -287,7 +287,7 @@ I approve staging this exact MCPScan outbound message.
 
 Account: Statsig
 Channel: Contact form
-Recipient: Security, product, or platform owner, Post-acquisition owner to reapprove, Statsig
+Recipient: Current security, product, or platform owner, Statsig or Amplitude owner to reapprove, Statsig and Amplitude
 Contact or profile URL: https://www.statsig.com/contact/us
 Source URL: https://docs.statsig.com/integrations/mcp/overview
 

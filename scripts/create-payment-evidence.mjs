@@ -98,6 +98,11 @@ const evidence = {
   operatorInitials
 };
 
+if (evidence.paymentProvider === "Stripe") {
+  evidence.stripeDashboardPaymentConfirmed = args["stripe-dashboard-payment-confirmed"] === "true";
+  evidence.stripePaidObjectType = requireValue("stripe-paid-object-type", args["stripe-paid-object-type"]);
+}
+
 if (evidence.paymentProvider === "Manual approved" || /^manual_/i.test(paymentReference)) {
   evidence.approvedBy = requireValue("approved-by", args["approved-by"]);
   evidence.approvalTimestamp = requireValue("approval-timestamp", args["approval-timestamp"]);

@@ -9,10 +9,12 @@ Do not create a live customer handoff or start delivery until payment is confirm
 Before running the handoff, create and verify public-safe payment evidence:
 
 ```text
-npm run delivery:evidence -- --customer "{{customer_company}}" --package "{{package_name}}" --payment "{{stripe_payment_reference_or_receipt_url}}" --contact "{{technical_contact_email_or_secure_url}}" --safe-intake "/path/outside/public/repo/intake" --operator "{{initials}}"
+npm run delivery:evidence -- --customer "{{customer_company}}" --package "{{package_name}}" --payment "{{paid_stripe_payment_intent_charge_invoice_checkout_session_or_receipt_url}}" --contact "{{technical_contact_email_or_secure_url}}" --safe-intake "/path/outside/public/repo/intake" --operator "{{initials}}" --stripe-dashboard-payment-confirmed true --stripe-paid-object-type "{{payment_intent_charge_invoice_checkout_session_or_receipt}}"
 ```
 
 You can also use `sales/payment-confirmation-evidence.template.json` as the shape. Save the filled evidence outside the public repo.
+
+Payment Links such as `plink_...` or `https://buy.stripe.com/...` are not enough for post-payment handoff. They prove checkout exists, not that the buyer paid. Use a paid Stripe payment intent, charge, invoice, checkout session, receipt, or an approved manual payment reference.
 
 ## Exact Approval Text
 
@@ -22,7 +24,7 @@ I approve creating this MCPScan paid audit handoff.
 Customer: {{customer_company}}
 Package: {{package_name}}
 Technical contact: {{technical_contact_email_or_secure_url}}
-Payment reference: {{stripe_payment_reference_or_receipt_url}}
+Payment reference: {{paid_stripe_payment_intent_charge_invoice_checkout_session_or_receipt_url}}
 Date: {{yyyy-mm-dd}}
 
 Approved action:
@@ -51,6 +53,7 @@ npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --pa
 - private pipeline status JSON and CSV outside the public repo
 - customer and package specific output filenames to prevent same-day overwrites
 - payment evidence path recorded in the handoff manifest and pipeline status
+- exact safe intake path recorded in the handoff manifest, pipeline status, and draft intake message
 
 ## Stop Conditions
 

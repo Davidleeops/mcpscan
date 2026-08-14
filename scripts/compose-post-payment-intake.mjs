@@ -45,7 +45,11 @@ function value(name, input) {
 function displayName(args, contact) {
   if (args["first-name"]) return args["first-name"].trim();
   if (contact.includes("@")) return "there";
-  return contact;
+  return "there";
+}
+
+function validEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
 const args = parseArgs(process.argv.slice(2));
@@ -59,11 +63,13 @@ const firstName = displayName(args, contact);
 const packageName = value("package", status.package);
 const account = value("account", status.account);
 const workspaceRoot = value("workspaceRoot", status.workspaceRoot);
+const safeIntakePath = value("safeIntakePath", status.safeIntakePath);
+const recipient = validEmail(contact) ? contact : value("recipientEmail", args["recipient-email"]);
 
 const draft = [
   "DRAFT ONLY. Do not send until the exact recipient and exact final content are approved in the same turn.",
   "",
-  `To: ${contact}`,
+  `To: ${recipient}`,
   "Subject: MCPScan audit intake",
   "",
   `Hi ${firstName},`,
@@ -79,7 +85,7 @@ const draft = [
   "- any tools that should be explicitly out of scope",
   "",
   "Secure intake guidance:",
-  "https://davidleeops.github.io/mcpscan/secure-intake.html",
+  safeIntakePath,
   "",
   "Please do not send production credentials, active tokens, customer data, or sensitive files through email or public issues. Please only submit systems and materials you are authorized to include in the agreed scope.",
   "",
