@@ -30,6 +30,48 @@ function read(file) {
   return fs.readFileSync(path.join(root, file), "utf8");
 }
 
+const writingRuleRoots = [
+  "README.md",
+  "SECURITY.md",
+  "docs",
+  "sales",
+  "ops",
+  "landing",
+  "launch",
+  "delivery",
+  "scripts"
+];
+
+const writingRuleExtensions = new Set([
+  ".css",
+  ".csv",
+  ".html",
+  ".js",
+  ".json",
+  ".md",
+  ".mjs",
+  ".ts",
+  ".tsx",
+  ".txt",
+  ".yml",
+  ".yaml"
+]);
+
+function collectTextFiles(entry, files = []) {
+  const full = path.join(root, entry);
+  if (!fs.existsSync(full)) return files;
+  const stat = fs.statSync(full);
+  if (stat.isDirectory()) {
+    for (const child of fs.readdirSync(full)) {
+      if (child === "node_modules" || child === ".git" || child === "dist") continue;
+      collectTextFiles(path.join(entry, child), files);
+    }
+  } else if (stat.isFile() && writingRuleExtensions.has(path.extname(entry))) {
+    files.push(entry);
+  }
+  return files;
+}
+
 function checkUrl(url) {
   return new Promise((resolve) => {
     const request = https.request(url, { method: "HEAD", timeout: 8000 }, (response) => {
@@ -102,6 +144,23 @@ const requiredFiles = [
 for (const file of requiredFiles) {
   results.push(exists(file) ? result("pass", `required file: ${file}`) : result("fail", `required file: ${file}`, "missing"));
 }
+
+const writingRuleMatches = [];
+for (const file of writingRuleRoots.flatMap((entry) => collectTextFiles(entry))) {
+  const text = read(file);
+  const index = text.indexOf("\u2014");
+  if (index !== -1) {
+    const before = text.slice(0, index);
+    const line = before.split("\n").length;
+    writingRuleMatches.push(`${file}:${line}`);
+  }
+}
+
+results.push(
+  writingRuleMatches.length === 0
+    ? result("pass", "writing rule: no em dash", "all scanned launch artifacts are clean")
+    : result("fail", "writing rule: no em dash", writingRuleMatches.join(", "))
+);
 
 if (exists("landing/index.html")) {
   const landing = read("landing/index.html");
