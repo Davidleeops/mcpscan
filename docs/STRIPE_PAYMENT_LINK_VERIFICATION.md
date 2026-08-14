@@ -44,6 +44,6 @@ Then run:
 npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status
 ```
 
-That verifies product names, prices, live mode, one-time payment type, receipts, required fields, redirects, policy URLs, and evidence confirmations. It updates `stripeCheckoutQaConfirmed`.
+That verifies product names, prices, live mode, unique checkout URLs, one-time payment type, same-account evidence, no subscription/trial settings, no quantity adjustment, no promotion codes, no shipping collection, receipts, required fields, redirects, policy URLs, and evidence confirmations. It updates `stripeCheckoutQaConfirmed`.
 
 `stripeLinksVerified` is true only when both URL format and checkout QA are verified.

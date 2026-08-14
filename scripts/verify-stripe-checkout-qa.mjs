@@ -85,6 +85,11 @@ results.push(data.mode === "live" ? result("pass", "Stripe mode", "live") : resu
 results.push(data.currency === "USD" ? result("pass", "currency", "USD") : result("fail", "currency", "must be USD"));
 
 for (const [field, label] of [
+  ["sameStripeAccountChecked", "same Stripe account"],
+  ["noSubscriptionTrialMeteredOrPortal", "no subscription, trial, metered billing, or portal"],
+  ["quantityAdjustmentDisabled", "quantity adjustment disabled"],
+  ["promotionCodesDisabled", "promotion codes disabled"],
+  ["shippingAddressCollectionDisabled", "shipping address collection disabled"],
   ["automaticReceiptsEnabled", "automatic receipts"],
   ["customerNameRequired", "customer name required"],
   ["customerEmailRequired", "customer email required"],
@@ -108,6 +113,8 @@ for (const [field, suffix] of [
 
 const links = Array.isArray(data.links) ? data.links : [];
 results.push(links.length === 3 ? result("pass", "link count", "3") : result("fail", "link count", `${links.length}`));
+const checkoutUrls = links.map((item) => typeof item.checkoutUrl === "string" ? item.checkoutUrl.toLowerCase() : "");
+results.push(new Set(checkoutUrls).size === checkoutUrls.length ? result("pass", "unique checkout URLs") : result("fail", "unique checkout URLs", "each product must have its own Payment Link"));
 
 for (const [id, expected] of expectedLinks.entries()) {
   const link = links.find((item) => item.id === id);
@@ -127,7 +134,8 @@ for (const [field, label] of [
   ["priceScreenshotOrDashboardChecked", "price evidence"],
   ["receiptScreenshotOrDashboardChecked", "receipt evidence"],
   ["fieldScreenshotOrDashboardChecked", "field evidence"],
-  ["redirectScreenshotOrDashboardChecked", "redirect evidence"]
+  ["redirectScreenshotOrDashboardChecked", "redirect evidence"],
+  ["safetySettingsScreenshotOrDashboardChecked", "safety settings evidence"]
 ]) {
   results.push(bool(data.evidence?.[field]) ? result("pass", label) : result("fail", label, "must be true"));
 }

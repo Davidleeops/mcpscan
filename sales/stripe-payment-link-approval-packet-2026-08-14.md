@@ -73,6 +73,11 @@ Each link must pass every item:
 - Product name matches the package exactly.
 - Price is correct and one-time.
 - Checkout is live mode, not test mode.
+- All three Payment Links are unique and in the same live Stripe account.
+- No subscriptions, trials, metered billing, or customer portal settings are enabled.
+- Quantity adjustment is disabled.
+- Promotion codes and coupons are disabled unless separately approved.
+- Shipping address collection is disabled.
 - Automatic receipts are enabled.
 - Customer name, email, company, and billing address are collected.
 - Primary technical contact email is required.
@@ -102,7 +107,7 @@ npm run writing:check
 npm run launch:verify -- --domain CHOSEN_DOMAIN
 ```
 
-Checkout QA requires evidence, not only URL format. Copy `sales/stripe-checkout-qa-evidence.template.json` outside the repo, fill it from Stripe dashboard evidence, then run:
+Checkout QA requires evidence, not only URL format. Copy `sales/stripe-checkout-qa-evidence.template.json` outside the repo, fill it from Stripe dashboard evidence, and confirm the safety settings before running:
 
 ```text
 npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status

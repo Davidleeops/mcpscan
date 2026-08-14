@@ -5,6 +5,11 @@
   "primaryMailbox": "security@{{chosen_domain}}",
   "mode": "live",
   "currency": "USD",
+  "sameStripeAccountChecked": true,
+  "noSubscriptionTrialMeteredOrPortal": true,
+  "quantityAdjustmentDisabled": true,
+  "promotionCodesDisabled": true,
+  "shippingAddressCollectionDisabled": true,
   "automaticReceiptsEnabled": true,
   "customerNameRequired": true,
   "customerEmailRequired": true,
@@ -47,6 +52,7 @@
     "priceScreenshotOrDashboardChecked": false,
     "receiptScreenshotOrDashboardChecked": false,
     "fieldScreenshotOrDashboardChecked": false,
-    "redirectScreenshotOrDashboardChecked": false
+    "redirectScreenshotOrDashboardChecked": false,
+    "safetySettingsScreenshotOrDashboardChecked": false
   }
 }
