@@ -12,6 +12,7 @@ const reviewSurfaces = [
   "ops/stripe-click-setup.html",
   "ops/stripe-payment-link-qa-console.html",
   "ops/gtm-placement-console.html",
+  "docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md",
   "ops/public-channel-drafts-console.html",
   "ops/founder-return-packet.html",
   "ops/verification-console.html",

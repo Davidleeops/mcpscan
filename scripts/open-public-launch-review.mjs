@@ -8,6 +8,7 @@ const reviewSurfaces = [
   "docs/PUBLIC_CHANNEL_LAUNCH_DRAFTS_2026-08-14.md",
   "ops/public-channel-drafts-console.html",
   "ops/gtm-placement-console.html",
+  "docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md",
   "docs/MARKET_REALITY_BRIEF_2026-08-14.md",
   "docs/PUBLIC_TRUST_CHECKLIST.md",
   "docs/GTM_CLAIM_SAFETY.md",
