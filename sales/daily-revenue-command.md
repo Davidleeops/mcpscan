@@ -8,8 +8,8 @@ Use this as the one-screen operating surface for first revenue.
 
 | Lane | Current State | Next Action | Owner |
 | --- | --- | --- | --- |
-| Domain | Not purchased | Buy `mcpscan.site` for the cheap launch lane, or `getmcpscan.com` for the trust lane | Founder |
-| Mailbox | Not purchased | Create `audit@{{chosen_domain}}` plus `security@` and `hello@` aliases | Founder |
+| Domain | Not purchased | Buy `trymcpscan.com` for the trust lane, or `mcpscan.site` only for the cheap validation lane | Founder |
+| Mailbox | Not purchased | Create `security@{{chosen_domain}}` plus `audit@` and `hello@` aliases | Founder |
 | Stripe | Payment Links not live | Create three live one-time Payment Links | Founder |
 | Landing page | Live with placeholder issue CTAs | Apply approved domain, email, and Stripe links after return packet | Codex |
 | GitHub Actions | Account billing lock | Clear billing lock and re-run failed workflows | Founder |

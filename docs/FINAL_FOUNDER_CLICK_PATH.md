@@ -27,8 +27,8 @@ First revenue does not require npm publishing. Sell and deliver the `$1,500` MCP
 | Order | Gate | Founder Action | Console | Done When |
 | --- | --- | --- | --- | --- |
 | 0 | GitHub billing | Clear the account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | CI and Pages jobs start and pass |
-| 1 | Domain | Buy `mcpscan.site` for the `$1` to `$3` launch lane, or `getmcpscan.com` for the stronger trust lane | `ops/domain-email-dns-console.html` | Domain exists in registrar account |
-| 2 | Mailbox | Create `audit@{{chosen_domain}}` with `security@` and `hello@` aliases | `ops/domain-email-dns-console.html` | MX, SPF, DKIM, and DMARC pass |
+| 1 | Domain | Buy `trymcpscan.com` if standard-priced, or `getmcpscan.com` if the first pick is unavailable. Use `mcpscan.site` only for the cheap validation lane | `ops/domain-email-dns-console.html` | Domain exists in registrar account |
+| 2 | Mailbox | Create `security@{{chosen_domain}}` with `audit@` and `hello@` aliases | `ops/domain-email-dns-console.html` | MX, SPF, DKIM, and DMARC pass |
 | 3 | Stripe | Create the three Payment Links and verify their format | `ops/stripe-click-setup.html` | Quick, Launch, and Enterprise checkout links exist and `npm run launch:verify-stripe` passes |
 | 4 | Apply links | Paste real links into the command builder | `ops/approved-links-command-builder.html` | Landing page no longer uses placeholder checkout links |
 | 5 | Verify | Run launch verification | `ops/verification-console.html` | `npm run launch:verify -- --domain {{chosen_domain}}` has no domain or checkout warnings |

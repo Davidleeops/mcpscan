@@ -55,7 +55,7 @@ function writeApprovalStatus(values) {
     updatedAt: new Date().toISOString(),
     domain: values.domain,
     mailbox: values.email,
-    securityAlias: values.security,
+    auditAlias: values.audit,
     helloAlias: values.hello,
     domainPurchased: true,
     mailboxCreated: true,
@@ -97,7 +97,7 @@ if (!input.includes("Apply these links to the public landing page")) {
 
 const domain = requireMatch("domain", input, /^Domain:\s*(.+)$/m).toLowerCase();
 const email = requireMatch("primary mailbox", input, /^Primary mailbox:\s*(.+)$/m);
-const security = requireMatch("security alias", input, /^Security alias:\s*(.+)$/m);
+const audit = requireMatch("audit alias", input, /^Audit alias:\s*(.+)$/m);
 const hello = requireMatch("hello alias", input, /^Hello alias:\s*(.+)$/m);
 const quick = requireMatch("Quick Audit link", input, /^Quick Audit:\s*(.+)$/m);
 const launch = requireMatch("Launch Audit link", input, /^Launch Audit:\s*(.+)$/m);
@@ -105,11 +105,17 @@ const enterprise = requireMatch("Enterprise Readiness link", input, /^Enterprise
 
 assertValid("domain", domain, validDomain);
 assertValid("primary mailbox", email, validEmail);
-assertValid("security alias", security, validEmail);
+assertValid("audit alias", audit, validEmail);
 assertValid("hello alias", hello, validEmail);
 assertValid("Quick Audit link", quick, validUrl);
 assertValid("Launch Audit link", launch, validUrl);
 assertValid("Enterprise Readiness link", enterprise, validUrl);
+
+for (const [label, value] of Object.entries({ email, audit, hello })) {
+  if (!value.toLowerCase().endsWith(`@${domain}`)) {
+    throw new Error(`${label} must use the approved domain: ${domain}`);
+  }
+}
 
 const child = spawnSync(
   process.execPath,
@@ -133,9 +139,10 @@ if (child.status !== 0) {
   process.exit(child.status ?? 1);
 }
 
-writeApprovalStatus({ domain, email, security, hello, quick, launch, enterprise });
+writeApprovalStatus({ domain, email, audit, hello, quick, launch, enterprise });
 
 console.log("Parsed founder return packet.");
-console.log(`Security alias: ${security}`);
+console.log(`Security mailbox: ${email}`);
+console.log(`Audit alias: ${audit}`);
 console.log(`Hello alias: ${hello}`);
 console.log("Wrote ops/founder-approval-status.json.");

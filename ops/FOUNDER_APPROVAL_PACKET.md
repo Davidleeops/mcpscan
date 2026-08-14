@@ -30,8 +30,8 @@ The first product to sell is a fixed-scope paid audit. The CLI and public sample
 | Gate | Founder Action | Console | Cost / Risk | Done When |
 | --- | --- | --- | --- | --- |
 | GitHub billing | Clear account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | Account/payment issue | CI and Pages jobs start and pass |
-| Domain | Buy `mcpscan.site` for the cheap launch lane or `getmcpscan.com` for trust | `ops/domain-email-dns-console.html` | About $1 to $3 for `.site`, about $9 for `.com` | Domain resolves to GitHub Pages |
-| Email | Create `audit@{{chosen_domain}}` with `security@` and `hello@` aliases | `ops/domain-email-dns-console.html` | About $18.88 for 2 years | MX, SPF, DKIM, and DMARC pass |
+| Domain | Buy `trymcpscan.com` for trust or `mcpscan.site` for the cheap validation lane | `ops/domain-email-dns-console.html` | About $1 to $3 for `.site`, about $9 for `.com` | Domain resolves to GitHub Pages |
+| Email | Create `security@{{chosen_domain}}` with `audit@` and `hello@` aliases | `ops/domain-email-dns-console.html` | About $18.88 for 2 years | MX, SPF, DKIM, and DMARC pass |
 | Stripe | Create 3 Payment Links | `ops/stripe-click-setup.html` | Stripe processing fees only | Quick, Launch, Enterprise links exist |
 | Link update | Apply real domain/email/Stripe links | `ops/approved-links-command-builder.html` | No spend | `npm run launch:verify -- --domain {{chosen_domain}}` has no checkout/domain warnings |
 | npm | Login and publish packages | `ops/npm-publish-console.html` | No fixed fee | `npm view mcpscan name version` returns `0.1.0` |
@@ -59,7 +59,7 @@ The first product to sell is a fixed-scope paid audit. The CLI and public sample
 
 - No external email, LinkedIn, Slack, or customer message without same-turn approval of exact recipient and exact final content.
 - No customer secrets, private configs, customer data, or final private reports in the public repo.
-- No outbound from `audit@{{chosen_domain}}` until MX, SPF, DKIM, and DMARC pass.
+- No outbound from `security@{{chosen_domain}}` until MX, SPF, DKIM, and DMARC pass.
 - No npm publish until npm login and 2FA/OTP are confirmed.
 - No live customer audit begins until sanitized intake or approved private handoff is confirmed.
 
@@ -99,8 +99,8 @@ ops/final-founder-click-console.html
 ## Suggested Click Order
 
 1. Clear the GitHub billing lock and re-run failed Actions jobs.
-2. Buy `getmcpscan.com` or the approved fallback.
-3. Create the matching `audit@` mailbox.
+2. Buy `trymcpscan.com` or the approved fallback.
+3. Create the matching `security@` mailbox.
 4. Add DNS records and wait for DNS/email authentication.
 5. Create Stripe Payment Links.
 6. Use the approved-links command builder and publish the updated landing links.

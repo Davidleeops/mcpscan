@@ -11,7 +11,8 @@ Use this before pointing paid outreach or community launch traffic at MCPScan.
 | Custom domain | `getmcpscan.com`, `trymcpscan.com`, or approved fallback resolves to the landing page | Browser visit plus `npm run launch:verify -- --domain {{chosen_domain}}` |
 | HTTPS | HTTPS is enforced on the public site | Browser lock icon and GitHub Pages setting |
 | Audit mailbox | `audit@{{chosen_domain}}` receives email | Test inbound email |
-| Security alias | `security@{{chosen_domain}}` reaches the same mailbox or monitored inbox | Test inbound email |
+| Security mailbox | `security@{{chosen_domain}}` reaches the monitored launch inbox | Test inbound email |
+| Audit alias | `audit@{{chosen_domain}}` reaches the same monitored inbox | Test inbound email |
 | General alias | `hello@{{chosen_domain}}` reaches the same mailbox or monitored inbox | Test inbound email |
 | SPF | Domain includes the selected mail provider in SPF | `npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status` |
 | DKIM | Mail provider DKIM is configured | Provider DNS check |

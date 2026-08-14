@@ -31,7 +31,7 @@ function requireUrl(name, value) {
 function optionalDomain(value) {
   if (!value) return undefined;
   if (!/^[a-z0-9.-]+\.[a-z]{2,}$/i.test(value)) {
-    throw new Error("--domain must be a hostname like getmcpscan.com.");
+    throw new Error("--domain must be a hostname like trymcpscan.com.");
   }
   return value.toLowerCase();
 }
@@ -39,7 +39,7 @@ function optionalDomain(value) {
 function optionalEmail(value) {
   if (!value) return undefined;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-    throw new Error("--email must be an email address like audit@mcpscan.site.");
+    throw new Error("--email must be an email address like security@trymcpscan.com.");
   }
   return value;
 }
@@ -70,6 +70,9 @@ const launch = requireUrl("launch", args.launch);
 const enterprise = requireUrl("enterprise", args.enterprise);
 const domain = optionalDomain(args.domain);
 const email = optionalEmail(args.email);
+if (domain && email && !email.toLowerCase().endsWith(`@${domain}`)) {
+  throw new Error("--email must use the approved domain.");
+}
 const baseUrl = publicBaseUrl(domain);
 
 const mailto = email ? `mailto:${email}?subject=MCPScan%20audit%20scope` : "https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20audit%20request";

@@ -168,11 +168,11 @@
         <div class="form">
           <label>
             Domain
-            <input id="domain" value="mcpscan.site" autocomplete="off">
+            <input id="domain" value="trymcpscan.com" autocomplete="off">
           </label>
           <label>
             Email
-            <input id="email" value="audit@mcpscan.site" autocomplete="off">
+            <input id="email" value="security@trymcpscan.com" autocomplete="off">
           </label>
           <label>
             Quick Audit Payment Link
@@ -224,6 +224,10 @@
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
       }
 
+      function emailMatchesDomain(email, domain) {
+        return email.toLowerCase().endsWith("@" + domain.toLowerCase());
+      }
+
       function validUrl(value) {
         return /^https:\/\/\S+$/i.test(value);
       }
@@ -235,8 +239,9 @@
       function buildCommand() {
         const values = Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input.value.trim()]));
         const errors = [];
-        if (!validDomain(values.domain)) errors.push("domain must look like mcpscan.site or getmcpscan.com");
-        if (!validEmail(values.email)) errors.push("email must look like audit@mcpscan.site");
+        if (!validDomain(values.domain)) errors.push("domain must look like trymcpscan.com or getmcpscan.com");
+        if (!validEmail(values.email)) errors.push("email must look like security@trymcpscan.com");
+        if (validDomain(values.domain) && validEmail(values.email) && !emailMatchesDomain(values.email, values.domain)) errors.push("email must use the purchased domain");
         for (const key of ["quick", "launch", "enterprise"]) {
           if (!validUrl(values[key])) errors.push(`${key} link must be an https:// URL`);
         }

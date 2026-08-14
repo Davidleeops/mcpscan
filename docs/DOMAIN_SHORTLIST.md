@@ -4,11 +4,11 @@
 
 If the goal is the fastest credible launch domain, buy:
 
-1. `getmcpscan.com`
-2. `trymcpscan.com`
+1. `trymcpscan.com`
+2. `getmcpscan.com`
 3. `mcpscan.us`
 
-`getmcpscan.com` is the best trust/cost balance if the registrar cart confirms
+`trymcpscan.com` is the best trust/cost balance if the registrar cart confirms
 standard pricing. It keeps the MCPScan brand, uses the highest-trust TLD for
 buyers, and avoids the renewal jump that comes with many ultra-cheap TLDs.
 
@@ -67,6 +67,6 @@ Always confirm in the Spaceship cart before purchase because promo pricing and I
 1. Add the domain to GitHub Pages for `Davidleeops/mcpscan`.
 2. Add DNS records in Spaceship.
 3. Enable HTTPS in GitHub Pages.
-4. Create `audit@domain` mailbox with `security@domain` and `hello@domain` aliases.
-5. Replace GitHub issue CTAs in `landing/index.html` with Stripe links and/or `mailto:audit@domain`.
+4. Create `security@domain` mailbox with `audit@domain` and `hello@domain` aliases.
+5. Replace GitHub issue CTAs in `landing/index.html` with Stripe links and/or `mailto:security@domain`.
 6. Verify DNS and mail records with `npm run launch:verify-dns -- --domain domain --update-status`.

@@ -79,16 +79,16 @@ Avoid leading with "AI governance platform" or "MCP gateway." Those markets are 
 
 ## Current Recommendation
 
-Buy `getmcpscan.com` if it is available at normal pricing. It is the most credible primary domain for a security-audit buyer.
+Buy `trymcpscan.com` if it is available at normal pricing. It is the most credible primary domain for a security-audit buyer.
 
-Fallback: `mcpscan.us`.
+Fallbacks: `getmcpscan.com`, then `mcpscanhq.com`, then `mcpscan.us`.
 
 Avoid using `.online` as the primary brand domain unless minimizing first-year cash spend is more important than buyer trust. Spaceship advertises very low first-year `.online` pricing, but the renewal is much higher and the extension looks less serious for an AppSec purchase.
 
 ## Remaining Founder Clicks
 
 1. Buy the domain in Spaceship, then use `ops/domain-email-dns-console.html` for GitHub Pages and Spacemail DNS records.
-2. Create `audit@{{chosen_domain}}` in Spacemail Pro, add `security@` and `hello@` aliases, and copy the DKIM record Spacemail displays.
+2. Create `security@{{chosen_domain}}` in Spacemail Pro, add `audit@` and `hello@` aliases, and copy the DKIM record Spacemail displays.
 3. Create the three Stripe Payment Links using `ops/stripe-click-setup.html`.
 4. Approve the generated command that applies those links to the landing page.
 5. Approve exact first outbound messages in `ops/outbound-approval-console.html` before anything is sent.
@@ -99,7 +99,7 @@ Avoid using `.online` as the primary brand domain unless minimizing first-year c
 
 | Item | Best launch choice | Approximate current public pricing |
 | --- | --- | --- |
-| Domain | `getmcpscan.com` | About $9 to $12 first year, about $10 renewal if standard-priced |
+| Domain | `trymcpscan.com` | About $9 to $12 first year, about $10 renewal if standard-priced |
 | Email | Spacemail Pro, one mailbox | About $18.88 for two years on current public pricing |
 | Hosting | GitHub Pages | $0 for current launch |
 | Payments | Stripe Payment Links | No fixed monthly fee; Stripe processing fees apply |
