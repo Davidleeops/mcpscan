@@ -434,6 +434,26 @@ if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-retu
       ? result("pass", "founder return post-click path", "apply, publish, live verify, and live status commands are present")
       : result("fail", "founder return post-click path", missingReturnReviewCommands.join(", "))
   );
+
+  const presetSurfaces = [
+    returnReview,
+    exists("ops/stripe-payment-link-qa-console.html") ? read("ops/stripe-payment-link-qa-console.html") : "",
+    exists("docs/FOUNDER_RETURN_VALUES_CHECKLIST.md") ? read("docs/FOUNDER_RETURN_VALUES_CHECKLIST.md") : ""
+  ].join("\n");
+  const requiredPresetMarkers = [
+    "Load cheap lane",
+    "Load trust lane",
+    "mcpscan.online",
+    "security@mcpscan.online",
+    "getmcpscan.com",
+    "security@getmcpscan.com"
+  ];
+  const missingPresetMarkers = requiredPresetMarkers.filter((marker) => !presetSurfaces.includes(marker));
+  results.push(
+    missingPresetMarkers.length === 0
+      ? result("pass", "founder return presets", "cheap and trust post-click presets are present")
+      : result("fail", "founder return presets", missingPresetMarkers.join(", "))
+  );
 }
 
 if (exists("scripts/open-first-revenue-runway.mjs") && exists("package.json") && exists("ops/launch-cockpit.html")) {

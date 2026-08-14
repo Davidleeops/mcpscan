@@ -40,14 +40,14 @@
       <header>
         <h1>Stripe Link QA</h1>
         <p>Use this after creating the three Stripe Payment Links and before applying them to the public landing page.</p>
-        <div class="actions"><a class="button primary" href="https://dashboard.stripe.com/payment-links" target="_blank" rel="noreferrer">Open Stripe links</a><a class="button" href="cheap-launch-packet-console.html">Cheap packets</a><a class="button" href="../sales/stripe-checkout-qa-evidence.template.json">QA evidence template</a><a class="button" href="../sales/stripe-payment-link-approval-packet-2026-08-14.md">Open packet</a><a class="button" href="../docs/STRIPE_PAYMENT_LINK_VERIFICATION.md">Verification guide</a><a class="button" href="founder-return-packet.html">Return packet</a></div>
+        <div class="actions"><button id="cheapPreset" type="button">Load cheap lane</button><button id="trustPreset" type="button">Load trust lane</button><a class="button primary" href="https://dashboard.stripe.com/payment-links" target="_blank" rel="noreferrer">Open Stripe links</a><a class="button" href="cheap-launch-packet-console.html">Cheap packets</a><a class="button" href="../sales/stripe-checkout-qa-evidence.template.json">QA evidence template</a><a class="button" href="../sales/stripe-payment-link-approval-packet-2026-08-14.md">Open packet</a><a class="button" href="../docs/STRIPE_PAYMENT_LINK_VERIFICATION.md">Verification guide</a><a class="button" href="founder-return-packet.html">Return packet</a></div>
       </header>
       <section class="warn"><h2>Do This Before Public Launch</h2><p>All three payment links must pass this checklist. Keep test links off the public landing page.</p></section>
       <section>
         <h2>Live Values</h2>
         <div class="form">
-          <label>Chosen domain<input id="domain" type="text" value="getmcpscan.com" autocomplete="off"></label>
-          <label>Primary mailbox<input id="mailbox" type="email" value="security@getmcpscan.com" autocomplete="off"></label>
+          <label>Chosen domain<input id="domain" type="text" value="mcpscan.online" autocomplete="off"></label>
+          <label>Primary mailbox<input id="mailbox" type="email" value="security@mcpscan.online" autocomplete="off"></label>
           <label class="wide-field">Quick Audit link<input id="quick" type="url" placeholder="https://buy.stripe.com/..."></label>
           <label class="wide-field">Launch Audit link<input id="launch" type="url" placeholder="https://buy.stripe.com/..."></label>
           <label class="wide-field">Enterprise Readiness link<input id="enterprise" type="url" placeholder="https://buy.stripe.com/..."></label>
@@ -90,6 +90,16 @@
         return new Set(Object.values(links).map((value) => value.toLowerCase())).size === Object.values(links).length;
       }
 
+      function setDomainValues(domainValue) {
+        const cleanDomain = domainValue.trim().toLowerCase();
+        fields.domain.value = cleanDomain;
+        fields.mailbox.value = "security@" + cleanDomain;
+      }
+
+      function applyPreset(kind) {
+        setDomainValues(kind === "trust" ? "getmcpscan.com" : "mcpscan.online");
+      }
+
       function downloadText(filename, text, type) {
         const blob = new Blob([text.trim() + "\n"], { type });
         const link = document.createElement("a");
@@ -110,6 +120,8 @@
           fields.mailbox.value = "security@" + fields.domain.value.trim().toLowerCase();
         }
       });
+      document.getElementById("cheapPreset").addEventListener("click", () => applyPreset("cheap"));
+      document.getElementById("trustPreset").addEventListener("click", () => applyPreset("trust"));
 
       function build() {
         const domain = fields.domain.value.trim().toLowerCase();
@@ -175,6 +187,8 @@
         approval.textContent = `I approve applying these exact MCPScan launch values:
 
 Domain: ${domain}
+Mail provider: zoho
+Mail provider label: Zoho Mail
 Primary mailbox: ${mailbox}
 Audit alias: audit@${domain}
 Hello alias: hello@${domain}

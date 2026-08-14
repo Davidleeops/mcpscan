@@ -6,10 +6,10 @@ Use this immediately after the founder account clicks. The goal is to give Codex
 
 | Gate | Value To Return | Example |
 | --- | --- | --- |
-| Domain | Purchased domain | `getmcpscan.com` |
-| Mailbox | Primary public mailbox | `security@getmcpscan.com` |
-| Alias | Audit alias | `audit@getmcpscan.com` |
-| Alias | General alias | `hello@getmcpscan.com` |
+| Domain | Purchased domain | `mcpscan.online` |
+| Mailbox | Primary public mailbox | `security@mcpscan.online` |
+| Alias | Audit alias | `audit@mcpscan.online` |
+| Alias | General alias | `hello@mcpscan.online` |
 | Stripe | Quick Audit Payment Link | `https://buy.stripe.com/...` |
 | Stripe | Launch Audit Payment Link | `https://buy.stripe.com/...` |
 | Stripe | Enterprise Readiness Payment Link | `https://buy.stripe.com/...` |
@@ -32,13 +32,15 @@ Use this immediately after the founder account clicks. The goal is to give Codex
 ## Exact Return Flow
 
 1. Open `ops/founder-return-packet.html`.
-2. Paste the purchased domain, mailbox, aliases, and three live Stripe Payment Links.
-3. Build the approval message.
-4. Open `ops/stripe-payment-link-qa-console.html`.
-5. Build and download the Stripe QA evidence JSON.
-6. Copy the one-paste post-click handoff packet from `ops/founder-return-packet.html`.
-7. Send Codex the approval message, the QA evidence file path, and the handoff packet.
-8. Confirm the handoff packet includes the chosen mail provider. If DNS has propagated, also include the DKIM selector if the mailbox provider shows one.
+2. Use the cheap-lane preset for `mcpscan.online` with `security@mcpscan.online`, or the trust-lane preset for `getmcpscan.com` with `security@getmcpscan.com`.
+3. Paste the purchased domain, mailbox, aliases, and three live Stripe Payment Links.
+4. Build the approval message.
+5. Open `ops/stripe-payment-link-qa-console.html`.
+6. Use the same preset and the same Stripe links.
+7. Build and download the Stripe QA evidence JSON.
+8. Copy the one-paste post-click handoff packet from `ops/founder-return-packet.html`.
+9. Send Codex the approval message, the QA evidence file path, and the handoff packet.
+10. Confirm the handoff packet includes the chosen mail provider. If DNS has propagated, also include the DKIM selector if the mailbox provider shows one.
 
 ## Codex Runs After Approval
 
