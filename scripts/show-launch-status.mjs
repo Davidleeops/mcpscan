@@ -208,6 +208,7 @@ const gates = [
   gate("Public trust checklist", exists("docs/PUBLIC_TRUST_CHECKLIST.md"), "pre-outbound public trust checklist exists"),
   gate("Approval status template", exists("ops/founder-approval-status.template.json"), "public-safe founder gate tracker template exists"),
   gate("Founder status console", exists("ops/founder-status-console.html"), "public-safe tracker can be inspected or rebuilt after founder clicks"),
+  gate("Post-purchase proof packet", exists("docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md"), "public-safe domain, mailbox, DNS, Stripe, and status return path exists"),
   { label: "Filled approval status", state: approvalStatus.state, detail: approvalStatus.detail },
   ...approvalTrackerGates(filledApprovalStatus),
   gate("Billing unblock path", exists("ops/github-actions-billing-console.html") && exists("docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md"), "GitHub billing guide exists"),

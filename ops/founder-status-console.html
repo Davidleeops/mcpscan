@@ -44,9 +44,12 @@
         <h1>Founder Status Console</h1>
         <p>Build a public-safe launch tracker and copy the exact verification commands after founder clicks. Do not paste passwords, mailbox credentials, Stripe secret keys, API keys, or customer data here.</p>
         <div class="actions">
+          <button id="cheapPreset" type="button">Load cheap lane</button>
+          <button id="trustPreset" type="button">Load trust lane</button>
           <a class="button primary" href="founder-return-packet.html">Return packet</a>
           <a class="button" href="verification-console.html">Verification</a>
           <a class="button" href="founder-click-handoff.html">Click handoff</a>
+          <a class="button" href="../docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md">Proof packet</a>
           <a class="button" href="revenue-cadence-console.html">Revenue runway</a>
         </div>
       </header>
@@ -60,15 +63,15 @@
         <section>
           <h2>Launch Values</h2>
           <div class="form">
-            <label>Domain<input id="domain" value="getmcpscan.com" autocomplete="off"></label>
+            <label>Domain<input id="domain" value="mcpscan.online" autocomplete="off"></label>
             <label>Mail provider<select id="mailProvider">
               <option value="zoho">Zoho Mail</option>
               <option value="google">Google Workspace</option>
               <option value="spacemail">Spacemail</option>
             </select></label>
-            <label>Primary mailbox<input id="mailbox" value="security@getmcpscan.com" autocomplete="off"></label>
-            <label>Audit alias<input id="audit" value="audit@getmcpscan.com" autocomplete="off"></label>
-            <label>Hello alias<input id="hello" value="hello@getmcpscan.com" autocomplete="off"></label>
+            <label>Primary mailbox<input id="mailbox" value="security@mcpscan.online" autocomplete="off"></label>
+            <label>Audit alias<input id="audit" value="audit@mcpscan.online" autocomplete="off"></label>
+            <label>Hello alias<input id="hello" value="hello@mcpscan.online" autocomplete="off"></label>
             <label class="wide">Quick Audit Stripe link<input id="quick" placeholder="https://buy.stripe.com/..."></label>
             <label class="wide">Launch Audit Stripe link<input id="launch" placeholder="https://buy.stripe.com/..."></label>
             <label class="wide">Enterprise Readiness Stripe link<input id="enterprise" placeholder="https://buy.stripe.com/..."></label>
@@ -98,6 +101,7 @@
           <div class="actions">
             <button id="build" class="primary" type="button">Build tracker</button>
             <button id="copyJson" type="button">Copy JSON</button>
+            <button id="downloadJson" type="button">Download JSON</button>
             <button id="copyCommands" type="button">Copy commands</button>
           </div>
           <p id="status" class="status"></p>
@@ -160,6 +164,28 @@
 
       function validPublicStripe(value) {
         return value === "" || /^https:\/\/buy\.stripe\.com\/\S+$/i.test(value);
+      }
+
+      function setDomainValues(domainValue) {
+        const cleanDomain = domainValue.trim().toLowerCase();
+        textFields.domain.value = cleanDomain;
+        textFields.mailbox.value = "security@" + cleanDomain;
+        textFields.audit.value = "audit@" + cleanDomain;
+        textFields.hello.value = "hello@" + cleanDomain;
+      }
+
+      function applyPreset(kind) {
+        setDomainValues(kind === "trust" ? "getmcpscan.com" : "mcpscan.online");
+        build();
+      }
+
+      function downloadText(filename, text) {
+        const blob = new Blob([text.trim() + "\n"], { type: "application/json" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
+        URL.revokeObjectURL(link.href);
       }
 
       function build() {
@@ -245,8 +271,21 @@ npm run launch:open-first-revenue`;
 
       document.getElementById("build").addEventListener("click", build);
       document.getElementById("copyJson").addEventListener("click", () => copy(jsonOutput));
+      document.getElementById("downloadJson").addEventListener("click", () => {
+        if (!jsonOutput.textContent.trim().startsWith("{")) build();
+        if (jsonOutput.textContent.trim().startsWith("{")) {
+          downloadText("founder-approval-status.json", jsonOutput.textContent);
+          status.textContent = "Downloaded.";
+          status.className = "status good";
+        }
+      });
       document.getElementById("copyCommands").addEventListener("click", () => copy(commandsOutput));
+      document.getElementById("cheapPreset").addEventListener("click", () => applyPreset("cheap"));
+      document.getElementById("trustPreset").addEventListener("click", () => applyPreset("trust"));
       for (const input of Object.values(textFields)) input.addEventListener("input", build);
+      textFields.domain.addEventListener("change", () => {
+        if (validDomain(textFields.domain.value.trim())) setDomainValues(textFields.domain.value);
+      });
       mailProviderField.addEventListener("change", build);
       for (const key of boolFields) document.getElementById(key).addEventListener("change", build);
       document.getElementById("stagedRouteApprovalCount").addEventListener("input", build);

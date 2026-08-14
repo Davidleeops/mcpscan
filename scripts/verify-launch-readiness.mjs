@@ -223,6 +223,7 @@ const requiredFiles = [
   "docs/FOUNDER_CLICK_HANDOFF.md",
   "docs/FINAL_FOUNDER_CLICK_PATH.md",
   "docs/FOUNDER_RETURN_VALUES_CHECKLIST.md",
+  "docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md",
   "docs/DOMAIN_MAILBOX_PURCHASE_PACKET.md",
   "docs/DOMAIN_AND_MAILBOX_DECISION.md",
   "docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md",
@@ -453,6 +454,26 @@ if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-retu
     missingPresetMarkers.length === 0
       ? result("pass", "founder return presets", "cheap and trust post-click presets are present")
       : result("fail", "founder return presets", missingPresetMarkers.join(", "))
+  );
+}
+
+if (exists("ops/founder-status-console.html") && exists("docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md")) {
+  const postPurchaseStatus = `${read("ops/founder-status-console.html")}\n${read("docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md")}`;
+  const requiredPostPurchaseMarkers = [
+    "Load cheap lane",
+    "Load trust lane",
+    "founder-approval-status.json",
+    "Download JSON",
+    "mcpscan.online",
+    "security@mcpscan.online",
+    "stripe-checkout-qa-evidence.json",
+    "Do Not Return These Values"
+  ];
+  const missingPostPurchaseMarkers = requiredPostPurchaseMarkers.filter((marker) => !postPurchaseStatus.includes(marker));
+  results.push(
+    missingPostPurchaseMarkers.length === 0
+      ? result("pass", "post-purchase public proof path", "status JSON and safe value handoff markers are present")
+      : result("fail", "post-purchase public proof path", missingPostPurchaseMarkers.join(", "))
   );
 }
 
