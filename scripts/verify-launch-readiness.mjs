@@ -94,6 +94,36 @@ function checkUrl(url) {
   });
 }
 
+function fetchText(url) {
+  return new Promise((resolve) => {
+    const request = https.request(url, { method: "GET", timeout: 8000 }, (response) => {
+      const status = response.statusCode ?? 0;
+      if (status >= 300 && status < 400 && response.headers.location) {
+        const redirected = new URL(response.headers.location, url).toString();
+        response.resume();
+        resolve(fetchText(redirected));
+        return;
+      }
+
+      let body = "";
+      response.setEncoding("utf8");
+      response.on("data", (chunk) => {
+        body += chunk;
+      });
+      response.on("end", () => {
+        resolve({ ok: status >= 200 && status < 400, status, url, body });
+      });
+    });
+    request.on("timeout", () => {
+      request.destroy(new Error("timeout"));
+    });
+    request.on("error", (error) => {
+      resolve({ ok: false, status: 0, url, body: "", error: error.message });
+    });
+    request.end();
+  });
+}
+
 function result(kind, label, detail = "") {
   return { kind, label, detail };
 }
@@ -260,6 +290,23 @@ for (const checked of urlChecks) {
       ? result("pass", `public URL: ${checked.url}`, `HTTP ${checked.status}`)
       : result("warn", `public URL: ${checked.url}`, checked.error ?? `HTTP ${checked.status}`)
   );
+}
+
+const liveHome = await fetchText(`${baseUrl}/`);
+if (liveHome.ok) {
+  const requiredLiveMarkers = [
+    "Free scanners produce signals",
+    "customer is authorized to submit",
+    "MCP Launch Audit"
+  ];
+  const missingMarkers = requiredLiveMarkers.filter((marker) => !liveHome.body.includes(marker));
+  results.push(
+    missingMarkers.length === 0
+      ? result("pass", "live landing freshness", "latest buyer-facing copy is deployed")
+      : result("warn", "live landing freshness", `missing current marker(s): ${missingMarkers.join(", ")}`)
+  );
+} else {
+  results.push(result("warn", "live landing freshness", liveHome.error ?? `HTTP ${liveHome.status}`));
 }
 
 print(results);
