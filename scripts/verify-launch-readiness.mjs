@@ -307,6 +307,8 @@ const requiredFiles = [
   "scripts/simulate-github-actions-unblock-session.mjs",
   "scripts/run-launch-rehearsal.mjs",
   "scripts/open-public-launch-review.mjs",
+  "scripts/open-public-launch-session.mjs",
+  "scripts/simulate-public-launch-session.mjs",
   "scripts/open-first-revenue-runway.mjs",
   "scripts/open-swarm-throughput-console.mjs",
   "scripts/stage-approved-public-launch-post.mjs",
@@ -899,6 +901,37 @@ if (exists("scripts/open-first-revenue-runway.mjs") && exists("package.json") &&
     missingRunwayMarkers.length === 0
       ? result("pass", "first revenue runway path", "public, outbound, reply, payment, and delivery surfaces open from one command")
       : result("fail", "first revenue runway path", missingRunwayMarkers.join(", "))
+  );
+}
+
+if (exists("scripts/open-public-launch-session.mjs") && exists("scripts/simulate-public-launch-session.mjs") && exists("scripts/stage-approved-public-launch-post.mjs") && exists("package.json")) {
+  const publicLaunchSession = [
+    read("scripts/open-public-launch-session.mjs"),
+    read("scripts/simulate-public-launch-session.mjs"),
+    read("scripts/stage-approved-public-launch-post.mjs"),
+    read("scripts/open-public-launch-review.mjs"),
+    read("docs/PUBLIC_LAUNCH_POST_APPROVAL.md"),
+    read("docs/PUBLIC_CHANNEL_LAUNCH_DRAFTS_2026-08-14.md"),
+    read("package.json")
+  ].join("\n");
+  const requiredPublicLaunchMarkers = [
+    "launch:public-session",
+    "launch:simulate-public-session",
+    "PUBLIC_LAUNCH_SESSION.html",
+    "I approve staging this exact MCPScan public launch post.",
+    "Do not publish automatically",
+    "Refusing to create the public launch session inside the public MCPScan repo.",
+    "Refusing to write ${label} inside the public MCPScan repo.",
+    "public launch post approvals",
+    "forbidden GTM claim",
+    "exact channel, exact URL, and exact final text",
+    "This command opens local proof and public channel pages only. It does not post, publish, submit, comment, message, stage approval, charge, or create customer files."
+  ];
+  const missingPublicLaunchMarkers = requiredPublicLaunchMarkers.filter((marker) => !publicLaunchSession.includes(marker));
+  results.push(
+    missingPublicLaunchMarkers.length === 0
+      ? result("pass", "public launch private session", "approval packet, claim gates, channel links, and staging command are ready without publishing")
+      : result("fail", "public launch private session", missingPublicLaunchMarkers.join(", "))
   );
 }
 

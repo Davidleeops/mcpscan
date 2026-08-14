@@ -83,7 +83,7 @@ console.log("9. Run npm run launch:post-click-bundle after return packet and QA 
 console.log("10. Run npm run launch:open-return-review after values exist.");
 console.log("11. Run npm run launch:publish-pages-fallback -- --wait true after approved values are applied.");
 console.log("12. Run npm run launch:full-proof -- --live true with the generated evidence files.");
-console.log("13. Run npm run launch:open-public-review before any public post.");
+console.log("13. Run npm run launch:public-session before any public post.");
 console.log("14. Run npm run outbound:open-send-gates before any outreach.");
 console.log("15. Run npm run outbound:open-reply-close after any prospect reply.");
 console.log("16. Run npm run delivery:open-handoff after payment clears.");

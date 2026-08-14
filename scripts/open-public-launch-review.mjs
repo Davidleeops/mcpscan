@@ -58,5 +58,8 @@ console.log("");
 console.log("After approval, stage the public post outside the public repo with:");
 console.log("npm run launch:stage-public-post -- --file /path/to/approved-public-launch-post.txt");
 console.log("");
+console.log("For the guided private public-launch cockpit, run:");
+console.log("npm run launch:public-session");
+console.log("");
 console.log("Before publishing manually, verify launch status:");
 console.log("npm run launch:status:live");
