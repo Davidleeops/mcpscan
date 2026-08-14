@@ -166,6 +166,7 @@ const requiredFiles = [
   "sales/customer-intake.md",
   "sales/discovery-call-script.md",
   "scripts/create-customer-workspace.mjs",
+  "scripts/apply-founder-return-packet.mjs",
   "scripts/show-launch-status.mjs",
   "delivery/customer-workspace-template/report-template.md",
   "delivery/customer-workspace-template/buyer-facing-summary.md",

@@ -6,6 +6,8 @@ Fastest working console: `ops/launch-approval-queue.html`.
 
 After the external account clicks, use `ops/founder-return-packet.html` to paste the purchased domain, mailbox, aliases, and Stripe links into one approval message.
 
+After that message is approved, Codex can run `npm run launch:apply-return-packet -- --file /path/to/approved-return-packet.txt`.
+
 ## Rule
 
 Do not send external messages, start a live audit, publish packages, or accept sensitive customer materials until the matching approval gate below is complete.
