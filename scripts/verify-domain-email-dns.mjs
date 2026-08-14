@@ -114,7 +114,7 @@ if (!provider) {
 }
 
 if (!validDomain(domain)) {
-  console.error("Usage: npm run launch:verify-dns -- --domain CHOSEN_DOMAIN");
+  console.error("Usage: npm run launch:verify-dns -- --domain CHOSEN_DOMAIN --mail-provider zoho");
   process.exit(1);
 }
 

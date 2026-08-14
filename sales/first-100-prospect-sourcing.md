@@ -46,6 +46,18 @@ Search queries:
 
 Best targets: companies or maintainers already exposing MCP servers, docs, SDKs, connectors, or deployment instructions.
 
+### Block 1A: Production Read/Write MCP Surfaces
+
+Search queries:
+
+- `"MCP server" "OAuth" "create" "update" "delete"`
+- `"MCP server" "feature flags"`
+- `"MCP server" "deploy"`
+- `"MCP server" "customer data"`
+- `"MCP server" "audit logs"`
+
+Best targets: teams whose MCP server can change production state, touch customer data, manage incidents, create tickets, deploy code, update feature flags, or expose logs.
+
 ### Block 2: Developer Tools And AI Coding Products
 
 Search queries:
@@ -68,7 +80,7 @@ Search queries:
 - `"MCP" "agency"`
 - `"build AI workflows for clients"`
 
-Best targets: agencies with case studies in ops, support, sales, finance, data, or engineering automation.
+Best targets: agencies with case studies in ops, support, sales, finance, data, or engineering automation. Treat community forums as objection mining and useful-post sources, not as direct prospecting lists.
 
 ### Block 4: B2B SaaS Teams With Internal Agent Signals
 

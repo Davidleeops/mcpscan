@@ -14,9 +14,9 @@ Use this before pointing paid outreach or community launch traffic at MCPScan.
 | Security mailbox | `security@{{chosen_domain}}` reaches the monitored launch inbox | Test inbound email |
 | Audit alias | `audit@{{chosen_domain}}` reaches the same monitored inbox | Test inbound email |
 | General alias | `hello@{{chosen_domain}}` reaches the same mailbox or monitored inbox | Test inbound email |
-| SPF | Domain includes the selected mail provider in SPF | `npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status` |
+| SPF | Domain includes the selected mail provider in SPF | `npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status` |
 | DKIM | Mail provider DKIM is configured | Provider DNS check |
-| DMARC | `_dmarc.{{chosen_domain}}` exists | `npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status` |
+| DMARC | `_dmarc.{{chosen_domain}}` exists | `npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status` |
 | Stripe links | All three live Payment Links exist | `npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status` |
 | Terms | Terms page is reachable from the landing page | Browser visit |
 | Privacy | Privacy page is reachable from the landing page | Browser visit |
@@ -51,7 +51,7 @@ Use this before pointing paid outreach or community launch traffic at MCPScan.
 npm run writing:check
 npm run market:verify
 npm run launch:verify -- --domain {{chosen_domain}}
-npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status
+npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status
 npm run outbound:verify
 ```
 

@@ -4,7 +4,7 @@ Date: August 14, 2026
 
 ## Verdict
 
-This is still a good opportunity, but only if MCPScan is sold as a fast security audit and evidence package. The generic scanner category is already crowded.
+This is still a good opportunity, but only as a service-first MCP governance and readiness audit. The scanner market is already crowded, and credible vendors now offer MCP or agent security scanning. MCPScan should win by delivering a fast, buyer-safe evidence packet that helps teams approve, restrict, or block MCP usage before enterprise customers, internal security reviewers, or shadow MCP traffic force the issue.
 
 Go forward with a service-first launch:
 
@@ -46,6 +46,8 @@ The strongest wedge is:
 | NVD lists CVE-2025-54136 for Cursor MCP config poisoning | Public vulnerability records give buyers a concrete example, but outreach must not imply unrelated prospects are affected | https://nvd.nist.gov/vuln/detail/CVE-2025-54136 |
 | CSA research warns about MCP supply-chain exposure and high-severity platform issues | Use as urgency context, but verify and avoid claiming a prospect is affected without evidence | https://labs.cloudsecurityalliance.org/research/csa-research-note-mcp-security-crisis-20260504-csa-styled/ |
 | Cloudflare is shipping MCP architecture and security controls | Infrastructure vendors are validating demand for MCP traffic detection, portals, and controlled enterprise deployment | https://blog.cloudflare.com/enterprise-mcp/ |
+| Cloudflare is detecting MCP traffic through Gateway and describes shadow MCP as a managed-network security problem | Security teams now have a concrete detection and policy lane for unapproved MCP usage | https://blog.cloudflare.com/mcp-security-updates/ |
+| Netskope reports rapid remote MCP growth and connects MCP use to changing data policy violation patterns | SASE, DLP, and AI governance buyers now have evidence that MCP activity affects data-control conversations | https://www.netskope.com/resources/threat-labs-reports/netskope-ai-report-2026 |
 | Enterprise AI data policy reports connect MCP adoption with downstream data exposure risk | AI agents connected to enterprise systems create buyer concern beyond prompt-input leakage | https://www.expresscomputer.in/news/downstream-ai-data-violations-more-than-double-as-agents-connect-to-enterprise-systems/137144/ |
 | Communities discuss production use concerns around approvals, logs, credentials, and rate limits | The pain is practical and operational, not only academic | https://www.reddit.com/r/mcp/comments/1nldx5m/anyone_using_mcp_in_production_curious_about/ |
 | Job posts mention securing MCP servers and AI integrations | Hiring demand supports a service wedge when teams lack internal capacity | https://jobs.lever.co/beghouconsulting/bf119e5f-07e1-4c47-ba90-f7cfb2f93961 |
@@ -71,7 +73,7 @@ The recurring needs are:
 
 | Substitute | Examples | Reality | MCPScan Wedge |
 | --- | --- | --- | --- |
-| Open-source MCP scanners | Snyk agent-scan, Invariant MCP-Scan, Ant Group MCP Security, MCP Security Scan GitHub Action | Great for developers, but buyers still need triage, evidence, scope, and remediation | Sell expert-reviewed audit output, not raw findings |
+| Open-source and vendor-backed MCP scanners | Snyk Agent Scan, Cisco MCP Scanner, Invariant MCP-Scan, Ant Group MCP Security, MCP Security Scan GitHub Action | Great for developers, and proof that the scanner market is crowded, but buyers still need triage, evidence, scope, and remediation | Sell expert-reviewed audit output, not raw findings |
 | MCP gateways | Kong, Tyk, Portkey, MintMCP, Citrix, Cloudflare controls | Strong for mature buyers, heavier setup and procurement | Sell pre-gateway readiness and vendor-neutral assessment |
 | AI security posture platforms | Nightfall, Zenity, Palo Alto Prisma AIRS, Cyera, Varonis, CrowdStrike-style platforms | Enterprise budgets exist, but product sales are slower | Sell a fast audit before platform procurement |
 | Vendor-native controls | GitHub Copilot MCP policies, Microsoft AI posture, Cloudflare AI controls | Good for single ecosystems | Assess mixed local, SaaS, cloud, IDE, and agent environments |

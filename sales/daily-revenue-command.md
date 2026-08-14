@@ -58,7 +58,7 @@ npm run outbound:send-gates
 After domain and mailbox exist:
 
 ```text
-npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status
+npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status
 ```
 
 After Stripe links exist:

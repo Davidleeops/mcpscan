@@ -23,7 +23,7 @@ Approved recipients:
 3. Tod Sacerdoti, CEO and Founder, Pipedream (Pipedream)
 4. Soham Ganatra, Founder, Composio (Composio)
 5. James Hawkins, Co-founder and Co-CEO, PostHog (PostHog)
-6. Vijaye Raji, Founder and former CEO, Statsig (Statsig)
+6. Security, product, or platform owner, Post-acquisition owner to reapprove, Statsig (Statsig)
 7. Ankur Goyal, Founder and CEO, Braintrust (Braintrust)
 8. Christopher Pedregal, Co-founder and CEO, Granola (Granola)
 9. David Cramer, Co-founder and CPO, Sentry (Sentry)
@@ -261,9 +261,9 @@ Stage this approved outbound packet outside the public repo for manual sending r
 
 ## 6. Statsig
 
-Candidate: Vijaye Raji, Founder and former CEO, Statsig
-Channel: LinkedIn
-Contact or profile URL: https://www.linkedin.com/posts/vijaye_vijaye-raji-to-become-cto-of-applications-activity-7368705873478631428-G4KF
+Candidate: Security, product, or platform owner, Post-acquisition owner to reapprove, Statsig
+Channel: Contact form
+Contact or profile URL: https://www.statsig.com/contact/us
 Source URL: https://docs.statsig.com/integrations/mcp/overview
 Confidence: Medium
 Message ID: statsig-feature-gates
@@ -273,7 +273,7 @@ Message ID: statsig-feature-gates
 ```text
 Subject: MCP readiness check for feature-gate actions
 
-Hi Vijaye,
+Hi team,
 
 I saw Statsig MCP supports both read and write tools for gates, experiments, configs, and bulk changes. Feature gates and experiments are production-control surfaces, so the security review usually comes down to tool scopes, write permissions, approval gates, and audit evidence. MCPScan runs a fixed-scope MCP Launch Audit that turns that surface into a concise remediation report. Open to me sending the one-page scope?
 
@@ -286,15 +286,15 @@ MCPScan
 I approve staging this exact MCPScan outbound message.
 
 Account: Statsig
-Channel: LinkedIn
-Recipient: Vijaye Raji, Founder and former CEO, Statsig
-Contact or profile URL: https://www.linkedin.com/posts/vijaye_vijaye-raji-to-become-cto-of-applications-activity-7368705873478631428-G4KF
+Channel: Contact form
+Recipient: Security, product, or platform owner, Post-acquisition owner to reapprove, Statsig
+Contact or profile URL: https://www.statsig.com/contact/us
 Source URL: https://docs.statsig.com/integrations/mcp/overview
 
 Final message:
 Subject: MCP readiness check for feature-gate actions
 
-Hi Vijaye,
+Hi team,
 
 I saw Statsig MCP supports both read and write tools for gates, experiments, configs, and bulk changes. Feature gates and experiments are production-control surfaces, so the security review usually comes down to tool scopes, write permissions, approval gates, and audit evidence. MCPScan runs a fixed-scope MCP Launch Audit that turns that surface into a concise remediation report. Open to me sending the one-page scope?
 

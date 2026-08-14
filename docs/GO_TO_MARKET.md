@@ -43,13 +43,15 @@ MCP adoption is moving faster than security review. Teams are connecting AI agen
 - Whether tool descriptions create prompt-injection or over-permissioning risk.
 - Whether an MCP setup is safe enough for enterprise customers, pilots, or internal rollout.
 
+The buyer does not only need a vulnerability scan. The buyer needs an approval artifact: which MCP servers exist, which tools can act, which credentials or data they can reach, which workflows are governed by registry or allowlist policy, and what evidence can be shown to AppSec, enterprise customers, or AI governance owners.
+
 ## Offer
 
 ### Productized Audit
 
 Positioning:
 
-> A fixed-scope MCP security audit for teams connecting AI agents to internal tools, credentials, and customer data.
+> A fixed-scope MCP governance readiness audit for teams connecting AI agents to internal tools, credentials, and customer data.
 
 Deliverables:
 
@@ -57,6 +59,7 @@ Deliverables:
 - Risk-ranked findings with severity, business impact, and recommended fixes.
 - Configuration and secret-exposure review.
 - Prompt-injection and tool-description risk review.
+- Registry, allowlist, and approval-drift review where the buyer uses managed MCP controls.
 - Remediation checklist.
 - 30-minute findings call.
 - Optional re-scan after fixes for higher tiers.
@@ -204,4 +207,3 @@ Use concrete questions:
 - Which MCP servers are connected to production-like credentials?
 - Can your agent reach customer data, source code, databases, or ticketing systems?
 - Would you be comfortable showing your MCP configuration to an enterprise security reviewer today?
-

@@ -81,5 +81,5 @@ npm run launch:open-bundle
 Post-domain DNS proof:
 
 ```text
-npm run launch:verify-dns -- --domain CHOSEN_DOMAIN --update-status
+npm run launch:verify-dns -- --domain CHOSEN_DOMAIN --mail-provider {{zoho_or_google_or_spacemail}} --update-status
 ```

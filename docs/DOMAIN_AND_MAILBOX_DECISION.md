@@ -119,11 +119,11 @@ Use `docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md` for the current approval-read
 After the domain and mailbox records have time to propagate, run:
 
 ```text
-npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status
+npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status
 ```
 
 Use strict mode only when you expect every record to be live:
 
 ```text
-npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status --strict
+npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status --strict
 ```

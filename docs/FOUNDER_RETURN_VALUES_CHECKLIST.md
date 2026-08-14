@@ -44,7 +44,7 @@ Use this immediately after the founder account clicks. The goal is to give Codex
 
 ```text
 npm run launch:open-return-review
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider {{zoho_or_google_or_spacemail}}
 npm run launch:publish-pages-fallback -- --wait true
 npm run launch:verify -- --domain {{chosen_domain}}
 npm run launch:status:live
@@ -64,7 +64,7 @@ The return packet is usable when:
 - `npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status` passes.
 - `npm run launch:verify-return-qa -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json` passes.
 - `npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status` passes.
-- `npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status` passes after DNS propagation.
+- `npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status` passes after DNS propagation.
 - `npm run launch:verify` has no checkout, custom-domain, or security-contact warnings after apply and deploy.
 
 ## Stop Conditions

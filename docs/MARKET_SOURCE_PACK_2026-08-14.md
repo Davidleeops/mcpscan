@@ -6,7 +6,7 @@ Use this as the short approval pack before changing the offer, approving public 
 
 ## Reality Call
 
-This is still a real opportunity, but the first sale should be a productized audit, not a generic scanner signup.
+This is still a real opportunity, but the first sale should be a productized governance readiness audit, not a generic scanner signup.
 
 The market is moving toward MCP governance, server approval, tool permissions, token handling, tool poisoning, shadow MCP usage, and audit evidence. That favors a fast service offer where MCPScan produces proof and the buyer gets a defensible report.
 
@@ -84,18 +84,24 @@ Use proof-first posts and careful founder-led outreach in this order:
 | Signal | Why It Matters | Source |
 | --- | --- | --- |
 | Official MCP security best practices cover authorization, consent, token handling, confused deputy risk, and evaluator guidance | The protocol security surface is explicit enough to sell a readiness review | https://modelcontextprotocol.io/specification/draft/basic/security_best_practices |
+| GitHub documents MCP as a Copilot extension surface across IDE, CLI, app, and GitHub agent workflows | MCP is no longer just local experimentation. It is moving into enterprise developer workflows where admins need policy decisions | https://docs.github.com/en/copilot/concepts/context/mcp |
+| Atlassian documents Rovo MCP server settings for OAuth 2.1, API-token authentication, domain controls, and IP allowlist interactions | Jira, Confluence, Compass, and Rovo create a high-value admin approval lane for MCP reviews | https://support.atlassian.com/security-and-access-policies/docs/control-atlassian-rovo-mcp-server-settings/ |
 | OWASP MCP Top 10 gives teams common risk language | Buyers now have checklist language for MCP risk categories | https://owasp.org/www-project-mcp-top-10/ |
 | OWASP guidance for secure MCP server development exists | Secure MCP is a recognized implementation problem, not a niche founder claim | https://genai.owasp.org/resource/a-practical-guide-for-secure-mcp-server-development/ |
 | NSA published MCP security design guidance in 2026 | Regulated and enterprise buyers have authority-backed language for design review | https://media.defense.gov/2026/Jun/02/2003943289/-1/-1/0/CSI_MCP_SECURITY.PDF |
 | Cloud Security Alliance published agentic MCP security best practices | Industry groups are packaging MCP controls for security teams | https://labs.cloudsecurityalliance.org/agentic/agentic-mcp-security-best-practices-v1/ |
 | GitHub documents MCP registry and allowlist controls for Copilot governance | MCP approval is now an enterprise admin workflow | https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-mcp-usage/restrict-based-on-registry |
+| Cloudflare documents MCP traffic detection and shadow MCP policy control | Shadow MCP is becoming a real security-operations lane, not just a local developer concern | https://blog.cloudflare.com/mcp-security-updates/ |
+| Netskope reports rapid remote MCP growth and related data-policy pressure | MCP usage is showing up in SASE and DLP buyer conversations | https://www.netskope.com/resources/threat-labs-reports/netskope-ai-report-2026 |
+| Cisco MCP Scanner and Invariant MCP-Scan are active scanner competitors | The scanner category is crowded enough that MCPScan must sell expert review and evidence, not raw scanning alone | https://github.com/cisco-ai-defense/mcp-scanner |
+| Invariant MCP-Scan scans MCP configs and tool descriptions for tool poisoning, rug pulls, and prompt-injection risks | Direct scanner competition validates demand but also raises naming and positioning risk | https://invariantlabs.ai/blog/introducing-mcp-scan |
 | Snyk Agent Scan exists and is actively positioned around agent, MCP server, and skill scanning | There is competitor validation, but raw scanner output is not the whole buyer need | https://github.com/snyk/agent-scan |
 | Security research and vendor posts map MCP to tool poisoning, prompt injection, shadow servers, and token exposure | The buyer language is concrete and searchable | https://cycode.com/blog/owasp-mcp-top-10/ |
 | Community conversations ask whether MCP security tools make sense | Builders are asking practical questions, but they dislike pure promotion | https://www.reddit.com/r/mcp/comments/1js3ocm/would_this_kind_of_security_tool_make_sense_for/ |
 
 ## Competitor Reality
 
-Do not pretend there is no competition. Snyk Agent Scan, Invariant MCP-Scan, open-source scanners, gateway vendors, AI security posture tools, and vendor-native controls all validate the market.
+Do not pretend there is no competition. Snyk Agent Scan, Cisco MCP Scanner, Invariant MCP-Scan, open-source scanners, gateway vendors, AI security posture tools, and vendor-native controls all validate the market.
 
 The wedge is narrower and faster:
 

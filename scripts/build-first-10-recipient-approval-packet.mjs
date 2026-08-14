@@ -95,6 +95,7 @@ function toRecords(rows) {
 }
 
 function firstName(value) {
+  if (/owner|team|security|platform|product/i.test(value)) return "team";
   return value.trim().split(/\s+/)[0] || "there";
 }
 

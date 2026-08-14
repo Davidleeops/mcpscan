@@ -145,9 +145,13 @@
 
       <section>
         <h2>DNS and Mail Verification</h2>
-        <p>Run after the domain, GitHub Pages records, MX, SPF, DKIM, and DMARC are saved. Add the DKIM selector shown by Spacemail when available.</p>
+        <p>Run after the domain, GitHub Pages records, MX, SPF, DKIM, and DMARC are saved. Choose the same mail provider selected in the DNS console. Add the DKIM selector from that provider when available.</p>
         <button class="copy" data-copy-target="dns-command">Copy command</button>
-        <pre id="dns-command">npm run launch:verify-dns -- --domain CHOSEN_DOMAIN --update-status --dkim-selector DKIM_SELECTOR</pre>
+        <pre id="dns-command">npm run launch:verify-dns -- --domain CHOSEN_DOMAIN --mail-provider zoho --update-status --dkim-selector DKIM_SELECTOR</pre>
+        <button class="copy" data-copy-target="dns-provider-examples">Copy provider examples</button>
+        <pre id="dns-provider-examples">npm run launch:verify-dns -- --domain CHOSEN_DOMAIN --mail-provider zoho --update-status --dkim-selector DKIM_SELECTOR
+npm run launch:verify-dns -- --domain CHOSEN_DOMAIN --mail-provider google --update-status --dkim-selector DKIM_SELECTOR
+npm run launch:verify-dns -- --domain CHOSEN_DOMAIN --mail-provider spacemail --update-status --dkim-selector DKIM_SELECTOR</pre>
       </section>
 
       <section>
