@@ -363,8 +363,6 @@ if (exists("SECURITY.md")) {
 if (exists("scripts/open-next-founder-action.mjs")) {
   const nextAction = read("scripts/open-next-founder-action.mjs");
   const requiredNextActionUrls = [
-    "https://github.com/settings/billing",
-    "https://github.com/Davidleeops/mcpscan/actions",
     "https://www.spaceship.com/domain-search/?query=mcpattest.dev",
     "https://www.spaceship.com/domain-search/?query=trymcpscan.com",
     "https://www.spaceship.com/domain-search/?query=mcpscan.site",
@@ -375,6 +373,12 @@ if (exists("scripts/open-next-founder-action.mjs")) {
     missingNextActionUrls.length === 0
       ? result("pass", "launch next account links", "all founder account links are present")
       : result("fail", "launch next account links", missingNextActionUrls.join(", "))
+  );
+
+  results.push(
+    exists("ops/github-actions-billing-console.html") && exists("docs/GITHUB_ACTIONS_BILLING_UNBLOCK.md")
+      ? result("pass", "billing repair path", "billing unlock docs remain available outside the first-click path")
+      : result("fail", "billing repair path", "missing billing repair docs")
   );
 
   const nextActionSafetyMarkers = [

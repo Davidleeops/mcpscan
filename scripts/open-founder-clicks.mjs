@@ -6,18 +6,18 @@ import { pathToFileURL } from "node:url";
 const pages = [
   "ops/founder-click-handoff.html",
   "ops/launch-approval-queue.html",
-  "ops/github-actions-billing-console.html",
   "ops/domain-mailbox-purchase-packet.html",
-  "ops/cheap-launch-packet-console.html"
+  "ops/cheap-launch-packet-console.html",
+  "ops/stripe-click-setup.html",
+  "ops/stripe-payment-link-qa-console.html"
 ];
 
 const externalUrls = [
-  "https://github.com/settings/billing",
-  "https://github.com/Davidleeops/mcpscan/actions",
   "https://www.spaceship.com/domain-search/?query=trymcpscan.com",
   "https://www.spaceship.com/domain-search/?query=mcpattest.dev",
   "https://www.spaceship.com/domain-search/?query=getmcpscan.xyz",
-  "https://www.spaceship.com/domain-search/?query=mcpscan.site"
+  "https://www.spaceship.com/domain-search/?query=mcpscan.site",
+  "https://dashboard.stripe.com/payment-links"
 ];
 
 function openerFor(url) {

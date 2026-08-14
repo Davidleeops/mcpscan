@@ -7,8 +7,10 @@ const reviewSurfaces = [
   "ops/launch-cockpit.html",
   "ops/final-founder-click-console.html",
   "ops/founder-click-handoff.html",
-  "ops/github-actions-billing-console.html",
   "ops/cheap-launch-packet-console.html",
+  "ops/domain-mailbox-purchase-packet.html",
+  "ops/stripe-click-setup.html",
+  "ops/stripe-payment-link-qa-console.html",
   "ops/gtm-placement-console.html",
   "ops/public-channel-drafts-console.html",
   "ops/founder-return-packet.html",
@@ -18,8 +20,6 @@ const reviewSurfaces = [
 ];
 
 const externalUrls = [
-  "https://github.com/settings/billing",
-  "https://github.com/Davidleeops/mcpscan/actions",
   "https://www.spaceship.com/domain-search/?query=mcpattest.dev",
   "https://www.spaceship.com/domain-search/?query=trymcpscan.com",
   "https://www.spaceship.com/domain-search/?query=mcpscan.site",
@@ -74,15 +74,16 @@ runStatus();
 
 console.log("");
 console.log("Next action ladder:");
-console.log("1. Clear GitHub Actions billing or account lock.");
-console.log("2. Buy the approved domain and mailbox.");
-console.log("3. Create Stripe Payment Links and checkout QA evidence.");
-console.log("4. Paste exact values into the founder return packet.");
-console.log("5. Run npm run launch:open-return-review after values exist.");
+console.log("1. Buy the approved domain and mailbox.");
+console.log("2. Create Stripe Payment Links and checkout QA evidence.");
+console.log("3. Paste exact values into the founder return packet.");
+console.log("4. Run npm run launch:open-return-review after values exist.");
+console.log("5. Run npm run launch:publish-pages-fallback -- --wait true after approved values are applied.");
 console.log("6. Run npm run launch:open-public-review before any public post.");
 console.log("7. Run npm run outbound:open-send-gates before any outreach.");
 console.log("8. Run npm run outbound:open-reply-close after any prospect reply.");
 console.log("9. Run npm run delivery:open-handoff after payment clears.");
+console.log("10. Clear GitHub billing later so normal CI resumes.");
 
 console.log("");
 console.log("Hard rule:");
