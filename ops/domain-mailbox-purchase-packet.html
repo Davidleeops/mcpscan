@@ -126,7 +126,7 @@
 
       <section class="decision">
         <h2>Best Current Call</h2>
-        <p>Search <strong>getmcpscan.com</strong> first if you want to keep MCPScan and sell a paid B2B security audit. Search <strong>mcpattest.dev</strong> first only if you are willing to use a cleaner security brand. Use <strong>mcpscan.online</strong> for the current near-dollar validation lane, <strong>getmcpscan.xyz</strong> for better renewal posture, or <strong>mcpscan.site</strong> only if the .online cart fails or .site is materially cheaper. For a cheap Spaceship lane, fill the cart proof before checkout.</p>
+        <p>Search <strong>getmcpscan.xyz</strong> first for the current cheap validation lane. Search <strong>getmcpscan.com</strong> first if buyer trust is worth a small extra first-year cost. Search <strong>mcpattest.dev</strong> only if you are willing to use a cleaner security brand. Use <strong>mcpscan.online</strong> or <strong>mcpscan.site</strong> only if the .xyz cart fails or those are materially better in the final cart. For a cheap Spaceship lane, fill the cart proof before checkout.</p>
       </section>
 
       <section class="warning">
@@ -143,20 +143,20 @@
               <select id="lane">
                 <option value="com">Trust lane, .com</option>
                 <option value="clean">Clean brand lane, .dev</option>
-                <option value="cheap">Cheap validation lane</option>
+                <option value="cheap" selected>Cheap validation lane</option>
                 <option value="custom">Custom approved domain</option>
               </select>
             </label>
-            <label>Domain to buy<input id="domain" value="getmcpscan.com" autocomplete="off"></label>
-            <label>Maximum first-year domain spend<input id="spend" value="$12" autocomplete="off"></label>
-            <label class="wide">Renewal acknowledged<input id="renewal" value="$9.98 plus ICANN if standard .com" autocomplete="off"></label>
-            <label>Primary mailbox<input id="mailbox" value="security@getmcpscan.com" autocomplete="off"></label>
-            <label class="wide">Aliases<input id="aliases" value="audit@getmcpscan.com, hello@getmcpscan.com" autocomplete="off"></label>
+            <label>Domain to buy<input id="domain" value="getmcpscan.xyz" autocomplete="off"></label>
+            <label>Maximum first-year domain spend<input id="spend" value="$3" autocomplete="off"></label>
+            <label class="wide">Renewal acknowledged<input id="renewal" value="$12.52 based on current Spaceship .xyz pricing page" autocomplete="off"></label>
+            <label>Primary mailbox<input id="mailbox" value="security@getmcpscan.xyz" autocomplete="off"></label>
+            <label class="wide">Aliases<input id="aliases" value="audit@getmcpscan.xyz, hello@getmcpscan.xyz" autocomplete="off"></label>
           </div>
           <h3>Cart Safety Check</h3>
           <div class="form">
-            <label>Cart first-year domain price<input id="cartDomainPrice" value="$8.88" autocomplete="off"></label>
-            <label>Cart renewal price<input id="cartRenewalPrice" value="$9.98" autocomplete="off"></label>
+            <label>Cart first-year domain price<input id="cartDomainPrice" value="$1.86" autocomplete="off"></label>
+            <label>Cart renewal price<input id="cartRenewalPrice" value="$12.52" autocomplete="off"></label>
             <label class="wide">Cart mailbox total<input id="cartMailboxTotal" value="Zoho Mail Lite about $1/user/month, Google Workspace about $7/user/month, or Spacemail one-mailbox price if same-vendor" autocomplete="off"></label>
             <label>Extra domains in cart<input id="extraDomains" value="0" inputmode="numeric" autocomplete="off"></label>
             <label>Extra mailboxes in cart<input id="extraMailboxes" value="0" inputmode="numeric" autocomplete="off"></label>
@@ -181,7 +181,7 @@
             <tr><th>Lane</th><th>Expected first-year domain cost</th><th>Renewal posture</th></tr>
             <tr><td>.dev clean brand</td><td>About $8.28 plus ICANN fee before any accepted coupon</td><td>Low to medium</td></tr>
             <tr><td>.com trust</td><td>About $8.88 plus ICANN fee before any accepted coupon</td><td>Low</td></tr>
-            <tr><td>.xyz cheap</td><td>About $1.86 before any accepted coupon</td><td>Medium</td></tr>
+            <tr><td>.xyz cheap</td><td>About $1.86 before any accepted coupon, or lower if promo code XYZ52 applies</td><td>Medium</td></tr>
             <tr><td>.site cheap</td><td>About $0.98 plus ICANN fee if promo-priced</td><td>High</td></tr>
             <tr><td>.online cheap</td><td>About $0.98 plus ICANN fee if promo-priced</td><td>High</td></tr>
             <tr><td>.click cheap</td><td>About $1.04 plus ICANN fee</td><td>Lower renewal, weaker buyer trust</td></tr>
@@ -194,7 +194,7 @@
         <h2>Cart Check Before Clicking Buy</h2>
         <ul>
           <li>Confirm the first-year price and renewal price in the Spaceship cart.</li>
-          <li>Try the active Spaceship promo field only if it is visible. Public promo pages showed near-dollar `.site` and `.online` codes on 2026-08-14, but official Spaceship pricing and the cart decide.</li>
+          <li>Try the active Spaceship promo field only if it is visible. Public promo pages showed a cheap `.xyz` code on 2026-08-14, but official Spaceship pricing and the cart decide.</li>
           <li>Remove hosting, site builder, paid SSL, paid privacy upsells, extra domains, and extra mailboxes. Keep free included privacy if available.</li>
           <li>Pick Zoho Mail Lite for cheapest credible email, Google Workspace for maximum buyer trust, or Spacemail if one-vendor convenience matters most.</li>
           <li>Click buy only when the generated approval says the cart is clear.</li>
@@ -272,11 +272,11 @@
           cartDomainPrice.value = "$8.88";
           cartRenewalPrice.value = "$9.98";
         } else if (lane.value === "cheap") {
-          domain.value = "mcpscan.online";
+          domain.value = "getmcpscan.xyz";
           spend.value = "$3";
-          renewal.value = "$21.38 plus ICANN if .online";
-          cartDomainPrice.value = "$0.98";
-          cartRenewalPrice.value = "$21.38";
+          renewal.value = "$12.52 based on current Spaceship .xyz pricing page";
+          cartDomainPrice.value = "$1.86";
+          cartRenewalPrice.value = "$12.52";
         }
         if (lane.value !== "custom") {
           mailbox.value = "security@" + domain.value.trim();

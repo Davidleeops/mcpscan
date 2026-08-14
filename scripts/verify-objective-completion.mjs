@@ -49,6 +49,26 @@ results.push(matrix.launchReadinessProof?.failures === 0 ? result("pass", "readi
 const requirements = Array.isArray(matrix.requirements) ? matrix.requirements : [];
 results.push(requirements.length >= 13 ? result("pass", "requirement count", String(requirements.length)) : result("fail", "requirement count", "expected at least 13"));
 
+function requirement(id) {
+  return requirements.find((item) => item.id === id);
+}
+
+function requirementHasEvidence(id, files) {
+  const item = requirement(id);
+  if (!item) {
+    results.push(result("fail", `${id} objective evidence`, "missing requirement"));
+    return;
+  }
+  const evidence = Array.isArray(item.evidence) ? item.evidence : [];
+  const missing = files.filter((file) => !evidence.includes(file));
+  results.push(missing.length === 0
+    ? result("pass", `${id} objective evidence`, files.join(", "))
+    : result("fail", `${id} objective evidence`, missing.join(", ")));
+}
+
+requirementHasEvidence("first_revenue_runway", ["scripts/verify-first-revenue-live.mjs"]);
+requirementHasEvidence("delivery_system", ["scripts/verify-customer-workspace-completion.mjs"]);
+
 for (const item of requirements) {
   if (!item.id || !item.label || !item.status) {
     results.push(result("fail", "requirement shape", JSON.stringify(item)));

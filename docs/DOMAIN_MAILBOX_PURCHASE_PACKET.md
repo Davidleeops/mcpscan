@@ -9,11 +9,11 @@ Use this before buying a domain or mailbox. It keeps the purchase lane, spend ca
 For the fastest cheap launch, use this as the default unless you explicitly decide to spend more for trust:
 
 ```text
-Domain: mcpscan.online
+Domain: getmcpscan.xyz
 Registrar: Spaceship
 Mail provider: Spacemail
-Primary mailbox: security@mcpscan.online
-Aliases: audit@mcpscan.online, hello@mcpscan.online
+Primary mailbox: security@getmcpscan.xyz
+Aliases: audit@getmcpscan.xyz, hello@getmcpscan.xyz
 Maximum first-year domain spend: $3 before mailbox
 ```
 
@@ -43,7 +43,7 @@ Primary mailbox: security@mcpattest.dev
 Aliases: audit@mcpattest.dev, hello@mcpattest.dev
 ```
 
-Cheap renewal-friendlier backup:
+Prepared cheap lane packet:
 
 ```text
 Domain: getmcpscan.xyz
@@ -51,7 +51,7 @@ Primary mailbox: security@getmcpscan.xyz
 Aliases: audit@getmcpscan.xyz, hello@getmcpscan.xyz
 ```
 
-Near-dollar backup:
+Older cheap backup:
 
 ```text
 Domain: mcpscan.online
@@ -63,15 +63,14 @@ Avoid `.shop` as the primary MCPScan domain.
 
 ## Current Cart Rules
 
-- Search `mcpscan.online` first for the default cheap lane.
+- Search `getmcpscan.xyz` first for the default cheap lane.
 - Use Spacemail first for one-vendor convenience unless you explicitly choose Zoho Mail Lite for lowest annual mailbox cost or Google Workspace for maximum buyer trust.
 - Search `getmcpscan.com` only if you decide trust matters more than the near-dollar domain cap.
 - Search `mcpattest.dev` only if you are open to a cleaner security brand.
-- Search `mcpscan.site` if the `.online` cart fails, is unavailable, or is materially worse.
-- Search `getmcpscan.xyz` if the strict cash cap is `$1` to `$3` and you want the cleaner renewal tradeoff.
-- If `.online` or `.site` jumps in cart pricing, search `getmcpscan.site`, then `getmcpscan.online`.
+- Search `mcpscan.online` or `mcpscan.site` only if the `.xyz` cart fails, is unavailable, or is materially worse.
+- Search `getmcpscan.site`, then `getmcpscan.online`, only if the preferred cheap names are blocked.
 - Confirm the renewal price before purchase. `.site` and `.online` can renew near the low `$20s`, while `.xyz` is currently lower.
-- Use promo codes only if the cart accepts them. Official Spaceship pages showed `.site` and `.online` at `$0.98` plus the ICANN fee on 2026-08-14, and `.xyz` at `$1.86` with `$12.52` renewal. The Spaceship cart is the final source.
+- Use promo codes only if the cart accepts them. Official Spaceship pages showed `.xyz` at `$1.86` with `$12.52` renewal on 2026-08-14, and the promo page showed code `XYZ52` at `$0.75`. The Spaceship cart is the final source.
 - Buy the domain at Spaceship if the cart confirms the selected lane.
 - Default mailbox path: use Spacemail for one mailbox in the same Spaceship account.
 - Cheapest credible email path: use Zoho Mail Lite for one custom-domain mailbox only if the founder wants the lowest annual mailbox cost and accepts a separate provider.
@@ -112,9 +111,9 @@ Buy one MCPScan launch domain and one matching mailbox. Do not buy extra domains
 
 ## Click Path
 
-1. Run `npm run launch:prepare-founder-clicks -- --domain mcpscan.online --mail-provider spacemail`.
+1. Run `npm run launch:prepare-founder-clicks -- --domain getmcpscan.xyz --mail-provider spacemail`.
 2. Open `ops/domain-mailbox-purchase-packet.html`.
-3. Search `mcpscan.online` in Spaceship.
+3. Search `getmcpscan.xyz` in Spaceship.
 4. Copy the purchase approval message only if the cart is at or below the cap and has no paid add-ons.
 5. Buy one domain only in Spaceship.
 6. Create one Spacemail mailbox for that domain.
