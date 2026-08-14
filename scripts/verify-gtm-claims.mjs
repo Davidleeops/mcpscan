@@ -11,6 +11,7 @@ const requiredFiles = [
   "sales/daily-revenue-command.md",
   "docs/METHODOLOGY_AND_LIMITATIONS.md",
   "docs/PUBLIC_TRUST_CHECKLIST.md",
+  "docs/PUBLIC_LAUNCH_POST_APPROVAL.md",
   "docs/FIRST_PAID_AUDIT_GO_NO_GO.md"
 ];
 

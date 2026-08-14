@@ -40,6 +40,7 @@ npm run market:verify
 npm run outbound:verify
 npm run launch:verify
 npm run revenue:snapshot
+npm run gtm:verify
 ```
 
 After domain and mailbox exist:
@@ -59,6 +60,12 @@ After first outbound approval exists:
 ```text
 npm run outbound:stage-approved -- --file /path/to/approved-outbound.txt
 npm run outbound:stage-route-packet -- --file /path/to/approved-first-10-route-packet.txt
+```
+
+After public launch post approval exists:
+
+```text
+npm run launch:stage-public-post -- --file /path/to/approved-public-launch-post.txt
 ```
 
 After manual send:

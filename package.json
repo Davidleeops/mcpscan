@@ -20,6 +20,7 @@
     "launch:verify-dns": "node scripts/verify-domain-email-dns.mjs",
     "launch:post-click-verify": "node scripts/run-post-click-verification.mjs",
     "launch:verify": "node scripts/verify-launch-readiness.mjs",
+    "launch:stage-public-post": "node scripts/stage-approved-public-launch-post.mjs",
     "outbound:stage-approved": "node scripts/stage-approved-outbound.mjs",
     "outbound:compose-final": "node scripts/compose-final-outbound.mjs",
     "outbound:compose-contact-routes": "node scripts/compose-contact-route-outbound.mjs",
