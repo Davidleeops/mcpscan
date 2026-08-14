@@ -430,7 +430,13 @@ if (exists("scripts/open-founder-clicks.mjs")) {
 }
 
 if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-return-packet.html")) {
-  const returnReview = `${read("scripts/open-founder-return-review.mjs")}\n${read("ops/founder-return-packet.html")}`;
+  const returnReview = [
+    read("scripts/open-founder-return-review.mjs"),
+    read("ops/founder-return-packet.html"),
+    exists("ops/approved-links-command-builder.html") ? read("ops/approved-links-command-builder.html") : "",
+    exists("docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md") ? read("docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md") : "",
+    exists("ops/launch-day-runbook.html") ? read("ops/launch-day-runbook.html") : ""
+  ].join("\n");
   const requiredReturnReviewCommands = [
     "npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true",
     "npm run launch:publish-pages-fallback -- --wait true",
@@ -444,6 +450,22 @@ if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-retu
     missingReturnReviewCommands.length === 0
       ? result("pass", "founder return post-click path", "apply, publish, live verify, and live status commands are present")
       : result("fail", "founder return post-click path", missingReturnReviewCommands.join(", "))
+  );
+
+  const requiredDomainNeutralMarkers = [
+    "ops/approved-links-command-builder.html",
+    "docs/FOUNDER_RETURN_VALUES_CHECKLIST.md",
+    "npm run launch:verify -- --domain {{chosen_domain}}",
+    "mail-provider {{zoho_or_google_or_spacemail}}",
+    "Use the purchased and approved domain from the founder return packet",
+    "domain must look like the purchased domain",
+    "email must look like security@chosen-domain"
+  ];
+  const missingDomainNeutralMarkers = requiredDomainNeutralMarkers.filter((marker) => !returnReview.includes(marker));
+  results.push(
+    missingDomainNeutralMarkers.length === 0
+      ? result("pass", "domain-neutral post-click path", "return review and proof commands use the approved chosen domain")
+      : result("fail", "domain-neutral post-click path", missingDomainNeutralMarkers.join(", "))
   );
 
   const presetSurfaces = [

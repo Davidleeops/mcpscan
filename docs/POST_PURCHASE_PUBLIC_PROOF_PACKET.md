@@ -47,9 +47,9 @@ Use this after the founder buys the domain, creates the mailbox, and creates Str
 ## Codex Apply Command
 
 ```text
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider zoho
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 npm run launch:publish-pages-fallback -- --wait true
-npm run launch:verify -- --domain mcpscan.online
+npm run launch:verify -- --domain {{chosen_domain}}
 npm run launch:status:live
 npm run launch:open-first-revenue
 ```
@@ -64,5 +64,5 @@ The post-purchase handoff is ready when:
 - `npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status` passes.
 - `npm run launch:verify-return-qa -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json` passes.
 - `npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status` passes.
-- `npm run launch:verify-dns -- --domain mcpscan.online --mail-provider zoho --update-status` passes after DNS propagation.
-- `npm run launch:verify -- --domain mcpscan.online` has no checkout, custom-domain, or security-contact warnings after apply and publish.
+- `npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status` passes after DNS propagation.
+- `npm run launch:verify -- --domain {{chosen_domain}}` has no checkout, custom-domain, or security-contact warnings after apply and publish.

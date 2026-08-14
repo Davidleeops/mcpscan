@@ -239,8 +239,8 @@
       function buildCommand() {
         const values = Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input.value.trim()]));
         const errors = [];
-        if (!validDomain(values.domain)) errors.push("domain must look like getmcpscan.com or trymcpscan.com");
-        if (!validEmail(values.email)) errors.push("email must look like security@getmcpscan.com");
+        if (!validDomain(values.domain)) errors.push("domain must look like the purchased domain");
+        if (!validEmail(values.email)) errors.push("email must look like security@chosen-domain");
         if (validDomain(values.domain) && validEmail(values.email) && !emailMatchesDomain(values.email, values.domain)) errors.push("email must use the purchased domain");
         for (const key of ["quick", "launch", "enterprise"]) {
           if (!validUrl(values[key])) errors.push(`${key} link must be an https:// URL`);

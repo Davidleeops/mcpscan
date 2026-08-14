@@ -6,9 +6,11 @@ import { pathToFileURL } from "node:url";
 const reviewSurfaces = [
   "ops/founder-return-packet.html",
   "ops/stripe-payment-link-qa-console.html",
+  "ops/approved-links-command-builder.html",
   "ops/founder-status-console.html",
   "ops/verification-console.html",
   "ops/final-founder-click-console.html",
+  "docs/FOUNDER_RETURN_VALUES_CHECKLIST.md",
   "docs/FINAL_FOUNDER_CLICK_PATH.md",
   "docs/POST_CLICK_VERIFICATION.md",
   "docs/STRIPE_PAYMENT_LINK_VERIFICATION.md"
@@ -46,7 +48,7 @@ console.log("");
 console.log("After approval, apply and verify with:");
 console.log("npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true");
 console.log("npm run launch:publish-pages-fallback -- --wait true");
-console.log("npm run launch:verify -- --domain getmcpscan.com");
+console.log("npm run launch:verify -- --domain {{chosen_domain}}");
 console.log("npm run launch:status:live");
 console.log("");
 console.log("If DNS is still propagating, use the same command with:");
@@ -54,3 +56,6 @@ console.log("--skip-dns true");
 console.log("");
 console.log("Before outbound, run:");
 console.log("npm run outbound:send-gates");
+console.log("");
+console.log("Hard rule:");
+console.log("Use the purchased and approved domain from the founder return packet. Do not assume the trust lane or cheap lane won.");

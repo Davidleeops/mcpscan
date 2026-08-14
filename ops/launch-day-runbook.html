@@ -101,9 +101,9 @@
             <div>
               <h3>Apply, Publish, Verify</h3>
               <p>After the approved return packet and Stripe QA file exist, run the post-click handoff, publish the Pages fallback, then verify the custom domain and status.</p>
-              <pre>npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider zoho
+              <pre>npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 npm run launch:publish-pages-fallback -- --wait true
-npm run launch:verify -- --domain mcpscan.online
+npm run launch:verify -- --domain {{chosen_domain}}
 npm run launch:status:live</pre>
             </div>
           </article>
