@@ -10,7 +10,7 @@ No outreach can be sent until the exact recipient and exact final content are ap
 
 ## What This Dossier Solves
 
-The earlier first-10 list described buyer profiles. This file turns that into concrete first-wave accounts with public signals and safe outreach angles.
+The earlier first-10 list described buyer profiles. This file turns that into concrete first-wave accounts with public signals, full account-specific copy, follow-ups, and safe approval language.
 
 Use it to choose the first 10 outreach approvals after domain, mailbox, and Stripe are live.
 
@@ -53,7 +53,7 @@ Use it to choose the first 10 outreach approvals after domain, mailbox, and Stri
 - Use public launch or documentation language only.
 - Keep the CTA small: ask whether they want the one-page scope or a short readiness review.
 
-## Account-Specific Draft Angles
+## Account-Specific Drafts
 
 ### Vapi
 
@@ -91,6 +91,18 @@ I saw Pipedream provides MCP servers across thousands of apps and pre-built tool
 {{sender_name}}
 ```
 
+### Composio
+
+```text
+Subject: MCP trust review for gateway-managed tools
+
+Hi {{first_name}},
+
+I saw Composio is positioning MCP gateway management around managed tools, custom MCP servers, central enable/disable, and team ownership. For gateway products, buyers tend to ask for clear evidence around tool inventory, ownership, auth, and what actions are enabled for which teams. MCPScan runs a focused MCP exposure audit and can produce a buyer-safe summary that supports those conversations. Worth sending the one-page scope?
+
+{{sender_name}}
+```
+
 ### PostHog
 
 ```text
@@ -101,6 +113,108 @@ Hi {{first_name}},
 I saw PostHog MCP supports analytics queries, feature flags, experiments, SQL, CDP destinations, and support-ticket workflows. Because those surfaces can affect product data and rollout behavior, the useful security artifact is a clear map of tool permissions, approval gates, and remediation priorities. MCPScan can deliver that as a fixed-scope audit. Worth sending the one-page scope?
 
 {{sender_name}}
+```
+
+### Statsig
+
+```text
+Subject: MCP readiness check for feature-gate actions
+
+Hi {{first_name}},
+
+I saw Statsig MCP supports both read and write tools for gates, experiments, configs, and bulk changes. Feature gates and experiments are production-control surfaces, so the security review usually comes down to tool scopes, write permissions, approval gates, and audit evidence. MCPScan runs a 72-hour MCP exposure audit that turns that surface into a concise remediation report. Open to me sending the one-page scope?
+
+{{sender_name}}
+```
+
+### Braintrust
+
+```text
+Subject: MCP exposure snapshot for eval and log access
+
+Hi {{first_name}},
+
+I saw Braintrust MCP lets AI coding tools query experiments, search docs, and analyze production logs. Evals and logs often include prompts, outputs, traces, and real customer examples, so a lightweight MCP review can help show what data agents can reach and which actions should be approved or gated. MCPScan can run that as a focused exposure snapshot with buyer-safe remediation notes. Worth a quick look?
+
+{{sender_name}}
+```
+
+### Granola
+
+```text
+Subject: MCP exposure snapshot for meeting-note access
+
+Hi {{first_name}},
+
+I saw Granola MCP connects meeting notes to Claude, ChatGPT, Cursor, and other AI tools. Meeting notes can contain sales, legal, hiring, product, and customer-sensitive context, so the useful review is practical: who can connect, what gets exposed, what is logged, and what should be gated. MCPScan runs a focused MCP exposure audit and returns a concise buyer-safe report. Worth sending the one-page scope?
+
+{{sender_name}}
+```
+
+### Sentry
+
+```text
+Subject: MCP readiness review for error and trace access
+
+Hi {{first_name}},
+
+I saw Sentry MCP connects AI assistants to errors, performance data, issue triage, docs, and project management. Error traces and project data can carry sensitive production context, so security reviewers tend to ask what agents can read, what they can change, and how tool calls are attributed. MCPScan runs a 72-hour MCP exposure audit and produces a buyer-safe remediation report. Open to me sending the one-page scope?
+
+{{sender_name}}
+```
+
+### Replit
+
+```text
+Subject: MCP exposure review for custom coding-agent tools
+
+Hi {{first_name}},
+
+I saw Replit Agent supports connecting pre-listed and custom MCP servers, with guidance to trust sources and review access. Custom MCP inside a coding environment is powerful, but it creates a practical review need around tool poisoning, credential exposure, workspace access, and unsafe actions. MCPScan runs a fixed-scope exposure audit for that surface and returns a concise remediation plan. Worth sending the one-page scope?
+
+{{sender_name}}
+```
+
+## Follow-Up Sequence
+
+Use only after the first approved message was sent manually.
+
+### Follow-Up 1, Two Business Days Later
+
+```text
+Subject: Re: MCP readiness review
+
+Hi {{first_name}},
+
+Quick follow-up. The useful version of this is not a broad pentest or a generic scanner output. It is a short MCP exposure review that answers: which servers and tools exist, what can read or write, what credentials are involved, what should be gated, and what evidence a buyer or AppSec reviewer can inspect.
+
+Worth sending the one-page scope?
+
+{{sender_name}}
+```
+
+### Follow-Up 2, Six Business Days Later
+
+```text
+Subject: Re: MCP readiness review
+
+Hi {{first_name}},
+
+Closing the loop here. If MCP review is not a priority right now, no worries.
+
+If it is on the roadmap, the small scope I had in mind is a 72-hour audit with a server/tool inventory, risky action map, auth and secrets review, approval-gate notes, and a buyer-safe remediation summary.
+
+Should I send the scope, or circle back later?
+
+{{sender_name}}
+```
+
+### Reply Handler, Interested
+
+```text
+Thanks, {{first_name}}. The usual starting point is the MCP Quick Audit: fixed scope, 72-hour review, and a buyer-safe report. It covers server/tool inventory, read/write/destructive action classification, auth and secrets exposure, approval gates, and a prioritized remediation checklist.
+
+I can send the payment link and secure intake after scope approval. Nothing sensitive should be sent over email.
 ```
 
 ## Approval Prompt

@@ -145,6 +145,7 @@ const requiredFiles = [
   "sales/buyer-intent-map-2026-08-14.md",
   "sales/first-account-dossier-2026-08-14.md",
   "sales/first-account-dossier-2026-08-14.csv",
+  "sales/first-account-pipeline-2026-08-14.csv",
   "sales/first-10-outbound-approval-packet.md",
   "sales/first-14-days-operating-cadence.md",
   "sales/post-payment-handoff.md",
