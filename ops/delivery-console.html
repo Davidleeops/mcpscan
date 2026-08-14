@@ -145,16 +145,16 @@
       </section>
 
       <section class="ready">
-        <h2>Workspace Setup</h2>
-        <p>Create a private folder for each paid audit, then copy the template into it.</p>
+        <h2>Paid Audit Setup</h2>
+        <p>Create the private workspace, work order, handoff manifest, and pipeline status after payment approval.</p>
         <div class="actions">
-          <button class="copy" data-copy-target="workspace-command">Copy setup command</button>
+          <button class="copy" data-copy-target="handoff-command">Copy handoff command</button>
+          <button class="copy" data-copy-target="intake-message-command">Copy intake draft</button>
           <a class="button" href="../delivery/customer-workspace-template/README.md" target="_blank" rel="noreferrer">Open template</a>
-          <button class="copy" data-copy-target="workspace-dry-run-command">Copy dry run</button>
           <button class="copy" data-copy-target="delivery-rehearsal-command">Copy rehearsal</button>
         </div>
-        <pre id="workspace-command">npm run delivery:workspace -- --customer CUSTOMER_NAME --date YYYY-MM-DD</pre>
-        <pre id="workspace-dry-run-command">npm run delivery:workspace -- --customer CUSTOMER_NAME --date YYYY-MM-DD --dry-run</pre>
+        <pre id="handoff-command">npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt</pre>
+        <pre id="intake-message-command">npm run delivery:intake-message -- --file /path/outside/public/repo/pipeline-status/YYYY-MM-DD_customer_package_pipeline-status.json</pre>
         <pre id="delivery-rehearsal-command">npm run delivery:dry-run</pre>
       </section>
 

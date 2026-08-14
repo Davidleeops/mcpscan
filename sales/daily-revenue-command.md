@@ -84,6 +84,12 @@ npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
 
 This creates the private workspace, first paid audit work order, handoff manifest, and private pipeline status files outside the public repo.
 
+Then draft the intake email from the private pipeline status JSON:
+
+```text
+npm run delivery:intake-message -- --file /path/outside/public/repo/pipeline-status/YYYY-MM-DD_customer_package_pipeline-status.json
+```
+
 Fallback separate commands:
 
 ```text

@@ -15,9 +15,15 @@ Use this immediately after Stripe confirms payment. The goal is to move the buye
 2. Create a private customer workspace outside the public repo.
 3. Copy `delivery/customer-workspace-template/` into that private workspace.
 4. Record package, delivery target, included findings call/re-scan, and any add-ons.
-5. Send the Payment Received / Intake Start message from `sales/customer-communications.md`.
+5. Draft the Payment Received / Intake Start message from the private pipeline status JSON.
 6. If sensitive files are needed, send the Private Handoff Request message before accepting materials.
-7. Mark the pipeline row as `Paid`.
+7. Use the generated private pipeline status as the paid delivery record.
+
+Draft-only command:
+
+```text
+npm run delivery:intake-message -- --file /path/outside/public/repo/pipeline-status/YYYY-MM-DD_customer_package_pipeline-status.json
+```
 
 ## Safe Intake Paths
 
@@ -84,4 +90,3 @@ Findings call:
 Re-scan:
 Notes:
 ```
-

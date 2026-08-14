@@ -31,6 +31,7 @@ const requiredFiles = [
   "docs/PAYMENT_TO_DELIVERY_SOP.md",
   "scripts/create-first-paid-audit-work-order.mjs",
   "scripts/create-paid-audit-handoff.mjs",
+  "scripts/compose-post-payment-intake.mjs",
   "sales/paid-audit-handoff-approval-packet.md",
   "docs/PAID_AUDIT_RUNBOOK.md",
   "delivery/customer-workspace-template/client-acceptance.md",

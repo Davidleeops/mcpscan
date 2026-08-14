@@ -38,6 +38,12 @@ npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt
 
 The handoff creates the private workspace, first paid audit work order, handoff manifest, and private pipeline status files outside the public MCPScan repo. Output filenames include the date, customer slug, and package slug to prevent same-day customer overwrites.
 
+Draft the post-payment intake message from the private pipeline status JSON:
+
+```text
+npm run delivery:intake-message -- --file /path/outside/public/repo/pipeline-status/YYYY-MM-DD_customer_package_pipeline-status.json
+```
+
 Fallback workspace-only command:
 
 ```text
