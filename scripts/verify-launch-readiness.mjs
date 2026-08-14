@@ -339,6 +339,33 @@ if (exists("SECURITY.md")) {
   );
 }
 
+if (exists("scripts/open-next-founder-action.mjs")) {
+  const nextAction = read("scripts/open-next-founder-action.mjs");
+  const requiredNextActionUrls = [
+    "https://github.com/settings/billing",
+    "https://github.com/Davidleeops/mcpscan/actions",
+    "https://www.spaceship.com/domain-search/?query=mcpscan.site",
+    "https://dashboard.stripe.com/payment-links"
+  ];
+  const missingNextActionUrls = requiredNextActionUrls.filter((url) => !nextAction.includes(url));
+  results.push(
+    missingNextActionUrls.length === 0
+      ? result("pass", "launch next account links", "all founder account links are present")
+      : result("fail", "launch next account links", missingNextActionUrls.join(", "))
+  );
+
+  const nextActionSafetyMarkers = [
+    "approval-gated",
+    "does not buy, publish, send, apply, or create customer files"
+  ];
+  const missingNextActionSafetyMarkers = nextActionSafetyMarkers.filter((marker) => !nextAction.includes(marker));
+  results.push(
+    missingNextActionSafetyMarkers.length === 0
+      ? result("pass", "launch next safety guard", "account pages open without external action")
+      : result("fail", "launch next safety guard", missingNextActionSafetyMarkers.join(", "))
+  );
+}
+
 const authorizationFiles = [
   "README.md",
   "landing/index.html",
