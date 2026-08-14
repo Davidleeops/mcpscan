@@ -189,6 +189,7 @@ const requiredFiles = [
   "ops/discovery-console.html",
   "ops/pipeline-console.html",
   "ops/prospect-sourcing-console.html",
+  "ops/gtm-placement-console.html",
   "docs/FIRST_REVENUE_BATTLECARD.md",
   "docs/FIRST_AUDIT_DELIVERY_PACKET.md",
   "docs/FIRST_PAID_AUDIT_GO_NO_GO.md",
@@ -344,6 +345,8 @@ if (exists("scripts/open-next-founder-action.mjs")) {
   const requiredNextActionUrls = [
     "https://github.com/settings/billing",
     "https://github.com/Davidleeops/mcpscan/actions",
+    "https://www.spaceship.com/domain-search/?query=mcpattest.dev",
+    "https://www.spaceship.com/domain-search/?query=trymcpscan.com",
     "https://www.spaceship.com/domain-search/?query=mcpscan.site",
     "https://dashboard.stripe.com/payment-links"
   ];

@@ -9,6 +9,7 @@ const reviewSurfaces = [
   "ops/founder-click-handoff.html",
   "ops/github-actions-billing-console.html",
   "ops/cheap-launch-packet-console.html",
+  "ops/gtm-placement-console.html",
   "ops/founder-return-packet.html",
   "ops/verification-console.html",
   "sales/daily-revenue-command.md",
@@ -18,6 +19,8 @@ const reviewSurfaces = [
 const externalUrls = [
   "https://github.com/settings/billing",
   "https://github.com/Davidleeops/mcpscan/actions",
+  "https://www.spaceship.com/domain-search/?query=mcpattest.dev",
+  "https://www.spaceship.com/domain-search/?query=trymcpscan.com",
   "https://www.spaceship.com/domain-search/?query=mcpscan.site",
   "https://dashboard.stripe.com/payment-links"
 ];

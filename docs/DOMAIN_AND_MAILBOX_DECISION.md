@@ -4,11 +4,13 @@ Generated: 2026-08-14
 
 ## Recommendation
 
-Buy `trymcpscan.com` if Spaceship shows it available near normal `.com` pricing. It costs a few dollars more than a discount TLD, but it is the strongest trust-to-cost path for a B2B security buyer.
+Search `mcpattest.dev` first if you are willing to use a cleaner product name than MCPScan. It reads like a security attestation product, fits developer buyers, and avoids the crowded exact MCPScan naming lane.
+
+If you want to keep MCPScan as the public product name, buy `trymcpscan.com` if Spaceship shows it available near normal `.com` pricing. It costs a few dollars more than a discount TLD, but it is the strongest trust-to-cost path for a B2B security buyer.
 
 If `trymcpscan.com` is unavailable or premium-priced, buy `getmcpscan.com`. If both are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
 
-If the founder wants the `$1` to `$3` launch lane, buy `mcpscan.site` if the Spaceship cart confirms promo pricing. Treat it as a fast validation domain and acknowledge the higher renewal before purchase.
+If the founder wants the `$1` to `$3` launch lane, search `getmcpscan.xyz` before `mcpscan.site`. Buy `getmcpscan.xyz` if the cart is still near `$1` to `$3` and the renewal is acknowledged. Buy `mcpscan.site` only if the lowest first-year checkout matters more than buyer trust and renewal quality.
 
 If you want the cheapest credible option, buy `mcpscan.us` if Spaceship shows it available. It is a legitimate US-founder fallback and avoids the trust penalty of novelty TLDs.
 
@@ -17,6 +19,23 @@ If the only goal is to spend about `$1` today, use `getmcpscan.site` or `getmcps
 Avoid `.shop` and similar near-dollar TLDs for the first paid security buyer. They save a few dollars up front, but they weaken trust and often renew for more than `.com` or `.us`.
 
 Important `.us` caveat: use `.us` only if the founder is comfortable with US nexus eligibility and the registration privacy tradeoff. It is still the cheapest credible fallback, but `.com` is cleaner for global B2B security buyers.
+
+## Naming Risk Update
+
+The exact MCPScan lane is crowded enough that buying a domain should be a conscious choice, not an autopilot step. Current public signals include active or adjacent names at `mcpscan.dev`, `scanmcp.com`, `mcpscanner.dev`, and Invariant's MCP-Scan. This does not prevent launching, but it raises confusion risk for SEO, outbound trust, and future separation or sale of the product.
+
+Clean-brand candidates to search before checkout:
+
+| Domain | Why it is worth checking | Decision |
+| --- | --- | --- |
+| `mcpattest.dev` | Best security-native name for evidence, attestation, and audit packets | Search first if open to a cleaner brand |
+| `agentposture.dev` | Broader than MCP and useful if the product expands into agent security posture | Strong expansion pick |
+| `toolattest.dev` | Clear attestation language for tool permissions and evidence reports | Good technical buyer signal |
+| `toolposture.dev` | Useful for tool exposure and permission posture messaging | Good backup |
+| `scancontext.dev` | Developer-friendly, but less direct than attestation or posture | Search only after the first four |
+| `trymcpscan.com` | Best MCPScan trust lane if keeping the product name | Search if you want the MCPScan name |
+| `getmcpscan.xyz` | Cheap MCPScan validation lane with better renewal posture than `.site` | Search before `.site` if cash is tight |
+| `mcpscan.site` | Lowest near-dollar lane if promo pricing is real in cart | Use only as validation or redirect |
 
 ## Live Availability Snapshot
 
@@ -29,6 +48,10 @@ Checked through the domain availability tool on 2026-08-14:
 | `scanmcp.dev` | Not available | N/A | Skip |
 | `mcpguard.dev` | Not available | N/A | Skip |
 | `mcpaudit.dev` | Not available | N/A | Skip |
+| `mcpattest.dev` | Needs final Spaceship cart check | About $8 to $13 | Best clean-brand search |
+| `agentposture.dev` | Needs final Spaceship cart check | About $8 to $13 | Strong expansion search |
+| `toolattest.dev` | Needs final Spaceship cart check | About $8 to $13 | Good clean-brand search |
+| `toolposture.dev` | Needs final Spaceship cart check | About $8 to $13 | Good clean-brand backup |
 | Exact short `.xyz` name | Not available in live check | N/A | Skip unless Spaceship directly shows otherwise |
 | `mcpscan.us` | Available in prior live check | Low single digits to about $8 | Cheapest credible fallback |
 | `trymcpscan.com` | Likely available in current RDAP signal | About $9 to $12 | Best overall pick |
@@ -61,16 +84,18 @@ The public trust launch checklist lives in `docs/PUBLIC_TRUST_CHECKLIST.md`.
 
 ## Buying Rule
 
-1. Search `trymcpscan.com` on Spaceship first.
-2. If it is available and standard-priced, buy it.
-3. If it is unavailable or premium-priced, search and buy `getmcpscan.com`.
-4. If both are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
-5. If you want the cheapest credible option, search and buy `mcpscan.us`.
-6. If you want the absolute cheapest today, search `mcpscan.site`, `getmcpscan.site`, `mcpscan.online`, and `getmcpscan.online`, then buy one only if the cart is around `$1` to `$3` and you accept the renewal tradeoff.
-7. Buy one domain first.
-8. Create one mailbox first: `security@{{chosen_domain}}`.
-9. Add aliases for `audit@{{chosen_domain}}` and `hello@{{chosen_domain}}`.
-10. Do not use the mailbox for outbound until MX, SPF, DKIM, and DMARC pass.
+1. Search `mcpattest.dev` on Spaceship first if you are willing to use a cleaner product name.
+2. If `mcpattest.dev` is available and normal-priced, buy it unless you strongly want the MCPScan name.
+3. If you want to keep MCPScan, search `trymcpscan.com`.
+4. If `trymcpscan.com` is available and standard-priced, buy it.
+5. If it is unavailable or premium-priced, search and buy `getmcpscan.com`.
+6. If both are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
+7. If you want the cheapest credible option, search and buy `mcpscan.us`.
+8. If you want the absolute cheapest today, search `getmcpscan.xyz`, `mcpscan.site`, `getmcpscan.site`, `mcpscan.online`, and `getmcpscan.online`, then buy one only if the cart is around `$1` to `$3` and you accept the renewal tradeoff.
+9. Buy one domain first.
+10. Create one mailbox first: `security@{{chosen_domain}}`.
+11. Add aliases for `audit@{{chosen_domain}}` and `hello@{{chosen_domain}}`.
+12. Do not use the mailbox for outbound until MX, SPF, DKIM, and DMARC pass.
 
 ## After Purchase
 

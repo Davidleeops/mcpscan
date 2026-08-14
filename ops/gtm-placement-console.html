@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan GTM Placement Console</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #14171a;
+        --muted: #5b6470;
+        --line: #d7dde3;
+        --panel: #ffffff;
+        --soft: #f5f7f9;
+        --accent: #0b6bcb;
+        --good: #0f7b4f;
+        --warn: #9a5a00;
+        --danger: #aa2b2b;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--soft);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+        align-items: end;
+        margin-bottom: 18px;
+      }
+
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1; margin-bottom: 12px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      h3 { font-size: 16px; margin-bottom: 8px; }
+      p, li, td { color: var(--muted); line-height: 1.5; }
+
+      .stack { display: grid; gap: 16px; }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+      section, article { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+      .wide { grid-column: 1 / -1; }
+      .decision { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .warning { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .danger { border-left: 4px solid var(--danger); background: #fff6f6; }
+
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+      a.button, button {
+        display: inline-flex;
+        min-height: 40px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--accent);
+        border-radius: 7px;
+        padding: 9px 12px;
+        color: var(--accent);
+        background: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      a.button.primary, button.primary { color: #ffffff; background: var(--accent); }
+      code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      pre { margin: 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; }
+      table { border-collapse: collapse; width: 100%; }
+      th, td { border-top: 1px solid var(--line); padding: 10px 8px; text-align: left; vertical-align: top; }
+      th { color: var(--ink); }
+
+      @media (max-width: 900px) {
+        header, .grid { grid-template-columns: 1fr; }
+        .wide { grid-column: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <div>
+          <h1>GTM Placement Console</h1>
+          <p>Use these placements after the public launch, domain, mailbox, Stripe, and send approvals are ready. This page opens research and staging surfaces only. It does not post, comment, message, or send.</p>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="../sales/daily-revenue-command.md">Daily revenue command</a>
+          <a class="button" href="../docs/PUBLIC_LAUNCH_POST_APPROVAL.md">Public launch approval</a>
+          <a class="button" href="../docs/FINAL_OUTBOUND_COMPOSER.md">Outbound composer</a>
+        </div>
+      </header>
+
+      <section class="decision">
+        <h2>Best First Wedge</h2>
+        <p>Lead with proof in technical channels, then repackage the same evidence for governance buyers. The fastest path is GitHub MCP issues, r/mcp, OWASP mapping, and Hacker News. The enterprise path is LinkedIn, CSA, CoSAI, newsletters, and research-blog response posts.</p>
+      </section>
+
+      <div class="grid">
+        <article>
+          <h2>1. GitHub MCP Server Issues</h2>
+          <p>Why it matters: implementers are surfacing real risks such as SSRF, unsafe browser servers, credential exposure, tool poisoning, prompt injection, and deployment gaps.</p>
+          <p>Angle: post a neutral MCP server preflight checklist mapped to what MCPScan detects.</p>
+          <div class="actions">
+            <a class="button" href="https://github.com/modelcontextprotocol/servers/issues/3662" target="_blank" rel="noreferrer">Issue 3662</a>
+            <a class="button" href="https://github.com/modelcontextprotocol/servers/issues/4143" target="_blank" rel="noreferrer">Issue 4143</a>
+            <a class="button" href="https://github.com/modelcontextprotocol/servers/issues/4234" target="_blank" rel="noreferrer">Issue 4234</a>
+          </div>
+        </article>
+
+        <article>
+          <h2>2. GitHub MCP Spec Issues</h2>
+          <p>Why it matters: platform teams and security architects track MCP governance and authorization design here.</p>
+          <p>Angle: protocol controls are necessary, but deployments still need continuous validation.</p>
+          <div class="actions">
+            <a class="button" href="https://github.com/modelcontextprotocol/modelcontextprotocol/issues/544" target="_blank" rel="noreferrer">Security design</a>
+            <a class="button" href="https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1299" target="_blank" rel="noreferrer">Authorization</a>
+            <a class="button" href="https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1961" target="_blank" rel="noreferrer">Headers</a>
+          </div>
+        </article>
+
+        <article>
+          <h2>3. OWASP MCP</h2>
+          <p>Why it matters: OWASP gives buyers shared language for AppSec, compliance, and executive review.</p>
+          <p>Angle: publish an MCPScan to OWASP MCP Top 10 coverage matrix with scan-now and needs-runtime-control categories.</p>
+          <div class="actions">
+            <a class="button" href="https://owasp.org/www-project-mcp-top-10/" target="_blank" rel="noreferrer">MCP Top 10</a>
+            <a class="button" href="https://owasp.org/www-community/attacks/MCP_Tool_Poisoning" target="_blank" rel="noreferrer">Tool poisoning</a>
+          </div>
+        </article>
+
+        <article>
+          <h2>4. Reddit r/mcp</h2>
+          <p>Why it matters: builders are asking practical safety questions, and they respond to concrete teardowns.</p>
+          <p>Angle: publish a teardown of common MCP config failure modes, then offer MCPScan as the reproducible tool.</p>
+          <div class="actions">
+            <a class="button" href="https://www.reddit.com/r/mcp/comments/1poeipw/why_is_nobody_talking_about_tool_poisoning_in_the/" target="_blank" rel="noreferrer">Tool poisoning</a>
+            <a class="button" href="https://www.reddit.com/r/mcp/comments/1jr7sfc/mcp_is_a_security_nightmare/" target="_blank" rel="noreferrer">Security concern</a>
+            <a class="button" href="https://www.reddit.com/r/mcp/comments/1liq2w1/scanning_for_malicious_mcp_servers/" target="_blank" rel="noreferrer">Scanner thread</a>
+          </div>
+        </article>
+
+        <article>
+          <h2>5. Hacker News</h2>
+          <p>Why it matters: senior engineers and founders respond to proof, reproduction steps, and technical restraint.</p>
+          <p>Angle: share an incident-style writeup about delegated tool authority and concrete scanner output.</p>
+          <div class="actions">
+            <a class="button" href="https://news.ycombinator.com/item?id=44097390" target="_blank" rel="noreferrer">GitHub MCP exploit</a>
+            <a class="button" href="https://news.ycombinator.com/item?id=43632112" target="_blank" rel="noreferrer">Prompt injection</a>
+            <a class="button" href="https://news.ycombinator.com/item?id=42237424" target="_blank" rel="noreferrer">MCP launch</a>
+          </div>
+        </article>
+
+        <article>
+          <h2>6. Product Hunt</h2>
+          <p>Why it matters: adjacent launches reveal buyer vocabulary around visibility, policy enforcement, monitoring, and control planes.</p>
+          <p>Angle: launch a free artifact: scan Claude, Cursor, and MCP config in 60 seconds. Sell the team report.</p>
+          <div class="actions">
+            <a class="button" href="https://www.producthunt.com/products/golf" target="_blank" rel="noreferrer">Golf</a>
+            <a class="button" href="https://www.producthunt.com/products/mcp-snitch" target="_blank" rel="noreferrer">MCP Snitch</a>
+            <a class="button" href="https://www.producthunt.com/products/0xaudit" target="_blank" rel="noreferrer">0xAudit</a>
+          </div>
+        </article>
+
+        <article>
+          <h2>7. LinkedIn AI Governance</h2>
+          <p>Why it matters: CISOs, AI governance leads, and platform leaders translate technical agent risk into budget and policy.</p>
+          <p>Angle: the risk is delegated authority without inspection. Offer a one-page MCP exposure report.</p>
+          <div class="actions">
+            <a class="button" href="https://www.linkedin.com/posts/cwsutphin_nistairmf-aigovernance-airisk-activity-7486759667294191616-R3M8" target="_blank" rel="noreferrer">Governance post</a>
+            <a class="button" href="https://www.linkedin.com/pulse/mcp-security-how-stop-prompt-injection-tool-poisoning-attacks-vzipe" target="_blank" rel="noreferrer">Security article</a>
+          </div>
+        </article>
+
+        <article>
+          <h2>8. AI Security Newsletter</h2>
+          <p>Why it matters: practitioner newsletters curate AI security tools, prompt injection, agent monitoring, and scanner projects.</p>
+          <p>Angle: submit a tiny demo repo, sample findings, and OWASP mapping.</p>
+          <div class="actions">
+            <a class="button" href="https://github.com/TalEliyahu/AI-Security-Newsletter" target="_blank" rel="noreferrer">Newsletter repo</a>
+            <a class="button" href="https://github.com/TalEliyahu/AI-Security-Newsletter/blob/main/AI%20Security%20Newsletter%20-%20March%202026.md" target="_blank" rel="noreferrer">March issue</a>
+          </div>
+        </article>
+
+        <article>
+          <h2>9. CSA And CoSAI</h2>
+          <p>Why it matters: enterprise security buyers use these resources for governance language and risk framing.</p>
+          <p>Angle: position MCPScan as evidence generation for inventory, permissions, suspicious metadata, and remediation reports.</p>
+          <div class="actions">
+            <a class="button" href="https://labs.cloudsecurityalliance.org/research/csa-research-note-mcp-tool-poisoning-ai-agent-exfiltration-2/" target="_blank" rel="noreferrer">CSA note</a>
+            <a class="button" href="https://www.coalitionforsecureai.org/securing-the-ai-agent-revolution-a-practical-guide-to-mcp-security/" target="_blank" rel="noreferrer">CoSAI guide</a>
+          </div>
+        </article>
+
+        <article>
+          <h2>10. Research Narrative Posts</h2>
+          <p>Why it matters: Microsoft, Invariant, Simon Willison, and Unit 42 shape the threat narrative buyers repeat internally.</p>
+          <p>Angle: create a field guide that turns the research into an operational checklist and paid audit offer.</p>
+          <div class="actions">
+            <a class="button" href="https://www.microsoft.com/en-us/security/blog/2026/06/30/securing-ai-agents-ai-tools-move-from-reading-acting/" target="_blank" rel="noreferrer">Microsoft</a>
+            <a class="button" href="https://invariantlabs.ai/blog/mcp-github-vulnerability" target="_blank" rel="noreferrer">Invariant</a>
+            <a class="button" href="https://simonwillison.net/2025/Apr/9/mcp-prompt-injection/" target="_blank" rel="noreferrer">Simon Willison</a>
+            <a class="button" href="https://unit42.paloaltonetworks.com/model-context-protocol-attack-vectors/" target="_blank" rel="noreferrer">Unit 42</a>
+          </div>
+        </article>
+      </div>
+
+      <section class="wide warning">
+        <h2>Approval Rule</h2>
+        <p>Do not post, comment, submit, launch, or message from this page. Use it to inspect the channel, write the angle, and stage the artifact. Every public post and outbound message still goes through the approval queue.</p>
+      </section>
+    </main>
+  </body>
+</html>

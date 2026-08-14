@@ -110,7 +110,7 @@
           <p>Choose one launch lane, copy the exact approval, then buy one domain and one mailbox. This page does not purchase anything or send anything.</p>
         </div>
         <div class="actions">
-          <a class="button primary" href="https://www.spaceship.com/domain-search/?query=mcpscan.site" target="_blank" rel="noreferrer">Search near-dollar .site</a>
+          <a class="button primary" href="https://www.spaceship.com/domain-search/?query=mcpattest.dev" target="_blank" rel="noreferrer">Search clean .dev</a>
           <a class="button" href="https://www.spaceship.com/domain-search/?query=getmcpscan.xyz" target="_blank" rel="noreferrer">Search cheap .xyz</a>
           <a class="button" href="https://www.spaceship.com/domain-search/?query=trymcpscan.com" target="_blank" rel="noreferrer">Search .com trust pick</a>
           <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscan.site" target="_blank" rel="noreferrer">Search cheap .site</a>
@@ -122,7 +122,7 @@
 
       <section class="decision">
         <h2>Best Current Call</h2>
-        <p>For the current low-cash sprint, use <strong>mcpscan.site</strong> if the cart is near $1 and the higher renewal is accepted. Use <strong>getmcpscan.xyz</strong> if you still want cheap checkout with a better renewal tradeoff. Use <strong>trymcpscan.com</strong> only if buyer trust is worth the extra spend.</p>
+        <p>Search <strong>mcpattest.dev</strong> first if you are willing to use a cleaner security brand. If you want to keep MCPScan, use <strong>trymcpscan.com</strong> for buyer trust, <strong>getmcpscan.xyz</strong> for cheap validation with better renewal posture, or <strong>mcpscan.site</strong> only if the near-dollar cart total matters most.</p>
       </section>
 
       <div class="grid">
@@ -131,22 +131,23 @@
           <div class="form">
             <label>Launch lane
               <select id="lane">
+                <option value="clean">Clean brand lane, .dev</option>
                 <option value="cheap">Cheap validation lane</option>
                 <option value="com">Trust lane, .com</option>
                 <option value="custom">Custom approved domain</option>
               </select>
             </label>
-            <label>Domain to buy<input id="domain" value="mcpscan.site" autocomplete="off"></label>
-            <label>Maximum first-year domain spend<input id="spend" value="$3" autocomplete="off"></label>
-            <label class="wide">Renewal acknowledged<input id="renewal" value="About $21.38 plus ICANN fee if .site pricing is confirmed" autocomplete="off"></label>
-            <label>Primary mailbox<input id="mailbox" value="security@mcpscan.site" autocomplete="off"></label>
-            <label class="wide">Aliases<input id="aliases" value="audit@mcpscan.site, hello@mcpscan.site" autocomplete="off"></label>
+            <label>Domain to buy<input id="domain" value="mcpattest.dev" autocomplete="off"></label>
+            <label>Maximum first-year domain spend<input id="spend" value="$13" autocomplete="off"></label>
+            <label class="wide">Renewal acknowledged<input id="renewal" value="$12.42 plus ICANN if .dev" autocomplete="off"></label>
+            <label>Primary mailbox<input id="mailbox" value="security@mcpattest.dev" autocomplete="off"></label>
+            <label class="wide">Aliases<input id="aliases" value="audit@mcpattest.dev, hello@mcpattest.dev" autocomplete="off"></label>
           </div>
           <h3>Cart Safety Check</h3>
           <div class="form">
-            <label>Cart first-year domain price<input id="cartDomainPrice" value="$0.98" autocomplete="off"></label>
-            <label>Cart renewal price<input id="cartRenewalPrice" value="$21.38" autocomplete="off"></label>
-            <label class="wide">Cart mailbox total<input id="cartMailboxTotal" value="Expected $18.88 for 2 years, replace with cart value" autocomplete="off"></label>
+            <label>Cart first-year domain price<input id="cartDomainPrice" value="$8.28" autocomplete="off"></label>
+            <label>Cart renewal price<input id="cartRenewalPrice" value="$12.42" autocomplete="off"></label>
+            <label class="wide">Cart mailbox total<input id="cartMailboxTotal" value="$18.88 for 2 years expected" autocomplete="off"></label>
             <label>Extra domains in cart<input id="extraDomains" value="0" inputmode="numeric" autocomplete="off"></label>
             <label>Extra mailboxes in cart<input id="extraMailboxes" value="0" inputmode="numeric" autocomplete="off"></label>
             <label>Other paid add-ons<input id="paidAddons" value="none, free privacy ok" autocomplete="off"></label>
@@ -168,6 +169,7 @@
           </ul>
           <table>
             <tr><th>Lane</th><th>Expected first-year domain cost</th><th>Renewal posture</th></tr>
+            <tr><td>.dev clean brand</td><td>About $8.28 plus ICANN fee before any accepted coupon</td><td>Low to medium</td></tr>
             <tr><td>.com trust</td><td>About $8.88 plus ICANN fee before any accepted coupon</td><td>Low</td></tr>
             <tr><td>.xyz cheap</td><td>About $1.86 before any accepted coupon</td><td>Medium</td></tr>
             <tr><td>.site cheap</td><td>About $0.98 plus ICANN fee if promo-priced</td><td>High</td></tr>
@@ -247,16 +249,22 @@
       }
 
       function setLaneDefaults() {
-        if (lane.value === "com") {
+        if (lane.value === "clean") {
+          domain.value = "mcpattest.dev";
+          spend.value = "$13";
+          renewal.value = "$12.42 plus ICANN if .dev";
+          cartDomainPrice.value = "$8.28";
+          cartRenewalPrice.value = "$12.42";
+        } else if (lane.value === "com") {
           domain.value = "trymcpscan.com";
           spend.value = "$12";
-          renewal.value = "About $9.98 plus ICANN fee if standard .com pricing is confirmed";
+          renewal.value = "$9.98 plus ICANN if standard .com";
           cartDomainPrice.value = "$8.88";
           cartRenewalPrice.value = "$9.98";
         } else if (lane.value === "cheap") {
           domain.value = "mcpscan.site";
           spend.value = "$3";
-          renewal.value = "About $21.38 plus ICANN fee if .site pricing is confirmed; use getmcpscan.xyz if renewal matters more";
+          renewal.value = "$21.38 plus ICANN if .site";
           cartDomainPrice.value = "$0.98";
           cartRenewalPrice.value = "$21.38";
         }
@@ -302,7 +310,7 @@
         const chosenMailbox = mailbox.value.trim();
         const chosenAliases = aliases.value.trim();
         const errors = [];
-        if (!validDomain(chosenDomain)) errors.push("Domain must look like trymcpscan.com");
+        if (!validDomain(chosenDomain)) errors.push("Domain must look like mcpattest.dev or trymcpscan.com");
         if (!validEmail(chosenMailbox)) errors.push("Mailbox must be a real email address");
         if (validEmail(chosenMailbox) && validDomain(chosenDomain) && !chosenMailbox.toLowerCase().endsWith("@" + chosenDomain)) {
           errors.push("Mailbox must use the chosen domain");
@@ -323,7 +331,7 @@
           return;
         }
 
-        const laneLabel = lane.value === "com" ? ".com trust lane" : lane.value === "cheap" ? "cheap validation lane" : "custom approved lane";
+        const laneLabel = lane.value === "clean" ? ".dev clean brand lane" : lane.value === "com" ? ".com trust lane" : lane.value === "cheap" ? "cheap validation lane" : "custom approved lane";
         approval.textContent = `I approve buying one MCPScan launch domain and one matching mailbox.
 
 Purchase lane: ${laneLabel}
