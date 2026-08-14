@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Paid Audit Handoff Builder</title>
+    <style>
+      :root { color-scheme: light; --ink: #151719; --muted: #5b6470; --line: #d7dde3; --panel: #ffffff; --soft: #f5f7f9; --accent: #0b6bcb; --good: #0f7b4f; --warn: #9a5a00; --danger: #aa2b2b; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--soft); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 48px; }
+      h1, h2, p { margin-top: 0; }
+      h1 { font-size: clamp(32px, 5vw, 58px); line-height: 1; margin-bottom: 12px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      p, label, li { color: var(--muted); line-height: 1.5; }
+      .stack { display: grid; gap: 16px; }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+      section { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+      .wide { grid-column: 1 / -1; }
+      .ready { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .warn { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .danger { border-left: 4px solid var(--danger); background: #fff6f6; }
+      .form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      label { display: grid; gap: 6px; font-weight: 700; }
+      input, select { min-height: 42px; width: 100%; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); font: inherit; padding: 10px 12px; background: #ffffff; }
+      input:focus, select:focus { border-color: var(--accent); outline: 2px solid rgba(11, 107, 203, 0.16); }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+      a.button, button { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 12px; color: var(--accent); background: #ffffff; font-weight: 700; text-decoration: none; cursor: pointer; }
+      a.button.primary, button.primary { color: #ffffff; background: var(--accent); }
+      pre { margin: 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; min-height: 180px; }
+      .status { min-height: 24px; color: var(--muted); }
+      .status.good { color: var(--good); }
+      .status.bad { color: var(--danger); }
+      @media (max-width: 900px) { .grid, .form { grid-template-columns: 1fr; } .wide { grid-column: auto; } }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>Paid Audit Handoff Builder</h1>
+        <p>Use this only after Stripe payment clears. It creates the exact approval packet Codex needs before creating the private workspace, work order, pipeline status, and draft-only intake message.</p>
+        <div class="actions">
+          <a class="button primary" href="post-payment-console.html">Post-payment</a>
+          <a class="button" href="delivery-console.html">Delivery</a>
+          <a class="button" href="../sales/paid-audit-handoff-approval-packet.md">Packet guide</a>
+        </div>
+      </header>
+
+      <section class="danger">
+        <h2>Do Not Paste</h2>
+        <p>Do not paste production credentials, active tokens, mailbox passwords, Stripe secret keys, customer data, private source code, or sensitive customer materials. Use only payment reference and contact routing details.</p>
+      </section>
+
+      <div class="grid">
+        <section>
+          <h2>Payment And Customer Values</h2>
+          <div class="form">
+            <label>Customer company<input id="customer" placeholder="Example Corp" autocomplete="off"></label>
+            <label>Package
+              <select id="packageName">
+                <option>MCP Launch Audit</option>
+                <option>MCP Quick Audit</option>
+                <option>MCP Enterprise Readiness Audit</option>
+              </select>
+            </label>
+            <label class="wide">Technical contact<input id="contact" placeholder="buyer@example.com or https://secure-intake.example/path" autocomplete="off"></label>
+            <label class="wide">Payment reference<input id="payment" placeholder="pi_..., cs_..., receipt URL, invoice URL, or manual_approved_reference" autocomplete="off"></label>
+            <label>Date<input id="date" autocomplete="off"></label>
+            <label>Optional output root<input id="root" placeholder="/Users/you/MCPScan Paid Audits" autocomplete="off"></label>
+          </div>
+          <div class="actions">
+            <button id="build" class="primary" type="button">Build handoff</button>
+            <button id="copyApproval" type="button">Copy approval</button>
+            <button id="copyCommand" type="button">Copy command</button>
+          </div>
+          <p id="status" class="status"></p>
+        </section>
+
+        <section class="warn">
+          <h2>What Codex Creates After Approval</h2>
+          <ul>
+            <li>Private customer workspace outside the public repo.</li>
+            <li>First paid audit work order outside the public repo.</li>
+            <li>Handoff manifest.</li>
+            <li>Private pipeline status JSON and CSV.</li>
+            <li>Draft-only intake start message.</li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="wide ready">
+        <h2>Approval Message</h2>
+        <pre id="approval">Fill the fields, then build the approval packet.</pre>
+      </section>
+
+      <section class="wide">
+        <h2>Codex Command</h2>
+        <pre id="command">Fill the fields, then build the approval packet.</pre>
+      </section>
+    </main>
+    <script>
+      const fields = {
+        customer: document.getElementById("customer"),
+        packageName: document.getElementById("packageName"),
+        contact: document.getElementById("contact"),
+        payment: document.getElementById("payment"),
+        date: document.getElementById("date"),
+        root: document.getElementById("root")
+      };
+      const approval = document.getElementById("approval");
+      const command = document.getElementById("command");
+      const status = document.getElementById("status");
+
+      function today() {
+        return new Date().toISOString().slice(0, 10);
+      }
+
+      function validContact(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) || /^https:\/\/\S+$/i.test(value);
+      }
+
+      function validPayment(value) {
+        return /^(pi_|cs_|plink_|ch_|checkout_|receipt_|manual_)/i.test(value) || /^https:\/\/\S*(stripe|receipt|invoice|checkout)\S*$/i.test(value);
+      }
+
+      function validDate(value) {
+        return /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(new Date(value + "T00:00:00.000Z").getTime());
+      }
+
+      function quote(value) {
+        return '"' + value.replaceAll('"', '\\"') + '"';
+      }
+
+      function build() {
+        const values = Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input.value.trim()]));
+        const errors = [];
+        if (!values.customer) errors.push("Customer company is required");
+        if (!/quick|launch|enterprise/i.test(values.packageName)) errors.push("Package must be Quick, Launch, or Enterprise");
+        if (!validContact(values.contact)) errors.push("Technical contact must be an email address or HTTPS URL");
+        if (!validPayment(values.payment)) errors.push("Payment reference must look like a Stripe reference, receipt URL, invoice URL, checkout URL, or manual_ reference");
+        if (!validDate(values.date)) errors.push("Date must use YYYY-MM-DD");
+        for (const [key, value] of Object.entries(values)) {
+          if (/\{\{[^}]+\}\}/.test(value)) errors.push(key + " still has a template placeholder");
+        }
+
+        if (errors.length > 0) {
+          status.textContent = errors.join(". ");
+          status.className = "status bad";
+          approval.textContent = "Fix the fields above, then build again.";
+          command.textContent = "Fix the fields above, then build again.";
+          return;
+        }
+
+        approval.textContent = `I approve creating this MCPScan paid audit handoff.
+
+Customer: ${values.customer}
+Package: ${values.packageName}
+Technical contact: ${values.contact}
+Payment reference: ${values.payment}
+Date: ${values.date}
+
+Approved action:
+Create the private customer workspace and first paid audit work order outside the public MCPScan repo. Do not store customer secrets in the public repo.`;
+
+        const rootPart = values.root ? " --root " + quote(values.root) : "";
+        command.textContent = "npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt" + rootPart;
+        status.textContent = "Paid handoff packet ready.";
+        status.className = "status good";
+      }
+
+      async function copy(node) {
+        await navigator.clipboard.writeText(node.textContent.trim());
+        status.textContent = "Copied.";
+        status.className = "status good";
+      }
+
+      fields.date.value = today();
+      document.getElementById("build").addEventListener("click", build);
+      document.getElementById("copyApproval").addEventListener("click", () => copy(approval));
+      document.getElementById("copyCommand").addEventListener("click", () => copy(command));
+      for (const input of Object.values(fields)) input.addEventListener("input", build);
+      fields.packageName.addEventListener("change", build);
+      build();
+    </script>
+  </body>
+</html>

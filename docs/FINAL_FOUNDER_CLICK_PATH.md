@@ -36,7 +36,7 @@ First revenue does not require npm publishing. Sell and deliver the `$1,500` MCP
 | 5 | Verify | Run launch verification | `ops/verification-console.html` | `npm run launch:verify -- --domain {{chosen_domain}}` has no domain or checkout warnings |
 | 6 | npm | Optional: publish packages if desired | `ops/npm-publish-console.html` | npm shows version `0.1.0` for both packages |
 | 7 | Outbound | Refresh market sources, then approve exact recipients and exact final messages | `ops/outbound-recipient-approval-builder.html` | Approved messages are staged outside the public repo before any send |
-| 8 | Paid handoff | Use post-payment handoff after Stripe payment | `ops/post-payment-console.html` | Private workspace exists outside public repo |
+| 8 | Paid handoff | Use the paid handoff builder after Stripe payment | `ops/paid-audit-handoff-builder.html`, `ops/post-payment-console.html` | Private workspace exists outside public repo |
 | 9 | Delivery | Deliver report and buyer summary from private workspace | `ops/delivery-console.html` | Report is delivered without customer secrets in public repo |
 
 ## Current Known Blocker

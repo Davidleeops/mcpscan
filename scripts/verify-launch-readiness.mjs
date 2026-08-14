@@ -173,6 +173,7 @@ const requiredFiles = [
   "ops/recipient-finder-console.html",
   "ops/first-revenue-battlecard.html",
   "ops/post-payment-console.html",
+  "ops/paid-audit-handoff-builder.html",
   "ops/revenue-cadence-console.html",
   "ops/github-actions-billing-console.html",
   "ops/npm-publish-console.html",
