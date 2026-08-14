@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Final Founder Click Path</title>
+    <style>
+      :root { color-scheme: light; --ink: #14171a; --muted: #5b6470; --line: #d7dde3; --panel: #ffffff; --soft: #f5f7f9; --accent: #0b6bcb; --good: #0f7b4f; --warn: #9a5a00; --danger: #aa2b2b; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--soft); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 48px; }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { font-size: clamp(32px, 5vw, 58px); line-height: 1; margin-bottom: 12px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      h3 { font-size: 16px; margin-bottom: 8px; }
+      p, li { color: var(--muted); line-height: 1.5; }
+      .stack { display: grid; gap: 16px; }
+      .steps { display: grid; gap: 12px; }
+      section, article { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+      .step { display: grid; grid-template-columns: 42px 1fr auto; gap: 12px; align-items: start; }
+      .num { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 999px; background: var(--soft); color: var(--ink); font-weight: 800; }
+      .warn { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .ready { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .danger { border-left: 4px solid var(--danger); background: #fff6f6; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+      a.button { display: inline-flex; min-height: 38px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 12px; color: var(--accent); background: #ffffff; font-weight: 700; text-decoration: none; }
+      a.button.primary { color: #ffffff; background: var(--accent); }
+      pre { margin: 10px 0 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; }
+      @media (max-width: 900px) { .step { grid-template-columns: 1fr; } .actions { justify-content: start; } }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>Final Founder Click Path</h1>
+        <p>One sequence from account unblock to first paid delivery. Every item here either requires founder authority, payment, login, or explicit approval.</p>
+        <div class="actions"><a class="button primary" href="../docs/FINAL_FOUNDER_CLICK_PATH.md">Open full guide</a></div>
+      </header>
+      <section class="warn"><h2>Current First Gate</h2><p>GitHub Actions is locked by billing. Clear that first so CI and Pages can run again.</p><div class="actions"><a class="button" href="github-actions-billing-console.html">Billing unblock</a><a class="button" href="https://github.com/Davidleeops/mcpscan/actions" target="_blank" rel="noreferrer">GitHub Actions</a></div></section>
+      <section class="steps">
+        <article class="step"><div class="num">0</div><div><h3>Clear GitHub billing lock</h3><p>Resolve billing and re-run failed CI and Pages jobs.</p></div><div class="actions"><a class="button" href="github-actions-billing-console.html">Open</a></div></article>
+        <article class="step"><div class="num">1</div><div><h3>Buy domain and mailbox</h3><p>Buy mcpscanhq.com if standard-priced, then create hello@mcpscanhq.com.</p></div><div class="actions"><a class="button" href="domain-email-dns-console.html">Open</a></div></article>
+        <article class="step"><div class="num">2</div><div><h3>Create Stripe links</h3><p>Create Quick, Launch, and Enterprise Payment Links.</p></div><div class="actions"><a class="button" href="stripe-click-setup.html">Open</a></div></article>
+        <article class="step"><div class="num">3</div><div><h3>Apply live links</h3><p>Use the approved links builder after domain, email, and Stripe links exist.</p></div><div class="actions"><a class="button" href="approved-links-command-builder.html">Open</a></div></article>
+        <article class="step"><div class="num">4</div><div><h3>Verify launch</h3><p>Run writing, launch, domain, and strict verification when the click gates are complete.</p></div><div class="actions"><a class="button" href="verification-console.html">Open</a></div></article>
+        <article class="step"><div class="num">5</div><div><h3>Publish npm if desired</h3><p>Publish only after npm login and 2FA are confirmed.</p></div><div class="actions"><a class="button" href="npm-publish-console.html">Open</a></div></article>
+        <article class="step"><div class="num">6</div><div><h3>Approve outbound</h3><p>Approve exact recipients and exact final content before any external message is sent.</p></div><div class="actions"><a class="button" href="outbound-approval-console.html">Open</a></div></article>
+        <article class="step"><div class="num">7</div><div><h3>Run paid handoff</h3><p>After Stripe payment, create private workspace and use safe intake.</p></div><div class="actions"><a class="button" href="post-payment-console.html">Open</a></div></article>
+        <article class="step"><div class="num">8</div><div><h3>Deliver audit</h3><p>Deliver the report and buyer-facing summary from the private workspace only.</p></div><div class="actions"><a class="button" href="delivery-console.html">Open</a></div></article>
+      </section>
+      <section class="ready"><h2>Local Proof Until Billing Is Fixed</h2><pre>npm run writing:check
+npm run launch:verify
+npm run clean
+npm run build
+npm run typecheck
+npm test
+npm audit --omit=dev
+npm pack --dry-run -w @mcpscan/shared
+npm pack --dry-run -w mcpscan</pre></section>
+      <section class="danger"><h2>Never Skip</h2><ul><li>No external messages without same-turn approval of exact recipient and content.</li><li>No customer secrets, private configs, customer data, or final reports in the public repo.</li><li>No outbound from the new mailbox until MX, SPF, and DKIM pass.</li><li>No live delivery until payment and safe intake are confirmed.</li></ul></section>
+    </main>
+  </body>
+</html>

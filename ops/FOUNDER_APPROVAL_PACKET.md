@@ -29,6 +29,7 @@ The first product to sell is a fixed-scope paid audit. The CLI and public sample
 
 | Gate | Founder Action | Console | Cost / Risk | Done When |
 | --- | --- | --- | --- | --- |
+| GitHub billing | Clear account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | Account/payment issue | CI and Pages jobs start and pass |
 | Domain | Buy `mcpscanhq.com` if standard-priced | `ops/domain-email-dns-console.html` | About $9 first year if available | Domain resolves to GitHub Pages |
 | Email | Create `hello@mcpscanhq.com` | `ops/domain-email-dns-console.html` | About $14 for two years after trial | MX, SPF, DKIM pass |
 | Stripe | Create 3 Payment Links | `ops/stripe-click-setup.html` | Stripe processing fees only | Quick, Launch, Enterprise links exist |
@@ -88,15 +89,23 @@ Current expected warnings before founder clicks:
 - Custom domain CNAME is not active.
 - Security contact still uses placeholder flow.
 
+## Final Click Path
+
+```text
+docs/FINAL_FOUNDER_CLICK_PATH.md
+ops/final-founder-click-console.html
+```
+
 ## Suggested Click Order
 
-1. Buy `mcpscanhq.com`.
-2. Create `hello@mcpscanhq.com`.
-3. Add DNS records and wait for DNS/email authentication.
-4. Create Stripe Payment Links.
-5. Use the approved-links command builder and publish the updated landing links.
-6. Run launch verification.
-7. Publish npm if desired.
-8. Source and approve the first exact outbound messages.
-9. Track interested prospects in the first-revenue pipeline.
-10. Deliver paid audits through the private workspace template.
+1. Clear the GitHub billing lock and re-run failed Actions jobs.
+2. Buy `mcpscanhq.com`.
+3. Create `hello@mcpscanhq.com`.
+4. Add DNS records and wait for DNS/email authentication.
+5. Create Stripe Payment Links.
+6. Use the approved-links command builder and publish the updated landing links.
+7. Run launch verification.
+8. Publish npm if desired.
+9. Source and approve the first exact outbound messages.
+10. Track interested prospects in the first-revenue pipeline.
+11. Deliver paid audits through the private workspace template.
