@@ -6,7 +6,7 @@
   "currentPositioning": "We turn noisy MCP scanner output into a validated MCP risk report, remediation plan, and customer-ready security proof in 3 to 5 days.",
   "launchReadinessProof": {
     "command": "npm run launch:verify",
-    "passed": 210,
+    "passed": 212,
     "expectedWarnings": 3,
     "failures": 0
   },
@@ -63,6 +63,7 @@
       "status": "ready",
       "evidence": [
         "ops/domain-mailbox-purchase-packet.html",
+        "scripts/open-domain-purchase-path.mjs",
         "ops/domain-email-dns-console.html",
         "docs/CHEAP_DOMAIN_DECISION_2026-08-14.md",
         "ops/generated-launch-packets/2026-08-14_mcpscan-online_dns-packet.md",

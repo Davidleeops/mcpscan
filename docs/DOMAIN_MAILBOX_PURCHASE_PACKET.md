@@ -84,7 +84,7 @@ Domain to buy:
 Registrar: Spaceship
 Maximum first-year domain spend:
 Renewal price acknowledged:
-Mailbox plan: Zoho Mail Lite one mailbox, or Spacemail one mailbox if one-vendor setup is preferred
+Mailbox plan: Zoho Mail Lite one mailbox, Google Workspace one mailbox, or Spacemail one mailbox if one-vendor setup is preferred
 Primary mailbox:
 Aliases:
 
@@ -98,7 +98,7 @@ Buy one MCPScan launch domain and one matching mailbox. Do not buy extra domains
 2. Choose the `.com` trust lane if the cart is standard-priced, the clean `.dev` lane if you approve a cleaner brand, or the cheap validation lane only if cash cap matters more than trust.
 3. Copy the purchase approval message.
 4. Buy one domain only in Spaceship.
-5. Create one mailbox for that domain through Zoho Mail Lite or Spacemail.
+5. Create one mailbox for that domain through Zoho Mail Lite, Google Workspace, or Spacemail.
 6. Add `audit@` and `hello@` aliases.
 7. Copy the generated post-click values into `ops/founder-return-packet.html`.
 8. Create Stripe Payment Links.

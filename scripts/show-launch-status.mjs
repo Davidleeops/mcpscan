@@ -220,6 +220,7 @@ const gates = [
   gate("Market research launcher", exists("scripts/open-market-research-console.mjs"), "npm run market:open opens market, buyer, recipient, and GTM surfaces"),
   gate("Swarm throughput console", exists("ops/swarm-throughput-console.html") && exists("docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md"), "npm run launch:open-swarm opens agent lanes, proof commands, and approval boundaries"),
   gate("Swarm throughput launcher", exists("scripts/open-swarm-throughput-console.mjs"), "agentized market, launch, outbound, reply, delivery, and quality lanes have a direct opener"),
+  gate("Domain purchase launcher", exists("scripts/open-domain-purchase-path.mjs"), "npm run domain:open opens domain, mailbox, DNS, cheap lane, and return surfaces"),
   gate("Domain purchase packet", exists("ops/domain-mailbox-purchase-packet.html") && exists("docs/DOMAIN_MAILBOX_PURCHASE_PACKET.md"), "founder can approve one domain and one mailbox"),
   gate("Cheap launch packet console", exists("ops/cheap-launch-packet-console.html"), "single page opens default mcpscan.online DNS, Stripe, and CSV payloads"),
   gate("Cheap launch packet prep", exists("scripts/prepare-cheap-launch-packets.mjs"), "npm run launch:prepare-cheap builds DNS, Stripe, and CSV copy-paste payloads for mcpscan.online with the selected mail provider"),

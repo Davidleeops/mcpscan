@@ -35,10 +35,11 @@ The fastest free production URL is GitHub Pages:
 
 Good custom-domain options once purchased:
 
-- `https://mcpscan.site`
 - `https://getmcpscan.com`
 - `https://trymcpscan.com`
-- `https://mcpscanlab.dev`
+- `https://mcpattest.dev`
+- `https://mcpscan.online`
+- `https://getmcpscan.xyz`
 
 The page is static HTML/CSS only, so it can also be hosted on Netlify, Vercel,
 Cloudflare Pages, S3, or any equivalent static host.

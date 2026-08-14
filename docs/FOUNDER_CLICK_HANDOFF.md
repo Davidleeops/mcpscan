@@ -26,10 +26,10 @@ That creates the founder-ready packet set:
 
 ```text
 ops/cheap-launch-packet-console.html
-ops/generated-launch-packets/2026-08-14_mcpscan-site_dns-packet.md
-ops/generated-launch-packets/2026-08-14_mcpscan-site_dns-records.csv
-ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-setup-packet.md
-ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-products.csv
+ops/generated-launch-packets/2026-08-14_mcpscan-online_dns-packet.md
+ops/generated-launch-packets/2026-08-14_mcpscan-online_dns-records.csv
+ops/generated-launch-packets/2026-08-14_mcpscan-online_stripe-setup-packet.md
+ops/generated-launch-packets/2026-08-14_mcpscan-online_stripe-products.csv
 ```
 
 ## Sequence
@@ -52,14 +52,15 @@ ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-products.csv
 
 ```text
 1. Run npm run launch:open-founder.
-2. Open the GitHub billing guide and clear the account lock.
-3. Open the near-dollar Spaceship search for mcpscan.online.
-4. If the cart is near $1 and renewal is acceptable, buy one domain only.
-5. If the cart jumps or the renewal feels too high, search getmcpscan.xyz.
-6. Create one mailbox: security@chosen-domain.
+2. Open the domain purchase packet.
+3. Search getmcpscan.com first if MCPScan stays the name and the cart is standard-priced.
+4. If the hard cash cap matters more than buyer trust, search mcpscan.online, then getmcpscan.xyz, then mcpscan.site.
+5. Buy one domain only after first-year price, renewal price, and add-ons are clear.
+6. Create one mailbox: security@chosen-domain using Zoho Mail Lite, Google Workspace, or Spacemail.
 7. Add aliases: audit@chosen-domain and hello@chosen-domain.
-8. Download the approval message from ops/founder-return-packet.html after Stripe links exist.
-9. Download the QA evidence JSON from ops/stripe-payment-link-qa-console.html after the checklist passes.
+8. Create the three live Stripe Payment Links.
+9. Download the approval message from ops/founder-return-packet.html after Stripe links exist.
+10. Download the QA evidence JSON from ops/stripe-payment-link-qa-console.html after the checklist passes.
 ```
 
 ## Founder-Only Clicks

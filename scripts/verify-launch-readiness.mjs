@@ -279,6 +279,7 @@ const requiredFiles = [
   "scripts/prepare-cheap-launch-packets.mjs",
   "scripts/build-static-launch-bundle.mjs",
   "scripts/open-static-launch-bundle.mjs",
+  "scripts/open-domain-purchase-path.mjs",
   "scripts/open-market-research-console.mjs",
   "scripts/verify-market-sources.mjs",
   "scripts/verify-domain-email-dns.mjs",
@@ -557,6 +558,38 @@ if (exists("scripts/open-market-research-console.mjs") && exists("ops/market-res
     missingMarketOpenMarkers.length === 0
       ? result("pass", "market research launcher", "market, buyer, recipient, and GTM surfaces are directly openable")
       : result("fail", "market research launcher", missingMarketOpenMarkers.join(", "))
+  );
+}
+
+if (exists("scripts/open-domain-purchase-path.mjs") && exists("ops/domain-mailbox-purchase-packet.html") && exists("package.json")) {
+  const domainOpen = [
+    read("scripts/open-domain-purchase-path.mjs"),
+    read("ops/domain-mailbox-purchase-packet.html"),
+    read("package.json"),
+    exists("scripts/show-launch-status.mjs") ? read("scripts/show-launch-status.mjs") : ""
+  ].join("\n");
+  const requiredDomainOpenMarkers = [
+    "domain:open",
+    "launch:open-domain",
+    "ops/domain-mailbox-purchase-packet.html",
+    "docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md",
+    "docs/CHEAP_DOMAIN_DECISION_2026-08-14.md",
+    "ops/domain-email-dns-console.html",
+    "ops/cheap-launch-packet-console.html",
+    "ops/founder-return-packet.html",
+    "getmcpscan.com",
+    "mcpattest.dev",
+    "getmcpscan.xyz",
+    "mcpscan.online",
+    "mcpscan.site",
+    "Avoid .shop",
+    "This command opens account pages only"
+  ];
+  const missingDomainOpenMarkers = requiredDomainOpenMarkers.filter((marker) => !domainOpen.includes(marker));
+  results.push(
+    missingDomainOpenMarkers.length === 0
+      ? result("pass", "domain purchase launcher", "domain, mailbox, DNS, cheap lane, and return surfaces are directly openable")
+      : result("fail", "domain purchase launcher", missingDomainOpenMarkers.join(", "))
   );
 }
 

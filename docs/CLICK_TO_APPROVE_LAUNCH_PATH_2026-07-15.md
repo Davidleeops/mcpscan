@@ -4,6 +4,8 @@ Date: July 15, 2026
 
 This is the shortest path from current state to live, revenue-capable MCPScan without sending external messages automatically.
 
+Superseded on August 14, 2026 by `docs/FOUNDER_CLICK_HANDOFF.md`, `docs/DOMAIN_MAILBOX_PURCHASE_PACKET.md`, and `npm run domain:open`. Use this file only as historical context if it conflicts with the current domain, mailbox, Stripe, or outbound click path.
+
 Workspace rule: all outbound emails, LinkedIn messages, Slack messages, and prospect/vendor/customer communications must remain draft-only until same-turn explicit approval is given for exact recipient and final content.
 
 ## Current State
@@ -32,7 +34,8 @@ Recommended domain:
 
 1. `getmcpscan.com`
 2. backup: `trymcpscan.com`
-3. backup: `mcpscanlab.dev`
+3. clean-brand backup: `mcpattest.dev`
+4. cheap validation lane only: `mcpscan.online`, `getmcpscan.xyz`, or `mcpscan.site`
 
 Click path:
 
@@ -40,8 +43,8 @@ Click path:
 2. Search `getmcpscan.com`.
 3. If available around $8.88 first year and not premium-priced, buy it.
 4. If unavailable or premium-priced, search `trymcpscan.com`.
-5. If unavailable or premium-priced, search `mcpscanlab.dev`.
-6. Do not buy `.online` or `.site` as the primary brand unless the only priority is lowest first-year price.
+5. If unavailable or premium-priced, search `mcpattest.dev`.
+6. Search `mcpscan.online`, `getmcpscan.xyz`, or `mcpscan.site` only if the hard cash cap matters more than buyer trust.
 
 After purchase, give Codex the domain name. Then Codex can:
 
@@ -59,8 +62,8 @@ Recommended:
 
 Click path:
 
-1. In Spaceship, choose Spacemail for the purchased domain.
-2. Buy the cheapest mailbox plan only if the checkout total is acceptable.
+1. Choose Zoho Mail Lite for cheapest credible email, Google Workspace for highest buyer trust, or Spacemail for one-vendor convenience.
+2. Buy one mailbox only if the checkout total is acceptable.
 3. Create `security@<domain>`.
 4. Share only the public email address with Codex, not the password.
 

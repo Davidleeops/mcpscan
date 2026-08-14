@@ -8,6 +8,7 @@ const targets = [
   "ops/launch-approval-queue.html",
   "ops/domain-mailbox-purchase-packet.html",
   "ops/cheap-launch-packet-console.html",
+  "docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md",
   "ops/stripe-click-setup.html",
   "ops/stripe-payment-link-qa-console.html",
   "ops/founder-return-packet.html",
@@ -19,6 +20,8 @@ const targets = [
 ];
 
 const externalUrls = [
+  "https://www.spaceship.com/domain-search/?query=getmcpscan.com",
+  "https://www.spaceship.com/domain-search/?query=getmcpscan.xyz",
   "https://www.spaceship.com/domain-search/?query=mcpscan.online",
   "https://www.spaceship.com/business-email/",
   "https://dashboard.stripe.com/payment-links/create"
