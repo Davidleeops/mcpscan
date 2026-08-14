@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Founder Return Packet</title>
+    <style>
+      :root { color-scheme: light; --ink: #14171a; --muted: #5b6470; --line: #d7dde3; --panel: #ffffff; --soft: #f5f7f9; --accent: #0b6bcb; --good: #0f7b4f; --warn: #9a5a00; --danger: #aa2b2b; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--soft); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { width: min(1040px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 48px; }
+      h1, h2, p { margin-top: 0; }
+      h1 { font-size: clamp(32px, 5vw, 58px); line-height: 1; margin-bottom: 12px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      p, label, li { color: var(--muted); line-height: 1.5; }
+      .stack { display: grid; gap: 16px; }
+      section { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+      .guardrail { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .ready { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .form { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      label { display: grid; gap: 6px; font-weight: 700; }
+      input { width: 100%; min-height: 42px; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); font: inherit; padding: 10px 12px; }
+      input:focus { border-color: var(--accent); outline: 2px solid rgba(11, 107, 203, 0.16); }
+      .wide { grid-column: 1 / -1; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+      a.button, button { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 12px; color: var(--accent); background: #ffffff; font-weight: 700; text-decoration: none; cursor: pointer; }
+      button.primary, a.button.primary { color: #ffffff; background: var(--accent); }
+      pre { margin: 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; min-height: 170px; }
+      .status { min-height: 24px; color: var(--muted); }
+      .status.good { color: var(--good); }
+      .status.bad { color: var(--danger); }
+      @media (max-width: 900px) { .form { grid-template-columns: 1fr; } .wide { grid-column: auto; } }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>Founder Return Packet</h1>
+        <p>Use this after the founder-account clicks are done. Paste the purchased domain, mailbox, and Stripe links once, then copy the exact approval message back to Codex.</p>
+        <div class="actions"><a class="button" href="launch-approval-queue.html">Approval queue</a><a class="button" href="approved-links-command-builder.html">Command builder</a></div>
+      </header>
+
+      <section class="guardrail">
+        <h2>Approval Rule</h2>
+        <p>This page does not change the repo and does not send anything. It only creates the exact approval message needed before Codex applies public links or starts outbound.</p>
+      </section>
+
+      <section>
+        <h2>Approved Live Values</h2>
+        <div class="form">
+          <label>Purchased domain<input id="domain" value="getmcpscan.com" autocomplete="off"></label>
+          <label>Primary mailbox<input id="email" value="audit@getmcpscan.com" autocomplete="off"></label>
+          <label>Security alias<input id="security" value="security@getmcpscan.com" autocomplete="off"></label>
+          <label>Hello alias<input id="hello" value="hello@getmcpscan.com" autocomplete="off"></label>
+          <label class="wide">Quick Audit Stripe link<input id="quick" placeholder="https://buy.stripe.com/..."></label>
+          <label class="wide">Launch Audit Stripe link<input id="launch" placeholder="https://buy.stripe.com/..."></label>
+          <label class="wide">Enterprise Readiness Stripe link<input id="enterprise" placeholder="https://buy.stripe.com/..."></label>
+        </div>
+        <div class="actions">
+          <button id="build" class="primary" type="button">Build approval message</button>
+          <button id="copy" type="button">Copy message</button>
+        </div>
+        <p id="status" class="status"></p>
+      </section>
+
+      <section class="ready">
+        <h2>Message To Paste Back Into Codex</h2>
+        <pre id="output">Fill the inputs, then build the approval message.</pre>
+      </section>
+    </main>
+    <script>
+      const fields = {
+        domain: document.getElementById("domain"),
+        email: document.getElementById("email"),
+        security: document.getElementById("security"),
+        hello: document.getElementById("hello"),
+        quick: document.getElementById("quick"),
+        launch: document.getElementById("launch"),
+        enterprise: document.getElementById("enterprise")
+      };
+      const output = document.getElementById("output");
+      const status = document.getElementById("status");
+
+      function validDomain(value) {
+        return /^[a-z0-9.-]+\.[a-z]{2,}$/i.test(value);
+      }
+
+      function validEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      }
+
+      function validUrl(value) {
+        return /^https:\/\/\S+$/i.test(value);
+      }
+
+      function buildMessage() {
+        const values = Object.fromEntries(Object.entries(fields).map(([key, input]) => [key, input.value.trim()]));
+        const errors = [];
+        if (!validDomain(values.domain)) errors.push("domain must look like getmcpscan.com");
+        for (const key of ["email", "security", "hello"]) {
+          if (!validEmail(values[key])) errors.push(key + " must be a real email address");
+        }
+        for (const key of ["quick", "launch", "enterprise"]) {
+          if (!validUrl(values[key])) errors.push(key + " link must be an https:// URL");
+        }
+        if (errors.length > 0) {
+          status.textContent = errors.join(". ");
+          status.className = "status bad";
+          output.textContent = "Fix the fields above, then build again.";
+          return;
+        }
+        output.textContent = `I approve applying these exact MCPScan launch values:
+
+Domain: ${values.domain}
+Primary mailbox: ${values.email}
+Security alias: ${values.security}
+Hello alias: ${values.hello}
+
+Stripe Payment Links:
+Quick Audit: ${values.quick}
+Launch Audit: ${values.launch}
+Enterprise Readiness: ${values.enterprise}
+
+Approved action:
+Apply these links to the public landing page, update the public contact email, add the custom domain file, update security/contact references, run verification, commit, and push.
+
+I also approve keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval.`;
+        status.textContent = "Approval message built.";
+        status.className = "status good";
+      }
+
+      document.getElementById("build").addEventListener("click", buildMessage);
+      document.getElementById("copy").addEventListener("click", async () => {
+        await navigator.clipboard.writeText(output.textContent.trim());
+        status.textContent = "Copied.";
+        status.className = "status good";
+      });
+    </script>
+  </body>
+</html>

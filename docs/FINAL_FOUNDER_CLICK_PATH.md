@@ -4,6 +4,8 @@ This is the single founder sequence for turning the prepared MCPScan launch syst
 
 Fastest working console: `ops/launch-approval-queue.html`.
 
+After the external account clicks, use `ops/founder-return-packet.html` to paste the purchased domain, mailbox, aliases, and Stripe links into one approval message.
+
 ## Rule
 
 Do not send external messages, start a live audit, publish packages, or accept sensitive customer materials until the matching approval gate below is complete.

@@ -122,6 +122,7 @@ const requiredFiles = [
   "landing/refund.html",
   "ops/launch-cockpit.html",
   "ops/launch-approval-queue.html",
+  "ops/founder-return-packet.html",
   "ops/GITHUB_ISSUE_ACTION_BOARD.md",
   "ops/founder-click-console.html",
   "ops/final-founder-click-console.html",
