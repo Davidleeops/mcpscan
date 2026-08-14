@@ -35,8 +35,8 @@ ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-products.csv
 ## Sequence
 
 1. Clear the GitHub billing lock.
-2. Choose the domain lane and approve one domain plus one mailbox. Search `trymcpscan.com` first if MCPScan stays the name, `mcpattest.dev` first if you approve a cleaner brand, and `getmcpscan.xyz` or `mcpscan.site` only if the hard cash cap matters more than buyer trust.
-3. Buy one domain and one Spacemail mailbox.
+2. Choose the domain lane and approve one domain plus one mailbox. Search `getmcpscan.com` first if MCPScan stays the name, `mcpattest.dev` first if you approve a cleaner brand, and `getmcpscan.xyz` or `mcpscan.site` only if the hard cash cap matters more than buyer trust.
+3. Buy one domain and one mailbox. Use Zoho Mail Lite for cheapest credible email, Google Workspace for highest buyer trust, or Spacemail for one-vendor convenience.
 4. Use the generated DNS packet and DNS records CSV.
 5. Use the generated Stripe setup packet and Stripe products CSV.
 6. Create three live Stripe Payment Links.
@@ -55,7 +55,7 @@ ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-products.csv
 3. Open the near-dollar Spaceship search for mcpscan.site.
 4. If the cart is near $1 and renewal is acceptable, buy one domain only.
 5. If the cart jumps or the renewal feels too high, search getmcpscan.xyz.
-6. Create one Spacemail mailbox: security@chosen-domain.
+6. Create one mailbox: security@chosen-domain.
 7. Add aliases: audit@chosen-domain and hello@chosen-domain.
 8. Download the approval message from ops/founder-return-packet.html after Stripe links exist.
 9. Download the QA evidence JSON from ops/stripe-payment-link-qa-console.html after the checklist passes.
@@ -86,7 +86,7 @@ ops/generated-launch-packets/2026-08-14_mcpscan-site_stripe-products.csv
 Canonical post-click verification command:
 
 ```text
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider {{zoho_or_google_or_spacemail}}
 ```
 
 ## Stop Conditions

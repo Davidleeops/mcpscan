@@ -8,12 +8,12 @@ Avoid choosing a domain only because it costs about $1. A cheap first-year TLD c
 
 Better first choices:
 
-- `trymcpscan.com`
 - `getmcpscan.com`
+- `trymcpscan.com`
 - `mcpscanhq.com`
 - `usemcpscan.com`
 
-For first revenue, use `trymcpscan.com` if the cart is standard-priced. Use `mcpattest.dev` if the founder approves a cleaner security brand. Use `getmcpscan.xyz` for the `$1` to `$3` validation lane if the hard cash cap matters more than buyer trust. Use `mcpscan.site` only if the near-dollar checkout total is the deciding factor and the higher renewal is accepted.
+For first revenue, use `getmcpscan.com` if the cart is standard-priced. Use `mcpattest.dev` if the founder approves a cleaner security brand. Use `getmcpscan.xyz` for the `$1` to `$3` validation lane if the hard cash cap matters more than buyer trust. Use `mcpscan.site` only if the near-dollar checkout total is the deciding factor and the higher renewal is accepted.
 
 Current pricing notes from Spaceship research:
 
@@ -24,7 +24,9 @@ Current pricing notes from Spaceship research:
 - `.site` and `.online` can be around $0.98 for the first year plus ICANN fee, but renewal is much higher and the trust signal is weaker.
 - `.click` can be around $1.04 for the first year with lower renewal than `.site`, but it reads less serious for a security audit brand.
 - `.us` can be cheaper than `.com`, but it has US nexus and registration privacy tradeoffs.
-- Spacemail Pro has been seen around $18.88 for 2 years for 1 mailbox, with aliases. Confirm the current cart before purchase.
+- Zoho Mail Lite is the cheapest credible custom-domain mailbox path at about `$1/user/month` when billed annually.
+- Google Workspace Business Starter is the strongest trust path at about `$7/user/month` when billed annually.
+- Spacemail can keep the mailbox in the same Spaceship ecosystem. Confirm the current cart before purchase.
 
 Full launch cost plan:
 
@@ -53,6 +55,12 @@ Start with one mailbox and aliases:
 
 This is enough for first revenue. Add separate mailboxes only after inbound
 volume or delivery operations justify it.
+
+Mailbox provider choice:
+
+- Cheapest credible: Zoho Mail Lite.
+- Highest buyer trust: Google Workspace.
+- One-vendor convenience: Spacemail.
 
 ## GitHub Pages DNS
 
@@ -84,7 +92,15 @@ A @ {{github_pages_a_record_4}}
 Codex can generate a domain-specific DNS packet after the domain and mailbox are chosen:
 
 ```text
-npm run launch:dns-packet -- --domain {{chosen_domain}} --mailbox security@{{chosen_domain}}
+npm run launch:dns-packet -- --domain {{chosen_domain}} --mailbox security@{{chosen_domain}} --mail-provider zoho
+```
+
+Provider options:
+
+```text
+--mail-provider zoho
+--mail-provider google
+--mail-provider spacemail
 ```
 
 ## Landing Page Updates

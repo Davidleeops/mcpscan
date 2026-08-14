@@ -180,13 +180,15 @@
           <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscan.online" target="_blank" rel="noreferrer">Search cheap .online</a>
           <a class="button" href="domain-mailbox-purchase-packet.html">Purchase packet</a>
           <a class="button" href="../docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md">Domain shortlist</a>
+          <a class="button" href="https://www.zoho.com/mail/zohomail-pricing.html" target="_blank" rel="noreferrer">Open Zoho Mail</a>
+          <a class="button" href="https://workspace.google.com/pricing" target="_blank" rel="noreferrer">Open Google Workspace</a>
           <a class="button" href="https://www.spaceship.com/business-email/" target="_blank" rel="noreferrer">Open Spacemail</a>
         </div>
       </header>
 
       <section class="decision">
         <h2>Launch Choice</h2>
-          <p>Use <strong>getmcpscan.com</strong> if Spaceship shows standard pricing. Use <strong>mcpattest.dev</strong> if you approve the cleaner brand. Use <strong>getmcpscan.xyz</strong> or <strong>mcpscan.site</strong> only if the hard cash cap matters more than trust. Create one mailbox first: <strong>security@the chosen domain</strong>. Add aliases for <strong>audit@</strong> and <strong>hello@</strong>.</p>
+          <p>Use <strong>getmcpscan.com</strong> if Spaceship shows standard pricing. Use <strong>mcpattest.dev</strong> if you approve the cleaner brand. Use <strong>getmcpscan.xyz</strong> or <strong>mcpscan.site</strong> only if the hard cash cap matters more than trust. Create one mailbox first: <strong>security@the chosen domain</strong>. Use Zoho Mail Lite for cheapest credible email, Google Workspace for highest buyer trust, or Spacemail for one-vendor convenience.</p>
         <div class="actions"><a class="button" href="../docs/DOMAIN_AND_MAILBOX_DECISION.md">Open domain decision</a><a class="button" href="../docs/PUBLIC_TRUST_CHECKLIST.md">Trust checklist</a></div>
       </section>
 
@@ -232,28 +234,27 @@ AAAA @ 2606:50c0:8001::153
 AAAA @ 2606:50c0:8002::153
 AAAA @ 2606:50c0:8003::153
 CNAME www davidleeops.github.io</pre>
-          <pre id="dns-packet-command">npm run launch:dns-packet -- --domain CHOSEN_DOMAIN --mailbox security@CHOSEN_DOMAIN</pre>
+          <pre id="dns-packet-command">npm run launch:dns-packet -- --domain CHOSEN_DOMAIN --mailbox security@CHOSEN_DOMAIN --mail-provider zoho</pre>
         </article>
 
         <article>
-          <h2>Spacemail DNS</h2>
-          <p>Add the mailbox first, then copy the exact records Spacemail gives you. MX and SPF are predictable; DKIM should come from Spacemail after the mailbox/domain is created.</p>
+          <h2>Email Provider DNS</h2>
+          <p>Add the mailbox first, then generate the provider-specific DNS packet. MX and SPF are predictable for Zoho, Google Workspace, and Spacemail. DKIM should come from the selected mailbox provider after the mailbox/domain is created.</p>
           <table>
-            <tr><th>Type</th><th>Host</th><th>Value</th><th>Priority</th></tr>
-            <tr><td>MX</td><td>@</td><td><code>mx1.spacemail.com</code></td><td>0</td></tr>
-            <tr><td>MX</td><td>@</td><td><code>mx2.spacemail.com</code></td><td>0</td></tr>
-            <tr><td>TXT</td><td>@</td><td><code>v=spf1 include:spf.spacemail.com ~all</code></td><td></td></tr>
-            <tr><td>TXT</td><td>Spacemail DKIM host</td><td>Use the exact DKIM value Spacemail displays.</td><td></td></tr>
-            <tr><td>TXT</td><td>_dmarc</td><td><code>v=DMARC1; p=none; rua=mailto:security@the chosen domain</code></td><td></td></tr>
+            <tr><th>Provider</th><th>MX</th><th>SPF</th><th>DKIM source</th></tr>
+            <tr><td>Zoho Mail</td><td><code>mx.zoho.com</code>, <code>mx2.zoho.com</code>, <code>mx3.zoho.com</code></td><td><code>v=spf1 include:zohomail.com ~all</code></td><td>Zoho Admin Console</td></tr>
+            <tr><td>Google Workspace</td><td><code>smtp.google.com</code></td><td><code>v=spf1 include:_spf.google.com ~all</code></td><td>Google Admin Console</td></tr>
+            <tr><td>Spacemail</td><td><code>mx1.spacemail.com</code>, <code>mx2.spacemail.com</code></td><td><code>v=spf1 include:spf.spacemail.com ~all</code></td><td>Spaceship Advanced DNS</td></tr>
           </table>
           <div class="actions">
-            <button class="copy" data-copy-target="spacemail-records">Copy MX/SPF</button>
+            <button class="copy" data-copy-target="mail-provider-commands">Copy provider commands</button>
+            <a class="button" href="https://www.zoho.com/mail/help/adminconsole/configure-email-delivery.html" target="_blank" rel="noreferrer">Zoho DNS docs</a>
+            <a class="button" href="https://knowledge.workspace.google.com/admin/domains/set-up-mx-records-for-google-workspace" target="_blank" rel="noreferrer">Google MX docs</a>
             <a class="button" href="https://www.spacemail.com/login/" target="_blank" rel="noreferrer">Spacemail login</a>
           </div>
-          <pre id="spacemail-records">MX @ mx1.spacemail.com priority 0
-MX @ mx2.spacemail.com priority 0
-TXT @ "v=spf1 include:spf.spacemail.com ~all"
-TXT _dmarc "v=DMARC1; p=none; rua=mailto:security@the chosen domain"</pre>
+          <pre id="mail-provider-commands">npm run launch:dns-packet -- --domain CHOSEN_DOMAIN --mailbox security@CHOSEN_DOMAIN --mail-provider zoho
+npm run launch:dns-packet -- --domain CHOSEN_DOMAIN --mailbox security@CHOSEN_DOMAIN --mail-provider google
+npm run launch:dns-packet -- --domain CHOSEN_DOMAIN --mailbox security@CHOSEN_DOMAIN --mail-provider spacemail</pre>
         </article>
       </div>
 
@@ -274,9 +275,9 @@ TXT _dmarc "v=DMARC1; p=none; rua=mailto:security@the chosen domain"</pre>
 
       <section class="wide">
         <h2>Verification Commands</h2>
-        <p>Use these after DNS has had time to propagate. Add the DKIM selector shown by Spacemail when available.</p>
+        <p>Use these after DNS has had time to propagate. Set `--mail-provider` to the provider chosen for the mailbox. Add the DKIM selector shown by that provider when available.</p>
         <button class="copy" data-copy-target="verify-commands">Copy verification commands</button>
-        <pre id="verify-commands">npm run launch:verify-dns -- --domain CHOSEN_DOMAIN --update-status --dkim-selector DKIM_SELECTOR
+        <pre id="verify-commands">npm run launch:verify-dns -- --domain CHOSEN_DOMAIN --mail-provider zoho --update-status --dkim-selector DKIM_SELECTOR
 dig +short CHOSEN_DOMAIN A
 dig +short CHOSEN_DOMAIN AAAA
 dig +short www.CHOSEN_DOMAIN CNAME

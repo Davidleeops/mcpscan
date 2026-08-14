@@ -66,7 +66,7 @@ The packet should show no cart errors for:
 
 - first-year domain price at or below the approved spend cap
 - renewal price visible
-- one Spacemail mailbox total visible
+- one selected-provider mailbox total visible
 - zero extra domains
 - zero extra mailboxes
 - no hosting, site builder, paid SSL, privacy upsell, or other paid add-on

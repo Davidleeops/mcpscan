@@ -53,6 +53,7 @@ if (!/^[a-z0-9.-]+\.[a-z]{2,}$/i.test(domain)) {
 
 const strict = args.strict === "true";
 const dkimSelector = args["dkim-selector"];
+const mailProvider = args["mail-provider"] ?? "zoho";
 const applyReturnPacket = args.apply === "true";
 const qaFile = args["qa-file"];
 const skipDns = args["skip-dns"] === "true";
@@ -82,6 +83,7 @@ if (skipDns) {
   info("Skipping DNS and mailbox verification because --skip-dns true was provided.");
 } else {
   const dnsArgs = ["run", "launch:verify-dns", "--", "--domain", domain, "--update-status"];
+  dnsArgs.push("--mail-provider", mailProvider);
   if (dkimSelector) dnsArgs.push("--dkim-selector", dkimSelector);
   if (strict) dnsArgs.push("--strict", "true");
   run("DNS and mailbox verification", "npm", dnsArgs);

@@ -8,6 +8,7 @@ Use these only after the founder buys the matching domain and mailbox.
 
 Domain: mcpscan.site
 Primary mailbox: security@mcpscan.site
+Mail provider: Zoho Mail
 Audit alias: audit@mcpscan.site
 Hello alias: hello@mcpscan.site
 
@@ -22,7 +23,7 @@ Hello alias: hello@mcpscan.site
 
 1. Clear GitHub billing or account lock.
 2. Buy one domain only: mcpscan.site.
-3. Create one Spacemail mailbox: security@mcpscan.site.
+3. Create one Zoho Mail mailbox: security@mcpscan.site.
 4. Add aliases: audit@mcpscan.site and hello@mcpscan.site.
 5. Apply only the DNS records in the generated DNS packet.
 6. Create only the three live Stripe Payment Links in the generated Stripe packet.

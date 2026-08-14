@@ -8,8 +8,8 @@ Use one public repo and one low-cost credible domain for the first revenue push.
 
 Best buy path:
 
-1. Buy `trymcpscan.com` if Spaceship shows standard `.com` pricing.
-2. If it is unavailable or premium-priced, search `getmcpscan.com`, then `mcpscanhq.com`, then `usemcpscan.com`.
+1. Buy `getmcpscan.com` if Spaceship shows standard `.com` pricing.
+2. If it is unavailable or premium-priced, search `trymcpscan.com`, then `mcpscanhq.com`, then `usemcpscan.com`.
 3. Buy `mcpattest.dev` if you approve a cleaner product name and Spaceship shows standard `.dev` pricing.
 4. If the hard cash cap matters more than buyer trust, buy `getmcpscan.xyz` if Spaceship confirms standard cheap pricing and the name is clean.
 5. Use `mcpscan.site` only if the final cart is near `$1` and the higher renewal is accepted.
@@ -36,14 +36,14 @@ That avoids paying for infrastructure before there is proof that buyers want the
 | --- | --- | ---: | ---: | --- |
 | GitHub repo | Existing public repo | $0 | $0 | Yes |
 | GitHub Pages | Existing Pages site | $0 | $0 | Yes |
-| Domain | `trymcpscan.com` | About $8.88 plus ICANN fee if standard-priced before any coupon | About $9.98 plus ICANN fee | Yes, only if founder trust matters more than the lowest spend |
+| Domain | `getmcpscan.com` | About $8.88 plus ICANN fee if standard-priced before any coupon | About $9.98 plus ICANN fee | Yes, only if founder trust matters more than the lowest spend |
 | Cheapest validation domain | `mcpscan.site` | About $0.98 plus ICANN fee at Spaceship if promo-priced | About $21.38 plus ICANN fee | Yes, current lowest cash path |
 | Cheap renewal-friendlier domain | `getmcpscan.xyz` | About $1.86 at Spaceship before any coupon | About $12.52 | Yes, if choosing the cheap lane |
 | Cheap low-renewal fallback | `.click` name | About $1.04 plus ICANN fee | About $10.35 plus ICANN fee | No, weaker buyer trust |
 | Cheap credible fallback | `mcpscan.us` | About $4.14 | About $6.48 | Only if avoiding `.com` |
 | Near-dollar promo TLD | `.online` or `.site` | About $0.98 plus ICANN fee | About $21.38 | No |
 | Ultra-cheap promo TLD | `.shop` | About $0.70 plus ICANN fee | About $31.05 | No |
-| Email | One Spacemail mailbox | About $14 to $19 for the first term, depending on current cart | Confirm in cart | Yes |
+| Email | Zoho Mail Lite, Google Workspace, or Spacemail | About $12 to $84 per year depending on provider choice and cart | Confirm in cart | Yes |
 | Stripe Payment Links | Stripe account | $0 monthly | Processing fees per payment | Yes |
 | npm publish | npm public packages | $0 | $0 | Useful |
 | Database | None for launch | $0 | $0 | No |
@@ -101,8 +101,8 @@ Using the same GitHub account is fine. Using the same repo is the part to avoid.
 
 | Domain Type | Buyer Trust | First-Year Cost | Renewal Risk | Recommendation |
 | --- | --- | ---: | ---: | --- |
-| `trymcpscan.com` | High | Low | Low | Best primary pick |
-| `getmcpscan.com` | High | Low | Low | Good backup |
+| `getmcpscan.com` | High | Low | Low | Best primary pick |
+| `trymcpscan.com` | High | Low | Low | Good backup |
 | `mcpscanhq.com` | High | Low | Low | Good backup |
 | `mcpscan.us` | Medium-high | Lower | Low | Cheapest credible fallback |
 | `.dev` exact names | High for developers | Low-medium | Medium | Good only if available |
@@ -114,9 +114,9 @@ Using the same GitHub account is fine. Using the same repo is the part to avoid.
 ## Purchase Instructions
 
 1. Open Spaceship domain search.
-2. Search `trymcpscan.com` first.
+2. Search `getmcpscan.com` first.
 3. Buy it only if it is standard-priced, not premium, and the renewal is acknowledged.
-4. If it is unavailable or premium-priced, search `getmcpscan.com`, then `mcpscanhq.com`, then `usemcpscan.com`.
+4. If it is unavailable or premium-priced, search `trymcpscan.com`, then `mcpscanhq.com`, then `usemcpscan.com`.
 5. Search `mcpattest.dev` if the founder approves the cleaner brand.
 6. Search `getmcpscan.xyz` if the approved budget cap is `$1` to `$3` and renewal tradeoff matters more than buyer trust.
 7. Search `mcpscan.site` only if the approved budget cap is near `$1`.

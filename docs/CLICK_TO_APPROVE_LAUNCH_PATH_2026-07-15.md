@@ -144,7 +144,7 @@ Click path:
 
 | Approval | Current best choice | Expected first cost | Owner click needed | Codex does after approval |
 | --- | --- | ---: | --- | --- |
-| Domain/email | `getmcpscan.com` + Spacemail Pro | ~$23 total | [Issue #2](https://github.com/Davidleeops/mcpscan/issues/2) | Configure Pages DNS docs, update canonical URLs and contact CTAs |
+| Domain/email | `getmcpscan.com` plus Zoho Mail Lite, Google Workspace, or Spacemail | Confirm in cart | [Issue #2](https://github.com/Davidleeops/mcpscan/issues/2) | Configure Pages DNS docs, update canonical URLs and contact CTAs |
 | Stripe | 3 one-time Payment Links | Stripe fees only | [Issue #3](https://github.com/Davidleeops/mcpscan/issues/3) | Replace CTAs, verify checkout links |
 | npm | `mcpscan` + `@mcpscan/shared` | $0 | [Issue #5](https://github.com/Davidleeops/mcpscan/issues/5) | Publish, smoke test, tag release |
 | Landing CTAs | Checkout + email | $0 | [Issue #4](https://github.com/Davidleeops/mcpscan/issues/4) | Push updated landing and verify Pages |

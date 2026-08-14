@@ -20,7 +20,7 @@ After that message is approved, Codex can run the full post-click handoff:
 
 ```text
 npm run launch:open-return-review
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider {{zoho_or_google_or_spacemail}}
 ```
 
 The approved return-packet command writes `ops/founder-approval-status.json` automatically. The filled tracker is ignored by git by default. Do not add passwords, API keys, mailbox credentials, Stripe secret keys, or customer data.
@@ -36,8 +36,8 @@ First revenue does not require npm publishing. Sell and deliver the `$1,500` MCP
 | Order | Gate | Founder Action | Console | Done When |
 | --- | --- | --- | --- | --- |
 | 0 | GitHub billing | Clear the account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | CI and Pages jobs start and pass |
-| 1 | Domain | Buy `trymcpscan.com` if Spaceship shows standard `.com` pricing. Use `mcpattest.dev` if you approve the cleaner brand. Use `getmcpscan.xyz` or `mcpscan.site` only if the hard cash cap matters more than buyer trust | `ops/domain-mailbox-purchase-packet.html` | Domain exists in registrar account |
-| 2 | Mailbox | Create `security@{{chosen_domain}}` with `audit@` and `hello@` aliases | `ops/domain-email-dns-console.html` | MX, SPF, DKIM, and DMARC pass |
+| 1 | Domain | Buy `getmcpscan.com` if Spaceship shows standard `.com` pricing. Use `mcpattest.dev` if you approve the cleaner brand. Use `getmcpscan.xyz` or `mcpscan.site` only if the hard cash cap matters more than buyer trust | `ops/domain-mailbox-purchase-packet.html` | Domain exists in registrar account |
+| 2 | Mailbox | Create `security@{{chosen_domain}}` with `audit@` and `hello@` aliases. Use Zoho Mail Lite for cheapest credible email, Google Workspace for highest buyer trust, or Spacemail for one-vendor convenience | `ops/domain-email-dns-console.html` | MX, SPF, DKIM, and DMARC pass for the selected provider |
 | 3 | Stripe | Generate setup packet, create three Payment Links, verify format and checkout QA evidence | `ops/stripe-click-setup.html`, `ops/stripe-payment-link-qa-console.html` | Quick, Launch, and Enterprise checkout links exist, `npm run launch:verify-stripe` passes, and `npm run launch:verify-stripe-qa` passes |
 | 4 | Apply links | Approve exact return packet values | `ops/founder-return-packet.html` | Landing page no longer uses placeholder checkout links |
 | 5 | Verify | Run launch verification | `ops/verification-console.html` | `npm run launch:verify -- --domain {{chosen_domain}}` has no domain or checkout warnings |
@@ -61,14 +61,14 @@ npm run launch:publish-pages-fallback -- --wait true
 After DNS records exist, verify the custom domain and mailbox records:
 
 ```text
-npm run launch:dns-packet -- --domain {{chosen_domain}} --mailbox security@{{chosen_domain}}
-npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status
+npm run launch:dns-packet -- --domain {{chosen_domain}} --mailbox security@{{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}}
+npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status
 ```
 
-If Spacemail provides a DKIM selector, include it:
+If the email provider provides a DKIM selector, include it:
 
 ```text
-npm run launch:verify-dns -- --domain {{chosen_domain}} --update-status --dkim-selector {{dkim_selector}}
+npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status --dkim-selector {{dkim_selector}}
 ```
 
 After Stripe links exist, verify them before applying public links:
@@ -82,7 +82,7 @@ After founder clicks exist, apply the return packet, verify Stripe QA evidence, 
 
 ```text
 npm run launch:open-return-review
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider {{zoho_or_google_or_spacemail}}
 npm run launch:status
 ```
 

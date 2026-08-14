@@ -54,7 +54,7 @@ Current public Spaceship pricing observations:
 - `.pro`: can be cheap first year, but renewal can be materially higher than `.com`.
 - `.us`: often cheaper than `.com`, with lower renewal risk than many novelty TLDs.
 - `.security`: not budget-friendly; current public pricing is far above the launch budget.
-- Spacemail Pro: one mailbox is enough for launch. Confirm the current cart price
+- Zoho Mail Lite, Google Workspace, or Spacemail: one mailbox is enough for launch. Confirm the current cart price
   before purchase because public email promos change.
 
 For the complete cost and repo separation decision, use

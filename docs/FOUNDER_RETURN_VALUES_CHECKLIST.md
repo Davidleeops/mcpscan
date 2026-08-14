@@ -14,7 +14,7 @@ Use this immediately after the founder account clicks. The goal is to give Codex
 | Stripe | Launch Audit Payment Link | `https://buy.stripe.com/...` |
 | Stripe | Enterprise Readiness Payment Link | `https://buy.stripe.com/...` |
 | Stripe QA | Checkout evidence JSON from the QA console | `stripe-checkout-qa-evidence.json` |
-| DNS | Optional DKIM selector if Spacemail shows one | `default` or provider-specific selector |
+| DNS | Mail provider and optional DKIM selector if the provider shows one | `zoho` and provider-specific selector |
 
 ## Do Not Return These Values
 
@@ -38,7 +38,7 @@ Use this immediately after the founder account clicks. The goal is to give Codex
 5. Build and download the Stripe QA evidence JSON.
 6. Copy the one-paste post-click handoff packet from `ops/founder-return-packet.html`.
 7. Send Codex the approval message, the QA evidence file path, and the handoff packet.
-8. If DNS has propagated, include the DKIM selector if the mailbox provider shows one.
+8. If DNS has propagated, include the chosen mail provider and DKIM selector if the mailbox provider shows one.
 
 ## Codex Runs After Approval
 
@@ -50,10 +50,10 @@ npm run launch:verify -- --domain {{chosen_domain}}
 npm run launch:status:live
 ```
 
-If Spacemail provides a DKIM selector:
+If the mailbox provider provides a DKIM selector:
 
 ```text
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --dkim-selector {{dkim_selector}}
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider {{zoho_or_google_or_spacemail}} --dkim-selector {{dkim_selector}}
 ```
 
 ## Acceptance Proof

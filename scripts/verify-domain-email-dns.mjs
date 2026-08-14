@@ -47,10 +47,10 @@ function updateApprovalStatus(domain, results) {
   status.domain = status.domain || domain;
   status.githubPagesAConfigured = isPass(results, "apex A records");
   status.githubPagesWwwConfigured = isPass(results, "www CNAME");
-  status.mxConfigured = isPass(results, "Spacemail MX");
-  status.spfConfigured = isPass(results, "Spacemail SPF");
-  if (results.some((item) => item.label === "Spacemail DKIM")) {
-    status.dkimConfigured = isPass(results, "Spacemail DKIM");
+  status.mxConfigured = isPass(results, "mail MX");
+  status.spfConfigured = isPass(results, "mail SPF");
+  if (results.some((item) => item.label === "mail DKIM")) {
+    status.dkimConfigured = isPass(results, "mail DKIM");
   }
   status.dmarcConfigured = isPass(results, "DMARC");
 
@@ -87,6 +87,31 @@ const domain = (args.domain ?? "").toLowerCase();
 const strict = args.strict === "true";
 const updateStatus = args["update-status"] === "true";
 const dkimSelector = args["dkim-selector"];
+const mailProvider = (args["mail-provider"] ?? "zoho").toLowerCase();
+
+const providerExpectations = {
+  spacemail: {
+    label: "Spacemail",
+    mx: ["mx1.spacemail.com", "mx2.spacemail.com"],
+    spfIncludes: "include:spf.spacemail.com"
+  },
+  zoho: {
+    label: "Zoho Mail",
+    mx: ["mx.zoho.com", "mx2.zoho.com", "mx3.zoho.com"],
+    spfIncludes: "include:zohomail.com"
+  },
+  google: {
+    label: "Google Workspace",
+    mx: ["smtp.google.com"],
+    spfIncludes: "include:_spf.google.com"
+  }
+};
+
+const provider = providerExpectations[mailProvider];
+if (!provider) {
+  console.error("Mail provider must be zoho, google, or spacemail.");
+  process.exit(1);
+}
 
 if (!validDomain(domain)) {
   console.error("Usage: npm run launch:verify-dns -- --domain CHOSEN_DOMAIN");
@@ -122,27 +147,27 @@ if (www.ok) {
 const mx = await resolveRecord("MX", domain);
 if (mx.ok) {
   const exchanges = mx.values.map((record) => record.exchange.replace(/\.$/, "").toLowerCase());
-  const hasSpaceMail = exchanges.some((exchange) => exchange === "mx1.spacemail.com" || exchange === "mx2.spacemail.com");
-  results.push(hasSpaceMail ? result("pass", "Spacemail MX", exchanges.join(", ")) : result("warn", "Spacemail MX", `expected mx1.spacemail.com or mx2.spacemail.com, got ${exchanges.join(", ")}`));
+  const missing = provider.mx.filter((exchange) => !exchanges.includes(exchange));
+  results.push(missing.length === 0 ? result("pass", "mail MX", `${provider.label}: ${exchanges.join(", ")}`) : result("warn", "mail MX", `expected ${provider.label} value(s): ${missing.join(", ")}; got ${exchanges.join(", ")}`));
 } else {
-  results.push(result("warn", "Spacemail MX", mx.error));
+  results.push(result("warn", "mail MX", mx.error));
 }
 
 const txt = await resolveRecord("TXT", domain);
 if (txt.ok) {
   const spf = txt.values.find((value) => value.toLowerCase().startsWith("v=spf1"));
-  results.push(spf?.toLowerCase().includes("include:spf.spacemail.com") ? result("pass", "Spacemail SPF", spf) : result("warn", "Spacemail SPF", spf ? `SPF does not include spacemail: ${spf}` : "no SPF TXT found"));
+  results.push(spf?.toLowerCase().includes(provider.spfIncludes) ? result("pass", "mail SPF", spf) : result("warn", "mail SPF", spf ? `SPF does not include ${provider.label}: ${spf}` : "no SPF TXT found"));
 } else {
-  results.push(result("warn", "Spacemail SPF", txt.error));
+  results.push(result("warn", "mail SPF", txt.error));
 }
 
 if (dkimSelector) {
   const dkim = await resolveRecord("TXT", `${dkimSelector}._domainkey.${domain}`);
   if (dkim.ok) {
     const record = dkim.values.find((value) => value.toLowerCase().startsWith("v=dkim1"));
-    results.push(record ? result("pass", "Spacemail DKIM", `${dkimSelector}._domainkey.${domain}`) : result("warn", "Spacemail DKIM", "no v=DKIM1 TXT found"));
+    results.push(record ? result("pass", "mail DKIM", `${provider.label}: ${dkimSelector}._domainkey.${domain}`) : result("warn", "mail DKIM", "no v=DKIM1 TXT found"));
   } else {
-    results.push(result("warn", "Spacemail DKIM", dkim.error));
+    results.push(result("warn", "mail DKIM", dkim.error));
   }
 }
 

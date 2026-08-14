@@ -52,8 +52,37 @@ function writeCsv(file, rows) {
 const args = parseArgs(process.argv.slice(2));
 const domain = (args.domain ?? "mcpscan.site").trim().toLowerCase();
 const mailbox = (args.mailbox ?? `security@${domain}`).trim();
+const mailProvider = (args["mail-provider"] ?? "zoho").trim().toLowerCase();
 const date = args.date ?? new Date().toISOString().slice(0, 10);
 const output = path.resolve(args.output ?? "ops/generated-launch-packets");
+
+const mailProviders = {
+  spacemail: {
+    label: "Spacemail",
+    mx: [
+      ["Spacemail", "MX", "@", "mx1.spacemail.com", "0", "Mail exchanger"],
+      ["Spacemail", "MX", "@", "mx2.spacemail.com", "0", "Mail exchanger"]
+    ],
+    spf: ["Spacemail", "TXT", "@", "v=spf1 include:spf.spacemail.com ~all", "", "SPF"],
+    dkim: ["Spacemail", "TXT", "{{spacemail_dkim_selector}}._domainkey", "{{spacemail_dkim_value}}", "", "Replace with exact Spacemail DKIM value"]
+  },
+  zoho: {
+    label: "Zoho Mail",
+    mx: [
+      ["Zoho Mail", "MX", "@", "mx.zoho.com", "10", "Mail exchanger"],
+      ["Zoho Mail", "MX", "@", "mx2.zoho.com", "20", "Mail exchanger"],
+      ["Zoho Mail", "MX", "@", "mx3.zoho.com", "50", "Mail exchanger"]
+    ],
+    spf: ["Zoho Mail", "TXT", "@", "v=spf1 include:zohomail.com ~all", "", "SPF"],
+    dkim: ["Zoho Mail", "TXT", "{{zoho_dkim_selector}}._domainkey", "{{zoho_dkim_value}}", "", "Replace with exact Zoho DKIM value"]
+  },
+  google: {
+    label: "Google Workspace",
+    mx: [["Google Workspace", "MX", "@", "smtp.google.com", "1", "Mail exchanger"]],
+    spf: ["Google Workspace", "TXT", "@", "v=spf1 include:_spf.google.com ~all", "", "SPF"],
+    dkim: ["Google Workspace", "TXT", "{{google_dkim_selector}}._domainkey", "{{google_dkim_value}}", "", "Replace with exact Google Workspace DKIM value"]
+  }
+};
 
 if (!validDomain(domain)) {
   console.error("Domain must look like mcpscan.site.");
@@ -62,6 +91,11 @@ if (!validDomain(domain)) {
 
 if (!validEmail(mailbox) || !mailbox.toLowerCase().endsWith(`@${domain}`)) {
   console.error("Mailbox must be on the chosen domain.");
+  process.exit(1);
+}
+
+if (!mailProviders[mailProvider]) {
+  console.error("Mail provider must be zoho, google, or spacemail.");
   process.exit(1);
 }
 
@@ -75,6 +109,8 @@ const dnsPacket = run("DNS packet", [
   mailbox,
   "--date",
   date,
+  "--mail-provider",
+  mailProvider,
   "--output",
   output
 ]);
@@ -93,6 +129,7 @@ const stripePacket = run("Stripe packet", [
 
 const dnsCsvPath = path.join(output, `${date}_${domain.replace(/\./g, "-")}_dns-records.csv`);
 const stripeCsvPath = path.join(output, `${date}_${domain.replace(/\./g, "-")}_stripe-products.csv`);
+const provider = mailProviders[mailProvider];
 
 writeCsv(dnsCsvPath, [
   ["system", "type", "host", "value", "priority", "notes"],
@@ -105,11 +142,10 @@ writeCsv(dnsCsvPath, [
   ["GitHub Pages", "AAAA", "@", "2606:50c0:8002::153", "", "Apex domain"],
   ["GitHub Pages", "AAAA", "@", "2606:50c0:8003::153", "", "Apex domain"],
   ["GitHub Pages", "CNAME", "www", "davidleeops.github.io", "", "www subdomain"],
-  ["Spacemail", "MX", "@", "mx1.spacemail.com", "0", "Mail exchanger"],
-  ["Spacemail", "MX", "@", "mx2.spacemail.com", "0", "Mail exchanger"],
-  ["Spacemail", "TXT", "@", "v=spf1 include:spf.spacemail.com ~all", "", "SPF"],
-  ["Spacemail", "TXT", "_dmarc", `v=DMARC1; p=none; rua=mailto:${mailbox}`, "", "DMARC"],
-  ["Spacemail", "TXT", "{{spacemail_dkim_selector}}._domainkey", "{{spacemail_dkim_value}}", "", "Replace with exact Spacemail DKIM value"]
+  ...provider.mx,
+  provider.spf,
+  [provider.label, "TXT", "_dmarc", `v=DMARC1; p=none; rua=mailto:${mailbox}`, "", "DMARC"],
+  provider.dkim
 ]);
 
 writeCsv(stripeCsvPath, [
@@ -151,6 +187,7 @@ const readme = [
   "",
   `Domain: ${domain}`,
   `Primary mailbox: ${mailbox}`,
+  `Mail provider: ${provider.label}`,
   `Audit alias: audit@${domain}`,
   `Hello alias: hello@${domain}`,
   "",
@@ -165,7 +202,7 @@ const readme = [
   "",
   "1. Clear GitHub billing or account lock.",
   `2. Buy one domain only: ${domain}.`,
-  `3. Create one Spacemail mailbox: ${mailbox}.`,
+  `3. Create one ${provider.label} mailbox: ${mailbox}.`,
   `4. Add aliases: audit@${domain} and hello@${domain}.`,
   "5. Apply only the DNS records in the generated DNS packet.",
   "6. Create only the three live Stripe Payment Links in the generated Stripe packet.",

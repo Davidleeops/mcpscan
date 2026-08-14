@@ -428,6 +428,30 @@ if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-retu
   );
 }
 
+if (
+  exists("scripts/build-domain-dns-packet.mjs") &&
+  exists("scripts/verify-domain-email-dns.mjs") &&
+  exists("ops/domain-email-dns-console.html")
+) {
+  const providerAwareDns = [
+    read("scripts/build-domain-dns-packet.mjs"),
+    read("scripts/verify-domain-email-dns.mjs"),
+    read("ops/domain-email-dns-console.html")
+  ].join("\n");
+  const requiredProviderMarkers = [
+    "--mail-provider",
+    "zoho",
+    "google",
+    "spacemail"
+  ];
+  const missingProviderMarkers = requiredProviderMarkers.filter((marker) => !providerAwareDns.includes(marker));
+  results.push(
+    missingProviderMarkers.length === 0
+      ? result("pass", "mail provider DNS choices", "Zoho, Google Workspace, and Spacemail records are supported")
+      : result("fail", "mail provider DNS choices", missingProviderMarkers.join(", "))
+  );
+}
+
 const authorizationFiles = [
   "README.md",
   "landing/index.html",

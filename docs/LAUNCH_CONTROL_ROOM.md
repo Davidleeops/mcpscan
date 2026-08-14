@@ -49,23 +49,23 @@ can come after demand is proven.
 
 | Item | Pick | Estimated cost | Why |
 | --- | --- | ---: | --- |
-| Domain | `trymcpscan.com` | about $9 to $12 first year / about $10 renewal | Most credible trust/cost balance |
-| Domain fallback | `mcpscan.us` | about $4 first year / about $6 to $7 renewal | Cheapest credible option, with `.us` nexus and privacy tradeoffs |
-| Email | One Spaceship mailbox | About $14 to $19 depending on current cart | One mailbox plus aliases is enough |
+| Domain | `getmcpscan.com` | about $9 to $12 first year / about $10 renewal | Best trust path if keeping MCPScan |
+| Domain fallback | `trymcpscan.com` | about $9 to $12 first year / about $10 renewal | Backup trust path if the first pick is unavailable |
+| Email | Zoho Mail Lite, Google Workspace, or Spacemail | About $12 to $84 per year depending on provider choice and cart | One mailbox plus aliases is enough |
 | Payments | Stripe Payment Links | $0 monthly | Fastest checkout path |
 | Hosting | GitHub Pages | $0 | Already live |
 | Repo | Current GitHub repo | $0 | Public and already deployed |
 | npm | `mcpscan` + `@mcpscan/shared` | $0 | Needs owner npm auth/OTP |
 
 Use `mcpscan.site` for the cheap launch lane only if the first-year cart is
-about `$1` to `$3` and the renewal tradeoff is accepted. Use `trymcpscan.com`
-when buyer trust is worth the few extra dollars. Use `getmcpscan.com` if the first
+about `$1` to `$3` and the renewal tradeoff is accepted. Use `getmcpscan.com`
+when buyer trust is worth the few extra dollars. Use `trymcpscan.com` if the first
 pick is unavailable. Avoid `.shop` as the canonical
 security brand.
 
 ## Approval Buttons To Click
 
-1. [Issue #2](https://github.com/Davidleeops/mcpscan/issues/2): buy `trymcpscan.com` for the trust lane or `mcpscan.site` for the cheap validation lane, then create `security@{{chosen_domain}}`.
+1. [Issue #2](https://github.com/Davidleeops/mcpscan/issues/2): buy `getmcpscan.com` for the trust lane or `mcpscan.site` for the cheap validation lane, then create `security@{{chosen_domain}}`.
 2. [Issue #3](https://github.com/Davidleeops/mcpscan/issues/3): create Stripe one-time Payment Links for:
    - MCP Quick Audit: $750
    - MCP Launch Audit: $1,500
@@ -126,7 +126,7 @@ npm run outbound:queue
 
 ## First 10 Revenue Actions
 
-1. Buy `trymcpscan.com` or the approved fallback.
+1. Buy `getmcpscan.com` or the approved fallback.
 2. Create the matching `security@` mailbox.
 3. Create Stripe Payment Links.
 4. Run `npm run launch:apply-links -- ...` with approved URLs.
