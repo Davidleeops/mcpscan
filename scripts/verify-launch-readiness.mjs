@@ -463,6 +463,10 @@ if (exists("scripts/prepare-founder-click-workspace.mjs") && exists("package.jso
     "domain-cart-proof.json",
     "approved-return-packet.txt",
     "stripe-checkout-qa-evidence.json",
+    "CLICK_SESSION.md",
+    "Use the click session sheet",
+    "Spaceship domain search",
+    "Stripe Payment Links",
     "Refusing to create the founder click workspace inside the public MCPScan repo"
   ];
   const missingWorkspaceMarkers = requiredWorkspaceMarkers.filter((marker) => !packageJson.includes(marker) && !workspaceScript.includes(marker));
