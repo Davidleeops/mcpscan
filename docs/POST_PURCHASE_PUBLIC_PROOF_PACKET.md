@@ -50,6 +50,7 @@ Use this after the founder buys the domain, creates the mailbox, and creates Str
 ```text
 npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider {{zoho_or_google_or_spacemail}}
 npm run launch:simulate-post-click-bundle
+npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json
 npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 npm run launch:publish-pages-fallback -- --wait true
 npm run launch:verify -- --domain {{chosen_domain}}
@@ -66,6 +67,7 @@ The post-purchase handoff is ready when:
 - `npm run launch:verify-return-packet` passes for the saved return packet shape.
 - `npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider {{zoho_or_google_or_spacemail}}` writes a private bundle outside the public repo.
 - `npm run launch:simulate-post-click-bundle` proves the bundle path with temporary QA evidence.
+- `npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json` proves the status tracker matches the approved return packet and Stripe QA evidence.
 - `npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status` passes.
 - `npm run launch:verify-return-qa -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json` passes.
 - `npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status` passes.

@@ -287,6 +287,7 @@ const requiredFiles = [
   "scripts/verify-domain-email-dns.mjs",
   "scripts/verify-stripe-links.mjs",
   "scripts/verify-return-qa-consistency.mjs",
+  "scripts/verify-founder-approval-status.mjs",
   "scripts/verify-stripe-checkout-qa.mjs",
   "scripts/run-post-click-verification.mjs",
   "scripts/publish-pages-fallback.mjs",
@@ -442,6 +443,7 @@ if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-retu
   ].join("\n");
   const requiredReturnReviewCommands = [
     "npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json",
+    "npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json",
     "npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true",
     "npm run launch:publish-pages-fallback -- --wait true",
     "npm run launch:verify -- --domain",
@@ -502,6 +504,7 @@ if (exists("ops/founder-status-console.html") && exists("docs/POST_PURCHASE_PUBL
     "founder-approval-status.json",
     "launch:post-click-bundle",
     "launch:simulate-post-click-bundle",
+    "launch:verify-status",
     "Download JSON",
     "mcpscan.online",
     "security@mcpscan.online",
@@ -555,6 +558,7 @@ if (exists("ops/launch-day-runbook.html") && exists("scripts/open-launch-day-run
     "docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md",
     "launch:post-click-bundle",
     "launch:simulate-post-click-bundle",
+    "launch:verify-status",
     "launch:post-click-verify",
     "launch:open-first-revenue",
     "This page opens surfaces only"
@@ -576,6 +580,7 @@ if (exists("scripts/create-post-click-handoff-bundle.mjs") && exists("scripts/si
   const requiredBundleMarkers = [
     "Refusing to write post-click handoff bundle inside the public MCPScan repo.",
     "launch:verify-return-qa",
+    "launch:verify-status",
     "launch:verify-stripe-qa",
     "public-safe-summary.json",
     "NEXT_COMMANDS.md",

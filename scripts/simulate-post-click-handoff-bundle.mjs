@@ -9,6 +9,7 @@ const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "mcpscan-post-click-bundl
 const returnPacket = path.join(root, "ops", "founder-return-packet.sample.txt");
 const qaFile = path.join(tempRoot, "stripe-checkout-qa-evidence.json");
 const bundleRoot = path.join(tempRoot, "bundles");
+const statusFile = path.join(tempRoot, "founder-approval-status.json");
 
 function fail(message) {
   console.error(message);
@@ -74,6 +75,39 @@ const qa = {
 
 fs.writeFileSync(qaFile, `${JSON.stringify(qa, null, 2)}\n`, "utf8");
 
+const status = {
+  generatedFor: "MCPScan first revenue launch",
+  updatedAt: new Date().toISOString(),
+  domain,
+  mailProvider: "zoho",
+  mailbox,
+  auditAlias: `audit@${domain}`,
+  helloAlias: `hello@${domain}`,
+  domainPurchased: true,
+  mailboxCreated: true,
+  githubPagesAConfigured: true,
+  githubPagesWwwConfigured: true,
+  mxConfigured: true,
+  spfConfigured: true,
+  dkimConfigured: true,
+  dmarcConfigured: true,
+  stripeQuickAuditLink: quick,
+  stripeLaunchAuditLink: launch,
+  stripeEnterpriseReadinessLink: enterprise,
+  stripeLinkFormatVerified: true,
+  stripeCheckoutQaConfirmed: true,
+  stripeLinksVerified: true,
+  founderReturnPacketApproved: true,
+  landingLinksApplied: true,
+  stagedRouteApprovalCount: 0,
+  firstTenRoutePacketApproved: false,
+  stagedNamedRecipientApprovalCount: 0,
+  firstTenNamedRecipientPacketApproved: false,
+  notes: ["Simulation status. No secrets included."]
+};
+
+fs.writeFileSync(statusFile, `${JSON.stringify(status, null, 2)}\n`, "utf8");
+
 run([
   "run",
   "launch:post-click-bundle",
@@ -86,6 +120,18 @@ run([
   bundleRoot,
   "--mail-provider",
   "zoho"
+]);
+
+run([
+  "run",
+  "launch:verify-status",
+  "--",
+  "--status-file",
+  statusFile,
+  "--file",
+  returnPacket,
+  "--qa-file",
+  qaFile
 ]);
 
 const created = fs.readdirSync(bundleRoot).filter((entry) => entry.endsWith("_post-click-handoff"));

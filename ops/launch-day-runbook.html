@@ -102,6 +102,7 @@
               <h3>Apply, Publish, Verify</h3>
               <p>After the approved return packet and Stripe QA file exist, create the private post-click bundle, run the post-click handoff, publish the Pages fallback, then verify the custom domain and status.</p>
               <pre>npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider {{zoho_or_google_or_spacemail}}
+npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json
 npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 npm run launch:publish-pages-fallback -- --wait true
 npm run launch:verify -- --domain {{chosen_domain}}
