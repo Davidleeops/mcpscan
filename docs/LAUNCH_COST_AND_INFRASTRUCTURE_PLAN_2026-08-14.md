@@ -10,10 +10,11 @@ Best buy path:
 
 1. Buy `trymcpscan.com` if Spaceship shows standard `.com` pricing.
 2. If it is unavailable or premium-priced, buy `getmcpscan.com`.
-3. If the founder wants a `$1` to `$3` validation domain, buy `mcpscan.site` if Spaceship confirms promo pricing and the renewal tradeoff is accepted.
-4. If you want the cheapest credible non-promo fallback, buy `mcpscan.us`, but only after accepting the US nexus and registration privacy tradeoffs.
-5. Avoid `.shop` and similar commerce-oriented near-dollar names as the primary security brand.
-6. Do not pay for hosting. GitHub Pages plus a domain and one mailbox is enough before first revenue.
+3. If the founder wants a `$1` to `$3` validation domain, buy `getmcpscan.xyz` if Spaceship confirms standard cheap pricing and the name is clean.
+4. If the founder wants the absolute lowest first-year cart total, buy `mcpscan.site` only after accepting weaker buyer trust and the higher renewal.
+5. If you want the cheapest credible non-promo fallback, buy `mcpscan.us`, but only after accepting the US nexus and registration privacy tradeoffs.
+6. Avoid `.shop` and similar commerce-oriented near-dollar names as the primary security brand.
+7. Do not pay for hosting. GitHub Pages plus a domain and one mailbox is enough before first revenue.
 
 ## Why This Is The Right Cost Posture
 
@@ -35,8 +36,9 @@ That avoids paying for infrastructure before there is proof that buyers want the
 | GitHub repo | Existing public repo | $0 | $0 | Yes |
 | GitHub Pages | Existing Pages site | $0 | $0 | Yes |
 | Domain | `trymcpscan.com` | About $8.88 plus ICANN fee if standard-priced before any coupon | About $9.98 plus ICANN fee | Yes |
-| Cheapest validation domain | `mcpscan.site` | About $0.98 plus ICANN fee at Spaceship if promo-priced | About $21.38 plus ICANN fee | Yes, if cash cap is `$1` to `$3` |
-| Cheap renewal-friendlier domain | `getmcpscan.xyz` | About $1.86 at Spaceship before any coupon | About $12.52 | Yes, if exact `.site` is unavailable or trust tradeoff is accepted |
+| Cheapest validation domain | `mcpscan.site` | About $0.98 plus ICANN fee at Spaceship if promo-priced | About $21.38 plus ICANN fee | Yes, only if first-year cash cap is the top priority |
+| Cheap renewal-friendlier domain | `getmcpscan.xyz` | About $1.86 at Spaceship before any coupon | About $12.52 | Yes, if choosing the cheap lane |
+| Cheap low-renewal fallback | `.click` name | About $1.04 plus ICANN fee | About $10.35 plus ICANN fee | No, weaker buyer trust |
 | Cheap credible fallback | `mcpscan.us` | About $4.14 | About $6.48 | Only if avoiding `.com` |
 | Near-dollar promo TLD | `.online` or `.site` | About $0.98 plus ICANN fee | About $21.38 | No |
 | Ultra-cheap promo TLD | `.shop` | About $0.70 plus ICANN fee | About $31.05 | No |
@@ -103,7 +105,7 @@ Using the same GitHub account is fine. Using the same repo is the part to avoid.
 | `mcpscanhq.com` | High | Low | Low | Good backup |
 | `mcpscan.us` | Medium-high | Lower | Low | Cheapest credible fallback |
 | `.dev` exact names | High for developers | Low-medium | Medium | Good only if available |
-| `.xyz` exact names | Medium | Very low | Medium | Use only if exact and clean |
+| `.xyz` exact names | Medium | Very low | Medium | Best cheap validation lane if clean |
 | `.online` or `.site` | Low-medium | Very low | High | Redirect or test only |
 | `.shop` | Low for security | Very low | High | Avoid |
 | `.ai` | High in AI | High | High | Not needed for first revenue |
@@ -115,15 +117,16 @@ Using the same GitHub account is fine. Using the same repo is the part to avoid.
 3. If it is unavailable or premium-priced, search `getmcpscan.com`.
 4. Buy only if it is standard-priced and not premium.
 5. If it is not available, use the backup from `docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md`.
-6. If the approved budget cap is `$1` to `$3`, search `mcpscan.site`.
-7. If `.site` is unavailable or cart pricing jumps, search `getmcpscan.xyz`, `mcpscan.online`, `getmcpscan.site`, then `getmcpscan.online`.
-8. If the goal is the absolute lowest credible non-promo spend, search `mcpscan.us`.
-9. Before buying `.us`, confirm the founder accepts US nexus eligibility and the registration privacy tradeoff.
-10. Buy one domain only.
-11. Buy one mailbox only.
-12. Create `security@{{chosen_domain}}`.
-13. Add aliases for `hello@{{chosen_domain}}` and `audit@{{chosen_domain}}`.
-14. Do not send outbound until MX, SPF, DKIM, and DMARC pass.
+6. If the approved budget cap is `$1` to `$3`, search `getmcpscan.xyz`.
+7. If the lowest first-year cart total is the only thing that matters, search `mcpscan.site`.
+8. If `.xyz` or `.site` is unavailable or cart pricing jumps, search `mcpscan.online`, `getmcpscan.site`, then `getmcpscan.online`.
+9. If the goal is the absolute lowest credible non-promo spend, search `mcpscan.us`.
+10. Before buying `.us`, confirm the founder accepts US nexus eligibility and the registration privacy tradeoff.
+11. Buy one domain only.
+12. Buy one mailbox only.
+13. Create `security@{{chosen_domain}}`.
+14. Add aliases for `hello@{{chosen_domain}}` and `audit@{{chosen_domain}}`.
+15. Do not send outbound until MX, SPF, DKIM, and DMARC pass.
 
 ## After Purchase
 

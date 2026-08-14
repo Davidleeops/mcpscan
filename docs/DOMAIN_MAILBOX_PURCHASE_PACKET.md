@@ -14,21 +14,22 @@ Primary mailbox: security@trymcpscan.com
 Aliases: audit@trymcpscan.com, hello@trymcpscan.com
 ```
 
-Use the cheap validation lane only if the founder wants to keep the domain purchase near `$1` to `$3` and accepts the weaker trust signal. Search `.site` first for the lowest first-year cost, then `.xyz` for the better renewal tradeoff, then `.online`. Avoid `.shop` as the primary MCPScan domain.
+Use the cheap validation lane only if the founder wants to keep the domain purchase near `$1` to `$3` and accepts the weaker trust signal. Search `.xyz` first for the best cheap renewal tradeoff, then `.site` if the lowest first-year cart total matters most, then `.online`. Avoid `.shop` as the primary MCPScan domain.
 
 ```text
-Domain: mcpscan.site
-Primary mailbox: security@mcpscan.site
-Aliases: audit@mcpscan.site, hello@mcpscan.site
+Domain: getmcpscan.xyz
+Primary mailbox: security@getmcpscan.xyz
+Aliases: audit@getmcpscan.xyz, hello@getmcpscan.xyz
 ```
 
 ## Current Cart Rules
 
 - Search `trymcpscan.com` first if trust matters more than saving a few dollars.
-- Search `mcpscan.site` first if the strict cash cap is `$1` to `$3`.
-- If `.site` jumps in cart pricing, search `getmcpscan.xyz`, `mcpscan.online`, `getmcpscan.site`, then `getmcpscan.online`.
-- Confirm the renewal price before purchase. The cheap first year can renew near the low `$20s`.
-- Use promo codes only if the cart accepts them. Public promo pages showed `.site` and `.online` near `$1` on 2026-08-14, but the Spaceship cart is the final source. Official Spaceship pricing showed `.xyz` at `$1.86` and `$12.52` renewal.
+- Search `getmcpscan.xyz` first if the strict cash cap is `$1` to `$3` and you want the cleaner renewal tradeoff.
+- Search `mcpscan.site` first only if the lowest first-year cart total is the deciding factor.
+- If `.xyz` or `.site` jumps in cart pricing, search `mcpscan.online`, `getmcpscan.site`, then `getmcpscan.online`.
+- Confirm the renewal price before purchase. `.site` and `.online` can renew near the low `$20s`, while `.xyz` is currently lower.
+- Use promo codes only if the cart accepts them. Official Spaceship pages showed `.site` and `.online` at `$0.98` plus the ICANN fee on 2026-08-14, and `.xyz` at `$1.86` with `$12.52` renewal. The Spaceship cart is the final source.
 - Buy one Spacemail mailbox only, preferably the Pro one-mailbox plan, then add aliases.
 
 ## Founder Purchase Approval

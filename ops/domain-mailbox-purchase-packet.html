@@ -111,8 +111,8 @@
         </div>
         <div class="actions">
           <a class="button primary" href="https://www.spaceship.com/domain-search/?query=trymcpscan.com" target="_blank" rel="noreferrer">Search .com pick</a>
-          <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscan.site" target="_blank" rel="noreferrer">Search cheap .site</a>
           <a class="button" href="https://www.spaceship.com/domain-search/?query=getmcpscan.xyz" target="_blank" rel="noreferrer">Search cheap .xyz</a>
+          <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscan.site" target="_blank" rel="noreferrer">Search cheap .site</a>
           <a class="button" href="https://www.spaceship.com/domain-search/?query=mcpscan.online" target="_blank" rel="noreferrer">Search cheap .online</a>
           <a class="button" href="https://www.spaceship.com/business-email/" target="_blank" rel="noreferrer">Open Spacemail</a>
           <a class="button" href="founder-return-packet.html">Return packet</a>
@@ -121,7 +121,7 @@
 
       <section class="decision">
         <h2>Best Current Call</h2>
-        <p>Use <strong>trymcpscan.com</strong> if it is standard-priced. Use <strong>mcpscan.site</strong> only if cash conservation matters more than the trust signal and the renewal tradeoff is accepted. If .site jumps in cart pricing, check <strong>getmcpscan.xyz</strong> or <strong>mcpscan.online</strong> before using a weaker TLD.</p>
+        <p>Use <strong>trymcpscan.com</strong> if it is standard-priced. Use <strong>getmcpscan.xyz</strong> for the cheap validation lane if you want the better renewal tradeoff. Use <strong>mcpscan.site</strong> only if the lowest first-year cart total matters more than the trust signal and the renewal tradeoff is accepted.</p>
       </section>
 
       <div class="grid">
@@ -159,9 +159,10 @@
           <table>
             <tr><th>Lane</th><th>Expected first-year domain cost</th><th>Renewal posture</th></tr>
             <tr><td>.com trust</td><td>About $8.88 plus ICANN fee before any accepted coupon</td><td>Low</td></tr>
-            <tr><td>.site cheap</td><td>About $0.98 plus ICANN fee if promo-priced</td><td>High</td></tr>
             <tr><td>.xyz cheap</td><td>About $1.86 before any accepted coupon</td><td>Medium</td></tr>
+            <tr><td>.site cheap</td><td>About $0.98 plus ICANN fee if promo-priced</td><td>High</td></tr>
             <tr><td>.online cheap</td><td>About $0.98 plus ICANN fee if promo-priced</td><td>High</td></tr>
+            <tr><td>.click cheap</td><td>About $1.04 plus ICANN fee</td><td>Lower renewal, weaker buyer trust</td></tr>
             <tr><td>.shop cheap</td><td>Often very cheap first year</td><td>Avoid for a security brand</td></tr>
           </table>
         </section>
@@ -219,9 +220,9 @@
           spend.value = "$12";
           renewal.value = "About $9.98 plus ICANN fee if standard .com pricing is confirmed";
         } else if (lane.value === "cheap") {
-          domain.value = "mcpscan.site";
+          domain.value = "getmcpscan.xyz";
           spend.value = "$3";
-          renewal.value = "About $21.38 plus ICANN fee if .site or .online promo pricing is confirmed";
+          renewal.value = "About $12.52 if .xyz pricing is confirmed; .site and .online can renew higher";
         }
         if (lane.value !== "custom") {
           mailbox.value = "security@" + domain.value.trim();

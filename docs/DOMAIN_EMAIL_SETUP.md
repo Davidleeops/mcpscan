@@ -13,14 +13,16 @@ Better first choices:
 - `mcpscanhq.com`
 - `usemcpscan.com`
 
-Recommended buy: `trymcpscan.com`, if the checkout confirms it is a standard registration. It is not the cheapest first-year option, but it is the cleanest trust choice for a security audit offer and the renewal is low. Use `mcpscan.site` only for the `$1` to `$3` validation lane.
+Recommended buy: `trymcpscan.com`, if the checkout confirms it is a standard registration. It is not the cheapest first-year option, but it is the cleanest trust choice for a security audit offer and the renewal is low. Use `getmcpscan.xyz` for the `$1` to `$3` validation lane if you want the better renewal tradeoff. Use `mcpscan.site` only when the lowest first-year cart total matters more than buyer trust.
 
 Current pricing notes from Spaceship research:
 
 - `.com` is closer to $8.88/year first year and renews around $9.98/year.
 - `.dev` is around $8.28/year first year and renews around $12.42/year.
 - `.app` is around $8.28/year first year and renews around $14.49/year.
-- `.online` can be around $0.98 for the first year, but renewal is much higher and the trust signal is weaker.
+- `.xyz` is around $1.86 for the first year and renews around $12.52/year.
+- `.site` and `.online` can be around $0.98 for the first year plus ICANN fee, but renewal is much higher and the trust signal is weaker.
+- `.click` can be around $1.04 for the first year with lower renewal than `.site`, but it reads less serious for a security audit brand.
 - `.us` can be cheaper than `.com`, but it has US nexus and registration privacy tradeoffs.
 - Spacemail Pro has been seen around $18.88 for 2 years for 1 mailbox, with aliases. Confirm the current cart before purchase.
 

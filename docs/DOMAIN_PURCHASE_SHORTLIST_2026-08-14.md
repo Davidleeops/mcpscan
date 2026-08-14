@@ -10,7 +10,7 @@ Buy `trymcpscan.com` if the Spaceship cart confirms standard `.com` pricing. It 
 
 If `trymcpscan.com` is unavailable or premium-priced at checkout, buy `getmcpscan.com`. If both are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
 
-Use a `$1` to `$3` domain such as `getmcpscan.xyz`, `mcpscan.site`, or `mcpscan.online` only if the founder wants the cheapest possible validation lane and explicitly accepts the weaker B2B trust signal. Treat the cheap TLD as a first-sale validation lane, not the long-term brand asset.
+Use a `$1` to `$3` domain such as `getmcpscan.xyz`, `mcpscan.site`, or `mcpscan.online` only if the founder wants the cheapest possible validation lane and explicitly accepts the weaker B2B trust signal. Treat the cheap TLD as a first-sale validation lane, not the long-term brand asset. If choosing the cheap lane, prefer `.xyz` over `.site` unless the final cart total is the only decision factor.
 
 ## Current Availability Signal
 
@@ -41,13 +41,13 @@ Public Spaceship pricing signals refreshed on 2026-08-14:
 | TLD | First-Year Signal | Renewal Signal | Decision |
 | --- | ---: | ---: | --- |
 | `.xyz` | `$1.86` on official Spaceship pricing, lower promo may appear | `$12.52` | Best cheap renewal tradeoff if the name is clean |
-| `.site` | `$0.98` plus ICANN fee on official Spaceship pricing | About `$21.38` plus ICANN fee | Best cheapest first-year launch lane |
-| `.online` | `$0.98` plus ICANN fee on official Spaceship pricing | About `$21.38` plus ICANN fee | Good cheap backup |
-| `.click` | About `$1.04` plus ICANN fee | About `$10.35` plus ICANN fee | Cheap, less premium |
+| `.site` | `$0.98` plus ICANN fee on official Spaceship pricing | About `$21.38` plus ICANN fee | Lowest first-year launch lane, weaker trust |
+| `.online` | `$0.98` plus ICANN fee on official Spaceship pricing | About `$21.38` plus ICANN fee | Cheap backup, weaker trust |
+| `.click` | About `$1.04` plus ICANN fee | About `$10.35` plus ICANN fee | Cheap renewal, but less serious for a security audit brand |
 | `.shop` | `$0.70` plus ICANN fee | About `$31.05` plus ICANN fee | Avoid for MCPScan |
 | `.com` | `$8.88` plus ICANN fee on official Spaceship pricing | About `$9.98` plus ICANN fee | Best trust per dollar |
 
-Spaceship promo terms checked on 2026-08-14: first-year promotional offers are limited, may exclude premium domains, and can change. TLD-List showed `SITE50` for `.site` near `$1.01`, `ONLINE44` for `.online` near `$1.01`, and `.com` coupon signals from third-party coupon pages. Use official Spaceship TLD pages and the final cart as source of truth.
+Spaceship promo terms checked on 2026-08-14: first-year promotional offers are limited, may exclude premium domains, and can change. Official Spaceship pages show `.site` and `.online` at `$0.98` plus the ICANN fee, `.xyz` at `$1.86`, `.click` near `$1.04`, and `.com` at `$8.88`. Use official Spaceship TLD pages and the final cart as source of truth.
 
 Spacemail pricing checked on 2026-08-14: Spaceship advertises business email from `$0.79/mo`, and the Pro one-mailbox plan appears around `$18.88` for 2 years after the free trial on public pricing. Buy one mailbox first, then use aliases.
 
@@ -57,13 +57,15 @@ Spacemail pricing checked on 2026-08-14: Spaceship advertises business email fro
 2. If it is available at standard `.com` pricing, buy it.
 3. If `trymcpscan.com` is unavailable or premium-priced, search `getmcpscan.com`.
 4. If both are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
-5. Use `mcpscan.site` only if the founder chooses the `$1` to `$3` validation lane and accepts the renewal tradeoff.
-6. If `mcpscan.site` is unavailable or cart pricing jumps, search `getmcpscan.xyz`, then `mcpscan.online`, then `getmcpscan.site`, then `getmcpscan.online`.
-7. Avoid `.shop` for the primary brand even if it is cheaper, because it reads like ecommerce rather than security.
-8. Buy one domain only unless the founder explicitly approves a protective second domain.
-9. Create one mailbox only: `security@{{chosen_domain}}`.
-10. Add aliases for `audit@{{chosen_domain}}` and `hello@{{chosen_domain}}`.
-11. Do not send outbound until MX, SPF, DKIM, and DMARC pass.
+5. Use `getmcpscan.xyz` if the founder chooses the `$1` to `$3` validation lane and wants the best cheap renewal tradeoff.
+6. Use `mcpscan.site` only if the founder wants the lowest first-year cart total and accepts weaker buyer trust plus the higher renewal.
+7. If those are unavailable or cart pricing jumps, search `mcpscan.online`, then `getmcpscan.site`, then `getmcpscan.online`.
+8. Use `.click` only as an emergency low-renewal fallback. It is financially clean but weaker for buyer trust.
+9. Avoid `.shop` for the primary brand even if it is cheaper, because it reads like ecommerce rather than security.
+10. Buy one domain only unless the founder explicitly approves a protective second domain.
+11. Create one mailbox only: `security@{{chosen_domain}}`.
+12. Add aliases for `audit@{{chosen_domain}}` and `hello@{{chosen_domain}}`.
+13. Do not send outbound until MX, SPF, DKIM, and DMARC pass.
 
 ## Founder Approval Text
 
@@ -88,6 +90,7 @@ Buy one MCPScan launch domain and one matching mailbox. Do not buy extra domains
 - Spaceship `.xyz` pricing: `https://www.spaceship.com/domains/gtld/xyz/`
 - Spaceship `.site` pricing: `https://www.spaceship.com/domains/gtld/site/`
 - Spaceship `.online` pricing: `https://www.spaceship.com/domains/gtld/online/`
+- Spaceship `.click` pricing: `https://www.spaceship.com/domains/`
 - Spaceship promos: `https://www.spaceship.com/promos/`
 - Spaceship business email: `https://www.spaceship.com/business-email/`
 - Spacemail pricing: `https://www.spacemail.com/`
