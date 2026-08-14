@@ -279,6 +279,7 @@ const requiredFiles = [
   "scripts/prepare-cheap-launch-packets.mjs",
   "scripts/build-static-launch-bundle.mjs",
   "scripts/open-static-launch-bundle.mjs",
+  "scripts/open-market-research-console.mjs",
   "scripts/verify-market-sources.mjs",
   "scripts/verify-domain-email-dns.mjs",
   "scripts/verify-stripe-links.mjs",
@@ -530,6 +531,32 @@ if (exists("ops/launch-day-runbook.html") && exists("scripts/open-launch-day-run
     missingLaunchDayMarkers.length === 0
       ? result("pass", "launch day runbook path", "ordered click, proof, verification, and revenue surfaces are present")
       : result("fail", "launch day runbook path", missingLaunchDayMarkers.join(", "))
+  );
+}
+
+if (exists("scripts/open-market-research-console.mjs") && exists("ops/market-research-refresh-console.html") && exists("package.json")) {
+  const marketOpen = [
+    read("scripts/open-market-research-console.mjs"),
+    read("ops/market-research-refresh-console.html"),
+    read("package.json"),
+    exists("scripts/show-launch-status.mjs") ? read("scripts/show-launch-status.mjs") : ""
+  ].join("\n");
+  const requiredMarketOpenMarkers = [
+    "market:open",
+    "ops/market-research-refresh-console.html",
+    "ops/gtm-placement-console.html",
+    "ops/recipient-finder-console.html",
+    "docs/MARKET_REALITY_BRIEF_2026-08-14.md",
+    "sales/buyer-intent-map-2026-08-14.md",
+    "npm run market:verify",
+    "npm run gtm:verify",
+    "This command opens surfaces and checks sources only"
+  ];
+  const missingMarketOpenMarkers = requiredMarketOpenMarkers.filter((marker) => !marketOpen.includes(marker));
+  results.push(
+    missingMarketOpenMarkers.length === 0
+      ? result("pass", "market research launcher", "market, buyer, recipient, and GTM surfaces are directly openable")
+      : result("fail", "market research launcher", missingMarketOpenMarkers.join(", "))
   );
 }
 

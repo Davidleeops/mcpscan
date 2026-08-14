@@ -5,6 +5,7 @@ import { pathToFileURL } from "node:url";
 
 const reviewSurfaces = [
   "docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md",
+  "ops/market-research-refresh-console.html",
   "ops/gtm-placement-console.html",
   "ops/public-channel-drafts-console.html",
   "ops/swarm-throughput-console.html",
@@ -69,7 +70,7 @@ runStatus();
 console.log("");
 console.log("Runway order:");
 console.log("1. Confirm domain, mailbox, Stripe links, and security contact are live.");
-console.log("2. Verify current market evidence with npm run market:verify.");
+console.log("2. Open market research with npm run market:open and verify current evidence with npm run market:verify.");
 console.log("3. Open the swarm throughput console to split work into agent lanes.");
 console.log("4. Approve exact public post or first-10 outbound packet.");
 console.log("5. Stage the approved packet outside the public repo. Do not send automatically.");

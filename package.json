@@ -11,6 +11,7 @@
     "pack:cli": "npm pack --dry-run -w mcpscan",
     "pack:shared": "npm pack --dry-run -w @mcpscan/shared",
     "landing:sample-report": "node scripts/generate-sample-report.mjs",
+    "market:open": "node scripts/open-market-research-console.mjs",
     "market:verify": "node scripts/verify-market-sources.mjs",
     "launch:apply-links": "node scripts/apply-approved-launch-links.mjs",
     "launch:apply-return-packet": "node scripts/apply-founder-return-packet.mjs",

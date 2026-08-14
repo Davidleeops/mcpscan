@@ -5,6 +5,7 @@ import { pathToFileURL } from "node:url";
 
 const targets = [
   "ops/swarm-throughput-console.html",
+  "ops/market-research-refresh-console.html",
   "docs/SWARM_THROUGHPUT_OPERATING_MODEL_2026-08-14.md",
   "ops/launch-day-runbook.html",
   "ops/first-10-outbound-approval-console.html",

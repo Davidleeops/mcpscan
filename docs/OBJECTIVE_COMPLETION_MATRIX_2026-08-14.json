@@ -6,7 +6,7 @@
   "currentPositioning": "We turn noisy MCP scanner output into a validated MCP risk report, remediation plan, and customer-ready security proof in 3 to 5 days.",
   "launchReadinessProof": {
     "command": "npm run launch:verify",
-    "passed": 208,
+    "passed": 210,
     "expectedWarnings": 3,
     "failures": 0
   },
@@ -19,6 +19,7 @@
         "docs/MARKET_REALITY_BRIEF_2026-08-14.md",
         "docs/MARKET_SOURCE_PACK_2026-08-14.md",
         "docs/MARKET_PULSE_REFRESH_2026-08-14.md",
+        "scripts/open-market-research-console.mjs",
         "scripts/verify-market-sources.mjs"
       ]
     },

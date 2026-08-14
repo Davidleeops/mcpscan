@@ -16,7 +16,7 @@ Best current positioning:
 
 | User Requirement | Current Evidence | Status |
 | --- | --- | --- |
-| Full market reality assessment | `docs/MARKET_REALITY_BRIEF_2026-08-14.md`, `docs/MARKET_SOURCE_PACK_2026-08-14.md`, `docs/MARKET_PULSE_REFRESH_2026-08-14.md` | Ready |
+| Full market reality assessment | `docs/MARKET_REALITY_BRIEF_2026-08-14.md`, `docs/MARKET_SOURCE_PACK_2026-08-14.md`, `docs/MARKET_PULSE_REFRESH_2026-08-14.md`, `npm run market:open` | Ready |
 | Deep source-backed market research | `npm run market:verify` checks the current market source files and URLs | Ready |
 | Buyer location research | `docs/FIRST_REVENUE_CHANNEL_PLACEMENT_2026-08-14.md`, `sales/buyer-intent-map-2026-08-14.md`, `sales/first-account-dossier-2026-08-14.md` | Ready |
 | Go-to-market plan | `docs/GO_TO_MARKET.md`, `docs/FIRST_REVENUE_BATTLECARD.md`, `sales/first-10-outbound-approval-packet.md` | Ready |
@@ -60,6 +60,7 @@ This opens the ordered launch-day runbook, domain and mailbox packet, Stripe set
 
 ```text
 npm run market:verify
+npm run market:open
 npm run launch:full-proof
 npm run writing:check
 npm run launch:day
@@ -72,7 +73,7 @@ Latest local readiness proof:
 
 ```text
 npm run launch:verify
-Summary: 208 passed, 3 expected founder-click warnings, 0 failures.
+Summary: 210 passed, 3 expected founder-click warnings, 0 failures.
 ```
 
 Current consolidated proof:
