@@ -14,18 +14,18 @@ No outreach can be sent until the exact recipient and exact final content are ap
 
 ## First-Wave Recipient Targets
 
-| # | Account | Preferred Recipient Role | Public Signal | Draft Subject | Status |
+| # | Account | Candidate For Approval | Public Signal | Draft Subject | Status |
 | ---: | --- | --- | --- | --- | --- |
-| 1 | Vapi | Head of Engineering, Security Lead, CTO | https://docs.vapi.ai/sdk/mcp-server | MCP readiness review for voice-agent tools | Needs exact recipient |
-| 2 | Retool | Product Security Lead, Enterprise Engineering Lead | https://retool.com/blog/retool-mcp-server | MCP readiness review for internal-tool access | Needs exact recipient |
-| 3 | Pipedream | Head of Platform, Security Engineering Lead | https://pipedream.com/docs/connect/mcp | MCP exposure review for broad SaaS tool access | Needs exact recipient |
-| 4 | Composio | Founder, CTO, Head of Platform | https://composio.dev/mcp-gateway | MCP trust review for gateway-managed tools | Needs exact recipient |
-| 5 | PostHog | Product Security Lead, Head of Engineering | https://posthog.com/docs/model-context-protocol | MCP readiness check for analytics and feature-flag tools | Needs exact recipient |
-| 6 | Statsig | Product Security Lead, Platform Engineering Lead | https://docs.statsig.com/integrations/mcp/overview | MCP readiness check for feature-gate actions | Needs exact recipient |
-| 7 | Braintrust | Security Lead, Head of Product Engineering | https://www.braintrust.dev/docs/integrations/developer-tools/mcp | MCP exposure snapshot for eval and log access | Needs exact recipient |
-| 8 | Granola | Security Lead, CTO, Head of Enterprise | https://www.granola.ai/blog/granola-mcp | MCP exposure snapshot for meeting-note access | Needs exact recipient |
-| 9 | Sentry | Product Security Lead, Developer Platform Lead | https://mcp.sentry.dev/ | MCP readiness review for error and trace access | Needs exact recipient |
-| 10 | Replit | Head of Security, AI Platform Lead | https://docs.replit.com/build/connect-via-mcp | MCP exposure review for custom coding-agent tools | Needs exact recipient |
+| 1 | Vapi | Nikhil Gupta, Founder and CTO | https://docs.vapi.ai/sdk/mcp-server | MCP readiness review for voice-agent tools | Ready for founder approval |
+| 2 | Retool | David Hsu, Co-founder and CEO | https://retool.com/blog/retool-mcp-server | MCP readiness review for internal-tool access | Ready for founder approval |
+| 3 | Pipedream | Tod Sacerdoti, CEO and Founder | https://pipedream.com/docs/connect/mcp | MCP exposure review for broad SaaS tool access | Ready for founder approval |
+| 4 | Composio | Soham Ganatra, Founder | https://composio.dev/mcp-gateway | MCP trust review for gateway-managed tools | Ready for founder approval |
+| 5 | PostHog | James Hawkins, Co-founder and Co-CEO | https://posthog.com/docs/model-context-protocol | MCP readiness check for analytics and feature-flag tools | Ready for founder approval |
+| 6 | Statsig | Vijaye Raji, Founder and former CEO | https://docs.statsig.com/integrations/mcp/overview | MCP readiness check for feature-gate actions | Ready for founder approval |
+| 7 | Braintrust | Ankur Goyal, Founder and CEO | https://www.braintrust.dev/docs/integrations/developer-tools/mcp | MCP exposure snapshot for eval and log access | Ready for founder approval |
+| 8 | Granola | Christopher Pedregal, Co-founder and CEO | https://www.granola.ai/blog/granola-mcp | MCP exposure snapshot for meeting-note access | Ready for founder approval |
+| 9 | Sentry | David Cramer, Co-founder and CPO | https://mcp.sentry.dev/ | MCP readiness review for error and trace access | Ready for founder approval |
+| 10 | Replit | Ertan Dogrultan, Platform Engineering Lead | https://docs.replit.com/build/connect-via-mcp | MCP exposure review for custom coding-agent tools | Ready for founder approval |
 
 ## Recipient Qualification
 

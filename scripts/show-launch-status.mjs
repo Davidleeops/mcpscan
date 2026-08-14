@@ -54,7 +54,9 @@ function hasBannedPunctuation() {
 }
 
 function hasRecipientCandidates() {
-  return exists("sales/recipient-candidates-2026-08-14.csv");
+  if (!exists("sales/recipient-candidates-2026-08-14.csv")) return false;
+  const text = read("sales/recipient-candidates-2026-08-14.csv");
+  return !text.includes("Candidate needed") && (text.match(/Ready for founder approval/g) ?? []).length >= 10;
 }
 
 function hasContactRoutes() {
@@ -199,6 +201,7 @@ const gates = [
   gate("Delivery dry run", exists("scripts/run-delivery-dry-run.mjs"), "npm run delivery:dry-run proves the first audit workflow"),
   gate("Outbound staging", exists("scripts/stage-approved-outbound.mjs") && exists("ops/outbound-recipient-approval-builder.html"), "approved messages can be staged outside the public repo"),
   gate("Outbound approval queue", exists("scripts/generate-outbound-approval-queue.mjs") && exists("scripts/open-first-10-outbound-approval.mjs") && exists("ops/outbound-approval-queue-console.html") && exists("sales/outreach-approval-queue.md"), "first-wave queue and first-10 approval launcher are available before exact recipient approval"),
+  gate("Named recipient packet", exists("sales/first-10-recipient-approval-packet-2026-08-14.md") && exists("scripts/build-first-10-recipient-approval-packet.mjs"), "first-10 named-recipient approval blocks are generated"),
   gate("Outbound send gates", exists("scripts/verify-first-send-gates.mjs") && exists("scripts/open-first-send-readiness.mjs"), "npm run outbound:open-send-gates opens pre-send proof; npm run outbound:send-gates blocks sends until launch, DNS, Stripe, and approvals are ready"),
   gate("Send logging", exists("scripts/log-approved-send.mjs") && exists("docs/APPROVED_SEND_LOGGING.md"), "manual sends can create private follow-up schedules"),
   gate("Batch send logging", exists("scripts/log-approved-route-batch-sends.mjs") && exists("docs/BATCH_SEND_LOGGING.md"), "first-10 route sends can be logged in one private batch"),
@@ -216,7 +219,7 @@ const gates = [
   gate("Daily revenue command", exists("sales/daily-revenue-command.md"), "one-screen revenue operating surface exists"),
   gate("Payment link manifest", exists("sales/payment-link-manifest.template.json"), "non-secret checkout source template exists"),
   { label: "npm auth", state: npmAuth.state, detail: npmAuth.detail },
-  gate("Recipient candidates", hasRecipientCandidates(), "npm run outbound:verify checks candidate readiness"),
+  gate("Recipient candidates", hasRecipientCandidates(), "first-10 named candidates are ready for same-turn founder approval"),
   gate("Contact routes", hasContactRoutes(), "official first-10 contact routes exist for route-based approvals"),
   gate("Buyer summary", exists("delivery/customer-workspace-template/buyer-facing-summary.md"), "customer deliverable exists")
 ];

@@ -20,7 +20,10 @@ const requiredOutboundFiles = [
   "sales/outreach-approval-queue.md",
   "sales/first-10-contact-routes-2026-08-14.csv",
   "sales/first-10-route-approval-packet-2026-08-14.md",
+  "sales/first-10-recipient-approval-packet-2026-08-14.md",
+  "sales/recipient-candidate-sources-2026-08-14.md",
   "scripts/compose-final-outbound.mjs",
+  "scripts/build-first-10-recipient-approval-packet.mjs",
   "scripts/compose-contact-route-outbound.mjs",
   "scripts/build-first-10-route-approval-packet.mjs",
   "scripts/generate-outbound-approval-queue.mjs",
@@ -196,6 +199,18 @@ if (exists("sales/first-10-route-approval-packet-2026-08-14.md")) {
   results.push(noAutoCount === 11 ? result("pass", "route approval packet no-auto-send", "10 block statements plus all-10 guard") : result("fail", "route approval packet no-auto-send", `${noAutoCount} no-auto-send statements`));
   for (const account of pipelineAccounts) {
     results.push(packet.includes(`## ${account}`) ? result("pass", `route packet account: ${account}`) : result("fail", `route packet account: ${account}`, "missing"));
+  }
+}
+
+if (exists("sales/first-10-recipient-approval-packet-2026-08-14.md")) {
+  const packet = fs.readFileSync(path.join(root, "sales/first-10-recipient-approval-packet-2026-08-14.md"), "utf8");
+  const approvalCount = (packet.match(/I approve staging this exact MCPScan outbound message/g) ?? []).length;
+  const noAutoCount = (packet.match(/Do not send automatically/g) ?? []).length;
+  results.push(approvalCount === 10 ? result("pass", "named recipient packet approvals", "10 approval blocks") : result("fail", "named recipient packet approvals", `${approvalCount} approval blocks`));
+  results.push(noAutoCount === 10 ? result("pass", "named recipient packet no-auto-send", "10 block statements") : result("fail", "named recipient packet no-auto-send", `${noAutoCount} no-auto-send statements`));
+  for (const row of candidates) {
+    results.push(packet.includes(`## ${[...candidateAccounts].indexOf(row.account) + 1}. ${row.account}`) || packet.includes(`. ${row.account}`) ? result("pass", `named packet account: ${row.account}`) : result("fail", `named packet account: ${row.account}`, "missing"));
+    results.push(row.candidate_name && packet.includes(row.candidate_name) ? result("pass", `named packet candidate: ${row.account}`) : result("fail", `named packet candidate: ${row.account}`, "missing candidate"));
   }
 }
 

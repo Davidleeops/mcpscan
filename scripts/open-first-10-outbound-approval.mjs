@@ -5,6 +5,9 @@ import { pathToFileURL } from "node:url";
 
 const pages = [
   "ops/first-10-outbound-approval-console.html",
+  "sales/first-10-recipient-approval-packet-2026-08-14.md",
+  "sales/recipient-candidate-sources-2026-08-14.md",
+  "sales/recipient-candidates-2026-08-14.csv",
   "sales/first-10-route-approval-packet-2026-08-14.md",
   "sales/first-10-contact-routes-2026-08-14.csv",
   "ops/outbound-recipient-approval-builder.html",
