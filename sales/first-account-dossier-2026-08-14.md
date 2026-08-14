@@ -18,32 +18,31 @@ Use it to choose the first 10 outreach approvals after domain, mailbox, and Stri
 
 | # | Account | Public Signal | Likely Buyer | Risk Angle | Offer Fit | Approval Status |
 | ---: | --- | --- | --- | --- | --- | --- |
-| 1 | Partoo | Announced an MCP server opening its platform to AI agents | CTO, product security, AI platform lead | Agents interacting with platform data and features need clear approval evidence | MCP Launch Readiness Audit | Not approved |
-| 2 | Coralogix | Announced MCP server access to observability data across environments | CTO, security engineering, observability platform owner | Observability data can include production context and incident evidence | MCP Quick Audit | Not approved |
-| 3 | Trigger.dev | Official MCP server can initialize projects, trigger tasks, deploy, debug, and read runs | CTO, founder, developer experience lead | Developer automation and deployment actions need read/write boundaries | MCP Quick Audit | Not approved |
-| 4 | Dust | Stripe customer story says Dust uses Stripe MCP to power AI agents with financial data | CTO, security lead, finance operations owner | Payment, refund, invoice, and financial-data actions need strong guardrails | MCP Enterprise Readiness Audit | Not approved |
-| 5 | Visible.vc | Offers an AI MCP Server for portfolio data workflows | CTO, product lead, data/security owner | Portfolio and investor data need clean access boundaries and audit evidence | MCP Launch Readiness Audit | Not approved |
-| 6 | Unity AI | Unity official MCP Server gives agents access to project runtime state and editor context | Product security, AI tools product lead | Developer environments and project state create approval and data-boundary questions | MCP Enterprise Readiness Audit | Not approved |
-| 7 | Getty Images | Launched MCP Server for licensed creative, news, sport, entertainment, and archive content | Product security, platform partnerships, AI product owner | Licensed content and customer-facing AI access need governance proof | MCP Launch Readiness Audit | Not approved |
-| 8 | Zendesk | Announced MCP adoption for AI connectivity across support data and workflows | Product security, AI platform, customer trust | Tickets, knowledge bases, and customer information are sensitive AI-agent surfaces | MCP Enterprise Readiness Audit | Not approved |
-| 9 | Front | Community thread asks for an official Front MCP server and points to a community implementation | Developer relations, product security, platform lead | Customer communication workflows need a reviewed MCP trust path | MCP Exposure Snapshot | Not approved |
-| 10 | Cua | Public launch note says official MCP Server support exposes computer-use agent functionality to Claude Desktop and Cursor | Founder, CTO, product security | Computer-use tools can perform broad actions and need explicit guardrails | MCP Quick Audit | Not approved |
+| 1 | Vapi | Vapi exposes APIs as MCP tools for assistants, phone numbers, and calls. | Head of Engineering, Security Lead, CTO | Voice agents can touch real calls, phone numbers, workflows, and customer interactions. | MCP Quick Audit | Not approved |
+| 2 | Retool | Retool MCP lets agents manage apps, workflows, users, and org resources from Claude, Cursor, Codex, or Kiro. | Product Security Lead, Enterprise Engineering Lead | Admin and internal-tool surfaces need scope, audit, and approval controls. | MCP Quick Audit | Not approved |
+| 3 | Pipedream | Pipedream provides MCP servers for thousands of apps and pre-built tools with managed OAuth and credential storage. | Head of Platform, Security Engineering Lead | Broad SaaS integration surfaces need permissions, auth review, inventory, and abuse-path analysis. | MCP Quick Audit | Not approved |
+| 4 | Composio | Composio offers centralized MCP server management, managed toolkits, and custom MCP servers behind one gateway. | Founder, CTO, Head of Platform | Gateway products need buyer trust around auth, tool enablement, ownership, and team controls. | MCP Quick Audit plus buyer-safe summary | Not approved |
+| 5 | PostHog | PostHog MCP lets agents run analytics queries, manage feature flags and experiments, triage tickets, use SQL, and work with CDP destinations. | Product Security Lead, Head of Engineering | Analytics plus feature flags means agents can read product data and change rollout behavior. | MCP Quick Audit | Not approved |
+| 6 | Statsig | Statsig MCP supports read tools and write tools for gates, experiments, configs, and bulk changes. | Product Security Lead, Platform Engineering Lead | Feature gates and experiments are production-control surfaces that need least-privilege checks. | MCP Quick Audit | Not approved |
+| 7 | Braintrust | Braintrust MCP lets AI coding tools query experiments, search docs, and analyze production logs. | Security Lead, Head of Product Engineering | Evals, prompts, logs, and traces may contain sensitive production data and customer examples. | MCP Exposure Audit | Not approved |
+| 8 | Granola | Granola MCP connects meeting notes to Claude, ChatGPT, Cursor, and other AI tools. | Security Lead, CTO, Head of Enterprise | Meeting notes and transcripts can include sales, legal, hiring, product, and customer secrets. | MCP Exposure Audit | Not approved |
+| 9 | Sentry | Sentry MCP connects AI assistants to errors, performance, issue triage, docs, and project management. | Product Security Lead, Developer Platform Lead | Error traces and project data can include secrets, PII, stack details, and production context. | MCP Quick Audit | Not approved |
+| 10 | Replit | Replit Agent can connect to pre-listed and custom MCP servers, with guidance to trust sources and review access. | Head of Security, AI Platform Lead | Custom MCP servers inside coding environments create tool-poisoning, credential, workspace, and unsafe execution risks. | Platform Exposure Audit | Not approved |
 
 ## Source URLs
 
 | Account | Source |
 | --- | --- |
-| Partoo | https://www.partoo.co/en/company/press/releases/partoo-launches-its-mcp-server-and-opens-its-platform-to-ai-agents/ |
-| Coralogix | https://coralogix.com/blog/introducing-coralogixs-mcp-server-helping-customers-build-smarter-ai-agents/ |
-| Trigger.dev | https://trigger.dev/launchweek/2/official-mcp-server |
-| Trigger.dev update | https://trigger.dev/changelog/mcp-server-2-1 |
-| Dust and Stripe | https://stripe.com/ae/customers/dust |
-| Visible.vc | https://visible.vc/ai-mcp-server/ |
-| Unity | https://unity.com/blog/unity-ai-mcp-how-to-get-started |
-| Getty Images | https://newsroom.gettyimages.com/en/getty-images/getty-images-launches-mcp-server-to-connect-creative-and-editorial-content-to-ai-workflows-and-products |
-| Zendesk | https://www.techradar.com/pro/zendesk-becomes-the-latest-to-adopt-mcp-to-futureproof-customers-in-the-ai-first-era |
-| Front | https://community.front.com/developer-discussion-39/is-anyone-working-on-creating-an-mcp-server-for-frontapp-2309 |
-| Cua | https://www.linkedin.com/posts/cua-ai_ai-developertools-startups-activity-7316634917759598592-lTRf |
+| Vapi | https://docs.vapi.ai/sdk/mcp-server |
+| Retool | https://retool.com/blog/retool-mcp-server |
+| Pipedream | https://pipedream.com/docs/connect/mcp |
+| Composio | https://composio.dev/mcp-gateway |
+| PostHog | https://posthog.com/docs/model-context-protocol |
+| Statsig | https://docs.statsig.com/integrations/mcp/overview |
+| Braintrust | https://www.braintrust.dev/docs/integrations/developer-tools/mcp |
+| Granola | https://www.granola.ai/blog/granola-mcp |
+| Sentry | https://mcp.sentry.dev/ |
+| Replit | https://docs.replit.com/build/connect-via-mcp |
 
 ## Outreach Guardrails
 
@@ -56,74 +55,50 @@ Use it to choose the first 10 outreach approvals after domain, mailbox, and Stri
 
 ## Account-Specific Draft Angles
 
-### Partoo
+### Vapi
 
 ```text
-Subject: MCP readiness review for agent access
+Subject: MCP readiness review for voice-agent tools
 
 Hi {{first_name}},
 
-I saw Partoo announced MCP server access for AI agents interacting with platform data and features.
-
-I am reaching out with a narrow offer: a 72-hour MCP readiness audit that maps servers, tools, read/write actions, auth and secrets exposure, approval gates, and buyer-safe remediation evidence.
-
-No assumption that anything is broken. The goal is simply to make the agent-access surface easy to review before customers or internal security teams ask for proof.
-
-Worth sending the one-page scope?
+I saw Vapi exposes APIs as MCP tools for assistants, phone numbers, and calls. Voice-agent tooling is a high-trust surface because it can touch real customer interactions, phone workflows, and operational actions. MCPScan runs a 72-hour MCP exposure audit that maps servers, tools, read/write actions, auth and secrets exposure, approval gates, and buyer-safe remediation evidence. Worth sending the one-page scope?
 
 {{sender_name}}
 ```
 
-### Coralogix
+### Retool
 
 ```text
-Subject: MCP audit evidence for observability access
+Subject: MCP readiness review for internal-tool access
 
 Hi {{first_name}},
 
-I saw Coralogix launched an MCP server for AI agents connecting to observability data across environments.
-
-That is exactly the kind of integration where security reviewers tend to ask practical questions: which tools can read production context, what actions are available, how credentials are handled, and what evidence exists for approval.
-
-MCPScan runs a fixed-scope MCP exposure audit and returns a concise report with inventory, risky action paths, auth/secrets review, and remediation steps.
-
-Open to me sending the one-page scope?
+I saw Retool MCP lets agents manage apps, workflows, users, and org resources from Claude, Cursor, Codex, or Kiro. Internal-tool MCP is exactly where enterprise reviewers tend to ask about scopes, user authority, audit logs, and approval boundaries. MCPScan runs a fixed-scope MCP audit and produces a buyer-safe report with inventory, risky action paths, auth/secrets review, and remediation steps. Open to me sending the one-page scope?
 
 {{sender_name}}
 ```
 
-### Trigger.dev
+### Pipedream
 
 ```text
-Subject: MCP readiness check for deploy and task tools
+Subject: MCP exposure review for broad SaaS tool access
 
 Hi {{first_name}},
 
-I saw Trigger.dev has an official MCP server that can help agents initialize projects, trigger tasks, deploy, debug, and read runs.
-
-For developer automation, the useful security question is not just whether the MCP server works. It is which actions are safe to approve, which should stay gated, and what evidence a customer or AppSec reviewer can inspect.
-
-MCPScan runs a 72-hour MCP exposure audit and produces a buyer-safe remediation report.
-
-Worth a quick look at the scope?
+I saw Pipedream provides MCP servers across thousands of apps and pre-built tools. That breadth is valuable, but it also makes the review question practical: which tools can act, whose credentials are used, and what should be gated before customer or enterprise rollout? MCPScan runs a 72-hour MCP exposure audit for exactly that kind of connected-agent surface. Worth a quick look at the scope?
 
 {{sender_name}}
 ```
 
-### Dust
+### PostHog
 
 ```text
-Subject: MCP readiness review for payment-data agents
+Subject: MCP readiness check for analytics and feature-flag tools
 
 Hi {{first_name}},
 
-I saw Stripe describe Dust using Stripe MCP so AI agents can work with financial data and payment workflows.
-
-Payment-data MCP is a high-trust surface. The review question is usually: which actions are read-only, which can mutate billing or refunds, how credentials are scoped, and what audit evidence exists for approval.
-
-MCPScan offers a fixed-scope MCP readiness audit for exactly that kind of agent workflow.
-
-Worth sending the one-page scope?
+I saw PostHog MCP supports analytics queries, feature flags, experiments, SQL, CDP destinations, and support-ticket workflows. Because those surfaces can affect product data and rollout behavior, the useful security artifact is a clear map of tool permissions, approval gates, and remediation priorities. MCPScan can deliver that as a fixed-scope audit. Worth sending the one-page scope?
 
 {{sender_name}}
 ```
@@ -143,12 +118,17 @@ Final message:
 {{paste_exact_message}}
 ```
 
-## Next Research Expansion
+## Reserve Accounts
 
-After this first wave, source 30 more accounts from:
+Use these only after the first wave is approved, rejected, or exhausted:
 
-- Public MCP launch announcements.
-- GitHub repos with official or commercial MCP servers.
-- Cursor and GitHub community threads about MCP approvals.
-- Companies hiring for AI platform security, AppSec, developer productivity, or agent infrastructure.
-- Agencies building agent workflows that touch client systems.
+- Partoo, MCP server for platform data and features.
+- Coralogix, MCP server for observability data.
+- Trigger.dev, MCP server for tasks, deployment, debugging, and runs.
+- Dust, Stripe MCP use for payment and financial workflows.
+- Visible.vc, AI MCP Server for portfolio data.
+- Unity, official MCP Server for editor and project context.
+- Getty Images, MCP Server for licensed media access.
+- Zendesk, MCP adoption for support data and AI connectivity.
+- Front, community demand for an official MCP server.
+- Cua, MCP support for computer-use agent functionality.
