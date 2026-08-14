@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Founder Status Console</title>
+    <style>
+      :root { color-scheme: light; --ink: #14171a; --muted: #5b6470; --line: #d7dde3; --panel: #ffffff; --soft: #f5f7f9; --accent: #0b6bcb; --good: #0f7b4f; --warn: #9a5a00; --danger: #aa2b2b; }
+      * { box-sizing: border-box; }
+      body { margin: 0; color: var(--ink); background: var(--soft); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 48px; }
+      h1, h2, p { margin-top: 0; }
+      h1 { font-size: clamp(32px, 5vw, 58px); line-height: 1; margin-bottom: 12px; letter-spacing: 0; }
+      h2 { font-size: 18px; margin-bottom: 12px; }
+      p, label, li { color: var(--muted); line-height: 1.5; }
+      .stack { display: grid; gap: 16px; }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+      section { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+      .wide { grid-column: 1 / -1; }
+      .ready { border-left: 4px solid var(--good); background: #f3fbf6; }
+      .warn { border-left: 4px solid var(--warn); background: #fff9ec; }
+      .danger { border-left: 4px solid var(--danger); background: #fff6f6; }
+      .form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      label { display: grid; gap: 6px; font-weight: 700; }
+      input { min-height: 42px; width: 100%; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); font: inherit; padding: 10px 12px; background: #ffffff; }
+      input:focus { border-color: var(--accent); outline: 2px solid rgba(11, 107, 203, 0.16); }
+      .checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px; margin-top: 8px; }
+      .checks label { display: flex; align-items: center; gap: 8px; font-weight: 700; }
+      .checks input { width: auto; min-height: auto; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+      a.button, button { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 12px; color: var(--accent); background: #ffffff; font-weight: 700; text-decoration: none; cursor: pointer; }
+      a.button.primary, button.primary { color: #ffffff; background: var(--accent); }
+      pre { margin: 0; overflow: auto; white-space: pre-wrap; background: #101820; color: #eef6ff; border-radius: 8px; padding: 12px; line-height: 1.45; font-size: 12px; min-height: 190px; }
+      .status { min-height: 24px; color: var(--muted); }
+      .status.good { color: var(--good); }
+      .status.bad { color: var(--danger); }
+      @media (max-width: 900px) { .grid, .form, .checks { grid-template-columns: 1fr; } .wide { grid-column: auto; } }
+    </style>
+  </head>
+  <body>
+    <main class="stack">
+      <header>
+        <h1>Founder Status Console</h1>
+        <p>Build a public-safe launch tracker and copy the exact verification commands after founder clicks. Do not paste passwords, mailbox credentials, Stripe secret keys, API keys, or customer data here.</p>
+        <div class="actions">
+          <a class="button primary" href="founder-return-packet.html">Return packet</a>
+          <a class="button" href="verification-console.html">Verification</a>
+          <a class="button" href="founder-click-handoff.html">Click handoff</a>
+        </div>
+      </header>
+
+      <section class="danger">
+        <h2>Public-Safe Only</h2>
+        <p>The tracker is safe only when it contains public domain, public mailbox, public aliases, public Stripe Payment Link URLs, and boolean status fields. Keep secrets out.</p>
+      </section>
+
+      <div class="grid">
+        <section>
+          <h2>Launch Values</h2>
+          <div class="form">
+            <label>Domain<input id="domain" value="trymcpscan.com" autocomplete="off"></label>
+            <label>Primary mailbox<input id="mailbox" value="security@trymcpscan.com" autocomplete="off"></label>
+            <label>Audit alias<input id="audit" value="audit@trymcpscan.com" autocomplete="off"></label>
+            <label>Hello alias<input id="hello" value="hello@trymcpscan.com" autocomplete="off"></label>
+            <label class="wide">Quick Audit Stripe link<input id="quick" placeholder="https://buy.stripe.com/..."></label>
+            <label class="wide">Launch Audit Stripe link<input id="launch" placeholder="https://buy.stripe.com/..."></label>
+            <label class="wide">Enterprise Readiness Stripe link<input id="enterprise" placeholder="https://buy.stripe.com/..."></label>
+          </div>
+        </section>
+
+        <section>
+          <h2>Verified Gates</h2>
+          <div class="checks">
+            <label><input id="domainPurchased" type="checkbox"> Domain purchased</label>
+            <label><input id="mailboxCreated" type="checkbox"> Mailbox created</label>
+            <label><input id="githubPagesAConfigured" type="checkbox"> Apex DNS verified</label>
+            <label><input id="githubPagesWwwConfigured" type="checkbox"> WWW DNS verified</label>
+            <label><input id="mxConfigured" type="checkbox"> MX verified</label>
+            <label><input id="spfConfigured" type="checkbox"> SPF verified</label>
+            <label><input id="dkimConfigured" type="checkbox"> DKIM verified</label>
+            <label><input id="dmarcConfigured" type="checkbox"> DMARC verified</label>
+            <label><input id="stripeLinkFormatVerified" type="checkbox"> Stripe format verified</label>
+            <label><input id="stripeCheckoutQaConfirmed" type="checkbox"> Stripe checkout QA confirmed</label>
+            <label><input id="founderReturnPacketApproved" type="checkbox"> Return packet approved</label>
+            <label><input id="landingLinksApplied" type="checkbox"> Landing links applied</label>
+            <label><input id="firstTenRoutePacketApproved" type="checkbox"> First 10 approved</label>
+          </div>
+          <label style="margin-top: 12px;">Staged route approval count<input id="stagedRouteApprovalCount" value="0" inputmode="numeric"></label>
+          <div class="actions">
+            <button id="build" class="primary" type="button">Build tracker</button>
+            <button id="copyJson" type="button">Copy JSON</button>
+            <button id="copyCommands" type="button">Copy commands</button>
+          </div>
+          <p id="status" class="status"></p>
+        </section>
+      </div>
+
+      <section class="wide ready">
+        <h2>ops/founder-approval-status.json</h2>
+        <pre id="jsonOutput">Fill the fields, then build the tracker.</pre>
+      </section>
+
+      <section class="wide warn">
+        <h2>Verification Commands</h2>
+        <pre id="commandsOutput">Fill the fields, then build the tracker.</pre>
+      </section>
+    </main>
+    <script>
+      const textFields = {
+        domain: document.getElementById("domain"),
+        mailbox: document.getElementById("mailbox"),
+        audit: document.getElementById("audit"),
+        hello: document.getElementById("hello"),
+        quick: document.getElementById("quick"),
+        launch: document.getElementById("launch"),
+        enterprise: document.getElementById("enterprise")
+      };
+      const boolFields = [
+        "domainPurchased",
+        "mailboxCreated",
+        "githubPagesAConfigured",
+        "githubPagesWwwConfigured",
+        "mxConfigured",
+        "spfConfigured",
+        "dkimConfigured",
+        "dmarcConfigured",
+        "stripeLinkFormatVerified",
+        "stripeCheckoutQaConfirmed",
+        "founderReturnPacketApproved",
+        "landingLinksApplied",
+        "firstTenRoutePacketApproved"
+      ];
+      const jsonOutput = document.getElementById("jsonOutput");
+      const commandsOutput = document.getElementById("commandsOutput");
+      const status = document.getElementById("status");
+
+      function validDomain(value) {
+        return /^[a-z0-9.-]+\.[a-z]{2,}$/i.test(value);
+      }
+
+      function validEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      }
+
+      function validPublicStripe(value) {
+        return value === "" || /^https:\/\/buy\.stripe\.com\/\S+$/i.test(value);
+      }
+
+      function build() {
+        const values = Object.fromEntries(Object.entries(textFields).map(([key, input]) => [key, input.value.trim()]));
+        const errors = [];
+        if (!validDomain(values.domain)) errors.push("Domain must look like trymcpscan.com");
+        for (const key of ["mailbox", "audit", "hello"]) {
+          if (!validEmail(values[key])) errors.push(key + " must be an email address");
+          if (validEmail(values[key]) && validDomain(values.domain) && !values[key].toLowerCase().endsWith("@" + values.domain.toLowerCase())) {
+            errors.push(key + " must use the chosen domain");
+          }
+        }
+        for (const key of ["quick", "launch", "enterprise"]) {
+          if (!validPublicStripe(values[key])) errors.push(key + " must be a public Stripe Payment Link");
+        }
+        const stagedCount = Number.parseInt(document.getElementById("stagedRouteApprovalCount").value, 10);
+        if (!Number.isInteger(stagedCount) || stagedCount < 0 || stagedCount > 10) errors.push("Staged route count must be 0 through 10");
+
+        if (errors.length > 0) {
+          status.textContent = errors.join(". ");
+          status.className = "status bad";
+          jsonOutput.textContent = "Fix the fields above, then build again.";
+          commandsOutput.textContent = "Fix the fields above, then build again.";
+          return;
+        }
+
+        const tracker = {
+          generatedFor: "MCPScan first revenue launch",
+          updatedAt: new Date().toISOString(),
+          domain: values.domain,
+          mailbox: values.mailbox,
+          auditAlias: values.audit,
+          helloAlias: values.hello,
+          domainPurchased: document.getElementById("domainPurchased").checked,
+          mailboxCreated: document.getElementById("mailboxCreated").checked,
+          githubPagesAConfigured: document.getElementById("githubPagesAConfigured").checked,
+          githubPagesWwwConfigured: document.getElementById("githubPagesWwwConfigured").checked,
+          mxConfigured: document.getElementById("mxConfigured").checked,
+          spfConfigured: document.getElementById("spfConfigured").checked,
+          dkimConfigured: document.getElementById("dkimConfigured").checked,
+          dmarcConfigured: document.getElementById("dmarcConfigured").checked,
+          stripeQuickAuditLink: values.quick || "{{stripe_quick_audit_payment_link}}",
+          stripeLaunchAuditLink: values.launch || "{{stripe_launch_audit_payment_link}}",
+          stripeEnterpriseReadinessLink: values.enterprise || "{{stripe_enterprise_readiness_payment_link}}",
+          stripeLinkFormatVerified: document.getElementById("stripeLinkFormatVerified").checked,
+          stripeCheckoutQaConfirmed: document.getElementById("stripeCheckoutQaConfirmed").checked,
+          stripeLinksVerified: document.getElementById("stripeLinkFormatVerified").checked && document.getElementById("stripeCheckoutQaConfirmed").checked,
+          founderReturnPacketApproved: document.getElementById("founderReturnPacketApproved").checked,
+          landingLinksApplied: document.getElementById("landingLinksApplied").checked,
+          stagedRouteApprovalCount: stagedCount,
+          firstTenRoutePacketApproved: document.getElementById("firstTenRoutePacketApproved").checked,
+          notes: [
+            "Generated from ops/founder-status-console.html.",
+            "Keep passwords, API keys, Stripe secret keys, customer data, and mailbox credentials out of this file.",
+            "Run verification commands with --update-status so scripts maintain these booleans from evidence."
+          ]
+        };
+
+        jsonOutput.textContent = JSON.stringify(tracker, null, 2);
+        commandsOutput.textContent = `npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status
+npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status
+npm run launch:verify-dns -- --domain ${values.domain} --update-status
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --domain ${values.domain}
+npm run launch:status`;
+        status.textContent = "Tracker built.";
+        status.className = "status good";
+      }
+
+      async function copy(node) {
+        await navigator.clipboard.writeText(node.textContent.trim());
+        status.textContent = "Copied.";
+        status.className = "status good";
+      }
+
+      document.getElementById("build").addEventListener("click", build);
+      document.getElementById("copyJson").addEventListener("click", () => copy(jsonOutput));
+      document.getElementById("copyCommands").addEventListener("click", () => copy(commandsOutput));
+      for (const input of Object.values(textFields)) input.addEventListener("input", build);
+      for (const key of boolFields) document.getElementById(key).addEventListener("change", build);
+      document.getElementById("stagedRouteApprovalCount").addEventListener("input", build);
+      build();
+    </script>
+  </body>
+</html>

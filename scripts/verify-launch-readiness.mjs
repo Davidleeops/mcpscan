@@ -158,6 +158,7 @@ const requiredFiles = [
   "ops/GITHUB_ISSUE_ACTION_BOARD.md",
   "ops/founder-click-console.html",
   "ops/founder-click-handoff.html",
+  "ops/founder-status-console.html",
   "ops/final-founder-click-console.html",
   "ops/domain-mailbox-purchase-packet.html",
   "ops/domain-email-dns-console.html",
