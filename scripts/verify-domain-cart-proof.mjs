@@ -77,6 +77,19 @@ function bool(value) {
   return value === true;
 }
 
+function valueFromInput(label, input) {
+  const match = input.match(new RegExp(`^${label}:\\s*(.+)$`, "m"));
+  return match?.[1]?.trim();
+}
+
+function normalize(value) {
+  return String(value ?? "").trim().toLowerCase();
+}
+
+function compare(results, label, actual, expected) {
+  results.push(normalize(actual) === normalize(expected) ? result("pass", label, String(actual)) : result("fail", label, `expected ${expected}, got ${actual}`));
+}
+
 const args = parseArgs(process.argv.slice(2));
 const file = args.file ?? "ops/domain-cart-proof.sample.json";
 const proofPath = path.resolve(process.cwd(), file);
@@ -152,6 +165,26 @@ if (proof) {
 
   if (cheapTlds.has(domainTld) && renewal !== null && renewal > 20) {
     results.push(bool(proof.cheapRenewalTradeoffAcknowledged) ? result("pass", "cheap renewal tradeoff acknowledged", `$${renewal}`) : result("fail", "cheap renewal tradeoff acknowledged", "required for high-renewal promo TLDs"));
+  }
+
+  if (args["return-file"]) {
+    if (!fs.existsSync(args["return-file"])) {
+      results.push(result("fail", "founder return packet", `missing ${args["return-file"]}`));
+    } else {
+      const input = fs.readFileSync(args["return-file"], "utf8");
+      const packet = {
+        domain: valueFromInput("Domain", input),
+        mailProvider: valueFromInput("Mail provider", input),
+        mailbox: valueFromInput("Primary mailbox", input),
+        auditAlias: valueFromInput("Audit alias", input),
+        helloAlias: valueFromInput("Hello alias", input)
+      };
+      compare(results, "return packet domain matches cart proof", domain, packet.domain);
+      compare(results, "return packet mail provider matches cart proof", proof.mailProvider, packet.mailProvider);
+      compare(results, "return packet mailbox matches cart proof", primaryMailbox, packet.mailbox);
+      compare(results, "return packet audit alias matches cart proof", auditAlias, packet.auditAlias);
+      compare(results, "return packet hello alias matches cart proof", helloAlias, packet.helloAlias);
+    }
   }
 }
 

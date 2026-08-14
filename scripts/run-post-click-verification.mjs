@@ -56,8 +56,14 @@ const dkimSelector = args["dkim-selector"];
 const mailProvider = args["mail-provider"] ?? valueFromInput("Mail provider", input)?.toLowerCase() ?? "zoho";
 const applyReturnPacket = args.apply === "true";
 const qaFile = args["qa-file"];
+const cartFile = args["cart-file"];
 const skipDns = args["skip-dns"] === "true";
 const skipLaunch = args["skip-launch"] === "true";
+
+if (cartFile) {
+  if (!fs.existsSync(cartFile)) fail(`Domain cart proof file not found: ${cartFile}`);
+  run("domain cart proof and return packet consistency", "npm", ["run", "launch:verify-cart", "--", "--file", cartFile, "--return-file", args.file]);
+}
 
 if (applyReturnPacket) {
   run("founder return packet apply", "npm", ["run", "launch:apply-return-packet", "--", "--file", args.file]);

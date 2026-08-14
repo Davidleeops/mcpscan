@@ -17,7 +17,7 @@ npm run launch:open-return-review
 After the founder has approved the exact return packet and the Stripe QA evidence JSON exists, use the full apply and QA command:
 
 ```text
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --cart-file /path/to/domain-cart-proof.json --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 ```
 
 The command reads the selected mail provider from the approved return packet. Use `--mail-provider` only to override an older packet that does not include `Mail provider`.
@@ -31,13 +31,13 @@ npm run launch:publish-pages-fallback -- --wait true
 If the selected mail provider gives you a DKIM selector:
 
 ```text
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --dkim-selector {{dkim_selector}}
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --cart-file /path/to/domain-cart-proof.json --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --dkim-selector {{dkim_selector}}
 ```
 
 Use strict mode only after DNS has propagated and the custom domain is expected to be fully live:
 
 ```text
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --dkim-selector {{dkim_selector}} --strict true
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --cart-file /path/to/domain-cart-proof.json --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --dkim-selector {{dkim_selector}} --strict true
 ```
 
 ## Diagnostic Runs Only

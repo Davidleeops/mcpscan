@@ -231,7 +231,7 @@ I also approve keeping outbound paused until I approve exact recipients and exac
 3. Run:
    npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider ${values.mailProvider}
 4. Apply:
-   npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider ${values.mailProvider}
+   npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --cart-file /path/to/domain-cart-proof.json --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider ${values.mailProvider}
 5. Publish:
    npm run launch:publish-pages-fallback -- --wait true
 6. Verify live:
@@ -241,7 +241,7 @@ I also approve keeping outbound paused until I approve exact recipients and exac
    npm run launch:open-first-revenue`;
         applyCommand.textContent = `npm run launch:open-return-review
 npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider ${values.mailProvider}
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider ${values.mailProvider}
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --cart-file /path/to/domain-cart-proof.json --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true --mail-provider ${values.mailProvider}
 npm run launch:publish-pages-fallback -- --wait true
 npm run launch:open-first-revenue`;
         status.textContent = "Approval message built.";

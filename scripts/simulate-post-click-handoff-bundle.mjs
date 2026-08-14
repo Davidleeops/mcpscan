@@ -10,6 +10,7 @@ const returnPacket = path.join(root, "ops", "founder-return-packet.sample.txt");
 const qaFile = path.join(tempRoot, "stripe-checkout-qa-evidence.json");
 const bundleRoot = path.join(tempRoot, "bundles");
 const statusFile = path.join(tempRoot, "founder-approval-status.json");
+const cartFile = path.join(tempRoot, "domain-cart-proof.json");
 
 function fail(message) {
   console.error(message);
@@ -75,6 +76,39 @@ const qa = {
 
 fs.writeFileSync(qaFile, `${JSON.stringify(qa, null, 2)}\n`, "utf8");
 
+const cartProof = {
+  generatedFor: "MCPScan first revenue launch",
+  updatedAt: new Date().toISOString().slice(0, 10),
+  domain,
+  registrar: "Spaceship",
+  domainAvailable: true,
+  firstYearDomainUsd: 8.28,
+  maxFirstYearDomainUsd: 12,
+  renewalDomainUsd: 12.42,
+  renewalAcknowledged: true,
+  cheapRenewalTradeoffAcknowledged: false,
+  domainCount: 1,
+  mailProvider: "zoho",
+  primaryMailbox: mailbox,
+  auditAlias: `audit@${domain}`,
+  helloAlias: `hello@${domain}`,
+  mailboxCount: 1,
+  mailboxUsd: 12,
+  mailboxBillingTerm: "annual",
+  paidHosting: false,
+  paidSsl: false,
+  siteBuilder: false,
+  extraDomains: false,
+  extraMailboxes: false,
+  paidPrivacyUpsell: false,
+  freePrivacyKept: true,
+  founderApproval: true,
+  approvalText: "I approve buying the MCPScan launch domain",
+  notes: ["Simulation cart proof. No secrets included."]
+};
+
+fs.writeFileSync(cartFile, `${JSON.stringify(cartProof, null, 2)}\n`, "utf8");
+
 const status = {
   generatedFor: "MCPScan first revenue launch",
   updatedAt: new Date().toISOString(),
@@ -120,6 +154,16 @@ run([
   bundleRoot,
   "--mail-provider",
   "zoho"
+]);
+
+run([
+  "run",
+  "launch:verify-cart",
+  "--",
+  "--file",
+  cartFile,
+  "--return-file",
+  returnPacket
 ]);
 
 run([

@@ -46,11 +46,11 @@ Use this immediately after the founder account clicks. The goal is to give Codex
 
 ```text
 npm run launch:open-return-review
-npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json
+npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt
 npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider {{zoho_or_google_or_spacemail}}
 npm run launch:simulate-post-click-bundle
 npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json
-npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
+npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --cart-file /path/to/domain-cart-proof.json --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 npm run launch:publish-pages-fallback -- --wait true
 npm run launch:verify -- --domain {{chosen_domain}}
 npm run launch:status:live
@@ -68,7 +68,7 @@ npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt -
 The return packet is usable when:
 
 - `npm run launch:apply-return-packet -- --file /path/to/approved-return-packet.txt --dry-run true` passes.
-- `npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json` passes for the final Spaceship cart if the cheap lane was used.
+- `npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt` passes for the final Spaceship cart if the cheap lane was used.
 - `npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --mail-provider {{zoho_or_google_or_spacemail}}` writes a private bundle outside the public repo.
 - `npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json` proves the status tracker matches the approved return packet and Stripe QA evidence.
 - `npm run launch:verify-stripe -- --file /path/to/approved-return-packet.txt --update-status` passes.

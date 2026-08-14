@@ -53,6 +53,12 @@ The sample proof is intentionally public-safe and proves the verifier shape:
 npm run launch:verify-cart
 ```
 
+After the founder return packet exists, prove the returned domain and mailbox values still match the cart proof:
+
+```text
+npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt
+```
+
 ## Stop Conditions
 
 Stop before purchase if:
@@ -63,6 +69,7 @@ Stop before purchase if:
 - the cart adds hosting, SSL, a site builder, paid privacy, extra domains, or extra mailboxes
 - the mailbox cannot support `security@`, `audit@`, and `hello@`
 - the founder has not acknowledged the renewal price
+- the founder return packet names a different domain, mail provider, mailbox, or alias than the cart proof
 
 ## Sources
 

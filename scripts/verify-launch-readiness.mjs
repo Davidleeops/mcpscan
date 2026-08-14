@@ -441,13 +441,18 @@ if (exists("ops/domain-mailbox-purchase-packet.html") && exists("ops/cheap-launc
   const cartProofPath = [
     read("ops/domain-mailbox-purchase-packet.html"),
     read("ops/cheap-launch-packet-console.html"),
+    exists("ops/final-founder-click-console.html") ? read("ops/final-founder-click-console.html") : "",
+    exists("docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md") ? read("docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md") : "",
     exists("docs/SPACESHIP_CART_PROOF_2026-08-14.md") ? read("docs/SPACESHIP_CART_PROOF_2026-08-14.md") : "",
     exists("docs/CHEAP_DOMAIN_DECISION_2026-08-14.md") ? read("docs/CHEAP_DOMAIN_DECISION_2026-08-14.md") : "",
     exists("scripts/verify-domain-cart-proof.mjs") ? read("scripts/verify-domain-cart-proof.mjs") : "",
+    exists("scripts/run-post-click-verification.mjs") ? read("scripts/run-post-click-verification.mjs") : "",
     read("package.json")
   ].join("\n");
   const requiredCartProofMarkers = [
     "launch:verify-cart",
+    "--return-file",
+    "--cart-file",
     "domain-cart-proof.template.json",
     "domain-cart-proof.sample.json",
     "firstYearDomainUsd",
@@ -476,10 +481,10 @@ if (exists("scripts/open-founder-return-review.mjs") && exists("ops/founder-retu
     exists("ops/launch-day-runbook.html") ? read("ops/launch-day-runbook.html") : ""
   ].join("\n");
   const requiredReturnReviewCommands = [
-    "npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json",
+    "npm run launch:verify-cart -- --file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt",
     "npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json",
     "npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json",
-    "npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true",
+    "npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --cart-file /path/to/domain-cart-proof.json --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true",
     "npm run launch:publish-pages-fallback -- --wait true",
     "npm run launch:verify -- --domain",
     "npm run launch:status:live",
@@ -559,6 +564,7 @@ if (exists("ops/founder-return-packet.html") && exists("ops/stripe-payment-link-
     read("ops/founder-return-packet.html"),
     read("ops/stripe-payment-link-qa-console.html"),
     read("ops/founder-return-packet.sample.txt"),
+    exists("docs/SPACESHIP_CART_PROOF_2026-08-14.md") ? read("docs/SPACESHIP_CART_PROOF_2026-08-14.md") : "",
     exists("ops/domain-cart-proof.template.json") ? read("ops/domain-cart-proof.template.json") : "",
     exists("ops/domain-cart-proof.sample.json") ? read("ops/domain-cart-proof.sample.json") : "",
     exists("scripts/verify-domain-cart-proof.mjs") ? read("scripts/verify-domain-cart-proof.mjs") : ""
@@ -567,6 +573,8 @@ if (exists("ops/founder-return-packet.html") && exists("ops/stripe-payment-link-
     "Commit and push require a separate explicit approval after verification.",
     "keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval",
     "launch:post-click-bundle",
+    "--cart-file",
+    "--return-file",
     "I approve buying the MCPScan launch domain",
     "paidHosting",
     "paidSsl",
@@ -599,6 +607,7 @@ if (exists("ops/launch-day-runbook.html") && exists("scripts/open-launch-day-run
     "swarm-throughput-console.html",
     "docs/POST_PURCHASE_PUBLIC_PROOF_PACKET.md",
     "launch:verify-cart",
+    "--cart-file",
     "launch:post-click-bundle",
     "launch:simulate-post-click-bundle",
     "launch:verify-status",
