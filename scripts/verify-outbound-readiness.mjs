@@ -10,6 +10,7 @@ const requiredOutboundFiles = [
   "sales/reply-to-close-packet.md",
   "sales/daily-revenue-command.md",
   "scripts/compose-final-outbound.mjs",
+  "scripts/compose-contact-route-outbound.mjs",
   "scripts/stage-approved-outbound.mjs"
 ];
 const strict = process.argv.includes("--strict");

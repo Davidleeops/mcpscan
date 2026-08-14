@@ -63,6 +63,12 @@ To generate an exact approval packet before staging:
 npm run outbound:compose-final -- --account Vapi --recipient "{{name}}" --title "{{title}}" --contact "{{contact_or_profile_url}}" --channel Email --sender "{{sender_name}}"
 ```
 
+To generate first-10 packets for official contact routes instead of named people:
+
+```text
+npm run outbound:compose-contact-routes -- --sender "{{sender_name}}"
+```
+
 After first payment:
 
 ```text

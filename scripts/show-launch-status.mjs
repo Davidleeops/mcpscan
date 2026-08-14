@@ -109,6 +109,8 @@ const gates = [
   gate("Delivery dry run", exists("scripts/run-delivery-dry-run.mjs"), "npm run delivery:dry-run proves the first audit workflow"),
   gate("Outbound staging", exists("scripts/stage-approved-outbound.mjs") && exists("ops/outbound-recipient-approval-builder.html"), "approved messages can be staged outside the public repo"),
   gate("Outbound composer", exists("scripts/compose-final-outbound.mjs"), "npm run outbound:compose-final creates exact approval packets"),
+  gate("Contact-route composer", exists("scripts/compose-contact-route-outbound.mjs"), "npm run outbound:compose-contact-routes creates first-10 route packets"),
+  gate("GTM claim verifier", exists("scripts/verify-gtm-claims.mjs"), "npm run gtm:verify checks overclaim risk"),
   gate("Reply-to-close packet", exists("sales/reply-to-close-packet.md"), "approved reply templates exist for inbound prospect responses"),
   gate("Daily revenue command", exists("sales/daily-revenue-command.md"), "one-screen revenue operating surface exists"),
   gate("Payment link manifest", exists("sales/payment-link-manifest.template.json"), "non-secret checkout source template exists"),
