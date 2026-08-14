@@ -15,6 +15,8 @@ docs/MARKET_REALITY_BRIEF_2026-08-14.md
 sales/buyer-intent-map-2026-08-14.md
 sales/first-account-dossier-2026-08-14.md
 ops/first-account-dossier-console.html
+ops/recipient-finder-console.html
+sales/recipient-approval-packet-2026-08-14.md
 ```
 
 ## Open Gates
