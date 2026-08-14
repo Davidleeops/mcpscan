@@ -17,6 +17,7 @@ After the external account clicks, use `ops/founder-return-packet.html` to paste
 After that message is approved, Codex can run the full post-click handoff:
 
 ```text
+npm run launch:open-return-review
 npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 ```
 
@@ -77,6 +78,7 @@ npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.j
 After founder clicks exist, apply the return packet, verify Stripe QA evidence, verify DNS, and refresh public-safe approval status:
 
 ```text
+npm run launch:open-return-review
 npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
 npm run launch:status
 ```

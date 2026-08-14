@@ -277,6 +277,7 @@ const requiredFiles = [
   "scripts/verify-gtm-claims.mjs",
   "scripts/show-launch-status.mjs",
   "scripts/open-founder-clicks.mjs",
+  "scripts/open-founder-return-review.mjs",
   "delivery/customer-workspace-template/report-template.md",
   "delivery/customer-workspace-template/buyer-facing-summary.md",
   "delivery/customer-workspace-template/findings-tracker.csv",

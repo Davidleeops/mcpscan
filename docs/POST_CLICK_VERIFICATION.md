@@ -6,6 +6,12 @@ Use this after the founder has bought the domain and mailbox, created Stripe Pay
 
 This command verifies the launch state. It does not buy domains, create Stripe links, send outbound, or start customer delivery.
 
+Open the full return review packet before applying live values:
+
+```text
+npm run launch:open-return-review
+```
+
 ## Standard Run
 
 After the founder has approved the exact return packet and the Stripe QA evidence JSON exists, use the full apply and QA command:
