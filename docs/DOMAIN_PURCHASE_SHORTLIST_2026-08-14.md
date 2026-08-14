@@ -6,9 +6,11 @@ Status: approval required. Do not purchase a domain or mailbox until the founder
 
 ## Recommendation
 
-If the goal is to spend `$1` to `$3` now and move fast, buy `mcpscan.site` if the Spaceship cart confirms promo pricing. It is direct, readable, and good enough for a fast first-revenue sprint.
+Buy `trymcpscan.com` if the Spaceship cart confirms standard `.com` pricing. It is the best buyer-facing choice for a security product because it is short, clear, and credible for outbound email.
 
-If buyer trust matters more than saving about `$8`, buy `getmcpscan.com`. It is the stronger outbound and B2B security choice.
+If `trymcpscan.com` is unavailable or premium-priced at checkout, buy `getmcpscan.com`. If both are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
+
+Use a `$1` to `$3` domain such as `mcpscan.site` only if the founder wants the cheapest possible validation lane and explicitly accepts the higher renewal price and weaker B2B trust signal.
 
 ## Current Availability Signal
 
@@ -17,7 +19,10 @@ Checked through the domain availability tool on 2026-08-14:
 | Domain | Availability Signal | Price Signal From Availability Tool | Role |
 | --- | --- | ---: | --- |
 | `mcpscan.com` | Not available | N/A | Skip |
-| `getmcpscan.com` | Available | `$11.25` for 1 year | Best trust pick |
+| `trymcpscan.com` | Likely available from RDAP signal | Standard `.com` pricing expected | Best trust pick |
+| `getmcpscan.com` | Available | `$11.25` for 1 year | Strong trust backup |
+| `mcpscanhq.com` | Likely available from RDAP signal | Standard `.com` pricing expected | Backup trust pick |
+| `usemcpscan.com` | Likely available from RDAP signal | Standard `.com` pricing expected | Backup trust pick |
 | `mcpscan.site` | Available | `$1.99` for 1 year | Best cheap launch pick |
 | `getmcpscan.site` | Available | `$1.99` for 1 year | Backup cheap launch pick |
 | `mcpscan.online` | Available | `$1.99` for 1 year | Backup cheap launch pick |
@@ -46,14 +51,15 @@ Spacemail pricing checked on 2026-08-14: one-mailbox plans start around `$0.98` 
 
 ## Buy Rule
 
-1. Search `mcpscan.site` in Spaceship.
-2. If it is available and the cart is about `$1` to `$3`, buy it if the founder approves the renewal tradeoff.
-3. If `mcpscan.site` is unavailable, search `getmcpscan.site`.
-4. If the founder prefers trust over the cheapest cart, search and buy `getmcpscan.com` if standard-priced.
-5. Buy one domain only unless the founder explicitly approves a protective second domain.
-6. Create one mailbox only, preferably `audit@{{chosen_domain}}`.
-7. Add aliases for `hello@{{chosen_domain}}` and `security@{{chosen_domain}}`.
-8. Do not send outbound until MX, SPF, DKIM, and DMARC pass.
+1. Search `trymcpscan.com` in Spaceship.
+2. If it is available at standard `.com` pricing, buy it.
+3. If `trymcpscan.com` is unavailable or premium-priced, search `getmcpscan.com`.
+4. If both are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
+5. Use `mcpscan.site` only if the founder chooses the `$1` to `$3` validation lane and accepts the renewal tradeoff.
+6. Buy one domain only unless the founder explicitly approves a protective second domain.
+7. Create one mailbox only, preferably `security@{{chosen_domain}}` or `audit@{{chosen_domain}}`.
+8. Add aliases for `hello@{{chosen_domain}}` and the second security mailbox name.
+9. Do not send outbound until MX, SPF, DKIM, and DMARC pass.
 
 ## Founder Approval Text
 
@@ -77,3 +83,4 @@ Buy one MCPScan launch domain and one matching mailbox. Do not buy extra domains
 - Spaceship promos: `https://www.spaceship.com/promos/`
 - Spaceship business email: `https://www.spaceship.com/business-email/`
 - Spacemail pricing: `https://www.spacemail.com/`
+- TLD-List Spaceship comparison: `https://tld-list.com/registrars/spaceship`

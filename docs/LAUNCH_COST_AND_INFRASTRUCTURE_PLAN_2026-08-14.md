@@ -8,10 +8,10 @@ Use one public repo and one cheap domain for the first revenue push. Do not crea
 
 Best buy path:
 
-1. Buy `getmcpscan.com` if Spaceship shows standard `.com` pricing.
-2. If the founder wants a `$1` to `$3` validation domain, buy `mcpscan.site` if Spaceship confirms promo pricing and the renewal tradeoff is accepted.
-3. If you want the cheapest credible non-promo fallback, buy `mcpscan.us`, but only after accepting the US nexus and registration privacy tradeoffs.
-4. Use `trymcpscan.com` only if `getmcpscan.com` is unavailable or premium-priced.
+1. Buy `trymcpscan.com` if Spaceship shows standard `.com` pricing.
+2. If it is unavailable or premium-priced, buy `getmcpscan.com`.
+3. If the founder wants a `$1` to `$3` validation domain, buy `mcpscan.site` if Spaceship confirms promo pricing and the renewal tradeoff is accepted.
+4. If you want the cheapest credible non-promo fallback, buy `mcpscan.us`, but only after accepting the US nexus and registration privacy tradeoffs.
 5. Avoid `.shop` and similar commerce-oriented near-dollar names as the primary security brand.
 
 ## Why This Is The Right Cost Posture
@@ -33,7 +33,7 @@ That avoids paying for infrastructure before there is proof that buyers want the
 | --- | --- | ---: | ---: | --- |
 | GitHub repo | Existing public repo | $0 | $0 | Yes |
 | GitHub Pages | Existing Pages site | $0 | $0 | Yes |
-| Domain | `getmcpscan.com` | About $8.88 plus ICANN fee if standard-priced | About $9.98 plus ICANN fee | Yes |
+| Domain | `trymcpscan.com` | About $8.88 plus ICANN fee if standard-priced | About $9.98 plus ICANN fee | Yes |
 | Cheap validation domain | `mcpscan.site` | About $0.98 plus ICANN fee at Spaceship if promo-priced | About $21.38 plus ICANN fee | Yes, if cash cap is `$1` to `$3` |
 | Cheap credible fallback | `mcpscan.us` | About $4.14 | About $6.48 | Only if avoiding `.com` |
 | 98-cent promo TLD | `.online` or `.site` | About $0.98 plus ICANN fee | About $21.38 | No |
@@ -96,8 +96,9 @@ Using the same GitHub account is fine. Using the same repo is the part to avoid.
 
 | Domain Type | Buyer Trust | First-Year Cost | Renewal Risk | Recommendation |
 | --- | --- | ---: | ---: | --- |
-| `getmcpscan.com` | High | Low | Low | Best primary pick |
-| `trymcpscan.com` | High | Low | Low | Good backup |
+| `trymcpscan.com` | High | Low | Low | Best primary pick |
+| `getmcpscan.com` | High | Low | Low | Good backup |
+| `mcpscanhq.com` | High | Low | Low | Good backup |
 | `mcpscan.us` | Medium-high | Lower | Low | Cheapest credible fallback |
 | `.dev` exact names | High for developers | Low-medium | Medium | Good only if available |
 | `.xyz` exact names | Medium | Very low | Medium | Use only if exact and clean |
@@ -108,17 +109,18 @@ Using the same GitHub account is fine. Using the same repo is the part to avoid.
 ## Purchase Instructions
 
 1. Open Spaceship domain search.
-2. If the approved budget cap is `$1` to `$3`, search `mcpscan.site` first.
-3. If the approved budget cap allows a stronger trust signal, search `getmcpscan.com`.
+2. Search `trymcpscan.com` first.
+3. If it is unavailable or premium-priced, search `getmcpscan.com`.
 4. Buy only if it is standard-priced and not premium.
 5. If it is not available, use the backup from `docs/DOMAIN_PURCHASE_SHORTLIST_2026-08-14.md`.
-6. If the goal is the absolute lowest credible non-promo spend, search `mcpscan.us`.
-7. Before buying `.us`, confirm the founder accepts US nexus eligibility and the registration privacy tradeoff.
-8. Buy one domain only.
-9. Buy one mailbox only.
-10. Create `audit@{{chosen_domain}}`.
-11. Add aliases for `hello@{{chosen_domain}}` and `security@{{chosen_domain}}`.
-12. Do not send outbound until MX, SPF, DKIM, and DMARC pass.
+6. If the approved budget cap is `$1` to `$3`, search `mcpscan.site`.
+7. If the goal is the absolute lowest credible non-promo spend, search `mcpscan.us`.
+8. Before buying `.us`, confirm the founder accepts US nexus eligibility and the registration privacy tradeoff.
+9. Buy one domain only.
+10. Buy one mailbox only.
+11. Create `security@{{chosen_domain}}`.
+12. Add aliases for `hello@{{chosen_domain}}` and `audit@{{chosen_domain}}`.
+13. Do not send outbound until MX, SPF, DKIM, and DMARC pass.
 
 ## After Purchase
 

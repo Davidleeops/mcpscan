@@ -4,7 +4,9 @@ Generated: 2026-08-14
 
 ## Recommendation
 
-Buy `getmcpscan.com` if Spaceship shows it available near normal `.com` pricing. It costs a few dollars more than a discount TLD, but it is the strongest trust signal for a B2B security buyer.
+Buy `trymcpscan.com` if Spaceship shows it available near normal `.com` pricing. It costs a few dollars more than a discount TLD, but it is the strongest trust-to-cost path for a B2B security buyer.
+
+If `trymcpscan.com` is unavailable or premium-priced, buy `getmcpscan.com`. If both are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
 
 If the founder wants the `$1` to `$3` launch lane, buy `mcpscan.site` if the Spaceship cart confirms promo pricing. Treat it as a fast validation domain and acknowledge the higher renewal before purchase.
 
@@ -29,9 +31,10 @@ Checked through the domain availability tool on 2026-08-14:
 | `mcpaudit.dev` | Not available | N/A | Skip |
 | Exact short `.xyz` name | Not available in live check | N/A | Skip unless Spaceship directly shows otherwise |
 | `mcpscan.us` | Available in prior live check | Low single digits to about $8 | Cheapest credible fallback |
-| `getmcpscan.com` | Available in prior live check | About $9 to $12 | Best overall pick |
-| `trymcpscan.com` | Available in prior live check | About $9 to $12 | Good backup |
-| `usemcpscan.com` | Available in prior live check | About $9 to $12 | Good backup |
+| `trymcpscan.com` | Likely available in current RDAP signal | About $9 to $12 | Best overall pick |
+| `getmcpscan.com` | Available in prior live check | About $9 to $12 | Strong backup |
+| `mcpscanhq.com` | Likely available in current RDAP signal | About $9 to $12 | Backup trust pick |
+| `usemcpscan.com` | Available in prior live check | About $9 to $12 | Backup trust pick |
 | `mcpscan.site` | Available in current availability signal | About $0.98 plus ICANN fee at Spaceship, about $1.99 in availability tool | Best cheap launch lane |
 | `getmcpscan.site` | Available in current availability signal | About $0.98 plus ICANN fee at Spaceship, about $1.99 in availability tool | Cheapest backup launch lane |
 | `mcpscan.online` | Available in current availability signal | About $0.98 plus ICANN fee at Spaceship, about $1.99 in availability tool | Cheapest backup launch lane |
@@ -58,15 +61,16 @@ The public trust launch checklist lives in `docs/PUBLIC_TRUST_CHECKLIST.md`.
 
 ## Buying Rule
 
-1. Search `getmcpscan.com` on Spaceship first.
+1. Search `trymcpscan.com` on Spaceship first.
 2. If it is available and standard-priced, buy it.
-3. If you want the cheapest credible option, search and buy `mcpscan.us`.
-4. If you want the absolute cheapest today, search `mcpscan.site`, `getmcpscan.site`, `mcpscan.online`, and `getmcpscan.online`, then buy one only if the cart is around `$1` to `$3` and you accept the renewal tradeoff.
-5. If `getmcpscan.com` is unavailable at checkout, use `trymcpscan.com`.
-6. Buy one domain first.
-7. Create one mailbox first: `audit@{{chosen_domain}}`.
-8. Add aliases for `security@{{chosen_domain}}` and `hello@{{chosen_domain}}`.
-9. Do not use the mailbox for outbound until MX, SPF, DKIM, and DMARC pass.
+3. If it is unavailable or premium-priced, search and buy `getmcpscan.com`.
+4. If both are unavailable, search `mcpscanhq.com`, then `usemcpscan.com`.
+5. If you want the cheapest credible option, search and buy `mcpscan.us`.
+6. If you want the absolute cheapest today, search `mcpscan.site`, `getmcpscan.site`, `mcpscan.online`, and `getmcpscan.online`, then buy one only if the cart is around `$1` to `$3` and you accept the renewal tradeoff.
+7. Buy one domain first.
+8. Create one mailbox first: `security@{{chosen_domain}}`.
+9. Add aliases for `audit@{{chosen_domain}}` and `hello@{{chosen_domain}}`.
+10. Do not use the mailbox for outbound until MX, SPF, DKIM, and DMARC pass.
 
 ## After Purchase
 
@@ -74,8 +78,8 @@ Update these values before final verification:
 
 ```text
 DOMAIN={{chosen_domain}}
-MAILBOX=audit@{{chosen_domain}}
-ALIASES=security@{{chosen_domain}},hello@{{chosen_domain}}
+MAILBOX=security@{{chosen_domain}}
+ALIASES=audit@{{chosen_domain}},hello@{{chosen_domain}}
 ```
 
 Then use `ops/domain-email-dns-console.html` for DNS and mailbox setup.
