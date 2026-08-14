@@ -36,6 +36,8 @@ const requiredFiles = [
   "scripts/verify-payment-evidence.mjs",
   "scripts/verify-customer-workspace-completion.mjs",
   "scripts/open-paid-audit-handoff.mjs",
+  "scripts/open-paid-audit-delivery-session.mjs",
+  "scripts/simulate-paid-audit-delivery-session.mjs",
   "scripts/compose-post-payment-intake.mjs",
   "ops/paid-audit-handoff-builder.html",
   "ops/findings-call-scheduler.html",
@@ -160,6 +162,30 @@ if (exists("scripts/run-delivery-dry-run.mjs")) {
     dryRun.includes("--payment-evidence") && dryRun.includes("payment-confirmation-evidence.json")
       ? result("pass", "delivery dry run payment gate", "rehearsal exercises evidence-gated handoff")
       : result("fail", "delivery dry run payment gate", "dry run does not pass payment evidence into the handoff")
+  );
+}
+
+if (exists("scripts/open-paid-audit-delivery-session.mjs") && exists("scripts/simulate-paid-audit-delivery-session.mjs") && exists("package.json")) {
+  const session = read("scripts/open-paid-audit-delivery-session.mjs");
+  const simulation = read("scripts/simulate-paid-audit-delivery-session.mjs");
+  const packageJson = read("package.json");
+  const requiredSessionMarkers = [
+    "Refusing to create the paid delivery session inside the public MCPScan repo",
+    "approved-paid-audit-handoff.txt",
+    "payment-confirmation-evidence.json",
+    "PAID_DELIVERY_SESSION.html",
+    "delivery:verify-payment",
+    "delivery:handoff",
+    "delivery:intake-message",
+    "This session does not charge, message, send, create live customer files, or bypass payment evidence.",
+    "delivery:session",
+    "delivery:simulate-session"
+  ];
+  const missingSessionMarkers = requiredSessionMarkers.filter((marker) => !session.includes(marker) && !simulation.includes(marker) && !packageJson.includes(marker));
+  results.push(
+    missingSessionMarkers.length === 0
+      ? result("pass", "paid delivery private session", "payment evidence, handoff, intake, and proof commands are generated outside the repo")
+      : result("fail", "paid delivery private session", missingSessionMarkers.join(", "))
   );
 }
 

@@ -11,6 +11,7 @@ const steps = [
   ["first-10 send session simulation", ["run", "outbound:simulate-first-10-session"]],
   ["first-send gate simulation", ["run", "outbound:simulate-send-gates"]],
   ["private revenue follow-up simulation", ["run", "outbound:simulate-revenue-flow"]],
+  ["paid delivery session simulation", ["run", "delivery:simulate-session"]],
   ["paid audit delivery dry run", ["run", "delivery:dry-run"]]
 ];
 

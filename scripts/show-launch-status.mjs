@@ -249,6 +249,7 @@ const gates = [
   gate("Delivery work order", exists("scripts/create-first-paid-audit-work-order.mjs"), "work-order command is handoff-internal for live paid delivery"),
   gate("Payment evidence builder", exists("scripts/create-payment-evidence.mjs") && exists("scripts/verify-payment-evidence.mjs") && exists("sales/payment-confirmation-evidence.template.json"), "npm run delivery:evidence creates and verifies paid status without storing Stripe secrets"),
   gate("Paid handoff", exists("scripts/create-paid-audit-handoff.mjs") && exists("scripts/open-paid-audit-handoff.mjs") && exists("sales/paid-audit-handoff-approval-packet.md") && exists("ops/paid-audit-handoff-builder.html"), "builder, launcher, and command create workspace, work order, and private pipeline status after payment"),
+  gate("Paid delivery session", exists("scripts/open-paid-audit-delivery-session.mjs") && exists("scripts/simulate-paid-audit-delivery-session.mjs"), "npm run delivery:session prepares the private buyer handoff, payment evidence, intake, and proof cockpit"),
   gate("Delivery verifier", exists("scripts/verify-delivery-readiness.mjs"), "npm run delivery:verify checks first paid audit gates"),
   gate("Workspace completion verifier", exists("scripts/verify-customer-workspace-completion.mjs"), "npm run delivery:verify-workspace checks a filled private workspace before report delivery"),
   gate("Delivery dry run", exists("scripts/run-delivery-dry-run.mjs"), "npm run delivery:dry-run proves the first audit workflow"),

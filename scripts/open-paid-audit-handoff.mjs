@@ -10,7 +10,8 @@ const pages = [
   "docs/PAID_AUDIT_RUNBOOK.md",
   "docs/PAID_AUDIT_START_AUTOMATION.md",
   "docs/PAYMENT_TO_DELIVERY_SOP.md",
-  "ops/delivery-console.html"
+  "ops/delivery-console.html",
+  "ops/customer-comms-console.html"
 ];
 
 function openerFor(target) {
@@ -44,6 +45,9 @@ console.log("Run this only after Stripe payment clears and the exact paid audit 
 console.log("");
 console.log("After approval, create the private workspace and work order outside the public repo with:");
 console.log("npm run delivery:handoff -- --file /path/to/approved-paid-audit-handoff.txt --payment-evidence /path/to/payment-confirmation-evidence.json");
+console.log("");
+console.log("For the guided private delivery cockpit, run:");
+console.log("npm run delivery:session");
 console.log("");
 console.log("Then compose or review the draft-only intake message with:");
 console.log("npm run delivery:intake-message -- --file /path/outside/public/repo/pipeline-status/YYYY-MM-DD_customer_package_pipeline-status.json");
