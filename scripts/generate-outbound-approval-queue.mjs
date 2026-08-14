@@ -62,12 +62,17 @@ function subjectFor(record) {
   return record.draft_angle || "MCP readiness check before agent rollout";
 }
 
+function categoryFor(record) {
+  return record.category || record.contact_channel || "First-wave MCP signal";
+}
+
 function emailDraft(record) {
+  const trigger = record.trigger.replace(/\.$/, "");
   return `Subject: ${subjectFor(record)}
 
 Hi {{first_name}},
 
-I saw the public MCP signal around ${record.account}: ${record.trigger}.
+I saw the public MCP signal around ${record.account}: ${trigger}.
 
 The risk pattern is practical: MCP setups can move from local agent workflow to real company access before there is a clean inventory of what the agent can reach.
 
@@ -95,7 +100,7 @@ const sections = selected.map((record, index) => `## ${index + 1}. ${record.acco
 
 Status: draft only. Do not send without same-turn approval for exact recipient and final content.
 
-- Category: ${record.category}
+- Category: ${categoryFor(record)}
 - Trigger URL: ${record.source_url}
 - Trigger note: ${record.trigger}
 - Buyer hypothesis: ${record.contact_role}

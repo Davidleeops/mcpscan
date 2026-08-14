@@ -6,6 +6,7 @@ const root = process.cwd();
 const candidateFile = "sales/recipient-candidates-2026-08-14.csv";
 const pipelineFile = "sales/first-account-pipeline-2026-08-14.csv";
 const contactRouteFile = "sales/first-10-contact-routes-2026-08-14.csv";
+const approvalQueueFile = "sales/outreach-approval-queue.md";
 const requiredOutboundFiles = [
   "docs/FINAL_OUTBOUND_COMPOSER.md",
   "docs/CONTACT_ROUTE_OUTBOUND_PACKETS.md",
@@ -16,11 +17,13 @@ const requiredOutboundFiles = [
   "docs/PRIVATE_REVENUE_SNAPSHOT.md",
   "sales/reply-to-close-packet.md",
   "sales/daily-revenue-command.md",
+  "sales/outreach-approval-queue.md",
   "sales/first-10-contact-routes-2026-08-14.csv",
   "sales/first-10-route-approval-packet-2026-08-14.md",
   "scripts/compose-final-outbound.mjs",
   "scripts/compose-contact-route-outbound.mjs",
   "scripts/build-first-10-route-approval-packet.mjs",
+  "scripts/generate-outbound-approval-queue.mjs",
   "scripts/stage-approved-route-packet.mjs",
   "scripts/stage-approved-outbound.mjs",
   "scripts/stage-approved-reply.mjs",
@@ -188,6 +191,18 @@ if (exists("sales/first-10-route-approval-packet-2026-08-14.md")) {
   results.push(noAutoCount === 11 ? result("pass", "route approval packet no-auto-send", "10 block statements plus all-10 guard") : result("fail", "route approval packet no-auto-send", `${noAutoCount} no-auto-send statements`));
   for (const account of pipelineAccounts) {
     results.push(packet.includes(`## ${account}`) ? result("pass", `route packet account: ${account}`) : result("fail", `route packet account: ${account}`, "missing"));
+  }
+}
+
+if (exists(approvalQueueFile)) {
+  const queue = fs.readFileSync(path.join(root, approvalQueueFile), "utf8");
+  const queueItems = (queue.match(/^## \d+\. /gm) ?? []).length;
+  const queueNoSendCount = (queue.match(/Do not send without same-turn approval/g) ?? []).length;
+  results.push(queueItems === 10 ? result("pass", "outreach approval queue items", "10 draft items") : result("fail", "outreach approval queue items", `${queueItems} draft items`));
+  results.push(queueNoSendCount === 10 ? result("pass", "outreach approval queue send guard", "10 draft guards") : result("fail", "outreach approval queue send guard", `${queueNoSendCount} draft guards`));
+  results.push(!queue.includes("undefined") ? result("pass", "outreach approval queue fields", "no undefined values") : result("fail", "outreach approval queue fields", "contains undefined"));
+  for (const account of pipelineAccounts) {
+    results.push(queue.includes(`## ${[...pipelineAccounts].indexOf(account) + 1}. ${account}`) || queue.includes(`. ${account}`) ? result("pass", `queue account: ${account}`) : result("fail", `queue account: ${account}`, "missing"));
   }
 }
 

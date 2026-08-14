@@ -1,6 +1,6 @@
 # Outreach Approval Queue
 
-Generated: 2026-08-14T15:09:49.591Z
+Generated: 2026-08-14T17:01:49.651Z
 
 Status: draft only. This file is a preparation artifact, not permission to send.
 No external messages may be sent until the exact recipient and exact final text
@@ -15,7 +15,7 @@ Use this queue to pick exact recipients, then stage the approved message with
 
 Status: draft only. Do not send without same-turn approval for exact recipient and final content.
 
-- Category: undefined
+- Category: Email or LinkedIn
 - Trigger URL: https://docs.vapi.ai/sdk/mcp-server
 - Trigger note: Vapi exposes APIs as MCP tools for assistants, phone numbers, and calls.
 - Buyer hypothesis: Head of Engineering, Security Lead, CTO
@@ -31,7 +31,7 @@ Subject: MCP readiness review for voice-agent tools
 
 Hi {{first_name}},
 
-I saw the public MCP signal around Vapi: Vapi exposes APIs as MCP tools for assistants, phone numbers, and calls..
+I saw the public MCP signal around Vapi: Vapi exposes APIs as MCP tools for assistants, phone numbers, and calls.
 
 The risk pattern is practical: MCP setups can move from local agent workflow to real company access before there is a clean inventory of what the agent can reach.
 
@@ -54,7 +54,7 @@ Hi {{first_name}}, saw public MCP activity around Vapi. Quick question: has the 
 
 Status: draft only. Do not send without same-turn approval for exact recipient and final content.
 
-- Category: undefined
+- Category: Email or LinkedIn
 - Trigger URL: https://retool.com/blog/retool-mcp-server
 - Trigger note: Retool MCP lets agents manage apps, workflows, users, and org resources from Claude, Cursor, Codex, or Kiro.
 - Buyer hypothesis: Product Security Lead, Enterprise Engineering Lead
@@ -70,7 +70,7 @@ Subject: MCP readiness review for internal-tool access
 
 Hi {{first_name}},
 
-I saw the public MCP signal around Retool: Retool MCP lets agents manage apps, workflows, users, and org resources from Claude, Cursor, Codex, or Kiro..
+I saw the public MCP signal around Retool: Retool MCP lets agents manage apps, workflows, users, and org resources from Claude, Cursor, Codex, or Kiro.
 
 The risk pattern is practical: MCP setups can move from local agent workflow to real company access before there is a clean inventory of what the agent can reach.
 
@@ -93,7 +93,7 @@ Hi {{first_name}}, saw public MCP activity around Retool. Quick question: has th
 
 Status: draft only. Do not send without same-turn approval for exact recipient and final content.
 
-- Category: undefined
+- Category: Email or LinkedIn
 - Trigger URL: https://pipedream.com/docs/connect/mcp
 - Trigger note: Pipedream provides MCP servers for thousands of apps and pre-built tools with managed OAuth and credential storage.
 - Buyer hypothesis: Head of Platform, Security Engineering Lead
@@ -109,7 +109,7 @@ Subject: MCP exposure review for broad SaaS tool access
 
 Hi {{first_name}},
 
-I saw the public MCP signal around Pipedream: Pipedream provides MCP servers for thousands of apps and pre-built tools with managed OAuth and credential storage..
+I saw the public MCP signal around Pipedream: Pipedream provides MCP servers for thousands of apps and pre-built tools with managed OAuth and credential storage.
 
 The risk pattern is practical: MCP setups can move from local agent workflow to real company access before there is a clean inventory of what the agent can reach.
 
@@ -132,7 +132,7 @@ Hi {{first_name}}, saw public MCP activity around Pipedream. Quick question: has
 
 Status: draft only. Do not send without same-turn approval for exact recipient and final content.
 
-- Category: undefined
+- Category: Email or LinkedIn
 - Trigger URL: https://composio.dev/mcp-gateway
 - Trigger note: Composio offers centralized MCP server management, managed toolkits, and custom MCP servers behind one gateway.
 - Buyer hypothesis: Founder, CTO, Head of Platform
@@ -148,7 +148,7 @@ Subject: MCP trust review for gateway-managed tools
 
 Hi {{first_name}},
 
-I saw the public MCP signal around Composio: Composio offers centralized MCP server management, managed toolkits, and custom MCP servers behind one gateway..
+I saw the public MCP signal around Composio: Composio offers centralized MCP server management, managed toolkits, and custom MCP servers behind one gateway.
 
 The risk pattern is practical: MCP setups can move from local agent workflow to real company access before there is a clean inventory of what the agent can reach.
 
@@ -171,7 +171,7 @@ Hi {{first_name}}, saw public MCP activity around Composio. Quick question: has 
 
 Status: draft only. Do not send without same-turn approval for exact recipient and final content.
 
-- Category: undefined
+- Category: Email or LinkedIn
 - Trigger URL: https://posthog.com/docs/model-context-protocol
 - Trigger note: PostHog MCP lets agents run analytics queries, manage feature flags and experiments, triage tickets, use SQL, and work with CDP destinations.
 - Buyer hypothesis: Product Security Lead, Head of Engineering
@@ -187,7 +187,7 @@ Subject: MCP readiness check for analytics and feature-flag tools
 
 Hi {{first_name}},
 
-I saw the public MCP signal around PostHog: PostHog MCP lets agents run analytics queries, manage feature flags and experiments, triage tickets, use SQL, and work with CDP destinations..
+I saw the public MCP signal around PostHog: PostHog MCP lets agents run analytics queries, manage feature flags and experiments, triage tickets, use SQL, and work with CDP destinations.
 
 The risk pattern is practical: MCP setups can move from local agent workflow to real company access before there is a clean inventory of what the agent can reach.
 
@@ -210,7 +210,7 @@ Hi {{first_name}}, saw public MCP activity around PostHog. Quick question: has t
 
 Status: draft only. Do not send without same-turn approval for exact recipient and final content.
 
-- Category: undefined
+- Category: Email or LinkedIn
 - Trigger URL: https://docs.statsig.com/integrations/mcp/overview
 - Trigger note: Statsig MCP supports read tools and write tools for gates, experiments, configs, and bulk changes.
 - Buyer hypothesis: Product Security Lead, Platform Engineering Lead
@@ -226,7 +226,7 @@ Subject: MCP readiness check for feature-gate actions
 
 Hi {{first_name}},
 
-I saw the public MCP signal around Statsig: Statsig MCP supports read tools and write tools for gates, experiments, configs, and bulk changes..
+I saw the public MCP signal around Statsig: Statsig MCP supports read tools and write tools for gates, experiments, configs, and bulk changes.
 
 The risk pattern is practical: MCP setups can move from local agent workflow to real company access before there is a clean inventory of what the agent can reach.
 
@@ -249,7 +249,7 @@ Hi {{first_name}}, saw public MCP activity around Statsig. Quick question: has t
 
 Status: draft only. Do not send without same-turn approval for exact recipient and final content.
 
-- Category: undefined
+- Category: Email or LinkedIn
 - Trigger URL: https://www.braintrust.dev/docs/integrations/developer-tools/mcp
 - Trigger note: Braintrust MCP lets AI coding tools query experiments, search docs, and analyze production logs.
 - Buyer hypothesis: Security Lead, Head of Product Engineering
@@ -265,7 +265,7 @@ Subject: MCP exposure snapshot for eval and log access
 
 Hi {{first_name}},
 
-I saw the public MCP signal around Braintrust: Braintrust MCP lets AI coding tools query experiments, search docs, and analyze production logs..
+I saw the public MCP signal around Braintrust: Braintrust MCP lets AI coding tools query experiments, search docs, and analyze production logs.
 
 The risk pattern is practical: MCP setups can move from local agent workflow to real company access before there is a clean inventory of what the agent can reach.
 
@@ -288,7 +288,7 @@ Hi {{first_name}}, saw public MCP activity around Braintrust. Quick question: ha
 
 Status: draft only. Do not send without same-turn approval for exact recipient and final content.
 
-- Category: undefined
+- Category: Email or LinkedIn
 - Trigger URL: https://www.granola.ai/blog/granola-mcp
 - Trigger note: Granola MCP connects meeting notes to Claude, ChatGPT, Cursor, and other AI tools.
 - Buyer hypothesis: Security Lead, CTO, Head of Enterprise
@@ -304,7 +304,7 @@ Subject: MCP exposure snapshot for meeting-note access
 
 Hi {{first_name}},
 
-I saw the public MCP signal around Granola: Granola MCP connects meeting notes to Claude, ChatGPT, Cursor, and other AI tools..
+I saw the public MCP signal around Granola: Granola MCP connects meeting notes to Claude, ChatGPT, Cursor, and other AI tools.
 
 The risk pattern is practical: MCP setups can move from local agent workflow to real company access before there is a clean inventory of what the agent can reach.
 
@@ -327,7 +327,7 @@ Hi {{first_name}}, saw public MCP activity around Granola. Quick question: has t
 
 Status: draft only. Do not send without same-turn approval for exact recipient and final content.
 
-- Category: undefined
+- Category: Email or LinkedIn
 - Trigger URL: https://mcp.sentry.dev/
 - Trigger note: Sentry MCP connects AI assistants to errors, performance, issue triage, docs, and project management.
 - Buyer hypothesis: Product Security Lead, Developer Platform Lead
@@ -343,7 +343,7 @@ Subject: MCP readiness review for error and trace access
 
 Hi {{first_name}},
 
-I saw the public MCP signal around Sentry: Sentry MCP connects AI assistants to errors, performance, issue triage, docs, and project management..
+I saw the public MCP signal around Sentry: Sentry MCP connects AI assistants to errors, performance, issue triage, docs, and project management.
 
 The risk pattern is practical: MCP setups can move from local agent workflow to real company access before there is a clean inventory of what the agent can reach.
 
@@ -366,7 +366,7 @@ Hi {{first_name}}, saw public MCP activity around Sentry. Quick question: has th
 
 Status: draft only. Do not send without same-turn approval for exact recipient and final content.
 
-- Category: undefined
+- Category: Email or LinkedIn
 - Trigger URL: https://docs.replit.com/build/connect-via-mcp
 - Trigger note: Replit Agent can connect to pre-listed and custom MCP servers, with guidance to trust sources and review access.
 - Buyer hypothesis: Head of Security, AI Platform Lead
@@ -382,7 +382,7 @@ Subject: MCP exposure review for custom coding-agent tools
 
 Hi {{first_name}},
 
-I saw the public MCP signal around Replit: Replit Agent can connect to pre-listed and custom MCP servers, with guidance to trust sources and review access..
+I saw the public MCP signal around Replit: Replit Agent can connect to pre-listed and custom MCP servers, with guidance to trust sources and review access.
 
 The risk pattern is practical: MCP setups can move from local agent workflow to real company access before there is a clean inventory of what the agent can reach.
 
