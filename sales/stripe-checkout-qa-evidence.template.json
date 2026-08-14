@@ -1,0 +1,52 @@
+{
+  "generated": "2026-08-14",
+  "status": "template",
+  "domain": "{{chosen_domain}}",
+  "primaryMailbox": "security@{{chosen_domain}}",
+  "mode": "live",
+  "currency": "USD",
+  "automaticReceiptsEnabled": true,
+  "customerNameRequired": true,
+  "customerEmailRequired": true,
+  "companyCollected": true,
+  "billingAddressRequired": true,
+  "primaryTechnicalContactEmailRequired": true,
+  "confirmationRedirectUrl": "https://{{chosen_domain}}/thank-you.html",
+  "termsUrl": "https://{{chosen_domain}}/terms.html",
+  "privacyUrl": "https://{{chosen_domain}}/privacy.html",
+  "refundUrl": "https://{{chosen_domain}}/refund.html",
+  "secureIntakeUrl": "https://{{chosen_domain}}/secure-intake.html",
+  "links": [
+    {
+      "id": "quick",
+      "name": "MCP Quick Audit",
+      "priceUsd": 750,
+      "paymentType": "one-time",
+      "checkoutUrl": "{{quick_audit_stripe_payment_link}}",
+      "descriptionMentionsIntakeStart": true
+    },
+    {
+      "id": "launch",
+      "name": "MCP Launch Audit",
+      "priceUsd": 1500,
+      "paymentType": "one-time",
+      "checkoutUrl": "{{launch_audit_stripe_payment_link}}",
+      "descriptionMentionsIntakeStart": true
+    },
+    {
+      "id": "enterprise",
+      "name": "MCP Enterprise Readiness Audit",
+      "priceUsd": 3500,
+      "paymentType": "one-time",
+      "checkoutUrl": "{{enterprise_readiness_stripe_payment_link}}",
+      "descriptionMentionsIntakeStart": true
+    }
+  ],
+  "evidence": {
+    "liveModeScreenshotOrDashboardChecked": false,
+    "priceScreenshotOrDashboardChecked": false,
+    "receiptScreenshotOrDashboardChecked": false,
+    "fieldScreenshotOrDashboardChecked": false,
+    "redirectScreenshotOrDashboardChecked": false
+  }
+}

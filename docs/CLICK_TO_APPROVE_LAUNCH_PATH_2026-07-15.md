@@ -123,7 +123,7 @@ Automation command after all approved values exist:
 ```bash
 npm run launch:apply-links -- \
   --domain getmcpscan.com \
-  --email audit@getmcpscan.com \
+  --email security@getmcpscan.com \
   --quick https://buy.stripe.com/quick-link \
   --launch https://buy.stripe.com/launch-link \
   --enterprise https://buy.stripe.com/enterprise-link

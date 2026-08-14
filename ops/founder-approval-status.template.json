@@ -16,6 +16,8 @@
   "stripeQuickAuditLink": "{{stripe_quick_audit_payment_link}}",
   "stripeLaunchAuditLink": "{{stripe_launch_audit_payment_link}}",
   "stripeEnterpriseReadinessLink": "{{stripe_enterprise_readiness_payment_link}}",
+  "stripeLinkFormatVerified": false,
+  "stripeCheckoutQaConfirmed": false,
   "stripeLinksVerified": false,
   "founderReturnPacketApproved": false,
   "landingLinksApplied": false,

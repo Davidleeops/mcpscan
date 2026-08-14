@@ -179,9 +179,9 @@
       <header>
         <div>
           <h1>Stripe Click Setup</h1>
-          <p>Create the three MCPScan Payment Links, then paste the generated URLs into the launch-link command. This page does not create Stripe products automatically.</p>
+          <p>Create the three MCPScan Payment Links from a generated setup packet, then approve the exact live URLs before Codex applies them. This page does not create Stripe products automatically.</p>
         </div>
-        <div class="actions"><a class="button" href="https://dashboard.stripe.com/payment-links/create" target="_blank" rel="noreferrer">Open Stripe Payment Links</a><a class="button" href="stripe-payment-link-qa-console.html">QA links</a><a class="button" href="../docs/STRIPE_PAYMENT_LINK_VERIFICATION.md">Verification guide</a><a class="button" href="../sales/stripe-payment-link-approval-packet-2026-08-14.md">Approval packet</a></div>
+        <div class="actions"><a class="button" href="https://dashboard.stripe.com/payment-links/create" target="_blank" rel="noreferrer">Open Stripe Payment Links</a><a class="button" href="stripe-payment-link-qa-console.html">QA links</a><a class="button" href="../docs/STRIPE_SETUP_PACKET.md">Setup packet</a><a class="button" href="../docs/STRIPE_PAYMENT_LINK_VERIFICATION.md">Verification guide</a><a class="button" href="../sales/stripe-payment-link-approval-packet-2026-08-14.md">Approval packet</a></div>
       </header>
 
       <div class="grid">
@@ -258,12 +258,19 @@
         </section>
 
         <section class="wide notice">
+          <h2>Generate Setup Packet First</h2>
+          <p>Use this before creating the Stripe products so product names, prices, descriptions, fields, and policy URLs are all in one packet.</p>
+          <button class="copy" data-copy="npm run launch:stripe-packet -- --domain trymcpscan.com --mailbox security@trymcpscan.com">Copy setup packet command</button>
+          <pre>npm run launch:stripe-packet -- --domain trymcpscan.com --mailbox security@trymcpscan.com</pre>
+        </section>
+
+        <section class="wide notice">
           <h2>After Stripe Creates The Three Links</h2>
-          <p>Paste the generated Payment Link URLs into this command. Keep the placeholders until the real Stripe links exist.</p>
-          <a class="button" href="approved-links-command-builder.html">Open command builder</a>
-          <button class="copy" data-copy="npm run launch:apply-links -- --domain CHOSEN_DOMAIN --email audit@CHOSEN_DOMAIN --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK">Copy launch-link command</button>
+          <p>Paste the generated Payment Link URLs into the founder return packet. Keep the placeholders until the real Stripe links exist.</p>
+          <a class="button" href="founder-return-packet.html">Open return packet</a>
+          <button class="copy" data-copy="npm run launch:apply-links -- --domain CHOSEN_DOMAIN --email security@CHOSEN_DOMAIN --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK">Copy launch-link command</button>
           <button class="copy" data-copy="npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK --update-status">Copy verify command</button>
-          <pre>npm run launch:apply-links -- --domain CHOSEN_DOMAIN --email audit@CHOSEN_DOMAIN --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK</pre>
+          <pre>npm run launch:apply-links -- --domain CHOSEN_DOMAIN --email security@CHOSEN_DOMAIN --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK</pre>
         </section>
       </div>
     </main>

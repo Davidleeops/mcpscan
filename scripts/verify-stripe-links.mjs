@@ -96,7 +96,8 @@ function updateApprovalStatus(links, results) {
   status.stripeQuickAuditLink = links["Quick Audit"] ?? status.stripeQuickAuditLink;
   status.stripeLaunchAuditLink = links["Launch Audit"] ?? status.stripeLaunchAuditLink;
   status.stripeEnterpriseReadinessLink = links["Enterprise Readiness"] ?? status.stripeEnterpriseReadinessLink;
-  status.stripeLinksVerified = !failures && !warnings;
+  status.stripeLinkFormatVerified = !failures && !warnings;
+  status.stripeLinksVerified = Boolean(status.stripeLinkFormatVerified && status.stripeCheckoutQaConfirmed);
   fs.writeFileSync(file, `${JSON.stringify(status, null, 2)}\n`);
   console.log("INFO approval status - updated ops/founder-approval-status.json");
 }

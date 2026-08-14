@@ -2,11 +2,19 @@
 
 Use this after creating Stripe Payment Links and before applying links to the public landing page.
 
+Generate the setup packet first so product settings are not copied from scattered docs:
+
+```text
+npm run launch:stripe-packet -- --domain {{chosen_domain}} --mailbox security@{{chosen_domain}}
+```
+
 ## Verify Directly
 
 ```text
 npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK --update-status
 ```
+
+This verifies URL format only and updates `stripeLinkFormatVerified`.
 
 ## Verify From An Approval Packet
 
@@ -26,4 +34,14 @@ npm run launch:verify-stripe -- --file /path/to/stripe-approval.txt --http --upd
 - Each URL avoids obvious Stripe test-link markers.
 - Optional HTTP mode checks that each link responds.
 
-This does not prove Stripe product settings, taxes, receipts, custom fields, or redirect behavior. Those still require the Stripe QA checklist in `ops/stripe-payment-link-qa-console.html`.
+## Checkout QA Evidence
+
+Copy `sales/stripe-checkout-qa-evidence.template.json` outside the repo, fill the final values from Stripe dashboard evidence, then run:
+
+```text
+npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status
+```
+
+That verifies product names, prices, live mode, one-time payment type, receipts, required fields, redirects, policy URLs, and evidence confirmations. It updates `stripeCheckoutQaConfirmed`.
+
+`stripeLinksVerified` is true only when both URL format and checkout QA are verified.

@@ -8,6 +8,12 @@ Status: founder click preparation only. This packet does not create Stripe produ
 
 Create three Stripe Payment Links that can be safely placed on the MCPScan landing page and used for first revenue.
 
+Generate the current setup packet before entering products in Stripe:
+
+```text
+npm run launch:stripe-packet -- --domain {{chosen_domain}} --mailbox security@{{chosen_domain}}
+```
+
 ## Products To Create
 
 | Product | Price | Payment Type | Landing Role |
@@ -86,7 +92,7 @@ npm run launch:verify-stripe -- --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYME
 Then use:
 
 ```text
-npm run launch:apply-links -- --domain CHOSEN_DOMAIN --email audit@CHOSEN_DOMAIN --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK
+npm run launch:apply-links -- --domain CHOSEN_DOMAIN --email security@CHOSEN_DOMAIN --quick QUICK_PAYMENT_LINK --launch LAUNCH_PAYMENT_LINK --enterprise ENTERPRISE_PAYMENT_LINK
 ```
 
 Then verify:
@@ -96,6 +102,12 @@ npm run writing:check
 npm run launch:verify -- --domain CHOSEN_DOMAIN
 ```
 
+Checkout QA requires evidence, not only URL format. Copy `sales/stripe-checkout-qa-evidence.template.json` outside the repo, fill it from Stripe dashboard evidence, then run:
+
+```text
+npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status
+```
+
 ## Founder Approval Prompt
 
 ```text
@@ -103,7 +115,7 @@ Please approve these Stripe Payment Links for public launch. I will not apply th
 
 Quick Audit: {{quick_payment_link}}
 Launch Audit: {{launch_payment_link}}
-Enterprise Audit: {{enterprise_payment_link}}
+Enterprise Readiness: {{enterprise_payment_link}}
 Domain: {{chosen_domain}}
-Email: {{chosen_email}}
+Email: security@{{chosen_domain}}
 ```

@@ -82,6 +82,8 @@ function hasFilledApprovalStatus() {
     "spfConfigured",
     "dkimConfigured",
     "dmarcConfigured",
+    "stripeLinkFormatVerified",
+    "stripeCheckoutQaConfirmed",
     "stripeLinksVerified",
     "founderReturnPacketApproved",
     "landingLinksApplied",
@@ -102,7 +104,8 @@ function approvalTrackerGates(status) {
   const pagesReady = status.githubPagesAConfigured && status.githubPagesWwwConfigured;
   const mailReady = status.mxConfigured && status.spfConfigured && status.dkimConfigured && status.dmarcConfigured;
   return [
-    gate("Tracker Stripe QA", status.stripeLinksVerified, status.stripeLinksVerified ? "Stripe Payment Links verified" : "run npm run launch:verify-stripe with --update-status"),
+    gate("Tracker Stripe format", status.stripeLinkFormatVerified, status.stripeLinkFormatVerified ? "Stripe Payment Link format verified" : "run npm run launch:verify-stripe with --update-status"),
+    gate("Tracker Stripe QA", status.stripeCheckoutQaConfirmed, status.stripeCheckoutQaConfirmed ? "Stripe checkout QA confirmed" : "run npm run launch:verify-stripe-qa with --update-status"),
     gate("Tracker GitHub Pages DNS", pagesReady, pagesReady ? "apex and www records verified" : "run npm run launch:verify-dns with --update-status after DNS propagates"),
     gate("Tracker mailbox auth", mailReady, mailReady ? "MX, SPF, DKIM, and DMARC verified" : "MX, SPF, DKIM, or DMARC still not verified"),
     gate("Tracker first-10 approval", status.firstTenRoutePacketApproved, status.firstTenRoutePacketApproved ? "10 route packets staged for manual sending review" : `${status.stagedRouteApprovalCount || 0}/10 route packets staged`)
@@ -166,7 +169,9 @@ const gates = [
   gate("Market source verifier", exists("scripts/verify-market-sources.mjs") && exists("ops/market-research-refresh-console.html"), "npm run market:verify available before outbound"),
   gate("Domain purchase packet", exists("ops/domain-mailbox-purchase-packet.html") && exists("docs/DOMAIN_MAILBOX_PURCHASE_PACKET.md"), "founder can approve one domain and one mailbox"),
   gate("DNS packet generator", exists("scripts/build-domain-dns-packet.mjs"), "npm run launch:dns-packet creates domain-specific records"),
+  gate("Stripe setup packet", exists("scripts/build-stripe-setup-packet.mjs") && exists("docs/STRIPE_SETUP_PACKET.md"), "npm run launch:stripe-packet creates exact product setup"),
   gate("Stripe verifier", exists("scripts/verify-stripe-links.mjs"), "npm run launch:verify-stripe available after Payment Links exist"),
+  gate("Stripe QA verifier", exists("scripts/verify-stripe-checkout-qa.mjs") && exists("sales/stripe-checkout-qa-evidence.template.json"), "npm run launch:verify-stripe-qa verifies checkout evidence"),
   gate("Post-click verifier", exists("scripts/run-post-click-verification.mjs") && exists("docs/POST_CLICK_VERIFICATION.md"), "one command verifies domain, mailbox, Stripe, writing, and launch after founder clicks"),
   gate("Stripe links", !checkoutPlaceholders, checkoutPlaceholders ? "placeholder checkout links remain" : "live checkout links appear applied"),
   gate("Custom domain", customDomain, customDomain ? read("landing/CNAME").trim() : "no CNAME yet"),
