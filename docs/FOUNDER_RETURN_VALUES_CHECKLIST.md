@@ -51,6 +51,7 @@ npm run launch:post-click-bundle -- --file /path/to/approved-return-packet.txt -
 npm run launch:simulate-post-click-bundle
 npm run launch:verify-status -- --file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json
 npm run launch:post-click-verify -- --file /path/to/approved-return-packet.txt --cart-file /path/to/domain-cart-proof.json --qa-file /path/to/stripe-checkout-qa-evidence.json --apply true
+npm run launch:verify-live -- --status-file ops/founder-approval-status.json --cart-file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json
 npm run launch:publish-pages-fallback -- --wait true
 npm run launch:verify -- --domain {{chosen_domain}}
 npm run launch:status:live
@@ -76,6 +77,7 @@ The return packet is usable when:
 - `npm run launch:verify-stripe-qa -- --file /path/to/stripe-checkout-qa-evidence.json --update-status` passes.
 - The post-click command reads `Mail provider` from the approved return packet.
 - `npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status` passes after DNS propagation.
+- `npm run launch:verify-live -- --status-file ops/founder-approval-status.json --cart-file /path/to/domain-cart-proof.json --return-file /path/to/approved-return-packet.txt --qa-file /path/to/stripe-checkout-qa-evidence.json` passes before treating the launch as live for first revenue.
 - `npm run launch:verify` has no checkout, custom-domain, or security-contact warnings after apply and deploy.
 - `npm run launch:open-first-revenue` opens the public, outbound, reply, payment, and delivery approval path after live gates are clear.
 

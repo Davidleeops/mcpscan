@@ -236,6 +236,7 @@ const gates = [
   gate("Stripe verifier", exists("scripts/verify-stripe-links.mjs"), "npm run launch:verify-stripe available after Payment Links exist"),
   gate("Stripe QA verifier", exists("scripts/verify-stripe-checkout-qa.mjs") && exists("sales/stripe-checkout-qa-evidence.template.json"), "npm run launch:verify-stripe-qa verifies checkout evidence"),
   gate("Post-click verifier", exists("scripts/run-post-click-verification.mjs") && exists("docs/POST_CLICK_VERIFICATION.md"), "one command verifies domain, mailbox, Stripe, writing, and launch after founder clicks"),
+  gate("First revenue live verifier", exists("scripts/verify-first-revenue-live.mjs"), "npm run launch:verify-live blocks live revenue until domain, mailbox, security contact, DNS, Stripe, and public checkout are verified"),
   gate("Stripe links", !checkoutPlaceholders, checkoutPlaceholders ? "placeholder checkout links remain" : "live checkout links appear applied"),
   gate("Custom domain", customDomain, customDomain ? read("landing/CNAME").trim() : "no CNAME yet"),
   gate("Security contact", securityContact, securityContact ? "custom contact appears configured" : "placeholder contact remains"),

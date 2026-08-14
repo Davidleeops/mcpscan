@@ -294,6 +294,7 @@ const requiredFiles = [
   "scripts/verify-stripe-links.mjs",
   "scripts/verify-return-qa-consistency.mjs",
   "scripts/verify-founder-approval-status.mjs",
+  "scripts/verify-first-revenue-live.mjs",
   "scripts/verify-stripe-checkout-qa.mjs",
   "scripts/run-post-click-verification.mjs",
   "scripts/publish-pages-fallback.mjs",
@@ -602,6 +603,37 @@ if (exists("ops/founder-status-console.html") && exists("docs/POST_PURCHASE_PUBL
     missingPostPurchaseMarkers.length === 0
       ? result("pass", "post-purchase public proof path", "status JSON and safe value handoff markers are present")
       : result("fail", "post-purchase public proof path", missingPostPurchaseMarkers.join(", "))
+  );
+}
+
+if (exists("scripts/verify-first-revenue-live.mjs") && exists("package.json") && exists("scripts/run-full-launch-proof.mjs") && exists("scripts/show-launch-status.mjs")) {
+  const liveGate = [
+    read("scripts/verify-first-revenue-live.mjs"),
+    read("scripts/run-full-launch-proof.mjs"),
+    read("scripts/show-launch-status.mjs"),
+    read("package.json")
+  ].join("\n");
+  const requiredLiveGateMarkers = [
+    "launch:verify-live",
+    "first revenue live gate",
+    "custom domain CNAME",
+    "security contact",
+    "landing checkout placeholders",
+    "landing live checkout links",
+    "cart proof matches return packet",
+    "status matches return packet and Stripe QA",
+    "domainPurchased",
+    "mailboxCreated",
+    "githubPagesAConfigured",
+    "mxConfigured",
+    "stripeLinksVerified",
+    "landingLinksApplied"
+  ];
+  const missingLiveGateMarkers = requiredLiveGateMarkers.filter((marker) => !liveGate.includes(marker));
+  results.push(
+    missingLiveGateMarkers.length === 0
+      ? result("pass", "first revenue live gate", "domain, mailbox, DNS, security contact, Stripe, public checkout, and evidence are hard-gated")
+      : result("fail", "first revenue live gate", missingLiveGateMarkers.join(", "))
   );
 }
 

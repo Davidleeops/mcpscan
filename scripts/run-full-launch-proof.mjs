@@ -78,6 +78,16 @@ if (includeLive) {
   if (dkimSelector) postClickArgs.push("--dkim-selector", dkimSelector);
 
   run("strict live post-click verification", "launch:post-click-verify", postClickArgs);
+  run("first revenue live gate", "launch:verify-live", [
+    "--status-file",
+    statusFile,
+    "--cart-file",
+    cartFile,
+    "--return-file",
+    returnFile,
+    "--qa-file",
+    qaFile
+  ]);
   run("first outbound live evidence gates", "outbound:send-gates", [
     "--status-file",
     statusFile,
