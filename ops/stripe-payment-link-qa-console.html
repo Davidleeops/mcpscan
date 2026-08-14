@@ -199,7 +199,7 @@ Launch Audit: ${links.launch}
 Enterprise Readiness: ${links.enterprise}
 
 Approved action:
-Apply these links to the public landing page, update the public contact email, add the custom domain file, update security/contact references, publish the Pages fallback, run verification, commit, and push.
+Apply these links to the public landing page, update the public contact email, add the custom domain file, update security/contact references, publish the Pages fallback, and run verification. Commit and push require a separate explicit approval after verification.
 
 I also approve keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval.`;
         verifyCommand.textContent = `npm run launch:verify-stripe -- --quick ${links.quick} --launch ${links.launch} --enterprise ${links.enterprise} --update-status`;

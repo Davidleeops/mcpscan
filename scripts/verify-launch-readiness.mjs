@@ -482,6 +482,28 @@ if (exists("ops/founder-status-console.html") && exists("docs/POST_PURCHASE_PUBL
   );
 }
 
+if (exists("ops/founder-return-packet.html") && exists("ops/stripe-payment-link-qa-console.html") && exists("ops/founder-return-packet.sample.txt")) {
+  const approvalSurfaces = [
+    read("ops/founder-return-packet.html"),
+    read("ops/stripe-payment-link-qa-console.html"),
+    read("ops/founder-return-packet.sample.txt")
+  ].join("\n");
+  const requiredApprovalMarkers = [
+    "Commit and push require a separate explicit approval after verification.",
+    "keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval"
+  ];
+  const missingApprovalMarkers = requiredApprovalMarkers.filter((marker) => !approvalSurfaces.includes(marker));
+  const unsafeApprovalMarkers = [
+    "run verification, commit, and push",
+    "run verification. Commit and push are approved"
+  ].filter((marker) => approvalSurfaces.includes(marker));
+  results.push(
+    missingApprovalMarkers.length === 0 && unsafeApprovalMarkers.length === 0
+      ? result("pass", "post-click approval boundary", "apply and verify are approved, commit, push, and outbound remain separately gated")
+      : result("fail", "post-click approval boundary", [...missingApprovalMarkers, ...unsafeApprovalMarkers].join(", "))
+  );
+}
+
 if (exists("ops/launch-day-runbook.html") && exists("scripts/open-launch-day-runbook.mjs") && exists("package.json")) {
   const launchDay = [
     read("ops/launch-day-runbook.html"),
