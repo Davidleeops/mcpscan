@@ -15,7 +15,7 @@ ops/launch-cockpit.html
 | [#7](https://github.com/Davidleeops/mcpscan/issues/7) | Clear GitHub Actions billing lock | `ops/github-actions-billing-console.html` | CI and Pages jobs start and pass |
 | [#2](https://github.com/Davidleeops/mcpscan/issues/2) | Buy domain and create mailbox | `ops/domain-email-dns-console.html`, `docs/DOMAIN_AND_MAILBOX_DECISION.md` | Domain resolves, mailbox exists, MX/SPF/DKIM pass |
 | [#3](https://github.com/Davidleeops/mcpscan/issues/3) | Create Stripe Payment Links | `ops/stripe-click-setup.html` | Three live Stripe Payment Links exist |
-| [#4](https://github.com/Davidleeops/mcpscan/issues/4) | Replace landing CTAs and contact links | `ops/approved-links-command-builder.html` | `npm run launch:verify -- --domain mcpscanhq.com` has no checkout/custom-domain warnings |
+| [#4](https://github.com/Davidleeops/mcpscan/issues/4) | Replace landing CTAs and contact links | `ops/approved-links-command-builder.html` | `npm run launch:verify -- --domain {{chosen_domain}}` has no checkout/custom-domain warnings |
 | [#5](https://github.com/Davidleeops/mcpscan/issues/5) | Authenticate npm and publish v0.1.0 | `ops/npm-publish-console.html` | `npm view @mcpscan/shared name version` and `npm view mcpscan name version` return `0.1.0` |
 | [#6](https://github.com/Davidleeops/mcpscan/issues/6) | Approve first outbound messages | `ops/first-10-outbound-approval-console.html`, `ops/outbound-approval-console.html` | Exact recipients and exact final content approved in the same turn |
 

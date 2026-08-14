@@ -11,11 +11,11 @@ Do not send external messages, start a live audit, publish packages, or accept s
 | Order | Gate | Founder Action | Console | Done When |
 | --- | --- | --- | --- | --- |
 | 0 | GitHub billing | Clear the account billing lock and re-run failed Actions jobs | `ops/github-actions-billing-console.html` | CI and Pages jobs start and pass |
-| 1 | Domain | Buy `mcpscanhq.com` if standard-priced | `ops/domain-email-dns-console.html` | Domain exists in registrar account |
-| 2 | Mailbox | Create `hello@mcpscanhq.com` | `ops/domain-email-dns-console.html` | MX, SPF, and DKIM pass |
+| 1 | Domain | Buy `getmcpscan.com` if standard-priced, or `mcpscan.us` as the cheapest credible fallback | `ops/domain-email-dns-console.html` | Domain exists in registrar account |
+| 2 | Mailbox | Create `hello@{{chosen_domain}}` | `ops/domain-email-dns-console.html` | MX, SPF, and DKIM pass |
 | 3 | Stripe | Create the three Payment Links | `ops/stripe-click-setup.html` | Quick, Launch, and Enterprise checkout links exist |
 | 4 | Apply links | Paste real links into the command builder | `ops/approved-links-command-builder.html` | Landing page no longer uses placeholder checkout links |
-| 5 | Verify | Run launch verification | `ops/verification-console.html` | `npm run launch:verify -- --domain mcpscanhq.com` has no domain or checkout warnings |
+| 5 | Verify | Run launch verification | `ops/verification-console.html` | `npm run launch:verify -- --domain {{chosen_domain}}` has no domain or checkout warnings |
 | 6 | npm | Publish packages if desired | `ops/npm-publish-console.html` | npm shows version `0.1.0` for both packages |
 | 7 | Outbound | Approve exact recipients and exact final messages | `ops/outbound-approval-console.html` | Messages are approved in the same turn before send |
 | 8 | Paid handoff | Use post-payment handoff after Stripe payment | `ops/post-payment-console.html` | Private workspace exists outside public repo |
