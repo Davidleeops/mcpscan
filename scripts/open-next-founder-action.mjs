@@ -15,6 +15,13 @@ const reviewSurfaces = [
   "ops/GITHUB_ISSUE_ACTION_BOARD.md"
 ];
 
+const externalUrls = [
+  "https://github.com/settings/billing",
+  "https://github.com/Davidleeops/mcpscan/actions",
+  "https://www.spaceship.com/domain-search/?query=mcpscan.site",
+  "https://dashboard.stripe.com/payment-links"
+];
+
 function openerFor(target) {
   if (process.platform === "darwin") return ["open", [target]];
   if (process.platform === "win32") return ["cmd", ["/c", "start", "", target]];
@@ -51,6 +58,13 @@ for (const page of reviewSurfaces) {
 }
 
 console.log("");
+console.log("Opening founder account links:");
+for (const url of externalUrls) {
+  const opened = openTarget(url);
+  console.log(`${opened ? "OPENED" : "COPY"} ${url}`);
+}
+
+console.log("");
 console.log("Current launch status:");
 runStatus();
 
@@ -68,4 +82,4 @@ console.log("9. Run npm run delivery:open-handoff after payment clears.");
 
 console.log("");
 console.log("Hard rule:");
-console.log("Every external post, outbound message, reply, and paid handoff remains approval-gated. This command does not publish, send, buy, apply, or create customer files.");
+console.log("Every external post, outbound message, reply, and paid handoff remains approval-gated. This command opens account pages, but it does not buy, publish, send, apply, or create customer files.");

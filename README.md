@@ -16,7 +16,7 @@ Start here from the repo:
 npm run launch:next
 ```
 
-That command opens the current founder action stack, prints live launch status, and shows the next action ladder. It does not buy, publish, send, apply links, or create customer files.
+That command opens the current founder action stack, GitHub billing, GitHub Actions, Spaceship domain search, and Stripe Payment Links. It prints live launch status and shows the next action ladder. It does not buy, publish, send, apply links, or create customer files.
 
 Key surfaces:
 

@@ -8,7 +8,7 @@ Start here:
 npm run launch:next
 ```
 
-This opens the current founder action stack, live status, issue board, and next commands without buying, publishing, sending, applying links, or creating customer files.
+This opens the current founder action stack, live status, issue board, GitHub billing, GitHub Actions, Spaceship domain search, Stripe Payment Links, and next commands without buying, publishing, sending, applying links, or creating customer files.
 
 Current market proof:
 
