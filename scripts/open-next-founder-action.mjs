@@ -78,7 +78,7 @@ console.log("4. Fill the generated cart proof from the visible Spaceship cart be
 console.log("5. Buy one domain only if the cart stays at or below the approved cap and renewal is visible.");
 console.log("6. Create one Spacemail mailbox on the chosen domain: security@domain, with audit@ and hello@ aliases.");
 console.log("7. Run npm run launch:click-session with the chosen domain after the domain and mailbox exist.");
-console.log("8. Create Stripe Payment Links and checkout QA evidence.");
+console.log("8. Run npm run launch:stripe-session to create Stripe Payment Links and checkout QA evidence.");
 console.log("9. Paste exact values into the generated founder return packet.");
 console.log("10. Run npm run launch:post-click-bundle after return packet and QA evidence exist.");
 console.log("11. Run npm run launch:open-return-review after values exist.");

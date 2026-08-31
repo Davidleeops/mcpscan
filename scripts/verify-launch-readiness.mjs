@@ -285,6 +285,8 @@ const requiredFiles = [
   "scripts/simulate-founder-return-apply.mjs",
   "scripts/build-domain-dns-packet.mjs",
   "scripts/build-stripe-setup-packet.mjs",
+  "scripts/open-stripe-payment-session.mjs",
+  "scripts/simulate-stripe-payment-session.mjs",
   "scripts/prepare-cheap-launch-packets.mjs",
   "scripts/verify-domain-cart-proof.mjs",
   "scripts/build-static-launch-bundle.mjs",
@@ -945,6 +947,41 @@ if (exists("scripts/open-public-launch-session.mjs") && exists("scripts/simulate
     missingPublicLaunchMarkers.length === 0
       ? result("pass", "public launch private session", "approval packet, claim gates, channel links, and staging command are ready without publishing")
       : result("fail", "public launch private session", missingPublicLaunchMarkers.join(", "))
+  );
+}
+
+if (exists("scripts/open-stripe-payment-session.mjs") && exists("scripts/simulate-stripe-payment-session.mjs") && exists("package.json")) {
+  const stripePaymentSession = [
+    read("scripts/open-stripe-payment-session.mjs"),
+    read("scripts/simulate-stripe-payment-session.mjs"),
+    read("ops/stripe-click-setup.html"),
+    read("ops/stripe-payment-link-qa-console.html"),
+    read("sales/stripe-checkout-qa-evidence.template.json"),
+    read("sales/payment-link-manifest.template.json"),
+    read("package.json")
+  ].join("\n");
+  const requiredStripePaymentMarkers = [
+    "launch:stripe-session",
+    "launch:simulate-stripe-session",
+    "MCPScan Stripe Payment Session",
+    "STRIPE_PAYMENT_SESSION.html",
+    "payment-link-manifest.json",
+    "stripe-checkout-qa-evidence.json",
+    "approved-return-packet.txt",
+    "MCP Quick Audit",
+    "MCP Launch Audit",
+    "MCP Enterprise Readiness Audit",
+    "https://dashboard.stripe.com/payment-links/create",
+    "live https://buy.stripe.com URL",
+    "Refusing to create the Stripe payment session inside the public MCPScan repo.",
+    "Refusing to write ${label} inside the public MCPScan repo.",
+    "This command opens pages only. It does not create products, publish links, charge buyers, apply public links, send messages, or create customer files."
+  ];
+  const missingStripePaymentMarkers = requiredStripePaymentMarkers.filter((marker) => !stripePaymentSession.includes(marker));
+  results.push(
+    missingStripePaymentMarkers.length === 0
+      ? result("pass", "Stripe payment private session", "Payment Link creation, QA evidence, return packet, and proof commands are ready without publishing links")
+      : result("fail", "Stripe payment private session", missingStripePaymentMarkers.join(", "))
   );
 }
 

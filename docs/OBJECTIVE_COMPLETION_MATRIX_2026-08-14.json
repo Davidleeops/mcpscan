@@ -6,7 +6,7 @@
   "currentPositioning": "We turn noisy MCP scanner output into a validated MCP risk report, remediation plan, and customer-ready security proof in 3 to 5 days.",
   "launchReadinessProof": {
     "command": "npm run launch:verify",
-    "passed": 247,
+    "passed": 250,
     "expectedWarnings": 3,
     "failures": 0
   },
@@ -19,6 +19,7 @@
         "docs/MARKET_REALITY_BRIEF_2026-08-14.md",
         "docs/MARKET_SOURCE_PACK_2026-08-14.md",
         "docs/MARKET_PULSE_REFRESH_2026-08-14.md",
+        "docs/EXIT_REALITY_REFRESH_2026-08-31.md",
         "scripts/open-market-research-console.mjs",
         "scripts/verify-market-sources.mjs"
       ]
@@ -90,6 +91,8 @@
       "evidence": [
         "ops/stripe-click-setup.html",
         "ops/stripe-payment-link-qa-console.html",
+        "scripts/open-stripe-payment-session.mjs",
+        "scripts/simulate-stripe-payment-session.mjs",
         "ops/generated-launch-packets/2026-08-14_mcpscan-online_stripe-setup-packet.md",
         "ops/generated-launch-packets/2026-08-14_mcpscan-online_stripe-products.csv",
         "scripts/verify-stripe-checkout-qa.mjs"

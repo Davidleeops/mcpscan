@@ -179,7 +179,7 @@
       <header>
         <div>
           <h1>Stripe Click Setup</h1>
-          <p>Create the three MCPScan Payment Links from a generated setup packet, then approve the exact live URLs before Codex applies them. This page does not create Stripe products automatically.</p>
+          <p>Create the three MCPScan Payment Links from the generated chosen-domain setup packet, then approve the exact live URLs before Codex applies them. This page does not create Stripe products automatically.</p>
         </div>
         <div class="actions"><a class="button" href="https://dashboard.stripe.com/payment-links/create" target="_blank" rel="noreferrer">Open Stripe Payment Links</a><a class="button" href="stripe-payment-link-qa-console.html">QA links</a><a class="button" href="../docs/STRIPE_SETUP_PACKET.md">Setup packet</a><a class="button" href="../docs/STRIPE_PAYMENT_LINK_VERIFICATION.md">Verification guide</a><a class="button" href="../sales/stripe-payment-link-approval-packet-2026-08-14.md">Approval packet</a></div>
       </header>
@@ -239,15 +239,15 @@
             </tr>
             <tr>
               <td>Confirmation / redirect</td>
-              <td>Redirect to <code>https://davidleeops.github.io/mcpscan/thank-you.html</code> until the custom domain is live.</td>
+              <td>Use the chosen-domain setup packet. For the current cheap lane, redirect to <code>https://getmcpscan.xyz/thank-you.html</code> after the domain is purchased and connected.</td>
             </tr>
             <tr>
               <td>Policy links</td>
               <td>
-                Terms: <code>https://davidleeops.github.io/mcpscan/terms.html</code><br>
-                Privacy: <code>https://davidleeops.github.io/mcpscan/privacy.html</code><br>
-                Refund: <code>https://davidleeops.github.io/mcpscan/refund.html</code><br>
-                Secure intake: <code>https://davidleeops.github.io/mcpscan/secure-intake.html</code>
+                Terms: <code>https://getmcpscan.xyz/terms.html</code><br>
+                Privacy: <code>https://getmcpscan.xyz/privacy.html</code><br>
+                Refund: <code>https://getmcpscan.xyz/refund.html</code><br>
+                Secure intake: <code>https://getmcpscan.xyz/secure-intake.html</code>
               </td>
             </tr>
             <tr>
@@ -262,6 +262,13 @@
           <p>Use this before creating the Stripe products so product names, prices, descriptions, fields, and policy URLs are all in one packet.</p>
           <button class="copy" data-copy="npm run launch:stripe-packet -- --domain getmcpscan.xyz --mailbox security@getmcpscan.xyz">Copy setup packet command</button>
           <pre>npm run launch:stripe-packet -- --domain getmcpscan.xyz --mailbox security@getmcpscan.xyz</pre>
+        </section>
+
+        <section class="wide notice">
+          <h2>Guided Private Session</h2>
+          <p>Use the private session when you want the Stripe account pages, setup packet, manifest draft, QA evidence draft, return packet draft, and proof commands in one place.</p>
+          <button class="copy" data-copy="npm run launch:stripe-session -- --domain getmcpscan.xyz --mail-provider spacemail">Copy Stripe session command</button>
+          <pre>npm run launch:stripe-session -- --domain getmcpscan.xyz --mail-provider spacemail</pre>
         </section>
 
         <section class="wide notice">

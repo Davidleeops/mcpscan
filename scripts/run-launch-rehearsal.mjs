@@ -5,6 +5,7 @@ const steps = [
   ["founder return packet parser", ["run", "launch:verify-return-packet"]],
   ["domain and mailbox session simulation", ["run", "launch:simulate-domain-session"]],
   ["founder click session simulation", ["run", "launch:simulate-click-session"]],
+  ["Stripe payment session simulation", ["run", "launch:simulate-stripe-session"]],
   ["founder return apply simulation", ["run", "launch:simulate-return-apply"]],
   ["founder post-click session simulation", ["run", "launch:simulate-post-click-session"]],
   ["GitHub Actions unblock session simulation", ["run", "launch:simulate-actions-session"]],
