@@ -31,6 +31,20 @@ Use this immediately after the founder account clicks. The goal is to give Codex
 
 ## Exact Return Flow
 
+### Non-Stripe Preflight
+
+Use this path when the domain, mailbox, aliases, and DNS can move now, but Stripe Payment Links are intentionally last.
+
+```text
+npm run launch:pre-stripe-preflight -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --mailbox security@{{chosen_domain}} --audit-alias audit@{{chosen_domain}} --hello-alias hello@{{chosen_domain}} --write-status true
+npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status
+npm run launch:pre-stripe-preflight -- --require-dns true
+```
+
+This creates or validates the public-safe status shell for domain, mailbox, aliases, and DNS. It does not approve first revenue, apply checkout links, or clear outbound sending. The full first-revenue gate still requires live Stripe links and Stripe QA evidence.
+
+### Full Return Flow
+
 1. Open `ops/founder-return-packet.html`.
 2. Use the cheap-lane preset for `getmcpscan.xyz` with `security@getmcpscan.xyz`, or the trust-lane preset for `getmcpscan.com` with `security@getmcpscan.com`.
 3. Paste the purchased domain, mailbox, aliases, and three live Stripe Payment Links.

@@ -49,9 +49,9 @@ private configs through public issues or ordinary email.
 
 Public sample report:
 
-<https://davidleeops.github.io/mcpscan/sample-report.html>
+<https://getmcpscan.xyz/sample-report.html>
 
 Sanitized intake checklist:
 
-<https://davidleeops.github.io/mcpscan/intake.html>
+<https://getmcpscan.xyz/intake.html>
 

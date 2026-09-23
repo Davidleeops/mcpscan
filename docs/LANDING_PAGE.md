@@ -31,7 +31,7 @@ exist:
 
 The fastest free production URL is GitHub Pages:
 
-- `https://davidleeops.github.io/mcpscan/`
+- `https://getmcpscan.xyz/`
 
 Good custom-domain options once purchased:
 
@@ -74,21 +74,21 @@ instructions for:
 Recommended redirect URL before custom domain:
 
 ```text
-https://davidleeops.github.io/mcpscan/thank-you.html
+https://getmcpscan.xyz/thank-you.html
 ```
 
 Recommended intake URL before custom domain:
 
 ```text
-https://davidleeops.github.io/mcpscan/intake.html
+https://getmcpscan.xyz/intake.html
 ```
 
 Recommended policy URLs before custom domain:
 
 ```text
-https://davidleeops.github.io/mcpscan/terms.html
-https://davidleeops.github.io/mcpscan/privacy.html
-https://davidleeops.github.io/mcpscan/refund.html
+https://getmcpscan.xyz/terms.html
+https://getmcpscan.xyz/privacy.html
+https://getmcpscan.xyz/refund.html
 ```
 
 After domain/email/Stripe approval, update the static site with:

@@ -1,0 +1,13 @@
+I approve applying these exact MCPScan domain and mailbox values:
+
+Domain: getmcpscan.xyz
+Mail provider: spacemail
+Mail provider label: Spacemail
+Primary mailbox: security@getmcpscan.xyz
+Audit alias: audit@getmcpscan.xyz
+Hello alias: hello@getmcpscan.xyz
+
+Approved action:
+Apply these domain and mailbox values before Stripe links exist. Update the public contact email, add the custom domain file, update security/contact references, and run pre-Stripe verification. Keep Stripe Payment Links, checkout QA, outbound sending, and first-revenue status pending until separately approved.
+
+I also approve keeping outbound paused until I approve exact recipients and exact final messages in a same-turn approval.

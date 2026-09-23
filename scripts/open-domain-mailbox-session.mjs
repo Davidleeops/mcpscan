@@ -100,23 +100,32 @@ const renewalNote = domain.endsWith(".xyz")
     : "Use the visible Spaceship cart renewal price";
 
 const cartProof = {
+  generatedFor: "MCPScan first revenue launch",
   updatedAt: new Date().toISOString().slice(0, 10),
   domain,
   registrar: "Spaceship",
   domainAvailable: false,
-  domainPremiumPriced: false,
-  firstYearDomainPrice: "",
-  renewalPrice: "",
+  firstYearDomainUsd: null,
+  maxFirstYearDomainUsd: Number(firstYearCap.replace("$", "")),
+  renewalDomainUsd: null,
+  renewalAcknowledged: false,
+  cheapRenewalTradeoffAcknowledged: false,
+  domainCount: 1,
   mailProvider,
   primaryMailbox: chosenMailbox,
   auditAlias,
   helloAlias,
-  extraDomainsInCart: 0,
-  extraMailboxesInCart: 0,
-  paidHostingAdded: false,
-  paidSslAdded: false,
-  siteBuilderAdded: false,
-  paidPrivacyAdded: false,
+  mailboxCount: 1,
+  mailboxUsd: null,
+  mailboxBillingTerm: "monthly",
+  paidHosting: false,
+  paidSsl: false,
+  siteBuilder: false,
+  extraDomains: false,
+  extraMailboxes: false,
+  paidPrivacyUpsell: false,
+  freePrivacyKept: true,
+  founderApproval: false,
   approvalText: "I approve buying the MCPScan launch domain",
   notes: [
     "Fill this from the visible Spaceship cart before purchase.",
@@ -175,7 +184,7 @@ npm run launch:dns-packet -- --domain ${domain} --mailbox ${chosenMailbox} --mai
 npm run launch:verify-dns -- --domain ${domain} --mail-provider ${mailProvider} --update-status
 \`\`\`
 
-Then continue the broader founder click session for Stripe links, public return values, and first revenue gates.
+Then stop the domain pass. Stripe links, checkout QA, public link apply, and first revenue gates happen in the final Stripe pass.
 `;
 
 const sessionHtml = `<!doctype html>

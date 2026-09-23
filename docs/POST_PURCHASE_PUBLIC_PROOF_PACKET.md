@@ -34,6 +34,16 @@ Use this after the founder buys the domain, creates the mailbox, and creates Str
 
 ## One-Screen Return Flow
 
+If Stripe Payment Links are intentionally last, use the non-Stripe preflight before this full return flow:
+
+```text
+npm run launch:pre-stripe-preflight -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --mailbox security@{{chosen_domain}} --audit-alias audit@{{chosen_domain}} --hello-alias hello@{{chosen_domain}} --write-status true
+npm run launch:verify-dns -- --domain {{chosen_domain}} --mail-provider {{zoho_or_google_or_spacemail}} --update-status
+npm run launch:pre-stripe-preflight -- --require-dns true
+```
+
+This path prepares domain, mailbox, aliases, and DNS status only. It does not clear `launch:verify-live`.
+
 1. Open `ops/founder-return-packet.html`.
 2. Click `Load cheap lane` for `getmcpscan.xyz`, or click `Load trust lane` for `getmcpscan.com`.
 3. Paste the three live Stripe Payment Links.

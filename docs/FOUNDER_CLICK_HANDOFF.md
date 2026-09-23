@@ -2,7 +2,7 @@
 
 Generated: 2026-08-14
 
-Use this as the shortest live path from prepared repo to first paid audit.
+Use this as the shortest live path from prepared repo to first paid audit. Current operating order: finish domain, mailbox, and DNS first. Stripe is last.
 
 ## Console
 
@@ -16,7 +16,7 @@ One-command launcher:
 npm run launch:click-session
 ```
 
-That command prepares the default private founder evidence workspace, opens the generated `CLICK_SESSION.html` browser cockpit, opens the generated `CLICK_SESSION.md` backup sheet, opens the local founder consoles, and opens the account pages for Spaceship, Spacemail, and Stripe. It does not buy, publish, send, charge, apply public links, or create customer files.
+That command prepares the default private founder evidence workspace, opens the generated `CLICK_SESSION.html` browser cockpit, opens the generated `CLICK_SESSION.md` backup sheet, opens the local founder consoles, and opens the account pages for Spaceship, Spacemail, and Stripe. It does not buy, publish, send, charge, apply public links, or create customer files. For the current pass, use only the domain, mailbox, and DNS parts.
 
 If you only need to prepare the workspace without opening pages, run:
 
@@ -38,7 +38,7 @@ $HOME/MCPScan Founder Clicks/current/CLICK_SESSION.md
 
 The browser cockpit is the live founder-account checklist. It includes the account links, chosen domain, mailbox aliases, local files to fill, verification commands, copy buttons, and stop conditions.
 
-Prebuild the cheap-lane DNS and Stripe packets:
+Prebuild the cheap-lane packets:
 
 ```text
 npm run launch:prepare-cheap
@@ -61,23 +61,25 @@ ops/generated-launch-packets/2026-08-14_getmcpscan-xyz_stripe-products.csv
 3. Buy one domain only if the cart is at or below `$3`, renewal is visible, and no paid add-ons appear.
 4. Create one Spacemail mailbox: `security@getmcpscan.xyz`, with `audit@getmcpscan.xyz` and `hello@getmcpscan.xyz` aliases.
 5. Use the generated DNS packet and DNS records CSV.
-6. Use the generated Stripe setup packet and Stripe products CSV.
-7. Create three live Stripe Payment Links.
-8. Use the Stripe QA console to download the evidence JSON.
-9. Use the founder return packet to download the exact approval message.
-10. Give the approved return packet and QA evidence JSON to Codex.
-11. Codex applies public links and runs verification. Commit and push happen after verification and separate explicit approval.
-12. Open the first-revenue runway with `npm run launch:open-first-revenue`.
-13. Approve exact outbound recipients and exact final messages.
-14. After payment, run the paid audit handoff and deliver from a private workspace.
+6. Verify DNS with `npm run launch:verify-dns -- --domain getmcpscan.xyz --mail-provider spacemail --update-status`.
+7. Stop the domain pass.
+8. In the final Stripe pass, use the generated Stripe setup packet and Stripe products CSV.
+9. Create three live Stripe Payment Links.
+10. Use the Stripe QA console to download the evidence JSON.
+11. Use the founder return packet to download the exact approval message.
+12. Give the approved return packet and QA evidence JSON to Codex.
+13. Codex applies public links and runs verification. Commit and push happen after verification and separate explicit approval.
+14. Open the first-revenue runway with `npm run launch:open-first-revenue`.
+15. Approve exact outbound recipients and exact final messages.
+16. After payment, run the paid audit handoff and deliver from a private workspace.
 
 ## Current Next Click Script
 
 ```text
 1. Run npm run launch:click-session.
-2. Follow $HOME/MCPScan Founder Clicks/current/CLICK_SESSION.html through domain, mailbox, DNS, Stripe, return packet, status tracker, and verification.
-3. Download the approval message from ops/founder-return-packet.html after Stripe links exist.
-4. Download the QA evidence JSON from ops/stripe-payment-link-qa-console.html after the checklist passes.
+2. Follow $HOME/MCPScan Founder Clicks/current/CLICK_SESSION.html through domain, mailbox, and DNS only.
+3. Verify DNS with npm run launch:verify-dns after records propagate.
+4. Leave Stripe links, return packet approval, and checkout QA for the final Stripe pass.
 ```
 
 ## Founder-Only Clicks

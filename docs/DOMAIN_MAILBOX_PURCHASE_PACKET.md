@@ -2,7 +2,7 @@
 
 Generated: 2026-08-14
 
-Use this before buying a domain or mailbox. It keeps the purchase lane, spend cap, renewal tradeoff, and post-click values explicit.
+Use this before buying a domain or mailbox. It keeps the purchase lane, spend cap, renewal tradeoff, and domain return values explicit. Stripe is last and is not part of this pass.
 
 ## Default Click Choice
 
@@ -118,9 +118,10 @@ Buy one MCPScan launch domain and one matching mailbox. Do not buy extra domains
 5. Buy one domain only in Spaceship.
 6. Create one Spacemail mailbox for that domain.
 7. Add `audit@` and `hello@` aliases.
-8. Copy the generated post-click values into `ops/founder-return-packet.html`.
-9. Create Stripe Payment Links.
-10. Send the approved return packet to Codex.
+8. Generate the DNS packet with `npm run launch:dns-packet -- --domain chosen-domain --mailbox security@chosen-domain --mail-provider spacemail`.
+9. Apply the GitHub Pages, MX, SPF, DKIM, and DMARC records shown in the DNS packet.
+10. Verify DNS with `npm run launch:verify-dns -- --domain chosen-domain --mail-provider spacemail --update-status`.
+11. Stop here for the domain pass. Create Stripe Payment Links only in the final Stripe pass.
 
 ## Stop Conditions
 

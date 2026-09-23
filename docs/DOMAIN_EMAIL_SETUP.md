@@ -105,7 +105,7 @@ Provider options:
 
 ## Landing Page Updates
 
-After Stripe and email exist, update `landing/index.html`:
+During this domain pass, update only the contact path after email exists. In the final Stripe pass, update `landing/index.html` checkout links:
 
 - Replace GitHub issue links with Stripe Payment Links.
 - Replace contact link with `mailto:security@<domain>` or a form.

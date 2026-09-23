@@ -131,23 +131,23 @@ Recommended settings:
 - Add an optional custom field: "How many MCP servers do you want reviewed?"
 - Add an optional custom field: "Target delivery date".
 - Enable automatic receipt.
-- Redirect to `https://davidleeops.github.io/mcpscan/thank-you.html` until a custom domain is live.
+- Redirect to `https://getmcpscan.xyz/thank-you.html` until a custom domain is live.
 - Include terms that the audit starts after intake materials are complete.
-- Link terms: `https://davidleeops.github.io/mcpscan/terms.html`
-- Link privacy policy: `https://davidleeops.github.io/mcpscan/privacy.html`
-- Link refund policy: `https://davidleeops.github.io/mcpscan/refund.html`
-- Link secure intake guidance: `https://davidleeops.github.io/mcpscan/secure-intake.html`
+- Link terms: `https://getmcpscan.xyz/terms.html`
+- Link privacy policy: `https://getmcpscan.xyz/privacy.html`
+- Link refund policy: `https://getmcpscan.xyz/refund.html`
+- Link secure intake guidance: `https://getmcpscan.xyz/secure-intake.html`
 
 Post-payment intake page:
 
 ```text
-https://davidleeops.github.io/mcpscan/intake.html
+https://getmcpscan.xyz/intake.html
 ```
 
 Secure intake guidance:
 
 ```text
-https://davidleeops.github.io/mcpscan/secure-intake.html
+https://getmcpscan.xyz/secure-intake.html
 ```
 
 Refund note:

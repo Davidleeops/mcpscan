@@ -6,7 +6,7 @@ For paid audit requests, use the audit request issue form only for sanitized sco
 
 ## Reporting Vulnerabilities In MCPScan
 
-Until a dedicated security inbox exists, open a GitHub issue with a high-level description and request a private disclosure path. Do not include exploit details or secrets in public issues.
+Report MCPScan vulnerabilities or private disclosure requests to security@getmcpscan.xyz. Do not include exploit details, secrets, production credentials, or customer data in public issues.
 
 ## Scope
 
