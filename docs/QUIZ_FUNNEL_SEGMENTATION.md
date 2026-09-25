@@ -5,14 +5,14 @@
 The quiz exists to turn cold or semi-warm traffic into a useful path before the visitor sees a generic purchase choice. It follows the quiz-funnel pattern from the supplied video:
 
 - Ask about the visitor first.
-- Use answers to identify role, pain, budget readiness, and fit.
+- Use answers to identify the decision, rollout stage, access risk, tool authority, and timing.
 - Return a tailored result page instead of one sales page for everyone.
 - Route buyers to the right audit scope while giving non-buyers a useful self-serve step.
 - Collect work email before revealing the result, then generate a segment-specific follow-up packet.
 
 ## Segments
 
-| Segment | Buyer state | Primary offer | Message angle |
+| Segment | Buyer state | Primary offer | Buyer-facing angle |
 | --- | --- | --- | --- |
 | Enterprise proof | Customer security, compliance, procurement, or leadership needs evidence | Enterprise Readiness or scoped Launch Audit | Buyer-safe evidence, authorization boundaries, sanitized reporting |
 | Launch readiness | Team is close to pilot, demo, internal rollout, or production-like MCP use | MCP Launch Audit | Fast decision packet, risk-ranked findings, re-scan after fixes |
@@ -30,15 +30,13 @@ The quiz exists to turn cold or semi-warm traffic into a useful path before the 
 
 ## Questions
 
-1. Role.
+1. Decision the visitor needs to make.
 2. MCP rollout stage.
-3. Systems the MCP setup can reach.
-4. Person or group that needs to accept the result.
-5. Risk the visitor is worried about.
-6. Timeline.
-7. Next action willingness.
+3. Most sensitive access involved.
+4. Whether connected tools can make changes.
+5. Timeline for the next decision.
 
-After the seventh answer, the page asks for work email and company or team. The static page reveals the result locally and builds a prefilled email to `security@getmcpscan.xyz` so the lead can send the result packet without pasting secrets or private configuration.
+After the fifth answer, the page asks for work email and company or team. The static page reveals the result locally and builds a prefilled email to `security@getmcpscan.xyz` so the lead can send the result packet without pasting secrets or private configuration.
 
 ## Routing Rules
 
@@ -49,7 +47,7 @@ The quiz uses additive scoring across four segment keys:
 - `agency`
 - `selfServe`
 
-The highest score controls the result. Ties are acceptable because adjacent segments still receive a relevant next step. The order of questions intentionally starts with identity, then moves into risk, pressure, timeline, and buying readiness.
+The highest score controls the result. Ties are acceptable because adjacent segments still receive a relevant next step. The order of questions intentionally starts with the visitor's decision, then moves into rollout stage, access, authority, and timing.
 
 ## Why This Fits MCPScan
 

@@ -1160,7 +1160,7 @@ const liveQuiz = await fetchText(`${baseUrl}/quiz.html`);
 if (liveQuiz.ok) {
   const requiredQuizMarkers = [
     "Work email",
-    "Email my result to MCPScan",
+    "Open email draft with my result",
     "Enterprise MCP proof packet",
     "MCP launch readiness plan",
     "Agency handoff safety checklist",
