@@ -36,6 +36,7 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      - run: node scripts/verify-quiz-capture-config.mjs
       - run: npm run writing:check
       - run: npm run build
       - run: npm run landing:sample-report

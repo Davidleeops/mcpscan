@@ -11,3 +11,7 @@ coverage/
 .turbo/
 sales/generated-outbound/
 ops/founder-approval-status.json
+
+supabase/.temp/
+.playwright-cli/
+output/

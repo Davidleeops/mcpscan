@@ -1183,21 +1183,43 @@ if (liveQuiz.ok) {
 const liveQuizScript = await fetchText(`${baseUrl}/quiz.js`);
 if (liveQuizScript.ok) {
   const requiredQuizScriptMarkers = [
-    "if(!config.endpoint)return localResponse(payload)",
-    "mailto:security@getmcpscan.xyz",
+    "if(!config.endpoint)throw Error",
+    "action:'capture'",
+    "action:'request_review'",
     "Prepare evidence for your security review",
     "Make your next rollout decision clearer",
     "Make the handoff easier to review",
     "Start with a local baseline"
   ];
+  const unsafeQuizScriptMarkers = [
+    "localResponse(payload)",
+    "mailto:security@getmcpscan.xyz"
+  ].filter((marker) => liveQuizScript.body.includes(marker));
   const missingQuizScriptMarkers = requiredQuizScriptMarkers.filter((marker) => !liveQuizScript.body.includes(marker));
   results.push(
-    missingQuizScriptMarkers.length === 0
-      ? result("pass", "live quiz artifact routing", "static fallback and segment-specific plans are deployed")
-      : result("warn", "live quiz artifact routing", `missing current marker(s): ${missingQuizScriptMarkers.join(", ")}`)
+    missingQuizScriptMarkers.length === 0 && unsafeQuizScriptMarkers.length === 0
+      ? result("pass", "live quiz artifact routing", "server-confirmed capture and segment-specific plans are deployed")
+      : result("warn", "live quiz artifact routing", [...missingQuizScriptMarkers, ...unsafeQuizScriptMarkers].join(", "))
   );
 } else {
   results.push(result("warn", "live quiz artifact routing", liveQuizScript.error ?? `HTTP ${liveQuizScript.status}`));
+}
+
+const liveQuizConfig = await fetchText(`${baseUrl}/quiz-config.js`);
+if (liveQuizConfig.ok) {
+  const requiredQuizConfigMarkers = [
+    "https://qdnaglhailuflynirqtt.supabase.co/functions/v1/mcpscan-quiz",
+    "Authorization: 'Bearer ",
+    "apikey: "
+  ];
+  const missingQuizConfigMarkers = requiredQuizConfigMarkers.filter((marker) => !liveQuizConfig.body.includes(marker));
+  results.push(
+    missingQuizConfigMarkers.length === 0
+      ? result("pass", "live quiz capture endpoint", "Supabase Edge Function endpoint and public JWT are configured")
+      : result("warn", "live quiz capture endpoint", `missing current marker(s): ${missingQuizConfigMarkers.join(", ")}`)
+  );
+} else {
+  results.push(result("warn", "live quiz capture endpoint", liveQuizConfig.error ?? `HTTP ${liveQuizConfig.status}`));
 }
 
 print(results);
