@@ -1141,7 +1141,6 @@ if (liveHome.ok) {
   const requiredLiveMarkers = [
     "Free scanners produce signals",
     "Find your audit path",
-    "Email my result to MCPScan",
     "quiz.html",
     "customer is authorized to submit",
     "MCP Launch Audit",
@@ -1155,6 +1154,26 @@ if (liveHome.ok) {
   );
 } else {
   results.push(result("warn", "live landing freshness", liveHome.error ?? `HTTP ${liveHome.status}`));
+}
+
+const liveQuiz = await fetchText(`${baseUrl}/quiz.html`);
+if (liveQuiz.ok) {
+  const requiredQuizMarkers = [
+    "Work email",
+    "Email my result to MCPScan",
+    "Enterprise MCP proof packet",
+    "MCP launch readiness plan",
+    "Agency handoff safety checklist",
+    "Self-serve scanner starter"
+  ];
+  const missingQuizMarkers = requiredQuizMarkers.filter((marker) => !liveQuiz.body.includes(marker));
+  results.push(
+    missingQuizMarkers.length === 0
+      ? result("pass", "live quiz lead capture", "email gate and segment artifacts are deployed")
+      : result("warn", "live quiz lead capture", `missing current marker(s): ${missingQuizMarkers.join(", ")}`)
+  );
+} else {
+  results.push(result("warn", "live quiz lead capture", liveQuiz.error ?? `HTTP ${liveQuiz.status}`));
 }
 
 print(results);
