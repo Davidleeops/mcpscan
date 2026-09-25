@@ -8,7 +8,7 @@ const outputDir = path.join(root, "dist", "mcpscan-static-launch");
 const freshnessMarkers = [
   "Free scanners produce signals",
   "customer is authorized to submit",
-  "MCP Launch Audit"
+  "Security Review Readiness Pack"
 ];
 
 function fail(message) {
