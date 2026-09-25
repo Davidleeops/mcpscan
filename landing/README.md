@@ -1,6 +1,6 @@
-# MCPScan Landing Page
+# MCP Signoff Landing Page
 
-This directory contains a minimal static landing page for MCPScan. It is plain
+This directory contains a minimal static landing page for MCP Signoff. It is plain
 HTML and CSS with no build step.
 
 ## Local Preview
@@ -73,7 +73,7 @@ repository. The local service binds only to loopback and is not a production hos
 Do not run this on a public interface or commit its data file.
 
 Production capture uses a Supabase Edge Function configured in `quiz-config.js`.
-The function stores leads and review requests in dedicated MCPScan tables inside
+The function stores leads and review requests in dedicated MCP Signoff tables inside
 the existing cranegenius Supabase project. GitHub Pages cannot itself accept POSTs,
 so the page must keep using the verified HTTPS endpoint. Never treat a mailto link
 or a browser variable as captured lead data.

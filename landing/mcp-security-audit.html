@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MCP Security Audit | MCPScan</title>
+    <title>MCP Security Audit | MCP Signoff</title>
     <meta
       name="description"
       content="Fixed-scope MCP security audits for teams reviewing agent tools, MCP servers, credentials, tool poisoning, prompt injection, and production-readiness evidence."
@@ -292,9 +292,9 @@
   </head>
   <body>
     <header class="nav" aria-label="Primary navigation">
-      <a class="brand" href="index.html" aria-label="MCPScan home">
+      <a class="brand" href="index.html" aria-label="MCP Signoff home">
         <span class="mark">MS</span>
-        <span>MCPScan</span>
+        <span>MCP Signoff</span>
       </a>
       <nav class="nav-links" aria-label="Page links">
         <a href="index.html">Home</a>
@@ -311,7 +311,7 @@
         <p class="eyebrow">MCP security audit</p>
         <h1 id="hero-title">A fixed-scope MCP audit before agents touch real systems.</h1>
         <p class="lede">
-          MCPScan helps teams review MCP servers, exposed tools, auth signals,
+          MCP Signoff helps teams review MCP servers, exposed tools, auth signals,
           token handling, prompt-injection risk, tool poisoning risk, and
           production-readiness evidence before customer pilots or internal rollout.
         </p>
@@ -389,42 +389,27 @@
       <section id="pricing" aria-labelledby="pricing-title">
         <h2 id="pricing-title">Fixed-scope packages</h2>
         <div class="grid">
-          <article class="card">
-            <h3>MCP Quick Audit</h3>
-            <p>For one small setup that needs a fast readiness readout.</p>
-            <div class="price"><strong>$750</strong><span>fixed scope</span></div>
-            <ul>
-              <li>Up to 3 MCP servers.</li>
-              <li>1 environment.</li>
-              <li>Written report.</li>
-              <li>3 business days after complete intake.</li>
-            </ul>
-            <a class="button secondary" href="https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Quick%20Audit%20request">Purchase Quick Audit</a>
-          </article>
-          <article class="card proof">
-            <h3>MCP Launch Audit</h3>
-            <p>Default first-revenue offer for teams preparing pilots, demos, or security review.</p>
-            <div class="price"><strong>$1,500</strong><span>fixed scope</span></div>
-            <ul>
-              <li>Up to 8 MCP servers.</li>
-              <li>2 environments.</li>
-              <li>Report and findings call.</li>
-              <li>1 re-scan after fixes.</li>
-            </ul>
-            <a class="button primary" href="https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Launch%20Audit%20request">Purchase Launch Audit</a>
-          </article>
-          <article class="card">
-            <h3>Enterprise Readiness</h3>
-            <p>For a deeper review before broader rollout or enterprise diligence.</p>
-            <div class="price"><strong>$3,500</strong><span>fixed scope</span></div>
-            <ul>
-              <li>Up to 15 MCP servers.</li>
-              <li>3 environments.</li>
-              <li>Executive summary.</li>
-              <li>Findings call and 1 re-scan.</li>
-            </ul>
-            <a class="button secondary" href="https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Enterprise%20Audit%20request">Purchase Enterprise Audit</a>
-          </article>
+          <article class="card" data-offer="agency">
+              <h3>Agency Handoff Pack</h3>
+              <p>For agencies and consultancies handing an MCP server or agent workflow to a client.</p>
+              <div class="price"><strong>$1,500</strong><span>fixed price</span></div>
+              <ul><li>One MCP server or agent workflow</li><li>Client-ready evidence packet</li><li>Permission and approval map</li><li>5 business days after complete intake</li></ul>
+              <a class="button secondary" data-checkout="agency" href="quiz.html?pack=agency">Request the Agency Handoff Pack</a>
+            </article>
+            <article class="card" data-offer="readiness">
+              <h3>Security Review Readiness Pack</h3>
+              <p>For software companies whose MCP server is facing an enterprise customer security review.</p>
+              <div class="price"><strong>$2,500</strong><span>fixed price</span></div>
+              <ul><li>Evidence packet mapped to OWASP MCP Top 10 and AIUC-1 MCP controls</li><li>Answers to the MCP questions reviewers ask</li><li>Shareable signoff letter</li><li>1 retest after fixes, 5 business days</li></ul>
+              <a class="button primary" data-checkout="readiness" href="quiz.html?pack=readiness">Request the Security Review Readiness Pack</a>
+            </article>
+            <article class="card" data-offer="testing">
+              <h3>Readiness Pack + Manual Testing</h3>
+              <p>For vendors with a named enterprise deal waiting on the security review.</p>
+              <div class="price"><strong>$5,000</strong><span>fixed price</span></div>
+              <ul><li>Everything in the Readiness Pack</li><li>Manual testing of the auth flow and tool injection paths</li><li>Findings call with your engineers</li><li>7 to 10 business days</li></ul>
+              <a class="button secondary" data-checkout="testing" href="quiz.html?pack=testing">Request the Readiness Pack + Manual Testing</a>
+            </article>
         </div>
       </section>
 
@@ -459,7 +444,7 @@
     </main>
 
     <footer>
-      <p>MCPScan audits review only systems and materials the customer is authorized to submit for the agreed scope.</p>
+      <p>MCP Signoff audits review only systems and materials the customer is authorized to submit for the agreed scope.</p>
       <nav class="footer-links" aria-label="Footer links">
         <a href="index.html">Home</a>
         <a href="quiz.html">Readiness quiz</a>

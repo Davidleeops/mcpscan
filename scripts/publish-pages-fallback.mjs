@@ -11,7 +11,7 @@ const tempBranch = `codex-pages-publish-${Date.now()}`;
 const freshnessMarkers = [
   "Free scanners produce signals",
   "customer is authorized to submit",
-  "MCP Launch Audit"
+  "Security Review Readiness Pack"
 ];
 
 function parseArgs(argv) {

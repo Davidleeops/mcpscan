@@ -972,7 +972,7 @@ if (exists("scripts/open-stripe-payment-session.mjs") && exists("scripts/simulat
     "stripe-checkout-qa-evidence.json",
     "approved-return-packet.txt",
     "MCP Quick Audit",
-    "MCP Launch Audit",
+    "Security Review Readiness Pack",
     "MCP Enterprise Readiness Audit",
     "https://dashboard.stripe.com/payment-links/create",
     "live https://buy.stripe.com URL",
@@ -1147,7 +1147,7 @@ if (liveHome.ok) {
     "Find your audit path",
     "quiz.html",
     "customer is authorized to submit",
-    "MCP Launch Audit",
+    "Security Review Readiness Pack",
     "owasp-mcp-top-10.html"
   ];
   const missingMarkers = requiredLiveMarkers.filter((marker) => !liveHome.body.includes(marker));

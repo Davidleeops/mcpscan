@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MCPScan | MCP production-readiness audits</title>
+    <title>MCP Signoff | MCP security review readiness</title>
     <meta
       name="description"
-      content="MCPScan helps teams turn MCP server scans into production-readiness evidence: risky permissions, weak auth signals, prompt-injection exposure, sensitive data paths, and a prioritized remediation plan."
+      content="MCP Signoff helps teams turn MCP server scans into production-readiness evidence: risky permissions, weak auth signals, prompt-injection exposure, sensitive data paths, and a prioritized remediation plan."
     >
     <style>
       :root {
@@ -474,9 +474,9 @@
   <body>
     <div class="page-shell">
       <header class="nav" aria-label="Primary navigation">
-        <a class="brand" href="#top" aria-label="MCPScan home">
+        <a class="brand" href="#top" aria-label="MCP Signoff home">
           <span class="mark">MS</span>
-          <span>MCPScan</span>
+          <span>MCP Signoff</span>
         </a>
         <nav class="nav-links" aria-label="Page sections">
           <a href="#checks">Checks</a>
@@ -494,19 +494,14 @@
         <section class="hero" aria-labelledby="hero-title">
           <div class="hero-grid">
             <div>
-              <p class="eyebrow">MCP production-readiness audits</p>
-              <h1 id="hero-title">Know what your agents can reach before a buyer asks.</h1>
+              <p class="eyebrow">MCP security review readiness</p>
+              <h1 id="hero-title">Pass the security review on your MCP server.</h1>
               <p class="lede">
-                MCPScan combines a local-first CLI with fixed-scope audit reports
-                for teams connecting AI agents to internal tools, credentials,
-                code, customer data, and third-party APIs.
+                MCP Signoff gives software teams a reviewer-ready evidence packet for their MCP server, mapped to the OWASP MCP Top 10 and AIUC-1 MCP controls, in five business days. Start with the free local scanner.
               </p>
               <div class="hero-actions">
-                <a class="button primary" href="quiz.html">Find your audit path</a>
-                <a class="button secondary" href="#audit">Book an MCP audit</a>
-                <a class="button secondary" href="sample-report.html">View sample report</a>
-                <a class="button secondary" href="mcp-security-audit.html">MCP security audit</a>
-                <a class="button secondary" href="owasp-mcp-top-10.html">OWASP coverage</a>
+                <a class="button primary" href="quiz.html">Find your review path</a>
+                <a class="button secondary" href="#pricing">See the packs</a>
               </div>
               <div class="proof-strip" aria-label="Product highlights">
                 <span>A-F security grade</span>
@@ -516,12 +511,12 @@
               </div>
             </div>
 
-            <aside class="terminal" aria-label="MCPScan command example">
+            <aside class="terminal" aria-label="MCP Signoff command example">
               <div class="terminal-header">
                 <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
                 <span>local scan</span>
               </div>
-              <pre><code>npx mcpscan scan ./claude_desktop_config.json --ci --min-grade B
+              <pre><code>npx mcpsignoff scan ./claude_desktop_config.json --ci --min-grade B
 
 Grade: C
 Findings: 2 high, 3 medium, 1 low
@@ -553,7 +548,7 @@ Tool description contains prompt-injection language</code></pre>
           <div class="section-heading">
             <h2 id="checks-title">Purpose-built checks for MCP production risk.</h2>
             <p>
-              MCPScan focuses on the access patterns that matter when agents can
+              MCP Signoff focuses on the access patterns that matter when agents can
               call real tools: authentication, sensitive outputs, network reach,
               dangerous tool descriptions, unsafe defaults, and the evidence a
               security reviewer expects to see.
@@ -673,56 +668,39 @@ Tool description contains prompt-injection language</code></pre>
 
         <section id="pricing" aria-labelledby="pricing-title">
           <div class="section-heading">
-            <h2 id="pricing-title">Fixed-scope MCP readiness audits.</h2>
+            <h2 id="pricing-title">Fixed-price packs for the review in front of you.</h2>
             <p>
-              Start with the free local scan, then buy a focused manual review
-              when MCP servers touch sensitive systems, enterprise-facing demos,
-              pilots, or customer security questionnaires.
+              Pick the pack that matches who is reviewing you: an enterprise customer, a client at handoff, or a deal that needs hands-on testing.
             </p>
           </div>
           <div class="pricing-grid">
-            <article class="card price-card">
-              <h3>MCP Quick Audit</h3>
-              <p>For one MCP setup that needs a fast readiness readout.</p>
-              <div class="price"><strong>$750</strong><span>fixed scope</span></div>
-              <ul>
-                <li>Up to 3 MCP servers</li>
-                <li>1 environment</li>
-                <li>Written report</li>
-                <li>3 business day turnaround</li>
-              </ul>
-              <a class="button secondary" href="https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Quick%20Audit%20request">Purchase Quick Audit</a>
+            <article class="card price-card" data-offer="agency">
+              <h3>Agency Handoff Pack</h3>
+              <p>For agencies and consultancies handing an MCP server or agent workflow to a client.</p>
+              <div class="price"><strong>$1,500</strong><span>fixed price</span></div>
+              <ul><li>One MCP server or agent workflow</li><li>Client-ready evidence packet</li><li>Permission and approval map</li><li>5 business days after complete intake</li></ul>
+              <a class="button secondary" data-checkout="agency" href="quiz.html?pack=agency">Request the Agency Handoff Pack</a>
             </article>
-            <article class="card price-card featured">
-              <h3>MCP Launch Audit</h3>
-              <p>For startups preparing pilots, demos, or early customer security review.</p>
-              <div class="price"><strong>$1,500</strong><span>fixed scope</span></div>
-              <ul>
-                <li>Up to 8 MCP servers</li>
-                <li>2 environments</li>
-                <li>Report and findings call</li>
-                <li>1 re-scan after fixes</li>
-              </ul>
-              <a class="button primary" href="https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Launch%20Audit%20request">Purchase Launch Audit</a>
+            <article class="card price-card featured" data-offer="readiness">
+              <h3>Security Review Readiness Pack</h3>
+              <p>For software companies whose MCP server is facing an enterprise customer security review.</p>
+              <div class="price"><strong>$2,500</strong><span>fixed price</span></div>
+              <ul><li>Evidence packet mapped to OWASP MCP Top 10 and AIUC-1 MCP controls</li><li>Answers to the MCP questions reviewers ask</li><li>Shareable signoff letter</li><li>1 retest after fixes, 5 business days</li></ul>
+              <a class="button primary" data-checkout="readiness" href="quiz.html?pack=readiness">Request the Security Review Readiness Pack</a>
             </article>
-            <article class="card price-card">
-              <h3>Enterprise Readiness</h3>
-              <p>For teams preparing a deeper governance, security, or buyer review.</p>
-              <div class="price"><strong>$3,500</strong><span>fixed scope</span></div>
-              <ul>
-                <li>Up to 15 MCP servers</li>
-                <li>3 environments</li>
-                <li>Executive summary</li>
-                <li>Findings call and 1 re-scan</li>
-              </ul>
-              <a class="button secondary" href="https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Enterprise%20Audit%20request">Purchase Enterprise Audit</a>
+            <article class="card price-card" data-offer="testing">
+              <h3>Readiness Pack + Manual Testing</h3>
+              <p>For vendors with a named enterprise deal waiting on the security review.</p>
+              <div class="price"><strong>$5,000</strong><span>fixed price</span></div>
+              <ul><li>Everything in the Readiness Pack</li><li>Manual testing of the auth flow and tool injection paths</li><li>Findings call with your engineers</li><li>7 to 10 business days</li></ul>
+              <a class="button secondary" data-checkout="testing" href="quiz.html?pack=testing">Request the Readiness Pack + Manual Testing</a>
             </article>
           </div>
           <p class="note">
-            MCPScan audits are not penetration tests, compliance certifications,
+            MCP Signoff audits are not penetration tests, compliance certifications,
             or guarantees of complete security. They are focused reviews of MCP
             configuration, exposed tools, risky permissions, governance evidence,
-            and scan findings. MCPScan reviews only systems and materials the
+            and scan findings. MCP Signoff reviews only systems and materials the
             customer is authorized to submit for the agreed scope.
           </p>
         </section>
@@ -737,15 +715,15 @@ Tool description contains prompt-injection language</code></pre>
             </p>
           </div>
           <div class="cta-row">
-            <a class="button primary" href="https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Launch%20Audit%20request">Buy an audit</a>
-            <a class="button secondary" href="mailto:security@getmcpscan.xyz?subject=MCPScan%20audit%20scope">Ask about scope</a>
+            <a class="button primary" href="quiz.html?pack=readiness">Get the Readiness Pack</a>
+            <a class="button secondary" href="mailto:security@getmcpscan.xyz?subject=MCP Signoff%20audit%20scope">Ask about scope</a>
           </div>
         </section>
       </main>
 
       <footer>
         <p>
-          MCPScan runs locally by default and does not upload scan results unless an
+          MCP Signoff runs locally by default and does not upload scan results unless an
           explicit upload/API workflow is added and requested.
         </p>
         <nav class="footer-links" aria-label="Policy links">

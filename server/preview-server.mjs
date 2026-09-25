@@ -38,4 +38,4 @@ const server=http.createServer(async(req,res)=>{
   const data=await readFile(file);res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8'})[extname(file)]||'application/octet-stream');res.setHeader('Cache-Control','no-store');res.end(req.method==='HEAD'?undefined:data);
  }catch(e){res.writeHead(e.code==='ENOENT'?404:503,{'Content-Type':'application/json'});res.end(JSON.stringify({error:'We could not save your request. Please try again.'}));}
 });
-server.listen(port,'127.0.0.1',()=>console.log(`MCPScan preview: http://127.0.0.1:${port}/quiz.html (local storage only)`));
+server.listen(port,'127.0.0.1',()=>console.log(`MCP Signoff preview: http://127.0.0.1:${port}/quiz.html (local storage only)`));

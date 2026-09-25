@@ -9,7 +9,7 @@ const paths = {
  enterprise:{label:'Customer security review',title:'Prepare evidence for your security review.',reason:'You’re preparing for customer review. Make the scope, access boundaries, and outstanding findings easy to inspect.',checks:['List the connected tools, systems, and people responsible for approving access.','Record permissions and approval boundaries with evidence your reviewer can inspect.','Give each finding an owner and a next step. State what remains outside the review.'],cta:'Review the audit scope',detailsTitle:'Define the review before sharing materials',detailsBody:'Start with the MCP servers, clients, environments, and connected systems that need review. Agree which access paths and tool actions should be examined.',detailsNext:'A useful report separates observed findings from assumptions and records remediation ownership. An MCP review is not a compliance certification.'},
  launch:{label:'Launch readiness',title:'Make your next rollout decision clearer.',reason:'You’re preparing a rollout decision. Establish what tools can reach and which findings need attention before access expands.',checks:['Inventory the MCP servers, environments, and connected tools in the rollout.','Confirm the permissions and approval requirements for actions that change systems.','Record the findings to resolve before launch, their owners, and how fixes will be checked.'],cta:'See the launch review',detailsTitle:'A practical launch review',detailsBody:'Review the proposed rollout scope, baseline findings, and permissions together. Separate issues that block rollout from improvements that can be scheduled.',detailsNext:'Agree who can approve the rollout and what evidence they need. Verify fixes before expanding access.'},
  agency:{label:'Client handoff',title:'Make the handoff easier to review.',reason:'You’re preparing a client workflow. Document the reviewed scope, permitted actions, and unresolved findings before handoff.',checks:['Confirm the client-authorized systems and the workflow included in the review.','Document permitted actions, approval steps, and who can revoke access.','Give the client a record of findings, remaining limits, and ownership after handoff.'],cta:'Open the handoff checklist',detailsTitle:'Before the client takes ownership',detailsBody:'Confirm who operates the workflow, who approves access changes, and who responds if an unexpected action occurs.',detailsNext:'Include the reviewed configuration version, unresolved findings, rollback steps, and the agreed handoff decision. Download the checklist below to keep this record.'},
- selfServe:{label:'Local baseline',title:'Start with a local baseline.',reason:'You want to inspect the setup yourself. Use a baseline scan to identify findings and decide what needs manual review.',checks:['Identify the MCP configuration you are authorized to inspect and keep a backup.','Review scanner findings against the actual tools, permissions, and environment.','Record anything the scan cannot verify and decide whether manual review is needed.'],cta:'View scanner setup',detailsTitle:'Prepare your first local scan',detailsBody:'Use the scanner setup instructions on the MCPScan home page. Run it only against a configuration you are authorized to inspect and review the output before sharing it.',detailsNext:'A static scan does not establish runtime behavior or prove that a setup is secure.'},
+ selfServe:{label:'Local baseline',title:'Start with a local baseline.',reason:'You want to inspect the setup yourself. Use a baseline scan to identify findings and decide what needs manual review.',checks:['Identify the MCP configuration you are authorized to inspect and keep a backup.','Review scanner findings against the actual tools, permissions, and environment.','Record anything the scan cannot verify and decide whether manual review is needed.'],cta:'View scanner setup',detailsTitle:'Prepare your first local scan',detailsBody:'Use the scanner setup instructions on the MCP Signoff home page. Run it only against a configuration you are authorized to inspect and review the output before sharing it.',detailsNext:'A static scan does not establish runtime behavior or prove that a setup is secure.'},
  inventory:{label:'Inventory first',title:'Start by making access visible.',reason:'A few details are still unclear. Establish what is connected and what it can do before choosing a review scope.',checks:['List the MCP servers, clients, and connected systems you know about.','Ask the system owners to confirm accessible data, permitted actions, and approval requirements.','Use the confirmed inventory to choose the next review and identify any gaps that remain.'],cta:'See the inventory checklist',detailsTitle:'Build a useful access inventory',detailsBody:'For each connection, record the system, environment, owner, accessible data, and allowed actions. Mark unknown permissions as unverified.',detailsNext:'Confirm the inventory with the people responsible for the systems before expanding access. Download this checklist as your starting point.'}
 };
 
@@ -35,7 +35,7 @@ const artifacts = {
   ],
   boundary:'If customer review depends on claims that have not been checked, a checklist alone will not close that evidence gap.',
   offer:'Turn this outline into a reviewed evidence packet',
-  value:'A scoped MCPScan review adds findings supported by the submitted materials, remediation priorities, and a report your reviewer can inspect.',
+  value:'A scoped MCP Signoff review adds findings supported by the submitted materials, remediation priorities, and a report your reviewer can inspect.',
   cta:'Request my evidence review'
  },
  launch: {
@@ -48,7 +48,7 @@ const artifacts = {
   ],
   boundary:'If tools can reach sensitive systems or make changes without understood approval boundaries, establish those boundaries before expanding access.',
   offer:'Get a reviewed launch decision packet',
-  value:'A scoped MCPScan review adds prioritized findings, a remediation discussion, and agreed validation of fixes so your team has evidence for the rollout decision.',
+  value:'A scoped MCP Signoff review adds prioritized findings, a remediation discussion, and agreed validation of fixes so your team has evidence for the rollout decision.',
   cta:'Request my launch review'
  },
  agency:{
@@ -61,7 +61,7 @@ const artifacts = {
   ],
   boundary:'A reusable delivery checklist helps organize work. It does not establish that this client’s specific permissions or workflow have been reviewed.',
   offer:'Add an independent review before handoff',
-  value:'MCPScan can review an agreed client workflow and produce findings, limitations, and remediation priorities that support a more defensible handoff.',
+  value:'MCP Signoff can review an agreed client workflow and produce findings, limitations, and remediation priorities that support a more defensible handoff.',
   cta:'Request a client workflow review'
  },
  selfServe:{
@@ -87,7 +87,7 @@ const artifacts = {
   ],
   boundary:'An unclear inventory makes it difficult to scope an audit. Resolving the most important unknowns first prevents a review from answering the wrong question.',
   offer:'Turn the unknowns into a practical review scope',
-  value:'Request a scope review to identify the materials needed and whether MCPScan fits the systems and decision you need to assess.',
+  value:'Request a scope review to identify the materials needed and whether MCP Signoff fits the systems and decision you need to assess.',
   cta:'Request help scoping my review'
  }
 };
