@@ -164,6 +164,7 @@
 
       .research-card,
       .quiz-shell,
+      .lead-card,
       .result-card,
       .segment-card {
         background: var(--panel);
@@ -395,6 +396,81 @@
         opacity: 0.48;
       }
 
+      .lead-card {
+        display: none;
+        margin-top: 28px;
+        padding: 26px;
+      }
+
+      .lead-card.is-visible {
+        display: block;
+      }
+
+      .lead-grid {
+        display: grid;
+        gap: 22px;
+        grid-template-columns: minmax(0, 0.62fr) minmax(280px, 0.38fr);
+      }
+
+      .lead-card h2 {
+        font-size: clamp(28px, 4vw, 44px);
+        letter-spacing: 0;
+        line-height: 1.05;
+        margin: 0;
+      }
+
+      .lead-card p,
+      .lead-card li {
+        color: var(--muted);
+        font-size: 16px;
+      }
+
+      .lead-form {
+        display: grid;
+        gap: 14px;
+        margin-top: 20px;
+      }
+
+      .field {
+        display: grid;
+        gap: 7px;
+      }
+
+      .field label {
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .field input {
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        color: var(--ink);
+        font: inherit;
+        min-height: 46px;
+        padding: 11px 12px;
+      }
+
+      .field input:focus {
+        border-color: var(--accent);
+        outline: 3px solid rgba(15, 118, 110, 0.14);
+      }
+
+      .form-note,
+      .form-error {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .form-error {
+        color: var(--red);
+        display: none;
+        font-weight: 750;
+      }
+
+      .form-error.is-visible {
+        display: block;
+      }
+
       .result-card {
         display: none;
         margin-top: 28px;
@@ -479,6 +555,30 @@
         font-size: 15px;
       }
 
+      .artifact-box {
+        background: var(--panel-soft);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        margin-top: 22px;
+        padding: 18px;
+      }
+
+      .artifact-box h3 {
+        font-size: 20px;
+        margin: 0 0 8px;
+      }
+
+      .artifact-box p {
+        margin: 0;
+      }
+
+      .artifact-list {
+        display: grid;
+        gap: 10px;
+        margin: 14px 0 0;
+        padding-left: 20px;
+      }
+
       .cta-row {
         display: flex;
         flex-wrap: wrap;
@@ -534,6 +634,7 @@
 
         .intro-grid,
         .quiz-body,
+        .lead-grid,
         .result-grid,
         .trust-strip,
         .segments {
@@ -650,6 +751,41 @@
         </div>
       </section>
 
+      <section class="lead-card" id="lead-capture" aria-live="polite" aria-labelledby="lead-title">
+        <div class="lead-grid">
+          <div>
+            <p class="eyebrow">Result ready</p>
+            <h2 id="lead-title">Where should MCPScan route your result?</h2>
+            <p>
+              Add a work email to unlock the recommended path, segment artifact,
+              and right next move. The page will build a result packet you can
+              send to MCPScan when you are ready for follow-up.
+            </p>
+            <form class="lead-form" id="lead-form" novalidate>
+              <div class="field">
+                <label for="lead-email">Work email</label>
+                <input id="lead-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com">
+              </div>
+              <div class="field">
+                <label for="lead-company">Company or team</label>
+                <input id="lead-company" name="company" type="text" autocomplete="organization" placeholder="Company name">
+              </div>
+              <p class="form-error" id="lead-error">Enter a valid email to unlock the result.</p>
+              <button class="button primary" type="submit">Unlock my result</button>
+              <p class="form-note">
+                Do not submit secrets, production credentials, customer data, or private config details.
+              </p>
+            </form>
+          </div>
+          <aside class="route-box">
+            <h3>Pending segment</h3>
+            <p id="lead-segment-preview">Your answer pattern is ready.</p>
+            <h3>What unlocks</h3>
+            <p id="lead-artifact-preview">A segment-specific artifact, next move, and follow-up packet.</p>
+          </aside>
+        </div>
+      </section>
+
       <section class="result-card" id="result" aria-live="polite" aria-labelledby="result-title">
         <div class="result-grid">
           <div>
@@ -658,8 +794,14 @@
             <div class="badge-row" id="badge-row"></div>
             <p id="result-summary"></p>
             <ul class="next-list" id="next-list"></ul>
+            <div class="artifact-box">
+              <h3 id="artifact-title"></h3>
+              <p id="artifact-summary"></p>
+              <ul class="artifact-list" id="artifact-list"></ul>
+            </div>
             <div class="cta-row">
-              <a class="button primary" id="primary-cta" href="#">Start the recommended path</a>
+              <a class="button primary" id="lead-email-cta" href="#">Email my result to MCPScan</a>
+              <a class="button secondary" id="primary-cta" href="#">Open next move</a>
               <a class="button secondary" href="sample-report.html">View sample report</a>
               <button class="button secondary" id="copy-button" type="button">Copy result summary</button>
             </div>
@@ -798,6 +940,13 @@
             "Inventory MCP servers, connected tools, and environments before sharing anything sensitive.",
             "Use secure intake only. Do not send secrets, private keys, tokens, or production data through public channels."
           ],
+          artifactTitle: "Enterprise MCP proof packet",
+          artifactSummary: "A buyer-safe evidence outline for customer security, procurement, or leadership review.",
+          artifact: [
+            "Decision owner map: who needs to accept MCP access and why.",
+            "Evidence register: MCP servers, tools, environments, and approval boundaries.",
+            "Security review packet: sanitized findings, remediation owners, and safe intake rules."
+          ],
           cta: "https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Enterprise%20Audit%20request"
         },
         launch: {
@@ -810,6 +959,13 @@
             "Run the local scanner for a baseline.",
             "List every MCP server, client, and connected system in the rollout.",
             "Buy or request the Launch Audit when tools touch code, tickets, cloud, databases, customer data, or internal APIs."
+          ],
+          artifactTitle: "MCP launch readiness plan",
+          artifactSummary: "A short launch-decision artifact for teams trying to move without hiding access risk.",
+          artifact: [
+            "Baseline scanner step: run MCPScan locally against sanitized config.",
+            "Launch scope: servers, connected systems, owners, and deadline.",
+            "Decision packet: risk-ranked findings, fix list, findings call, and re-scan path."
           ],
           cta: "https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Launch%20Audit%20request"
         },
@@ -824,6 +980,13 @@
             "Keep client credentials and customer data out of public issue forms.",
             "Use the sample report to explain what will be reviewed before the workflow goes live."
           ],
+          artifactTitle: "Agency handoff safety checklist",
+          artifactSummary: "A client-ready handoff artifact for operators shipping MCP or agent workflows.",
+          artifact: [
+            "Client intake boundary: authorized systems only, no secrets in public channels.",
+            "Workflow review: apps connected, actions allowed, and data exposure paths.",
+            "Handoff language: what was reviewed, what remains out of scope, and the next fix."
+          ],
           cta: "https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Quick%20Audit%20request"
         },
         selfServe: {
@@ -837,11 +1000,19 @@
             "Add a CI threshold if the MCP setup lives in a repo.",
             "Use the sample report to decide whether manual review is worth buying."
           ],
+          artifactTitle: "Self-serve scanner starter",
+          artifactSummary: "A technical starter artifact for developers who need proof before a paid review.",
+          artifact: [
+            "Local command: run the scanner against sanitized MCP config.",
+            "CI gate: set a threshold before risky MCP config reaches the repo.",
+            "Escalation rule: buy review when the setup touches customer data, cloud, code, tickets, or internal APIs."
+          ],
           cta: "sample-report.html"
         }
       };
 
       const answerState = new Array(questions.length).fill(null);
+      const leadState = { email: "", company: "", key: null };
       let current = 0;
 
       const stepLabel = document.getElementById("step-label");
@@ -852,11 +1023,22 @@
       const optionsEl = document.getElementById("options");
       const backButton = document.getElementById("back-button");
       const nextButton = document.getElementById("next-button");
+      const leadCapture = document.getElementById("lead-capture");
+      const leadForm = document.getElementById("lead-form");
+      const leadEmail = document.getElementById("lead-email");
+      const leadCompany = document.getElementById("lead-company");
+      const leadError = document.getElementById("lead-error");
+      const leadSegmentPreview = document.getElementById("lead-segment-preview");
+      const leadArtifactPreview = document.getElementById("lead-artifact-preview");
       const result = document.getElementById("result");
       const resultTitle = document.getElementById("result-title");
       const badgeRow = document.getElementById("badge-row");
       const resultSummary = document.getElementById("result-summary");
       const nextList = document.getElementById("next-list");
+      const artifactTitle = document.getElementById("artifact-title");
+      const artifactSummary = document.getElementById("artifact-summary");
+      const artifactList = document.getElementById("artifact-list");
+      const leadEmailCta = document.getElementById("lead-email-cta");
       const primaryCta = document.getElementById("primary-cta");
       const segmentTag = document.getElementById("segment-tag");
       const messageAngle = document.getElementById("message-angle");
@@ -898,10 +1080,59 @@
         return Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
       }
 
-      function renderResult() {
+      function validEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      }
+
+      function renderLeadCapture() {
         const key = scoreAnswers();
         const outcome = outcomes[key];
+        leadState.key = key;
         progressBar.style.width = "100%";
+        leadSegmentPreview.textContent = outcome.tag;
+        leadArtifactPreview.textContent = outcome.artifactTitle;
+        leadCapture.classList.add("is-visible");
+        result.classList.remove("is-visible");
+        leadCapture.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function answersSummary() {
+        return questions.map((question, index) => {
+          const selected = question.options[answerState[index]];
+          return `${index + 1}. ${question.title}: ${selected.label}`;
+        });
+      }
+
+      function buildLeadMailto(outcome) {
+        const subject = encodeURIComponent(`MCPScan quiz result: ${outcome.tag}`);
+        const body = [
+          "MCPScan quiz result",
+          "",
+          `Email: ${leadState.email}`,
+          `Company or team: ${leadState.company || "Not provided"}`,
+          `Segment: ${outcome.tag}`,
+          `Path: ${outcome.title}`,
+          "",
+          "Artifact:",
+          outcome.artifactTitle,
+          outcome.artifactSummary,
+          "",
+          "Next move:",
+          ...outcome.next.map((item) => `- ${item}`),
+          "",
+          "Quiz answers:",
+          ...answersSummary(),
+          "",
+          "I am not sending secrets, credentials, customer data, or private config details through this email."
+        ].join("\n");
+        return `mailto:security@getmcpscan.xyz?subject=${subject}&body=${encodeURIComponent(body)}`;
+      }
+
+      function renderResult() {
+        const key = leadState.key || scoreAnswers();
+        const outcome = outcomes[key];
+        progressBar.style.width = "100%";
+        leadCapture.classList.remove("is-visible");
         result.classList.add("is-visible");
         resultTitle.textContent = outcome.title;
         badgeRow.innerHTML = outcome.badges.map((badge, index) => {
@@ -910,6 +1141,10 @@
         }).join("");
         resultSummary.textContent = outcome.summary;
         nextList.innerHTML = outcome.next.map((item) => `<li>${item}</li>`).join("");
+        artifactTitle.textContent = outcome.artifactTitle;
+        artifactSummary.textContent = outcome.artifactSummary;
+        artifactList.innerHTML = outcome.artifact.map((item) => `<li>${item}</li>`).join("");
+        leadEmailCta.href = buildLeadMailto(outcome);
         primaryCta.href = outcome.cta;
         primaryCta.textContent = key === "selfServe" ? "Open sample report" : "Request this path";
         segmentTag.textContent = outcome.tag;
@@ -927,18 +1162,37 @@
       nextButton.addEventListener("click", () => {
         if (answerState[current] === null) return;
         if (current === questions.length - 1) {
-          renderResult();
+          renderLeadCapture();
         } else {
           current += 1;
           renderQuestion();
         }
       });
 
+      leadForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const email = leadEmail.value.trim();
+        const company = leadCompany.value.trim();
+        if (!validEmail(email)) {
+          leadError.classList.add("is-visible");
+          leadEmail.focus();
+          return;
+        }
+        leadError.classList.remove("is-visible");
+        leadState.email = email;
+        leadState.company = company;
+        renderResult();
+      });
+
       copyButton.addEventListener("click", async () => {
         const text = [
           resultTitle.textContent,
           segmentTag.textContent,
+          `Lead email: ${leadState.email}`,
+          `Company or team: ${leadState.company || "Not provided"}`,
           resultSummary.textContent,
+          artifactTitle.textContent,
+          artifactSummary.textContent,
           `Message angle: ${messageAngle.textContent}`
         ].join("\n");
         try {

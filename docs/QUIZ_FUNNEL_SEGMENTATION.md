@@ -8,6 +8,7 @@ The quiz exists to turn cold or semi-warm traffic into a useful path before the 
 - Use answers to identify role, pain, budget readiness, and fit.
 - Return a tailored result page instead of one sales page for everyone.
 - Route buyers to the right audit scope while giving non-buyers a useful self-serve step.
+- Collect work email before revealing the result, then generate a segment-specific follow-up packet.
 
 ## Segments
 
@@ -18,6 +19,15 @@ The quiz exists to turn cold or semi-warm traffic into a useful path before the 
 | Agency delivery | Operator builds AI workflows for clients | Quick Audit or Launch Audit | Client trust, safe intake, repeatable handoff language |
 | Self-serve scanner | Engineer or maintainer wants technical proof first | Free CLI and sample report | Local scan, CI threshold, SARIF, proof before paid review |
 
+## Segment Artifacts
+
+| Segment | Artifact | Right move |
+| --- | --- | --- |
+| Enterprise proof | Enterprise MCP proof packet | Email result to MCPScan and request Enterprise Readiness or a scoped Launch Audit |
+| Launch readiness | MCP launch readiness plan | Email result to MCPScan and request Launch Audit scope |
+| Agency delivery | Agency handoff safety checklist | Email result to MCPScan and start with Quick Audit or Launch Audit |
+| Self-serve scanner | Self-serve scanner starter | Open the sample report, run the CLI, then escalate when sensitive systems are involved |
+
 ## Questions
 
 1. Role.
@@ -27,6 +37,8 @@ The quiz exists to turn cold or semi-warm traffic into a useful path before the 
 5. Risk the visitor is worried about.
 6. Timeline.
 7. Next action willingness.
+
+After the seventh answer, the page asks for work email and company or team. The static page reveals the result locally and builds a prefilled email to `security@getmcpscan.xyz` so the lead can send the result packet without pasting secrets or private configuration.
 
 ## Routing Rules
 

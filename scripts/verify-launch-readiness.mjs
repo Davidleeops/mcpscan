@@ -1141,6 +1141,7 @@ if (liveHome.ok) {
   const requiredLiveMarkers = [
     "Free scanners produce signals",
     "Find your audit path",
+    "Email my result to MCPScan",
     "quiz.html",
     "customer is authorized to submit",
     "MCP Launch Audit",
