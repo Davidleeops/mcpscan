@@ -8,7 +8,7 @@ The quiz exists to turn cold or semi-warm traffic into a useful path before the 
 - Use answers to identify the decision, rollout stage, access risk, tool authority, and timing.
 - Return a tailored result page instead of one sales page for everyone.
 - Route buyers to the right audit scope while giving non-buyers a useful self-serve step.
-- Collect work email before revealing the result, then generate a segment-specific follow-up packet.
+- Collect email before revealing the result, then generate a segment-specific follow-up packet.
 
 ## Segments
 
@@ -36,7 +36,7 @@ The quiz exists to turn cold or semi-warm traffic into a useful path before the 
 4. Whether connected tools can make changes.
 5. Timeline for the next decision.
 
-After the fifth answer, the page asks for work email and company or team. The static page reveals the result locally and builds a prefilled email to `security@getmcpscan.xyz` so the lead can send the result packet without pasting secrets or private configuration.
+After the fifth answer, the page asks for email. The static page reveals the result locally and builds a prefilled email to `security@getmcpscan.xyz` so the lead can send the result packet without pasting secrets or private configuration.
 
 ## Routing Rules
 

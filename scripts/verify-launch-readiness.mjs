@@ -145,6 +145,8 @@ const results = [];
 const requiredFiles = [
   "landing/index.html",
   "landing/quiz.html",
+  "landing/quiz-config.js",
+  "landing/quiz.js",
   "landing/mcp-security-audit.html",
   "landing/owasp-mcp-top-10.html",
   "landing/intake.html",
@@ -1116,6 +1118,8 @@ results.push(
 const urls = [
   `${baseUrl}/`,
   `${baseUrl}/quiz.html`,
+  `${baseUrl}/quiz-config.js`,
+  `${baseUrl}/quiz.js`,
   `${baseUrl}/sample-report.html`,
   `${baseUrl}/mcp-security-audit.html`,
   `${baseUrl}/owasp-mcp-top-10.html`,
@@ -1159,12 +1163,12 @@ if (liveHome.ok) {
 const liveQuiz = await fetchText(`${baseUrl}/quiz.html`);
 if (liveQuiz.ok) {
   const requiredQuizMarkers = [
-    "Work email",
-    "Open email draft with my result",
-    "Enterprise MCP proof packet",
-    "MCP launch readiness plan",
-    "Agency handoff safety checklist",
-    "Self-serve scanner starter"
+    "What should you review before your next MCP rollout?",
+    "Find my review path",
+    "Email address",
+    "Get my review plan",
+    "quiz-config.js",
+    "quiz.js"
   ];
   const missingQuizMarkers = requiredQuizMarkers.filter((marker) => !liveQuiz.body.includes(marker));
   results.push(
@@ -1174,6 +1178,26 @@ if (liveQuiz.ok) {
   );
 } else {
   results.push(result("warn", "live quiz lead capture", liveQuiz.error ?? `HTTP ${liveQuiz.status}`));
+}
+
+const liveQuizScript = await fetchText(`${baseUrl}/quiz.js`);
+if (liveQuizScript.ok) {
+  const requiredQuizScriptMarkers = [
+    "if(!config.endpoint)return localResponse(payload)",
+    "mailto:security@getmcpscan.xyz",
+    "Prepare evidence for your security review",
+    "Make your next rollout decision clearer",
+    "Make the handoff easier to review",
+    "Start with a local baseline"
+  ];
+  const missingQuizScriptMarkers = requiredQuizScriptMarkers.filter((marker) => !liveQuizScript.body.includes(marker));
+  results.push(
+    missingQuizScriptMarkers.length === 0
+      ? result("pass", "live quiz artifact routing", "static fallback and segment-specific plans are deployed")
+      : result("warn", "live quiz artifact routing", `missing current marker(s): ${missingQuizScriptMarkers.join(", ")}`)
+  );
+} else {
+  results.push(result("warn", "live quiz artifact routing", liveQuizScript.error ?? `HTTP ${liveQuizScript.status}`));
 }
 
 print(results);
