@@ -15,6 +15,7 @@ Then visit:
 
 ```text
 http://localhost:8080/landing/
+http://localhost:8080/landing/quiz.html
 http://localhost:8080/landing/thank-you.html
 http://localhost:8080/landing/intake.html
 ```

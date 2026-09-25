@@ -1,0 +1,958 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCPScan Quiz | Find your MCP readiness path</title>
+    <meta
+      name="description"
+      content="Take the MCPScan readiness quiz to identify your MCP rollout risk profile, likely audit scope, and the next best action before agents touch sensitive systems."
+    >
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f2e9;
+        --panel: #ffffff;
+        --panel-soft: #eef5f2;
+        --ink: #10201b;
+        --muted: #52615b;
+        --line: #d8ded5;
+        --accent: #0f766e;
+        --accent-dark: #115e59;
+        --amber: #b45309;
+        --red: #b91c1c;
+        --blue: #1d4ed8;
+        --shadow: 0 22px 60px rgba(16, 32, 27, 0.13);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(140deg, rgba(15, 118, 110, 0.11), transparent 32rem),
+          var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .nav {
+        align-items: center;
+        display: flex;
+        gap: 24px;
+        justify-content: space-between;
+        margin: 0 auto;
+        max-width: 1180px;
+        padding: 22px 24px;
+      }
+
+      .brand {
+        align-items: center;
+        display: inline-flex;
+        font-size: 18px;
+        font-weight: 780;
+        gap: 10px;
+        text-decoration: none;
+      }
+
+      .mark {
+        align-items: center;
+        background: var(--ink);
+        border-radius: 7px;
+        color: #e8fff8;
+        display: inline-flex;
+        font-size: 13px;
+        font-weight: 850;
+        height: 32px;
+        justify-content: center;
+        width: 32px;
+      }
+
+      .nav-links {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: flex-end;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 680;
+        text-decoration: none;
+      }
+
+      .nav-links a:hover {
+        color: var(--ink);
+      }
+
+      main {
+        margin: 0 auto;
+        max-width: 1180px;
+        padding: 28px 24px 64px;
+      }
+
+      .intro-grid {
+        align-items: start;
+        display: grid;
+        gap: 28px;
+        grid-template-columns: minmax(0, 0.78fr) minmax(320px, 0.42fr);
+      }
+
+      .eyebrow {
+        color: var(--accent-dark);
+        font-size: 13px;
+        font-weight: 820;
+        letter-spacing: 0.08em;
+        margin: 0 0 14px;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-size: clamp(38px, 6vw, 68px);
+        letter-spacing: 0;
+        line-height: 0.98;
+        margin: 0;
+        max-width: 840px;
+      }
+
+      .lede {
+        color: var(--muted);
+        font-size: 19px;
+        margin: 22px 0 0;
+        max-width: 760px;
+      }
+
+      .metric-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .metric {
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        min-width: 150px;
+        padding: 14px 16px;
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 22px;
+        line-height: 1;
+      }
+
+      .metric span {
+        color: var(--muted);
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        margin-top: 6px;
+      }
+
+      .research-card,
+      .quiz-shell,
+      .result-card,
+      .segment-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+      }
+
+      .research-card {
+        padding: 22px;
+      }
+
+      .research-label {
+        color: var(--accent-dark);
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        margin: 0 0 10px;
+        text-transform: uppercase;
+      }
+
+      .research-card h2 {
+        font-size: 20px;
+        line-height: 1.2;
+        margin: 0 0 12px;
+      }
+
+      .research-card p,
+      .research-card li {
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .research-card ul {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .quiz-shell {
+        margin-top: 32px;
+        overflow: hidden;
+      }
+
+      .trust-strip {
+        align-items: center;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-top: 28px;
+        padding: 16px;
+      }
+
+      .trust-strip div {
+        border-left: 3px solid var(--accent);
+        padding-left: 12px;
+      }
+
+      .trust-strip strong {
+        display: block;
+        font-size: 14px;
+      }
+
+      .trust-strip span {
+        color: var(--muted);
+        display: block;
+        font-size: 13px;
+        margin-top: 3px;
+      }
+
+      .quiz-top {
+        align-items: center;
+        background: #14211d;
+        color: #ffffff;
+        display: flex;
+        gap: 18px;
+        justify-content: space-between;
+        padding: 20px 22px;
+      }
+
+      .quiz-top p {
+        color: #c7d8d2;
+        font-size: 14px;
+        margin: 4px 0 0;
+      }
+
+      .progress-track {
+        background: rgba(255, 255, 255, 0.16);
+        border-radius: 999px;
+        height: 10px;
+        min-width: 170px;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        background: #67e8d5;
+        height: 100%;
+        transition: width 180ms ease;
+        width: 0%;
+      }
+
+      .quiz-body {
+        display: grid;
+        gap: 22px;
+        grid-template-columns: minmax(0, 0.7fr) minmax(280px, 0.3fr);
+        padding: 24px;
+      }
+
+      .question-panel h2 {
+        font-size: clamp(26px, 4vw, 38px);
+        letter-spacing: 0;
+        line-height: 1.08;
+        margin: 0;
+      }
+
+      .question-panel > p {
+        color: var(--muted);
+        font-size: 16px;
+        margin: 12px 0 0;
+      }
+
+      .option-grid {
+        display: grid;
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .option {
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--ink);
+        cursor: pointer;
+        display: grid;
+        gap: 4px;
+        min-height: 82px;
+        padding: 16px;
+        text-align: left;
+        width: 100%;
+      }
+
+      .option strong {
+        font-size: 16px;
+      }
+
+      .option span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .option[aria-pressed="true"] {
+        border-color: var(--accent);
+        box-shadow: inset 0 0 0 2px rgba(15, 118, 110, 0.18);
+      }
+
+      .side-panel {
+        background: var(--panel-soft);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .side-panel h3 {
+        font-size: 17px;
+        margin: 0 0 10px;
+      }
+
+      .side-panel p,
+      .side-panel li {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .side-panel ul {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .controls {
+        align-items: center;
+        border-top: 1px solid var(--line);
+        display: flex;
+        gap: 12px;
+        justify-content: space-between;
+        padding: 18px 24px;
+      }
+
+      .button {
+        align-items: center;
+        border: 1px solid transparent;
+        border-radius: 7px;
+        cursor: pointer;
+        display: inline-flex;
+        font-size: 15px;
+        font-weight: 760;
+        justify-content: center;
+        min-height: 44px;
+        padding: 11px 17px;
+        text-decoration: none;
+      }
+
+      .button.primary {
+        background: var(--accent);
+        color: #ffffff;
+      }
+
+      .button.primary:hover {
+        background: var(--accent-dark);
+      }
+
+      .button.secondary {
+        background: #ffffff;
+        border-color: var(--line);
+        color: var(--ink);
+      }
+
+      .button.secondary:hover {
+        border-color: var(--accent);
+      }
+
+      .button:disabled {
+        cursor: not-allowed;
+        opacity: 0.48;
+      }
+
+      .result-card {
+        display: none;
+        margin-top: 28px;
+        padding: 26px;
+      }
+
+      .result-card.is-visible {
+        display: block;
+      }
+
+      .result-grid {
+        display: grid;
+        gap: 22px;
+        grid-template-columns: minmax(0, 0.68fr) minmax(280px, 0.32fr);
+      }
+
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 18px 0;
+      }
+
+      .badge {
+        border-radius: 999px;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 6px 10px;
+      }
+
+      .badge.red {
+        background: var(--red);
+      }
+
+      .badge.amber {
+        background: var(--amber);
+      }
+
+      .badge.teal {
+        background: var(--accent);
+      }
+
+      .badge.blue {
+        background: var(--blue);
+      }
+
+      .result-card h2 {
+        font-size: clamp(30px, 4vw, 46px);
+        letter-spacing: 0;
+        line-height: 1.04;
+        margin: 0;
+      }
+
+      .result-card p,
+      .result-card li {
+        color: var(--muted);
+        font-size: 16px;
+      }
+
+      .next-list {
+        display: grid;
+        gap: 12px;
+        margin: 18px 0 0;
+        padding-left: 20px;
+      }
+
+      .route-box {
+        background: #101816;
+        border-radius: 8px;
+        color: #d8f4ec;
+        padding: 18px;
+      }
+
+      .route-box h3 {
+        color: #ffffff;
+        margin: 0 0 8px;
+      }
+
+      .route-box p {
+        color: #b7cbc4;
+        font-size: 15px;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .segments {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        margin-top: 32px;
+      }
+
+      .segment-card {
+        box-shadow: none;
+        padding: 20px;
+      }
+
+      .segment-card h3 {
+        font-size: 18px;
+        margin: 0 0 8px;
+      }
+
+      .segment-card p {
+        color: var(--muted);
+        font-size: 14px;
+        margin: 0;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 14px;
+        margin: 0 auto;
+        max-width: 1180px;
+        padding: 24px;
+      }
+
+      @media (max-width: 900px) {
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .nav-links {
+          justify-content: flex-start;
+        }
+
+        main {
+          padding-top: 12px;
+        }
+
+        .intro-grid,
+        .quiz-body,
+        .result-grid,
+        .trust-strip,
+        .segments {
+          grid-template-columns: 1fr;
+        }
+
+        .quiz-top,
+        .controls {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .progress-track {
+          min-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="MCPScan home">
+        <span class="mark">MS</span>
+        <span>MCPScan</span>
+      </a>
+      <nav class="nav-links" aria-label="Page sections">
+        <a href="index.html">Home</a>
+        <a href="sample-report.html">Sample report</a>
+        <a href="mcp-security-audit.html">MCP audit</a>
+        <a href="secure-intake.html">Secure intake</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro-grid" aria-labelledby="quiz-title">
+        <div>
+          <p class="eyebrow">MCP readiness pathfinder</p>
+          <h1 id="quiz-title">Find the audit path your MCP rollout actually needs.</h1>
+          <p class="lede">
+            Answer seven questions. The quiz sorts buyers by rollout pressure,
+            connected systems, evidence needs, and readiness to buy. The result
+            recommends a package, a first proof step, and the next message to send.
+          </p>
+          <div class="metric-row" aria-label="Quiz proof points">
+            <div class="metric">
+              <strong>7</strong>
+              <span>fit questions</span>
+            </div>
+            <div class="metric">
+              <strong>4</strong>
+              <span>buyer paths</span>
+            </div>
+            <div class="metric">
+              <strong>2 min</strong>
+              <span>to a clear next step</span>
+            </div>
+          </div>
+        </div>
+        <aside class="research-card" aria-label="Quiz strategy basis">
+          <p class="research-label">Decision routing</p>
+          <h2>Why this quiz exists</h2>
+          <ul>
+            <li>Cold traffic usually leaks when every buyer sees the same offer.</li>
+            <li>Quiz answers reveal role, pain, fit, timing, and buying motion.</li>
+            <li>MCP buyers split by approval pressure: launch, enterprise review, agency delivery, or exploration.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="trust-strip" aria-label="What the quiz protects">
+        <div>
+          <strong>No secret sharing</strong>
+          <span>The quiz asks about scope and pressure, not credentials or private configs.</span>
+        </div>
+        <div>
+          <strong>Buyer-safe routing</strong>
+          <span>Each result maps to a usable audit path, proof artifact, or self-serve step.</span>
+        </div>
+        <div>
+          <strong>Launch focused</strong>
+          <span>Questions emphasize authorization, connected systems, timeline, and approval risk.</span>
+        </div>
+      </section>
+
+      <section class="quiz-shell" aria-labelledby="question-title">
+        <div class="quiz-top">
+          <div>
+            <strong id="step-label">Question 1 of 7</strong>
+            <p id="step-context">Start with the person taking the quiz.</p>
+          </div>
+          <div class="progress-track" aria-label="Quiz progress">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+        </div>
+
+        <div class="quiz-body">
+          <div class="question-panel">
+            <h2 id="question-title"></h2>
+            <p id="question-help"></p>
+            <div class="option-grid" id="options"></div>
+          </div>
+          <aside class="side-panel">
+            <h3>What MCPScan is learning</h3>
+            <ul id="insight-list">
+              <li>Buyer role and decision owner.</li>
+              <li>Systems the MCP setup can reach.</li>
+              <li>Whether the team needs self-serve evidence or a paid audit packet.</li>
+            </ul>
+          </aside>
+        </div>
+
+        <div class="controls">
+          <button class="button secondary" id="back-button" type="button">Back</button>
+          <button class="button primary" id="next-button" type="button" disabled>Next</button>
+        </div>
+      </section>
+
+      <section class="result-card" id="result" aria-live="polite" aria-labelledby="result-title">
+        <div class="result-grid">
+          <div>
+            <p class="eyebrow">Recommended path</p>
+            <h2 id="result-title"></h2>
+            <div class="badge-row" id="badge-row"></div>
+            <p id="result-summary"></p>
+            <ul class="next-list" id="next-list"></ul>
+            <div class="cta-row">
+              <a class="button primary" id="primary-cta" href="#">Start the recommended path</a>
+              <a class="button secondary" href="sample-report.html">View sample report</a>
+              <button class="button secondary" id="copy-button" type="button">Copy result summary</button>
+            </div>
+          </div>
+          <aside class="route-box">
+            <h3>Segmentation tag</h3>
+            <p id="segment-tag"></p>
+            <h3>Message angle</h3>
+            <p id="message-angle"></p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="segments" aria-label="MCPScan buyer segments">
+        <article class="segment-card">
+          <h3>Enterprise proof</h3>
+          <p>Customer security, compliance, or procurement needs a buyer-safe evidence packet.</p>
+        </article>
+        <article class="segment-card">
+          <h3>Launch readiness</h3>
+          <p>A startup or product team is about to roll MCP into a pilot, demo, or internal workflow.</p>
+        </article>
+        <article class="segment-card">
+          <h3>Agency delivery</h3>
+          <p>An operator is building client workflows and needs a repeatable intake and report motion.</p>
+        </article>
+        <article class="segment-card">
+          <h3>Self-serve scanner</h3>
+          <p>An engineer or maintainer needs the CLI, CI gate, and sample report before buying anything.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      MCPScan reviews only systems and materials the customer is authorized to submit.
+      Do not paste secrets, production credentials, private keys, or customer data into public channels.
+    </footer>
+
+    <script>
+      const questions = [
+        {
+          id: "role",
+          context: "Start with the person taking the quiz.",
+          title: "Which role best matches why you are here?",
+          help: "This determines whether the result should speak to launch speed, security proof, delivery repeatability, or self-serve scanning.",
+          options: [
+            { label: "Founder, CTO, or AI product lead", detail: "I need to ship an MCP-powered workflow or pilot without creating avoidable risk.", scores: { launch: 3, enterprise: 1 } },
+            { label: "AppSec, security, governance, or IT owner", detail: "I need evidence, ownership, and a clear decision packet.", scores: { enterprise: 4 } },
+            { label: "Agency owner or AI automation operator", detail: "I build agent workflows for clients and need a delivery-safe review path.", scores: { agency: 4 } },
+            { label: "Developer, maintainer, or MCP builder", detail: "I want to run a local scan and understand the technical findings.", scores: { selfServe: 4 } }
+          ]
+        },
+        {
+          id: "stage",
+          context: "Now sort by rollout timing.",
+          title: "Where is the MCP setup right now?",
+          help: "The quiz should not sell a full audit to a team that is still experimenting with toy data.",
+          options: [
+            { label: "Live or about to touch production-like systems", detail: "Agents can reach tools, data, repos, tickets, cloud, or customer workflows.", scores: { enterprise: 2, launch: 3 } },
+            { label: "Pilot or customer demo in the next 30 days", detail: "We need enough proof to move without slowing the launch.", scores: { launch: 4 } },
+            { label: "Client implementation in progress", detail: "A customer or stakeholder will rely on the workflow.", scores: { agency: 4, enterprise: 1 } },
+            { label: "Local exploration or open-source maintenance", detail: "I need a baseline and CI gate first.", scores: { selfServe: 4 } }
+          ]
+        },
+        {
+          id: "systems",
+          context: "Next, classify access risk.",
+          title: "What can the MCP servers or tools reach?",
+          help: "The strongest buyers have agents touching systems where write access, secrets, or customer data create review pressure.",
+          options: [
+            { label: "Source code, CI/CD, cloud, database, or customer records", detail: "The report needs to identify read, write, destructive, and credential paths.", scores: { enterprise: 4, launch: 2 } },
+            { label: "Slack, Jira, docs, CRM, support, or internal APIs", detail: "The concern is workflow authority, approval drift, and data exposure.", scores: { launch: 3, agency: 1 } },
+            { label: "Client-specific automations across several apps", detail: "I need a repeatable audit process I can explain to customers.", scores: { agency: 4 } },
+            { label: "Mostly sample data or a narrow local tool", detail: "A free scan and CI check may be enough for now.", scores: { selfServe: 4 } }
+          ]
+        },
+        {
+          id: "pressure",
+          context: "Buyer pressure changes the offer.",
+          title: "Who needs to accept the result?",
+          help: "This separates a scanner user from a buyer who needs a shareable decision artifact.",
+          options: [
+            { label: "Customer security, procurement, or enterprise buyer", detail: "They need a polished, sanitized proof packet.", scores: { enterprise: 5 } },
+            { label: "Leadership, founder team, or product owner", detail: "They need a launch decision and prioritized fixes.", scores: { launch: 4 } },
+            { label: "Client stakeholder or implementation sponsor", detail: "They need confidence before a workflow goes live.", scores: { agency: 4 } },
+            { label: "Only me or the engineering team", detail: "I need technical output first.", scores: { selfServe: 4 } }
+          ]
+        },
+        {
+          id: "risk",
+          context: "Find the emotional trigger.",
+          title: "What risk are you most worried about?",
+          help: "The result page should mirror the pain the buyer already feels.",
+          options: [
+            { label: "A customer or auditor asks what agents can access", detail: "We need evidence that can survive review.", scores: { enterprise: 4 } },
+            { label: "A rollout expands before permissions are understood", detail: "We need inventory, severity, and a fix list.", scores: { launch: 4 } },
+            { label: "A client workflow breaks trust because a tool overreaches", detail: "We need a repeatable safety check before handoff.", scores: { agency: 4 } },
+            { label: "A risky config lands in a repo or CI pipeline", detail: "We need scanner output and a threshold gate.", scores: { selfServe: 4 } }
+          ]
+        },
+        {
+          id: "timeline",
+          context: "Route urgency without overqualifying.",
+          title: "When does the next decision happen?",
+          help: "Urgency helps recommend Quick, Launch, Enterprise Readiness, or self-serve.",
+          options: [
+            { label: "This week", detail: "We need the shortest useful paid review or a hard CI gate now.", scores: { launch: 3, enterprise: 2 } },
+            { label: "Within 30 days", detail: "There is enough time for a launch audit and one re-scan.", scores: { launch: 4 } },
+            { label: "Before a client or customer handoff", detail: "The work needs a delivery-ready report path.", scores: { agency: 3, enterprise: 2 } },
+            { label: "No deadline yet", detail: "Start with the CLI and sample report.", scores: { selfServe: 4 } }
+          ]
+        },
+        {
+          id: "buying",
+          context: "Last, separate buyers from learners.",
+          title: "What action are you willing to take next?",
+          help: "This is the conversion step. It adds just enough friction to identify real buyers.",
+          options: [
+            { label: "Pay for a fixed-scope audit if the scope fits", detail: "I want a report and next steps.", scores: { launch: 3, enterprise: 2 } },
+            { label: "Book a scope review before paying", detail: "I need to confirm scope, authorization, or package fit.", scores: { enterprise: 3, launch: 2 } },
+            { label: "Use this for client delivery", detail: "I need a repeatable checklist and customer-safe language.", scores: { agency: 5 } },
+            { label: "Run the scanner first", detail: "I need local proof before a paid conversation.", scores: { selfServe: 5 } }
+          ]
+        }
+      ];
+
+      const outcomes = {
+        enterprise: {
+          title: "Enterprise proof path",
+          tag: "SEGMENT: ENTERPRISE_PROOF",
+          badges: ["Customer review", "Buyer-safe evidence", "High authority"],
+          tone: "Lead with evidence, authorization boundaries, sanitized reporting, and the decision packet a security reviewer can accept.",
+          summary: "Your answers show that MCP access is tied to external review, security acceptance, or a high-stakes rollout. The best path is an Enterprise Readiness Audit or a scoped Launch Audit if the environment is smaller.",
+          next: [
+            "Confirm which customer, security owner, or leadership group needs the report.",
+            "Inventory MCP servers, connected tools, and environments before sharing anything sensitive.",
+            "Use secure intake only. Do not send secrets, private keys, tokens, or production data through public channels."
+          ],
+          cta: "https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Enterprise%20Audit%20request"
+        },
+        launch: {
+          title: "Launch readiness path",
+          tag: "SEGMENT: LAUNCH_READINESS",
+          badges: ["Pilot pressure", "Fix list", "Fast decision"],
+          tone: "Lead with speed, risk-ranked findings, re-scan after fixes, and a report the team can use before rollout expands.",
+          summary: "Your answers point to a team that is close to shipping or piloting MCP access. The best fit is the MCP Launch Audit because it covers multiple servers, two environments, a findings call, and one re-scan.",
+          next: [
+            "Run the local scanner for a baseline.",
+            "List every MCP server, client, and connected system in the rollout.",
+            "Buy or request the Launch Audit when tools touch code, tickets, cloud, databases, customer data, or internal APIs."
+          ],
+          cta: "https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Launch%20Audit%20request"
+        },
+        agency: {
+          title: "Agency delivery path",
+          tag: "SEGMENT: AGENCY_DELIVERY",
+          badges: ["Client workflow", "Repeatable handoff", "Delivery safety"],
+          tone: "Lead with client trust, safe intake, repeatable report packaging, and a review step before an automation goes live.",
+          summary: "Your answers show a delivery operator or agency motion. The best path is to use MCPScan as a pre-handoff review so each client workflow has a clean scope, risk summary, and remediation trail.",
+          next: [
+            "Run a Quick Audit for a narrow client workflow or Launch Audit for multi-app workflows.",
+            "Keep client credentials and customer data out of public issue forms.",
+            "Use the sample report to explain what will be reviewed before the workflow goes live."
+          ],
+          cta: "https://github.com/Davidleeops/mcpscan/issues/new?title=MCPScan%20Quick%20Audit%20request"
+        },
+        selfServe: {
+          title: "Self-serve scanner path",
+          tag: "SEGMENT: SELF_SERVE_SCANNER",
+          badges: ["CLI first", "CI gate", "Technical proof"],
+          tone: "Lead with the free local scanner, CI threshold, SARIF output, and the sample report as proof of what a paid audit adds.",
+          summary: "Your answers fit a technical baseline motion. Start with the CLI and only move to a paid audit when the MCP setup touches sensitive systems or someone needs a reviewed decision packet.",
+          next: [
+            "Run npx mcpscan scan against a sanitized config.",
+            "Add a CI threshold if the MCP setup lives in a repo.",
+            "Use the sample report to decide whether manual review is worth buying."
+          ],
+          cta: "sample-report.html"
+        }
+      };
+
+      const answerState = new Array(questions.length).fill(null);
+      let current = 0;
+
+      const stepLabel = document.getElementById("step-label");
+      const stepContext = document.getElementById("step-context");
+      const progressBar = document.getElementById("progress-bar");
+      const title = document.getElementById("question-title");
+      const help = document.getElementById("question-help");
+      const optionsEl = document.getElementById("options");
+      const backButton = document.getElementById("back-button");
+      const nextButton = document.getElementById("next-button");
+      const result = document.getElementById("result");
+      const resultTitle = document.getElementById("result-title");
+      const badgeRow = document.getElementById("badge-row");
+      const resultSummary = document.getElementById("result-summary");
+      const nextList = document.getElementById("next-list");
+      const primaryCta = document.getElementById("primary-cta");
+      const segmentTag = document.getElementById("segment-tag");
+      const messageAngle = document.getElementById("message-angle");
+      const copyButton = document.getElementById("copy-button");
+
+      function renderQuestion() {
+        const q = questions[current];
+        stepLabel.textContent = `Question ${current + 1} of ${questions.length}`;
+        stepContext.textContent = q.context;
+        progressBar.style.width = `${((current + 1) / questions.length) * 100}%`;
+        title.textContent = q.title;
+        help.textContent = q.help;
+        optionsEl.innerHTML = "";
+        q.options.forEach((option, index) => {
+          const button = document.createElement("button");
+          button.className = "option";
+          button.type = "button";
+          button.setAttribute("aria-pressed", String(answerState[current] === index));
+          button.innerHTML = `<strong>${option.label}</strong><span>${option.detail}</span>`;
+          button.addEventListener("click", () => {
+            answerState[current] = index;
+            renderQuestion();
+          });
+          optionsEl.appendChild(button);
+        });
+        backButton.disabled = current === 0;
+        nextButton.disabled = answerState[current] === null;
+        nextButton.textContent = current === questions.length - 1 ? "Show my path" : "Next";
+      }
+
+      function scoreAnswers() {
+        const totals = { enterprise: 0, launch: 0, agency: 0, selfServe: 0 };
+        answerState.forEach((answerIndex, questionIndex) => {
+          const selected = questions[questionIndex].options[answerIndex];
+          Object.entries(selected.scores).forEach(([key, value]) => {
+            totals[key] += value;
+          });
+        });
+        return Object.entries(totals).sort((a, b) => b[1] - a[1])[0][0];
+      }
+
+      function renderResult() {
+        const key = scoreAnswers();
+        const outcome = outcomes[key];
+        progressBar.style.width = "100%";
+        result.classList.add("is-visible");
+        resultTitle.textContent = outcome.title;
+        badgeRow.innerHTML = outcome.badges.map((badge, index) => {
+          const colors = ["teal", "amber", "blue"];
+          return `<span class="badge ${colors[index % colors.length]}">${badge}</span>`;
+        }).join("");
+        resultSummary.textContent = outcome.summary;
+        nextList.innerHTML = outcome.next.map((item) => `<li>${item}</li>`).join("");
+        primaryCta.href = outcome.cta;
+        primaryCta.textContent = key === "selfServe" ? "Open sample report" : "Request this path";
+        segmentTag.textContent = outcome.tag;
+        messageAngle.textContent = outcome.tone;
+        result.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      backButton.addEventListener("click", () => {
+        if (current > 0) {
+          current -= 1;
+          renderQuestion();
+        }
+      });
+
+      nextButton.addEventListener("click", () => {
+        if (answerState[current] === null) return;
+        if (current === questions.length - 1) {
+          renderResult();
+        } else {
+          current += 1;
+          renderQuestion();
+        }
+      });
+
+      copyButton.addEventListener("click", async () => {
+        const text = [
+          resultTitle.textContent,
+          segmentTag.textContent,
+          resultSummary.textContent,
+          `Message angle: ${messageAngle.textContent}`
+        ].join("\n");
+        try {
+          await navigator.clipboard.writeText(text);
+          copyButton.textContent = "Copied";
+          window.setTimeout(() => {
+            copyButton.textContent = "Copy result summary";
+          }, 1600);
+        } catch {
+          copyButton.textContent = "Copy unavailable";
+        }
+      });
+
+      renderQuestion();
+    </script>
+  </body>
+</html>

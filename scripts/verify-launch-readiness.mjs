@@ -144,6 +144,7 @@ const results = [];
 
 const requiredFiles = [
   "landing/index.html",
+  "landing/quiz.html",
   "landing/mcp-security-audit.html",
   "landing/owasp-mcp-top-10.html",
   "landing/intake.html",
@@ -1114,6 +1115,7 @@ results.push(
 
 const urls = [
   `${baseUrl}/`,
+  `${baseUrl}/quiz.html`,
   `${baseUrl}/sample-report.html`,
   `${baseUrl}/mcp-security-audit.html`,
   `${baseUrl}/owasp-mcp-top-10.html`,
@@ -1138,6 +1140,8 @@ const liveHome = await fetchText(`${baseUrl}/`);
 if (liveHome.ok) {
   const requiredLiveMarkers = [
     "Free scanners produce signals",
+    "Find your audit path",
+    "quiz.html",
     "customer is authorized to submit",
     "MCP Launch Audit",
     "owasp-mcp-top-10.html"

@@ -8,6 +8,8 @@ commercial launch without waiting for a SaaS dashboard.
 The landing page is publishable now with temporary intake links:
 
 - `landing/sample-report.html` contains a sanitized sample paid-audit report.
+- `landing/quiz.html` contains the buyer segmentation quiz for routing visitors
+  to the right MCPScan path.
 - `landing/thank-you.html` is ready as a Stripe post-payment redirect page.
 - `landing/intake.html` is ready as a sanitized intake checklist.
 - `landing/terms.html`, `landing/privacy.html`, and `landing/refund.html` are ready for checkout policy links.
