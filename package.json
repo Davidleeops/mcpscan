@@ -55,6 +55,7 @@
     "launch:rerun-actions": "node scripts/rerun-github-actions-after-unlock.mjs",
     "launch:rehearsal": "node scripts/run-launch-rehearsal.mjs",
     "launch:verify": "node scripts/verify-launch-readiness.mjs",
+    "mcp:outside-in": "node scripts/outside-in-check.mjs",
     "launch:full-proof": "node scripts/run-full-launch-proof.mjs",
     "launch:open-public-review": "node scripts/open-public-launch-review.mjs",
     "launch:public-session": "node scripts/open-public-launch-session.mjs",
